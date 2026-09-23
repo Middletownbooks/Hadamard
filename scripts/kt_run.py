@@ -7,7 +7,7 @@ Logs JSON lines; solutions to data/kt_solutions_v{v}.txt"""
 import sys, glob, time, json, heapq, numpy as np
 sys.path.insert(0,'scripts')
 from redlib import Red
-from kt_join import sparse_N, paf_from_bits, stage1, stage1_par, stage1_merge, merge_count_total, merge_thist, stage1_merge_t
+from kt_join import sparse_N, paf_from_bits, stage1, stage1_par, stage1_merge, merge_count_total, merge_thist, stage1_merge_t, bloom_match
 v,d=int(sys.argv[1]),int(sys.argv[2]); prof=tuple(int(x) for x in sys.argv[3].split(','))
 k=int(sys.argv[4]); Lmax=int(float(sys.argv[5])); files=sorted(glob.glob(sys.argv[6])); nbuck=int(sys.argv[7]); seed=int(sys.argv[8])
 R=Red(v,d); Nsp=sparse_N(R); rng=np.random.default_rng(seed); t0=time.time()
@@ -91,7 +91,17 @@ while heap and len(buckets)<nbuck:
             if nx not in seen: seen.add(nx); heapq.heappush(heap,(-score(nx),nx))
 # rest-bits estimate for logging: per-class quad bits ~3.3 on (L-1-k) independent classes
 out=open(f'data/kt_solutions_v{v}.txt','a'); nsol=0; exp_tot=0.0
+B0=int(os.environ.get('B0','0'))
+if os.environ.get('PLANT'):
+    Yp=np.array([[1 if c=='+' else -1 for c in l.strip()] for l in open(os.environ['PLANT'])])
+    Pp=R.paf(R.expand(Yp))[:,R.lags]
+    tp=(Pp[0]+Pp[1])[chunk]
+    for q in range(k):
+        if tp[q] not in [o[0] for o in opts[q]]: opts[q].append((int(tp[q]),-99.0))
+    buckets=[tuple([o[0] for o in opts[q]].index(tp[q]) for q in range(k))]
+    log(stage='planted',tau=tp.tolist())
 for b,ix in enumerate(buckets):
+    if b<B0: continue
     tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int16)
     nA=keyof_partner(np.asarray(D[prof[0]]['ch']),tau); nC=keyof_partner(np.asarray(D[prof[2]]['ch']),-tau)
     A,B,C,Dd=[D[a] for a in prof]
@@ -117,13 +127,9 @@ for b,ix in enumerate(buckets):
         for t in pl: mA[t+T]=True; mC[-t+T]=True
         KA,IA,JA=stage1_merge_t(nA,oA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,64,mA,T)
         KC,IC,JC=stage1_merge_t(nC,oCc,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,64,mC,T)
-        oc=np.argsort(KC); KC=KC[oc]
-        pos=np.searchsorted(KC,KA); pos[pos>=len(KC)]=len(KC)-1
-        m=np.where(KC[pos]==KA)[0] if len(KC) and len(KA) else []; ncand+=len(m)
-        for q in m:
-            i,j=IA[q],JA[q]; pp=pos[q]
-            while pp<len(KC) and KC[pp]==KA[q]:
-                kk,l=IC[oc[pp]],JC[oc[pp]]; pp+=1
+        ia,ic,nsurv=bloom_match(KA,KC,30); ncand+=len(ia)
+        for q,qc in zip(ia,ic):
+                i,j=IA[q],JA[q]; kk,l=IC[qc],JC[qc]
                 bits=[pools[prof[0]][i],pools[prof[1]][j],pools[prof[2]][kk],pools[prof[3]][l]]
                 Y=np.array([[1 if (int(bb)>>qq)&1 else -1 for qq in range(R.r)] for bb in bits])
                 tot=R.paf(R.expand(Y)).sum(0)

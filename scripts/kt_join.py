@@ -276,3 +276,45 @@ def stage1_merge_t(sX,oX,cX,hX,sY,oY,cY,hY,sign,G,nchunk,mask,T):
                     i=i2; j=j2
             if pas==0: cnt[b]=c
     return K,I,J
+
+@nb.njit(parallel=True,cache=True)
+def bloom_match(KA,KC,logm):
+    """return (ia, ic) index pairs with KA[ia]==KC[ic]; parallel byte-bloom on KC, filter KA, exact scan."""
+    m=np.int64(1)<<logm; mask=np.uint64(m-1)
+    bl=np.zeros(m,np.uint8)
+    NC=KC.shape[0]; NA=KA.shape[0]
+    for i in nb.prange(NC):
+        bl[np.int64((KC[i]*np.uint64(0xD6E8FEB86659FD93))>>np.uint64(64-logm))]=1
+    nch=256
+    ba=np.linspace(0,NA,nch+1).astype(np.int64); cnt=np.zeros(nch,np.int64)
+    for b in nb.prange(nch):
+        c=0
+        for i in range(ba[b],ba[b+1]):
+            if bl[np.int64((KA[i]*np.uint64(0xD6E8FEB86659FD93))>>np.uint64(64-logm))]: c+=1
+        cnt[b]=c
+    off=np.zeros(nch+1,np.int64)
+    for b in range(nch): off[b+1]=off[b]+cnt[b]
+    surv=np.empty(off[nch],np.int64)
+    for b in nb.prange(nch):
+        n=off[b]
+        for i in range(ba[b],ba[b+1]):
+            if bl[np.int64((KA[i]*np.uint64(0xD6E8FEB86659FD93))>>np.uint64(64-logm))]: surv[n]=i; n+=1
+    sk=KA[surv]; o=np.argsort(sk); sk=sk[o]; surv=surv[o]
+    bc=np.linspace(0,NC,nch+1).astype(np.int64); cnt2=np.zeros(nch,np.int64)
+    NS=sk.shape[0]
+    for b in nb.prange(nch):
+        c=0
+        for i in range(bc[b],bc[b+1]):
+            p=np.searchsorted(sk,KC[i])
+            while p<NS and sk[p]==KC[i]: c+=1; p+=1
+        cnt2[b]=c
+    off2=np.zeros(nch+1,np.int64)
+    for b in range(nch): off2[b+1]=off2[b]+cnt2[b]
+    ia=np.empty(off2[nch],np.int64); ic=np.empty(off2[nch],np.int64)
+    for b in nb.prange(nch):
+        n=off2[b]
+        for i in range(bc[b],bc[b+1]):
+            p=np.searchsorted(sk,KC[i])
+            while p<NS and sk[p]==KC[i]:
+                ia[n]=surv[p]; ic[n]=i; n+=1; p+=1
+    return ia,ic,NS

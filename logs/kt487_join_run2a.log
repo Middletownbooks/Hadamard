@@ -1,0 +1,6 @@
+{"stage": "prep", "secs": 1.8}
+{"stage": "count", "b": 0, "AB": 281695119, "CD": 442884739, "exp_hits_bucket": 0.036, "secs": 101.0}
+{"stage": "passes", "b": 0, "n": 4, "secs": 101.0}
+{"stage": "bucket", "b": 0, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -51.53, "AB": 281695119, "CD": 442884739, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.036, "exp_cum": 0.04, "secs": 760.9}
+{"stage": "count", "b": 1, "AB": 273201848, "CD": 428939194, "exp_hits_bucket": 0.034, "secs": 799.6}
+{"stage": "passes", "b": 1, "n": 4, "secs": 799.6}
