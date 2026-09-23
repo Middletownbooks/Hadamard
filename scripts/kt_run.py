@@ -12,38 +12,62 @@ v,d=int(sys.argv[1]),int(sys.argv[2]); prof=tuple(int(x) for x in sys.argv[3].sp
 k=int(sys.argv[4]); Lmax=int(float(sys.argv[5])); files=sorted(glob.glob(sys.argv[6])); nbuck=int(sys.argv[7]); seed=int(sys.argv[8])
 R=Red(v,d); Nsp=sparse_N(R); rng=np.random.default_rng(seed); t0=time.time()
 def log(**kw): kw['secs']=round(time.time()-t0,1); print(json.dumps(kw),flush=True)
-pools={}
-for a in set(prof):
-    fs=[f for f in files if f'_rs{a}_' in f]
-    x=np.unique(np.concatenate([np.load(f) for f in fs]))
-    # legacy single files (all row sums mixed)
-    leg=[f for f in files if '_rs' not in f]
-    for f in leg:
-        g=np.load(f); ones=np.zeros(len(g),np.int64)
-        for q in range(1,R.r): ones+=((g>>np.uint64(q))&np.uint64(1)).astype(np.int64)
-        rs=np.where(g&np.uint64(1),1,-1)+d*(2*ones-(R.r-1)); x=np.unique(np.concatenate([x,g[rs==a]]))
-    if len(x)>Lmax: x=x[rng.choice(len(x),Lmax,replace=False)]
-    pools[a]=x
-
-log(stage='pools',sizes={int(a):len(x) for a,x in pools.items()},log2={int(a):round(float(np.log2(len(x))),2) for a,x in pools.items()})
+import os
+cache=os.environ.get('KTCACHE','data/kt487/cache'); os.makedirs(cache,exist_ok=True)
+def cpath(name): return os.path.join(cache,name+'.npy')
+if all(os.path.exists(cpath(f'pool_{a}')) for a in set(prof)):
+    pools={a:np.load(cpath(f'pool_{a}'),mmap_mode='r').view(np.ndarray) for a in set(prof)}
+else:
+    pools={}
+    for a in set(prof):
+        fs=[f for f in files if f'_rs{a}_' in f]
+        x=np.unique(np.concatenate([np.load(f) for f in fs]+[np.zeros(0,np.uint64)]))
+        # legacy single files (all row sums mixed)
+        leg=[f for f in files if '_rs' not in f]
+        for f in leg:
+            g=np.load(f); ones=np.zeros(len(g),np.int64)
+            for q in range(1,R.r): ones+=((g>>np.uint64(q))&np.uint64(1)).astype(np.int64)
+            rs=np.where(g&np.uint64(1),1,-1)+d*(2*ones-(R.r-1)); x=np.unique(np.concatenate([x,g[rs==a]]))
+        if len(x)>Lmax: x=x[rng.choice(len(x),Lmax,replace=False)]
+        pools[a]=x
+    
+    log(stage='pools',sizes={int(a):len(x) for a,x in pools.items()},log2={int(a):round(float(np.log2(len(x))),2) for a,x in pools.items()})
+    for a,x in pools.items(): np.save(cpath(f'pool_{a}'),x)
+    pools={a:np.load(cpath(f'pool_{a}'),mmap_mode='r').view(np.ndarray) for a in set(prof)}
 classes=rng.permutation(R.L); chunk=classes[:k]; cc=classes[k]; rest=classes[k+1:]
 W=rng.integers(1,2**63,size=len(rest),dtype=np.uint64)|np.uint64(1); G=np.uint64(0x9E3779B97F4A7C15)
-D={}
-for a,x in pools.items():
-    ch=np.empty((len(x),k),np.int8); c=np.empty(len(x),np.int16); h=np.empty(len(x),np.uint64)
-    for s in range(0,len(x),1<<21):
-        P=paf_from_bits(x[s:s+(1<<21)],*Nsp,R.L,R.r)
-        ch[s:s+len(P)]=P[:,chunk]; c[s:s+len(P)]=P[:,cc]
-        h[s:s+len(P)]=(P[:,rest].astype(np.int64).astype(np.uint64)*W[None,:]).sum(1)
-    D[a]=dict(ch=ch,c=c,h=h)
+if all(os.path.exists(cpath(f'h_{a}_seed{seed}_k{k}')) for a in set(prof)):
+    D={a:dict(ch=np.load(cpath(f'ch_{a}_seed{seed}_k{k}'),mmap_mode='r').view(np.ndarray),c=np.load(cpath(f'c_{a}_seed{seed}_k{k}')),h=np.load(cpath(f'h_{a}_seed{seed}_k{k}'),mmap_mode='r').view(np.ndarray)) for a in set(prof)}
+else:
+    D={}
+    for a,x in pools.items():
+        ch=np.empty((len(x),k),np.int8); c=np.empty(len(x),np.int16); h=np.empty(len(x),np.uint64)
+        for s in range(0,len(x),1<<21):
+            P=paf_from_bits(x[s:s+(1<<21)],*Nsp,R.L,R.r)
+            ch[s:s+len(P)]=P[:,chunk]; c[s:s+len(P)]=P[:,cc]
+            h[s:s+len(P)]=(P[:,rest].astype(np.int64).astype(np.uint64)*W[None,:]).sum(1)
+        D[a]=dict(ch=ch,c=c,h=h)
+    for a,X in D.items():
+        for nm in ('ch','c','h'): np.save(cpath(f'{nm}_{a}_seed{seed}_k{k}'),X[nm])
+    del D
+    D={a:dict(ch=np.load(cpath(f'ch_{a}_seed{seed}_k{k}'),mmap_mode='r').view(np.ndarray),c=np.load(cpath(f'c_{a}_seed{seed}_k{k}')),h=np.load(cpath(f'h_{a}_seed{seed}_k{k}'),mmap_mode='r').view(np.ndarray)) for a in set(prof)}
 log(stage='prep')
-def keyof(ch16):
-    key=np.zeros(ch16.shape[0],np.uint64)
-    for i in range(k): key|=(ch16[:,i].astype(np.int8).astype(np.uint8).astype(np.uint64))<<np.uint64(8*i)
-    return key
+import numba as nb
+@nb.njit(parallel=True,cache=True)
+def keyof_nb(ch,tau,sgn):
+    N=ch.shape[0]; K=ch.shape[1]; out=np.empty(N,np.uint64)
+    for n in nb.prange(N):
+        w=np.uint64(0)
+        for i in range(K):
+            val=np.int64(tau[i])+sgn*np.int64(ch[n,i])
+            w|=np.uint64(val & 255)<<np.uint64(8*i)
+        out[n]=w
+    return out
+def keyof_own(ch): return keyof_nb(ch,np.zeros(k,np.int64),1)
+def keyof_partner(ch,tau): return keyof_nb(ch,np.asarray(tau,np.int64),-1)
 # own keys for B, D slots
-sB=keyof(D[prof[1]]['ch'].astype(np.int16)); oB=np.argsort(sB,kind='stable'); sB=sB[oB]
-sD=keyof(D[prof[3]]['ch'].astype(np.int16)); oD=np.argsort(sD,kind='stable'); sD=sD[oD]
+sB=keyof_own(np.asarray(D[prof[1]]['ch'])); oB=np.argsort(sB,kind='stable'); sB=sB[oB]
+sD=keyof_own(np.asarray(D[prof[3]]['ch'])); oD=np.argsort(sD,kind='stable'); sD=sD[oD]
 # per-class pair-sum distributions (AB and CD) from random pairs
 ns=2_000_000
 def pairdist(a1,a2):
@@ -68,7 +92,7 @@ while heap and len(buckets)<nbuck:
 out=open(f'data/kt_solutions_v{v}.txt','a'); nsol=0; exp_tot=0.0
 for b,ix in enumerate(buckets):
     tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int16)
-    nA=keyof(tau[None,:]-D[prof[0]]['ch'].astype(np.int16)); nC=keyof(-tau[None,:]-D[prof[2]]['ch'].astype(np.int16))
+    nA=keyof_partner(np.asarray(D[prof[0]]['ch']),tau); nC=keyof_partner(np.asarray(D[prof[2]]['ch']),-tau)
     A,B,C,Dd=[D[a] for a in prof]
     KA,IA,JA=stage1_par(nA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,256); nAB=len(KA)
     KC,IC,JC=stage1_par(nC,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,256); nCD=len(KC)
