@@ -4,3 +4,11 @@
 {"v": 79, "d": 3, "alg": "S2", "mu": 0.3, "inner": 50, "gs": 1, "tenure": 5, "seed": 1, "steps": 2000000, "solved": false, "secs": 4.17, "sv": null, "ratio": 0.4591746291668608, "final_R2": 1728}
 {"v": 79, "d": 3, "alg": "S2", "mu": 1.0, "inner": 50, "gs": 1, "tenure": 5, "seed": 0, "steps": 2000001, "solved": false, "secs": 4.33, "sv": null, "ratio": 0.42033513106293424, "final_R2": 3168}
 {"v": 79, "d": 3, "alg": "S2", "mu": 1.0, "inner": 50, "gs": 1, "tenure": 5, "seed": 1, "steps": 2000000, "solved": false, "secs": 3.93, "sv": null, "ratio": 0.4200243872994351, "final_R2": 2016}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 0.25, "inner": 20, "gs": 1, "tenure": 8, "seed": 0, "steps": 2000000, "solved": false, "secs": 5.48, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 0.25, "inner": 20, "gs": 1, "tenure": 8, "seed": 1, "steps": 2000000, "solved": false, "secs": 2.26, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 0.25, "inner": 200, "gs": 1, "tenure": 8, "seed": 0, "steps": 2000000, "solved": false, "secs": 2.08, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 0.25, "inner": 200, "gs": 1, "tenure": 8, "seed": 1, "steps": 2000000, "solved": false, "secs": 2.17, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 1.0, "inner": 20, "gs": 1, "tenure": 8, "seed": 0, "steps": 2000000, "solved": false, "secs": 2.4, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 1.0, "inner": 20, "gs": 1, "tenure": 8, "seed": 1, "steps": 2000000, "solved": false, "secs": 2.31, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 1.0, "inner": 200, "gs": 1, "tenure": 8, "seed": 0, "steps": 2000000, "solved": false, "secs": 2.12, "sv": null, "ratio": null}
+{"v": 79, "d": 3, "alg": "S2fixed", "mu": 0.0, "share": 1.0, "inner": 200, "gs": 1, "tenure": 8, "seed": 1, "steps": 2000000, "solved": false, "secs": 2.07, "sv": null, "ratio": null}

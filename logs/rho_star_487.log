@@ -1,0 +1,10 @@
+pool sizes {35: 20000, 19: 19999, 1: 20000, 17: 20000, 37: 19998, 55: 7451, 53: 18976}
+{"v": 487, "rho": 0.3, "log2N_total": 21.5, "log2N_per_rowsum": {"17": 19.5, "37": 19.0, "1": 19.3}, "n_prime": 77.1, "log2_expected_flat_solutions": 0.2, "join_margin": -6.7}
+{"v": 487, "rho": 0.32, "log2N_total": 23.6, "log2N_per_rowsum": {"17": 21.6, "37": 21.2, "1": 21.4}, "n_prime": 79.5, "log2_expected_flat_solutions": 6.3, "join_margin": -5.3}
+{"v": 487, "rho": 0.34, "log2N_total": 25.8, "log2N_per_rowsum": {"17": 23.6, "37": 23.3, "1": 23.4}, "n_prime": 81.8, "log2_expected_flat_solutions": 12.1, "join_margin": -4.0}
+{"v": 487, "rho": 0.36, "log2N_total": 28.1, "log2N_per_rowsum": {"17": 25.7, "37": 25.6, "1": 25.7}, "n_prime": 83.8, "log2_expected_flat_solutions": 18.9, "join_margin": -2.4}
+{"v": 487, "rho": 0.38, "log2N_total": 29.9, "log2N_per_rowsum": {"17": 27.5, "37": 27.3, "1": 27.4}, "n_prime": 84.1, "log2_expected_flat_solutions": 25.6, "join_margin": -0.7}
+{"v": 487, "rho": 0.4, "log2N_total": 31.7, "log2N_per_rowsum": {"17": 29.2, "37": 29.1, "1": 29.1}, "n_prime": 84.8, "log2_expected_flat_solutions": 31.8, "join_margin": 0.9}
+{"v": 487, "rho": 0.42, "log2N_total": 33.1, "log2N_per_rowsum": {"17": 30.5, "37": 30.5, "1": 30.5}, "n_prime": 86.2, "log2_expected_flat_solutions": 35.7, "join_margin": 1.7}
+{"v": 487, "rho": 0.44, "log2N_total": 34.5, "log2N_per_rowsum": {"17": 31.9, "37": 31.9, "1": 31.9}, "n_prime": 86.2, "log2_expected_flat_solutions": 41.4, "join_margin": 3.2}
+{"v": 487, "rho": 0.46, "log2N_total": 37.0, "log2N_per_rowsum": {"17": 34.3, "37": 34.3, "1": 34.3}, "n_prime": 86.2, "log2_expected_flat_solutions": 51.1, "join_margin": 5.6}

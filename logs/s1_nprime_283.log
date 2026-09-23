@@ -1,0 +1,14 @@
+pool sizes {1: 283, 5: 381, 7: 487, 11: 534, 13: 765, 17: 498, 19: 764, 23: 320, 25: 180, 29: 17, 31: 1}
+{"v": 283, "d": 3, "rho": 0.3, "profile": [19, 19, 19, 7], "n_prime_given_profile": 118.1, "per_class_bits": 2.57}
+{"k": 1, "matches": 33693828549, "tuples_log2": 37.7, "bits_measured": 2.69, "bits_gaussian": 2.63}
+{"k": 2, "matches": 5584403669, "tuples_log2": 37.7, "bits_measured": 5.28, "bits_gaussian": 5.23}
+{"k": 3, "matches": 892305249, "tuples_log2": 37.7, "bits_measured": 7.93, "bits_gaussian": 7.85}
+{"k": 4, "matches": 147093277, "tuples_log2": 37.7, "bits_measured": 10.53, "bits_gaussian": 10.45}
+{"k": 5, "matches": 22791250, "tuples_log2": 37.7, "bits_measured": 13.22, "bits_gaussian": 13.05}
+{"k": 6, "matches": 3657273, "tuples_log2": 37.7, "bits_measured": 15.86, "bits_gaussian": 15.66}
+{"k": 7, "matches": 573783, "tuples_log2": 37.7, "bits_measured": 18.53, "bits_gaussian": 18.28}
+{"k": 8, "matches": 91086, "tuples_log2": 37.7, "bits_measured": 21.19, "bits_gaussian": 20.89}
+{"k": 9, "matches": 13788, "tuples_log2": 37.7, "bits_measured": 23.91, "bits_gaussian": 23.52}
+{"k": 10, "matches": 2232, "tuples_log2": 37.7, "bits_measured": 26.54, "bits_gaussian": 26.14}
+{"k": 11, "matches": 426, "tuples_log2": 37.7, "bits_measured": 28.93, "bits_gaussian": 28.71}
+{"k": 12, "matches": 42, "tuples_log2": 37.7, "bits_measured": 32.27, "bits_gaussian": 31.32}

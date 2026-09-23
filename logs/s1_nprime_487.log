@@ -1,0 +1,5 @@
+pool sizes {1: 4096, 17: 4096, 19: 4096, 35: 4096, 37: 4096, 53: 2855, 55: 528}
+{"v": 487, "d": 9, "rho": 0.36, "profile": [37, 17, 17, 1], "n_prime_given_profile": 81.6, "per_class_bits": 3.14}
+{"k": 1, "matches": 29654329125281, "tuples_log2": 48.0, "bits_measured": 3.25, "bits_gaussian": 3.2}
+{"k": 2, "matches": 3089144152775, "tuples_log2": 48.0, "bits_measured": 6.51, "bits_gaussian": 6.41}
+{"k": 3, "matches": 322265240849, "tuples_log2": 48.0, "bits_measured": 9.77, "bits_gaussian": 9.61}

@@ -268,3 +268,114 @@ def flat_tabu(y,M,maxsteps,tenure,seed,rowsum_fixed):
             bestF=F; besty[:]=y[:]
     y[:]=besty[:]
     return bestF
+
+@nb.njit(cache=True)
+def flat_pool(y,M,F0,nsteps,tenure,seed,stride,out,maxout):
+    """tabu walk minimising F=sum_c PAF(c)^2; every `stride` steps, if F<=F0, store y into out.
+    Restarts with random perturbation when stuck.  returns number stored."""
+    np.random.seed(seed)
+    r=y.shape[1]; L=M.shape[0]
+    G,P=init_state(y,M)
+    F=0
+    for c in range(L): F+=P[0,c]*P[0,c]
+    tabu=np.zeros(r,np.int64); n=0; last=-stride
+    for step in range(nsteps):
+        best=1<<62; bq=-1; nb_=0
+        for q in range(r):
+            if tabu[q]>step: continue
+            yq=y[0,q]; dF=0
+            for c in range(L):
+                dd=-2*yq*G[0,c,q]+2*M[c,q,q]; dF+=2*P[0,c]*dd+dd*dd
+            if dF<best or (dF==best and np.random.random()<1.0/(nb_+1)):
+                if dF<best: nb_=1
+                else: nb_+=1
+                best=dF; bq=q
+        yq=y[0,bq]
+        for c in range(L):
+            dd=-2*yq*G[0,c,bq]+2*M[c,bq,bq]; F+=2*P[0,c]*dd+dd*dd
+        flip(y,G,P,M,0,bq); tabu[bq]=step+1+tenure+np.random.randint(tenure//2+1)
+        if F<=F0 and step-last>=stride:
+            out[n,:]=y[0,:]; n+=1; last=step
+            if n>=maxout: return n
+    return n
+
+@nb.njit(cache=True)
+def run_breakout(y,M,lam,maxsteps,tenure,seed,winc):
+    """tabu + breakout weights: E = sum_c w_c R_c^2 + lam sum_k sum_c PAF_k(c)^2.
+    At a local minimum (no improving non-tabu move) weights of unsatisfied classes grow by winc."""
+    np.random.seed(seed)
+    K,r=y.shape; L=M.shape[0]
+    G,P=init_state(y,M)
+    R=np.zeros(L,np.int64)
+    for c in range(L):
+        for k in range(K): R[c]+=P[k,c]
+    w=np.ones(L); tabu=np.zeros((K,r),np.int64)
+    for step in range(maxsteps):
+        rr=0
+        for c in range(L): rr+=R[c]*R[c]
+        if rr==0: return step,True
+        best=1e300; bk=-1; bq=-1; nb_=0
+        for k in range(K):
+            for q in range(r):
+                if tabu[k,q]>step: continue
+                yq=y[k,q]; dE=0.0
+                for c in range(L):
+                    dd=-2*yq*G[k,c,q]+2*M[c,q,q]
+                    dE+=w[c]*(2*R[c]*dd+dd*dd)+lam*(2*P[k,c]*dd+dd*dd)
+                if dE<best or (dE==best and np.random.random()<1.0/(nb_+1)):
+                    if dE<best: nb_=1
+                    else: nb_+=1
+                    best=dE; bk=k; bq=q
+        if best>=0:
+            for c in range(L):
+                if R[c]!=0: w[c]+=winc
+        yq=y[bk,bq]
+        for c in range(L):
+            R[c]+=-2*yq*G[bk,c,bq]+2*M[c,bq,bq]
+        flip(y,G,P,M,bk,bq)
+        tabu[bk,bq]=step+1+tenure+np.random.randint(max(1,tenure//2+1))
+    return maxsteps,False
+
+@nb.njit(cache=True)
+def run_shared2(y,M,mu,share,maxsteps,inner,tenure,seed,gauss_seidel):
+    """S2 (fixed): each block's turn = `inner` tabu steps on
+         sum_c (PAF_k(c) - t_k(c))^2 + mu * sum_c PAF_k(c)^2,   t_k = PAF_k - share*R  (frozen at turn start)
+       share=0.25 -> block absorbs a quarter of the residual; share=1 -> full absorption (block LNS).
+       Returns as soon as the global residual hits 0."""
+    np.random.seed(seed)
+    K,r=y.shape; L=M.shape[0]
+    G,P=init_state(y,M)
+    R=np.zeros(L,np.int64)
+    for c in range(L):
+        for k in range(K): R[c]+=P[k,c]
+    tabu=np.zeros((K,r),np.int64)
+    T=np.zeros(L); R0=np.zeros(L,np.int64)
+    step=0
+    while step<maxsteps:
+        for c in range(L): R0[c]=R[c]
+        order=np.random.permutation(K)
+        for kk in range(K):
+            k=order[kk]
+            for c in range(L):
+                T[c]=P[k,c]-share*(R[c] if gauss_seidel else R0[c])
+            for it in range(inner):
+                best=1e300; bq=-1; nb_=0
+                for q in range(r):
+                    if tabu[k,q]>step: continue
+                    yq=y[k,q]; dE=0.0
+                    for c in range(L):
+                        dd=-2*yq*G[k,c,q]+2*M[c,q,q]
+                        e0=P[k,c]-T[c]
+                        dE+=2*e0*dd+dd*dd+mu*(2*P[k,c]*dd+dd*dd)
+                    if dE<best or (dE==best and np.random.random()<1.0/(nb_+1)):
+                        if dE<best: nb_=1
+                        else: nb_+=1
+                        best=dE; bq=q
+                yq=y[k,bq]
+                for c in range(L): R[c]+=-2*yq*G[k,c,bq]+2*M[c,bq,bq]
+                flip(y,G,P,M,k,bq)
+                tabu[k,bq]=step+1+tenure+np.random.randint(tenure//2+1); step+=1
+                rr=0
+                for c in range(L): rr+=R[c]*R[c]
+                if rr==0: return step,True
+    return step,False

@@ -37,7 +37,10 @@ def stats(X):
     fisher=float(chi2.logsf(-2*lp*np.log(10),2*R.L)/np.log(10))
     return sv,ratio,lp,fisher,Ts
 profiles=R.profiles(v)
-out=open(f'logs/w1_v{v}_d{d}.jsonl','a'); t0=time.time(); rnd=0
+import os
+if os.environ.get('PROFILE'): profiles=[tuple(int(x) for x in os.environ['PROFILE'].split(','))]
+OUT=os.environ.get('OUT',f'logs/w1_v{v}_d{d}.jsonl')
+out=open(OUT,'a'); t0=time.time(); rnd=0
 while time.time()-t0<secs:
     for prof in profiles:
         pools=[];exh=True
