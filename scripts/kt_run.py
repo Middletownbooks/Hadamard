@@ -12,20 +12,19 @@ v,d=int(sys.argv[1]),int(sys.argv[2]); prof=tuple(int(x) for x in sys.argv[3].sp
 k=int(sys.argv[4]); Lmax=int(float(sys.argv[5])); files=sorted(glob.glob(sys.argv[6])); nbuck=int(sys.argv[7]); seed=int(sys.argv[8])
 R=Red(v,d); Nsp=sparse_N(R); rng=np.random.default_rng(seed); t0=time.time()
 def log(**kw): kw['secs']=round(time.time()-t0,1); print(json.dumps(kw),flush=True)
-g=np.unique(np.concatenate([np.load(f) for f in files]))
-sgn=np.where((g[:,None]>>np.arange(R.r,dtype=np.uint64))&np.uint64(1),1,-1) if len(g)<0 else None
-# row sums from bits (vectorised in blocks)
-rs=np.empty(len(g),np.int64)
-for s in range(0,len(g),1<<22):
-    b=g[s:s+(1<<22)]; ones=np.zeros(len(b),np.int64)
-    for q in range(1,R.r): ones+=((b>>np.uint64(q))&np.uint64(1)).astype(np.int64)
-    y0=np.where(b&np.uint64(1),1,-1); rs[s:s+len(b)]=y0+d*(2*ones-(R.r-1))
 pools={}
 for a in set(prof):
-    x=g[rs==a]
+    fs=[f for f in files if f'_rs{a}_' in f]
+    x=np.unique(np.concatenate([np.load(f) for f in fs]))
+    # legacy single files (all row sums mixed)
+    leg=[f for f in files if '_rs' not in f]
+    for f in leg:
+        g=np.load(f); ones=np.zeros(len(g),np.int64)
+        for q in range(1,R.r): ones+=((g>>np.uint64(q))&np.uint64(1)).astype(np.int64)
+        rs=np.where(g&np.uint64(1),1,-1)+d*(2*ones-(R.r-1)); x=np.unique(np.concatenate([x,g[rs==a]]))
     if len(x)>Lmax: x=x[rng.choice(len(x),Lmax,replace=False)]
     pools[a]=x
-del g,rs
+
 log(stage='pools',sizes={int(a):len(x) for a,x in pools.items()},log2={int(a):round(float(np.log2(len(x))),2) for a,x in pools.items()})
 classes=rng.permutation(R.L); chunk=classes[:k]; cc=classes[k]; rest=classes[k+1:]
 W=rng.integers(1,2**63,size=len(rest),dtype=np.uint64)|np.uint64(1); G=np.uint64(0x9E3779B97F4A7C15)

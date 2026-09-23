@@ -49,11 +49,19 @@ if __name__=='__main__':
     targets=np.array([int(x) for x in sys.argv[4].split(',')]); secs=float(sys.argv[5]); stride=int(sys.argv[6]); seed=int(sys.argv[7]); outf=sys.argv[8]
     R=Red(v,d); M=build(R); F0=int(rho**2*R.m*R.L); rng=np.random.default_rng(seed)
     import os; WALK=int(os.environ.get("WALK","300000"))
-    buf=np.zeros(1<<24,np.uint64); n=0; t0=time.time(); it=0; chunks=[]
+    buf=np.zeros(1<<24,np.uint64); n=0; t0=time.time(); it=0; ci=0; tot=0
+    def flush(b):
+        global ci, tot
+        b=np.unique(b); ones=np.zeros(len(b),np.int64)
+        for q in range(1,R.r): ones+=((b>>np.uint64(q))&np.uint64(1)).astype(np.int64)
+        rs=np.where(b&np.uint64(1),1,-1)+d*(2*ones-(R.r-1))
+        for a in targets:
+            np.save(f"{outf}_rs{a}_c{ci:04d}.npy",b[rs==a])
+        ci+=1; tot+=len(b)
     while time.time()-t0<secs:
         y=rng.choice([-1,1],size=(1,R.r)).astype(np.int64)
         n=walk(y,M,F0,WALK,max(3,R.r//10),seed*1_000_003+it,stride,d,targets,buf,n); it+=1
         if n>len(buf)-(1<<21):
-            chunks.append(np.unique(buf[:n])); n=0
-    chunks.append(np.unique(buf[:n])); allb=np.unique(np.concatenate(chunks))
-    np.save(outf,allb); print(dict(distinct=len(allb),walks=it,secs=round(time.time()-t0,1),rate_per_min=round(len(allb)/(time.time()-t0)*60)),flush=True)
+            flush(buf[:n]); n=0
+    flush(buf[:n])
+    print(dict(chunk_entries=tot,walks=it,secs=round(time.time()-t0,1)),flush=True)
