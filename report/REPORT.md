@@ -14,10 +14,14 @@ Date: 2026-09-23. All scripts are in `scripts/`, raw logs in `logs/`, and genera
    - Breakout weighting, fixed-λ and hinge variants were no better.
    - **W3 was not started.**
 4. **[M] Flat-subspace constraint bits (S1).** Partial joins on real flat pools confirm the Gaussian model to within 1–3% per class. The result is n′ ≈ 119 ± 2 bits at v=283 (profile 19,19,19,7, ρ ≤ 0.30) and n′ ≈ 83 bits at v=487 (profile 37,17,17,1, ρ ≤ 0.36). The unrestricted values are n = 207 and 130.
-5. **[E] Proposed explanation, consistent with (1), (2) and (4) but not proven: flat pools plus a k-tree (Wagner) 4-list join in the flat subspace.**
-   - A k-tree join needs lists of about 2^(n′/3) per slot. That is ≈2^28 at v=487 (feasible) and ≈2^40 at v=283 (cluster-scale).
-   - A join-based solver would choose the tightest flatness at which enough flat blocks exist, so smaller r forces looser flatness. That matches the monotone trend in (2).
-   - This is the recommended next experiment (§5). It needs a flat-block count, and the Wang–Landau (WL) counts were still running when this was written (§4.3).
+5. **[M/E] Solver-mechanism test: flat pools plus a k-tree (Wagner) 4-list join. Consistent at v=487, unresolved at v=283.**
+   - At v=487 the Wang–Landau (WL) flat-block counts converged, and n′(ρ) was measured from pools.
+     - Flat solutions in the real profile first exist at ρ ≈ 0.30.
+     - A k-tree join over the whole flat set first becomes feasible at ρ ≈ 0.39.
+     - The real blocks sit at 0.345–0.369: far above the existence edge, a little below join balance.
+   - At v=283 the WL counts below ρ ≈ 0.34 did not converge (4 runs), so the same test is inconclusive there.
+   - The rough numbers that exist for v=283 (~2^33 flat blocks per row sum at ρ ≤ 0.30, hence only ~2^10 flat solutions in the profile) would put the real v=283 blocks near the existence edge, which would argue against a join. Treat that as unverified, uncertain by ±5 bits or more.
+   - **Practical consequence for W3.** Whatever the group used, a flat-subspace k-tree join at d=9 is the only approach in this workup with an estimated cost within budget: lists of ~2^28–2^29 flat blocks per slot at v=487 and ~2^30 at v=523 [E]. It is not a reconstruction of their method.
 
 ## 1. Data provenance and core extraction [M]
 
@@ -86,11 +90,11 @@ At v=43 the enumeration is exhaustive: 3.3·10^11 ordered solutions, so the exac
 | 43 | 3 | 21.3 (exact 21.7) | 1200 | 0.0337 (0.0100) | 0.0109 | 0.0337 | 0.023 | 0.061 |
 | 61 | 3 | 32.9 | 7200 | 0.0351 (0.0082) | 0.0109 | 0.0348 | 0.017 | 0.036 |
 | 73 | 3 | 41.3 | 6786 | 0.0353 (0.0076) | 0.0136 | 0.0353 | 0.019 | 0.032 |
-| 79 | 3 | 45.4 | 256+ | 0.0362 (0.0071) | 0.0202 | 0.0354 | 0.020 | 0.032 |
+| 79 | 3 | 45.4 | 1063 | 0.0356 (0.0071) | 0.0176 | 0.0354 | 0.020 | 0.032 |
 | 131 | 5 | 50.5 | 1019 | 0.0353 (0.0073) | 0.0169 | 0.0354 | 0.018 | 0.035 |
 | 151 | 5 | 59.6 | 6 | 0.030 (n too small) | – | 0.0355 | – | – |
 
-(v = 97, 103, 109 at d=3 were also run; see `report/tables.md`.)
+v = 97, 103 and 109 at d=3 were also attempted. With 2^12 pools and 240 s each they gave no solutions, so the ladder stops at v=79 for d=3.
 
 - **Dirichlet(1,1,1,1) is a good approximation, with a finite-size correction.** The mean share variance is ≈ 0.0375·(1 − 1.45·d/m) [fit, M]. The per-class T statistic is detectably non-Dirichlet (KS D ≈ 0.03–0.06), but the effect is small.
 - **Implications for W0.** At the real cores' parameters the null mean is 0.0359–0.0367. Scaling the null sd by √(classes) gives z ≈ 8 at v=283 and z ≈ 6 at v=487 [E]. **The b=0 rarities are trustworthy in direction and are conservative after the Fisher discount.**
@@ -115,7 +119,7 @@ Engine: `scripts/engine.py`, numba. It works on orbit-level states with incremen
 | S1 | flat pools + join | Measurement only; see 4.3. A generic 2-list join is hopeless at v=283. The 4-list k-tree join is the proposed next experiment (§5). |
 | MITM (baseline) | unbiased pool-MITM, same code as W1 | v=131: 1,220 solutions / 1,800 s ≈ **1.5 s per solution**. v=151: 6 solutions / ~2,600 s ≈ **7 min per solution** (shared CPU). |
 
-Scaling plot: `report/w2_scaling.png`. At v=151 the λ=0 and λ=0.3 cap markers overlap. v=151 long-cap runs (400M flips): see §4.4.
+Scaling plot: `report/w2_scaling.png`. It shows median flips-to-solution against n. Hollow markers mean fewer than half the runs solved at the cap.
 
 ### 4.2 Why the stop rule fires
 
@@ -131,27 +135,59 @@ Scaling plot: `report/w2_scaling.png`. At v=151 the λ=0 and λ=0.3 cap markers 
 - **n′ from partial joins** (`scripts/s1_nprime.py`). Measured bits over k lag classes against the Gaussian prediction from the pools' own covariance:
   - v=283 (19,19,19,7), ρ=0.30, pools 283–765 per row sum, 2^37.7 four-tuples. Measured 2.69 / 5.28 / … / 28.93 bits for k = 1 / 2 / … / 11, against Gaussian 2.63 / 5.23 / … / 28.71. The measured excess is +0.02–0.08 bits per class. **n′ = 118.1 (Gaussian) → ≈119–120 (corrected)** [M/E]. That confirms the prompt's rough 120.
   - v=487 (37,17,17,1), ρ=0.36, pools of 4,096. k = 1–3: 3.25 / 6.51 / 9.77 bits measured, against 3.20 / 6.41 / 9.61 Gaussian. **n′ = 81.6 (Gaussian) → ≈83 (corrected).**
-- **Flat-block counts** (Wang–Landau over F = Σ_c PAF(c)², `scripts/s1_flat_measure.py`). The method is validated against exact enumeration at v=61: agreement within 0.2 bits at every threshold. The v=283 and v=487 runs had not finished when this was written. Numbers go in `logs/wl_*.json`; I will add them in a follow-up section if they complete.
+- **Flat-block counts** (Wang–Landau over F = Σ_c PAF(c)², `scripts/s1_flat_measure.py`). The method is validated against exact enumeration at v=61: agreement within 0.2 bits at every threshold.
+  - **v=487, d=9.** Converged to ln f = 10⁻⁵ in 62M flips; the coarse 10⁻³ run agrees within ~0.3 bits for ρ ≥ 0.34. Counts are log2 of the number of all 2^55 blocks with ratio ≤ ρ:
 
-### 4.4 Long-cap S3 at v=151
+    | ρ | 0.30 | 0.32 | 0.34 | 0.36 | 0.38 | 0.40 | 0.44 |
+    |---|---|---|---|---|---|---|---|
+    | log2 count | 21.5 | 23.6 | 25.8 | 28.1 | 29.9 | 31.7 | 34.5 |
 
-Pending when this was written: `logs/grid3.jsonl`, three runs at a 400M-flip cap. See the addendum.
+    The row-sum split (≈ −2.3 bits for each of 1, 17, 37) comes from the pools and is approximate.
+  - **v=283, d=3: not resolved.**
+    - Two full-range runs at 10⁻³ tolerance agree only to ~2 bits at ρ = 0.34–0.36: log2 count ≈ 43–45 at 0.34 and 48–50 at 0.36.
+    - Below 0.32 the walker barely visits, and two range-restricted runs failed to converge (`logs/wl_283_combined.log`).
+    - The one number available, ≈ 2^35 total at ρ ≤ 0.30, is **unreliable**.
+- **Join-balance / existence test** (`scripts/rho_star.py`, `logs/rho_star_*.log`). Definitions:
+  - ρ_exist: 4 × log2 N_flat per slot ≥ n′.
+  - ρ_join: log2 N_flat per slot ≥ n′/3.
+
+  | v | ρ_exist | ρ_join | real blocks | real / tabu floor |
+  |---|---|---|---|---|
+  | 487 | ≈ 0.30 | ≈ 0.39 | 0.345–0.369 | 1.56× |
+  | 283 | ≲ 0.30 (unreliable) | ≈ 0.36 (±0.01) | 0.286–0.299 | 1.15× |
+
+  - At v=487 the real solution is ~2^19 deep in the flat-solution set; at ρ = 0.36 about 2^19 flat solutions exist in the profile. Its flatness is 1–2 WL bins below join balance.
+  - At v=283 the real blocks are well below ρ_join. If the rough count is right, a join at ρ_join would have produced blocks near 0.36, not 0.29.
+
+### 4.4 Long-cap S3 at v=151 [M]
+
+`logs/grid3.jsonl`, 400M-flip cap, on a CPU shared with 3–5 other jobs:
+
+| λ_min | result | flips | wall time | share var |
+|---|---|---|---|---|
+| 0.0 | solved | 218M | 21 min | 0.040 (null-like) |
+| 0.0 | **unsolved** | 400M | 33 min | – |
+| 0.3 | solved | 67.5M | 9 min | 0.020 |
+
+Together with 13/13 failures at 40M flips, the S3 time-to-solution at v=151 is ≳15–30 min, against ≈7 min per solution for crude MITM. **The stop rule holds.**
 
 ## 5. What I recommend next (not run: the stop rule fired)
 
-**S1′: flat pools + k-tree join at d=9 (v=487 as ground truth, then v=523).**
-
-- **Balance.** With per-class bit costs ≈3.14 for a four-sum and ≈2.64 for a pair-sum being zero, the k-tree join balances at lists of 2^27.6 flat blocks per slot [E]. Stage 1 matches the pair sums on k ≈ 10 classes; stage 2 joins the remaining ~17. Time and memory are ~2^28 compact entries (8 bytes each, ≈2 GB).
-- **Feasibility.** Kaggle-feasible if (a) the flat-block count per row sum at ρ≈0.36 is ≥ 2^28 (pending WL), and (b) pool generation is sped up. At the current rate of ~4·10^5 blocks per core-minute this needs ~10 core-hours per row sum. A stride-1 tabu, or storing all flat neighbours of each state, should give ≥10×.
-- **Target.** At v=523 (d=9, L=29, n=141.9) I expect n′ ≈ 90 and lists of ≈2^30 [E]; to be measured first.
-- **The fingerprint test that decides it.** For each solved core, compute ρ*, the tightest ρ at which log2 N_flat(ρ) ≥ n′(ρ)/3. If the join hypothesis is right, ρ* should track the observed flatness (0.29 at 283 → 0.36 at 487). This needs WL counts and n′(ρ) curves at five parameter sets, which is ~1–2 h of compute. **This test is cheap and should come before any Kaggle run.**
+1. **Decide whether a flat-subspace join is worth building as a *solver* at d=9.** It does not have to match the group's method.
+   - **Balance at v=487.** Measured n′(ρ) is 84–85 at ρ ≈ 0.39–0.40, and the WL count gives ~2^27.4–2^29.1 per row sum there. The k-tree join therefore needs lists of ~2^28.3 per slot, with time and memory of the same order: 2^28 × 8 B ≈ 2 GB of compact keys [E].
+   - **Stages.** Stage 1 matches the pair sums on k ≈ 10 lag classes; stage 2 joins the remaining ~17.
+   - **Bottleneck: pool generation.** The current tabu sampler yields ~4·10^5 distinct flat blocks per core-minute, so 2^28.3 per row sum would take ~13 core-hours per row sum. That needs a ≥10× faster generator (stride-1 sampling, enumerating the flat neighbours of each visited state) before it becomes a Kaggle job.
+   - **Validation.** Ground truth first: at v=487 at least one solution is known to exist at ρ ≤ 0.37, and ~2^19–2^27 flat solutions are expected.
+   - **Transfer to v=523 (d=9, L=29, n=141.9 [E]).** Measure n′(ρ) and WL there first; the expectation is lists of ~2^30 [E].
+2. **Fix WL at v=283 in the low-flatness tail.** Use replica-exchange WL or multicanonical sampling seeded from the tabu flat pools. That resolves ρ_exist and whether the v=283 solution is "one of the flattest ~2^10".
+3. **For the b=1 and b≥2 families,** which carry no flatness fingerprint, the census gives no handle on their solver. Any reconstruction there has to start from different evidence, such as the half-shift statistic, once it is defined.
 
 ## 6. What I could not determine / explicit uncertainties
 
 - The method the Alpöge group actually used. Everything in §5 is a hypothesis that fits the census; it is not evidence of their method.
 - The half-shift statistic in 167/179 (definition needed).
-- Flat-block counts at v=283 and v=487 (WL still running when this was written). The prompt's ~2^38 per slot at v=283 therefore remains unverified.
+- The flat-block count at v=283 below ρ ≈ 0.34. Plain WL did not converge there, so the prompt's ~2^38 per slot (and ~2^32 flat solutions) is neither confirmed nor refuted. My rough number (~2^33 per row sum) is unreliable.
 - **Pools are trajectory samples, not uniform over flat blocks.** The partial-join/Gaussian agreement suggests the covariance is representative, but a bias of a few percent in n′ cannot be excluded.
-- **S3 cost at v=151 is known only as a lower bound** (>40M flips in 13/13 runs); see the addendum for the long-cap runs.
+- **S3 cost at v=151** rests on 3 long runs (67M, 218M, >400M flips), so the median is only roughly known.
 - **The MITM baseline is my own crude numpy implementation.** A tuned MITM would be faster, which only strengthens the stop-rule conclusion.
 - **GL(3,2)-twisted automorphisms for the b≥2 groups were not searched.** The d reported for 347, 359 and 479 covers scalar multipliers only.

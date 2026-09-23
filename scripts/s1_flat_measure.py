@@ -72,3 +72,18 @@ if __name__=='__main__':
     if mode=='wl':
         res=run_wl(v,d,int(sys.argv[4]),int(float(sys.argv[5])))
         print(json.dumps(res))
+
+def run_wl_range(v,d,seed,maxflips,lo,hi,lnf_final,nbins=60):
+    """restricted-range WL: returns raw ln g on [lo,hi] (ratio units); normalise offline by overlap"""
+    R=Red(v,d); M=build(R)
+    edges=np.unique(np.rint(np.linspace(lo**2,hi**2,nbins+1)*R.m*R.L).astype(np.int64))
+    rng=np.random.default_rng(seed)
+    # start inside range: tabu-descend from random until F<=upper edge
+    from engine import flat_pool
+    y=rng.choice([-1,1],size=(1,R.r)).astype(np.int64); out=np.zeros((1,R.r),np.int64)
+    flat_pool(y,M,int(edges[-1])-1,200000,max(3,R.r//10),seed,1,out,1); y=out.copy()
+    t=time.time(); lng,flips,lnf=wang_landau(y,M,edges,2_000_000,lnf_final,seed,maxflips)
+    return dict(v=v,d=d,seed=seed,lo=lo,hi=hi,edges=[int(e) for e in edges],ratio_upper=[float(x) for x in np.sqrt(edges[1:]/(R.m*R.L))],
+                lng=[float(x) for x in lng],flips=int(flips),lnf=float(lnf),secs=round(time.time()-t,1))
+if __name__=='__main__' and sys.argv[3]=='wlr':
+    print(json.dumps(run_wl_range(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[4]),int(float(sys.argv[5])),float(sys.argv[6]),float(sys.argv[7]),float(sys.argv[8]))))
