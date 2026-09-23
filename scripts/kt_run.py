@@ -7,7 +7,7 @@ Logs JSON lines; solutions to data/kt_solutions_v{v}.txt"""
 import sys, glob, time, json, heapq, numpy as np
 sys.path.insert(0,'scripts')
 from redlib import Red
-from kt_join import sparse_N, paf_from_bits, stage1
+from kt_join import sparse_N, paf_from_bits, stage1, stage1_par
 v,d=int(sys.argv[1]),int(sys.argv[2]); prof=tuple(int(x) for x in sys.argv[3].split(','))
 k=int(sys.argv[4]); Lmax=int(float(sys.argv[5])); files=sorted(glob.glob(sys.argv[6])); nbuck=int(sys.argv[7]); seed=int(sys.argv[8])
 R=Red(v,d); Nsp=sparse_N(R); rng=np.random.default_rng(seed); t0=time.time()
@@ -71,14 +71,8 @@ for b,ix in enumerate(buckets):
     tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int16)
     nA=keyof(tau[None,:]-D[prof[0]]['ch'].astype(np.int16)); nC=keyof(-tau[None,:]-D[prof[2]]['ch'].astype(np.int16))
     A,B,C,Dd=[D[a] for a in prof]
-    z=np.zeros(1,np.uint64); zi=np.zeros(1,np.int64)
-    nAB=stage1(nA,A['c'],A['h'],sB,oB,B['c'],B['h'],-10**6,10**6,1,G,z,zi,zi,True)
-    nCD=stage1(nC,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-10**6,10**6,-1,G,z,zi,zi,True)
-    if nAB*16+nCD*16>9e9: log(stage='skip',bucket=b,AB=nAB,CD=nCD); continue
-    KA=np.empty(nAB,np.uint64); IA=np.empty(nAB,np.int64); JA=np.empty(nAB,np.int64)
-    stage1(nA,A['c'],A['h'],sB,oB,B['c'],B['h'],-10**6,10**6,1,G,KA,IA,JA,False)
-    KC=np.empty(nCD,np.uint64); IC=np.empty(nCD,np.int64); JC=np.empty(nCD,np.int64)
-    stage1(nC,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-10**6,10**6,-1,G,KC,IC,JC,False)
+    KA,IA,JA=stage1_par(nA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,256); nAB=len(KA)
+    KC,IC,JC=stage1_par(nC,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,256); nCD=len(KC)
     oc=np.argsort(KC); KC=KC[oc]
     pos=np.searchsorted(KC,KA); pos[pos>=len(KC)]=len(KC)-1
     m=np.where(KC[pos]==KA)[0] if len(KC) else []
@@ -93,7 +87,7 @@ for b,ix in enumerate(buckets):
             if np.all(tot[1:]==0):
                 found+=1; nsol+=1
                 out.write(json.dumps(dict(v=v,d=d,prof=prof,Y=[''.join('+' if t>0 else '-' for t in y) for y in Y]))+'\n'); out.flush()
-    exp=nAB*nCD*2.0**(-3.3*(R.L-1-k))
+    exp=nAB*nCD*2.0**(-3.42*(R.L-1-k))
     exp_tot+=exp
     log(stage='bucket',b=b,tau=tau.tolist(),log2_prob=round(float(-score(ix)),1) if False else round(float(score(ix)),2),AB=int(nAB),CD=int(nCD),cand=int(len(m)),solutions=found,total=nsol,exp_hits_est=round(exp,3),exp_cum=round(exp_tot,2))
     del KA,IA,JA,KC,IC,JC,oc,pos

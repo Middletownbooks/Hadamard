@@ -107,3 +107,29 @@ def run(v,d,prof,k,pools,npasses=1,seed=0,log=print,tau=None):
         if np.all(tot[1:]==0): sols.append([''.join('+' if t>0 else '-' for t in y) for y in Y])
     log(dict(stage='done',stage1=tot1,candidates=len(hits),solutions=len(sols),secs=round(time.time()-t0,1)))
     return sols,tot1
+
+@nb.njit(parallel=True,cache=True)
+def stage1_par(nkeyX,cX,hX,skeyY,ordY,cY,hY,sign,G,nchunk):
+    NX=nkeyX.shape[0]; NY=skeyY.shape[0]
+    bounds=np.linspace(0,NX,nchunk+1).astype(np.int64)
+    cnt=np.zeros(nchunk,np.int64)
+    for b in nb.prange(nchunk):
+        n=0
+        for i in range(bounds[b],bounds[b+1]):
+            k=nkeyX[i]; lo=np.searchsorted(skeyY,k)
+            while lo<NY and skeyY[lo]==k:
+                n+=1; lo+=1
+        cnt[b]=n
+    off=np.zeros(nchunk+1,np.int64)
+    for b in range(nchunk): off[b+1]=off[b]+cnt[b]
+    K=np.empty(off[nchunk],np.uint64); I=np.empty(off[nchunk],np.int64); J=np.empty(off[nchunk],np.int64)
+    for b in nb.prange(nchunk):
+        n=off[b]
+        for i in range(bounds[b],bounds[b+1]):
+            k=nkeyX[i]; lo=np.searchsorted(skeyY,k)
+            while lo<NY and skeyY[lo]==k:
+                j=ordY[lo]; t=cX[i]+cY[j]
+                kk=hX[i]+hY[j]+np.uint64(np.int64(t))*G
+                if sign<0: kk=np.uint64(0)-kk
+                K[n]=kk; I[n]=i; J[n]=j; n+=1; lo+=1
+    return K,I,J
