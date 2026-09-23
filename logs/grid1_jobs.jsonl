@@ -1,0 +1,194 @@
+{"kind": "floor", "v": 61, "d": 3, "seed": 0, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 61, "d": 3, "seed": 1, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 61, "d": 3, "seed": 2, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 61, "d": 3, "seed": 3, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 73, "d": 3, "seed": 0, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 73, "d": 3, "seed": 1, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 73, "d": 3, "seed": 2, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 73, "d": 3, "seed": 3, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 79, "d": 3, "seed": 0, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 79, "d": 3, "seed": 1, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 79, "d": 3, "seed": 2, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 79, "d": 3, "seed": 3, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 131, "d": 5, "seed": 0, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 131, "d": 5, "seed": 1, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 131, "d": 5, "seed": 2, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 131, "d": 5, "seed": 3, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 151, "d": 5, "seed": 0, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 151, "d": 5, "seed": 1, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 151, "d": 5, "seed": 2, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 151, "d": 5, "seed": 3, "maxsteps": 400000, "tenure": 3}
+{"kind": "floor", "v": 223, "d": 3, "seed": 0, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 223, "d": 3, "seed": 1, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 223, "d": 3, "seed": 2, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 223, "d": 3, "seed": 3, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 283, "d": 3, "seed": 0, "maxsteps": 400000, "tenure": 9}
+{"kind": "floor", "v": 283, "d": 3, "seed": 1, "maxsteps": 400000, "tenure": 9}
+{"kind": "floor", "v": 283, "d": 3, "seed": 2, "maxsteps": 400000, "tenure": 9}
+{"kind": "floor", "v": 283, "d": 3, "seed": 3, "maxsteps": 400000, "tenure": 9}
+{"kind": "floor", "v": 311, "d": 5, "seed": 0, "maxsteps": 400000, "tenure": 6}
+{"kind": "floor", "v": 311, "d": 5, "seed": 1, "maxsteps": 400000, "tenure": 6}
+{"kind": "floor", "v": 311, "d": 5, "seed": 2, "maxsteps": 400000, "tenure": 6}
+{"kind": "floor", "v": 311, "d": 5, "seed": 3, "maxsteps": 400000, "tenure": 6}
+{"kind": "floor", "v": 487, "d": 9, "seed": 0, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 487, "d": 9, "seed": 1, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 487, "d": 9, "seed": 2, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 487, "d": 9, "seed": 3, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 491, "d": 7, "seed": 0, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 491, "d": 7, "seed": 1, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 491, "d": 7, "seed": 2, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 491, "d": 7, "seed": 3, "maxsteps": 400000, "tenure": 7}
+{"kind": "floor", "v": 523, "d": 9, "seed": 0, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 523, "d": 9, "seed": 1, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 523, "d": 9, "seed": 2, "maxsteps": 400000, "tenure": 5}
+{"kind": "floor", "v": 523, "d": 9, "seed": 3, "maxsteps": 400000, "tenure": 5}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.1, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.3, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 0.6, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 61, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 4000000, "tenure": 11}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 73, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 6000000, "tenure": 13}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 79, "d": 3, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 8000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 131, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 20000000, "tenure": 14}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 0, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 1, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 2, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 3, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 4, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 40000000, "tenure": 17}
+{"kind": "s3sched", "v": 151, "d": 5, "seed": 5, "lam0": 3.0, "tau": 10000.0, "lam_min": 1.0, "maxsteps": 40000000, "tenure": 17}
