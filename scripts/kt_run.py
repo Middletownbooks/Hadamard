@@ -7,7 +7,7 @@ Logs JSON lines; solutions to data/kt_solutions_v{v}.txt"""
 import sys, glob, time, json, heapq, numpy as np
 sys.path.insert(0,'scripts')
 from redlib import Red
-from kt_join import sparse_N, paf_from_bits, stage1, stage1_par, stage1_merge
+from kt_join import sparse_N, paf_from_bits, stage1, stage1_par, stage1_merge, merge_count_total, merge_thist, stage1_merge_t
 v,d=int(sys.argv[1]),int(sys.argv[2]); prof=tuple(int(x) for x in sys.argv[3].split(','))
 k=int(sys.argv[4]); Lmax=int(float(sys.argv[5])); files=sorted(glob.glob(sys.argv[6])); nbuck=int(sys.argv[7]); seed=int(sys.argv[8])
 R=Red(v,d); Nsp=sparse_N(R); rng=np.random.default_rng(seed); t0=time.time()
@@ -63,8 +63,9 @@ def keyof_nb(ch,tau,sgn):
             w|=np.uint64(val & 255)<<np.uint64(8*i)
         out[n]=w
     return out
-def keyof_own(ch): return keyof_nb(ch,np.zeros(k,np.int64),1)
-def keyof_partner(ch,tau): return keyof_nb(ch,np.asarray(tau,np.int64),-1)
+KEFF=min(k,8)
+def keyof_own(ch): return keyof_nb(ch[:,:KEFF],np.zeros(KEFF,np.int64),1)
+def keyof_partner(ch,tau): return keyof_nb(ch[:,:KEFF],np.asarray(tau,np.int64)[:KEFF],-1)
 # own keys for B, D slots
 sB=keyof_own(np.asarray(D[prof[1]]['ch'])); oB=np.argsort(sB,kind='stable'); sB=sB[oB]
 sD=keyof_own(np.asarray(D[prof[3]]['ch'])); oD=np.argsort(sD,kind='stable'); sD=sD[oD]
@@ -94,24 +95,44 @@ for b,ix in enumerate(buckets):
     tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int16)
     nA=keyof_partner(np.asarray(D[prof[0]]['ch']),tau); nC=keyof_partner(np.asarray(D[prof[2]]['ch']),-tau)
     A,B,C,Dd=[D[a] for a in prof]
-    oA=np.argsort(nA); nA=nA[oA]; KA,IA,JA=stage1_merge(nA,oA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,64); nAB=len(KA); del nA,oA
-    oCc=np.argsort(nC); nC=nC[oCc]; KC,IC,JC=stage1_merge(nC,oCc,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,64); nCD=len(KC); del nC,oCc
-    oc=np.argsort(KC); KC=KC[oc]
-    pos=np.searchsorted(KC,KA); pos[pos>=len(KC)]=len(KC)-1
-    m=np.where(KC[pos]==KA)[0] if len(KC) else []
-    found=0
-    for q in m:
-        i,j=IA[q],JA[q]; pp=pos[q]
-        while pp<len(KC) and KC[pp]==KA[q]:
-            kk,l=IC[oc[pp]],JC[oc[pp]]; pp+=1
-            bits=[pools[prof[0]][i],pools[prof[1]][j],pools[prof[2]][kk],pools[prof[3]][l]]
-            Y=np.array([[1 if (int(bb)>>qq)&1 else -1 for qq in range(R.r)] for bb in bits])
-            tot=R.paf(R.expand(Y)).sum(0)
-            if np.all(tot[1:]==0):
-                found+=1; nsol+=1
-                out.write(json.dumps(dict(v=v,d=d,prof=prof,Y=[''.join('+' if t>0 else '-' for t in y) for y in Y]))+'\n'); out.flush()
-    exp=nAB*nCD*2.0**(-3.42*(R.L-1-k))
+    oA=np.argsort(nA); nA=nA[oA]; oCc=np.argsort(nC); nC=nC[oCc]
+    T=300
+    hAB=merge_thist(nA,oA,A['c'],sB,oB,B['c'],64,T); hCD=merge_thist(nC,oCc,C['c'],sD,oD,Dd['c'],64,T)
+    tv=np.arange(-T,T+1); both=hAB*hCD[::-1]          # AB at t, CD at -t
+    cAB=int(hAB.sum()); cCD=int(hCD.sum()); exp_b=float((both.sum())*2.0**(-3.42*(R.L-1-KEFF-1)))
+    log(stage='count',b=b,AB=cAB,CD=cCD,exp_hits_bucket=round(exp_b,3))
+    # group t values into passes under the memory budget
+    budget=5.0e9/24; passes=[]; cur=[];load=0
+    for t in tv[np.argsort(-both)]:
+        if both[t+T]==0: continue
+        w=hAB[t+T]+hCD[T-t]
+        if load+w>budget and cur: passes.append(cur); cur=[];load=0
+        cur.append(int(t)); load+=w
+    if cur: passes.append(cur)
+    log(stage='passes',b=b,n=len(passes))
+    found=0; ncand=0
+    for pl in passes:
+      for _once in (0,):
+        mA=np.zeros(2*T+1,np.bool_); mC=np.zeros(2*T+1,np.bool_)
+        for t in pl: mA[t+T]=True; mC[-t+T]=True
+        KA,IA,JA=stage1_merge_t(nA,oA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,64,mA,T)
+        KC,IC,JC=stage1_merge_t(nC,oCc,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,64,mC,T)
+        oc=np.argsort(KC); KC=KC[oc]
+        pos=np.searchsorted(KC,KA); pos[pos>=len(KC)]=len(KC)-1
+        m=np.where(KC[pos]==KA)[0] if len(KC) and len(KA) else []; ncand+=len(m)
+        for q in m:
+            i,j=IA[q],JA[q]; pp=pos[q]
+            while pp<len(KC) and KC[pp]==KA[q]:
+                kk,l=IC[oc[pp]],JC[oc[pp]]; pp+=1
+                bits=[pools[prof[0]][i],pools[prof[1]][j],pools[prof[2]][kk],pools[prof[3]][l]]
+                Y=np.array([[1 if (int(bb)>>qq)&1 else -1 for qq in range(R.r)] for bb in bits])
+                tot=R.paf(R.expand(Y)).sum(0)
+                if np.all(tot[1:]==0):
+                    found+=1; nsol+=1
+                    out.write(json.dumps(dict(v=v,d=d,prof=prof,Y=[''.join('+' if t>0 else '-' for t in y) for y in Y]))+'\n'); out.flush()
+        del KA,IA,JA,KC,IC,JC
+    nAB=cAB; nCD=cCD; m=range(ncand)
+    exp=exp_b
     exp_tot+=exp
     log(stage='bucket',b=b,tau=tau.tolist(),log2_prob=round(float(-score(ix)),1) if False else round(float(score(ix)),2),AB=int(nAB),CD=int(nCD),cand=int(len(m)),solutions=found,total=nsol,exp_hits_est=round(exp,3),exp_cum=round(exp_tot,2))
-    del KA,IA,JA,KC,IC,JC,oc,pos
 log(stage='done',solutions=nsol)
