@@ -133,3 +133,58 @@ def stage1_par(nkeyX,cX,hX,skeyY,ordY,cY,hY,sign,G,nchunk):
                 if sign<0: kk=np.uint64(0)-kk
                 K[n]=kk; I[n]=i; J[n]=j; n+=1; lo+=1
     return K,I,J
+
+@nb.njit(cache=True)
+def _merge_count(sX,sY,lo,hi):
+    # count matches for X-range [lo,hi) against sorted Y (both sorted)
+    NY=sY.shape[0]; j=np.searchsorted(sY,sX[lo]); n=0; i=lo
+    while i<hi and j<NY:
+        a=sX[i]; b=sY[j]
+        if a<b: i+=1
+        elif a>b: j+=1
+        else:
+            j2=j
+            while j2<NY and sY[j2]==a: j2+=1
+            i2=i
+            while i2<hi and sX[i2]==a: i2+=1
+            n+=(i2-i)*(j2-j); i=i2; j=j2
+    return n
+
+@nb.njit(parallel=True,cache=True)
+def stage1_merge(sX,oX,cX,hX,sY,oY,cY,hY,sign,G,nchunk):
+    """sX: sorted partner keys of X (oX: original idx); sY: sorted own keys of Y. Sequential merge join."""
+    NX=sX.shape[0]; NY=sY.shape[0]
+    b0=np.linspace(0,NX,nchunk+1).astype(np.int64)
+    # align chunk boundaries to key changes
+    for b in range(1,nchunk):
+        x=b0[b]
+        while x<NX and x>0 and sX[x]==sX[x-1]: x+=1
+        b0[b]=x
+    cnt=np.zeros(nchunk,np.int64)
+    for b in nb.prange(nchunk):
+        if b0[b]<b0[b+1]: cnt[b]=_merge_count(sX,sY,b0[b],b0[b+1])
+    off=np.zeros(nchunk+1,np.int64)
+    for b in range(nchunk): off[b+1]=off[b]+cnt[b]
+    K=np.empty(off[nchunk],np.uint64); I=np.empty(off[nchunk],np.int64); J=np.empty(off[nchunk],np.int64)
+    for b in nb.prange(nchunk):
+        lo=b0[b]; hi=b0[b+1]
+        if lo>=hi: continue
+        n=off[b]; j=np.searchsorted(sY,sX[lo]); i=lo
+        while i<hi and j<NY:
+            a=sX[i]; bb=sY[j]
+            if a<bb: i+=1
+            elif a>bb: j+=1
+            else:
+                j2=j
+                while j2<NY and sY[j2]==a: j2+=1
+                i2=i
+                while i2<hi and sX[i2]==a: i2+=1
+                for ii in range(i,i2):
+                    xi=oX[ii]
+                    for jj in range(j,j2):
+                        yj=oY[jj]; t=cX[xi]+cY[yj]
+                        kk=hX[xi]+hY[yj]+np.uint64(np.int64(t))*G
+                        if sign<0: kk=np.uint64(0)-kk
+                        K[n]=kk; I[n]=xi; J[n]=yj; n+=1
+                i=i2; j=j2
+    return K,I,J

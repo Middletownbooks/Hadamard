@@ -7,7 +7,7 @@ Logs JSON lines; solutions to data/kt_solutions_v{v}.txt"""
 import sys, glob, time, json, heapq, numpy as np
 sys.path.insert(0,'scripts')
 from redlib import Red
-from kt_join import sparse_N, paf_from_bits, stage1, stage1_par
+from kt_join import sparse_N, paf_from_bits, stage1, stage1_par, stage1_merge
 v,d=int(sys.argv[1]),int(sys.argv[2]); prof=tuple(int(x) for x in sys.argv[3].split(','))
 k=int(sys.argv[4]); Lmax=int(float(sys.argv[5])); files=sorted(glob.glob(sys.argv[6])); nbuck=int(sys.argv[7]); seed=int(sys.argv[8])
 R=Red(v,d); Nsp=sparse_N(R); rng=np.random.default_rng(seed); t0=time.time()
@@ -94,8 +94,8 @@ for b,ix in enumerate(buckets):
     tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int16)
     nA=keyof_partner(np.asarray(D[prof[0]]['ch']),tau); nC=keyof_partner(np.asarray(D[prof[2]]['ch']),-tau)
     A,B,C,Dd=[D[a] for a in prof]
-    KA,IA,JA=stage1_par(nA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,256); nAB=len(KA)
-    KC,IC,JC=stage1_par(nC,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,256); nCD=len(KC)
+    oA=np.argsort(nA); nA=nA[oA]; KA,IA,JA=stage1_merge(nA,oA,A['c'],A['h'],sB,oB,B['c'],B['h'],1,G,64); nAB=len(KA); del nA,oA
+    oCc=np.argsort(nC); nC=nC[oCc]; KC,IC,JC=stage1_merge(nC,oCc,C['c'],C['h'],sD,oD,Dd['c'],Dd['h'],-1,G,64); nCD=len(KC); del nC,oCc
     oc=np.argsort(KC); KC=KC[oc]
     pos=np.searchsorted(KC,KA); pos[pos>=len(KC)]=len(KC)-1
     m=np.where(KC[pos]==KA)[0] if len(KC) else []
