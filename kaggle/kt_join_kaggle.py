@@ -30,6 +30,7 @@ CONFIG = dict(
     max_hours=11.4,           # stop before Kaggle's 12 h limit
     nbuckets=100000,
     OUT='/kaggle/working/kt', RESUME_FROM=None,
+    GEN_DIR='/tmp/kt_gen',    # raw generator chunks (not persisted; deleted after pools are built to save /kaggle/working space)
     seed=0,
 )
 if os.path.exists('/kaggle') is False and os.environ.get('KT_OUT'): CONFIG['OUT']=os.environ['KT_OUT']
@@ -265,9 +266,9 @@ def bloom_match(KA,KC,logm):
 def main():
     v,d,prof,k=C['v'],C['d'],tuple(C['profile']),C['k']
     OUT=C['OUT']; os.makedirs(OUT,exist_ok=True)
-    gdir=os.path.join(OUT,f'gen_inst{C["INSTANCE"]}'); cache=os.path.join(OUT,f'cache_inst{C["INSTANCE"]}')
+    gdir=os.path.join(C['GEN_DIR'],f'gen_inst{C["INSTANCE"]}'); cache=os.path.join(OUT,f'cache_inst{C["INSTANCE"]}')
     if C['RESUME_FROM']:
-        for sub in (f'gen_inst{C["INSTANCE"]}',f'cache_inst{C["INSTANCE"]}'):
+        for sub in (f'cache_inst{C["INSTANCE"]}',):
             src=os.path.join(C['RESUME_FROM'],sub)
             if os.path.isdir(src) and not os.path.isdir(os.path.join(OUT,sub)): shutil.copytree(src,os.path.join(OUT,sub))
         for f in glob.glob(os.path.join(C['RESUME_FROM'],'*.jsonl'))+glob.glob(os.path.join(C['RESUME_FROM'],'solutions_*.txt')):
@@ -292,6 +293,7 @@ def main():
             x=np.unique(np.concatenate([np.load(f) for f in glob.glob(os.path.join(gdir,f'gen_w*_rs{a}_c*.npy'))]+[np.zeros(0,np.uint64)]))
             if len(x)>C['Lmax']: x=x[rng.choice(len(x),C['Lmax'],replace=False)]
             np.save(cp(f'pool_{a}'),x); log(stage='pool',rowsum=a,size=len(x),log2=round(float(np.log2(max(len(x),1))),2)); del x
+        shutil.rmtree(gdir,ignore_errors=True)
     pools={a:np.load(cp(f'pool_{a}'),mmap_mode='r').view(np.ndarray) for a in set(prof)}
     # 2. prep
     classes=rng_cls.permutation(R.L); chunk=classes[:k]; cc=classes[k]; rest=classes[k+1:]

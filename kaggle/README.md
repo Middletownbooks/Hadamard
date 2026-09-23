@@ -30,3 +30,16 @@ so this is the main lever. Watch the first bucket's `AB`/`CD` and `passes` in th
 At v=487 (validated): ~0.034 expected hits per bucket at 2^26 pools, 2.8 min/bucket on 4 cores; 2 new solutions in ~40 buckets.
 At v=523 the flat-subspace constraint is ~6–7 bits larger, so expect ~50–100× fewer hits per bucket at the same pool size:
 order 10⁻³–10⁻⁴ per bucket, i.e. many instance-sessions per solution. Replace this estimate with the logged `exp_hits` after the first buckets.
+
+## Ready-made v=523 files (Lmax = 2^27, 30 GB Kaggle CPU sessions)
+| file | profile | pools (row sums) | gen_minutes | output dir |
+|---|---|---|---|---|
+| `kt523_A_35-17-17-17.py` | (35,17,17,17) | 35, 17 | 90 | `/kaggle/working/kt_A_35-17-17-17` |
+| `kt523_B_37-19-19-1.py` | (37,19,19,1) | 37, 19, 1 | 120 | `/kaggle/working/kt_B_37-19-19-1` |
+
+These are the two admissible d=9 profile classes for v=523; they are independent shots (no prior favours either).
+Each file is a complete paste-into-one-cell program; only edit `INSTANCE`/`NINST` (and `RESUME_FROM` when continuing).
+Raw generator chunks go to `/tmp/kt_gen` and are deleted once pools are built, so `/kaggle/working` holds only the caches
+(≈3.5 GB per row sum at 2^27: A ≈ 7 GB, B ≈ 10.5 GB) plus logs and solutions — under Kaggle's 20 GB output limit.
+Expect per bucket ≈4× the stage-1 work of the 2^26 local run (≈10–15 min/bucket on 4 cores) for ≈16× the hit rate [estimate];
+the local 2^26 run on profile A measured ~3.4 min/bucket and an estimated ~3×10⁻⁴ hits/bucket (unvalidated per-class bits at v=523).
