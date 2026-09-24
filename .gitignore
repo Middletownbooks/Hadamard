@@ -8,3 +8,6 @@ data/kt523/
 logs/kt523_join.log
 logs/b1_partial_*.log
 data/b1pool_*.npy
+logs/b1_rerank.log
+logs/bge2_forensics2.jsonl
+logs/bge2_forensics2.err
