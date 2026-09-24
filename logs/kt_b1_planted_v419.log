@@ -1,0 +1,7 @@
+# PLANT=data/core_v419_b1.txt HKEEP=-8 python3 scripts/kt_b1.py 419 15 42 0 5 1 0
+{"stage": "config", "v": 419, "m": 418, "d": 15, "r": 42, "L": 21, "U": [1, 45, 49, 115, 125, 159, 163, 191], "secs": 0.0}
+{"stage": "pools", "log2": {"2": 20.57, "0": 20.71}, "sizes": {"2": 1552268, "0": 1712203}, "secs": 53.0}
+{"stage": "model", "n_all": 94.0, "n_chunk": 25.1, "n_rest": 68.9, "log2E": -11.3, "chunk": [10, 18, 16, 4, 2], "cc": 12, "secs": 279.5}
+{"stage": "planted", "tau": [8, -60, 60, -4, -4], "secs": 281.2}
+{"stage": "bucket", "b": 0, "tau": [8, -60, 60, -4, -4], "log2p": -133.13, "AB": 2624197, "CD": 76976, "passes": 1, "cand": 2, "solutions": 2, "total": 2, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 286.0}
+{"stage": "done", "solutions": 2, "secs": 286.0}

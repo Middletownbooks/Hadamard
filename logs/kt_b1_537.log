@@ -1,0 +1,13 @@
+{"stage": "config", "v": 537, "m": 536, "d": 22, "r": 35, "L": 18, "U": [1, 9, 25, 59, 81, 89, 91, 107], "secs": 0.0}
+{"stage": "pools", "log2": {"2": 24.19, "0": 24.19}, "sizes": {"2": 19196400, "0": 19119384}, "secs": 0.1}
+{"stage": "model", "n_all": 759.9, "n_chunk": 27.7, "n_rest": 732.1, "log2E": -663.1, "chunk": [2, 10, 3, 12, 0, 4], "cc": 7, "secs": 92.2}
+{"stage": "bucket", "b": 0, "tau": [0, 0, 0, 4, 0, 0], "log2p": -48.85, "AB": 13955040, "CD": 22998656, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 113.1}
+{"stage": "bucket", "b": 1, "tau": [4, 0, 0, 4, 0, 0], "log2p": -48.85, "AB": 14028096, "CD": 16178688, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 122.1}
+{"stage": "bucket", "b": 2, "tau": [0, 0, 0, 4, 0, 4], "log2p": -48.85, "AB": 14483264, "CD": 18668672, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 132.6}
+{"stage": "bucket", "b": 3, "tau": [0, 4, 0, 4, 0, 0], "log2p": -48.85, "AB": 14485792, "CD": 21292160, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 141.9}
+{"stage": "bucket", "b": 4, "tau": [0, 0, 0, 0, 0, 0], "log2p": -48.85, "AB": 15448896, "CD": 50810368, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 152.8}
+{"stage": "bucket", "b": 5, "tau": [4, 0, 0, 4, 0, 4], "log2p": -48.85, "AB": 14433952, "CD": 14487808, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 162.5}
+{"stage": "bucket", "b": 6, "tau": [4, 4, 0, 4, 0, 0], "log2p": -48.85, "AB": 14604672, "CD": 14397440, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 173.3}
+{"stage": "bucket", "b": 7, "tau": [4, 0, 0, 0, 0, 0], "log2p": -48.85, "AB": 15545472, "CD": 14827520, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 183.4}
+{"stage": "bucket", "b": 8, "tau": [0, 4, 0, 4, 0, 4], "log2p": -48.86, "AB": 15794464, "CD": 16131456, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 192.8}
+{"stage": "bucket", "b": 9, "tau": [0, 0, 0, 0, 0, 4], "log2p": -48.86, "AB": 16064544, "CD": 22689664, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 202.4}

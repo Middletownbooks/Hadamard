@@ -1,0 +1,6 @@
+{"stage": "config", "v": 537, "m": 536, "d": 22, "r": 35, "L": 18, "U": [1, 9, 25, 59, 81, 89, 91, 107], "secs": 0.0}
+{"stage": "pools", "log2": {"2": 24.19, "0": 24.19}, "sizes": {"2": 19196400, "0": 19119384}, "secs": 3.1}
+{"stage": "model", "n_all": 373991.6, "n_chunk": 27.7, "n_rest": 373963.8, "log2E": -373894.8, "chunk": [2, 10, 3, 12, 0, 4], "cc": 7, "secs": 95.0}
+{"stage": "bucket", "b": 0, "tau": [0, 0, 0, 4, 0, 0], "log2p": -48.85, "AB": 13955040, "CD": 22998656, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 116.2}
+{"stage": "bucket", "b": 1, "tau": [4, 0, 0, 4, 0, 0], "log2p": -48.85, "AB": 14028096, "CD": 16178688, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 125.7}
+{"stage": "bucket", "b": 2, "tau": [0, 0, 0, 4, 0, 4], "log2p": -48.85, "AB": 14483264, "CD": 18668672, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.0, "exp_cum": 0.0, "secs": 135.0}
