@@ -1,0 +1,836 @@
+{"stage": "pools", "sizes": {"17": 67000000, "35": 67000000}, "log2": {"17": 26.0, "35": 26.0}, "secs": 504.5}
+{"stage": "prep", "secs": 1565.1}
+{"stage": "count", "b": 0, "AB": 340466361, "CD": 323078389, "exp_hits_bucket": 0.0, "secs": 1650.9}
+{"stage": "passes", "b": 0, "n": 4, "secs": 1650.9}
+{"stage": "bucket", "b": 0, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.61, "AB": 340466361, "CD": 323078389, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 1771.3}
+{"stage": "count", "b": 1, "AB": 335993689, "CD": 318958804, "exp_hits_bucket": 0.0, "secs": 1817.2}
+{"stage": "passes", "b": 1, "n": 4, "secs": 1817.2}
+{"stage": "bucket", "b": 1, "tau": [2, 2, 2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.68, "AB": 335993689, "CD": 318958804, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 1936.7}
+{"stage": "count", "b": 2, "AB": 340466361, "CD": 323078389, "exp_hits_bucket": 0.0, "secs": 1984.1}
+{"stage": "passes", "b": 2, "n": 4, "secs": 1984.1}
+{"stage": "bucket", "b": 2, "tau": [2, 2, 2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.68, "AB": 340466361, "CD": 323078389, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 2143.6}
+{"stage": "count", "b": 3, "AB": 336651902, "CD": 318195450, "exp_hits_bucket": 0.0, "secs": 2190.8}
+{"stage": "passes", "b": 3, "n": 4, "secs": 2190.8}
+{"stage": "bucket", "b": 3, "tau": [2, -2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.68, "AB": 336651902, "CD": 318195450, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 2304.3}
+{"stage": "count", "b": 4, "AB": 336372977, "CD": 318518944, "exp_hits_bucket": 0.0, "secs": 2344.1}
+{"stage": "passes", "b": 4, "n": 4, "secs": 2344.1}
+{"stage": "bucket", "b": 4, "tau": [2, 2, -2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.68, "AB": 336372977, "CD": 318518944, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 2455.1}
+{"stage": "count", "b": 5, "AB": 336321834, "CD": 318535928, "exp_hits_bucket": 0.0, "secs": 2493.7}
+{"stage": "passes", "b": 5, "n": 4, "secs": 2493.7}
+{"stage": "bucket", "b": 5, "tau": [2, 2, 2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.68, "AB": 336321834, "CD": 318535928, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 2609.2}
+{"stage": "count", "b": 6, "AB": 336372003, "CD": 318453358, "exp_hits_bucket": 0.0, "secs": 2655.7}
+{"stage": "passes", "b": 6, "n": 4, "secs": 2655.7}
+{"stage": "bucket", "b": 6, "tau": [-2, 2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.68, "AB": 336372003, "CD": 318453358, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 2771.7}
+{"stage": "count", "b": 7, "AB": 336894823, "CD": 317851434, "exp_hits_bucket": 0.0, "secs": 2819.3}
+{"stage": "passes", "b": 7, "n": 4, "secs": 2819.3}
+{"stage": "bucket", "b": 7, "tau": [2, 2, 2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.69, "AB": 336894823, "CD": 317851434, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 2936.1}
+{"stage": "count", "b": 8, "AB": 336617426, "CD": 318269304, "exp_hits_bucket": 0.0, "secs": 2983.4}
+{"stage": "passes", "b": 8, "n": 4, "secs": 2983.4}
+{"stage": "bucket", "b": 8, "tau": [2, 2, 2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.69, "AB": 336617426, "CD": 318269304, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 3099.3}
+{"stage": "count", "b": 9, "AB": 335547839, "CD": 319329168, "exp_hits_bucket": 0.0, "secs": 3139.8}
+{"stage": "passes", "b": 9, "n": 4, "secs": 3139.8}
+{"stage": "bucket", "b": 9, "tau": [2, 2, 2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.69, "AB": 335547839, "CD": 319329168, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 3253.1}
+{"stage": "count", "b": 10, "AB": 335993689, "CD": 318958804, "exp_hits_bucket": 0.0, "secs": 3292.2}
+{"stage": "passes", "b": 10, "n": 4, "secs": 3292.2}
+{"stage": "bucket", "b": 10, "tau": [2, 2, 2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.74, "AB": 335993689, "CD": 318958804, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 3406.4}
+{"stage": "count", "b": 11, "AB": 330722057, "CD": 312705212, "exp_hits_bucket": 0.0, "secs": 3454.6}
+{"stage": "passes", "b": 11, "n": 4, "secs": 3454.6}
+{"stage": "bucket", "b": 11, "tau": [2, -2, 2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 330722057, "CD": 312705212, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 3570.8}
+{"stage": "count", "b": 12, "AB": 330534990, "CD": 313035374, "exp_hits_bucket": 0.0, "secs": 3621.1}
+{"stage": "passes", "b": 12, "n": 4, "secs": 3621.1}
+{"stage": "bucket", "b": 12, "tau": [2, 2, -2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 330534990, "CD": 313035374, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 3740.6}
+{"stage": "count", "b": 13, "AB": 330371292, "CD": 313055744, "exp_hits_bucket": 0.0, "secs": 3788.5}
+{"stage": "passes", "b": 13, "n": 4, "secs": 3788.5}
+{"stage": "bucket", "b": 13, "tau": [2, 2, 2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.75, "AB": 330371292, "CD": 313055744, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 3906.6}
+{"stage": "count", "b": 14, "AB": 336651902, "CD": 318195450, "exp_hits_bucket": 0.0, "secs": 3948.3}
+{"stage": "passes", "b": 14, "n": 4, "secs": 3948.3}
+{"stage": "bucket", "b": 14, "tau": [2, -2, 2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.75, "AB": 336651902, "CD": 318195450, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 4064.6}
+{"stage": "count", "b": 15, "AB": 336372977, "CD": 318518944, "exp_hits_bucket": 0.0, "secs": 4105.3}
+{"stage": "passes", "b": 15, "n": 4, "secs": 4105.3}
+{"stage": "bucket", "b": 15, "tau": [2, 2, -2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.75, "AB": 336372977, "CD": 318518944, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 4227.2}
+{"stage": "count", "b": 16, "AB": 336321834, "CD": 318535928, "exp_hits_bucket": 0.0, "secs": 4275.4}
+{"stage": "passes", "b": 16, "n": 4, "secs": 4275.4}
+{"stage": "bucket", "b": 16, "tau": [2, 2, 2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.75, "AB": 336321834, "CD": 318535928, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 4392.8}
+{"stage": "count", "b": 17, "AB": 331118744, "CD": 312308702, "exp_hits_bucket": 0.0, "secs": 4441.3}
+{"stage": "passes", "b": 17, "n": 4, "secs": 4441.3}
+{"stage": "bucket", "b": 17, "tau": [2, -2, -2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 331118744, "CD": 312308702, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 4558.3}
+{"stage": "count", "b": 18, "AB": 331092642, "CD": 312386650, "exp_hits_bucket": 0.0, "secs": 4608.1}
+{"stage": "passes", "b": 18, "n": 4, "secs": 4608.1}
+{"stage": "bucket", "b": 18, "tau": [2, -2, 2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.75, "AB": 331092642, "CD": 312386650, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.0, "secs": 4723.3}
+{"stage": "count", "b": 19, "AB": 330472121, "CD": 313032562, "exp_hits_bucket": 0.0, "secs": 4765.3}
+{"stage": "passes", "b": 19, "n": 4, "secs": 4765.3}
+{"stage": "bucket", "b": 19, "tau": [-2, 2, 2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 330472121, "CD": 313032562, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 4877.3}
+{"stage": "count", "b": 20, "AB": 330727692, "CD": 312679128, "exp_hits_bucket": 0.0, "secs": 4917.9}
+{"stage": "passes", "b": 20, "n": 4, "secs": 4917.9}
+{"stage": "bucket", "b": 20, "tau": [2, 2, -2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.75, "AB": 330727692, "CD": 312679128, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 5032.8}
+{"stage": "count", "b": 21, "AB": 336372003, "CD": 318453358, "exp_hits_bucket": 0.0, "secs": 5081.6}
+{"stage": "passes", "b": 21, "n": 4, "secs": 5081.6}
+{"stage": "bucket", "b": 21, "tau": [-2, 2, 2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.75, "AB": 336372003, "CD": 318453358, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 5196.4}
+{"stage": "count", "b": 22, "AB": 330935988, "CD": 312388682, "exp_hits_bucket": 0.0, "secs": 5244.7}
+{"stage": "passes", "b": 22, "n": 4, "secs": 5244.7}
+{"stage": "bucket", "b": 22, "tau": [2, 2, 2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 330935988, "CD": 312388682, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 5359.2}
+{"stage": "count", "b": 23, "AB": 330641331, "CD": 312701058, "exp_hits_bucket": 0.0, "secs": 5412.2}
+{"stage": "passes", "b": 23, "n": 4, "secs": 5412.2}
+{"stage": "bucket", "b": 23, "tau": [2, 2, 2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.75, "AB": 330641331, "CD": 312701058, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 5531.7}
+{"stage": "count", "b": 24, "AB": 331183661, "CD": 312275124, "exp_hits_bucket": 0.0, "secs": 5574.8}
+{"stage": "passes", "b": 24, "n": 4, "secs": 5574.8}
+{"stage": "bucket", "b": 24, "tau": [-2, -2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 331183661, "CD": 312275124, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 5685.9}
+{"stage": "count", "b": 25, "AB": 336894823, "CD": 317851434, "exp_hits_bucket": 0.0, "secs": 5728.1}
+{"stage": "passes", "b": 25, "n": 4, "secs": 5728.1}
+{"stage": "bucket", "b": 25, "tau": [2, 2, 2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.75, "AB": 336894823, "CD": 317851434, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 5843.2}
+{"stage": "count", "b": 26, "AB": 330832919, "CD": 312507082, "exp_hits_bucket": 0.0, "secs": 5896.5}
+{"stage": "passes", "b": 26, "n": 4, "secs": 5896.5}
+{"stage": "bucket", "b": 26, "tau": [-2, 2, -2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 330832919, "CD": 312507082, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6014.3}
+{"stage": "count", "b": 27, "AB": 330836613, "CD": 312565638, "exp_hits_bucket": 0.0, "secs": 6069.5}
+{"stage": "passes", "b": 27, "n": 4, "secs": 6069.5}
+{"stage": "bucket", "b": 27, "tau": [-2, 2, 2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.75, "AB": 330836613, "CD": 312565638, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6184.8}
+{"stage": "count", "b": 28, "AB": 336617426, "CD": 318269304, "exp_hits_bucket": 0.0, "secs": 6237.5}
+{"stage": "passes", "b": 28, "n": 4, "secs": 6237.5}
+{"stage": "bucket", "b": 28, "tau": [2, 2, 2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.75, "AB": 336617426, "CD": 318269304, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6352.4}
+{"stage": "count", "b": 29, "AB": 331676834, "CD": 311681774, "exp_hits_bucket": 0.0, "secs": 6395.7}
+{"stage": "passes", "b": 29, "n": 4, "secs": 6395.7}
+{"stage": "bucket", "b": 29, "tau": [2, -2, 2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 331676834, "CD": 311681774, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6502.7}
+{"stage": "count", "b": 30, "AB": 329696759, "CD": 313862926, "exp_hits_bucket": 0.0, "secs": 6545.6}
+{"stage": "passes", "b": 30, "n": 4, "secs": 6545.6}
+{"stage": "bucket", "b": 30, "tau": [2, 2, 2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.75, "AB": 329696759, "CD": 313862926, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6662.1}
+{"stage": "count", "b": 31, "AB": 331420260, "CD": 312013852, "exp_hits_bucket": 0.0, "secs": 6716.3}
+{"stage": "passes", "b": 31, "n": 4, "secs": 6716.3}
+{"stage": "bucket", "b": 31, "tau": [2, 2, -2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.75, "AB": 331420260, "CD": 312013852, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6826.7}
+{"stage": "count", "b": 32, "AB": 331373355, "CD": 312030014, "exp_hits_bucket": 0.0, "secs": 6882.7}
+{"stage": "passes", "b": 32, "n": 4, "secs": 6882.7}
+{"stage": "bucket", "b": 32, "tau": [2, -2, 2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.75, "AB": 331373355, "CD": 312030014, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 6996.6}
+{"stage": "count", "b": 33, "AB": 331396127, "CD": 312065256, "exp_hits_bucket": 0.0, "secs": 7050.3}
+{"stage": "passes", "b": 33, "n": 4, "secs": 7050.3}
+{"stage": "bucket", "b": 33, "tau": [2, 2, 2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.76, "AB": 331396127, "CD": 312065256, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 7164.2}
+{"stage": "count", "b": 34, "AB": 331089569, "CD": 312313552, "exp_hits_bucket": 0.0, "secs": 7209.4}
+{"stage": "passes", "b": 34, "n": 4, "secs": 7209.4}
+{"stage": "bucket", "b": 34, "tau": [2, 2, -2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.76, "AB": 331089569, "CD": 312313552, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 7316.3}
+{"stage": "count", "b": 35, "AB": 335547839, "CD": 319329168, "exp_hits_bucket": 0.0, "secs": 7358.7}
+{"stage": "passes", "b": 35, "n": 4, "secs": 7358.7}
+{"stage": "bucket", "b": 35, "tau": [2, 2, 2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.76, "AB": 335547839, "CD": 319329168, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 7470.0}
+{"stage": "count", "b": 36, "AB": 330974324, "CD": 312319858, "exp_hits_bucket": 0.0, "secs": 7523.6}
+{"stage": "passes", "b": 36, "n": 4, "secs": 7523.6}
+{"stage": "bucket", "b": 36, "tau": [2, 2, 2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.76, "AB": 330974324, "CD": 312319858, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 7637.3}
+{"stage": "count", "b": 37, "AB": 330229765, "CD": 313097130, "exp_hits_bucket": 0.0, "secs": 7691.3}
+{"stage": "passes", "b": 37, "n": 4, "secs": 7691.3}
+{"stage": "bucket", "b": 37, "tau": [2, -2, 2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.76, "AB": 330229765, "CD": 313097130, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 7805.8}
+{"stage": "count", "b": 38, "AB": 330071004, "CD": 313368076, "exp_hits_bucket": 0.0, "secs": 7857.6}
+{"stage": "passes", "b": 38, "n": 4, "secs": 7857.6}
+{"stage": "bucket", "b": 38, "tau": [2, 2, -2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.76, "AB": 330071004, "CD": 313368076, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 7970.9}
+{"stage": "count", "b": 39, "AB": 331448244, "CD": 311989070, "exp_hits_bucket": 0.0, "secs": 8014.7}
+{"stage": "passes", "b": 39, "n": 4, "secs": 8014.7}
+{"stage": "bucket", "b": 39, "tau": [-2, 2, 2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.76, "AB": 331448244, "CD": 311989070, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 8122.4}
+{"stage": "count", "b": 40, "AB": 329880920, "CD": 313482870, "exp_hits_bucket": 0.0, "secs": 8165.3}
+{"stage": "passes", "b": 40, "n": 4, "secs": 8165.3}
+{"stage": "bucket", "b": 40, "tau": [2, 2, 2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.76, "AB": 329880920, "CD": 313482870, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 8274.7}
+{"stage": "count", "b": 41, "AB": 331145091, "CD": 312315340, "exp_hits_bucket": 0.0, "secs": 8325.8}
+{"stage": "passes", "b": 41, "n": 4, "secs": 8325.8}
+{"stage": "bucket", "b": 41, "tau": [-2, 2, 2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.76, "AB": 331145091, "CD": 312315340, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 8435.8}
+{"stage": "count", "b": 42, "AB": 331673659, "CD": 311774048, "exp_hits_bucket": 0.0, "secs": 8488.9}
+{"stage": "passes", "b": 42, "n": 4, "secs": 8488.9}
+{"stage": "bucket", "b": 42, "tau": [2, 2, 2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.76, "AB": 331673659, "CD": 311774048, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 8596.5}
+{"stage": "count", "b": 43, "AB": 330063464, "CD": 313375488, "exp_hits_bucket": 0.0, "secs": 8649.4}
+{"stage": "passes", "b": 43, "n": 4, "secs": 8649.4}
+{"stage": "bucket", "b": 43, "tau": [-2, 2, 2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.76, "AB": 330063464, "CD": 313375488, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 8760.3}
+{"stage": "count", "b": 44, "AB": 330593864, "CD": 312795110, "exp_hits_bucket": 0.0, "secs": 8804.3}
+{"stage": "passes", "b": 44, "n": 4, "secs": 8804.3}
+{"stage": "bucket", "b": 44, "tau": [2, 2, 2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.76, "AB": 330593864, "CD": 312795110, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 8910.7}
+{"stage": "count", "b": 45, "AB": 330279533, "CD": 313100742, "exp_hits_bucket": 0.0, "secs": 8955.1}
+{"stage": "passes", "b": 45, "n": 4, "secs": 8955.1}
+{"stage": "bucket", "b": 45, "tau": [2, 2, 2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.76, "AB": 330279533, "CD": 313100742, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 9067.8}
+{"stage": "count", "b": 46, "AB": 330722057, "CD": 312705212, "exp_hits_bucket": 0.0, "secs": 9122.5}
+{"stage": "passes", "b": 46, "n": 4, "secs": 9122.5}
+{"stage": "bucket", "b": 46, "tau": [2, -2, 2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.81, "AB": 330722057, "CD": 312705212, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 9232.4}
+{"stage": "count", "b": 47, "AB": 330534990, "CD": 313035374, "exp_hits_bucket": 0.0, "secs": 9290.0}
+{"stage": "passes", "b": 47, "n": 4, "secs": 9290.0}
+{"stage": "bucket", "b": 47, "tau": [2, 2, -2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.81, "AB": 330534990, "CD": 313035374, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 9401.5}
+{"stage": "count", "b": 48, "AB": 330371292, "CD": 313055744, "exp_hits_bucket": 0.0, "secs": 9455.2}
+{"stage": "passes", "b": 48, "n": 4, "secs": 9455.2}
+{"stage": "bucket", "b": 48, "tau": [2, 2, 2, -2, 2, 2, -2, 2, -2], "log2_prob": -52.81, "AB": 330371292, "CD": 313055744, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 9567.1}
+{"stage": "count", "b": 49, "AB": 323827608, "CD": 305581882, "exp_hits_bucket": 0.0, "secs": 9613.2}
+{"stage": "passes", "b": 49, "n": 4, "secs": 9613.2}
+{"stage": "bucket", "b": 49, "tau": [2, -2, -2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.81, "AB": 323827608, "CD": 305581882, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 9717.8}
+{"stage": "count", "b": 50, "AB": 323805355, "CD": 305676888, "exp_hits_bucket": 0.0, "secs": 9761.1}
+{"stage": "passes", "b": 50, "n": 4, "secs": 9761.1}
+{"stage": "bucket", "b": 50, "tau": [2, -2, 2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.81, "AB": 323805355, "CD": 305676888, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 9868.2}
+{"stage": "count", "b": 51, "AB": 323442815, "CD": 305944862, "exp_hits_bucket": 0.0, "secs": 9923.4}
+{"stage": "passes", "b": 51, "n": 4, "secs": 9923.4}
+{"stage": "bucket", "b": 51, "tau": [2, 2, -2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 323442815, "CD": 305944862, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10027.7}
+{"stage": "count", "b": 52, "AB": 331118744, "CD": 312308702, "exp_hits_bucket": 0.0, "secs": 10083.0}
+{"stage": "passes", "b": 52, "n": 4, "secs": 10083.0}
+{"stage": "bucket", "b": 52, "tau": [2, -2, -2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 331118744, "CD": 312308702, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10194.6}
+{"stage": "count", "b": 53, "AB": 331092642, "CD": 312386650, "exp_hits_bucket": 0.0, "secs": 10247.5}
+{"stage": "passes", "b": 53, "n": 4, "secs": 10247.5}
+{"stage": "bucket", "b": 53, "tau": [2, -2, 2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.82, "AB": 331092642, "CD": 312386650, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10358.6}
+{"stage": "count", "b": 54, "AB": 330472121, "CD": 313032562, "exp_hits_bucket": 0.0, "secs": 10402.5}
+{"stage": "passes", "b": 54, "n": 4, "secs": 10402.5}
+{"stage": "bucket", "b": 54, "tau": [-2, 2, 2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 330472121, "CD": 313032562, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10509.9}
+{"stage": "count", "b": 55, "AB": 330727692, "CD": 312679128, "exp_hits_bucket": 0.0, "secs": 10554.1}
+{"stage": "passes", "b": 55, "n": 4, "secs": 10554.1}
+{"stage": "bucket", "b": 55, "tau": [2, 2, -2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.82, "AB": 330727692, "CD": 312679128, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10661.0}
+{"stage": "count", "b": 56, "AB": 323926184, "CD": 305577058, "exp_hits_bucket": 0.0, "secs": 10712.1}
+{"stage": "passes", "b": 56, "n": 4, "secs": 10712.1}
+{"stage": "bucket", "b": 56, "tau": [-2, -2, 2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 323926184, "CD": 305577058, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10813.2}
+{"stage": "count", "b": 57, "AB": 330935988, "CD": 312388682, "exp_hits_bucket": 0.0, "secs": 10864.6}
+{"stage": "passes", "b": 57, "n": 4, "secs": 10864.6}
+{"stage": "bucket", "b": 57, "tau": [2, 2, 2, -2, -2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 330935988, "CD": 312388682, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.01, "secs": 10969.7}
+{"stage": "count", "b": 58, "AB": 324141397, "CD": 305304388, "exp_hits_bucket": 0.0, "secs": 11022.0}
+{"stage": "passes", "b": 58, "n": 4, "secs": 11022.0}
+{"stage": "bucket", "b": 58, "tau": [2, -2, -2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 324141397, "CD": 305304388, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 11127.0}
+{"stage": "count", "b": 59, "AB": 323619831, "CD": 305756932, "exp_hits_bucket": 0.0, "secs": 11171.3}
+{"stage": "passes", "b": 59, "n": 4, "secs": 11171.3}
+{"stage": "bucket", "b": 59, "tau": [-2, 2, -2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 323619831, "CD": 305756932, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 11271.0}
+{"stage": "count", "b": 60, "AB": 323497823, "CD": 305795278, "exp_hits_bucket": 0.0, "secs": 11312.1}
+{"stage": "passes", "b": 60, "n": 4, "secs": 11312.1}
+{"stage": "bucket", "b": 60, "tau": [-2, 2, 2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 323497823, "CD": 305795278, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 11415.1}
+{"stage": "count", "b": 61, "AB": 330641331, "CD": 312701058, "exp_hits_bucket": 0.0, "secs": 11468.2}
+{"stage": "passes", "b": 61, "n": 4, "secs": 11468.2}
+{"stage": "bucket", "b": 61, "tau": [2, 2, 2, -2, 2, -2, 2, 2, -2], "log2_prob": -52.82, "AB": 330641331, "CD": 312701058, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 11574.0}
+{"stage": "count", "b": 62, "AB": 331183661, "CD": 312275124, "exp_hits_bucket": 0.0, "secs": 11625.8}
+{"stage": "passes", "b": 62, "n": 4, "secs": 11625.8}
+{"stage": "bucket", "b": 62, "tau": [-2, -2, 2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 331183661, "CD": 312275124, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 11731.1}
+{"stage": "count", "b": 63, "AB": 324289268, "CD": 304981808, "exp_hits_bucket": 0.0, "secs": 11781.2}
+{"stage": "passes", "b": 63, "n": 4, "secs": 11781.2}
+{"stage": "bucket", "b": 63, "tau": [2, -2, 2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 324289268, "CD": 304981808, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 11881.1}
+{"stage": "count", "b": 64, "AB": 330832919, "CD": 312507082, "exp_hits_bucket": 0.0, "secs": 11923.4}
+{"stage": "passes", "b": 64, "n": 4, "secs": 11923.4}
+{"stage": "bucket", "b": 64, "tau": [-2, 2, -2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 330832919, "CD": 312507082, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12024.3}
+{"stage": "count", "b": 65, "AB": 330836613, "CD": 312565638, "exp_hits_bucket": 0.0, "secs": 12066.3}
+{"stage": "passes", "b": 65, "n": 4, "secs": 12066.3}
+{"stage": "bucket", "b": 65, "tau": [-2, 2, 2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.82, "AB": 330836613, "CD": 312565638, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12172.4}
+{"stage": "count", "b": 66, "AB": 324106863, "CD": 305313830, "exp_hits_bucket": 0.0, "secs": 12224.2}
+{"stage": "passes", "b": 66, "n": 4, "secs": 12224.2}
+{"stage": "bucket", "b": 66, "tau": [2, 2, -2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 324106863, "CD": 305313830, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12330.6}
+{"stage": "count", "b": 67, "AB": 324114822, "CD": 305282964, "exp_hits_bucket": 0.0, "secs": 12384.2}
+{"stage": "passes", "b": 67, "n": 4, "secs": 12384.2}
+{"stage": "bucket", "b": 67, "tau": [2, -2, 2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.82, "AB": 324114822, "CD": 305282964, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12489.7}
+{"stage": "count", "b": 68, "AB": 323936442, "CD": 305291028, "exp_hits_bucket": 0.0, "secs": 12542.3}
+{"stage": "passes", "b": 68, "n": 4, "secs": 12542.3}
+{"stage": "bucket", "b": 68, "tau": [2, 2, 2, -2, -2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 323936442, "CD": 305291028, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12646.7}
+{"stage": "count", "b": 69, "AB": 331676834, "CD": 311681774, "exp_hits_bucket": 0.0, "secs": 12689.8}
+{"stage": "passes", "b": 69, "n": 4, "secs": 12689.8}
+{"stage": "bucket", "b": 69, "tau": [2, -2, 2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 331676834, "CD": 311681774, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12794.4}
+{"stage": "count", "b": 70, "AB": 323754483, "CD": 305531074, "exp_hits_bucket": 0.0, "secs": 12837.4}
+{"stage": "passes", "b": 70, "n": 4, "secs": 12837.4}
+{"stage": "bucket", "b": 70, "tau": [2, 2, -2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.82, "AB": 323754483, "CD": 305531074, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 12942.8}
+{"stage": "count", "b": 71, "AB": 324280954, "CD": 305148784, "exp_hits_bucket": 0.0, "secs": 12995.4}
+{"stage": "passes", "b": 71, "n": 4, "secs": 12995.4}
+{"stage": "bucket", "b": 71, "tau": [-2, -2, -2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 324280954, "CD": 305148784, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 13096.5}
+{"stage": "count", "b": 72, "AB": 329696759, "CD": 313862926, "exp_hits_bucket": 0.0, "secs": 13148.8}
+{"stage": "passes", "b": 72, "n": 4, "secs": 13148.8}
+{"stage": "bucket", "b": 72, "tau": [2, 2, 2, -2, 2, 2, 2, -2, -2], "log2_prob": -52.82, "AB": 329696759, "CD": 313862926, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 13255.2}
+{"stage": "count", "b": 73, "AB": 331420260, "CD": 312013852, "exp_hits_bucket": 0.0, "secs": 13307.9}
+{"stage": "passes", "b": 73, "n": 4, "secs": 13307.9}
+{"stage": "bucket", "b": 73, "tau": [2, 2, -2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 331420260, "CD": 312013852, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 13411.6}
+{"stage": "count", "b": 74, "AB": 323650026, "CD": 305619806, "exp_hits_bucket": 0.0, "secs": 13454.1}
+{"stage": "passes", "b": 74, "n": 4, "secs": 13454.1}
+{"stage": "bucket", "b": 74, "tau": [2, 2, 2, -2, 2, -2, -2, 2, 2], "log2_prob": -52.82, "AB": 323650026, "CD": 305619806, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 13555.4}
+{"stage": "count", "b": 75, "AB": 324299078, "CD": 305287992, "exp_hits_bucket": 0.0, "secs": 13596.8}
+{"stage": "passes", "b": 75, "n": 4, "secs": 13596.8}
+{"stage": "bucket", "b": 75, "tau": [-2, -2, 2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 324299078, "CD": 305287992, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 13698.7}
+{"stage": "count", "b": 76, "AB": 331373355, "CD": 312030014, "exp_hits_bucket": 0.0, "secs": 13750.1}
+{"stage": "passes", "b": 76, "n": 4, "secs": 13750.1}
+{"stage": "bucket", "b": 76, "tau": [2, -2, 2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.82, "AB": 331373355, "CD": 312030014, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 13856.7}
+{"stage": "count", "b": 77, "AB": 331396127, "CD": 312065256, "exp_hits_bucket": 0.0, "secs": 13908.5}
+{"stage": "passes", "b": 77, "n": 4, "secs": 13908.5}
+{"stage": "bucket", "b": 77, "tau": [2, 2, 2, 2, -2, 2, -2, 2, -2], "log2_prob": -52.82, "AB": 331396127, "CD": 312065256, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14013.0}
+{"stage": "count", "b": 78, "AB": 323904848, "CD": 305402396, "exp_hits_bucket": 0.0, "secs": 14063.5}
+{"stage": "passes", "b": 78, "n": 4, "secs": 14063.5}
+{"stage": "bucket", "b": 78, "tau": [-2, 2, -2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 323904848, "CD": 305402396, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14163.8}
+{"stage": "count", "b": 79, "AB": 331089569, "CD": 312313552, "exp_hits_bucket": 0.0, "secs": 14205.5}
+{"stage": "passes", "b": 79, "n": 4, "secs": 14205.5}
+{"stage": "bucket", "b": 79, "tau": [2, 2, -2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.82, "AB": 331089569, "CD": 312313552, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14306.4}
+{"stage": "count", "b": 80, "AB": 323047183, "CD": 306333522, "exp_hits_bucket": 0.0, "secs": 14346.7}
+{"stage": "passes", "b": 80, "n": 4, "secs": 14346.7}
+{"stage": "bucket", "b": 80, "tau": [2, -2, 2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.82, "AB": 323047183, "CD": 306333522, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14450.0}
+{"stage": "count", "b": 81, "AB": 330974324, "CD": 312319858, "exp_hits_bucket": 0.0, "secs": 14502.7}
+{"stage": "passes", "b": 81, "n": 4, "secs": 14502.7}
+{"stage": "bucket", "b": 81, "tau": [2, 2, 2, 2, 2, -2, -2, 2, -2], "log2_prob": -52.82, "AB": 330974324, "CD": 312319858, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14607.2}
+{"stage": "count", "b": 82, "AB": 324806805, "CD": 304543708, "exp_hits_bucket": 0.0, "secs": 14660.5}
+{"stage": "passes", "b": 82, "n": 4, "secs": 14660.5}
+{"stage": "bucket", "b": 82, "tau": [2, -2, -2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 324806805, "CD": 304543708, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14763.2}
+{"stage": "count", "b": 83, "AB": 324700969, "CD": 304798638, "exp_hits_bucket": 0.0, "secs": 14814.8}
+{"stage": "passes", "b": 83, "n": 4, "secs": 14814.8}
+{"stage": "bucket", "b": 83, "tau": [2, -2, 2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 324700969, "CD": 304798638, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 14915.4}
+{"stage": "count", "b": 84, "AB": 322755614, "CD": 306623126, "exp_hits_bucket": 0.0, "secs": 14959.2}
+{"stage": "passes", "b": 84, "n": 4, "secs": 14959.2}
+{"stage": "bucket", "b": 84, "tau": [2, 2, -2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.82, "AB": 322755614, "CD": 306623126, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15060.0}
+{"stage": "count", "b": 85, "AB": 324120890, "CD": 305257456, "exp_hits_bucket": 0.0, "secs": 15100.5}
+{"stage": "passes", "b": 85, "n": 4, "secs": 15100.5}
+{"stage": "bucket", "b": 85, "tau": [-2, 2, 2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.82, "AB": 324120890, "CD": 305257456, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15203.6}
+{"stage": "count", "b": 86, "AB": 324507921, "CD": 304951488, "exp_hits_bucket": 0.0, "secs": 15255.5}
+{"stage": "passes", "b": 86, "n": 4, "secs": 15255.5}
+{"stage": "bucket", "b": 86, "tau": [2, -2, -2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.82, "AB": 324507921, "CD": 304951488, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15358.1}
+{"stage": "count", "b": 87, "AB": 322680823, "CD": 306689496, "exp_hits_bucket": 0.0, "secs": 15413.5}
+{"stage": "passes", "b": 87, "n": 4, "secs": 15413.5}
+{"stage": "bucket", "b": 87, "tau": [2, 2, 2, -2, 2, 2, -2, -2, 2], "log2_prob": -52.82, "AB": 322680823, "CD": 306689496, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15515.4}
+{"stage": "count", "b": 88, "AB": 330229765, "CD": 313097130, "exp_hits_bucket": 0.0, "secs": 15568.4}
+{"stage": "passes", "b": 88, "n": 4, "secs": 15568.4}
+{"stage": "bucket", "b": 88, "tau": [2, -2, 2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.82, "AB": 330229765, "CD": 313097130, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15672.9}
+{"stage": "count", "b": 89, "AB": 324531033, "CD": 304954374, "exp_hits_bucket": 0.0, "secs": 15716.1}
+{"stage": "passes", "b": 89, "n": 4, "secs": 15716.1}
+{"stage": "bucket", "b": 89, "tau": [2, 2, -2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.82, "AB": 324531033, "CD": 304954374, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15816.2}
+{"stage": "count", "b": 90, "AB": 324467383, "CD": 305037914, "exp_hits_bucket": 0.0, "secs": 15858.3}
+{"stage": "passes", "b": 90, "n": 4, "secs": 15858.3}
+{"stage": "bucket", "b": 90, "tau": [2, -2, 2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.82, "AB": 324467383, "CD": 305037914, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 15960.3}
+{"stage": "count", "b": 91, "AB": 323770696, "CD": 305518332, "exp_hits_bucket": 0.0, "secs": 16012.2}
+{"stage": "passes", "b": 91, "n": 4, "secs": 16012.2}
+{"stage": "bucket", "b": 91, "tau": [-2, 2, 2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.82, "AB": 323770696, "CD": 305518332, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 16113.5}
+{"stage": "count", "b": 92, "AB": 330071004, "CD": 313368076, "exp_hits_bucket": 0.0, "secs": 16169.4}
+{"stage": "passes", "b": 92, "n": 4, "secs": 16169.4}
+{"stage": "bucket", "b": 92, "tau": [2, 2, -2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.82, "AB": 330071004, "CD": 313368076, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 16275.7}
+{"stage": "count", "b": 93, "AB": 324077922, "CD": 305194860, "exp_hits_bucket": 0.0, "secs": 16328.4}
+{"stage": "passes", "b": 93, "n": 4, "secs": 16328.4}
+{"stage": "bucket", "b": 93, "tau": [2, 2, -2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.82, "AB": 324077922, "CD": 305194860, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 16431.4}
+{"stage": "count", "b": 94, "AB": 331448244, "CD": 311989070, "exp_hits_bucket": 0.0, "secs": 16474.5}
+{"stage": "passes", "b": 94, "n": 4, "secs": 16474.5}
+{"stage": "bucket", "b": 94, "tau": [-2, 2, 2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.82, "AB": 331448244, "CD": 311989070, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 16578.0}
+{"stage": "count", "b": 95, "AB": 329880920, "CD": 313482870, "exp_hits_bucket": 0.0, "secs": 16620.1}
+{"stage": "passes", "b": 95, "n": 4, "secs": 16620.1}
+{"stage": "bucket", "b": 95, "tau": [2, 2, 2, 2, 2, 2, -2, -2, -2], "log2_prob": -52.83, "AB": 329880920, "CD": 313482870, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 16724.8}
+{"stage": "count", "b": 96, "AB": 331145091, "CD": 312315340, "exp_hits_bucket": 0.0, "secs": 16779.2}
+{"stage": "passes", "b": 96, "n": 4, "secs": 16779.2}
+{"stage": "bucket", "b": 96, "tau": [-2, 2, 2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.83, "AB": 331145091, "CD": 312315340, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 16885.6}
+{"stage": "count", "b": 97, "AB": 323428092, "CD": 305879838, "exp_hits_bucket": 0.0, "secs": 16940.0}
+{"stage": "passes", "b": 97, "n": 4, "secs": 16940.0}
+{"stage": "bucket", "b": 97, "tau": [2, -2, -2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 323428092, "CD": 305879838, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 17042.2}
+{"stage": "count", "b": 98, "AB": 324334503, "CD": 304967180, "exp_hits_bucket": 0.0, "secs": 17094.9}
+{"stage": "passes", "b": 98, "n": 4, "secs": 17094.9}
+{"stage": "bucket", "b": 98, "tau": [2, 2, 2, -2, -2, -2, 2, 2, 2], "log2_prob": -52.83, "AB": 324334503, "CD": 304967180, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.02, "secs": 17196.4}
+{"stage": "count", "b": 99, "AB": 324855256, "CD": 304596822, "exp_hits_bucket": 0.0, "secs": 17240.3}
+{"stage": "passes", "b": 99, "n": 4, "secs": 17240.3}
+{"stage": "bucket", "b": 99, "tau": [-2, -2, 2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.83, "AB": 324855256, "CD": 304596822, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 17341.0}
+{"stage": "count", "b": 100, "AB": 323316758, "CD": 306084946, "exp_hits_bucket": 0.0, "secs": 17384.3}
+{"stage": "passes", "b": 100, "n": 4, "secs": 17384.3}
+{"stage": "bucket", "b": 100, "tau": [2, -2, 2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.83, "AB": 323316758, "CD": 306084946, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 17488.6}
+{"stage": "count", "b": 101, "AB": 322792167, "CD": 306624662, "exp_hits_bucket": 0.0, "secs": 17541.0}
+{"stage": "passes", "b": 101, "n": 4, "secs": 17541.0}
+{"stage": "bucket", "b": 101, "tau": [-2, 2, 2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 322792167, "CD": 306624662, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 17644.3}
+{"stage": "count", "b": 102, "AB": 324609801, "CD": 304809480, "exp_hits_bucket": 0.0, "secs": 17697.0}
+{"stage": "passes", "b": 102, "n": 4, "secs": 17697.0}
+{"stage": "bucket", "b": 102, "tau": [-2, 2, -2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.83, "AB": 324609801, "CD": 304809480, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 17801.8}
+{"stage": "count", "b": 103, "AB": 324548583, "CD": 305062766, "exp_hits_bucket": 0.0, "secs": 17855.0}
+{"stage": "passes", "b": 103, "n": 4, "secs": 17855.0}
+{"stage": "bucket", "b": 103, "tau": [-2, -2, 2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.83, "AB": 324548583, "CD": 305062766, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 17959.2}
+{"stage": "count", "b": 104, "AB": 323053312, "CD": 306190244, "exp_hits_bucket": 0.0, "secs": 18003.2}
+{"stage": "passes", "b": 104, "n": 4, "secs": 18003.2}
+{"stage": "bucket", "b": 104, "tau": [2, 2, -2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.83, "AB": 323053312, "CD": 306190244, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 18105.7}
+{"stage": "count", "b": 105, "AB": 324483618, "CD": 304970238, "exp_hits_bucket": 0.0, "secs": 18147.1}
+{"stage": "passes", "b": 105, "n": 4, "secs": 18147.1}
+{"stage": "bucket", "b": 105, "tau": [-2, 2, 2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.83, "AB": 324483618, "CD": 304970238, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 18249.4}
+{"stage": "count", "b": 106, "AB": 331673659, "CD": 311774048, "exp_hits_bucket": 0.0, "secs": 18302.1}
+{"stage": "passes", "b": 106, "n": 4, "secs": 18302.1}
+{"stage": "bucket", "b": 106, "tau": [2, 2, 2, 2, -2, -2, 2, 2, -2], "log2_prob": -52.83, "AB": 331673659, "CD": 311774048, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 18406.2}
+{"stage": "count", "b": 107, "AB": 324198177, "CD": 305104310, "exp_hits_bucket": 0.0, "secs": 18459.5}
+{"stage": "passes", "b": 107, "n": 4, "secs": 18459.5}
+{"stage": "bucket", "b": 107, "tau": [-2, 2, -2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.83, "AB": 324198177, "CD": 305104310, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 18561.4}
+{"stage": "count", "b": 108, "AB": 330063464, "CD": 313375488, "exp_hits_bucket": 0.0, "secs": 18614.9}
+{"stage": "passes", "b": 108, "n": 4, "secs": 18614.9}
+{"stage": "bucket", "b": 108, "tau": [-2, 2, 2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.83, "AB": 330063464, "CD": 313375488, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 18721.6}
+{"stage": "count", "b": 109, "AB": 324100495, "CD": 305182678, "exp_hits_bucket": 0.0, "secs": 18764.8}
+{"stage": "passes", "b": 109, "n": 4, "secs": 18764.8}
+{"stage": "bucket", "b": 109, "tau": [-2, 2, 2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.83, "AB": 324100495, "CD": 305182678, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 18865.6}
+{"stage": "count", "b": 110, "AB": 323332844, "CD": 306100510, "exp_hits_bucket": 0.0, "secs": 18907.5}
+{"stage": "passes", "b": 110, "n": 4, "secs": 18907.5}
+{"stage": "bucket", "b": 110, "tau": [2, 2, 2, -2, -2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 323332844, "CD": 306100510, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19011.9}
+{"stage": "count", "b": 111, "AB": 325020950, "CD": 304450662, "exp_hits_bucket": 0.0, "secs": 19064.6}
+{"stage": "passes", "b": 111, "n": 4, "secs": 19064.6}
+{"stage": "bucket", "b": 111, "tau": [2, -2, 2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.83, "AB": 325020950, "CD": 304450662, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19166.0}
+{"stage": "count", "b": 112, "AB": 322963568, "CD": 306335672, "exp_hits_bucket": 0.0, "secs": 19218.8}
+{"stage": "passes", "b": 112, "n": 4, "secs": 19218.8}
+{"stage": "bucket", "b": 112, "tau": [2, 2, 2, -2, 2, -2, 2, -2, 2], "log2_prob": -52.83, "AB": 322963568, "CD": 306335672, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19320.3}
+{"stage": "count", "b": 113, "AB": 323463719, "CD": 305963104, "exp_hits_bucket": 0.0, "secs": 19371.9}
+{"stage": "passes", "b": 113, "n": 4, "secs": 19371.9}
+{"stage": "bucket", "b": 113, "tau": [-2, -2, 2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 323463719, "CD": 305963104, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19474.8}
+{"stage": "count", "b": 114, "AB": 324775703, "CD": 304674058, "exp_hits_bucket": 0.0, "secs": 19519.6}
+{"stage": "passes", "b": 114, "n": 4, "secs": 19519.6}
+{"stage": "bucket", "b": 114, "tau": [2, 2, -2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.83, "AB": 324775703, "CD": 304674058, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19621.5}
+{"stage": "count", "b": 115, "AB": 330593864, "CD": 312795110, "exp_hits_bucket": 0.0, "secs": 19664.0}
+{"stage": "passes", "b": 115, "n": 4, "secs": 19664.0}
+{"stage": "bucket", "b": 115, "tau": [2, 2, 2, 2, -2, 2, 2, -2, -2], "log2_prob": -52.83, "AB": 330593864, "CD": 312795110, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19772.0}
+{"stage": "count", "b": 116, "AB": 324709163, "CD": 304698758, "exp_hits_bucket": 0.0, "secs": 19825.1}
+{"stage": "passes", "b": 116, "n": 4, "secs": 19825.1}
+{"stage": "bucket", "b": 116, "tau": [2, 2, 2, 2, -2, -2, -2, 2, 2], "log2_prob": -52.83, "AB": 324709163, "CD": 304698758, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 19927.9}
+{"stage": "count", "b": 117, "AB": 323141188, "CD": 306148954, "exp_hits_bucket": 0.0, "secs": 19981.1}
+{"stage": "passes", "b": 117, "n": 4, "secs": 19981.1}
+{"stage": "bucket", "b": 117, "tau": [-2, 2, -2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 323141188, "CD": 306148954, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20084.7}
+{"stage": "count", "b": 118, "AB": 323016195, "CD": 306298486, "exp_hits_bucket": 0.0, "secs": 20137.0}
+{"stage": "passes", "b": 118, "n": 4, "secs": 20137.0}
+{"stage": "bucket", "b": 118, "tau": [-2, 2, 2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.83, "AB": 323016195, "CD": 306298486, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20240.1}
+{"stage": "count", "b": 119, "AB": 330279533, "CD": 313100742, "exp_hits_bucket": 0.0, "secs": 20283.5}
+{"stage": "passes", "b": 119, "n": 4, "secs": 20283.5}
+{"stage": "bucket", "b": 119, "tau": [2, 2, 2, 2, 2, -2, 2, -2, -2], "log2_prob": -52.83, "AB": 330279533, "CD": 313100742, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20385.9}
+{"stage": "count", "b": 120, "AB": 323990520, "CD": 305318720, "exp_hits_bucket": 0.0, "secs": 20429.9}
+{"stage": "passes", "b": 120, "n": 4, "secs": 20429.9}
+{"stage": "bucket", "b": 120, "tau": [2, -2, 2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 323990520, "CD": 305318720, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20532.0}
+{"stage": "count", "b": 121, "AB": 323789370, "CD": 305641192, "exp_hits_bucket": 0.0, "secs": 20584.0}
+{"stage": "passes", "b": 121, "n": 4, "secs": 20584.0}
+{"stage": "bucket", "b": 121, "tau": [2, 2, -2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.83, "AB": 323789370, "CD": 305641192, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20685.0}
+{"stage": "count", "b": 122, "AB": 323656314, "CD": 305675030, "exp_hits_bucket": 0.0, "secs": 20737.6}
+{"stage": "passes", "b": 122, "n": 4, "secs": 20737.6}
+{"stage": "bucket", "b": 122, "tau": [2, -2, 2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.83, "AB": 323656314, "CD": 305675030, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20839.6}
+{"stage": "count", "b": 123, "AB": 323611178, "CD": 305705420, "exp_hits_bucket": 0.0, "secs": 20891.4}
+{"stage": "passes", "b": 123, "n": 4, "secs": 20891.4}
+{"stage": "bucket", "b": 123, "tau": [2, 2, 2, 2, -2, 2, -2, -2, 2], "log2_prob": -52.83, "AB": 323611178, "CD": 305705420, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 20993.2}
+{"stage": "count", "b": 124, "AB": 323343463, "CD": 305838880, "exp_hits_bucket": 0.0, "secs": 21037.2}
+{"stage": "passes", "b": 124, "n": 4, "secs": 21037.2}
+{"stage": "bucket", "b": 124, "tau": [2, 2, -2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.83, "AB": 323343463, "CD": 305838880, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 21138.1}
+{"stage": "count", "b": 125, "AB": 324853788, "CD": 304620638, "exp_hits_bucket": 0.0, "secs": 21180.5}
+{"stage": "passes", "b": 125, "n": 4, "secs": 21180.5}
+{"stage": "bucket", "b": 125, "tau": [-2, 2, 2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.83, "AB": 324853788, "CD": 304620638, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 21286.1}
+{"stage": "count", "b": 126, "AB": 323218926, "CD": 305922398, "exp_hits_bucket": 0.0, "secs": 21338.8}
+{"stage": "passes", "b": 126, "n": 4, "secs": 21338.8}
+{"stage": "bucket", "b": 126, "tau": [2, 2, 2, 2, 2, -2, -2, -2, 2], "log2_prob": -52.83, "AB": 323218926, "CD": 305922398, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 21441.5}
+{"stage": "count", "b": 127, "AB": 323723347, "CD": 305672584, "exp_hits_bucket": 0.0, "secs": 21497.5}
+{"stage": "passes", "b": 127, "n": 4, "secs": 21497.5}
+{"stage": "bucket", "b": 127, "tau": [-2, 2, 2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.84, "AB": 323723347, "CD": 305672584, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 21599.6}
+{"stage": "count", "b": 128, "AB": 323407213, "CD": 305843874, "exp_hits_bucket": 0.0, "secs": 21655.1}
+{"stage": "passes", "b": 128, "n": 4, "secs": 21655.1}
+{"stage": "bucket", "b": 128, "tau": [-2, 2, 2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.84, "AB": 323407213, "CD": 305843874, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 21758.0}
+{"stage": "count", "b": 129, "AB": 323981877, "CD": 305402906, "exp_hits_bucket": 0.0, "secs": 21801.6}
+{"stage": "passes", "b": 129, "n": 4, "secs": 21801.6}
+{"stage": "bucket", "b": 129, "tau": [2, 2, 2, 2, -2, -2, 2, -2, 2], "log2_prob": -52.84, "AB": 323981877, "CD": 305402906, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 21902.3}
+{"stage": "count", "b": 130, "AB": 340466361, "CD": 323078389, "exp_hits_bucket": 0.0, "secs": 21943.9}
+{"stage": "passes", "b": 130, "n": 4, "secs": 21943.9}
+{"stage": "bucket", "b": 130, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 6], "log2_prob": -52.85, "AB": 340466361, "CD": 323078389, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22047.4}
+{"stage": "count", "b": 131, "AB": 312463213, "CD": 297645202, "exp_hits_bucket": 0.0, "secs": 22099.6}
+{"stage": "passes", "b": 131, "n": 4, "secs": 22099.6}
+{"stage": "bucket", "b": 131, "tau": [6, 2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.85, "AB": 312463213, "CD": 297645202, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22199.2}
+{"stage": "count", "b": 132, "AB": 312800145, "CD": 297080814, "exp_hits_bucket": 0.0, "secs": 22255.3}
+{"stage": "passes", "b": 132, "n": 4, "secs": 22255.3}
+{"stage": "bucket", "b": 132, "tau": [2, 2, 2, 6, 2, 2, 2, 2, 2], "log2_prob": -52.85, "AB": 312800145, "CD": 297080814, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22352.9}
+{"stage": "count", "b": 133, "AB": 313211430, "CD": 296747082, "exp_hits_bucket": 0.0, "secs": 22406.5}
+{"stage": "passes", "b": 133, "n": 4, "secs": 22406.5}
+{"stage": "bucket", "b": 133, "tau": [2, 2, 2, 2, 2, 2, 2, 6, 2], "log2_prob": -52.86, "AB": 313211430, "CD": 296747082, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22507.8}
+{"stage": "count", "b": 134, "AB": 312306984, "CD": 297734656, "exp_hits_bucket": 0.0, "secs": 22552.0}
+{"stage": "passes", "b": 134, "n": 4, "secs": 22552.0}
+{"stage": "bucket", "b": 134, "tau": [2, 2, 2, 2, 2, 6, 2, 2, 2], "log2_prob": -52.86, "AB": 312306984, "CD": 297734656, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22649.3}
+{"stage": "count", "b": 135, "AB": 312318538, "CD": 297828756, "exp_hits_bucket": 0.0, "secs": 22691.6}
+{"stage": "passes", "b": 135, "n": 4, "secs": 22691.6}
+{"stage": "bucket", "b": 135, "tau": [2, 6, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.86, "AB": 312318538, "CD": 297828756, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22792.9}
+{"stage": "count", "b": 136, "AB": 312424660, "CD": 297529078, "exp_hits_bucket": 0.0, "secs": 22845.1}
+{"stage": "passes", "b": 136, "n": 4, "secs": 22845.1}
+{"stage": "bucket", "b": 136, "tau": [2, 2, 6, 2, 2, 2, 2, 2, 2], "log2_prob": -52.86, "AB": 312424660, "CD": 297529078, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 22944.3}
+{"stage": "count", "b": 137, "AB": 311953592, "CD": 298144366, "exp_hits_bucket": 0.0, "secs": 23000.7}
+{"stage": "passes", "b": 137, "n": 4, "secs": 23000.7}
+{"stage": "bucket", "b": 137, "tau": [2, 2, 2, 2, 6, 2, 2, 2, 2], "log2_prob": -52.86, "AB": 311953592, "CD": 298144366, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 23099.4}
+{"stage": "count", "b": 138, "AB": 312473560, "CD": 297502808, "exp_hits_bucket": 0.0, "secs": 23152.5}
+{"stage": "passes", "b": 138, "n": 4, "secs": 23152.5}
+{"stage": "bucket", "b": 138, "tau": [2, 2, 2, 2, 2, 2, 6, 2, 2], "log2_prob": -52.86, "AB": 312473560, "CD": 297502808, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 23251.8}
+{"stage": "count", "b": 139, "AB": 323827608, "CD": 305581882, "exp_hits_bucket": 0.0, "secs": 23294.8}
+{"stage": "passes", "b": 139, "n": 4, "secs": 23294.8}
+{"stage": "bucket", "b": 139, "tau": [2, -2, -2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.88, "AB": 323827608, "CD": 305581882, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.03, "secs": 23395.5}
+{"stage": "count", "b": 140, "AB": 323805355, "CD": 305676888, "exp_hits_bucket": 0.0, "secs": 23437.9}
+{"stage": "passes", "b": 140, "n": 4, "secs": 23437.9}
+{"stage": "bucket", "b": 140, "tau": [2, -2, 2, -2, 2, 2, -2, 2, -2], "log2_prob": -52.88, "AB": 323805355, "CD": 305676888, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 23540.7}
+{"stage": "count", "b": 141, "AB": 323442815, "CD": 305944862, "exp_hits_bucket": 0.0, "secs": 23594.3}
+{"stage": "passes", "b": 141, "n": 4, "secs": 23594.3}
+{"stage": "bucket", "b": 141, "tau": [2, 2, -2, -2, 2, 2, -2, 2, -2], "log2_prob": -52.88, "AB": 323442815, "CD": 305944862, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 23696.7}
+{"stage": "count", "b": 142, "AB": 315622200, "CD": 297398258, "exp_hits_bucket": 0.0, "secs": 23750.7}
+{"stage": "passes", "b": 142, "n": 4, "secs": 23750.7}
+{"stage": "bucket", "b": 142, "tau": [2, -2, -2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.88, "AB": 315622200, "CD": 297398258, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 23850.4}
+{"stage": "count", "b": 143, "AB": 323926184, "CD": 305577058, "exp_hits_bucket": 0.0, "secs": 23904.6}
+{"stage": "passes", "b": 143, "n": 4, "secs": 23904.6}
+{"stage": "bucket", "b": 143, "tau": [-2, -2, 2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.88, "AB": 323926184, "CD": 305577058, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24009.2}
+{"stage": "count", "b": 144, "AB": 324141397, "CD": 305304388, "exp_hits_bucket": 0.0, "secs": 24053.4}
+{"stage": "passes", "b": 144, "n": 4, "secs": 24053.4}
+{"stage": "bucket", "b": 144, "tau": [2, -2, -2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.88, "AB": 324141397, "CD": 305304388, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24156.0}
+{"stage": "count", "b": 145, "AB": 323619831, "CD": 305756932, "exp_hits_bucket": 0.0, "secs": 24198.7}
+{"stage": "passes", "b": 145, "n": 4, "secs": 24198.7}
+{"stage": "bucket", "b": 145, "tau": [-2, 2, -2, -2, 2, 2, 2, 2, -2], "log2_prob": -52.88, "AB": 323619831, "CD": 305756932, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24301.7}
+{"stage": "count", "b": 146, "AB": 323497823, "CD": 305795278, "exp_hits_bucket": 0.0, "secs": 24355.6}
+{"stage": "passes", "b": 146, "n": 4, "secs": 24355.6}
+{"stage": "bucket", "b": 146, "tau": [-2, 2, 2, -2, 2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 323497823, "CD": 305795278, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24459.1}
+{"stage": "count", "b": 147, "AB": 324289268, "CD": 304981808, "exp_hits_bucket": 0.0, "secs": 24516.7}
+{"stage": "passes", "b": 147, "n": 4, "secs": 24516.7}
+{"stage": "bucket", "b": 147, "tau": [2, -2, 2, -2, -2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324289268, "CD": 304981808, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24621.9}
+{"stage": "count", "b": 148, "AB": 315811896, "CD": 297107928, "exp_hits_bucket": 0.0, "secs": 24674.9}
+{"stage": "passes", "b": 148, "n": 4, "secs": 24674.9}
+{"stage": "bucket", "b": 148, "tau": [-2, -2, -2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.89, "AB": 315811896, "CD": 297107928, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24774.7}
+{"stage": "count", "b": 149, "AB": 324106863, "CD": 305313830, "exp_hits_bucket": 0.0, "secs": 24819.1}
+{"stage": "passes", "b": 149, "n": 4, "secs": 24819.1}
+{"stage": "bucket", "b": 149, "tau": [2, 2, -2, -2, -2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324106863, "CD": 305313830, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 24920.2}
+{"stage": "count", "b": 150, "AB": 315763147, "CD": 297339826, "exp_hits_bucket": 0.0, "secs": 24961.0}
+{"stage": "passes", "b": 150, "n": 4, "secs": 24961.0}
+{"stage": "bucket", "b": 150, "tau": [-2, -2, 2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 315763147, "CD": 297339826, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25060.0}
+{"stage": "count", "b": 151, "AB": 324114822, "CD": 305282964, "exp_hits_bucket": 0.0, "secs": 25112.8}
+{"stage": "passes", "b": 151, "n": 4, "secs": 25112.8}
+{"stage": "bucket", "b": 151, "tau": [2, -2, 2, -2, 2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 324114822, "CD": 305282964, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25214.3}
+{"stage": "count", "b": 152, "AB": 323936442, "CD": 305291028, "exp_hits_bucket": 0.0, "secs": 25271.5}
+{"stage": "passes", "b": 152, "n": 4, "secs": 25271.5}
+{"stage": "bucket", "b": 152, "tau": [2, 2, 2, -2, -2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 323936442, "CD": 305291028, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25374.1}
+{"stage": "count", "b": 153, "AB": 315325024, "CD": 297399344, "exp_hits_bucket": 0.0, "secs": 25427.8}
+{"stage": "passes", "b": 153, "n": 4, "secs": 25427.9}
+{"stage": "bucket", "b": 153, "tau": [-2, 2, -2, -2, 2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 315325024, "CD": 297399344, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25527.3}
+{"stage": "count", "b": 154, "AB": 323754483, "CD": 305531074, "exp_hits_bucket": 0.0, "secs": 25570.9}
+{"stage": "passes", "b": 154, "n": 4, "secs": 25570.9}
+{"stage": "bucket", "b": 154, "tau": [2, 2, -2, -2, 2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 323754483, "CD": 305531074, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25671.0}
+{"stage": "count", "b": 155, "AB": 324280954, "CD": 305148784, "exp_hits_bucket": 0.0, "secs": 25712.7}
+{"stage": "passes", "b": 155, "n": 4, "secs": 25712.7}
+{"stage": "bucket", "b": 155, "tau": [-2, -2, -2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324280954, "CD": 305148784, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25815.4}
+{"stage": "count", "b": 156, "AB": 323650026, "CD": 305619806, "exp_hits_bucket": 0.0, "secs": 25868.3}
+{"stage": "passes", "b": 156, "n": 4, "secs": 25868.3}
+{"stage": "bucket", "b": 156, "tau": [2, 2, 2, -2, 2, -2, -2, 2, -2], "log2_prob": -52.89, "AB": 323650026, "CD": 305619806, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 25971.1}
+{"stage": "count", "b": 157, "AB": 324299078, "CD": 305287992, "exp_hits_bucket": 0.0, "secs": 26025.5}
+{"stage": "passes", "b": 157, "n": 4, "secs": 26025.5}
+{"stage": "bucket", "b": 157, "tau": [-2, -2, 2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 324299078, "CD": 305287992, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 26129.5}
+{"stage": "count", "b": 158, "AB": 316221913, "CD": 296696782, "exp_hits_bucket": 0.0, "secs": 26183.9}
+{"stage": "passes", "b": 158, "n": 4, "secs": 26183.9}
+{"stage": "bucket", "b": 158, "tau": [2, -2, -2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.89, "AB": 316221913, "CD": 296696782, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 26283.2}
+{"stage": "count", "b": 159, "AB": 316052187, "CD": 296846568, "exp_hits_bucket": 0.0, "secs": 26328.0}
+{"stage": "passes", "b": 159, "n": 4, "secs": 26328.0}
+{"stage": "bucket", "b": 159, "tau": [2, -2, 2, -2, -2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 316052187, "CD": 296846568, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 26424.9}
+{"stage": "count", "b": 160, "AB": 323904848, "CD": 305402396, "exp_hits_bucket": 0.0, "secs": 26466.7}
+{"stage": "passes", "b": 160, "n": 4, "secs": 26466.7}
+{"stage": "bucket", "b": 160, "tau": [-2, 2, -2, 2, 2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 323904848, "CD": 305402396, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 26569.4}
+{"stage": "count", "b": 161, "AB": 315878603, "CD": 297016746, "exp_hits_bucket": 0.0, "secs": 26623.4}
+{"stage": "passes", "b": 161, "n": 4, "secs": 26623.4}
+{"stage": "bucket", "b": 161, "tau": [2, -2, -2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.89, "AB": 315878603, "CD": 297016746, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 26723.1}
+{"stage": "count", "b": 162, "AB": 323047183, "CD": 306333522, "exp_hits_bucket": 0.0, "secs": 26781.3}
+{"stage": "passes", "b": 162, "n": 4, "secs": 26781.3}
+{"stage": "bucket", "b": 162, "tau": [2, -2, 2, -2, 2, 2, 2, -2, -2], "log2_prob": -52.89, "AB": 323047183, "CD": 306333522, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 26885.3}
+{"stage": "count", "b": 163, "AB": 315868786, "CD": 297047612, "exp_hits_bucket": 0.0, "secs": 26937.4}
+{"stage": "passes", "b": 163, "n": 4, "secs": 26937.4}
+{"stage": "bucket", "b": 163, "tau": [2, 2, -2, -2, -2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 315868786, "CD": 297047612, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27037.9}
+{"stage": "count", "b": 164, "AB": 324806805, "CD": 304543708, "exp_hits_bucket": 0.0, "secs": 27082.6}
+{"stage": "passes", "b": 164, "n": 4, "secs": 27082.6}
+{"stage": "bucket", "b": 164, "tau": [2, -2, -2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324806805, "CD": 304543708, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27184.1}
+{"stage": "count", "b": 165, "AB": 315862447, "CD": 297023362, "exp_hits_bucket": 0.0, "secs": 27226.4}
+{"stage": "passes", "b": 165, "n": 4, "secs": 27226.4}
+{"stage": "bucket", "b": 165, "tau": [2, -2, 2, -2, 2, -2, -2, 2, 2], "log2_prob": -52.89, "AB": 315862447, "CD": 297023362, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27327.1}
+{"stage": "count", "b": 166, "AB": 324700969, "CD": 304798638, "exp_hits_bucket": 0.0, "secs": 27381.7}
+{"stage": "passes", "b": 166, "n": 4, "secs": 27381.7}
+{"stage": "bucket", "b": 166, "tau": [2, -2, 2, 2, -2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 324700969, "CD": 304798638, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27487.2}
+{"stage": "count", "b": 167, "AB": 322755614, "CD": 306623126, "exp_hits_bucket": 0.0, "secs": 27545.6}
+{"stage": "passes", "b": 167, "n": 4, "secs": 27545.6}
+{"stage": "bucket", "b": 167, "tau": [2, 2, -2, -2, 2, 2, 2, -2, -2], "log2_prob": -52.89, "AB": 322755614, "CD": 306623126, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27650.6}
+{"stage": "count", "b": 168, "AB": 315412708, "CD": 297233892, "exp_hits_bucket": 0.0, "secs": 27705.4}
+{"stage": "passes", "b": 168, "n": 4, "secs": 27705.4}
+{"stage": "bucket", "b": 168, "tau": [2, 2, -2, -2, 2, -2, -2, 2, 2], "log2_prob": -52.89, "AB": 315412708, "CD": 297233892, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27807.1}
+{"stage": "count", "b": 169, "AB": 324120890, "CD": 305257456, "exp_hits_bucket": 0.0, "secs": 27850.9}
+{"stage": "passes", "b": 169, "n": 4, "secs": 27850.9}
+{"stage": "bucket", "b": 169, "tau": [-2, 2, 2, -2, -2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324120890, "CD": 305257456, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 27954.3}
+{"stage": "count", "b": 170, "AB": 316051411, "CD": 297022554, "exp_hits_bucket": 0.0, "secs": 27996.1}
+{"stage": "passes", "b": 170, "n": 4, "secs": 27996.1}
+{"stage": "bucket", "b": 170, "tau": [-2, -2, -2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 316051411, "CD": 297022554, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 28095.1}
+{"stage": "count", "b": 171, "AB": 324507921, "CD": 304951488, "exp_hits_bucket": 0.0, "secs": 28148.9}
+{"stage": "passes", "b": 171, "n": 4, "secs": 28148.9}
+{"stage": "bucket", "b": 171, "tau": [2, -2, -2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 324507921, "CD": 304951488, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 28251.1}
+{"stage": "count", "b": 172, "AB": 322680823, "CD": 306689496, "exp_hits_bucket": 0.0, "secs": 28304.8}
+{"stage": "passes", "b": 172, "n": 4, "secs": 28304.8}
+{"stage": "bucket", "b": 172, "tau": [2, 2, 2, -2, 2, 2, -2, -2, -2], "log2_prob": -52.89, "AB": 322680823, "CD": 306689496, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 28408.0}
+{"stage": "count", "b": 173, "AB": 324531033, "CD": 304954374, "exp_hits_bucket": 0.0, "secs": 28460.4}
+{"stage": "passes", "b": 173, "n": 4, "secs": 28460.4}
+{"stage": "bucket", "b": 173, "tau": [2, 2, -2, 2, -2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 324531033, "CD": 304954374, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 28564.5}
+{"stage": "count", "b": 174, "AB": 324467383, "CD": 305037914, "exp_hits_bucket": 0.0, "secs": 28609.0}
+{"stage": "passes", "b": 174, "n": 4, "secs": 28609.0}
+{"stage": "bucket", "b": 174, "tau": [2, -2, 2, 2, 2, -2, -2, 2, -2], "log2_prob": -52.89, "AB": 324467383, "CD": 305037914, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 28711.6}
+{"stage": "count", "b": 175, "AB": 323770696, "CD": 305518332, "exp_hits_bucket": 0.0, "secs": 28753.5}
+{"stage": "passes", "b": 175, "n": 4, "secs": 28753.5}
+{"stage": "bucket", "b": 175, "tau": [-2, 2, 2, -2, 2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 323770696, "CD": 305518332, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 28857.7}
+{"stage": "count", "b": 176, "AB": 314842339, "CD": 297967516, "exp_hits_bucket": 0.0, "secs": 28912.0}
+{"stage": "passes", "b": 176, "n": 4, "secs": 28912.0}
+{"stage": "bucket", "b": 176, "tau": [2, -2, -2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.89, "AB": 314842339, "CD": 297967516, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29012.0}
+{"stage": "count", "b": 177, "AB": 324077922, "CD": 305194860, "exp_hits_bucket": 0.0, "secs": 29066.6}
+{"stage": "passes", "b": 177, "n": 4, "secs": 29066.6}
+{"stage": "bucket", "b": 177, "tau": [2, 2, -2, 2, 2, -2, -2, 2, -2], "log2_prob": -52.89, "AB": 324077922, "CD": 305194860, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29171.7}
+{"stage": "count", "b": 178, "AB": 316231207, "CD": 296787808, "exp_hits_bucket": 0.0, "secs": 29223.0}
+{"stage": "passes", "b": 178, "n": 4, "secs": 29223.0}
+{"stage": "bucket", "b": 178, "tau": [-2, -2, 2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.89, "AB": 316231207, "CD": 296787808, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29323.3}
+{"stage": "count", "b": 179, "AB": 314838103, "CD": 298125484, "exp_hits_bucket": 0.0, "secs": 29368.3}
+{"stage": "passes", "b": 179, "n": 4, "secs": 29368.3}
+{"stage": "bucket", "b": 179, "tau": [2, -2, 2, -2, 2, 2, -2, -2, 2], "log2_prob": -52.89, "AB": 314838103, "CD": 298125484, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29466.4}
+{"stage": "count", "b": 180, "AB": 316598089, "CD": 296454222, "exp_hits_bucket": 0.0, "secs": 29508.8}
+{"stage": "passes", "b": 180, "n": 4, "secs": 29508.8}
+{"stage": "bucket", "b": 180, "tau": [2, -2, -2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 316598089, "CD": 296454222, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29609.8}
+{"stage": "count", "b": 181, "AB": 315991053, "CD": 296914968, "exp_hits_bucket": 0.0, "secs": 29663.4}
+{"stage": "passes", "b": 181, "n": 4, "secs": 29663.4}
+{"stage": "bucket", "b": 181, "tau": [-2, 2, -2, -2, -2, 2, 2, 2, 2], "log2_prob": -52.89, "AB": 315991053, "CD": 296914968, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29763.6}
+{"stage": "count", "b": 182, "AB": 315997547, "CD": 297055246, "exp_hits_bucket": 0.0, "secs": 29820.9}
+{"stage": "passes", "b": 182, "n": 4, "secs": 29820.9}
+{"stage": "bucket", "b": 182, "tau": [-2, -2, 2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.89, "AB": 315997547, "CD": 297055246, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.04, "secs": 29921.5}
+{"stage": "count", "b": 183, "AB": 314456044, "CD": 298262162, "exp_hits_bucket": 0.0, "secs": 29975.3}
+{"stage": "passes", "b": 183, "n": 4, "secs": 29975.3}
+{"stage": "bucket", "b": 183, "tau": [2, 2, -2, -2, 2, 2, -2, -2, 2], "log2_prob": -52.89, "AB": 314456044, "CD": 298262162, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30076.1}
+{"stage": "count", "b": 184, "AB": 323428092, "CD": 305879838, "exp_hits_bucket": 0.0, "secs": 30120.5}
+{"stage": "passes", "b": 184, "n": 4, "secs": 30120.5}
+{"stage": "bucket", "b": 184, "tau": [2, -2, -2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.89, "AB": 323428092, "CD": 305879838, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30222.9}
+{"stage": "count", "b": 185, "AB": 315947156, "CD": 296993640, "exp_hits_bucket": 0.0, "secs": 30265.4}
+{"stage": "passes", "b": 185, "n": 4, "secs": 30265.4}
+{"stage": "bucket", "b": 185, "tau": [-2, 2, 2, -2, -2, 2, -2, 2, 2], "log2_prob": -52.89, "AB": 315947156, "CD": 296993640, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30366.0}
+{"stage": "count", "b": 186, "AB": 324334503, "CD": 304967180, "exp_hits_bucket": 0.0, "secs": 30418.8}
+{"stage": "passes", "b": 186, "n": 4, "secs": 30418.8}
+{"stage": "bucket", "b": 186, "tau": [2, 2, 2, -2, -2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 324334503, "CD": 304967180, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30523.2}
+{"stage": "count", "b": 187, "AB": 316299674, "CD": 296672298, "exp_hits_bucket": 0.0, "secs": 30580.6}
+{"stage": "passes", "b": 187, "n": 4, "secs": 30580.6}
+{"stage": "bucket", "b": 187, "tau": [2, -2, -2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.89, "AB": 316299674, "CD": 296672298, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30683.4}
+{"stage": "count", "b": 188, "AB": 324855256, "CD": 304596822, "exp_hits_bucket": 0.0, "secs": 30739.9}
+{"stage": "passes", "b": 188, "n": 4, "secs": 30739.9}
+{"stage": "bucket", "b": 188, "tau": [-2, -2, 2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324855256, "CD": 304596822, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30845.7}
+{"stage": "count", "b": 189, "AB": 323316758, "CD": 306084946, "exp_hits_bucket": 0.0, "secs": 30889.6}
+{"stage": "passes", "b": 189, "n": 4, "secs": 30889.6}
+{"stage": "bucket", "b": 189, "tau": [2, -2, 2, 2, 2, 2, -2, -2, -2], "log2_prob": -52.89, "AB": 323316758, "CD": 306084946, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 30994.6}
+{"stage": "count", "b": 190, "AB": 315609128, "CD": 297132834, "exp_hits_bucket": 0.0, "secs": 31037.9}
+{"stage": "passes", "b": 190, "n": 4, "secs": 31037.9}
+{"stage": "bucket", "b": 190, "tau": [-2, 2, -2, -2, 2, -2, 2, 2, 2], "log2_prob": -52.89, "AB": 315609128, "CD": 297132834, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 31139.2}
+{"stage": "count", "b": 191, "AB": 322792167, "CD": 306624662, "exp_hits_bucket": 0.0, "secs": 31192.9}
+{"stage": "passes", "b": 191, "n": 4, "secs": 31192.9}
+{"stage": "bucket", "b": 191, "tau": [-2, 2, 2, -2, 2, 2, 2, -2, -2], "log2_prob": -52.89, "AB": 322792167, "CD": 306624662, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 31298.2}
+{"stage": "count", "b": 192, "AB": 324609801, "CD": 304809480, "exp_hits_bucket": 0.0, "secs": 31353.2}
+{"stage": "passes", "b": 192, "n": 4, "secs": 31353.2}
+{"stage": "bucket", "b": 192, "tau": [-2, 2, -2, 2, -2, 2, 2, 2, -2], "log2_prob": -52.89, "AB": 324609801, "CD": 304809480, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 31456.5}
+{"stage": "count", "b": 193, "AB": 315491741, "CD": 297220024, "exp_hits_bucket": 0.0, "secs": 31509.7}
+{"stage": "passes", "b": 193, "n": 4, "secs": 31509.7}
+{"stage": "bucket", "b": 193, "tau": [-2, 2, 2, -2, 2, -2, -2, 2, 2], "log2_prob": -52.89, "AB": 315491741, "CD": 297220024, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 31610.0}
+{"stage": "count", "b": 194, "AB": 324548583, "CD": 305062766, "exp_hits_bucket": 0.0, "secs": 31654.6}
+{"stage": "passes", "b": 194, "n": 4, "secs": 31654.6}
+{"stage": "bucket", "b": 194, "tau": [-2, -2, 2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 324548583, "CD": 305062766, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 31757.6}
+{"stage": "count", "b": 195, "AB": 323053312, "CD": 306190244, "exp_hits_bucket": 0.0, "secs": 31801.3}
+{"stage": "passes", "b": 195, "n": 4, "secs": 31801.3}
+{"stage": "bucket", "b": 195, "tau": [2, 2, -2, 2, 2, 2, -2, -2, -2], "log2_prob": -52.89, "AB": 323053312, "CD": 306190244, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 31906.5}
+{"stage": "count", "b": 196, "AB": 324483618, "CD": 304970238, "exp_hits_bucket": 0.0, "secs": 31961.3}
+{"stage": "passes", "b": 196, "n": 4, "secs": 31961.3}
+{"stage": "bucket", "b": 196, "tau": [-2, 2, 2, 2, -2, 2, -2, 2, -2], "log2_prob": -52.89, "AB": 324483618, "CD": 304970238, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32064.0}
+{"stage": "count", "b": 197, "AB": 316401397, "CD": 296487368, "exp_hits_bucket": 0.0, "secs": 32118.6}
+{"stage": "passes", "b": 197, "n": 4, "secs": 32118.6}
+{"stage": "bucket", "b": 197, "tau": [2, -2, 2, -2, -2, -2, 2, 2, 2], "log2_prob": -52.89, "AB": 316401397, "CD": 296487368, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32220.3}
+{"stage": "count", "b": 198, "AB": 324198177, "CD": 305104310, "exp_hits_bucket": 0.0, "secs": 32273.8}
+{"stage": "passes", "b": 198, "n": 4, "secs": 32273.8}
+{"stage": "bucket", "b": 198, "tau": [-2, 2, -2, 2, 2, -2, 2, 2, -2], "log2_prob": -52.89, "AB": 324198177, "CD": 305104310, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32379.1}
+{"stage": "count", "b": 199, "AB": 314926669, "CD": 297980054, "exp_hits_bucket": 0.0, "secs": 32424.4}
+{"stage": "passes", "b": 199, "n": 4, "secs": 32424.4}
+{"stage": "bucket", "b": 199, "tau": [-2, -2, 2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.89, "AB": 314926669, "CD": 297980054, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32525.8}
+{"stage": "count", "b": 200, "AB": 324100495, "CD": 305182678, "exp_hits_bucket": 0.0, "secs": 32569.8}
+{"stage": "passes", "b": 200, "n": 4, "secs": 32569.8}
+{"stage": "bucket", "b": 200, "tau": [-2, 2, 2, 2, 2, -2, -2, 2, -2], "log2_prob": -52.89, "AB": 324100495, "CD": 305182678, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32674.7}
+{"stage": "count", "b": 201, "AB": 316140937, "CD": 296796530, "exp_hits_bucket": 0.0, "secs": 32726.9}
+{"stage": "passes", "b": 201, "n": 4, "secs": 32726.9}
+{"stage": "bucket", "b": 201, "tau": [2, 2, -2, -2, -2, -2, 2, 2, 2], "log2_prob": -52.9, "AB": 316140937, "CD": 296796530, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32824.9}
+{"stage": "count", "b": 202, "AB": 316756644, "CD": 296368464, "exp_hits_bucket": 0.0, "secs": 32879.4}
+{"stage": "passes", "b": 202, "n": 4, "secs": 32879.4}
+{"stage": "bucket", "b": 202, "tau": [-2, -2, -2, 2, -2, 2, 2, 2, 2], "log2_prob": -52.9, "AB": 316756644, "CD": 296368464, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 32978.0}
+{"stage": "count", "b": 203, "AB": 323332844, "CD": 306100510, "exp_hits_bucket": 0.0, "secs": 33032.3}
+{"stage": "passes", "b": 203, "n": 4, "secs": 33032.3}
+{"stage": "bucket", "b": 203, "tau": [2, 2, 2, -2, -2, 2, 2, -2, -2], "log2_prob": -52.9, "AB": 323332844, "CD": 306100510, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 33136.2}
+{"stage": "count", "b": 204, "AB": 315181505, "CD": 297739646, "exp_hits_bucket": 0.0, "secs": 33179.0}
+{"stage": "passes", "b": 204, "n": 4, "secs": 33179.0}
+{"stage": "bucket", "b": 204, "tau": [2, -2, -2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 315181505, "CD": 297739646, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 33275.9}
+{"stage": "count", "b": 205, "AB": 316055585, "CD": 296785128, "exp_hits_bucket": 0.0, "secs": 33317.9}
+{"stage": "passes", "b": 205, "n": 4, "secs": 33317.9}
+{"stage": "bucket", "b": 205, "tau": [2, 2, 2, -2, -2, -2, -2, 2, 2], "log2_prob": -52.9, "AB": 316055585, "CD": 296785128, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 33417.5}
+{"stage": "count", "b": 206, "AB": 316617148, "CD": 296593468, "exp_hits_bucket": 0.0, "secs": 33469.6}
+{"stage": "passes", "b": 206, "n": 4, "secs": 33469.6}
+{"stage": "bucket", "b": 206, "tau": [-2, -2, 2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.9, "AB": 316617148, "CD": 296593468, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 33572.2}
+{"stage": "count", "b": 207, "AB": 325020950, "CD": 304450662, "exp_hits_bucket": 0.0, "secs": 33628.1}
+{"stage": "passes", "b": 207, "n": 4, "secs": 33628.1}
+{"stage": "bucket", "b": 207, "tau": [2, -2, 2, 2, -2, -2, 2, 2, -2], "log2_prob": -52.9, "AB": 325020950, "CD": 304450662, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 33730.6}
+{"stage": "count", "b": 208, "AB": 314560023, "CD": 298230278, "exp_hits_bucket": 0.0, "secs": 33783.0}
+{"stage": "passes", "b": 208, "n": 4, "secs": 33783.0}
+{"stage": "bucket", "b": 208, "tau": [-2, 2, -2, -2, 2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 314560023, "CD": 298230278, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 33883.5}
+{"stage": "count", "b": 209, "AB": 316341007, "CD": 296660556, "exp_hits_bucket": 0.0, "secs": 33929.0}
+{"stage": "passes", "b": 209, "n": 4, "secs": 33929.0}
+{"stage": "bucket", "b": 209, "tau": [-2, -2, -2, 2, 2, -2, 2, 2, 2], "log2_prob": -52.9, "AB": 316341007, "CD": 296660556, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34030.9}
+{"stage": "count", "b": 210, "AB": 314556948, "CD": 298208946, "exp_hits_bucket": 0.0, "secs": 34073.0}
+{"stage": "passes", "b": 210, "n": 4, "secs": 34073.0}
+{"stage": "bucket", "b": 210, "tau": [-2, 2, 2, -2, 2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 314556948, "CD": 298208946, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34175.1}
+{"stage": "count", "b": 211, "AB": 322963568, "CD": 306335672, "exp_hits_bucket": 0.0, "secs": 34229.7}
+{"stage": "passes", "b": 211, "n": 4, "secs": 34229.7}
+{"stage": "bucket", "b": 211, "tau": [2, 2, 2, -2, 2, -2, 2, -2, -2], "log2_prob": -52.9, "AB": 322963568, "CD": 306335672, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34333.0}
+{"stage": "count", "b": 212, "AB": 323463719, "CD": 305963104, "exp_hits_bucket": 0.0, "secs": 34389.9}
+{"stage": "passes", "b": 212, "n": 4, "secs": 34389.9}
+{"stage": "bucket", "b": 212, "tau": [-2, -2, 2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.9, "AB": 323463719, "CD": 305963104, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34495.0}
+{"stage": "count", "b": 213, "AB": 316414214, "CD": 296614170, "exp_hits_bucket": 0.0, "secs": 34553.2}
+{"stage": "passes", "b": 213, "n": 4, "secs": 34553.2}
+{"stage": "bucket", "b": 213, "tau": [-2, 2, -2, 2, -2, 2, -2, 2, 2], "log2_prob": -52.9, "AB": 316414214, "CD": 296614170, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34658.0}
+{"stage": "count", "b": 214, "AB": 324775703, "CD": 304674058, "exp_hits_bucket": 0.0, "secs": 34703.6}
+{"stage": "passes", "b": 214, "n": 4, "secs": 34703.6}
+{"stage": "bucket", "b": 214, "tau": [2, 2, -2, 2, -2, -2, 2, 2, -2], "log2_prob": -52.9, "AB": 324775703, "CD": 304674058, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34804.8}
+{"stage": "count", "b": 215, "AB": 316315030, "CD": 296784548, "exp_hits_bucket": 0.0, "secs": 34847.2}
+{"stage": "passes", "b": 215, "n": 4, "secs": 34847.2}
+{"stage": "bucket", "b": 215, "tau": [-2, -2, 2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.9, "AB": 316315030, "CD": 296784548, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 34949.8}
+{"stage": "count", "b": 216, "AB": 315357303, "CD": 297444594, "exp_hits_bucket": 0.0, "secs": 35005.2}
+{"stage": "passes", "b": 216, "n": 4, "secs": 35005.2}
+{"stage": "bucket", "b": 216, "tau": [2, -2, 2, -2, -2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315357303, "CD": 297444594, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 35108.2}
+{"stage": "count", "b": 217, "AB": 324709163, "CD": 304698758, "exp_hits_bucket": 0.0, "secs": 35165.1}
+{"stage": "passes", "b": 217, "n": 4, "secs": 35165.1}
+{"stage": "bucket", "b": 217, "tau": [2, 2, 2, 2, -2, -2, -2, 2, -2], "log2_prob": -52.9, "AB": 324709163, "CD": 304698758, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 35269.4}
+{"stage": "count", "b": 218, "AB": 323141188, "CD": 306148954, "exp_hits_bucket": 0.0, "secs": 35323.3}
+{"stage": "passes", "b": 218, "n": 4, "secs": 35323.3}
+{"stage": "bucket", "b": 218, "tau": [-2, 2, -2, 2, 2, 2, 2, -2, -2], "log2_prob": -52.9, "AB": 323141188, "CD": 306148954, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 35427.2}
+{"stage": "count", "b": 219, "AB": 315917374, "CD": 296812812, "exp_hits_bucket": 0.0, "secs": 35469.6}
+{"stage": "passes", "b": 219, "n": 4, "secs": 35469.6}
+{"stage": "bucket", "b": 219, "tau": [-2, 2, -2, 2, 2, -2, -2, 2, 2], "log2_prob": -52.9, "AB": 315917374, "CD": 296812812, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 35570.5}
+{"stage": "count", "b": 220, "AB": 323016195, "CD": 306298486, "exp_hits_bucket": 0.0, "secs": 35613.8}
+{"stage": "passes", "b": 220, "n": 4, "secs": 35613.8}
+{"stage": "bucket", "b": 220, "tau": [-2, 2, 2, 2, 2, 2, -2, -2, -2], "log2_prob": -52.9, "AB": 323016195, "CD": 306298486, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 35719.6}
+{"stage": "count", "b": 221, "AB": 315156054, "CD": 297682606, "exp_hits_bucket": 0.0, "secs": 35776.0}
+{"stage": "passes", "b": 221, "n": 4, "secs": 35776.0}
+{"stage": "bucket", "b": 221, "tau": [2, 2, -2, -2, -2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315156054, "CD": 297682606, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 35876.7}
+{"stage": "count", "b": 222, "AB": 315075070, "CD": 297763274, "exp_hits_bucket": 0.0, "secs": 35933.3}
+{"stage": "passes", "b": 222, "n": 4, "secs": 35933.3}
+{"stage": "bucket", "b": 222, "tau": [2, -2, 2, -2, 2, -2, 2, -2, 2], "log2_prob": -52.9, "AB": 315075070, "CD": 297763274, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 36035.2}
+{"stage": "count", "b": 223, "AB": 316912548, "CD": 296167982, "exp_hits_bucket": 0.0, "secs": 36090.3}
+{"stage": "passes", "b": 223, "n": 4, "secs": 36090.3}
+{"stage": "bucket", "b": 223, "tau": [2, -2, -2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.9, "AB": 316912548, "CD": 296167982, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 36192.0}
+{"stage": "count", "b": 224, "AB": 315033826, "CD": 297747252, "exp_hits_bucket": 0.0, "secs": 36236.9}
+{"stage": "passes", "b": 224, "n": 4, "secs": 36236.9}
+{"stage": "bucket", "b": 224, "tau": [2, 2, 2, -2, -2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 315033826, "CD": 297747252, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.05, "secs": 36337.3}
+{"stage": "count", "b": 225, "AB": 323990520, "CD": 305318720, "exp_hits_bucket": 0.0, "secs": 36379.1}
+{"stage": "passes", "b": 225, "n": 4, "secs": 36379.1}
+{"stage": "bucket", "b": 225, "tau": [2, -2, 2, 2, -2, 2, 2, -2, -2], "log2_prob": -52.9, "AB": 323990520, "CD": 305318720, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 36483.7}
+{"stage": "count", "b": 226, "AB": 316802987, "CD": 296237498, "exp_hits_bucket": 0.0, "secs": 36539.1}
+{"stage": "passes", "b": 226, "n": 4, "secs": 36539.1}
+{"stage": "bucket", "b": 226, "tau": [2, -2, 2, 2, -2, -2, -2, 2, 2], "log2_prob": -52.9, "AB": 316802987, "CD": 296237498, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 36644.4}
+{"stage": "count", "b": 227, "AB": 314659672, "CD": 298011922, "exp_hits_bucket": 0.0, "secs": 36699.3}
+{"stage": "passes", "b": 227, "n": 4, "secs": 36699.3}
+{"stage": "bucket", "b": 227, "tau": [2, 2, -2, -2, 2, -2, 2, -2, 2], "log2_prob": -52.9, "AB": 314659672, "CD": 298011922, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 36798.0}
+{"stage": "count", "b": 228, "AB": 315297359, "CD": 297552770, "exp_hits_bucket": 0.0, "secs": 36851.8}
+{"stage": "passes", "b": 228, "n": 4, "secs": 36851.8}
+{"stage": "bucket", "b": 228, "tau": [-2, -2, -2, 2, 2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315297359, "CD": 297552770, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 36953.4}
+{"stage": "count", "b": 229, "AB": 316244327, "CD": 296683496, "exp_hits_bucket": 0.0, "secs": 36998.6}
+{"stage": "passes", "b": 229, "n": 4, "secs": 36998.6}
+{"stage": "bucket", "b": 229, "tau": [-2, 2, 2, -2, -2, -2, 2, 2, 2], "log2_prob": -52.9, "AB": 316244327, "CD": 296683496, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 37097.7}
+{"stage": "count", "b": 230, "AB": 323789370, "CD": 305641192, "exp_hits_bucket": 0.0, "secs": 37139.2}
+{"stage": "passes", "b": 230, "n": 4, "secs": 37139.2}
+{"stage": "bucket", "b": 230, "tau": [2, 2, -2, 2, -2, 2, 2, -2, -2], "log2_prob": -52.9, "AB": 323789370, "CD": 305641192, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 37246.5}
+{"stage": "count", "b": 231, "AB": 314629628, "CD": 297976730, "exp_hits_bucket": 0.0, "secs": 37301.2}
+{"stage": "passes", "b": 231, "n": 4, "secs": 37301.2}
+{"stage": "bucket", "b": 231, "tau": [2, 2, 2, -2, 2, -2, -2, -2, 2], "log2_prob": -52.9, "AB": 314629628, "CD": 297976730, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 37403.2}
+{"stage": "count", "b": 232, "AB": 315253333, "CD": 297733260, "exp_hits_bucket": 0.0, "secs": 37460.2}
+{"stage": "passes", "b": 232, "n": 4, "secs": 37460.2}
+{"stage": "bucket", "b": 232, "tau": [-2, -2, 2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 315253333, "CD": 297733260, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 37563.8}
+{"stage": "count", "b": 233, "AB": 323656314, "CD": 305675030, "exp_hits_bucket": 0.0, "secs": 37620.0}
+{"stage": "passes", "b": 233, "n": 4, "secs": 37620.0}
+{"stage": "bucket", "b": 233, "tau": [2, -2, 2, 2, 2, -2, 2, -2, -2], "log2_prob": -52.9, "AB": 323656314, "CD": 305675030, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 37724.7}
+{"stage": "count", "b": 234, "AB": 316569088, "CD": 296394218, "exp_hits_bucket": 0.0, "secs": 37769.8}
+{"stage": "passes", "b": 234, "n": 4, "secs": 37769.8}
+{"stage": "bucket", "b": 234, "tau": [2, 2, -2, 2, -2, -2, -2, 2, 2], "log2_prob": -52.9, "AB": 316569088, "CD": 296394218, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 37870.0}
+{"stage": "count", "b": 235, "AB": 323611178, "CD": 305705420, "exp_hits_bucket": 0.0, "secs": 37913.4}
+{"stage": "passes", "b": 235, "n": 4, "secs": 37913.4}
+{"stage": "bucket", "b": 235, "tau": [2, 2, 2, 2, -2, 2, -2, -2, -2], "log2_prob": -52.9, "AB": 323611178, "CD": 305705420, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38019.9}
+{"stage": "count", "b": 236, "AB": 314879661, "CD": 297779826, "exp_hits_bucket": 0.0, "secs": 38073.6}
+{"stage": "passes", "b": 236, "n": 4, "secs": 38073.6}
+{"stage": "bucket", "b": 236, "tau": [-2, 2, -2, 2, 2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 314879661, "CD": 297779826, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38177.3}
+{"stage": "count", "b": 237, "AB": 323343463, "CD": 305838880, "exp_hits_bucket": 0.0, "secs": 38234.1}
+{"stage": "passes", "b": 237, "n": 4, "secs": 38234.1}
+{"stage": "bucket", "b": 237, "tau": [2, 2, -2, 2, 2, -2, 2, -2, -2], "log2_prob": -52.9, "AB": 323343463, "CD": 305838880, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38339.3}
+{"stage": "count", "b": 238, "AB": 324853788, "CD": 304620638, "exp_hits_bucket": 0.0, "secs": 38391.7}
+{"stage": "passes", "b": 238, "n": 4, "secs": 38391.7}
+{"stage": "bucket", "b": 238, "tau": [-2, 2, 2, 2, -2, -2, 2, 2, -2], "log2_prob": -52.9, "AB": 324853788, "CD": 304620638, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38494.5}
+{"stage": "count", "b": 239, "AB": 323218926, "CD": 305922398, "exp_hits_bucket": 0.0, "secs": 38537.8}
+{"stage": "passes", "b": 239, "n": 4, "secs": 38537.8}
+{"stage": "bucket", "b": 239, "tau": [2, 2, 2, 2, 2, -2, -2, -2, -2], "log2_prob": -52.9, "AB": 323218926, "CD": 305922398, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38639.5}
+{"stage": "count", "b": 240, "AB": 315894840, "CD": 296995876, "exp_hits_bucket": 0.0, "secs": 38681.3}
+{"stage": "passes", "b": 240, "n": 4, "secs": 38681.3}
+{"stage": "bucket", "b": 240, "tau": [2, -2, -2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315894840, "CD": 296995876, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38783.3}
+{"stage": "count", "b": 241, "AB": 315705078, "CD": 297204398, "exp_hits_bucket": 0.0, "secs": 38836.9}
+{"stage": "passes", "b": 241, "n": 4, "secs": 38836.9}
+{"stage": "bucket", "b": 241, "tau": [2, -2, 2, 2, -2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 315705078, "CD": 297204398, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 38938.1}
+{"stage": "count", "b": 242, "AB": 315197481, "CD": 297675764, "exp_hits_bucket": 0.0, "secs": 38991.9}
+{"stage": "passes", "b": 242, "n": 4, "secs": 38991.9}
+{"stage": "bucket", "b": 242, "tau": [-2, 2, 2, -2, -2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315197481, "CD": 297675764, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39093.1}
+{"stage": "count", "b": 243, "AB": 315407682, "CD": 297371826, "exp_hits_bucket": 0.0, "secs": 39146.1}
+{"stage": "passes", "b": 243, "n": 4, "secs": 39146.1}
+{"stage": "bucket", "b": 243, "tau": [2, -2, -2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.9, "AB": 315407682, "CD": 297371826, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39247.2}
+{"stage": "count", "b": 244, "AB": 316903610, "CD": 296278410, "exp_hits_bucket": 0.0, "secs": 39290.9}
+{"stage": "passes", "b": 244, "n": 4, "secs": 39290.9}
+{"stage": "bucket", "b": 244, "tau": [-2, -2, 2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.9, "AB": 316903610, "CD": 296278410, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39388.4}
+{"stage": "count", "b": 245, "AB": 315566609, "CD": 297350430, "exp_hits_bucket": 0.0, "secs": 39428.9}
+{"stage": "passes", "b": 245, "n": 4, "secs": 39428.9}
+{"stage": "bucket", "b": 245, "tau": [2, 2, -2, 2, -2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 315566609, "CD": 297350430, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39529.5}
+{"stage": "count", "b": 246, "AB": 315432027, "CD": 297397542, "exp_hits_bucket": 0.0, "secs": 39581.9}
+{"stage": "passes", "b": 246, "n": 4, "secs": 39581.9}
+{"stage": "bucket", "b": 246, "tau": [2, -2, 2, 2, 2, -2, -2, -2, 2], "log2_prob": -52.9, "AB": 315432027, "CD": 297397542, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39680.9}
+{"stage": "count", "b": 247, "AB": 314810673, "CD": 297906170, "exp_hits_bucket": 0.0, "secs": 39737.3}
+{"stage": "passes", "b": 247, "n": 4, "secs": 39737.3}
+{"stage": "bucket", "b": 247, "tau": [-2, 2, 2, -2, 2, -2, 2, -2, 2], "log2_prob": -52.9, "AB": 314810673, "CD": 297906170, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39837.5}
+{"stage": "count", "b": 248, "AB": 316677172, "CD": 296392186, "exp_hits_bucket": 0.0, "secs": 39891.3}
+{"stage": "passes", "b": 248, "n": 4, "secs": 39891.3}
+{"stage": "bucket", "b": 248, "tau": [-2, 2, -2, 2, -2, -2, 2, 2, 2], "log2_prob": -52.9, "AB": 316677172, "CD": 296392186, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 39994.7}
+{"stage": "count", "b": 249, "AB": 315089013, "CD": 297488976, "exp_hits_bucket": 0.0, "secs": 40038.1}
+{"stage": "passes", "b": 249, "n": 4, "secs": 40038.1}
+{"stage": "bucket", "b": 249, "tau": [2, 2, -2, 2, 2, -2, -2, -2, 2], "log2_prob": -52.9, "AB": 315089013, "CD": 297488976, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 40135.1}
+{"stage": "count", "b": 250, "AB": 323723347, "CD": 305672584, "exp_hits_bucket": 0.0, "secs": 40176.0}
+{"stage": "passes", "b": 250, "n": 4, "secs": 40176.0}
+{"stage": "bucket", "b": 250, "tau": [-2, 2, 2, 2, -2, 2, 2, -2, -2], "log2_prob": -52.9, "AB": 323723347, "CD": 305672584, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 40281.2}
+{"stage": "count", "b": 251, "AB": 316520821, "CD": 296462776, "exp_hits_bucket": 0.0, "secs": 40333.7}
+{"stage": "passes", "b": 251, "n": 4, "secs": 40333.7}
+{"stage": "bucket", "b": 251, "tau": [-2, 2, 2, 2, -2, -2, -2, 2, 2], "log2_prob": -52.9, "AB": 316520821, "CD": 296462776, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 40433.4}
+{"stage": "count", "b": 252, "AB": 323407213, "CD": 305843874, "exp_hits_bucket": 0.0, "secs": 40489.6}
+{"stage": "passes", "b": 252, "n": 4, "secs": 40489.6}
+{"stage": "bucket", "b": 252, "tau": [-2, 2, 2, 2, 2, -2, 2, -2, -2], "log2_prob": -52.9, "AB": 323407213, "CD": 305843874, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 40595.2}
+{"stage": "count", "b": 253, "AB": 315352845, "CD": 297478718, "exp_hits_bucket": 0.0, "secs": 40648.8}
+{"stage": "passes", "b": 253, "n": 4, "secs": 40648.8}
+{"stage": "bucket", "b": 253, "tau": [2, 2, 2, -2, -2, -2, 2, -2, 2], "log2_prob": -52.9, "AB": 315352845, "CD": 297478718, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 40749.4}
+{"stage": "count", "b": 254, "AB": 315905290, "CD": 297096586, "exp_hits_bucket": 0.0, "secs": 40794.4}
+{"stage": "passes", "b": 254, "n": 4, "secs": 40794.4}
+{"stage": "bucket", "b": 254, "tau": [-2, -2, 2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315905290, "CD": 297096586, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 40892.8}
+{"stage": "count", "b": 255, "AB": 315658918, "CD": 297222616, "exp_hits_bucket": 0.0, "secs": 40935.1}
+{"stage": "passes", "b": 255, "n": 4, "secs": 40935.1}
+{"stage": "bucket", "b": 255, "tau": [-2, 2, -2, 2, -2, 2, 2, -2, 2], "log2_prob": -52.9, "AB": 315658918, "CD": 297222616, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41040.0}
+{"stage": "count", "b": 256, "AB": 315546070, "CD": 297375230, "exp_hits_bucket": 0.0, "secs": 41094.9}
+{"stage": "passes", "b": 256, "n": 4, "secs": 41094.9}
+{"stage": "bucket", "b": 256, "tau": [-2, -2, 2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.9, "AB": 315546070, "CD": 297375230, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41198.0}
+{"stage": "count", "b": 257, "AB": 315515562, "CD": 297366170, "exp_hits_bucket": 0.0, "secs": 41256.0}
+{"stage": "passes", "b": 257, "n": 4, "secs": 41256.0}
+{"stage": "bucket", "b": 257, "tau": [-2, 2, 2, 2, -2, 2, -2, -2, 2], "log2_prob": -52.9, "AB": 315515562, "CD": 297366170, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41358.0}
+{"stage": "count", "b": 258, "AB": 323981877, "CD": 305402906, "exp_hits_bucket": 0.0, "secs": 41411.6}
+{"stage": "passes", "b": 258, "n": 4, "secs": 41411.6}
+{"stage": "bucket", "b": 258, "tau": [2, 2, 2, 2, -2, -2, 2, -2, -2], "log2_prob": -52.9, "AB": 323981877, "CD": 305402906, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41517.8}
+{"stage": "count", "b": 259, "AB": 315111212, "CD": 297490182, "exp_hits_bucket": 0.0, "secs": 41563.9}
+{"stage": "passes", "b": 259, "n": 4, "secs": 41563.9}
+{"stage": "bucket", "b": 259, "tau": [-2, 2, -2, 2, 2, -2, 2, -2, 2], "log2_prob": -52.91, "AB": 315111212, "CD": 297490182, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41664.1}
+{"stage": "count", "b": 260, "AB": 315040634, "CD": 297603812, "exp_hits_bucket": 0.0, "secs": 41705.4}
+{"stage": "passes", "b": 260, "n": 4, "secs": 41705.4}
+{"stage": "bucket", "b": 260, "tau": [-2, 2, 2, 2, 2, -2, -2, -2, 2], "log2_prob": -52.91, "AB": 315040634, "CD": 297603812, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41804.4}
+{"stage": "count", "b": 261, "AB": 316043120, "CD": 296862640, "exp_hits_bucket": 0.0, "secs": 41857.1}
+{"stage": "passes", "b": 261, "n": 4, "secs": 41857.1}
+{"stage": "bucket", "b": 261, "tau": [2, -2, 2, 2, -2, -2, 2, -2, 2], "log2_prob": -52.91, "AB": 316043120, "CD": 296862640, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 41958.6}
+{"stage": "count", "b": 262, "AB": 315801517, "CD": 297093258, "exp_hits_bucket": 0.0, "secs": 42016.3}
+{"stage": "passes", "b": 262, "n": 4, "secs": 42016.3}
+{"stage": "bucket", "b": 262, "tau": [2, 2, -2, 2, -2, -2, 2, -2, 2], "log2_prob": -52.91, "AB": 315801517, "CD": 297093258, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 42117.6}
+{"stage": "count", "b": 263, "AB": 315676930, "CD": 297109386, "exp_hits_bucket": 0.0, "secs": 42174.0}
+{"stage": "passes", "b": 263, "n": 4, "secs": 42174.0}
+{"stage": "bucket", "b": 263, "tau": [2, 2, 2, 2, -2, -2, -2, -2, 2], "log2_prob": -52.91, "AB": 315676930, "CD": 297109386, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 42277.7}
+{"stage": "count", "b": 264, "AB": 315848046, "CD": 297029752, "exp_hits_bucket": 0.0, "secs": 42322.3}
+{"stage": "passes", "b": 264, "n": 4, "secs": 42322.3}
+{"stage": "bucket", "b": 264, "tau": [-2, 2, 2, 2, -2, -2, 2, -2, 2], "log2_prob": -52.91, "AB": 315848046, "CD": 297029752, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 42421.4}
+{"stage": "count", "b": 265, "AB": 335993689, "CD": 318958804, "exp_hits_bucket": 0.0, "secs": 42464.2}
+{"stage": "passes", "b": 265, "n": 4, "secs": 42464.2}
+{"stage": "bucket", "b": 265, "tau": [2, 2, 2, -2, 2, 2, 2, 2, 6], "log2_prob": -52.91, "AB": 335993689, "CD": 318958804, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 42569.8}
+{"stage": "count", "b": 266, "AB": 336651902, "CD": 318195450, "exp_hits_bucket": 0.0, "secs": 42624.3}
+{"stage": "passes", "b": 266, "n": 4, "secs": 42624.3}
+{"stage": "bucket", "b": 266, "tau": [2, -2, 2, 2, 2, 2, 2, 2, 6], "log2_prob": -52.91, "AB": 336651902, "CD": 318195450, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 42729.9}
+{"stage": "count", "b": 267, "AB": 336372977, "CD": 318518944, "exp_hits_bucket": 0.0, "secs": 42785.6}
+{"stage": "passes", "b": 267, "n": 4, "secs": 42785.6}
+{"stage": "bucket", "b": 267, "tau": [2, 2, -2, 2, 2, 2, 2, 2, 6], "log2_prob": -52.91, "AB": 336372977, "CD": 318518944, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.06, "secs": 42889.2}
+{"stage": "count", "b": 268, "AB": 309822171, "CD": 295059660, "exp_hits_bucket": 0.0, "secs": 42942.8}
+{"stage": "passes", "b": 268, "n": 4, "secs": 42942.8}
+{"stage": "bucket", "b": 268, "tau": [6, 2, 2, -2, 2, 2, 2, 2, 2], "log2_prob": -52.91, "AB": 309822171, "CD": 295059660, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43043.6}
+{"stage": "count", "b": 269, "AB": 336321834, "CD": 318535928, "exp_hits_bucket": 0.0, "secs": 43088.4}
+{"stage": "passes", "b": 269, "n": 4, "secs": 43088.4}
+{"stage": "bucket", "b": 269, "tau": [2, 2, 2, 2, 2, 2, -2, 2, 6], "log2_prob": -52.91, "AB": 336321834, "CD": 318535928, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43195.2}
+{"stage": "count", "b": 270, "AB": 312463213, "CD": 297645202, "exp_hits_bucket": 0.0, "secs": 43236.3}
+{"stage": "passes", "b": 270, "n": 4, "secs": 43236.3}
+{"stage": "bucket", "b": 270, "tau": [6, 2, 2, 2, 2, 2, 2, 2, -2], "log2_prob": -52.92, "AB": 312463213, "CD": 297645202, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43340.1}
+{"stage": "count", "b": 271, "AB": 312800145, "CD": 297080814, "exp_hits_bucket": 0.0, "secs": 43393.5}
+{"stage": "passes", "b": 271, "n": 4, "secs": 43393.5}
+{"stage": "bucket", "b": 271, "tau": [2, 2, 2, 6, 2, 2, 2, 2, -2], "log2_prob": -52.92, "AB": 312800145, "CD": 297080814, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43494.4}
+{"stage": "count", "b": 272, "AB": 310186832, "CD": 294338168, "exp_hits_bucket": 0.0, "secs": 43549.9}
+{"stage": "passes", "b": 272, "n": 4, "secs": 43549.9}
+{"stage": "bucket", "b": 272, "tau": [6, -2, 2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.92, "AB": 310186832, "CD": 294338168, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43654.5}
+{"stage": "count", "b": 273, "AB": 310686764, "CD": 293904282, "exp_hits_bucket": 0.0, "secs": 43707.5}
+{"stage": "passes", "b": 273, "n": 4, "secs": 43707.5}
+{"stage": "bucket", "b": 273, "tau": [2, -2, 2, 6, 2, 2, 2, 2, 2], "log2_prob": -52.92, "AB": 310686764, "CD": 293904282, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43807.7}
+{"stage": "count", "b": 274, "AB": 336372003, "CD": 318453358, "exp_hits_bucket": 0.0, "secs": 43851.0}
+{"stage": "passes", "b": 274, "n": 4, "secs": 43851.0}
+{"stage": "bucket", "b": 274, "tau": [-2, 2, 2, 2, 2, 2, 2, 2, 6], "log2_prob": -52.92, "AB": 336372003, "CD": 318453358, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 43955.4}
+{"stage": "count", "b": 275, "AB": 310114339, "CD": 294736568, "exp_hits_bucket": 0.0, "secs": 43996.3}
+{"stage": "passes", "b": 275, "n": 4, "secs": 43996.3}
+{"stage": "bucket", "b": 275, "tau": [6, 2, -2, 2, 2, 2, 2, 2, 2], "log2_prob": -52.92, "AB": 310114339, "CD": 294736568, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 44095.2}
+{"stage": "count", "b": 276, "AB": 310382280, "CD": 294251044, "exp_hits_bucket": 0.0, "secs": 44148.2}
+{"stage": "passes", "b": 276, "n": 4, "secs": 44148.2}
+{"stage": "bucket", "b": 276, "tau": [2, 2, -2, 6, 2, 2, 2, 2, 2], "log2_prob": -52.92, "AB": 310382280, "CD": 294251044, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 44246.9}
+{"stage": "count", "b": 277, "AB": 310059401, "CD": 294796038, "exp_hits_bucket": 0.0, "secs": 44303.8}
+{"stage": "passes", "b": 277, "n": 4, "secs": 44303.8}
+{"stage": "bucket", "b": 277, "tau": [6, 2, 2, 2, 2, 2, -2, 2, 2], "log2_prob": -52.92, "AB": 310059401, "CD": 294796038, "cand": 0, "solutions": 0, "total": 0, "exp_hits_est": 0.0, "exp_cum": 0.07, "secs": 44403.0}
