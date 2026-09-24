@@ -105,13 +105,13 @@ def compression_feasible(R,t,maxstates=6e7):
     M=np.zeros((t,R.r),np.int64)
     for q,o in enumerate(R.orbits):
         for x in o: M[x%t,q]+=1
-    off=m//t; base=2*off+1                                 # xbar_c in [-off,off]
-    enc=lambda X: ((X+off)*(base**np.arange(t))).sum(-1)
-    st=np.array([0],np.int64); cur=np.zeros((1,t),np.int64)
+    cur=np.zeros((1,t),np.int16)
     for q in range(R.r):
-        col=M[:,q]; cur=np.concatenate([cur+col,cur-col]); key=enc(cur)
+        col=M[:,q].astype(np.int16); cur=np.ascontiguousarray(np.concatenate([cur+col,cur-col]))
+        key=cur.view(np.dtype((np.void,2*t))).ravel()
         _,i=np.unique(key,return_index=True); cur=cur[i]
         if len(cur)>maxstates: return None,len(cur)
+    cur=cur.astype(np.int64)
     rs=cur.sum(1); j=np.arange(1,t); E=np.exp(-2j*np.pi*np.outer(j,np.arange(t))/t)
     B=4*m+4; out={}
     for a in (2,0):
