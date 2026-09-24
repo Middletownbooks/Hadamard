@@ -32,7 +32,7 @@ for I in autQ:
         while not np.array_equal(cur,np.arange(m)):
             grp.append(cur); cur=cur[P]
             if len(grp)>400: break
-        key=frozenset(tuple(g[:min(m,64)]) for g in grp)
+        key=frozenset(tuple(g) for g in grp)
         if key in seen: continue
         # orbits
         lab=-np.ones(m,int); r=0
@@ -41,6 +41,34 @@ for I in autQ:
                 for g in grp: lab[g[x]]=r
                 r+=1
         seen[key]=(len(grp),r,lab,grp)
+# 2-generated (non-cyclic) subgroups: closure of pairs of cyclic groups, order <= GMAX
+GMAX=int(os.environ.get('GMAX','48'))
+cyc=[(d_,grp) for (d_,r_,lab_,grp) in seen.values() if d_<=24]
+gens=[grp[1] for d_,grp in cyc if d_>1]
+full={frozenset(tuple(g) for g in grp) for (_,_,_,grp) in seen.values()}
+for i in range(len(gens)):
+    for j in range(i+1,len(gens)):
+        a,b_=gens[i],gens[j]
+        if not np.array_equal(a[b_],b_[a]): continue
+        els={tuple(range(m))}; frontier=[np.arange(m)]
+        while frontier and len(els)<=GMAX:
+            nf=[]
+            for x in frontier:
+                for gg in (a,b_):
+                    y=tuple(x[gg])
+                    if y not in els: els.add(y); nf.append(np.array(y))
+            frontier=nf
+        if len(els)>GMAX: continue
+        key=frozenset(els)
+        if key in full: continue
+        full.add(key); grp=[np.array(e) for e in els]
+        lab=-np.ones(m,int); r=0
+        for x in range(m):
+            if lab[x]<0:
+                for g in grp: lab[g[x]]=r
+                r+=1
+        seen[key]=(len(grp),r,lab,grp)
+print(json.dumps(dict(n_symmetry_groups=len(seen))),flush=True)
 neg=idx(-co)
 Hset=set(idx(np.concatenate([np.zeros((h,len(Q)),int),np.arange(h)[:,None]],axis=1)).tolist())
 def lagclasses(grp):
