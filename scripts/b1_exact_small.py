@@ -26,5 +26,6 @@ def exact(v,dwant,rwant):
         for vec,c in AB.items():
             need=tuple(t-x for t,x in zip(tgt,vec)); sol+=c*CD.get(need,0)
         return dict(v=v,d=dwant,r=r,N2=N2,N0=N0,distinct=(len(H2),len(H0)),exact_solutions=int(sol))
-for v,d,r in [(167,41,6),(179,44,6),(179,22,10),(179,11,18)]:
+if __name__=='__main__':
+  for v,d,r in [(167,41,6),(179,44,6),(179,22,10),(179,11,18)]:
     print(json.dumps(exact(v,d,r)),flush=True)

@@ -79,7 +79,7 @@ def cost(U,m,rng):
     n=-lp/log(2); lE=(log2(N2)+3*log2(N0)-n) if N0 and N2 else None
     return dict(r=r,L=L,dims=D,n_cond=round(float(n),1),log2E=None if lE is None else round(float(lE),1),null_mismatch=round(null_mis,2))
 rng=np.random.default_rng(0)
-for v in [int(x) for x in sys.argv[1:]]:
+for v in ([int(x) for x in sys.argv[1:]] if __name__=='__main__' else []):
     m=v-1; res=[]
     for U in subgroups(m):
         if len(U)==1: continue
