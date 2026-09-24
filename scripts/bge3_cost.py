@@ -83,7 +83,7 @@ def lagclasses(grp):
             reps.append(x)
     return np.array(reps)
 def profiles(sz):
-    ss=signed_sums(list(sz)); A=sorted(a for a in ss if a>=0 and (a-m)%2==0)
+    ss=signed_sums(list(sz)); A=sorted(a for a in ss if a>=0 and (a-m)%2==0 and a*a<=4*v)
     out=[]
     for p in itertools.combinations_with_replacement(A,4):
         if sum(x*x for x in p)==4*v: out.append(p)
@@ -95,22 +95,22 @@ for key,(d,r,lab,grp,abel) in sorted(seen.items(),key=lambda kv:(kv[1][1],-kv[1]
     sz=np.bincount(lab); reps=lagclasses(grp); L=len(reps)
     tgt=np.array([-4*b if int(x) in Hset else 4 for x in reps],float)
     profs=profiles(sz)
+    profs=sorted(profs,key=lambda p:-sum(log2(max(count_rowsum(list(sz),a),1)) for a in p))[:int(os.environ.get('PROFMAX','6'))]
     if not profs: res.append(dict(d=d,r=r,L=L,note='no row-sum profile')); continue
     stats={}
     def st(a):
         if a in stats: return stats[a]
-        from collections import defaultdict
-        W=[defaultdict(int) for _ in range(r+1)]; W[r][0]=1
+        # vectorised exact sampling: P[i][s] = fraction of sign patterns on orbits i.. with partial sum s
+        S0=int(sz.sum()); off=S0; P=np.zeros((r+1,2*S0+1)); P[r][off]=1.0
         for i in range(r-1,-1,-1):
-            for s_,cnt in W[i+1].items(): W[i][s_+int(sz[i])]+=cnt; W[i][s_-int(sz[i])]+=cnt
-        if W[0].get(a,0)==0: stats[a]=None; return None
-        Y=np.empty((NS,r),int)
-        for t in range(NS):
-            rem=a
-            for i in range(r):
-                p1=W[i+1].get(rem-int(sz[i]),0); p0=W[i+1].get(rem+int(sz[i]),0)
-                if rng.random()*(p1+p0)<p1: Y[t,i]=1; rem-=int(sz[i])
-                else: Y[t,i]=-1; rem+=int(sz[i])
+            z=int(sz[i]); P[i][z:]+=0.5*P[i+1][:2*S0+1-z]; P[i][:2*S0+1-z]+=0.5*P[i+1][z:]
+        if abs(a)>S0 or P[0][a+off]==0: stats[a]=None; return None
+        rem=np.full(NS,a); Y=np.empty((NS,r),int)
+        for i in range(r):
+            z=int(sz[i]); i1=rem-z+off; i0=rem+z+off
+            p1=np.where((i1>=0)&(i1<=2*S0),P[i+1][np.clip(i1,0,2*S0)],0.0)
+            p0=np.where((i0>=0)&(i0<=2*S0),P[i+1][np.clip(i0,0,2*S0)],0.0)
+            y=np.where(rng.random(NS)*(p1+p0)<p1,1,-1); Y[:,i]=y; rem=rem-y*z
         out=Y
         X=np.array(out)[:,lab].reshape((-1,)+tuple(mods)).astype(float)
         F=np.fft.fftn(X,axes=tuple(range(1,len(mods)+1))); Pf=np.fft.ifftn(np.abs(F)**2,axes=tuple(range(1,len(mods)+1))).real

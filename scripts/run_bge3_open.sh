@@ -1,24 +1,80 @@
 #!/bin/bash
-# queue: v c Q  (rule-picked border option for each open order; all abelian Q of order c)
+# b>=3 costing queue over open orders: every admissible even c <= 24 with c | v+1, every abelian Q of order c
 cd /home/user/Hadamard
 cat > /tmp/bge3_jobs.txt <<'J'
-523 4 2,2
-523 4 4
-647 4 2,2
-647 4 4
-719 6 6
-599 6 6
-739 4 2,2
-739 4 4
-659 4 2,2
-659 4 4
-643 4 2,2
-643 4 4
 515 4 2,2
 515 4 4
-669 10 10
-573 14 14
+515 6 6
+515 12 2,6
+515 12 12
+523 4 2,2
+523 4 4
+571 4 2,2
+571 4 4
 571 22 22
+573 14 14
+599 6 6
+599 8 2,2,2
+599 8 2,4
+599 8 8
+599 10 10
+599 12 2,6
+599 12 12
+599 20 2,10
+599 20 20
+599 24 2,2,6
+599 24 2,12
+599 24 24
+643 4 2,2
+643 4 4
+643 14 14
+647 4 2,2
+647 4 4
+647 6 6
+647 8 2,2,2
+647 8 2,4
+647 8 8
+647 12 2,6
+647 12 12
+647 18 18
+647 18 3,6
+647 24 2,2,6
+647 24 2,12
+647 24 24
+659 4 2,2
+659 4 4
+659 6 6
+659 10 10
+659 12 2,6
+659 12 12
+659 20 2,10
+659 20 20
+659 22 22
+669 10 10
+719 4 2,2
+719 4 4
+719 6 6
+719 8 2,2,2
+719 8 2,4
+719 8 8
+719 10 10
+719 12 2,6
+719 12 12
+719 16 2,2,2,2
+719 16 2,2,4
+719 16 4,4
+719 16 2,8
+719 16 16
+719 18 18
+719 18 3,6
+719 20 2,10
+719 20 20
 721 38 38
+739 4 2,2
+739 4 4
+739 10 10
+739 20 2,10
+739 20 20
 J
-cat /tmp/bge3_jobs.txt | xargs -P3 -L1 bash -c 'NS=800 STOPAFTER=3 python3 -u scripts/bge3_cost.py $0 $1 $2 30 220 > logs/bge3_cost_open/v$0_c$1_Q${2//,/x}.log 2>&1'
+cat /tmp/bge3_jobs.txt | xargs -P3 -L1 bash -c 'NS=1500 STOPAFTER=3 timeout 5400 python3 -u scripts/bge3_cost.py $0 $1 $2 30 260 > logs/bge3_cost_open/v$0_c$1_Q${2//,/x}.log 2>&1'
+echo QUEUE_DONE > logs/bge3_cost_open/_done
