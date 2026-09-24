@@ -191,3 +191,16 @@ Together with 13/13 failures at 40M flips, the S3 time-to-solution at v=151 is �
 - **S3 cost at v=151** rests on 3 long runs (67M, 218M, >400M flips), so the median is only roughly known.
 - **The MITM baseline is my own crude numpy implementation.** A tuned MITM would be faster, which only strengthens the stop-rule conclusion.
 - **GL(3,2)-twisted automorphisms for the b≥2 groups were not searched.** The d reported for 347, 359 and 479 covers scalar multipliers only.
+
+## 7. v=523 search log (negative results so far)
+
+Each "hits/bucket" figure is the join's own Gaussian expected-hit estimate for that run [E]. All counts are measured [M].
+
+| Run | Profile | Pools | Buckets done | est. hits/bucket | Expected hits | Found |
+|---|---|---|---|---|---|---|
+| Local | 35,17,17,17 | 2^26 | 402 | ~3e-4 | ~0.10–0.12 | 0 |
+| Kaggle A (run 1) | 35,17,17,17 | 2^27 | 36 | ~0.0026 | ~0.09 | 0 |
+| Kaggle B (run 1) | 37,19,19,1 | 2^27 | 37 | ~0.0032 | ~0.12 | 0 |
+| **Total** | | | | | **~0.3** | **0** |
+
+With ~0.3 hits expected in total, a run of zeros has P ≈ e^−0.3 ≈ 0.74 under the model. The zeros therefore neither refute the model nor tell us anything about v=523 yet. For comparison, the v=487 control found 2 solutions in ~40 buckets at ~0.034 hits/bucket.
