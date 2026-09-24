@@ -266,14 +266,20 @@ def bloom_match(KA,KC,logm):
 def main():
     v,d,prof,k=C['v'],C['d'],tuple(C['profile']),C['k']
     OUT=C['OUT']; os.makedirs(OUT,exist_ok=True)
+    if C['NINST']<1: raise SystemExit('NINST must be >= 1')
+    if C['INSTANCE']>=C['NINST']:
+        print(f"NOTE: INSTANCE={C['INSTANCE']} >= NINST={C['NINST']}: this instance takes buckets b % NINST == {C['INSTANCE']%C['NINST']} "
+              f"(with NINST=1 that is ALL buckets, on this instance's own independent pools).",flush=True)
     gdir=os.path.join(C['GEN_DIR'],f'gen_inst{C["INSTANCE"]}'); cache=os.path.join(OUT,f'cache_inst{C["INSTANCE"]}')
     if C['RESUME_FROM']:
-        for sub in (f'cache_inst{C["INSTANCE"]}',):
-            src=os.path.join(C['RESUME_FROM'],sub)
-            if os.path.isdir(src) and not os.path.isdir(os.path.join(OUT,sub)): shutil.copytree(src,os.path.join(OUT,sub))
+        src=os.path.join(C['RESUME_FROM'],f'cache_inst{C["INSTANCE"]}')
+        if os.path.isdir(src) and glob.glob(os.path.join(src,'h_*.npy')):
+            cache=src                     # read the finished pools/prep in place (read-only input dataset): no copy, no regeneration
+        elif os.path.isdir(src) and not os.path.isdir(cache): shutil.copytree(src,cache)
         for f in glob.glob(os.path.join(C['RESUME_FROM'],'*.jsonl'))+glob.glob(os.path.join(C['RESUME_FROM'],'solutions_*.txt')):
             if not os.path.exists(os.path.join(OUT,os.path.basename(f))): shutil.copy(f,OUT)
-    os.makedirs(gdir,exist_ok=True); os.makedirs(cache,exist_ok=True)
+    os.makedirs(gdir,exist_ok=True)
+    if not cache.startswith('/kaggle/input'): os.makedirs(cache,exist_ok=True)
     logf=open(os.path.join(OUT,f'log_inst{C["INSTANCE"]}.jsonl'),'a')
     def log(**kw):
         kw['t']=round(time.time()-T_START,1); s=json.dumps(kw); print(s,flush=True); logf.write(s+'\n'); logf.flush()
@@ -342,7 +348,7 @@ def main():
     solf=open(os.path.join(OUT,f'solutions_v{v}.txt'),'a'); nsol=0; exp_cum=0.0; T=300
     A,B,Cc,Dd=[D[a] for a in prof]
     for b,ix in enumerate(buckets):
-        if b%C['NINST']!=C['INSTANCE'] or b in done: continue
+        if b%C['NINST']!=C['INSTANCE']%C['NINST'] or b in done: continue
         if time.time()-T_START>C['max_hours']*3600: log(stage='time_limit'); break
         tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int64)
         nA=partner(A['ch'],tau); oA=np.argsort(nA); nA=nA[oA]

@@ -306,6 +306,10 @@ def bloom_match(KA,KC,logm):
 def main():
     v,d,r,which,k=C['v'],C['d'],C['r'],C['which'],C['k']; m=v-1
     OUT=C['OUT']; os.makedirs(OUT,exist_ok=True)
+    if C['NINST']<1: raise SystemExit('NINST must be >= 1')
+    if C['INSTANCE']>=C['NINST']:
+        print(f"NOTE: INSTANCE={C['INSTANCE']} >= NINST={C['NINST']}: this instance takes buckets b % NINST == {C['INSTANCE']%C['NINST']} "
+              f"(with NINST=1 that is ALL buckets, on this instance's own independent pools).",flush=True)
     if C['RESUME_FROM']:
         for f in glob.glob(os.path.join(C['RESUME_FROM'],'*.jsonl'))+glob.glob(os.path.join(C['RESUME_FROM'],'solutions_*.txt')):
             dst=os.path.join(OUT,os.path.basename(f))
@@ -368,7 +372,7 @@ def main():
     solf=os.path.join(OUT,f'solutions_v{v}.txt'); T=2*m+16; A=Dd[2]; O=Dd[0]
     nsol=0; exp_tot=0.0
     for b,ix in enumerate(buckets):
-        if b%C['NINST']!=C['INSTANCE'] or b in done: continue
+        if b%C['NINST']!=C['INSTANCE']%C['NINST'] or b in done: continue
         if time.time()-T_START>C['max_hours']*3600: log(stage='time_limit'); break
         tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int64)
         nA=keyof(A['ch'],tau,-1,c0); oA=np.argsort(nA); nA=nA[oA]

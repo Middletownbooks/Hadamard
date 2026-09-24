@@ -43,3 +43,21 @@ Raw generator chunks go to `/tmp/kt_gen` and are deleted once pools are built, s
 (≈3.5 GB per row sum at 2^27: A ≈ 7 GB, B ≈ 10.5 GB) plus logs and solutions — under Kaggle's 20 GB output limit.
 Expect per bucket ≈4× the stage-1 work of the 2^26 local run (≈10–15 min/bucket on 4 cores) for ≈16× the hit rate [estimate];
 the local 2^26 run on profile A measured ~3.4 min/bucket and an estimated ~3×10⁻⁴ hits/bucket (unvalidated per-class bits at v=523).
+
+
+## Fix (bucket assignment) — read this if an instance ended right after `"stage": "ready"`
+
+Earlier versions gave bucket `b` to an instance only when `b % NINST == INSTANCE`. With `NINST=1` and `INSTANCE >= 1`
+that matched **no** bucket, so the run finished generation and prep and then ended immediately (`"stage": "end"`,
+0 buckets). Fixed: an instance now takes `b % NINST == INSTANCE % NINST`.
+
+- **Independent parallel runs (recommended):** `NINST=1` and a different `INSTANCE` per notebook. Each instance
+  builds its own pools, seeded by INSTANCE, and works through all buckets best-first on those pools.
+- **Split one pool set:** `NINST=N` and `INSTANCE=0..N-1`. This only makes sense if the instances share pools,
+  which they do not by default.
+
+**Recovering a run that ended at "ready":** its pools and prep are saved in `OUT/cache_inst{INSTANCE}`.
+1. Add that committed output as an input dataset.
+2. Set `RESUME_FROM` to its `kt_*` directory and keep the **same INSTANCE**.
+3. Run the fixed notebook. The cache is read in place, so it skips the multi-hour generation and prep and starts on
+   buckets within minutes.
