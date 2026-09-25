@@ -94,16 +94,15 @@ def solve_A(h,p,u,log=print,max_solutions=200,shift_limit=None):
         rng=np.random.default_rng(3); W=rng.integers(1,2**63,size=len(reps),dtype=np.uint64)|np.uint64(1)
         tg=Tc[reps]
         H=[((lists[k]['PAF']-(tg if k==0 else 0)).astype(np.int64).astype(np.uint64)*W).sum(1) for k in range(4)]
-        from bge3_stageB_join import join_batched
-        bound=np.float32(4*v+1e-3); PS=[L['PS'] for L in lists]; PAFl=[lists[k]['PAF']-(tg if k==0 else 0) for k in range(4)]
-        cls0=int(np.argmax([np.ptp(PAFl[1][:,c]) for c in range(len(reps))]))
+        from kt_generic import kt_join4
+        PAFl=[lists[k]['PAF']-(tg if k==0 else 0) for k in range(4)]
         n0=len(sols)
         def verify(idx):
             Xq=np.array([lists[k]['X'][idx[k]] for k in range(4)]).astype(np.int64)
             P=sum(np.array([int(np.dot(Xq[k],Xq[k][ADDc[:,gg]])) for gg in range(mc)]) for k in range(4))
             if np.array_equal(P,Tc): sols.append((s,Xq)); return True
             return False
-        join_batched(PS,PAFl,H,cls0,bound,verify,log=log)
+        kt_join4(PAFl,verify,k=6,nbuckets=int(__import__('os').environ.get('A_BUCKETS','400')),max_solutions=max_solutions-len(sols),log=log,seed=si)
         found=len(sols)-n0; n=0; hits=np.zeros(1)
         log(json.dumps(dict(stage='A_join',shift=[int(x) for x in s],stored_pairs=n,candidates=int(hits.sum()),solutions=found,total=len(sols),secs=round(time.time()-t0,1))))
         if len(sols)>=max_solutions: break
