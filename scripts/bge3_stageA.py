@@ -13,8 +13,26 @@ def half_enum(vals,n):
     g=np.array(np.meshgrid(*[vals]*n,indexing='ij')).reshape(n,-1).T
     return g.astype(np.int8)
 
+
+@nb.njit(parallel=True,cache=True)
+def _match(need,k2s,o2s,F1r,F1i,F2r,F2i,bound,cnt,I,J,off,write):
+    n=need.shape[0]; nc=F1r.shape[1]
+    for i in nb.prange(n):
+        lo=np.searchsorted(k2s,need[i]); hi=np.searchsorted(k2s,need[i],side='right')
+        c=0; w=off[i] if write else 0
+        for pz in range(lo,hi):
+            j=o2s[pz]; ok=True
+            for f in range(nc):
+                a=F1r[i,f]+F2r[j,f]; b=F1i[i,f]+F2i[j,f]
+                if a*a+b*b>bound: ok=False; break
+            if ok:
+                if write: I[w]=i; J[w]=j; w+=1
+                else: c+=1
+        if not write: cnt[i]=c
+    return 0
+
 def enum_block(g,cs_k,v,p,maxout=5*10**7):
-    rc=g['rc']; footA=g['footA']; mc=g['mc']; labc=g['labc']; coc=g['coc']; t=g['t']
+    h_=g['h']; rc=g['rc']; footA=g['footA']; mc=g['mc']; labc=g['labc']; coc=g['coc']; t=g['t']
     mods=np.array([2,3,t]); chars=coc[coc[:,2]!=0]
     ph=np.exp(2j*np.pi*((coc[:,None,:]*chars[None,:,:])/mods).sum(-1))       # (element, char)
     OP=np.zeros((rc,len(chars)),complex)                                        # orbit -> Fourier contribution
@@ -24,23 +42,23 @@ def enum_block(g,cs_k,v,p,maxout=5*10**7):
     Y1=half_enum(vals,len(o1)); Y2=half_enum(vals,len(o2))
     S1=Y1.astype(np.int64)@footA[o1]; S2=Y2.astype(np.int64)@footA[o2]
     F1=Y1.astype(float)@OP[o1]; F2=Y2.astype(float)@OP[o2]
-    # match coset sums: S1 + S2 = cs_k
-    key=lambda S: [tuple(r) for r in S]
-    from collections import defaultdict
-    idx2=defaultdict(list)
-    for j,s in enumerate(key(S2)): idx2[s].append(j)
-    out=[]; nout=0; bound=4*v+1e-6
-    for i,s in enumerate(key(S1)):
-        need=tuple(np.array(cs_k)-np.array(s))
-        js=idx2.get(need)
-        if not js: continue
-        js=np.array(js); P=np.abs(F1[i][None,:]+F2[js])**2
-        ok=js[(P<=bound).all(1)]
-        if len(ok):
-            Y=np.empty((len(ok),rc),np.int8); Y[:,o1]=Y1[i]; Y[:,o2]=Y2[ok]
-            out.append(Y); nout+=len(ok)
-            if nout>maxout: break
-    return (np.concatenate(out) if out else np.zeros((0,rc),np.int8)), nout>maxout
+    # match coset sums S1 + S2 = cs_k with numba (keys = coset-sum vectors encoded in int64)
+    base=4*h_+1
+    enc=lambda S: ((S+2*h_)*(base**np.arange(6))).sum(1).astype(np.int64)
+    k1=enc(S1); k2=enc(S2); o2s=np.argsort(k2); k2s=k2[o2s]
+    need=enc(np.array(cs_k)[None,:]-S1)
+    F1r=np.ascontiguousarray(F1.real); F1i=np.ascontiguousarray(F1.imag); F2r=np.ascontiguousarray(F2.real); F2i=np.ascontiguousarray(F2.imag)
+    bound=4*v+1e-6
+    cnt=np.zeros(len(S1),np.int64); dummyI=np.zeros(1,np.int64); dummyJ=np.zeros(1,np.int64)
+    _match(need,k2s,o2s,F1r,F1i,F2r,F2i,bound,cnt,dummyI,dummyJ,np.zeros(len(S1),np.int64),False)
+    tot=int(cnt.sum()); trunc=tot>maxout
+    if tot==0: return np.zeros((0,rc),np.int8), False
+    if trunc: tot=0; cnt[:]=0
+    off=np.concatenate([[0],np.cumsum(cnt)[:-1]]).astype(np.int64)
+    I=np.empty(max(tot,1),np.int64); J=np.empty(max(tot,1),np.int64)
+    if not trunc: _match(need,k2s,o2s,F1r,F1i,F2r,F2i,bound,cnt,I,J,off,True)
+    Y=np.empty((tot,rc),np.int8); Y[:,o1]=Y1[I[:tot]]; Y[:,o2]=Y2[J[:tot]]
+    return Y, trunc
 
 def solve_A(h,p,u,log=print,max_solutions=200,shift_limit=None):
     g=setup(h,p,u); v=g['v']; mc=g['mc']; labc=g['labc']; coc=g['coc']; t=g['t']
@@ -57,6 +75,7 @@ def solve_A(h,p,u,log=print,max_solutions=200,shift_limit=None):
     mods=np.array([2,3,t]); chars=coc[coc[:,2]!=0]
     ph=np.exp(2j*np.pi*((coc[:,None,:]*chars[None,:,:])/mods).sum(-1))
     sols=[]; t0=time.time()
+    shifts=sorted(shifts,key=lambda x: sum(abs(y) for y in x[0]))
     for si,(s,cs) in enumerate(shifts[:shift_limit] if shift_limit else shifts):
         lists=[]
         for k in range(4):
@@ -75,28 +94,17 @@ def solve_A(h,p,u,log=print,max_solutions=200,shift_limit=None):
         rng=np.random.default_rng(3); W=rng.integers(1,2**63,size=len(reps),dtype=np.uint64)|np.uint64(1)
         tg=Tc[reps]
         H=[((lists[k]['PAF']-(tg if k==0 else 0)).astype(np.int64).astype(np.uint64)*W).sum(1) for k in range(4)]
-        from bge3_stageB_join import pair_filter_count, pair_emit, probe
-        bound=np.float32(4*v+1e-3); PS=[L['PS'] for L in lists]
-        st,pr=((1,3),(0,2)) if len(PS[1])*len(PS[3])<=len(PS[0])*len(PS[2]) else ((0,2),(1,3))
-        cnt=pair_filter_count(PS[st[0]],PS[st[1]],bound); n=int(cnt.sum())
-        if n>3e8: log(json.dumps(dict(stage='A_abort',shift=[int(x) for x in s],pairs=n))); continue
-        off=np.concatenate([[0],np.cumsum(cnt)[:-1]]).astype(np.int64)
-        K=np.empty(n,np.uint64); I=np.empty(n,np.int32); J=np.empty(n,np.int32)
-        pair_emit(PS[st[0]],PS[st[1]],H[st[0]],H[st[1]],bound,off,K,I,J)
-        o=np.argsort(K); K=K[o]; I=I[o]; J=J[o]
-        hits=probe(PS[pr[0]],PS[pr[1]],H[pr[0]],H[pr[1]],bound,K,64)
-        found=0
-        for i in np.nonzero(hits)[0]:
-            for j in range(len(PS[pr[1]])):
-                if (PS[pr[0]][i]+PS[pr[1]][j]>bound).any(): continue
-                key=np.uint64(0)-(H[pr[0]][i]+H[pr[1]][j]); pz=np.searchsorted(K,key)
-                while pz<len(K) and K[pz]==key:
-                    idxs={st[0]:I[pz],st[1]:J[pz],pr[0]:i,pr[1]:j}
-                    Xq=np.array([lists[k]['X'][idxs[k]] for k in range(4)]).astype(np.int64)
-                    P=sum(np.array([int(np.dot(Xq[k],Xq[k][ADDc[:,gg]])) for gg in range(mc)]) for k in range(4))
-                    if np.array_equal(P,Tc): sols.append((s,Xq)); found+=1
-                    pz+=1
-                    if len(sols)>=max_solutions: break
+        from bge3_stageB_join import join_batched
+        bound=np.float32(4*v+1e-3); PS=[L['PS'] for L in lists]; PAFl=[lists[k]['PAF']-(tg if k==0 else 0) for k in range(4)]
+        cls0=int(np.argmax([np.ptp(PAFl[1][:,c]) for c in range(len(reps))]))
+        n0=len(sols)
+        def verify(idx):
+            Xq=np.array([lists[k]['X'][idx[k]] for k in range(4)]).astype(np.int64)
+            P=sum(np.array([int(np.dot(Xq[k],Xq[k][ADDc[:,gg]])) for gg in range(mc)]) for k in range(4))
+            if np.array_equal(P,Tc): sols.append((s,Xq)); return True
+            return False
+        join_batched(PS,PAFl,H,cls0,bound,verify,log=log)
+        found=len(sols)-n0; n=0; hits=np.zeros(1)
         log(json.dumps(dict(stage='A_join',shift=[int(x) for x in s],stored_pairs=n,candidates=int(hits.sum()),solutions=found,total=len(sols),secs=round(time.time()-t0,1))))
         if len(sols)>=max_solutions: break
     return sols
