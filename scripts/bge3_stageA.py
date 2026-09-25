@@ -104,7 +104,7 @@ def solve_A(h,p,u,log=print,max_solutions=200,shift_limit=None):
             P=sum(np.array([int(np.dot(Xq[k],Xq[k][ADDc[:,gg]])) for gg in range(mc)]) for k in range(4))
             if np.array_equal(P,Tc): sols.append((s,Xq)); return True
             return False
-        kt_join4(PAFl,verify,k=6,nbuckets=int(__import__('os').environ.get('A_BUCKETS','400')),max_solutions=min(max_solutions-len(sols),int(__import__('os').environ.get('PER_SHIFT','1000000'))),log=log,seed=si)
+        kt_join4(PAFl,verify,k=6,nbuckets=int(__import__('os').environ.get('A_BUCKETS','400')),max_solutions=min(max_solutions-len(sols),int(__import__('os').environ.get('PER_SHIFT','1000000'))),log=log,seed=si,tmax=float(__import__('os').environ.get('A_JTMAX','1e9')))
         found=len(sols)-n0; n=0; hits=np.zeros(1)
         log(json.dumps(dict(stage='A_join',shift=[int(x) for x in s],stored_pairs=n,candidates=int(hits.sum()),solutions=found,total=len(sols),secs=round(time.time()-t0,1))))
         if len(sols)>=max_solutions: break

@@ -2,10 +2,10 @@
 multiplier u, generate stage-A compressed solutions across shifts (PER_SHIFT per shift, A_TMAX seconds), then apply the
 per-class and pairwise-joint forced-residue filters.  A configuration with compressions but no survivor, all failing
 at a common lag signature, is reported dead [E: sampled filter].
-usage: bge3_config_screen.py h p u nA     env PER_SHIFT (3), A_TMAX (900), A_BUCKETS (200)"""
+usage: bge3_config_screen.py h p u nA     env PER_SHIFT (3), A_TMAX (1800), A_JTMAX (150, per-shift join), A_BUCKETS (200)"""
 import sys, os, json, time, collections, numpy as np
 sys.path.insert(0,'scripts')
-os.environ.setdefault('PER_SHIFT','3'); os.environ.setdefault('A_TMAX','900'); os.environ.setdefault('A_BUCKETS','200')
+os.environ.setdefault('PER_SHIFT','3'); os.environ.setdefault('A_TMAX','1800'); os.environ.setdefault('A_JTMAX','150'); os.environ.setdefault('A_BUCKETS','200')
 from bge3_stageA import solve_A
 from bge3_stageB_join import setup, components
 from bge3_residue import residue_ok, joint_residue_ok, class_reps
