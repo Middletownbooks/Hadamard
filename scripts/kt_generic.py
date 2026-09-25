@@ -27,9 +27,15 @@ def kt_join4(PAF,verify,k=6,nbuckets=10**6,max_solutions=10,log=print,seed=0,bud
     pmode=[]
     for c in cls:
         vals,cnt=np.unique(PAF[0][i0,c]+PAF[1][j0,c],return_counts=True); pmode.append(cnt.max()/ns0)
-    NAB=float(len(PAF[0]))*len(PAF[1]); kk=0; load=NAB
-    while kk<min(8,L-2) and load*pmode[kk]>=target_pairs: load*=pmode[kk]; kk+=1
-    k=max(1,kk)
+    # choose k from the JOINT modal frequency of the leading classes (classes are often coupled, so the product of
+    # marginal modes underestimates the best bucket)
+    NAB=float(len(PAF[0]))*len(PAF[1]); kk=1; kmax=min(8,L-2)
+    S0=PAF[0][i0][:,cls[:kmax]]+PAF[1][j0][:,cls[:kmax]]
+    while True:
+        _,cnt=np.unique(S0[:,:kk],axis=0,return_counts=True); load=NAB*cnt.max()/ns0
+        if load<target_pairs or kk>=kmax: break
+        kk+=1
+    k=kk
     log(json.dumps(dict(stage='kt_setup',L=int(L),k=int(k),best_bucket_AB_est=float(load),pmode=[round(float(x),4) for x in pmode[:10]])))
     chunk=cls[:k]; cc=cls[k]; rest=cls[k+1:]
     W=rng.integers(1,2**63,size=max(len(rest),1),dtype=np.uint64)|np.uint64(1); G=np.uint64(0x9E3779B97F4A7C15)
