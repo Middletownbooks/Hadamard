@@ -112,3 +112,49 @@ Applied to the open orders (details in the log):
 per-block compression deviations). 359 is the variant: a non-split extension, weak symmetry, one special coset shared
 by all blocks, and an exact twisted slice relation. That pattern fits a later or differently seeded version of the
 same program, perhaps one that fixes a "special coset" first. That last part is interpretation [E].
+
+## 4. How much does the b ≥ 3 route buy on the open orders? [E, with exact screening]
+
+Method: `scripts/bge3_cost.py`, a Gaussian cost model over G = Q × Z_h with the two-valued target.
+- **Symmetry.** Every abelian Q of order c was tried, together with every symmetry group of up to two generators
+  (abelian or not) inside Aut(Q) × (Z/h)*.
+- **n.** n is the number of constraint bits at the cheapest configuration where solutions are expected (log2E > 0).
+- **Screening.** Each candidate was then checked with an exact quotient test (`scripts/bge3_screen.py`, compression
+  onto Q × Z_t with pruned dynamic programming). This is the same kind of obstruction that ruled out every v=537 b=1
+  configuration.
+
+**Calibration.**
+- The real v=479 configuration (Z12, r=46) comes out as the first feasible one, at n ≈ 151, and passes the screen.
+- The real v=347 configuration is feasible at n ≈ 201, though smaller feasible options exist for 347.
+- So the published b≥3 solutions sit at n ≈ 150–200. For comparison, the v=523 b=0 search is at n ≈ 142 in full,
+  or about 91 in the flat subspace.
+
+**The model's cheapest configurations are mostly impossible.** The exact screen rejects the model's best choice for
+719 (n ≈ 135), 659 (162), 739 (174), 647 (179) and 599 (184), and every c=4 option for 571. This is the same trap as
+v=537 at b=1: the lowest-cost configurations tend to be killed by exact constraints that the Gaussian model cannot see.
+
+| v | cheapest b≥3 configuration that passes the screen | n | cheaper ones still undecided | b=0 | b=1 | verdict |
+|---|---|---|---|---|---|---|
+| 515 | c=6 (b=5, h=85), Q=Z6, d=8, r=70 | **≈201** (mod-5 check undecided) | – | none | none | **new route, at the solved-347 level** |
+| 719 | c=20 (b=19, h=35), Q=Z2×Z10, d=12, r=66 | **≈227** (mod-5 check undecided) | – | none | none | **new route** |
+| 721 | c=38 (b=37, h=18), d=9, r=92 | **≈284** | – | none | ≈380 | ~100 bits better than b=1 |
+| 523 | c=4, Q=Z4, d=12, r=64 | ≈226 | – | **≈142** (flat ≈91) | ≈172 | worse; keep b=0 |
+| 659 | c=4, Q=Z4, d=10, r=90 | ≈288 | c=6 at 213; c=10 at 237–242 | ≈227 | ruled out | gains only if an undecided one passes |
+| 599 | c=6, Q=Z6, d=10, r=90 | ≈326 | c=20 at ≈200 and ≈292 | none | ≈267 | gains only if c=20 passes |
+| 647 | c=8, Q=Z8, d=8, r=97 | ≈341 | c=18 at 233–235 | none | ≈213 | no gain unless undecided < 213 |
+| 643 | c=4, d=8, r=119 | ≈425 | c=14 at 232–234 | d=3 only | none | a route; cheap only if c=14 passes |
+| 571 | – (all c=4 options fail) | – | c=22 at ≈192 | ≈271 | ≈203 | open: depends on c=22 |
+| 573 | c=14, d=12, r=80 | ≈285 | – | none | **≈193** | keep b=1 |
+| 739 | – (c=10 at 174 fails) | – | c=10 at 229–235 (not screened) | **≈200** | ≈276 | keep b=0 |
+| 669 | c=10 only | ≈590 (not screened) | – | none | none | not practical |
+| 537 | no border exists (v+1 = 2·269) | – | – | none | ruled out | closed on both routes |
+
+Summary [E]:
+- **Firm new routes:** 515 (n ≈ 201) and 719 (n ≈ 227). Neither has a b=0 or b=1 alternative, and 515 sits in the
+  range where the published b≥3 cores were solved.
+- **Moderate improvement:** 721, about 100 bits better than its b=1 route.
+- **Possible routes near n ≈ 190–235,** depending on configurations the screen could not decide within its limits:
+  571, 599, 659, 643, 647.
+- **No gain:** 523, 573 and 739 are better served by their existing b=0 or b=1 routes.
+- **Caveats.** n is a constraint count, not a run time. Screens at t > 1 were mostly undecided. The symmetry groups are
+  limited to Aut(Q) × multipliers.
