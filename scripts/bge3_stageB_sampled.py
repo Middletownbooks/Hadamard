@@ -9,7 +9,7 @@ from bge3_stageB_join import setup, components
 from kt_generic import kt_join4
 h,p,u,si,S,nbk=[int(float(x)) for x in sys.argv[1:7]]; seed=int(sys.argv[7]) if len(sys.argv)>7 else 0
 g=setup(h,p,u); A=g['footB'].T; co=g['co']; m=g['m']; v=g['v']; lab=g['lab']; ADD=g['ADD']; NEG=g['NEG']; T_full=g['T_full']
-XC=np.load(f'data/stageA_h{h}_p{p}_u{u}.npy'); xc=XC[si]
+XC=np.load(os.environ.get('XCFILE',f'data/stageA_h{h}_p{p}_u{u}.npy')); xc=XC[si]
 rng=np.random.default_rng(seed); t0=time.time()
 def log(**kw): kw['secs']=round(time.time()-t0,1); print(json.dumps(kw),flush=True)
 e=int(np.lcm.reduce([2,3,h])); perm=g['idx'](co*(u%e))

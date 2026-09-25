@@ -1,0 +1,223 @@
+{"stage": "A_lists", "shift": [-2, 2, 0, 0], "sizes": [399348, 342262, 365326, 408866], "truncated": [false, false, false, false], "secs": 119.5}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 37032337.19363548, "pmode": [0.0842, 0.047, 0.0685, 0.067, 0.0223, 0.0223, 0.0431, 0.0432, 0.0347, 0.0349]}
+{"stage": "kt_progress", "buckets": 1, "AB": 531768080, "CD": 461750344, "candidates": 0, "solutions": 0, "secs": 36.6}
+{"stage": "kt_progress", "buckets": 2, "AB": 529278976, "CD": 578663280, "candidates": 0, "solutions": 0, "secs": 99.5}
+{"stage": "kt_progress", "buckets": 3, "AB": 614945056, "CD": 604638416, "candidates": 4835072, "solutions": 3, "secs": 111.0}
+{"stage": "kt_done", "buckets": 3, "candidates": 4835072, "solutions": 3, "secs": 111.0}
+{"stage": "A_join", "shift": [-2, 2, 0, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 3, "secs": 231.6}
+{"stage": "A_lists", "shift": [0, -2, -2, 0], "sizes": [166516, 191780, 0, 408866], "truncated": [false, false, false, false], "secs": 316.8}
+{"stage": "A_lists", "shift": [2, -2, -2, 0], "sizes": [166516, 191780, 0, 408866], "truncated": [false, false, false, false], "secs": 385.9}
+{"stage": "A_lists", "shift": [4, 2, 0, 0], "sizes": [399348, 342262, 365326, 408866], "truncated": [false, false, false, false], "secs": 492.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 37152717.4145816, "pmode": [0.0843, 0.0473, 0.0682, 0.0672, 0.0222, 0.0227, 0.044, 0.0437, 0.0351, 0.0344]}
+{"stage": "kt_progress", "buckets": 1, "AB": 531768080, "CD": 461750344, "candidates": 0, "solutions": 0, "secs": 34.9}
+{"stage": "kt_progress", "buckets": 2, "AB": 526034608, "CD": 579941512, "candidates": 0, "solutions": 0, "secs": 91.3}
+{"stage": "kt_progress", "buckets": 3, "AB": 545376624, "CD": 669352736, "candidates": 8508224, "solutions": 3, "secs": 97.3}
+{"stage": "kt_done", "buckets": 3, "candidates": 8508224, "solutions": 3, "secs": 97.3}
+{"stage": "A_join", "shift": [4, 2, 0, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 6, "secs": 591.3}
+{"stage": "A_lists", "shift": [-4, 2, 0, 4], "sizes": [333954, 342262, 365326, 191780], "truncated": [false, false, false, false], "secs": 695.2}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 30053056.778827876, "pmode": [0.0846, 0.0468, 0.0664, 0.0662, 0.022, 0.0221, 0.0435, 0.0425, 0.0349, 0.0354]}
+{"stage": "kt_progress", "buckets": 1, "AB": 588431496, "CD": 369973664, "candidates": 378112, "solutions": 3, "secs": 5.2}
+{"stage": "kt_done", "buckets": 1, "candidates": 378112, "solutions": 3, "secs": 5.2}
+{"stage": "A_join", "shift": [-4, 2, 0, 4], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 9, "secs": 701.3}
+{"stage": "A_lists", "shift": [-2, 4, 4, 0], "sizes": [399348, 0, 200372, 408866], "truncated": [false, false, false, false], "secs": 789.9}
+{"stage": "A_lists", "shift": [-6, 0, 2, 4], "sizes": [0, 166928, 250700, 191780], "truncated": [false, false, false, false], "secs": 859.4}
+{"stage": "A_lists", "shift": [-4, 0, 8, 0], "sizes": [333954, 166928, 436526, 408866], "truncated": [false, false, false, false], "secs": 952.9}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 14558196.180841345, "pmode": [0.0809, 0.0504, 0.064, 0.0626, 0.0231, 0.0237, 0.0458, 0.0458, 0.0372, 0.0378]}
+{"stage": "kt_progress", "buckets": 1, "AB": 276778872, "CD": 580768096, "candidates": 0, "solutions": 0, "secs": 33.9}
+{"stage": "kt_progress", "buckets": 2, "AB": 199975536, "CD": 668908136, "candidates": 0, "solutions": 0, "secs": 63.4}
+{"stage": "kt_progress", "buckets": 3, "AB": 322104144, "CD": 686563984, "candidates": 3952512, "solutions": 3, "secs": 69.1}
+{"stage": "kt_done", "buckets": 3, "candidates": 3952512, "solutions": 3, "secs": 69.1}
+{"stage": "A_join", "shift": [-4, 0, 8, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 12, "secs": 1023.2}
+{"stage": "A_lists", "shift": [-4, 2, 6, 0], "sizes": [333954, 342262, 294492, 408866], "truncated": [false, false, false, false], "secs": 1136.0}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 30316669.167813517, "pmode": [0.0835, 0.0474, 0.067, 0.0673, 0.022, 0.0219, 0.0436, 0.0444, 0.0349, 0.0352]}
+{"stage": "kt_progress", "buckets": 1, "AB": 588431496, "CD": 546204712, "candidates": 1042528, "solutions": 3, "secs": 5.4}
+{"stage": "kt_done", "buckets": 1, "candidates": 1042528, "solutions": 3, "secs": 5.4}
+{"stage": "A_join", "shift": [-4, 2, 6, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 15, "secs": 1142.6}
+{"stage": "A_lists", "shift": [-2, 2, 0, 8], "sizes": [399348, 342262, 365326, 408866], "truncated": [false, false, false, false], "secs": 1258.0}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 35994016.30428426, "pmode": [0.0829, 0.0467, 0.068, 0.0673, 0.0226, 0.0225, 0.0432, 0.0441, 0.0345, 0.0351]}
+{"stage": "kt_progress", "buckets": 1, "AB": 531768080, "CD": 461750344, "candidates": 0, "solutions": 0, "secs": 38.2}
+{"stage": "kt_progress", "buckets": 2, "AB": 529278976, "CD": 578663280, "candidates": 0, "solutions": 0, "secs": 96.9}
+{"stage": "kt_progress", "buckets": 3, "AB": 526034608, "CD": 579941512, "candidates": 0, "solutions": 0, "secs": 160.2}
+{"stage": "kt_done", "buckets": 4, "candidates": 4835072, "solutions": 3, "secs": 173.0}
+{"stage": "A_join", "shift": [-2, 2, 0, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 18, "secs": 1432.3}
+{"stage": "A_lists", "shift": [0, -8, 4, 0], "sizes": [166516, 148592, 200372, 408866], "truncated": [false, false, false, false], "secs": 1524.8}
+{"stage": "kt_setup", "L": 12, "k": 2, "best_bucket_AB_est": 170234772.9791696, "pmode": [0.0782, 0.088, 0.0575, 0.0586, 0.0251, 0.025, 0.0482, 0.0482, 0.0443, 0.0448]}
+{"stage": "kt_progress", "buckets": 1, "AB": 1568618024, "CD": 2710713832, "candidates": 58688, "solutions": 3, "secs": 23.1}
+{"stage": "kt_done", "buckets": 1, "candidates": 58688, "solutions": 3, "secs": 23.1}
+{"stage": "A_join", "shift": [0, -8, 4, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 21, "secs": 1548.9}
+{"stage": "A_lists", "shift": [0, -2, -2, 8], "sizes": [166516, 191780, 0, 408866], "truncated": [false, false, false, false], "secs": 1621.8}
+{"stage": "A_lists", "shift": [4, 4, 4, 0], "sizes": [399348, 0, 200372, 408866], "truncated": [false, false, false, false], "secs": 1702.4}
+{"stage": "A_lists", "shift": [6, 2, 0, 4], "sizes": [333954, 342262, 365326, 191780], "truncated": [false, false, false, false], "secs": 1792.0}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 30512295.194053926, "pmode": [0.0838, 0.047, 0.0677, 0.0671, 0.0221, 0.0221, 0.0434, 0.0432, 0.0351, 0.035]}
+{"stage": "kt_progress", "buckets": 1, "AB": 588431496, "CD": 369973664, "candidates": 378112, "solutions": 3, "secs": 5.3}
+{"stage": "kt_done", "buckets": 1, "candidates": 378112, "solutions": 3, "secs": 5.3}
+{"stage": "A_join", "shift": [6, 2, 0, 4], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 24, "secs": 1798.3}
+{"stage": "A_lists", "shift": [-2, -2, 10, 0], "sizes": [399348, 191780, 224280, 408866], "truncated": [false, false, false, false], "secs": 1893.4}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 18746092.664194874, "pmode": [0.0783, 0.0508, 0.0616, 0.0613, 0.0241, 0.0243, 0.0466, 0.0466, 0.0415, 0.0416]}
+{"stage": "kt_progress", "buckets": 1, "AB": 430792720, "CD": 562119784, "candidates": 8048320, "solutions": 3, "secs": 17.9}
+{"stage": "kt_done", "buckets": 1, "candidates": 8048320, "solutions": 3, "secs": 17.9}
+{"stage": "A_join", "shift": [-2, -2, 10, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 27, "secs": 1912.3}
+{"stage": "A_lists", "shift": [2, -8, 4, 0], "sizes": [166516, 148592, 200372, 408866], "truncated": [false, false, false, false], "secs": 2002.5}
+{"stage": "kt_setup", "L": 12, "k": 2, "best_bucket_AB_est": 167410997.93579763, "pmode": [0.0783, 0.0864, 0.0568, 0.0583, 0.0257, 0.0252, 0.0484, 0.0488, 0.0446, 0.0444]}
+{"stage": "kt_progress", "buckets": 1, "AB": 1568618024, "CD": 2710713832, "candidates": 58688, "solutions": 3, "secs": 22.9}
+{"stage": "kt_done", "buckets": 1, "candidates": 58688, "solutions": 3, "secs": 22.9}
+{"stage": "A_join", "shift": [2, -8, 4, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 30, "secs": 2026.6}
+{"stage": "A_lists", "shift": [2, -2, -2, 8], "sizes": [166516, 191780, 0, 408866], "truncated": [false, false, false, false], "secs": 2105.5}
+{"stage": "A_lists", "shift": [4, 2, 0, 8], "sizes": [399348, 342262, 365326, 408866], "truncated": [false, false, false, false], "secs": 2211.8}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 34952740.275652856, "pmode": [0.083, 0.0463, 0.0665, 0.0667, 0.0227, 0.0223, 0.0438, 0.0437, 0.0345, 0.035]}
+{"stage": "kt_progress", "buckets": 1, "AB": 531768080, "CD": 461750344, "candidates": 0, "solutions": 0, "secs": 37.5}
+{"stage": "kt_progress", "buckets": 2, "AB": 529278976, "CD": 578663280, "candidates": 0, "solutions": 0, "secs": 92.1}
+{"stage": "kt_progress", "buckets": 3, "AB": 545376624, "CD": 669352736, "candidates": 8508224, "solutions": 3, "secs": 98.1}
+{"stage": "kt_done", "buckets": 3, "candidates": 8508224, "solutions": 3, "secs": 98.1}
+{"stage": "A_join", "shift": [4, 2, 0, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 33, "secs": 2311.2}
+{"stage": "A_lists", "shift": [6, 0, 8, 0], "sizes": [333954, 166928, 436526, 408866], "truncated": [false, false, false, false], "secs": 2413.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 14183739.346921086, "pmode": [0.0801, 0.05, 0.0635, 0.0629, 0.0233, 0.0232, 0.045, 0.0459, 0.0374, 0.0375]}
+{"stage": "kt_progress", "buckets": 1, "AB": 276778872, "CD": 580768096, "candidates": 0, "solutions": 0, "secs": 34.8}
+{"stage": "kt_progress", "buckets": 2, "AB": 322104144, "CD": 686563984, "candidates": 3952512, "solutions": 3, "secs": 41.9}
+{"stage": "kt_done", "buckets": 2, "candidates": 3952512, "solutions": 3, "secs": 41.9}
+{"stage": "A_join", "shift": [6, 0, 8, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 36, "secs": 2456.5}
+{"stage": "A_lists", "shift": [6, 2, 6, 0], "sizes": [333954, 342262, 294492, 408866], "truncated": [false, false, false, false], "secs": 2566.2}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 29964196.51907505, "pmode": [0.0834, 0.0471, 0.0668, 0.0675, 0.0223, 0.0223, 0.0435, 0.0434, 0.0345, 0.0352]}
+{"stage": "kt_progress", "buckets": 1, "AB": 588431496, "CD": 546204712, "candidates": 1042528, "solutions": 3, "secs": 5.6}
+{"stage": "kt_done", "buckets": 1, "candidates": 1042528, "solutions": 3, "secs": 5.6}
+{"stage": "A_join", "shift": [6, 2, 6, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 39, "secs": 2572.9}
+{"stage": "A_lists", "shift": [8, 0, 2, 4], "sizes": [0, 166928, 250700, 191780], "truncated": [false, false, false, false], "secs": 2651.2}
+{"stage": "A_lists", "shift": [-4, 4, 4, 4], "sizes": [333954, 0, 200372, 191780], "truncated": [false, false, false, false], "secs": 2721.8}
+{"stage": "A_lists", "shift": [-2, -6, 8, 0], "sizes": [399348, 384130, 436526, 408866], "truncated": [false, false, false, false], "secs": 2826.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 40605076.49868645, "pmode": [0.0827, 0.0468, 0.0684, 0.0673, 0.0442, 0.0438, 0.0226, 0.0226, 0.035, 0.0349]}
+{"stage": "kt_progress", "buckets": 1, "AB": 535121408, "CD": 801918968, "candidates": 0, "solutions": 0, "secs": 60.1}
+{"stage": "kt_progress", "buckets": 2, "AB": 471472384, "CD": 794959648, "candidates": 0, "solutions": 0, "secs": 116.7}
+{"stage": "kt_progress", "buckets": 3, "AB": 653051296, "CD": 636693024, "candidates": 83712, "solutions": 3, "secs": 132.4}
+{"stage": "kt_done", "buckets": 3, "candidates": 83712, "solutions": 3, "secs": 132.4}
+{"stage": "A_join", "shift": [-2, -6, 8, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 42, "secs": 2960.5}
+{"stage": "A_lists", "shift": [4, -2, 10, 0], "sizes": [399348, 191780, 224280, 408866], "truncated": [false, false, false, false], "secs": 3056.3}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 18978741.701279864, "pmode": [0.0785, 0.051, 0.0619, 0.0613, 0.0242, 0.0241, 0.047, 0.0469, 0.0417, 0.042]}
+{"stage": "kt_progress", "buckets": 1, "AB": 430792720, "CD": 562119784, "candidates": 8048320, "solutions": 3, "secs": 18.7}
+{"stage": "kt_done", "buckets": 1, "candidates": 8048320, "solutions": 3, "secs": 18.7}
+{"stage": "A_join", "shift": [4, -2, 10, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 45, "secs": 3076.0}
+{"stage": "A_lists", "shift": [-2, 4, 4, 8], "sizes": [399348, 0, 200372, 408866], "truncated": [false, false, false, false], "secs": 3171.6}
+{"stage": "A_lists", "shift": [4, -6, 8, 0], "sizes": [399348, 384130, 436526, 408866], "truncated": [false, false, false, false], "secs": 3282.9}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 39709903.71662482, "pmode": [0.082, 0.0465, 0.0678, 0.0674, 0.0437, 0.0441, 0.0228, 0.023, 0.0348, 0.0354]}
+{"stage": "kt_progress", "buckets": 1, "AB": 535121408, "CD": 801918968, "candidates": 0, "solutions": 0, "secs": 59.2}
+{"stage": "kt_progress", "buckets": 2, "AB": 471472384, "CD": 794959648, "candidates": 0, "solutions": 0, "secs": 114.2}
+{"stage": "kt_progress", "buckets": 3, "AB": 589778352, "CD": 694474744, "candidates": 0, "solutions": 0, "secs": 195.6}
+{"stage": "kt_done", "buckets": 5, "candidates": 38272, "solutions": 3, "secs": 283.8}
+{"stage": "A_join", "shift": [4, -6, 8, 0], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 48, "secs": 3568.2}
+{"stage": "A_lists", "shift": [6, 4, 4, 4], "sizes": [333954, 0, 200372, 191780], "truncated": [false, false, false, false], "secs": 3647.2}
+{"stage": "A_lists", "shift": [-6, -4, 6, 4], "sizes": [0, 426660, 294492, 191780], "truncated": [false, false, false, false], "secs": 3720.7}
+{"stage": "A_lists", "shift": [-4, -2, 10, 4], "sizes": [333954, 191780, 224280, 191780], "truncated": [false, false, false, false], "secs": 3796.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 15245935.062076269, "pmode": [0.0782, 0.0503, 0.0605, 0.0599, 0.0238, 0.0242, 0.0475, 0.0461, 0.0426, 0.0426]}
+{"stage": "kt_progress", "buckets": 1, "AB": 345307640, "CD": 226255520, "candidates": 0, "solutions": 0, "secs": 19.7}
+{"stage": "kt_progress", "buckets": 2, "AB": 343388224, "CD": 227360656, "candidates": 0, "solutions": 0, "secs": 38.5}
+{"stage": "kt_progress", "buckets": 3, "AB": 257308848, "CD": 255404256, "candidates": 0, "solutions": 0, "secs": 58.5}
+{"stage": "kt_done", "buckets": 4, "candidates": 50294528, "solutions": 3, "secs": 62.3}
+{"stage": "A_join", "shift": [-4, -2, 10, 4], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 51, "secs": 3860.1}
+{"stage": "A_lists", "shift": [-4, 0, 8, 8], "sizes": [333954, 166928, 436526, 408866], "truncated": [false, false, false, false], "secs": 3967.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 14044633.687617503, "pmode": [0.0802, 0.0508, 0.0619, 0.0634, 0.0239, 0.0233, 0.0452, 0.0462, 0.0374, 0.0375]}
+{"stage": "kt_progress", "buckets": 1, "AB": 276778872, "CD": 580768096, "candidates": 0, "solutions": 0, "secs": 35.0}
+{"stage": "kt_progress", "buckets": 2, "AB": 199975536, "CD": 668908136, "candidates": 0, "solutions": 0, "secs": 66.2}
+{"stage": "kt_progress", "buckets": 3, "AB": 190508128, "CD": 691316200, "candidates": 0, "solutions": 0, "secs": 109.1}
+{"stage": "kt_done", "buckets": 4, "candidates": 3952512, "solutions": 3, "secs": 115.2}
+{"stage": "A_join", "shift": [-4, 0, 8, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 54, "secs": 4084.1}
+{"stage": "A_lists", "shift": [-4, 2, 6, 8], "sizes": [333954, 342262, 294492, 408866], "truncated": [false, false, false, false], "secs": 4189.8}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 30242138.566697072, "pmode": [0.0849, 0.0469, 0.0664, 0.0666, 0.0225, 0.0221, 0.043, 0.0427, 0.0349, 0.0347]}
+{"stage": "kt_progress", "buckets": 1, "AB": 588431496, "CD": 546204712, "candidates": 1042528, "solutions": 3, "secs": 5.4}
+{"stage": "kt_done", "buckets": 1, "candidates": 1042528, "solutions": 3, "secs": 5.4}
+{"stage": "A_join", "shift": [-4, 2, 6, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 57, "secs": 4196.2}
+{"stage": "A_lists", "shift": [0, -8, 4, 8], "sizes": [166516, 148592, 200372, 408866], "truncated": [false, false, false, false], "secs": 4280.3}
+{"stage": "kt_setup", "L": 12, "k": 2, "best_bucket_AB_est": 169950680.66499645, "pmode": [0.0781, 0.0879, 0.0566, 0.0579, 0.0254, 0.0253, 0.0487, 0.0491, 0.0448, 0.0444]}
+{"stage": "kt_progress", "buckets": 1, "AB": 1568618024, "CD": 2710713832, "candidates": 58688, "solutions": 3, "secs": 22.3}
+{"stage": "kt_done", "buckets": 1, "candidates": 58688, "solutions": 3, "secs": 22.3}
+{"stage": "A_join", "shift": [0, -8, 4, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 60, "secs": 4303.6}
+{"stage": "A_lists", "shift": [4, 4, 4, 8], "sizes": [399348, 0, 200372, 408866], "truncated": [false, false, false, false], "secs": 4395.3}
+{"stage": "A_lists", "shift": [-4, -6, 8, 4], "sizes": [333954, 384130, 436526, 191780], "truncated": [false, false, false, false], "secs": 4502.5}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 33000308.20525464, "pmode": [0.082, 0.0469, 0.0668, 0.0661, 0.0443, 0.0441, 0.0226, 0.0227, 0.0356, 0.0358]}
+{"stage": "kt_progress", "buckets": 1, "AB": 488505680, "CD": 315535184, "candidates": 0, "solutions": 0, "secs": 35.0}
+{"stage": "kt_progress", "buckets": 2, "AB": 489223280, "CD": 315875536, "candidates": 0, "solutions": 0, "secs": 71.1}
+{"stage": "kt_progress", "buckets": 3, "AB": 491689520, "CD": 316014912, "candidates": 0, "solutions": 0, "secs": 104.3}
+{"stage": "kt_done", "buckets": 7, "candidates": 9724800, "solutions": 3, "secs": 210.0}
+{"stage": "A_join", "shift": [-4, -6, 8, 4], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 63, "secs": 4713.8}
+{"stage": "A_lists", "shift": [-2, -2, 10, 8], "sizes": [399348, 191780, 224280, 408866], "truncated": [false, false, false, false], "secs": 4821.2}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 19522602.573634155, "pmode": [0.0784, 0.0525, 0.062, 0.0612, 0.0238, 0.0243, 0.0465, 0.0467, 0.0415, 0.0421]}
+{"stage": "kt_progress", "buckets": 1, "AB": 430792720, "CD": 562119784, "candidates": 8048320, "solutions": 3, "secs": 16.5}
+{"stage": "kt_done", "buckets": 1, "candidates": 8048320, "solutions": 3, "secs": 16.5}
+{"stage": "A_join", "shift": [-2, -2, 10, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 66, "secs": 4838.6}
+{"stage": "A_lists", "shift": [2, -8, 4, 8], "sizes": [166516, 148592, 200372, 408866], "truncated": [false, false, false, false], "secs": 4928.7}
+{"stage": "kt_setup", "L": 12, "k": 2, "best_bucket_AB_est": 169724605.60936606, "pmode": [0.0788, 0.087, 0.0578, 0.0585, 0.0249, 0.025, 0.0483, 0.0484, 0.0448, 0.0443]}
+{"stage": "kt_progress", "buckets": 1, "AB": 1543675472, "CD": 2535549704, "candidates": 1667072, "solutions": 3, "secs": 20.9}
+{"stage": "kt_done", "buckets": 1, "candidates": 1667072, "solutions": 3, "secs": 20.9}
+{"stage": "A_join", "shift": [2, -8, 4, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 69, "secs": 4950.7}
+{"stage": "A_lists", "shift": [6, -2, 10, 4], "sizes": [333954, 191780, 224280, 191780], "truncated": [false, false, false, false], "secs": 5054.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 15585695.965162434, "pmode": [0.0792, 0.0497, 0.0618, 0.06, 0.0241, 0.0238, 0.0463, 0.0465, 0.0428, 0.0427]}
+{"stage": "kt_progress", "buckets": 1, "AB": 345307640, "CD": 226255520, "candidates": 0, "solutions": 0, "secs": 21.2}
+{"stage": "kt_progress", "buckets": 2, "AB": 343388224, "CD": 227360656, "candidates": 0, "solutions": 0, "secs": 37.7}
+{"stage": "kt_progress", "buckets": 3, "AB": 312558592, "CD": 194166704, "candidates": 50294528, "solutions": 3, "secs": 41.6}
+{"stage": "kt_done", "buckets": 3, "candidates": 50294528, "solutions": 3, "secs": 41.6}
+{"stage": "A_join", "shift": [6, -2, 10, 4], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 72, "secs": 5097.3}
+{"stage": "A_lists", "shift": [6, 0, 8, 8], "sizes": [333954, 166928, 436526, 408866], "truncated": [false, false, false, false], "secs": 5209.6}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 14352159.69594291, "pmode": [0.0796, 0.0506, 0.064, 0.0628, 0.0239, 0.0239, 0.0452, 0.0454, 0.0379, 0.0378]}
+{"stage": "kt_progress", "buckets": 1, "AB": 322104144, "CD": 686563984, "candidates": 3952512, "solutions": 3, "secs": 6.7}
+{"stage": "kt_done", "buckets": 1, "candidates": 3952512, "solutions": 3, "secs": 6.7}
+{"stage": "A_join", "shift": [6, 0, 8, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 75, "secs": 5217.3}
+{"stage": "A_lists", "shift": [6, 2, 6, 8], "sizes": [333954, 342262, 294492, 408866], "truncated": [false, false, false, false], "secs": 5325.4}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 29769066.79455405, "pmode": [0.0834, 0.0468, 0.0668, 0.0667, 0.0223, 0.0231, 0.0431, 0.0426, 0.0352, 0.035]}
+{"stage": "kt_progress", "buckets": 1, "AB": 588431496, "CD": 546204712, "candidates": 1042528, "solutions": 3, "secs": 5.5}
+{"stage": "kt_done", "buckets": 1, "candidates": 1042528, "solutions": 3, "secs": 5.5}
+{"stage": "A_join", "shift": [6, 2, 6, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 78, "secs": 5332.1}
+{"stage": "A_lists", "shift": [8, -4, 6, 4], "sizes": [0, 426660, 294492, 191780], "truncated": [false, false, false, false], "secs": 5424.7}
+{"stage": "A_lists", "shift": [-2, -6, 8, 8], "sizes": [399348, 384130, 436526, 408866], "truncated": [false, false, false, false], "secs": 5529.8}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 39945706.43970891, "pmode": [0.0827, 0.0466, 0.0677, 0.0673, 0.0445, 0.0442, 0.0227, 0.0226, 0.035, 0.035]}
+{"stage": "kt_progress", "buckets": 1, "AB": 589739248, "CD": 696165824, "candidates": 0, "solutions": 0, "secs": 87.9}
+{"stage": "kt_progress", "buckets": 2, "AB": 589778352, "CD": 694474744, "candidates": 0, "solutions": 0, "secs": 173.7}
+{"stage": "kt_progress", "buckets": 3, "AB": 592260016, "CD": 706309952, "candidates": 0, "solutions": 0, "secs": 259.8}
+{"stage": "kt_done", "buckets": 9, "candidates": 1019264, "solutions": 3, "secs": 655.6}
+{"stage": "A_join", "shift": [-2, -6, 8, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 81, "secs": 6186.8}
+{"stage": "A_lists", "shift": [4, -2, 10, 8], "sizes": [399348, 191780, 224280, 408866], "truncated": [false, false, false, false], "secs": 6287.1}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 19171871.753466453, "pmode": [0.0781, 0.0518, 0.0619, 0.0613, 0.024, 0.0245, 0.0466, 0.0469, 0.0413, 0.0418]}
+{"stage": "kt_progress", "buckets": 1, "AB": 430792720, "CD": 562119784, "candidates": 8048320, "solutions": 3, "secs": 17.3}
+{"stage": "kt_done", "buckets": 1, "candidates": 8048320, "solutions": 3, "secs": 17.3}
+{"stage": "A_join", "shift": [4, -2, 10, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 84, "secs": 6305.5}
+{"stage": "A_lists", "shift": [6, -6, 8, 4], "sizes": [333954, 384130, 436526, 191780], "truncated": [false, false, false, false], "secs": 6425.9}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 32334043.636170954, "pmode": [0.0827, 0.0461, 0.0661, 0.0663, 0.0439, 0.0446, 0.0224, 0.0226, 0.0354, 0.0361]}
+{"stage": "kt_progress", "buckets": 1, "AB": 488505680, "CD": 315535184, "candidates": 0, "solutions": 0, "secs": 37.1}
+{"stage": "kt_progress", "buckets": 2, "AB": 489223280, "CD": 315875536, "candidates": 0, "solutions": 0, "secs": 73.4}
+{"stage": "kt_progress", "buckets": 3, "AB": 491689520, "CD": 316014912, "candidates": 0, "solutions": 0, "secs": 108.9}
+{"stage": "kt_done", "buckets": 5, "candidates": 9724800, "solutions": 3, "secs": 148.9}
+{"stage": "A_join", "shift": [6, -6, 8, 4], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 87, "secs": 6576.3}
+{"stage": "A_lists", "shift": [4, -6, 8, 8], "sizes": [399348, 384130, 436526, 408866], "truncated": [false, false, false, false], "secs": 6703.0}
+{"stage": "kt_setup", "L": 12, "k": 3, "best_bucket_AB_est": 40112334.40825416, "pmode": [0.0827, 0.0463, 0.0682, 0.068, 0.0445, 0.045, 0.0229, 0.0233, 0.0348, 0.0351]}
+{"stage": "kt_progress", "buckets": 1, "AB": 589778352, "CD": 694474744, "candidates": 0, "solutions": 0, "secs": 88.5}
+{"stage": "kt_progress", "buckets": 2, "AB": 535121408, "CD": 801918968, "candidates": 0, "solutions": 0, "secs": 152.3}
+{"stage": "kt_progress", "buckets": 3, "AB": 589739248, "CD": 696165824, "candidates": 0, "solutions": 0, "secs": 239.9}
+{"stage": "kt_done", "buckets": 4, "candidates": 38272, "solutions": 3, "secs": 249.0}
+{"stage": "A_join", "shift": [4, -6, 8, 8], "stored_pairs": 0, "candidates": 0, "solutions": 3, "total": 90, "secs": 6953.4}
+{"sol": 0, "shift": [-2, 2, 0, 0], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 1, "shift": [-2, 2, 0, 0], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 2, "shift": [-2, 2, 0, 0], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 3, "shift": [4, 2, 0, 0], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 4, "shift": [4, 2, 0, 0], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 5, "shift": [4, 2, 0, 0], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 6, "shift": [-4, 2, 0, 4], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 7, "shift": [-4, 2, 0, 4], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 8, "shift": [-4, 2, 0, 4], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 9, "shift": [-4, 0, 8, 0], "residue_ok": true, "bad_lags": []}
+{"sol": 10, "shift": [-4, 0, 8, 0], "residue_ok": true, "bad_lags": []}
+{"sol": 11, "shift": [-4, 0, 8, 0], "residue_ok": true, "bad_lags": []}
+{"sol": 12, "shift": [-4, 2, 6, 0], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 13, "shift": [-4, 2, 6, 0], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 14, "shift": [-4, 2, 6, 0], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 15, "shift": [-2, 2, 0, 8], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 16, "shift": [-2, 2, 0, 8], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 17, "shift": [-2, 2, 0, 8], "residue_ok": false, "bad_lags": [255, 272]}
+{"sol": 18, "shift": [0, -8, 4, 0], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 19, "shift": [0, -8, 4, 0], "residue_ok": false, "bad_lags": "no lif"}
+{"sol": 33, "shift": [6, 0, 8, 0], "residue_ok": true, "bad_lags": []}
+{"sol": 34, "shift": [6, 0, 8, 0], "residue_ok": true, "bad_lags": []}
+{"sol": 35, "shift": [6, 0, 8, 0], "residue_ok": true, "bad_lags": []}
+{"sol": 51, "shift": [-4, 0, 8, 8], "residue_ok": true, "bad_lags": []}
+{"sol": 52, "shift": [-4, 0, 8, 8], "residue_ok": true, "bad_lags": []}
+{"sol": 53, "shift": [-4, 0, 8, 8], "residue_ok": true, "bad_lags": []}
+{"sol": 72, "shift": [6, 0, 8, 8], "residue_ok": true, "bad_lags": []}
+{"sol": 73, "shift": [6, 0, 8, 8], "residue_ok": true, "bad_lags": []}
+{"sol": 74, "shift": [6, 0, 8, 8], "residue_ok": true, "bad_lags": []}
+{"compressed": 90, "residue_feasible": 12}
