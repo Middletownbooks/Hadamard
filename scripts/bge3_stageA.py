@@ -76,7 +76,9 @@ def solve_A(h,p,u,log=print,max_solutions=200,shift_limit=None):
     ph=np.exp(2j*np.pi*((coc[:,None,:]*chars[None,:,:])/mods).sum(-1))
     sols=[]; t0=time.time()
     shifts=sorted(shifts,key=lambda x: sum(abs(y) for y in x[0]))
+    tcap=float(__import__('os').environ.get('A_TMAX','1e12'))
     for si,(s,cs) in enumerate(shifts[:shift_limit] if shift_limit else shifts):
+        if time.time()-t0>tcap: log(json.dumps(dict(stage='A_timecap',shifts_done=si,of=len(shifts)))); break
         lists=[]
         for k in range(4):
             Y,trunc=enum_block(g,cs[k],v,p)
