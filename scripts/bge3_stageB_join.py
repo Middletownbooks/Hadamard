@@ -214,20 +214,29 @@ def join_batched(PS,PAF,H,cls0,bound,verify,log=print,batch=1e8):
         o=np.argsort(K); K=K[o]; I=I[o]; J=J[o]
         cntp=np.zeros(len(PS[pr[0]]),np.int64)
         _emit_by_value(PS[pr[0]],PS[pr[1]],H[pr[0]],H[pr[1]],V[pr[0]],v3s,o3,bound,tb,-1,cntp,z,zu,zi,zi,False)
-        mm=int(cntp.sum())
-        if mm==0: continue
-        offp=np.concatenate([[0],np.cumsum(cntp)[:-1]]).astype(np.int64)
-        Kp=np.empty(mm,np.uint64); Ip=np.empty(mm,np.int32); Jp=np.empty(mm,np.int32)
-        _emit_by_value(PS[pr[0]],PS[pr[1]],H[pr[0]],H[pr[1]],V[pr[0]],v3s,o3,bound,tb,-1,cntp,offp,Kp,Ip,Jp,True)
-        need=np.uint64(0)-Kp
-        pos=np.searchsorted(K,need); hitm=(pos<len(K))&(K[np.minimum(pos,len(K)-1)]==need)
-        for q in np.nonzero(hitm)[0]:
-            pz=pos[q]
-            while pz<len(K) and K[pz]==need[q]:
-                idx={st[0]:int(I[pz]),st[1]:int(J[pz]),pr[0]:int(Ip[q]),pr[1]:int(Jp[q])}
-                tot_c+=1
-                if verify(idx): found.append(idx)
-                pz+=1
+        if int(cntp.sum())==0: continue
+        # probe side in row chunks (bounded memory)
+        cum=np.cumsum(cntp); r0=0
+        while r0<len(cntp):
+            base=cum[r0-1] if r0>0 else 0
+            r1=int(np.searchsorted(cum,base+5e7,side='right')); r1=max(r1,r0+1)
+            sub=np.arange(r0,min(r1,len(cntp)))
+            mm=int(cntp[sub].sum())
+            if mm:
+                subcnt=cntp[sub].copy(); suboff=np.concatenate([[0],np.cumsum(subcnt)[:-1]]).astype(np.int64)
+                Kp=np.empty(mm,np.uint64); Ip=np.empty(mm,np.int32); Jp=np.empty(mm,np.int32)
+                Pm=np.ascontiguousarray(PS[pr[0]][sub]); Hm=np.ascontiguousarray(H[pr[0]][sub]); Vm=np.ascontiguousarray(V[pr[0]][sub])
+                _emit_by_value(Pm,PS[pr[1]],Hm,H[pr[1]],Vm,v3s,o3,bound,tb,-1,subcnt,suboff,Kp,Ip,Jp,True)
+                need=np.uint64(0)-Kp
+                pos=np.searchsorted(K,need); hitm=(pos<len(K))&(K[np.minimum(pos,len(K)-1)]==need)
+                for q in np.nonzero(hitm)[0]:
+                    pz=pos[q]
+                    while pz<len(K) and K[pz]==need[q]:
+                        idx={st[0]:int(I[pz]),st[1]:int(J[pz]),pr[0]:int(sub[Ip[q]]),pr[1]:int(Jp[q])}
+                        tot_c+=1
+                        if verify(idx): found.append(idx)
+                        pz+=1
+            r0=min(r1,len(cntp))
     log(json.dumps(dict(stage='join_batched',batches=len(batches),stored_pairs=int(tot_st),candidates=int(tot_c),solutions=len(found))))
     return found
 
