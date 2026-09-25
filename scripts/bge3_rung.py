@@ -14,15 +14,17 @@ ADD=idx(co[:,None,:]+co[None,:,:]).astype(np.int32); NEG=idx(-co).astype(np.int3
 coset=(co[:,0]*3+co[:,1]).astype(np.int32)
 tgt=np.where((co[:,0]==0)&(co[:,1]==0),-4*b,4).astype(np.int64); tgt[0]=0
 # 1. shifts
-best=None
+import os
+ITERS=int(float(os.environ.get('ITERS','2e7'))); T0_=float(os.environ.get('T0',str(2*m))); T1_=float(os.environ.get('T1','1.0'))
+shifts=[]
 R_=2*((h+7)//2)
-for s in itertools.product(range(-R_,R_+1,2),repeat=4):
-    cs=comp+np.array(s)[:,None]
-    if np.abs(cs).max()>h: continue
-    a=cs.sum(1)
-    if (a*a).sum()==4*v: best=(s,cs); break
-if best is None: print(json.dumps(dict(h=h,v=v,note='no admissible shift')),flush=True); sys.exit()
-s,cs=best
+for s_ in itertools.product(range(-R_,R_+1,2),repeat=4):
+    cs_=comp+np.array(s_)[:,None]
+    if np.abs(cs_).max()>h: continue
+    a=cs_.sum(1)
+    if (a*a).sum()==4*v: shifts.append((s_,cs_))
+if not shifts: print(json.dumps(dict(h=h,v=v,note='no admissible shift')),flush=True); sys.exit()
+s,cs=shifts[0]
 @nb.njit(cache=True)
 def paf(f,ADD):
     m=f.shape[0]; P=np.zeros(m,np.int64)
@@ -32,7 +34,7 @@ def paf(f,ADD):
         P[g]=t
     return P
 @nb.njit(cache=True)
-def anneal(F,cos_,ADD,NEG,tgt,seed,tmax_iter,T0):
+def anneal(F,cos_,ADD,NEG,tgt,seed,tmax_iter,T0,T1):
     np.random.seed(seed); K,m=F.shape
     P=np.zeros(m,np.int64)
     for k in range(K):
@@ -75,7 +77,7 @@ def anneal(F,cos_,ADD,NEG,tgt,seed,tmax_iter,T0):
             if E==0: return it,0
         else:
             F[k,x]=fx
-        if it%20000==0: Temp=max(T0*0.5,Temp*0.999)
+        if it%1000==0: Temp=T0*(T1/T0)**(it/tmax_iter)
     return tmax_iter,E
 rng=np.random.default_rng(seed)
 def init():
@@ -87,13 +89,13 @@ def init():
     return F
 t0=time.time(); tries=0; solved=None; its=0
 while time.time()-t0<tmax:
-    F=init(); tries+=1
-    it,E=anneal(F,coset,ADD,NEG,tgt,seed*1000+tries,2_000_000,float(4*m))
+    s,cs=shifts[tries%len(shifts)]; F=init(); tries+=1
+    it,E=anneal(F,coset,ADD,NEG,tgt,seed*1000+tries,ITERS,T0_,T1_)
     its+=it
     # verify with exact PAF
     P=sum(paf(F[k],ADD) for k in range(4))
     if np.array_equal(P[1:],tgt[1:]): solved=F; break
-res=dict(h=h,v=v,m=m,shift=list(s),rowsums=cs.sum(1).tolist(),restarts=tries,iters=int(its),secs=round(time.time()-t0,1),solved=solved is not None)
+res=dict(h=h,v=v,m=m,n_shifts=len(shifts),iters_per_run=ITERS,shift=list(s),rowsums=cs.sum(1).tolist(),restarts=tries,iters=int(its),secs=round(time.time()-t0,1),solved=solved is not None)
 if solved is not None:
     F=solved; off=20; Hm=np.zeros((N,N),np.int64)
     Hm[:off,:off]=T['C']
