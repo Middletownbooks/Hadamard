@@ -41,16 +41,18 @@ def enum_block(g,cs_k,v,p,maxout=5*10**7):
     order=np.argsort(-np.abs(OP).sum(1)); n1=rc//2; o1=order[:n1]; o2=order[n1:]
     Y1=half_enum(vals,len(o1)); Y2=half_enum(vals,len(o2))
     S1=Y1.astype(np.int64)@footA[o1]; S2=Y2.astype(np.int64)@footA[o2]
-    F1=Y1.astype(float)@OP[o1]; F2=Y2.astype(float)@OP[o2]
+    # Fourier parts as float32 real/imag (memory: half-lists can be ~1.7M x 96 characters)
+    F1r=np.ascontiguousarray(Y1.astype(np.float32)@OP[o1].real.astype(np.float32)); F1i=np.ascontiguousarray(Y1.astype(np.float32)@OP[o1].imag.astype(np.float32))
+    F2r=np.ascontiguousarray(Y2.astype(np.float32)@OP[o2].real.astype(np.float32)); F2i=np.ascontiguousarray(Y2.astype(np.float32)@OP[o2].imag.astype(np.float32))
     # match coset sums S1 + S2 = cs_k with numba (keys = coset-sum vectors encoded in int64)
     base=4*h_+1
     enc=lambda S: ((S+2*h_)*(base**np.arange(6))).sum(1).astype(np.int64)
     k1=enc(S1); k2=enc(S2); o2s=np.argsort(k2); k2s=k2[o2s]
     need=enc(np.array(cs_k)[None,:]-S1)
-    F1r=np.ascontiguousarray(F1.real); F1i=np.ascontiguousarray(F1.imag); F2r=np.ascontiguousarray(F2.real); F2i=np.ascontiguousarray(F2.imag)
-    bound=4*v+1e-6
-    cnt=np.zeros(len(S1),np.int64); dummyI=np.zeros(1,np.int64); dummyJ=np.zeros(1,np.int64)
-    _match(need,k2s,o2s,F1r,F1i,F2r,F2i,bound,cnt,dummyI,dummyJ,np.zeros(len(S1),np.int64),False)
+    del S1,S2
+    bound=4*v+0.05   # float32 rounding margin (PSD bound is only a filter; verification is exact)
+    cnt=np.zeros(len(need),np.int64); dummyI=np.zeros(1,np.int64); dummyJ=np.zeros(1,np.int64)
+    _match(need,k2s,o2s,F1r,F1i,F2r,F2i,bound,cnt,dummyI,dummyJ,np.zeros(len(need),np.int64),False)
     tot=int(cnt.sum()); trunc=tot>maxout
     if tot==0: return np.zeros((0,rc),np.int8), False
     if trunc: tot=0; cnt[:]=0
