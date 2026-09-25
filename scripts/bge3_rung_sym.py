@@ -125,6 +125,52 @@ def chunk(Y,F,P,E,omem,fkey,ADD,NEG,tgt,m,seed,it0,n,total,T0,T1):
                     F[k,x]=-F[k,x]
         if it%1000==0: Temp=T0*(T1/T0)**(it/total)
     return E,best,False
+
+@nb.njit(cache=True)
+def tabu_run(Y,F,P,E,omem,fkey,ADD,NEG,tgt,m,seed,steps,ncand,tenure):
+    """tabu search: each step evaluates ncand random same-footprint opposite-sign orbit pairs (one block),
+    applies the best non-tabu one (aspiration if it beats the best), orbits become tabu for 'tenure' steps."""
+    np.random.seed(seed); K,r=Y.shape; D=np.zeros(m,np.int64); Dbest=np.zeros(m,np.int64)
+    tab=np.zeros((K,r),np.int64); best=E
+    for st in range(steps):
+        bestE=1<<62; bk=-1; bq1=-1; bq2=-1
+        for c_ in range(ncand):
+            k=np.random.randint(K); q1=np.random.randint(r); q2=-1
+            for tries in range(30):
+                qq=np.random.randint(r)
+                if qq!=q1 and fkey[qq]==fkey[q1] and Y[k,qq]==-Y[k,q1]: q2=qq; break
+            if q2<0: continue
+            for g in range(m): D[g]=0
+            for qq in (q1,q2):
+                for j in range(omem.shape[1]):
+                    x=omem[qq,j]
+                    if x<0: break
+                    fx=F[k,x]
+                    for g in range(1,m): D[g]+=-2*fx*(F[k,ADD[x,g]]+F[k,ADD[x,NEG[g]]])
+                    F[k,x]=-fx
+            for qq in (q2,q1):
+                for j in range(omem.shape[1]):
+                    x=omem[qq,j]
+                    if x<0: break
+                    F[k,x]=-F[k,x]
+            e=0
+            for g in range(1,m): d=P[g]+D[g]-tgt[g]; e+=d*d
+            is_tabu=(tab[k,q1]>st) or (tab[k,q2]>st)
+            if (not is_tabu or e<best) and e<bestE:
+                bestE=e; bk=k; bq1=q1; bq2=q2
+                for g in range(m): Dbest[g]=D[g]
+        if bk<0: continue
+        for qq in (bq1,bq2):
+            for j in range(omem.shape[1]):
+                x=omem[qq,j]
+                if x<0: break
+                F[bk,x]=-F[bk,x]
+            Y[bk,qq]=-Y[bk,qq]; tab[bk,qq]=st+tenure+np.random.randint(tenure+1)
+        for g in range(1,m): P[g]+=Dbest[g]
+        E=bestE
+        if E<best: best=E
+        if E==0: return E,best,True
+    return E,best,False
 rng=np.random.default_rng(seed)
 def init(cs):
     # random orbit signs hitting the coset-sum target: greedy by footprint class then repair via DP-free random search
@@ -150,7 +196,10 @@ while time.time()-t0<tmax and solved is None:
     if Y is None: continue
     F,P=setup(Y,omem,ADD,m); E=int(sum((P[g]-tgt[g])**2 for g in range(1,m))); runbest=E
     for it0 in range(0,ITERS,CH):
-        E,b2,ok=chunk(Y,F,P,E,omem,fkey,ADD,NEG,tgt,m,seed*100003+tries*1009+it0//CH,it0,min(CH,ITERS-it0),ITERS,T0_,T1_)
+        if os.environ.get('MODE','anneal')=='tabu':
+            E,b2,ok=tabu_run(Y,F,P,E,omem,fkey,ADD,NEG,tgt,m,seed*100003+tries*1009+it0//CH,min(CH,ITERS-it0),int(os.environ.get('NCAND','64')),int(os.environ.get('TENURE','8')))
+        else:
+            E,b2,ok=chunk(Y,F,P,E,omem,fkey,ADD,NEG,tgt,m,seed*100003+tries*1009+it0//CH,it0,min(CH,ITERS-it0),ITERS,T0_,T1_)
         its+=CH; runbest=min(runbest,b2)
         if (it0//CH)%50==0: print(json.dumps(dict(progress=True,restart=tries,it=it0,E=int(E),run_best=int(runbest),secs=round(time.time()-t0))),flush=True)
         if ok: solved=F; break
