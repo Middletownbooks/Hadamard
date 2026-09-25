@@ -23,11 +23,23 @@ for gi,(key,(d,r,lab,grp,abel)) in enumerate(cands):
         # class of each element in Q x Z_t
         cls=np.ravel_multi_index(tuple(np.moveaxis(np.concatenate([co[:,:len(Q)],co[:,-1:]%t],axis=1),-1,0)),Q+[t])
         K=c*t; M=np.zeros((K,r),np.int64); np.add.at(M,(cls,lab),1)
+        # characters of Q x Z_t and their bounds: |F(chi)| <= sqrt(target) at the end
+        chiv=np.array(np.unravel_index(np.arange(K),Q+[t])).T; mods_=np.array(Q+[t])
+        E=np.exp(-2j*np.pi*((np.array(np.unravel_index(np.arange(K),Q+[t])).T[:,None,:]*chiv[None,:,:])/mods_).sum(-1))   # (class, chi)
+        tg=np.where(chiv[:,-1]!=0,4*v,np.where((chiv[:,:-1]!=0).any(1),4*b,4*v)).astype(float)
+        FM=(M.T.astype(float))@E                                              # orbit q -> contribution to F(chi)
+        rem=np.vstack([np.abs(FM[q:]).sum(0) for q in range(r)]+[np.zeros(K)])  # max remaining |contribution|
+        order=np.argsort(-np.abs(FM).sum(1)); FM=FM[order]; Mo=M[:,order]
+        rem=np.vstack([np.abs(FM[q:]).sum(0) for q in range(r)]+[np.zeros(K)])
         cur=np.zeros((1,K),np.int32); ok=True
         for q in range(r):
-            col=M[:,q].astype(np.int32); cur=np.ascontiguousarray(np.concatenate([cur+col,cur-col]))
+            col=Mo[:,q].astype(np.int32); cur=np.ascontiguousarray(np.concatenate([cur+col,cur-col]))
             _,i=np.unique(cur.view(np.dtype((np.void,4*K))).ravel(),return_index=True); cur=cur[i]
+            Fc=cur.astype(float)@E
+            keep=(np.abs(Fc)-rem[q+1][None,:] <= np.sqrt(tg)[None,:]+1e-6).all(1)
+            cur=cur[keep]
             if len(cur)>MAXST: ok=False; break
+            if len(cur)==0: break
         if not ok: rec['tests'][t]=None; continue
         X=cur.reshape((-1,)+tuple(Q+[t])).astype(float)
         F=np.fft.fftn(X,axes=tuple(range(1,len(Q)+2))); P=np.rint(np.abs(F)**2).reshape(len(cur),-1).astype(np.int64)
