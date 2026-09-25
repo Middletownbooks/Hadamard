@@ -82,3 +82,39 @@ def yc_join(g,ycl,p2,u,log=print,nbuckets=2000,max_solutions=100):
         return False
     kt_join4(PAFl,verify,nbuckets=nbuckets,max_solutions=max_solutions,log=lambda s: log(s) if ('kt_done' in s or 'kt_setup' in s or 'kt_buckets' in s) else None,target_pairs=1e6)
     return sols
+
+def _half_product(parts,no):
+    """all combinations over a list of (cq, options Y, contribution C): returns (signs (n,no) int8, contrib (n,d) int64)."""
+    total=int(np.prod([len(Y) for _,Y,_ in parts])) if parts else 1
+    d=parts[0][2].shape[1] if parts else 0
+    S=np.zeros((total,no),np.int8); Cs=np.zeros((total,d),np.int64); rep=total; tile=1
+    for cq,Y,C in parts:
+        rep//=len(Y); idx=np.tile(np.repeat(np.arange(len(Y)),rep),tile); tile*=len(Y)
+        S[:,cq]=Y[idx]; Cs+=C[idx]
+    return S,Cs
+
+def enum_lifts_yc(g,comps,xck,yck,foot,maxhalf=2**24):
+    """all lifts (orbit signs) of block compression xck whose z-mod-p2 compression equals yck (meet in the middle over
+    components, matched on the yc contribution)."""
+    A=g['footB'].T; no=A.shape[1]; parts=[]
+    for cq in comps:
+        Y=comp_options(A,cq,xck)
+        if len(Y)==0: return np.zeros((0,no),np.int8)
+        parts.append((cq,Y.astype(np.int8),(Y@foot[cq]).astype(np.int64)))
+    # balance halves by log size
+    parts.sort(key=lambda t:-len(t[1])); H1=[];H2=[]; l1=l2=0.0
+    for pt in parts:
+        if l1<=l2: H1.append(pt); l1+=np.log2(len(pt[1]))
+        else: H2.append(pt); l2+=np.log2(len(pt[1]))
+    if max(l1,l2)>np.log2(maxhalf): raise MemoryError(f'half too large: 2^{max(l1,l2):.1f}')
+    S1,C1=_half_product(H1,no); S2,C2=_half_product(H2,no)
+    rng=np.random.default_rng(7); W=rng.integers(1,2**62,size=C1.shape[1],dtype=np.int64)
+    k1=(C1*W).sum(1); k2=((np.asarray(yck)[None,:]-C2)*W).sum(1)
+    o=np.argsort(k1); k1s=k1[o]; lo=np.searchsorted(k1s,k2); hi=np.searchsorted(k1s,k2,side='right')
+    n=int((hi-lo).sum()); out=np.empty((n,no),np.int8); w=0
+    for j in np.nonzero(hi>lo)[0]:
+        ii=o[lo[j]:hi[j]]; out[w:w+len(ii)]=S1[ii]+S2[j]; w+=len(ii)
+    out=out[:w]
+    # exact check of the yc contribution (hash collisions)
+    ok=((out.astype(np.int64)@foot)==np.asarray(yck)[None,:]).all(1)
+    return out[ok]

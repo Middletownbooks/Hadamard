@@ -89,7 +89,8 @@ def probe(PA,PB,HA,HB,bound,Ks,nch):
         hits[i]=c
     return hits
 
-def run(h,p,u,xc,log=print,maxpairs=3e8):
+def run(h,p,u,xc,log=print,maxpairs=3e8,lifts=None):
+    """lifts: optional list of 4 pre-enumerated lift arrays (orbit signs), e.g. from the two-sided enumerator"""
     g=setup(h,p,u); co=g['co']; m=g['m']; v=g['v']; lab=g['lab']; orbs=g['orbs']; ADD=g['ADD']; T_full=g['T_full']
     A=g['footB'].T; t0=time.time()
     # lag classes (orbits of <S,-1> on G\0) and character classes
@@ -116,7 +117,7 @@ def run(h,p,u,xc,log=print,maxpairs=3e8):
     ph=np.exp(2j*np.pi*((co[:,None,:]*co[creps][None,:,:])/mods).sum(-1))
     lists=[]
     for k in range(4):
-        Y=enum_lifts(A,xc[k]); F=Y[:,lab].astype(np.float32)
+        Y=enum_lifts(A,xc[k]) if lifts is None else lifts[k]; F=Y[:,lab].astype(np.float32)
         PS=np.empty((len(Y),len(creps)),np.float32)
         for s in range(0,len(Y),50000): PS[s:s+50000]=(np.abs(F[s:s+50000]@ph)**2).astype(np.float32)
         ok=(PS<=4*v+1e-3).all(1); Y=Y[ok]; PS=PS[ok]
