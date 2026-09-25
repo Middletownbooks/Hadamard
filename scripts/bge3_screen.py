@@ -23,24 +23,42 @@ for gi,(key,(d,r,lab,grp,abel)) in enumerate(cands):
         # class of each element in Q x Z_t
         cls=np.ravel_multi_index(tuple(np.moveaxis(np.concatenate([co[:,:len(Q)],co[:,-1:]%t],axis=1),-1,0)),Q+[t])
         K=c*t; M=np.zeros((K,r),np.int64); np.add.at(M,(cls,lab),1)
+        # symmetry reduction: S permutes classes; xbar is constant on class-orbits (rows of M equal there)
+        cpar=np.arange(K)
+        def cf(a_):
+            while cpar[a_]!=a_: cpar[a_]=cpar[cpar[a_]]; a_=cpar[a_]
+            return a_
+        rep_el=np.array([np.where(cls==k)[0][0] for k in range(K)])
+        for g in grp:
+            img=cls[g[rep_el]]
+            for k in range(K):
+                x_,y_=cf(k),cf(int(img[k]))
+                if x_!=y_: cpar[x_]=y_
+        corb=np.array([cf(k) for k in range(K)]); _,corb=np.unique(corb,return_inverse=True); nco=corb.max()+1
+        orbrep=np.array([np.where(corb==o)[0][0] for o in range(nco)])
+        assert all(np.array_equal(M[k],M[orbrep[corb[k]]]) for k in range(K))
+        Mfull=M; M=M[orbrep]                                                    # (nco, r): one row per class-orbit
+        rec.setdefault('class_orbits',{})[t]=int(nco)
         # characters of Q x Z_t and their bounds: |F(chi)| <= sqrt(target) at the end
         chiv=np.array(np.unravel_index(np.arange(K),Q+[t])).T; mods_=np.array(Q+[t])
-        E=np.exp(-2j*np.pi*((np.array(np.unravel_index(np.arange(K),Q+[t])).T[:,None,:]*chiv[None,:,:])/mods_).sum(-1))   # (class, chi)
+        Efull=np.exp(-2j*np.pi*((np.array(np.unravel_index(np.arange(K),Q+[t])).T[:,None,:]*chiv[None,:,:])/mods_).sum(-1))   # (class, chi)
+        E=np.stack([Efull[corb==o].sum(0) for o in range(nco)])                   # (class-orbit, chi): xbar_orbit value * sum of members
         tg=np.where(chiv[:,-1]!=0,4*v,np.where((chiv[:,:-1]!=0).any(1),4*b,4*v)).astype(float)
         FM=(M.T.astype(float))@E                                              # orbit q -> contribution to F(chi)
         rem=np.vstack([np.abs(FM[q:]).sum(0) for q in range(r)]+[np.zeros(K)])  # max remaining |contribution|
         order=np.argsort(-np.abs(FM).sum(1)); FM=FM[order]; Mo=M[:,order]
         rem=np.vstack([np.abs(FM[q:]).sum(0) for q in range(r)]+[np.zeros(K)])
-        cur=np.zeros((1,K),np.int32); ok=True
+        cur=np.zeros((1,nco),np.int32); ok=True
         for q in range(r):
             col=Mo[:,q].astype(np.int32); cur=np.ascontiguousarray(np.concatenate([cur+col,cur-col]))
-            _,i=np.unique(cur.view(np.dtype((np.void,4*K))).ravel(),return_index=True); cur=cur[i]
+            _,i=np.unique(cur.view(np.dtype((np.void,4*nco))).ravel(),return_index=True); cur=cur[i]
             Fc=cur.astype(float)@E
             keep=(np.abs(Fc)-rem[q+1][None,:] <= np.sqrt(tg)[None,:]+1e-6).all(1)
             cur=cur[keep]
             if len(cur)>MAXST: ok=False; break
             if len(cur)==0: break
         if not ok: rec['tests'][t]=None; continue
+        cur=cur[:,corb]                                                          # expand to all classes
         X=cur.reshape((-1,)+tuple(Q+[t])).astype(float)
         F=np.fft.fftn(X,axes=tuple(range(1,len(Q)+2))); P=np.rint(np.abs(F)**2).reshape(len(cur),-1).astype(np.int64)
         a=cur.sum(1).astype(np.int64)
@@ -53,9 +71,16 @@ for gi,(key,(d,r,lab,grp,abel)) in enumerate(cands):
         # need 4 rows with sum_k a_k^2 = 4v and sum P = tgt[1:]
         W=np.concatenate([V[:,:1]**2,V[:,1:]],axis=1)
         T=np.concatenate([[4*v],tgt[1:]])
-        if len(W)>4000: rec['tests'][t]=('too many vectors',len(W)); continue
-        S2=(W[:,None,:]+W[None,:,:]).reshape(-1,W.shape[1]); S2=S2[(S2<=T[None,:]).all(1)]
-        S2=np.unique(S2,axis=0); need={tuple(x) for x in (T[None,:]-S2)}
-        feas=any(tuple(x) in need for x in S2)
+        # chunked pair sums, pruned componentwise by the target (all entries are >= 0)
+        parts=[]; tot=0; over=False
+        for i0 in range(0,len(W),512):
+            S=(W[i0:i0+512,None,:]+W[None,:,:]).reshape(-1,W.shape[1]); S=S[(S<=T[None,:]).all(1)]
+            if len(S): S=np.unique(S,axis=0); parts.append(S); tot+=len(S)
+            if tot>4e7: over=True; break
+        if over: rec['tests'][t]=('too many pair sums',int(tot)); continue
+        S2=np.unique(np.concatenate(parts),axis=0) if parts else np.zeros((0,W.shape[1]),np.int64)
+        key=lambda A: A.view(np.dtype((np.void,A.dtype.itemsize*A.shape[1]))).ravel()
+        S2c=np.ascontiguousarray(S2); Nd=np.ascontiguousarray(T[None,:]-S2)
+        feas=bool(np.isin(key(Nd),key(S2c)).any()) if len(S2) else False
         rec['tests'][t]=bool(feas)
     out.append(rec); print(json.dumps(rec,default=int),flush=True)
