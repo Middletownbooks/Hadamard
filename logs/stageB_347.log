@@ -1,0 +1,12 @@
+{"stage": "list", "block": 0, "lifts": 1594323, "psd_pass": 287454, "secs": 38.5}
+{"stage": "list", "block": 1, "lifts": 4782969, "psd_pass": 247134, "secs": 118.6}
+{"stage": "list", "block": 2, "lifts": 177147, "psd_pass": 31134, "secs": 121.5}
+{"stage": "list", "block": 3, "lifts": 177147, "psd_pass": 15636, "secs": 122.8}
+{"stage": "stored_pairs", "blocks": [1, 3], "n": 47644338, "of": 3864187224, "secs": 138.7}
+{"stage": "probe", "candidates": 6, "secs": 296.1}
+/home/user/Hadamard/scripts/bge3_stageB_join.py:154: RuntimeWarning: overflow encountered in scalar add
+  key=np.uint64(0)-(H[pr[0]][i]+H[pr[1]][j]); pz=np.searchsorted(K,key)
+/home/user/Hadamard/scripts/bge3_stageB_join.py:154: RuntimeWarning: overflow encountered in scalar subtract
+  key=np.uint64(0)-(H[pr[0]][i]+H[pr[1]][j]); pz=np.searchsorted(K,key)
+{"stage": "done", "solutions": 6, "secs": 296.8}
+{"found": 6, "matches_real_blocks": [true, false, false, false, false, false]}
