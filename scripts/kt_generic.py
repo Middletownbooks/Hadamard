@@ -41,26 +41,22 @@ def kt_join4(PAF,verify,k=6,nbuckets=10**6,max_solutions=10,log=print,seed=0,bud
     sB=keyof(D[1]['ch'],z,1); oB=np.argsort(sB,kind='stable'); sB=sB[oB]
     sD=keyof(D[3]['ch'],z,1); oD=np.argsort(sD,kind='stable'); sD=sD[oD]
     ns=2_000_000
+    # buckets from the JOINT empirical distribution of chunk pair-sums (per-class marginals can combine into jointly
+    # impossible tau when classes are coupled, e.g. by forced PAF residues)
     def pairdist(a1,a2):
         i=rng.integers(0,len(PAF[a1]),ns); j=rng.integers(0,len(PAF[a2]),ns)
         S=D[a1]['ch'][i].astype(np.int32)+D[a2]['ch'][j].astype(np.int32)
-        return [dict(zip(*np.unique(S[:,q],return_counts=True))) for q in range(k)]
-    dAB=pairdist(0,1); dCD=pairdist(2,3); opts=[]
-    for q in range(k):
-        vals=sorted(set(dAB[q])&{-x for x in dCD[q]},key=lambda t:-(dAB[q][t]/ns)*(dCD[q].get(-t,0)/ns))
-        opts.append([(int(t),np.log2(dAB[q][t]/ns)+np.log2(dCD[q][-t]/ns)) for t in vals[:24]])
-    if any(len(o)==0 for o in opts): log(json.dumps(dict(stage='kt',note='no common chunk values'))); return []
-    score=lambda ix: sum(opts[q][ix[q]][1] for q in range(k))
-    best=tuple(0 for _ in range(k)); heap=[(-score(best),best)]; seen={best}
+        u,c=np.unique(S,axis=0,return_counts=True); return {tuple(int(x) for x in r):int(n) for r,n in zip(u,c)}
+    dAB=pairdist(0,1); dCD=pairdist(2,3)
+    cand=[(np.log2(dAB[t]/ns)+np.log2(dCD[tuple(-x for x in t)]/ns),t) for t in dAB if tuple(-x for x in t) in dCD]
+    cand.sort(reverse=True)
+    if not cand: log(json.dumps(dict(stage='kt',note='no common chunk values'))); return []
+    log(json.dumps(dict(stage='kt_buckets',n_common=len(cand),best_log2p=round(cand[0][0],2),AB_tuples=len(dAB),CD_tuples=len(dCD))))
     T=int(max(np.abs(D[0]['c']).max()+np.abs(D[1]['c']).max(),np.abs(D[2]['c']).max()+np.abs(D[3]['c']).max()))+2
     found=[]; t0=time.time(); nb_=0; ncand=0
-    while heap and nb_<nbuckets and len(found)<max_solutions and time.time()-t0<tmax:
-        s_,ix=heapq.heappop(heap); nb_+=1
-        for q in range(k):
-            if ix[q]+1<len(opts[q]):
-                nx=ix[:q]+(ix[q]+1,)+ix[q+1:]
-                if nx not in seen: seen.add(nx); heapq.heappush(heap,(-score(nx),nx))
-        tau=np.array([opts[q][ix[q]][0] for q in range(k)],np.int64)
+    for _,tt in cand:
+        if nb_>=nbuckets or len(found)>=max_solutions or time.time()-t0>=tmax: break
+        nb_+=1; tau=np.array(tt,np.int64)
         nA=keyof(D[0]['ch'],tau,-1); oA=np.argsort(nA); nA=nA[oA]
         nC=keyof(D[2]['ch'],-tau,-1); oC=np.argsort(nC); nC=nC[oC]
         hAB=merge_thist(nA,oA,D[0]['c'],sB,oB,D[1]['c'],64,T); hCD=merge_thist(nC,oC,D[2]['c'],sD,oD,D[3]['c'],64,T)
