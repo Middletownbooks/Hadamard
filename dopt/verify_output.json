@@ -1,0 +1,150 @@
+{
+ "P1": {
+  "counts": {
+   "7": 784,
+   "9": 3888,
+   "11": 0
+  },
+  "PASS": false
+ },
+ "P2": {
+  "PASS": true
+ },
+ "P3": {
+  "flip_pair_ok": false,
+  "flip_R_ok": false,
+  "wrong_EW_ok": false,
+  "control_true_ok": true,
+  "PASS": true
+ },
+ "P4": {
+  "counterexamples": 0,
+  "PASS": true
+ },
+ "P5": {
+  "min_nonzero": {
+   "7": 32,
+   "9": 32
+  },
+  "PASS": true
+ },
+ "P6": {
+  "sum_of_two_squares": {
+   "487": false,
+   "523": false,
+   "571": false,
+   "659": false,
+   "739": false,
+   "643": true
+  },
+  "PASS": true
+ },
+ "info_worklist13": {
+  "515": false,
+  "523": false,
+  "537": true,
+  "571": false,
+  "573": true,
+  "599": false,
+  "643": true,
+  "647": false,
+  "659": false,
+  "669": false,
+  "719": false,
+  "721": false,
+  "739": false
+ },
+ "P7": {
+  "deviations": {
+   "4,67": -0.141,
+   "4,79": -0.082,
+   "4,103": -0.091,
+   "4,151": -0.075,
+   "2,67": -0.001,
+   "2,79": -0.022,
+   "2,103": -0.021,
+   "2,151": -0.025
+  },
+  "b_4_523": 4.841,
+  "PASS": true
+ },
+ "zero_crossing_v": {
+  "2": 326,
+  "4": 41722
+ }
+}
+{
+ "P1": {
+  "counts": {
+   "7": 784,
+   "9": 3888,
+   "11": 0
+  },
+  "PASS": false
+ },
+ "P2": {
+  "PASS": true
+ },
+ "P3": {
+  "flip_pair_ok": false,
+  "flip_R_ok": false,
+  "wrong_EW_ok": false,
+  "control_true_ok": true,
+  "PASS": true
+ },
+ "P4": {
+  "counterexamples": 0,
+  "PASS": true
+ },
+ "P5": {
+  "min_nonzero": {
+   "7": 32,
+   "9": 32
+  },
+  "PASS": true
+ },
+ "P6": {
+  "sum_of_two_squares": {
+   "487": false,
+   "523": false,
+   "571": false,
+   "659": false,
+   "739": false,
+   "643": true
+  },
+  "PASS": true
+ },
+ "info_worklist13": {
+  "515": false,
+  "523": false,
+  "537": true,
+  "571": false,
+  "573": true,
+  "599": false,
+  "643": true,
+  "647": false,
+  "659": false,
+  "669": false,
+  "719": false,
+  "721": false,
+  "739": false
+ },
+ "P7": {
+  "deviations": {
+   "4,67": -0.141,
+   "4,79": -0.082,
+   "4,103": -0.091,
+   "4,151": -0.075,
+   "2,67": -0.001,
+   "2,79": -0.022,
+   "2,103": -0.021,
+   "2,151": -0.025
+  },
+  "b_4_523": 4.841,
+  "PASS": true
+ },
+ "zero_crossing_v": {
+  "2": 326,
+  "4": 41722
+ }
+}
