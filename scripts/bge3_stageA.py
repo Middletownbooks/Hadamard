@@ -10,8 +10,10 @@ from bge3_stageB_join import setup
 def half_enum(vals,n):
     """all value assignments for n orbits (each from vals): (len(vals)^n, n) int8"""
     if n==0: return np.zeros((1,0),np.int8)
-    g=np.array(np.meshgrid(*[vals]*n,indexing='ij')).reshape(n,-1).T
-    return g.astype(np.int8)
+    vals=np.asarray(vals,np.int8); b=len(vals); N=b**n; out=np.empty((N,n),np.int8); idx=np.arange(N,dtype=np.int64)
+    for j in range(n-1,-1,-1):                      # same order as meshgrid(indexing='ij'): last orbit fastest
+        out[:,j]=vals[idx%b]; idx//=b
+    return out
 
 
 @nb.njit(parallel=True,cache=True)
@@ -34,6 +36,18 @@ def _match(need,k2s,o2s,F1r,F1i,F2r,F2i,bound,cnt,I,J,off,write):
 def enum_block(g,cs_k,v,p,maxout=5*10**7):
     h_=g['h']; rc=g['rc']; footA=g['footA']; mc=g['mc']; labc=g['labc']; coc=g['coc']; t=g['t']
     mods=np.array([2,3,t]); chars=coc[coc[:,2]!=0]
+    # one representative per orbit of <u,-1> on the characters: blocks are u-invariant, so |F(u chi)| = |F(chi)| and
+    # |F(-chi)| = |F(chi)|; the PSD bound on the representatives is equivalent (and much smaller in memory)
+    e_=int(np.lcm.reduce([2,3,t])); seen=set(); keep=[]
+    for i,ch in enumerate(chars):
+        key=tuple(int(x) for x in ch%mods)
+        if key in seen: continue
+        keep.append(i); y=np.array(ch)
+        for _ in range(4*e_):
+            for z in (y,-y): seen.add(tuple(int(x) for x in z%mods))
+            y=(y*(g['u']%e_))%mods
+            if tuple(int(x) for x in y)==key: break
+    chars=chars[keep]
     ph=np.exp(2j*np.pi*((coc[:,None,:]*chars[None,:,:])/mods).sum(-1))       # (element, char)
     OP=np.zeros((rc,len(chars)),complex)                                        # orbit -> Fourier contribution
     for x in range(mc): OP[labc[x]]+=ph[x]
