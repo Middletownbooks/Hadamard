@@ -123,10 +123,9 @@ def run(h,p,u,xc,log=print,maxpairs=3e8,lifts=None):
             P_=(np.abs(Y[s:s+50000][:,lab].astype(np.float32)@ph)**2).astype(np.float32); o_=(P_<=4*v+1e-3).all(1)
             ok[s:s+50000]=o_; PSl.append(P_[o_])
         Y=Y[ok]; PS=np.concatenate(PSl) if PSl else np.zeros((0,len(creps)),np.float32)
-        Fk=Y[:,lab].astype(np.int64)
         PAF=np.empty((len(Y),L),np.int64)
         for s in range(0,len(Y),20000):
-            Fs=np.fft.fftn(Fk[s:s+20000].reshape(-1,2,3,h).astype(float),axes=(1,2,3))
+            Fs=np.fft.fftn(Y[s:s+20000][:,lab].reshape(-1,2,3,h).astype(float),axes=(1,2,3))
             R=np.rint(np.fft.ifftn(np.abs(Fs)**2,axes=(1,2,3)).real).reshape(len(Fs),-1)
             PAF[s:s+20000]=R[:,reps].astype(np.int64)
         lists.append(dict(Y=Y,PS=PS,PAF=PAF))
@@ -143,7 +142,20 @@ def run(h,p,u,xc,log=print,maxpairs=3e8,lifts=None):
     else: st,pr=(0,2),(1,3)
     cnt=pair_filter_count(PS[st[0]],PS[st[1]],bound); nU=int(cnt.sum())
     log(json.dumps(dict(stage='stored_pairs',blocks=st,n=nU,of=int(len(PS[st[0]]))*int(len(PS[st[1]])),secs=round(time.time()-t0,1))))
-    if nU>maxpairs: log(json.dumps(dict(stage='abort',reason='too many stored pairs'))); return None
+    if nU>maxpairs:
+        # exact fallback: batch on the value of the most spread class (bounded memory per batch)
+        PAFs=[lists[k]['PAF'] for k in range(4)]
+        cls0=int(np.argmax([len(np.unique(PAFs[st[1]][:,c])) for c in range(L)]))
+        log(json.dumps(dict(stage='batched_fallback',cls0=cls0,stored_pairs=nU)))
+        sols=[]
+        def vfy(idxs):
+            Fq=np.array([lists[k]['Y'][idxs[k]][lab] for k in range(4)]).astype(np.int64)
+            P=sum(np.array([int(np.dot(Fq[k],Fq[k][ADD[:,gg]])) for gg in range(m)]) for k in range(4))
+            if np.array_equal(P[1:],T_full[1:]): sols.append(Fq); return True
+            return False
+        join_batched(PS,PAFs,H,cls0,bound,vfy,log=log,batch=1e8)
+        log(json.dumps(dict(stage='done',solutions=len(sols),secs=round(time.time()-t0,1))))
+        return sols
     off=np.concatenate([[0],np.cumsum(cnt)[:-1]]).astype(np.int64)
     K=np.empty(nU,np.uint64); I=np.empty(nU,np.int32); J=np.empty(nU,np.int32)
     pair_emit(PS[st[0]],PS[st[1]],H[st[0]],H[st[1]],bound,off,K,I,J)
