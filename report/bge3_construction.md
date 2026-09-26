@@ -158,3 +158,36 @@ Summary [E]:
 - **No gain:** 523, 573 and 739 are better served by their existing b=0 or b=1 routes.
 - **Caveats.** n is a constraint count, not a run time. Screens at t > 1 were mostly undecided. The symmetry groups are
   limited to Aut(Q) × multipliers.
+
+## 5. v = 515 attempt (c = 6, h = 85 = 5·17): outcome
+
+Everything below uses 347's corner and border, with stage A at p = 5 (compression onto Z₂×Z₃×Z₁₇).
+
+- **Forced-residue filters.**
+  - [M] PAF values at certain lags are forced mod 2^j by the compression. Across lag *pairs* these residues are
+    coupled, so there is a joint filter as well as a per-class one (`bge3_residue.joint_residue_ok`).
+  - [M] Validated: the real 347 compression passes at mod 16–128.
+  - [M] Sampled filter, so a necessary condition up to sampling.
+- **Configuration screen over multipliers** (`data/config_screen_515.jsonl`):
+  - u = 53, u = 257: every compression fails, with the same lag-pair signature.
+  - Order 16 (all 8 multipliers): no stage-A blocks at any of the 44 shifts.
+  - Order 4: not screenable at p = 5 (the stage-A half-lists need hundreds of GiB).
+  - **u = 59 passes: 12 of 30 compressions (10 shifts) pass both filters.** [M]
+  - u = 161, 19, 43, 121, 127: not yet screened.
+- **Sampled lift on the 12 u = 59 compressions:** 0 candidates. [M]
+  - This is expected. Lift lists are 2^34–2^43 per block, so 4M samples cover about 2^-21 of each
+    (`data/stageB_515_u59_sampled.jsonl`). [E]
+- **Two-sided lift (z mod 17 fixed by stage A, z mod 5 = "yc").**
+  - [M] Validated on 347 (57 = 3·19): the real yc 4-tuple is among 7 found, and fixing it recovers the real core in 4 s.
+  - [M] On 515: sampled yc lists at 2·10⁷ lifts per block, joined over every common bucket. **All 12 compressions give
+    0 yc 4-tuples** (`data/twosided_515_u59_results.jsonl`).
+  - [E] The same yardstick that underestimates 347 by about 46 bits rated compression 0 as likely as 347.
+  - Why this is not conclusive:
+    - the yc lists of the large blocks are far from saturated;
+    - the join tries only bucket values seen in its own samples;
+    - a given compression may have no lift at all.
+- **Status: 515 not constructed.** The open routes are:
+  1. saturate the yc lists, either exactly (a meet-in-the-middle over components, keyed on yc) or with ≥ 10× more samples;
+  2. more stage-A compressions for u = 59;
+  3. screen the remaining order-8 multipliers;
+  4. p = 17 for the order-4 multipliers.
