@@ -93,28 +93,36 @@ def _half_product(parts,no):
         S[:,cq]=Y[idx]; Cs+=C[idx]
     return S,Cs
 
-def enum_lifts_yc(g,comps,xck,yck,foot,maxhalf=2**24):
-    """all lifts (orbit signs) of block compression xck whose z-mod-p2 compression equals yck (meet in the middle over
-    components, matched on the yc contribution)."""
+def enum_lifts_yc(g,comps,xck,yck,foot,maxhalf=2**28,maxout=5*10**7):
+    """all lifts (orbit signs) of block compression xck whose z-mod-p2 compression equals yck.  Meet in the middle over
+    components: each half is stored only as 64-bit linear hash keys of its yc contribution (mixed-radix index = choice
+    per component); matches are decoded to sign vectors and checked exactly."""
     A=g['footB'].T; no=A.shape[1]; parts=[]
+    rng=np.random.default_rng(7); W=rng.integers(1,2**62,size=foot.shape[1],dtype=np.int64)
     for cq in comps:
         Y=comp_options(A,cq,xck)
         if len(Y)==0: return np.zeros((0,no),np.int8)
-        parts.append((cq,Y.astype(np.int8),(Y@foot[cq]).astype(np.int64)))
-    # balance halves by log size
+        C=(Y@foot[cq]).astype(np.int64); parts.append((cq,Y.astype(np.int8),C,(C*W).sum(1)))
     parts.sort(key=lambda t:-len(t[1])); H1=[];H2=[]; l1=l2=0.0
     for pt in parts:
         if l1<=l2: H1.append(pt); l1+=np.log2(len(pt[1]))
         else: H2.append(pt); l2+=np.log2(len(pt[1]))
     if max(l1,l2)>np.log2(maxhalf): raise MemoryError(f'half too large: 2^{max(l1,l2):.1f}')
-    S1,C1=_half_product(H1,no); S2,C2=_half_product(H2,no)
-    rng=np.random.default_rng(7); W=rng.integers(1,2**62,size=C1.shape[1],dtype=np.int64)
-    k1=(C1*W).sum(1); k2=((np.asarray(yck)[None,:]-C2)*W).sum(1)
-    o=np.argsort(k1); k1s=k1[o]; lo=np.searchsorted(k1s,k2); hi=np.searchsorted(k1s,k2,side='right')
-    n=int((hi-lo).sum()); out=np.empty((n,no),np.int8); w=0
-    for j in np.nonzero(hi>lo)[0]:
-        ii=o[lo[j]:hi[j]]; out[w:w+len(ii)]=S1[ii]+S2[j]; w+=len(ii)
-    out=out[:w]
-    # exact check of the yc contribution (hash collisions)
-    ok=((out.astype(np.int64)@foot)==np.asarray(yck)[None,:]).all(1)
+    def keys(H):
+        k=np.zeros(1,np.int64)
+        for _,_,_,kp in H: k=(k[:,None]+kp[None,:]).ravel()          # last part fastest (int64 wraparound is consistent)
+        return k
+    def decode(H,idx):
+        S=np.zeros((len(idx),no),np.int8); idx=idx.copy()
+        for cq,Y,_,_ in reversed(H):
+            d=idx%len(Y); idx//=len(Y); S[:,cq]=Y[d]
+        return S
+    k1=keys(H1); o=np.argsort(k1); k1s=k1[o]; del k1
+    tgt=np.int64((np.asarray(yck,np.int64)*W).sum())
+    k2=keys(H2); need=tgt-k2; del k2
+    lo=np.searchsorted(k1s,need); hi=np.searchsorted(k1s,need,side='right'); cnt=hi-lo; n=int(cnt.sum())
+    if n>maxout: raise MemoryError(f'too many lifts: {n}')
+    j2=np.repeat(np.nonzero(cnt)[0],cnt[cnt>0]); i1=np.concatenate([o[a:b] for a,b in zip(lo[cnt>0],hi[cnt>0])]) if n else np.zeros(0,np.int64)
+    out=decode(H1,i1)+decode(H2,j2) if n else np.zeros((0,no),np.int8)
+    ok=((out.astype(np.int64)@foot)==np.asarray(yck)[None,:]).all(1) if n else np.zeros(0,bool)
     return out[ok]
