@@ -117,10 +117,12 @@ def run(h,p,u,xc,log=print,maxpairs=3e8,lifts=None):
     ph=np.exp(2j*np.pi*((co[:,None,:]*co[creps][None,:,:])/mods).sum(-1))
     lists=[]
     for k in range(4):
-        Y=enum_lifts(A,xc[k]) if lifts is None else lifts[k]; F=Y[:,lab].astype(np.float32)
-        PS=np.empty((len(Y),len(creps)),np.float32)
-        for s in range(0,len(Y),50000): PS[s:s+50000]=(np.abs(F[s:s+50000]@ph)**2).astype(np.float32)
-        ok=(PS<=4*v+1e-3).all(1); Y=Y[ok]; PS=PS[ok]
+        Y=enum_lifts(A,xc[k]) if lifts is None else lifts[k]
+        ok=np.zeros(len(Y),bool); PSl=[]                  # chunked PSD filter (memory: never expand the whole list)
+        for s in range(0,len(Y),50000):
+            P_=(np.abs(Y[s:s+50000][:,lab].astype(np.float32)@ph)**2).astype(np.float32); o_=(P_<=4*v+1e-3).all(1)
+            ok[s:s+50000]=o_; PSl.append(P_[o_])
+        Y=Y[ok]; PS=np.concatenate(PSl) if PSl else np.zeros((0,len(creps)),np.float32)
         Fk=Y[:,lab].astype(np.int64)
         PAF=np.empty((len(Y),L),np.int64)
         for s in range(0,len(Y),20000):
