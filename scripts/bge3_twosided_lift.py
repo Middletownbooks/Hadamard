@@ -10,6 +10,18 @@ h,p,u,p2=[int(x) for x in sys.argv[1:5]]; XC=np.load(sys.argv[5]); si=int(sys.ar
 g=setup(h,p,u); comps=components(g['footB'].T); foot=yc_setup(g,p2); xc=XC[si]; v=g['v']; m=g['m']; co=g['co']
 Z=np.load(f'data/twosided_h{h}_p{p}_u{u}_q{p2}_sol{si}.npz'); T=Z['tuples']; t0=time.time()
 log=lambda d: print(json.dumps(d),flush=True)
+# reduce tuples modulo per-block translation by multiples of t=h/p (keeps xc, u-invariance when (u-1)t = 0 mod h, and PAF;
+# shifts yc cyclically in z mod p2): lifts and solutions correspond bijectively, so one representative per class suffices
+tt=h//p
+if ((u-1)*tt)%h==0 and os.environ.get('CANON','1')=='1':
+    def canon(y):
+        Y=np.asarray(y).reshape(6,p2); st=tt%p2
+        return min(tuple(np.roll(Y,j*st,axis=1).ravel().tolist()) for j in range(p2))
+    cmap=[{j:canon(Z[f'Y{k}'][j]) for j in set(T[:,k].tolist())} for k in range(4)]; seenc=set(); keep=[]
+    for i,tu in enumerate(T.tolist()):
+        c=tuple(cmap[k][tu[k]] for k in range(4))
+        if c not in seenc: seenc.add(c); keep.append(i)
+    log(dict(stage='canon',tuples=int(len(T)),classes=len(keep))); T=T[keep]
 log(dict(stage='start',tuples=int(len(T)),distinct_per_block=[int(len(set(T[:,k]))) for k in range(4)]))
 cache={}
 def lifts(k,j):
