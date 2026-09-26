@@ -173,7 +173,11 @@ Everything below uses 347's corner and border, with stage A at p = 5 (compressio
   - Order 16 (all 8 multipliers): no stage-A blocks at any of the 44 shifts.
   - Order 4: not screenable at p = 5 (the stage-A half-lists need hundreds of GiB).
   - **u = 59 passes: 12 of 30 compressions (10 shifts) pass both filters.** [M]
-  - u = 161, 19, 43, 121, 127: not yet screened.
+  - **u = 161 passes: 15 of 30 compressions (10 shifts) pass both filters** (`data/config_screen_h85_p5_u161_pass.npy`). [M]
+  - u = 19, 43, 121, 127 (18 compressed orbits): 0 compressions in 30 min.
+    - Each covered 31–33 of the 44 shifts, smallest first. Only one of those shifts had candidates for all four
+      blocks.
+    - Near-dead at stage A, but not exhaustive. [M]
 - **Sampled lift on the 12 u = 59 compressions:** 0 candidates. [M]
   - This is expected. Lift lists are 2^34–2^43 per block, so 4M samples cover about 2^-21 of each
     (`data/stageB_515_u59_sampled.jsonl`). [E]
@@ -189,5 +193,5 @@ Everything below uses 347's corner and border, with stage A at p = 5 (compressio
 - **Status: 515 not constructed.** The open routes are:
   1. saturate the yc lists, either exactly (a meet-in-the-middle over components, keyed on yc) or with ≥ 10× more samples;
   2. more stage-A compressions for u = 59;
-  3. screen the remaining order-8 multipliers;
+  3. run the two-sided lift on u = 161's 15 compressions;
   4. p = 17 for the order-4 multipliers.
