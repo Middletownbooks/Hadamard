@@ -42,7 +42,13 @@ def assemble(F):
         Hm[off+I_*m:off+(I_+1)*m,off+J_*m:off+(J_+1)*m]=sg*F[L['k']][sig[L['sigma']](Yg,Xg)]
     return Hm, bool(np.array_equal(Hm@Hm.T,N*np.eye(N,dtype=np.int64)))
 nsol=0
+done_t=set()
+if os.environ.get('RESUME_LOG') and os.path.exists(os.environ['RESUME_LOG']):
+    for l in open(os.environ['RESUME_LOG']):
+        if '"stage": "tuple"' in l: done_t.add(json.loads(l)['tuple'])
+    log(dict(stage='resume',tuples_done=sorted(done_t)))
 for ti,tu in enumerate(T):
+    if ti in done_t: continue
     L=[lifts(k,int(tu[k])) for k in range(4)]
     sols=run(h,p,u,xc,log=lambda s: None,lifts=L) or []
     log(dict(stage='tuple',tuple=ti,lift_sizes=[int(len(x)) for x in L],solutions=len(sols),secs=round(time.time()-t0,1)))

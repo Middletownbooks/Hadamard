@@ -6,7 +6,7 @@ Given a compressed solution xc (level t = h/p) and symmetry u:
  3. U = (A - T) + C pairs passing the pair PSD bound -> 64-bit linear hash of the PAF vector, sorted
     V = B + D pairs passing the bound -> look up -hash(V); exact verification of every candidate
 usage (lib): run(h,p,u,xc) ; __main__ validates on the real 347 compression (h=57,p=3,u=11)."""
-import sys, time, json, numpy as np, numba as nb
+import sys, os, time, json, numpy as np, numba as nb
 sys.path.insert(0,'scripts')
 
 def setup(h,p,u):
@@ -153,7 +153,7 @@ def run(h,p,u,xc,log=print,maxpairs=3e8,lifts=None):
             P=sum(np.array([int(np.dot(Fq[k],Fq[k][ADD[:,gg]])) for gg in range(m)]) for k in range(4))
             if np.array_equal(P[1:],T_full[1:]): sols.append(Fq); return True
             return False
-        join_batched(PS,PAFs,H,cls0,bound,vfy,log=log,batch=1e8)
+        join_batched(PS,PAFs,H,cls0,bound,vfy,log=log,batch=float(os.environ.get('JOIN_BATCH','1e8')))
         log(json.dumps(dict(stage='done',solutions=len(sols),secs=round(time.time()-t0,1))))
         return sols
     off=np.concatenate([[0],np.cumsum(cnt)[:-1]]).astype(np.int64)
