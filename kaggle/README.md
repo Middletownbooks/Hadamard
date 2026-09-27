@@ -62,7 +62,7 @@ that matched **no** bucket, so the run finished generation and prep and then end
 3. Run the fixed notebook. The cache is read in place, so it skips the multi-hour generation and prep and starts on
    buckets within minutes.
 
-## v=515 exact two-sided lift, compressions 5 and 12 (`kt515_u161_sol5_lift.py`, `kt515_u161_sol12_lift.py`)
+## v=515 exact two-sided lift, compressions 5, 12 and 13 (`kt515_u161_sol5_lift.py`, `kt515_u161_sol12_lift.py`, `kt515_u161_sol13_lift.py`)
 
 A self-contained program for one notebook cell (numpy + numba, no internet, no input files). It embeds the solver
 modules and data. It runs the exact lift on the 56 yc classes of u=161 compression 5; the classes of compressions 3
@@ -87,3 +87,4 @@ and 4 run locally.
 - `kt515_u161_sol12_lift.py` is the same program for compression 12, which has only **4 classes**. Use 4 notebooks,
   `NINST = 4` and `INSTANCE = 0..3`, so each runs one class (about 3–6 h [E]). Its output folder is `lift515_c12`.
 - `kt515_u161_sol5_lift.py`: 56 classes, output folder `lift515_c5`.
+- `kt515_u161_sol13_lift.py`: 36 classes, output folder `lift515_c13` (heavy lists, about 3–6 h per class [E]).
