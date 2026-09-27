@@ -61,3 +61,26 @@ that matched **no** bucket, so the run finished generation and prep and then end
 2. Set `RESUME_FROM` to its `kt_*` directory and keep the **same INSTANCE**.
 3. Run the fixed notebook. The cache is read in place, so it skips the multi-hour generation and prep and starts on
    buckets within minutes.
+
+## v=515 exact two-sided lift, compression 5 (`kt515_u161_sol5_lift.py`)
+
+A self-contained program for one notebook cell (numpy + numba, no internet, no input files). It embeds the solver
+modules and data. It runs the exact lift on the 56 yc classes of u=161 compression 5; the classes of compressions 3
+and 4 run locally.
+
+1. **Paste the whole file into one cell.** Edit only `INSTANCE` and `NINST` at the top: run `NINST` notebooks with
+   `INSTANCE = 0 … NINST−1`, and the same `NINST` in each. Notebook i takes classes c with c % NINST == i. A bad
+   INSTANCE/NINST pair aborts immediately with `ASSIGNMENT CHECK FAILED`.
+2. **To pick classes by hand,** set `CLASS_LIST = [...]`. This overrides INSTANCE/NINST.
+3. **Self-test.** With `SELFTEST = True` (the default), the first minute checks the machinery on the known v=347
+   matrix. It must print `SELFTEST PASS`.
+4. **What to watch in the cell output:**
+   - `ASSIGNMENT CHECK` shows your class list.
+   - For each class: `class c: lift list sizes …`, then `CLASS RESULT {...}`.
+   - `SOLUTION {...}` lines carry the sequences and `hadamard_verified`, checked on the full 2060 × 2060 matrix.
+5. **Timing and memory.** The estimate is roughly 3–6 hours per class on 4 cores [E, not yet measured on Kaggle].
+   After `MAX_HOURS = 11` it stops *starting* new classes; a class cut off mid-join is simply redone next time. Class 0
+   stores 5.0·10⁸ pairs, one batch of about 8 GB at `JOIN_BATCH = 1e9`. Lower `JOIN_BATCH` if memory is short: this
+   costs time, not correctness.
+6. **Continuing.** Save the version, add its output as an input dataset, set `RESUME_FROM` to the `lift515` folder
+   inside it, and keep the same INSTANCE/NINST. Finished classes are skipped. The output is tiny (a log line per class).
