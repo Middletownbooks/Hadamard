@@ -9,6 +9,7 @@ from bge3_twosided import yc_setup, enum_lifts_yc
 h,p,u,p2=[int(x) for x in sys.argv[1:5]]; XC=np.load(sys.argv[5]); si=int(sys.argv[6])
 g=setup(h,p,u); comps=components(g['footB'].T); foot=yc_setup(g,p2); xc=XC[si]; v=g['v']; m=g['m']; co=g['co']
 Z=np.load(f'data/twosided_h{h}_p{p}_u{u}_q{p2}_sol{si}.npz'); T=Z['tuples']; t0=time.time()
+if os.environ.get('CLASSES_FILE'): T=np.load(os.environ['CLASSES_FILE'])      # class representatives (already reduced)
 log=lambda d: print(json.dumps(d),flush=True)
 # reduce tuples modulo per-block translation by multiples of t=h/p (keeps xc, u-invariance when (u-1)t = 0 mod h, and PAF;
 # shifts yc cyclically in z mod p2): lifts and solutions correspond bijectively, so one representative per class suffices
