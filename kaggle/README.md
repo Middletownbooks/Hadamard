@@ -84,3 +84,6 @@ and 4 run locally.
    costs time, not correctness.
 6. **Continuing.** Save the version, add its output as an input dataset, set `RESUME_FROM` to the `lift515` folder
    inside it, and keep the same INSTANCE/NINST. Finished classes are skipped. The output is tiny (a log line per class).
+- `kt515_u161_sol12_lift.py` is the same program for compression 12, which has only **4 classes**. Use 4 notebooks,
+  `NINST = 4` and `INSTANCE = 0..3`, so each runs one class (about 3–6 h [E]). Its output folder is `lift515_c12`.
+- `kt515_u161_sol5_lift.py`: 56 classes, output folder `lift515_c5`.

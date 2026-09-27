@@ -1,17 +1,18 @@
 """Build kaggle/kt515_u161_sol5_lift.py: a self-contained, paste-into-one-cell notebook for the exact two-sided lift
 on the 56 yc classes of v=515 (c=6, h=85, p=5, u=161) compression 5.  Embeds the three solver modules verbatim and
 the small data files (base64)."""
-import base64, io, json, numpy as np
+import base64, io, json, sys, numpy as np
+SOL=int(sys.argv[1]) if len(sys.argv)>1 else 5
 mods={p:open(p).read() for p in ['scripts/bge3_lift.py','scripts/bge3_stageB_join.py','scripts/bge3_twosided.py']}
-Z=np.load('data/twosided_h85_p5_u161_q5_sol5.npz'); C=np.load('data/twosided_h85_p5_u161_q5_sol5_classes.npy')
+Z=np.load(f'data/twosided_h85_p5_u161_q5_sol{SOL}.npz'); C=np.load(f'data/twosided_h85_p5_u161_q5_sol{SOL}_classes.npy')
 yc=np.stack([np.stack([Z[f'Y{k}'][C[i,k]] for k in range(4)]) for i in range(len(C))]).astype(np.int16)   # (56,4,30)
-xc=np.load('data/config_screen_h85_p5_u161_pass.npy')[5].astype(np.int16)
+xc=np.load('data/config_screen_h85_p5_u161_pass.npy')[SOL].astype(np.int16)
 def b64(**arrs):
     buf=io.BytesIO(); np.savez_compressed(buf,**arrs); return base64.b64encode(buf.getvalue()).decode()
 T=np.load('data/template347.npz'); tmpl=base64.b64encode(open('data/template347.npz','rb').read()).decode()
 job=b64(xc=xc,yc=yc)
 out=f'''# =====================================================================================
-# v=515 (Hadamard order 2060), c=6 architecture, G = Z2 x Z3 x Z85, multiplier u=161, compression 5:
+# v=515 (Hadamard order 2060), c=6 architecture, G = Z2 x Z3 x Z85, multiplier u=161, compression {SOL}:
 # EXACT two-sided lift of the {len(yc)} yc classes.  Paste this WHOLE file into ONE notebook cell and run.
 #
 # What it does, per class: enumerate ALL +-1 lifts of each block matching both compressions (z mod 17 from stage A,
@@ -33,14 +34,14 @@ import os, sys, json, time, base64, io, warnings, numpy as np
 warnings.filterwarnings('ignore', category=RuntimeWarning)   # uint64 hash wraparound is intentional
 
 INSTANCE = 0          # <<< EDIT: 0 .. NINST-1
-NINST = 4             # <<< EDIT: number of parallel notebooks (same value in all of them)
+NINST = {min(4,len(yc))}             # <<< EDIT: number of parallel notebooks (same value in all of them)
 CLASS_LIST = None     # <<< optional, e.g. [0, 7, 13]
 RESUME_FROM = None    # <<< optional previous output folder
 SELFTEST = True
 MAX_HOURS = 11.0      # do not START a class after this many hours (Kaggle limit is 12 h)
 JOIN_BATCH = 1e9      # stored pairs per batch in the exact join (~16 GB at 1e9; lower if memory is short)
 
-WORK = os.environ.get('LIFT515_WORK','/kaggle/working/lift515_code'); OUT = os.environ.get('LIFT515_OUT','/kaggle/working/lift515')
+WORK = os.environ.get('LIFT515_WORK','/kaggle/working/lift515_code'); OUT = os.environ.get('LIFT515_OUT','/kaggle/working/lift515_c{SOL}')
 MODULES = {json.dumps(mods)}
 TEMPLATE_B64 = "{tmpl}"
 JOB_B64 = "{job}"
@@ -111,10 +112,10 @@ def main():
             L.append(cache[key])
         print(f'class {{c}}: lift list sizes {{[len(x) for x in L]}} (built in {{time.time()-tc:.0f}} s); exact join running...',flush=True)
         sols=run(85,5,161,xc,log=lambda s: print('   ',s,flush=True) if ('batched' in s or 'stored_pairs' in s) else None,lifts=L) or []
-        rec=dict(v=515,u=161,compression=5,**{{'class':int(c)}},lift_sizes=[int(len(x)) for x in L],solutions=len(sols),hours=round((time.time()-tc)/3600,2))
+        rec=dict(v=515,u=161,compression={SOL},**{{'class':int(c)}},lift_sizes=[int(len(x)) for x in L],solutions=len(sols),hours=round((time.time()-tc)/3600,2))
         logf.write(json.dumps(rec)+'\\n'); logf.flush(); print('CLASS RESULT '+json.dumps(rec),flush=True)
         for i,F in enumerate(sols):
-            Hm,ok=_assemble(g,F); s=dict(v=515,u=161,compression=5,**{{'class':int(c)}},hadamard_verified=ok,group='Z2xZ3xZ85 mixed radix, last index fastest',
+            Hm,ok=_assemble(g,F); s=dict(v=515,u=161,compression={SOL},**{{'class':int(c)}},hadamard_verified=ok,group='Z2xZ3xZ85 mixed radix, last index fastest',
                   blocks={{nm:''.join('+' if x>0 else '-' for x in F[k]) for k,nm in enumerate('ABCD')}})
             print('SOLUTION '+json.dumps(s),flush=True)
             open(os.path.join(OUT,f'solution_class{{c}}_{{i}}.txt'),'w').write(json.dumps(s)+'\\n')
@@ -123,4 +124,4 @@ def main():
 if __name__=='__main__' or 'ipykernel' in sys.modules:
     main()
 '''
-open('kaggle/kt515_u161_sol5_lift.py','w').write(out); print('written',len(out)//1024,'KB')
+open(f'kaggle/kt515_u161_sol{SOL}_lift.py','w').write(out); print('written',len(out)//1024,'KB')
