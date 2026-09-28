@@ -195,3 +195,19 @@ Everything below uses 347's corner and border, with stage A at p = 5 (compressio
   2. more stage-A compressions for u = 59;
   3. run the two-sided lift on u = 161's 15 compressions;
   4. p = 17 for the order-4 multipliers.
+
+### 5.1 Status and next step (positive control)
+
+- **Exact two- and three-sided lifts for u = 161, compressions 3, 4, 5, 12, 13 and 14:** every yc class was exactly
+  enumerated. No solutions so far (`data/wc_lift_515_u161.jsonl`, `data/twosided_515_u161_*exactlift*.jsonl`).
+- **Where the search is sampled, not exhaustive:**
+  - stage A (about 30 compressions per multiplier);
+  - the yc stage (the large blocks' yc lists are unsaturated).
+- **Unknown:** the probability that a random stage-A compression lifts at all.
+- **Next (before more 515 compute): a blind positive control on a small composite rung,** e.g. h = 21 (v = 131) or
+  h = 35 (v = 215):
+  1. exhaustive compressions;
+  2. residue filters;
+  3. fast exact lift of every class.
+
+  This measures the lift rate and checks that the pipeline finds matrices without being given the answer.
