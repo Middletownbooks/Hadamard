@@ -1,7 +1,7 @@
 #!/bin/bash
 # unattended: when the fast-lift queue finishes, record results and commit/push them
 cd /home/user/Hadamard
-while [ ! -f logs/wc/done ]; do sleep 300; python3 scripts/record_wc.py >/dev/null 2>&1; done
+while [ ! -f logs/wc/done ]; do sleep 300; done
 python3 scripts/record_wc.py > logs/wc/final_summary.txt 2>&1
 git add data/wc_lift_515_u161.jsonl data/solution_v515_wc_*.txt 2>/dev/null
 git commit -qm "515 u=161: fast exact lift queue finished (all yc classes of sols 3,4,5,12,13,14); $(cat logs/wc/final_summary.txt)
