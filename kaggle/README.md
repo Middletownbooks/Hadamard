@@ -88,3 +88,13 @@ and 4 run locally.
   `NINST = 4` and `INSTANCE = 0..3`, so each runs one class (about 3–6 h [E]). Its output folder is `lift515_c12`.
 - `kt515_u161_sol5_lift.py`: 56 classes, output folder `lift515_c5`.
 - `kt515_u161_sol13_lift.py`: 36 classes, output folder `lift515_c13` (heavy lists, about 3–6 h per class [E]).
+
+## v=523 profile A with the INSTANCE fix (`kt523_A2_35-17-17-17.py`)
+
+This is the same program as `kt523_B2_37-19-19-1.py`, with profile A (35,17,17,17), 90 min of generation, and output
+in `/kaggle/working/kt_A_35-17-17-17`. Edit only `INSTANCE` (any value 0, 1, 2, …; each INSTANCE gets its own
+independent pools). Caches go to `/tmp` by default, and `SOLUTION` lines print in the cell output.
+
+Profile A generates and preps two pools (row sums 35 and 17) instead of three, so buckets start about 45–60 min
+earlier than with B. Tested locally at INSTANCE=2 (small pools): the assignment check passed, both pools were built,
+and 398 buckets ran with non-zero A+B and C+D pair counts.
