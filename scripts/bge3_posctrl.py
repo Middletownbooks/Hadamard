@@ -66,7 +66,7 @@ for si,(s,cs) in enumerate(g['shifts']):
     log(dict(stage='A_shift',shift=[int(x) for x in s],sizes=sizes,compressions=found,secs=round(time.time()-t0,1)))
 ncomp_total=len(comp_list); MAXLIFT=int(__import__('os').environ.get('MAXLIFT','3000'))
 if ncomp_total>MAXLIFT:
-    pick=np.random.default_rng(2026).choice(ncomp_total,MAXLIFT,replace=False); comp_list=[comp_list[i] for i in sorted(pick)]
+    pick=np.random.default_rng(2026).choice(ncomp_total,MAXLIFT,replace=False); comp_list=[comp_list[i] for i in pick]   # random order (time cap below)
 log(dict(stage='A_done',compressions=ncomp_total,lifted=len(comp_list),sampled=ncomp_total>MAXLIFT))
 # ---- exact lift of every compression, filters, fast-lift completeness, object checks
 cellq=((co[:,0]%2)*3+(co[:,1]%3))*p2+(co[:,2]%p2)
@@ -97,7 +97,11 @@ def lift_via_classes(xc):
             fs,_=wc_lift(g,comps,foot,xc,[Y[0][ia],Y[1][ib],Y[2][ic],Y[3][id_]],u); sols+=fs
     return sols
 nlift=0; nsol=0; false_rej=0; pc3_bad=0; hadamard_bad=0; neg_ok=None; per=[]
+LIFT_TMAX=float(__import__('os').environ.get('LIFT_TMAX','1e12')); t_lift=time.time(); nlifted=0
+if ncomp_total<=MAXLIFT: comp_list=[comp_list[i] for i in np.random.default_rng(2027).permutation(len(comp_list))]
 for ci,(si,xcX) in enumerate(comp_list):
+    if time.time()-t_lift>LIFT_TMAX: log(dict(stage='lift_timecap',lifted=ci)); break
+    nlifted=ci+1
     xc=np.zeros((4,mc),np.int64)
     for k in range(4): xc[k]=xcX[k]          # compressed values per element of Gc
     big=max(lift_count_log2(k,xc[k]) for k in range(4))>21
@@ -131,7 +135,7 @@ for ci,(si,xcX) in enumerate(comp_list):
             if A!=B: pc3_bad+=1
     per.append(dict(c=ci,shift_index=si,solutions=len(sols),filters_pass=bool(ok2),method=method))
     if ci%20==0: log(dict(stage='lift_progress',done=ci+1,of=len(comp_list),liftable=nlift,solutions=nsol,secs=round(time.time()-t0,1)))
-res=dict(stage='slice_done',h=h,v=v,p=p,u=u,compressions=ncomp_total,lifted=len(comp_list),sampled=ncomp_total>MAXLIFT,liftable=nlift,lift_rate=(nlift/len(comp_list) if comp_list else None),
+res=dict(stage='slice_done',h=h,v=v,p=p,u=u,compressions=ncomp_total,lifted=nlifted,sampled=(ncomp_total>MAXLIFT or nlifted<len(comp_list)),liftable=nlift,lift_rate=(nlift/nlifted if nlifted else None),
          solutions=nsol,filter_false_rejections=false_rej,filter_pass_total=int(sum(x['filters_pass'] for x in per)),
          fastlift_mismatches=pc3_bad,hadamard_failures=hadamard_bad,negative_test_rejected=neg_ok,secs=round(time.time()-t0,1))
 log(res); json.dump(dict(summary=res,per_compression=per),open(f'posctrl/slice_h{h}_p{p}_u{u}.json','w'))
