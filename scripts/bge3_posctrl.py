@@ -33,6 +33,7 @@ def assemble_ok(F,flip=False):
         Hm[off+I_*m:off+(I_+1)*m,off+J_*m:off+(J_+1)*m]=sg*F[L['k']][sig[L['sigma']](Yg,Xg)]
     return bool(np.array_equal(Hm@Hm.T,N*np.eye(N,dtype=np.int64))), Hm
 # ---- exact stage A
+RES=int(__import__('os').environ.get('MAXLIFT','3000')); res_rng=np.random.default_rng(2026); ncomp_seen=[0]   # reservoir sample of compressions
 comp_list=[]; rng=np.random.default_rng(5); W=rng.integers(1,2**62,size=mc,dtype=np.int64).astype(np.uint64)
 for si,(s,cs) in enumerate(g['shifts']):
     L=[]
@@ -62,11 +63,13 @@ for si,(s,cs) in enumerate(g['shifts']):
             for r in range(lo[q],hi[q]):
                 ia,ib=divmod(int(o[r]),len(H_[b])); idx={a:ia,b:ib,c:ic,d:id_}
                 if np.array_equal(sum(PL[k][idx[k]] for k in range(4)),np.zeros(mc,np.int64)):
-                    comp_list.append((si,np.array([L[k][0][idx[k]] for k in range(4)]))); found+=1
+                    found+=1; ncomp_seen[0]+=1; item=(si,np.array([L[k][0][idx[k]] for k in range(4)],np.int8))
+                    if len(comp_list)<RES: comp_list.append(item)
+                    else:
+                        j_=int(res_rng.integers(0,ncomp_seen[0]))
+                        if j_<RES: comp_list[j_]=item
     log(dict(stage='A_shift',shift=[int(x) for x in s],sizes=sizes,compressions=found,secs=round(time.time()-t0,1)))
-ncomp_total=len(comp_list); MAXLIFT=int(__import__('os').environ.get('MAXLIFT','3000'))
-if ncomp_total>MAXLIFT:
-    pick=np.random.default_rng(2026).choice(ncomp_total,MAXLIFT,replace=False); comp_list=[comp_list[i] for i in pick]   # random order (time cap below)
+ncomp_total=ncomp_seen[0]; MAXLIFT=RES   # comp_list is already a uniform reservoir sample of size <= MAXLIFT
 log(dict(stage='A_done',compressions=ncomp_total,lifted=len(comp_list),sampled=ncomp_total>MAXLIFT))
 # ---- exact lift of every compression, filters, fast-lift completeness, object checks
 cellq=((co[:,0]%2)*3+(co[:,1]%3))*p2+(co[:,2]%p2)
@@ -98,12 +101,12 @@ def lift_via_classes(xc):
     return sols
 nlift=0; nsol=0; false_rej=0; pc3_bad=0; hadamard_bad=0; neg_ok=None; per=[]
 LIFT_TMAX=float(__import__('os').environ.get('LIFT_TMAX','1e12')); t_lift=time.time(); nlifted=0
-if ncomp_total<=MAXLIFT: comp_list=[comp_list[i] for i in np.random.default_rng(2027).permutation(len(comp_list))]
+comp_list=[comp_list[i] for i in np.random.default_rng(2027).permutation(len(comp_list))]
 for ci,(si,xcX) in enumerate(comp_list):
     if time.time()-t_lift>LIFT_TMAX: log(dict(stage='lift_timecap',lifted=ci)); break
     nlifted=ci+1
     xc=np.zeros((4,mc),np.int64)
-    for k in range(4): xc[k]=xcX[k]          # compressed values per element of Gc
+    for k in range(4): xc[k]=xcX[k].astype(np.int64)          # compressed values per element of Gc
     big=max(lift_count_log2(k,xc[k]) for k in range(4))>21
     if big:
         try: sols=lift_via_classes(xc); method='classes'
