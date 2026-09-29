@@ -44,17 +44,25 @@ for si,(s,cs) in enumerate(g['shifts']):
         X=Y[:,labc].astype(np.int64); L.append((X,cpaf(X)))
     sizes=[len(x[0]) for x in L]
     if min(sizes)==0: log(dict(stage='A_shift',shift=[int(x) for x in s],sizes=sizes,compressions=0)); continue
-    hA=(L[0][1]-Tc).astype(np.uint64)@W if False else ((L[0][1]-Tc).astype(np.uint64)*W).sum(1)
-    hB=(L[1][1].astype(np.uint64)*W).sum(1); hC=(L[2][1].astype(np.uint64)*W).sum(1); hD=(L[3][1].astype(np.uint64)*W).sum(1)
-    CD=(np.uint64(0)-(hC[:,None]+hD[None,:])).ravel(); o=np.argsort(CD); CDs=CD[o]; found=0
-    for a0 in range(0,len(hA),2000):
-        AB=(hA[a0:a0+2000,None]+hB[None,:]).ravel(); lo=np.searchsorted(CDs,AB); hi=np.searchsorted(CDs,AB,side='right')
+    PL=[L[0][1]-Tc,L[1][1],L[2][1],L[3][1]]; H_=[(P_.astype(np.uint64)*W).sum(1) for P_ in PL]
+    # pairing with the smallest stored side; stream the other side in chunks
+    pairings=[((0,1),(2,3)),((0,2),(1,3)),((0,3),(1,2))]
+    best=min(((min(len(H_[a])*len(H_[b]),len(H_[c])*len(H_[d])),(a,b),(c,d)) for (a,b),(c,d) in pairings))
+    nst,(a,b),(c,d)=best
+    if len(H_[a])*len(H_[b])>len(H_[c])*len(H_[d]): (a,b),(c,d)=(c,d),(a,b)
+    if nst>2e8:
+        res=dict(stage='slice_done',h=h,v=v,p=p,u=u,status='stageA_join_too_large',shift=[int(x) for x in s],sizes=sizes,stored_pairs=int(nst))
+        log(res); json.dump(dict(summary=res),open(f'posctrl/slice_h{h}_p{p}_u{u}.json','w')); sys.exit(0)
+    ST=(H_[a][:,None]+H_[b][None,:]).ravel(); o=np.argsort(ST); STs=ST[o]; del ST; found=0
+    step=max(1,int(2e7//max(len(H_[d]),1)))
+    for c0 in range(0,len(H_[c]),step):
+        PR=(np.uint64(0)-(H_[c][c0:c0+step,None]+H_[d][None,:])).ravel(); lo=np.searchsorted(STs,PR); hi=np.searchsorted(STs,PR,side='right')
         for q in np.nonzero(hi>lo)[0]:
-            ia,ib=divmod(int(q),len(hB)); ia+=a0
+            ic,id_=divmod(int(q),len(H_[d])); ic+=c0
             for r in range(lo[q],hi[q]):
-                ic,id_=divmod(int(o[r]),len(hD))
-                if np.array_equal(L[0][1][ia]+L[1][1][ib]+L[2][1][ic]+L[3][1][id_],Tc):
-                    comp_list.append((si,np.array([L[0][0][ia],L[1][0][ib],L[2][0][ic],L[3][0][id_]]))); found+=1
+                ia,ib=divmod(int(o[r]),len(H_[b])); idx={a:ia,b:ib,c:ic,d:id_}
+                if np.array_equal(sum(PL[k][idx[k]] for k in range(4)),np.zeros(mc,np.int64)):
+                    comp_list.append((si,np.array([L[k][0][idx[k]] for k in range(4)]))); found+=1
     log(dict(stage='A_shift',shift=[int(x) for x in s],sizes=sizes,compressions=found,secs=round(time.time()-t0,1)))
 ncomp_total=len(comp_list); MAXLIFT=int(__import__('os').environ.get('MAXLIFT','3000'))
 if ncomp_total>MAXLIFT:
