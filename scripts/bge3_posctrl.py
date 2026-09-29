@@ -37,7 +37,10 @@ comp_list=[]; rng=np.random.default_rng(5); W=rng.integers(1,2**62,size=mc,dtype
 for si,(s,cs) in enumerate(g['shifts']):
     L=[]
     for k in range(4):
-        Y,trunc=enum_block(g,cs[k],v,p); assert not trunc
+        Y,trunc=enum_block(g,cs[k],v,p)
+        if trunc:
+            res=dict(stage='slice_done',h=h,v=v,p=p,u=u,status='stageA_too_large',note='a compressed block list exceeds 5e7; exhaustive stage A infeasible')
+            log(res); json.dump(dict(summary=res),open(f'posctrl/slice_h{h}_p{p}_u{u}.json','w')); sys.exit(0)
         X=Y[:,labc].astype(np.int64); L.append((X,cpaf(X)))
     sizes=[len(x[0]) for x in L]
     if min(sizes)==0: log(dict(stage='A_shift',shift=[int(x) for x in s],sizes=sizes,compressions=0)); continue
