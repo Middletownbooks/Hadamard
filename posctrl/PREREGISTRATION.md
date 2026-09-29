@@ -22,3 +22,7 @@ Added slices, all exhaustive:
 - v=215 (h=35): p in {5, 7} x u in {17, 23, 37, 73} (order 12), and p=7 x u in {11, 19, 59, 79, 101, 149} (order 6)
 PC1b  At least one verified Hadamard matrix (order 524 or 860) is found over these slices.   PASS iff >= 1.
 PC2, PC3 and PC4 apply unchanged to every slice.
+
+## Addendum 2 (registered before running): a slice with a KNOWN solution
+data/rung_c6_v47_sym.txt is a verified order-188 matrix (v=47, h=7) invariant under u=29.
+PC0  The blind pipeline on slice (h=7, p=7, u=29) finds >= 1 verified solution.   PASS iff >= 1.  (FAIL => pipeline bug)
