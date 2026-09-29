@@ -9,7 +9,7 @@ sys.path.insert(0,'scripts')
 from bge3_stageB_join import setup, components, run
 from bge3_stageA import enum_block
 from bge3_residue import residue_ok, joint_residue_ok, class_reps
-from bge3_twosided import yc_setup
+from bge3_twosided import yc_setup, yc_distribution, comp_options
 from bge3_wc_lift import wc_lift
 h,p,u=[int(x) for x in sys.argv[1:4]]; t0=time.time()
 g=setup(h,p,u); v=g['v']; m=g['m']; co=g['co']; comps=components(g['footB'].T); labc=g['labc']; t=g['t']; mc=g['mc']
@@ -70,11 +70,43 @@ if ncomp_total>MAXLIFT:
 log(dict(stage='A_done',compressions=ncomp_total,lifted=len(comp_list),sampled=ncomp_total>MAXLIFT))
 # ---- exact lift of every compression, filters, fast-lift completeness, object checks
 cellq=((co[:,0]%2)*3+(co[:,1]%3))*p2+(co[:,2]%p2)
+
+def lift_count_log2(k,xck):
+    A=g['footB'].T; return float(sum(np.log2(max(len(comp_options(A,cq,xck)),1)) for cq in comps))
+def lift_via_classes(xc):
+    """production path, exact: exact yc distribution per block (DP over components), exact yc-level join,
+    then the fast three-sided lift on every valid yc 4-tuple."""
+    D=[yc_distribution(g,comps,xc[k],foot) for k in range(4)]
+    if any(d is None for d in D): return None
+    if any(len(d)==0 for d in D): return []
+    Y=[np.array(list(d.keys()),np.int64) for d in D]
+    cell2=np.array([(a,b,z) for a in range(2) for b in range(3) for z in range(p2)])
+    def paf2(Yk):
+        F=Yk.reshape(-1,2,3,p2).astype(float)
+        return np.rint(np.fft.ifftn(np.abs(np.fft.fftn(F,axes=(1,2,3)))**2,axes=(1,2,3)).real).reshape(len(Yk),-1).astype(np.int64)
+    T2=np.zeros(6*p2,np.int64); np.add.at(T2,cellq,g['T_full'])
+    P=[paf2(y) for y in Y]; Wy=np.random.default_rng(9).integers(1,2**62,size=6*p2,dtype=np.int64).astype(np.uint64)
+    hA=((P[0]-T2).astype(np.uint64)*Wy).sum(1); hB=(P[1].astype(np.uint64)*Wy).sum(1); hC=(P[2].astype(np.uint64)*Wy).sum(1); hD=(P[3].astype(np.uint64)*Wy).sum(1)
+    AB=(hA[:,None]+hB[None,:]).ravel(); CD=(np.uint64(0)-(hC[:,None]+hD[None,:])).ravel(); o=np.argsort(CD); CDs=CD[o]
+    lo=np.searchsorted(CDs,AB); hi=np.searchsorted(CDs,AB,side='right'); sols=[]
+    for q in np.nonzero(hi>lo)[0]:
+        ia,ib=divmod(int(q),len(hB))
+        for r in range(lo[q],hi[q]):
+            ic,id_=divmod(int(o[r]),len(hD))
+            if not np.array_equal(P[0][ia]+P[1][ib]+P[2][ic]+P[3][id_],T2): continue
+            fs,_=wc_lift(g,comps,foot,xc,[Y[0][ia],Y[1][ib],Y[2][ic],Y[3][id_]],u); sols+=fs
+    return sols
 nlift=0; nsol=0; false_rej=0; pc3_bad=0; hadamard_bad=0; neg_ok=None; per=[]
 for ci,(si,xcX) in enumerate(comp_list):
     xc=np.zeros((4,mc),np.int64)
     for k in range(4): xc[k]=xcX[k]          # compressed values per element of Gc
-    sols=run(h,p,u,xc,log=lambda s: None,maxpairs=3e8) or []
+    big=max(lift_count_log2(k,xc[k]) for k in range(4))>21
+    if big:
+        try: sols=lift_via_classes(xc); method='classes'
+        except MemoryError: sols=None
+        if sols is None: per.append(dict(c=ci,shift_index=si,solutions=None,filters_pass=None,method='lift_too_large')); continue
+    else:
+        sols=run(h,p,u,xc,log=lambda s: None,maxpairs=3e8) or []; method='exact_join'
     ok1,_=residue_ok(g,comps,reps,xc,seed=ci); ok2=ok1
     if ok1:
         for M in (16,64):
@@ -93,11 +125,11 @@ for ci,(si,xcX) in enumerate(comp_list):
             yc=np.zeros((4,6*p2),np.int64)
             for k in range(4): np.add.at(yc[k],cellq,F[k])
             classes.setdefault(yc.tobytes(),(yc,[]))[1].append(F)
-        for key,(yc,Fs) in classes.items():
+        for key,(yc,Fs) in (classes.items() if method=='exact_join' else []):
             fs,_=wc_lift(g,comps,foot,xc,yc,u)
             A={tuple(np.concatenate(F).tolist()) for F in Fs}; B={tuple(np.concatenate(F).tolist()) for F in fs}
             if A!=B: pc3_bad+=1
-    per.append(dict(c=ci,shift_index=si,solutions=len(sols),filters_pass=bool(ok2)))
+    per.append(dict(c=ci,shift_index=si,solutions=len(sols),filters_pass=bool(ok2),method=method))
     if ci%20==0: log(dict(stage='lift_progress',done=ci+1,of=len(comp_list),liftable=nlift,solutions=nsol,secs=round(time.time()-t0,1)))
 res=dict(stage='slice_done',h=h,v=v,p=p,u=u,compressions=ncomp_total,lifted=len(comp_list),sampled=ncomp_total>MAXLIFT,liftable=nlift,lift_rate=(nlift/len(comp_list) if comp_list else None),
          solutions=nsol,filter_false_rejections=false_rej,filter_pass_total=int(sum(x['filters_pass'] for x in per)),

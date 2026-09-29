@@ -13,3 +13,12 @@ PC3  For every liftable compression and every yc class occurring among its exact
      lift (wc_lift) returns exactly the same set of solutions in that class as the exact join. PASS iff all identical.
 PC4  Negative test: the object check rejects a solution with one entry flipped.             PASS iff rejected.
 Reported, no threshold: per slice #compressions, #liftable, lift rate, #solutions.
+
+## Addendum (registered before running): larger rungs with high-order multipliers
+v=95 is only exhaustively searchable for order-4 multipliers: two p=3 slices are provably empty (0 compressions);
+p=5,u=17 has 837,168 compressions (being lifted in full); the other slices are too large (stage A or lift).
+Added slices, all exhaustive:
+- v=131 (h=21): p in {3, 7} x u in {5, 11, 19} (order 6)
+- v=215 (h=35): p in {5, 7} x u in {17, 23, 37, 73} (order 12), and p=7 x u in {11, 19, 59, 79, 101, 149} (order 6)
+PC1b  At least one verified Hadamard matrix (order 524 or 860) is found over these slices.   PASS iff >= 1.
+PC2, PC3 and PC4 apply unchanged to every slice.
