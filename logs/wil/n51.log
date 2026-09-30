@@ -1,0 +1,14 @@
+{"stage": "A", "case": [9, 7, 7, 5], "Qp": 18, "Qq": 46376, "Qp_reps": 18, "Qq_reps": 5801, "t": 9.2}
+{"stage": "progress", "case": [9, 7, 7, 5], "ledger": 74607, "of": 104418, "work": 591124757, "sols": 0, "cache": 17547, "t": 60.0}
+{"stage": "case_done", "case": [9, 7, 7, 5], "eps": -1, "Qp": 18, "Qq": 46376, "Qp_reps": 18, "Qq_reps": 5801, "combos": 104418, "combos_this_shard": 104418, "liftable": 103740, "work": 802896887, "ledger": 104418, "sols": 0, "t": 72.1}
+{"stage": "A", "case": [11, 7, 5, 3], "Qp": 18, "Qq": 50768, "Qp_reps": 18, "Qq_reps": 6346, "t": 82.3}
+{"stage": "progress", "case": [11, 7, 5, 3], "ledger": 52772, "of": 114228, "work": 390373411, "sols": 0, "cache": 31043, "t": 120.0}
+{"stage": "case_done", "case": [11, 7, 5, 3], "eps": 1, "Qp": 18, "Qq": 50768, "Qp_reps": 18, "Qq_reps": 6346, "combos": 114228, "combos_this_shard": 114228, "liftable": 113709, "work": 926021438, "ledger": 114228, "sols": 2, "t": 150.2}
+{"stage": "A", "case": [11, 9, 1, 1], "Qp": 18, "Qq": 45704, "Qp_reps": 18, "Qq_reps": 5718, "t": 160.2}
+{"stage": "progress", "case": [11, 9, 1, 1], "ledger": 17937, "of": 102924, "work": 137311676, "sols": 0, "cache": 42963, "t": 180.0}
+{"stage": "case_done", "case": [11, 9, 1, 1], "eps": 1, "Qp": 18, "Qq": 45704, "Qp_reps": 18, "Qq_reps": 5718, "combos": 102924, "combos_this_shard": 102924, "liftable": 102798, "work": 804119325, "ledger": 102924, "sols": 2, "t": 220.2}
+{"stage": "A", "case": [13, 5, 3, 1], "Qp": 18, "Qq": 42296, "Qp_reps": 18, "Qq_reps": 5287, "t": 229.9}
+{"stage": "progress", "case": [13, 5, 3, 1], "ledger": 14733, "of": 95166, "work": 130720805, "sols": 0, "cache": 49763, "t": 240.0}
+{"stage": "case_done", "case": [13, 5, 3, 1], "eps": 1, "Qp": 18, "Qq": 42296, "Qp_reps": 18, "Qq_reps": 5287, "combos": 95166, "combos_this_shard": 95166, "liftable": 94836, "work": 721672169, "ledger": 95166, "sols": 0, "t": 276.1}
+{"stage": "done", "N_found": 4, "N_expanded": 32, "out": "logs/wil_n51.json", "t": 276.1}
+exit 0

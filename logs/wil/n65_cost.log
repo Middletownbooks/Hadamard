@@ -50,3 +50,45 @@
 {"stage": "progress", "case": [11, 11, 3, 3], "ledger": 168926, "of": 2626820, "work": 1132820569446, "sols": 0, "cache": 141409, "t": 2703.6}
 {"stage": "progress", "case": [11, 11, 3, 3], "ledger": 283992, "of": 2626820, "work": 1883454233976, "sols": 0, "cache": 143580, "t": 2763.7}
 {"stage": "progress", "case": [11, 11, 3, 3], "ledger": 489511, "of": 2626820, "work": 2987024690342, "sols": 0, "cache": 147942, "t": 2823.7}
+{"stage": "progress", "case": [11, 11, 3, 3], "ledger": 1015359, "of": 2626820, "work": 5933298904794, "sols": 0, "cache": 154808, "t": 2883.7}
+{"stage": "progress", "case": [11, 11, 3, 3], "ledger": 1501925, "of": 2626820, "work": 8620301286374, "sols": 0, "cache": 160445, "t": 2943.7}
+{"stage": "progress", "case": [11, 11, 3, 3], "ledger": 1899677, "of": 2626820, "work": 10696464779761, "sols": 0, "cache": 164102, "t": 3003.7}
+{"stage": "case_done", "case": [11, 11, 3, 3], "eps": -1, "Qp": 276, "Qq": 112574, "Qp_reps": 140, "Qq_reps": 18763, "combos": 2626820, "liftable": 2613274, "work": 14380193376893, "ledger": 2626820, "sols": 0, "max_pairs": 22914528, "t": 3046.4}
+{"stage": "A", "case": [13, 9, 3, 1], "Qp": 276, "Qq": 127681, "Qp_reps": 140, "Qq_reps": 21291, "t": 3050.8}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 287, "of": 2980740, "work": 2352040378, "sols": 0, "cache": 168092, "t": 3063.8}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 21835, "of": 2980740, "work": 155646680024, "sols": 0, "cache": 170471, "t": 3123.8}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 43151, "of": 2980740, "work": 274616712287, "sols": 0, "cache": 172394, "t": 3183.8}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 64237, "of": 2980740, "work": 360263527199, "sols": 0, "cache": 174222, "t": 3243.9}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 85443, "of": 2980740, "work": 507347632775, "sols": 0, "cache": 176067, "t": 3303.9}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 127858, "of": 2980740, "work": 753478397008, "sols": 0, "cache": 178197, "t": 3363.9}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 150592, "of": 2980740, "work": 876377161847, "sols": 0, "cache": 180763, "t": 3423.9}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 237066, "of": 2980740, "work": 1389135687378, "sols": 0, "cache": 183010, "t": 3483.9}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 362159, "of": 2980740, "work": 2010160209117, "sols": 0, "cache": 186299, "t": 3544.1}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 365234, "of": 2980740, "work": 2023340624507, "sols": 0, "cache": 187269, "t": 3604.1}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 661484, "of": 2980740, "work": 3807371685481, "sols": 0, "cache": 191516, "t": 3664.1}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 724698, "of": 2980740, "work": 4176148064729, "sols": 0, "cache": 195079, "t": 3724.2}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 958165, "of": 2980740, "work": 5544802825276, "sols": 0, "cache": 198546, "t": 3784.3}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 959687, "of": 2980740, "work": 5551937771463, "sols": 0, "cache": 199242, "t": 3844.4}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 1098852, "of": 2980740, "work": 6359395457746, "sols": 0, "cache": 202467, "t": 3904.4}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 1576208, "of": 2980740, "work": 9230874969990, "sols": 0, "cache": 209241, "t": 3964.4}
+{"stage": "progress", "case": [13, 9, 3, 1], "ledger": 2065448, "of": 2980740, "work": 12307562021719, "sols": 0, "cache": 213766, "t": 4024.4}
+{"stage": "case_done", "case": [13, 9, 3, 1], "eps": 1, "Qp": 276, "Qq": 127681, "Qp_reps": 140, "Qq_reps": 21291, "combos": 2980740, "liftable": 2962069, "work": 18220252671635, "ledger": 2980740, "sols": 0, "max_pairs": 27574240, "t": 4062.4}
+{"stage": "A", "case": [15, 5, 3, 1], "Qp": 298, "Qq": 118719, "Qp_reps": 152, "Qq_reps": 19793, "t": 4067.2}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 19797, "of": 3008536, "work": 135875529216, "sols": 0, "cache": 218794, "t": 4085.0}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 22831, "of": 3008536, "work": 153352679861, "sols": 0, "cache": 219848, "t": 4145.0}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 40284, "of": 3008536, "work": 255626327672, "sols": 0, "cache": 221185, "t": 4205.1}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 79302, "of": 3008536, "work": 516905506169, "sols": 0, "cache": 222858, "t": 4265.1}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 87742, "of": 3008536, "work": 565268366537, "sols": 0, "cache": 224338, "t": 4325.1}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 139153, "of": 3008536, "work": 906790723900, "sols": 0, "cache": 229169, "t": 4385.2}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 180981, "of": 3008536, "work": 1151865748379, "sols": 0, "cache": 231812, "t": 4445.2}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 297521, "of": 3008536, "work": 1814669360818, "sols": 0, "cache": 235162, "t": 4505.2}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 337253, "of": 3008536, "work": 2074835362852, "sols": 0, "cache": 237256, "t": 4565.8}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 377880, "of": 3008536, "work": 2354511838365, "sols": 0, "cache": 239632, "t": 4625.8}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 673147, "of": 3008536, "work": 4067002840095, "sols": 0, "cache": 243342, "t": 4686.4}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 792034, "of": 3008536, "work": 4685110119702, "sols": 0, "cache": 247324, "t": 4746.4}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 1030508, "of": 3008536, "work": 6019944523316, "sols": 0, "cache": 249968, "t": 4806.4}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 1195390, "of": 3008536, "work": 6880658304782, "sols": 0, "cache": 253027, "t": 4866.4}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 1742755, "of": 3008536, "work": 9786059908780, "sols": 0, "cache": 258203, "t": 4926.4}
+{"stage": "progress", "case": [15, 5, 3, 1], "ledger": 2041428, "of": 3008536, "work": 11471780201859, "sols": 0, "cache": 262711, "t": 4986.4}
+{"stage": "case_done", "case": [15, 5, 3, 1], "eps": -1, "Qp": 298, "Qq": 118719, "Qp_reps": 152, "Qq_reps": 19793, "combos": 3008536, "liftable": 2970617, "work": 16218585025801, "ledger": 3008536, "sols": 0, "max_pairs": 26873200, "t": 5004.8}
+{"stage": "done", "N_found": 0, "N_expanded": 0, "out": "logs/wil_n65_cost.json", "t": 5004.8}
