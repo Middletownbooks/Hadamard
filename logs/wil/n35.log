@@ -1,0 +1,8 @@
+{"stage": "A", "case": [9, 5, 5, 3], "Qp": 74, "Qq": 255, "Qp_reps": 38, "Qq_reps": 85, "t": 0.0}
+{"stage": "case_done", "case": [9, 5, 5, 3], "eps": 1, "Qp": 74, "Qq": 255, "Qp_reps": 38, "Qq_reps": 85, "combos": 3230, "liftable": 3178, "work": 3066981, "ledger": 3230, "sols": 0, "t": 1.4}
+{"stage": "A", "case": [9, 7, 3, 1], "Qp": 78, "Qq": 324, "Qp_reps": 40, "Qq_reps": 108, "t": 1.4}
+{"stage": "case_done", "case": [9, 7, 3, 1], "eps": -1, "Qp": 78, "Qq": 324, "Qp_reps": 40, "Qq_reps": 108, "combos": 4320, "liftable": 4166, "work": 4207648, "ledger": 4320, "sols": 0, "t": 3.0}
+{"stage": "A", "case": [11, 3, 3, 1], "Qp": 80, "Qq": 261, "Qp_reps": 41, "Qq_reps": 87, "t": 3.0}
+{"stage": "case_done", "case": [11, 3, 3, 1], "eps": 1, "Qp": 80, "Qq": 261, "Qp_reps": 41, "Qq_reps": 87, "combos": 3567, "liftable": 3514, "work": 3872873, "ledger": 3567, "sols": 0, "t": 4.2}
+{"stage": "done", "N_found": 0, "N_expanded": 0, "out": "logs/wil_n35.json", "t": 4.2}
+exit 0

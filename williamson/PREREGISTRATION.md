@@ -80,3 +80,22 @@ re-verified exactly.
 **Note, no change to method:** the mod-4 compression condition implied by the product condition (the four blocks'
 coset sums ≡ fixed residue mod 4) holds for every complementary compression quadruple at n = 35, 45 and 65. It is
 implied by complementarity, so it has no filtering power and is not used.
+
+**A2 (2026-09-30, before any n = 55, 57 or 63 result was read): pair-PSD filter in the compiled join.** A pair
+(A,B) with PSD_A(f) + PSD_B(f) > 4n at some f ≠ 0 cannot be part of a solution, because the four PSDs are
+nonnegative and sum to 4n. Such pairs are skipped on both sides.
+- **Filter power at 65:** it passes about 3.4% of pairs (12 random combinations from case (9,9,7,7)).
+- **Implementation:**
+  - each side's partner list is sorted by PSD at every frequency;
+  - for each element, the frequency admitting the fewest partners is chosen, and only that prefix is scanned;
+  - the hash table is sized to the surviving pairs.
+- **Validation:** solution sets are identical to the Python join at n = 15, 21 and 35. The PSD-filter-only
+  variant also gave identical sets at n = 45.
+- **Rate at n = 65 sizes:** about 7.5×10^7 pair operations per second steady-state with a machine load of about 3,
+  against 1.6×10^7 for A1 under the same load. The work unit is unchanged: |L_A||L_B| + |L_C||L_D|, counted before
+  the filter.
+- **W2 rerun:** all five controls are rerun on this kernel. The A1 results (n = 45: 2 representatives and 12
+  quadruples; n = 51: 4 representatives and 32 quadruples) are kept as `logs/wil_n{45,51}_A1.json`.
+
+**Sharding (implementation only):** `--case c` and `--shard i/K`. Shard i takes the Z_p representatives with index
+≡ i mod K. The shards partition the ledger exactly (checked at n = 21 and 35).

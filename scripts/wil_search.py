@@ -131,12 +131,13 @@ def lift_table(n, X):
     X = X[ok]; hn = (n + 1) // 2
     P = np.rint(np.fft.irfft(np.abs(np.fft.rfft(X.astype(np.float64), axis=1)) ** 2, n=n, axis=1)).astype(np.int64)[:, 1:hn]
     bits = (X[:, 1:hn] < 0).astype(np.uint64) @ (np.uint64(1) << np.arange(hn - 1, dtype=np.uint64))
-    return X, P, bits
+    F = np.ascontiguousarray(np.abs(np.fft.rfft(X.astype(np.float64), axis=1)[:, 1:]) ** 2)
+    return X, P, bits, F
 
 # ---------------- stage D ----------------
 def join4(n, T, eps, W, K1):
     """T: 4 lift tables. returns list of solution quadruples (full sequences)."""
-    (XA, PA, MA), (XB, PB, MB), (XC, PC, MC), (XD, PD, MD) = T
+    (XA, PA, MA, FA), (XB, PB, MB, FB), (XC, PC, MC, FC), (XD, PD, MD, FD) = T
     hn = (n + 1) // 2
     E = np.uint64((1 << (hn - 1)) - 1) if eps == -1 else np.uint64(0)
     def keys(P1, M1, P2, M2, sign, flip):
@@ -147,7 +148,8 @@ def join4(n, T, eps, W, K1):
     if min(len(XA), len(XB), len(XC), len(XD)) == 0: return sols, work
     if JOIN == "nb":
         h = [(P.astype(np.uint64) @ W) for P in (PA, PB, PC, PD)]
-        for a, b, c, d in JOINER.run(h[0], MA, h[1], MB, h[2], MC, h[3], MD, int(E), int(K1)):
+        F = (FA, FB, FC, FD)
+        for a, b, c, d in JOINER.run(h[0], MA, F[0], h[1], MB, F[1], h[2], MC, F[2], h[3], MD, F[3], int(E), int(K1), 4.0 * n + 1e-6):
             Q = np.stack([XA[a], XB[b], XC[c], XD[d]]).astype(np.int64)
             if verify(Q): sols.append(Q)
         return sols, work
@@ -167,29 +169,34 @@ def join4(n, T, eps, W, K1):
 def main():
     n, p, q = map(int, sys.argv[1:4]); assert p * q == n and math.gcd(p, q) == 1 and p < q
     mult = "--no-mult" not in sys.argv; cost_only = "--cost-only" in sys.argv
-    out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else f"logs/wil_n{n}{'' if mult else '_nomult'}{'_cost' if cost_only else ''}.json"
+    global SHI, SHK
+    SHI, SHK = map(int, sys.argv[sys.argv.index("--shard") + 1].split("/")) if "--shard" in sys.argv else (0, 1)
+    out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else f"logs/wil_n{n}{'' if mult else '_nomult'}{'_cost' if cost_only else ''}{('_c' + sys.argv[sys.argv.index('--case') + 1]) if '--case' in sys.argv else ''}{f'_s{SHI}of{SHK}' if SHK > 1 else ''}.json"
     rng = np.random.default_rng(12345)
     hn = (n + 1) // 2
     W = rng.integers(1, 2**63, hn - 1, dtype=np.uint64) | np.uint64(1)
     K1 = np.uint64(rng.integers(1, 2**63, dtype=np.uint64) | 1)
-    rec = {"n": n, "p": p, "q": q, "mult_reduction": mult, "cost_only": cost_only, "cases": [], "solutions": [], "caps_hit": False}
+    rec = {"n": n, "p": p, "q": q, "mult_reduction": mult, "cost_only": cost_only, "shard": [SHI, SHK], "cases": [], "solutions": [], "caps_hit": False}
     lift_cache = {}
-    for case in rowsum_cases(n):
+    CASES = rowsum_cases(n)
+    if "--case" in sys.argv: CASES = [CASES[int(sys.argv[sys.argv.index("--case") + 1])]]
+    for case in CASES:
         eps = epsilon(n, case)
         _, Qp = comp_quads(n, p, case, rng); _, Qq = comp_quads(n, q, case, rng)
         nqp, nqq = len(Qp), len(Qq)
         if mult: Qp, Qq = uniq_rows(canon(Qp, p)), uniq_rows(canon(Qq, q))
         cr = {"case": case, "eps": eps, "Qp": nqp, "Qq": nqq, "Qp_reps": len(Qp), "Qq_reps": len(Qq),
-              "combos": len(Qp) * len(Qq), "liftable": 0, "work": 0, "ledger": 0, "sols": 0}
+              "combos": len(Qp) * len(Qq), "combos_this_shard": sum(1 for t in range(len(Qp)) if t % SHK == SHI) * len(Qq), "liftable": 0, "work": 0, "ledger": 0, "sols": 0}
         log(stage="A", **{k: cr[k] for k in ("case", "Qp", "Qq", "Qp_reps", "Qq_reps")})
         for ip, qp in enumerate(Qp):
             for iq, qq in enumerate(Qq):
+                if ip % SHK != SHI: continue
                 T = []
                 for blk in range(4):
                     key = (qp[blk].tobytes(), qq[blk].tobytes())
                     if key not in lift_cache:
                         lt = lift_table(n, lifts(n, p, q, qp[blk], qq[blk]))
-                        lift_cache[key] = (np.empty(len(lt[0]), np.int8), None, None) if cost_only else lt
+                        lift_cache[key] = (np.empty(len(lt[0]), np.int8), None, None, None) if cost_only else lt
                     T.append(lift_cache[key])
                 cr["ledger"] += 1
                 if time.time() - LAST[0] > 60:

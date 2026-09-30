@@ -1,0 +1,15 @@
+{"stage": "A", "case": [9, 7, 5, 5], "Qp": 150, "Qq": 2652, "Qp_reps": 77, "Qq_reps": 884, "t": 0.4}
+{"stage": "case_done", "case": [9, 7, 5, 5], "eps": 1, "Qp": 150, "Qq": 2652, "Qp_reps": 77, "Qq_reps": 884, "combos": 68068, "liftable": 66388, "work": 1218837392, "ledger": 68068, "sols": 2, "t": 15.5}
+{"stage": "A", "case": [9, 7, 7, 1], "Qp": 148, "Qq": 2406, "Qp_reps": 75, "Qq_reps": 802, "t": 15.5}
+{"stage": "case_done", "case": [9, 7, 7, 1], "eps": -1, "Qp": 148, "Qq": 2406, "Qp_reps": 75, "Qq_reps": 802, "combos": 60150, "liftable": 59212, "work": 937664309, "ledger": 60150, "sols": 0, "t": 28.1}
+{"stage": "A", "case": [9, 9, 3, 3], "Qp": 150, "Qq": 9840, "Qp_reps": 77, "Qq_reps": 3280, "t": 28.3}
+{"stage": "progress", "case": [9, 9, 3, 3], "ledger": 165663, "of": 252560, "work": 2523225434, "sols": 0, "cache": 7604, "t": 60.0}
+{"stage": "case_done", "case": [9, 9, 3, 3], "eps": -1, "Qp": 150, "Qq": 9840, "Qp_reps": 77, "Qq_reps": 3280, "combos": 252560, "liftable": 244952, "work": 4097146184, "ledger": 252560, "sols": 0, "t": 76.2}
+{"stage": "A", "case": [11, 5, 5, 3], "Qp": 155, "Qq": 2496, "Qp_reps": 80, "Qq_reps": 834, "t": 76.2}
+{"stage": "case_done", "case": [11, 5, 5, 3], "eps": -1, "Qp": 155, "Qq": 2496, "Qp_reps": 80, "Qq_reps": 834, "combos": 66720, "liftable": 64490, "work": 1054625939, "ledger": 66720, "sols": 0, "t": 87.9}
+{"stage": "A", "case": [11, 7, 3, 1], "Qp": 145, "Qq": 2397, "Qp_reps": 74, "Qq_reps": 799, "t": 87.9}
+{"stage": "case_done", "case": [11, 7, 3, 1], "eps": 1, "Qp": 145, "Qq": 2397, "Qp_reps": 74, "Qq_reps": 799, "combos": 59126, "liftable": 58246, "work": 862016056, "ledger": 59126, "sols": 0, "t": 98.2}
+{"stage": "A", "case": [13, 3, 1, 1], "Qp": 150, "Qq": 2483, "Qp_reps": 77, "Qq_reps": 829, "t": 98.3}
+{"stage": "case_done", "case": [13, 3, 1, 1], "eps": 1, "Qp": 150, "Qq": 2483, "Qp_reps": 77, "Qq_reps": 829, "combos": 63833, "liftable": 62403, "work": 1108351638, "ledger": 63833, "sols": 0, "t": 110.0}
+{"stage": "done", "N_found": 2, "N_expanded": 12, "out": "logs/wil_n45.json", "t": 110.0}
+exit 0
