@@ -1,0 +1,5 @@
+{"n": 15, "N_brute": 24, "N_pipeline_nomult": 24, "N_pipeline_mult_expanded": 24, "sets_equal_nomult": true, "sets_equal_mult": true, "stageA_inclusion": true, "product_condition_on_brute": true, "W0_pass": true}
+{"n": 21, "N_brute": 96, "N_pipeline_nomult": 96, "N_pipeline_mult_expanded": 96, "sets_equal_nomult": true, "sets_equal_mult": true, "stageA_inclusion": true, "product_condition_on_brute": true, "W0_pass": true}
+{"n": 15, "lifts_total": 256, "expected": 256, "margins_ok": true, "pass": true}
+{"n": 21, "lifts_total": 2048, "expected": 2048, "margins_ok": true, "pass": true}
+{"n": 35, "lifts_total": 262144, "expected": 262144, "margins_ok": true, "pass": true}
