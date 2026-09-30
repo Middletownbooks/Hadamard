@@ -104,3 +104,21 @@ nonnegative and sum to 4n. Such pairs are skipped on both sides.
 cleared when it passes the limit. Lifts are recomputed on demand, so results are unaffected. Checked at n = 21 and
 35 with forced clears: identical solution sets. The unbounded cache reached about 7 GB at n = 55 and 57 and caused
 an OOM kill, so n = 55, 57 and 63 were restarted from scratch with the bound. The killed partial logs are kept.
+
+**A3 (2026-09-30, decided by the user on cost grounds): W2 at n = 63 is replaced by a targeted check.** An
+exhaustive n = 63 run is about 8×10^13 pair operations for its first row-sum case alone (8.1M combinations),
+and on the order of 2,000 core-hours overall, more than n = 65 itself. At amendment time the local n = 63 run
+had covered about 2% of its first case with no solution (seen before this amendment; the log is kept). That
+partial null carries no weight either way.
+- **W2 (amended):** at least one verified quadruple at each of n = 45, 51, 55 and 57, found blind. (Status when
+  amended: all four had passed.)
+- **W2-T63 (new, targeted, not blind):** build a Williamson quadruple of order 63 independently (Turyn's family,
+  q = 125) and check it with the independent verifier. Then show that the pipeline:
+  - (a) keeps each of its Z_7 and Z_9 compression quadruples in stage A;
+  - (b) keeps its canonical combination (after multiplier reduction) with every block liftable;
+  - (c) returns a verified solution when stage D is run on that one combination, and that solution is in the
+    multiplier orbit of the constructed one.
+
+  PASS iff (a), (b) and (c) all hold. A construction that fails the verifier makes W2-T63 unevaluable, which
+  counts as FAIL.
+- The W4 condition "W0, W1 and W2 all PASS" now reads "W0, W1, W2 (amended) and W2-T63 all PASS".
