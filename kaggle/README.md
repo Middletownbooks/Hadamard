@@ -98,3 +98,25 @@ independent pools). Caches go to `/tmp` by default, and `SOLUTION` lines print i
 Profile A generates and preps two pools (row sums 35 and 17) instead of three, so buckets start about 45–60 min
 earlier than with B. Tested locally at INSTANCE=2 (small pools): the assignment check passed, both pools were built,
 and 398 buckets ran with non-zero A+B and C+D pair counts.
+
+## Williamson matrices of order 65 (`wil65.py`)
+
+Exact search, pre-registered in `williamson/PREREGISTRATION.md`. The total is about 8.2×10^13 pair operations
+(roughly 300–500 core-hours), split into 5 row-sum cases × K = 32 shards = 160 shards.
+
+1. Paste `wil65.py` into a CPU notebook (no GPU or internet needed). Edit the settings block:
+   - `CASE` (0–4);
+   - `K = 32` (the same for every session);
+   - `SHARDS`: suggested 8 per session, e.g. `[0..7]`, `[8..15]`, `[16..23]`, `[24..31]`. That is 4 sessions
+     per case and 20 sessions in total.
+   - `NPROC = 4`.
+2. Run All. It first runs the n = 45 self-test (about 2–5 min); the session aborts if the self-test fails.
+3. Each finished shard prints `shard i: done ledger=... work=... sols=...`. Any hit prints a line starting with
+   `SOLUTION`.
+4. Download `/kaggle/working/wil65/wil_n65_c<CASE>_s<i>of32.json` for every shard (the `.log` files are
+   optional). If a session dies, rerun only the missing shards: finished shard files are skipped.
+5. Put all the JSONs in one folder and run `PYTHONPATH=scripts python3 scripts/wil_collect65.py <folder> 32`. It
+   checks that every shard is present and that the ledger and work equal the exact totals in
+   `logs/wil_n65_cost.json`, and it re-verifies any solution.
+
+Shards differ in size: each takes every 32nd Z5 representative. Expect roughly 2–4 hours per shard per core.
