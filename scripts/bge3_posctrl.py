@@ -55,7 +55,7 @@ for si,(s,cs) in enumerate(g['shifts']):
         res=dict(stage='slice_done',h=h,v=v,p=p,u=u,status='stageA_join_too_large',shift=[int(x) for x in s],sizes=sizes,stored_pairs=int(nst))
         log(res); json.dump(dict(summary=res),open(f'logs/posctrl/slice_h{h}_p{p}_u{u}.json','w')); sys.exit(0)
     ST=(H_[a][:,None]+H_[b][None,:]).ravel(); o=np.argsort(ST); STs=ST[o]; del ST; found=0
-    step=max(1,int(2e7//max(len(H_[d]),1)))
+    step=max(1,int(2e6//max(len(H_[d]),1)))
     for c0 in range(0,len(H_[c]),step):
         PR=(np.uint64(0)-(H_[c][c0:c0+step,None]+H_[d][None,:])).ravel(); lo=np.searchsorted(STs,PR); hi=np.searchsorted(STs,PR,side='right')
         q=np.nonzero(hi>lo)[0]
