@@ -1,0 +1,67 @@
+# Williamson matrices of order 65: pre-registration
+
+Written 2026-09-30, before any Williamson code exists in this repo. Commit time stamps it.
+
+## Question
+
+Do Williamson matrices of order n = 65 exist? That is, four symmetric ±1 sequences A, B, C, D on Z_65 with
+PAF_A(s) + PAF_B(s) + PAF_C(s) + PAF_D(s) = 0 for every s ≠ 0.
+
+Status going in: exhaustive searches cover every odd n ≤ 59 (none at 35, 47, 53, 59). Turyn's construction gives
+61 and 63. Kharaghani–Mohammadian–Tayfeh-Rezaie–Zaitsev (arXiv 2605.08661, v2 Sept 2026) list 65 among orders
+where Williamson matrices "have not yet been found". 65 is the smallest undecided odd order.
+
+## Method (fixed now; changes after this point are logged as amendments)
+
+n = p·q with gcd(p, q) = 1; for 65, p = 5 and q = 13. Index i ↔ (i mod p, i mod q), so a block is a p×q ±1 array
+M with M[−a,−b] = M[a,b].
+
+**Normalisation.** Negating a block or permuting blocks preserves the property, so every Williamson quadruple is
+equivalent to one with row sums s_A ≥ s_B ≥ s_C ≥ s_D > 0. N(n) is the number of such normalised quadruples
+(labelled; no further reduction). Σ s_X² = 4n.
+
+1. **Stage A, compressions.** For m ∈ {p, q} enumerate all symmetric compressed sequences (entries of parity
+   n/m, |entry| ≤ n/m, given sum) whose DFT satisfies |X̂(k)|² ≤ 4n at every nonzero k. Join them into
+   quadruples with Σ PAF = 0 off zero. Exact: no sampling, no caps.
+2. **Stage B, consistency.** Combine a Z_p quadruple and a Z_q quadruple with the same row sums; keep a
+   combination only if every block's margin pair (row sums, column sums) has at least one symmetric ±1 lift.
+   Reduce combinations modulo the multiplier group (Z_n)* acting on all four blocks together (exact: a
+   multiplier maps solutions to solutions).
+3. **Stage C, lifts.** For each block and margin pair, enumerate every symmetric ±1 array with those margins,
+   keeping those with |X̂(k)|² ≤ 4n at all k ≠ 0.
+4. **Stage D, join.** Meet in the middle on (A,B) against (C,D). The key is the PAF vector together with the
+   product vector a_j b_j (j ≠ 0). This uses the Williamson product condition: a_j b_j c_j d_j = ε for all
+   j ≠ 0, with ε fixed by the row sums (the parity identity checked on 1,000 random symmetric sequences on
+   2026-09-30).
+
+Every hit is checked by an independent verifier that computes PAFs directly from the ±1 sequences.
+
+## Predictions (single threshold each; anything that cannot be evaluated counts as FAIL)
+
+- **W0, build validation.** For n ∈ {15, 21}, the pipeline's N(n) equals N(n) from an independent brute force.
+  The brute force uses no compression, no multiplier reduction and no product condition. Both counts come
+  from the same normalisation. The pipeline must also give the same N(n) with the multiplier reduction on and
+  off. Every brute-force solution must satisfy the product condition, and its compressions must appear in the
+  pipeline's stage-A list.
+- **W1, negative control.** n = 35 (= 5·7; nonexistence known, Đoković 1993): the pipeline reports 0 solutions
+  with every stage exact.
+- **W2, positive controls.** n ∈ {45, 51, 55, 57, 63}, all composite with a coprime split. Williamson matrices
+  exist at each by Turyn (q = 89, 101, 109, 113, 125). The pipeline finds and verifies at least one quadruple
+  at each of the five. A miss at any one is FAIL.
+- **W3, cost gate for 65.** Before the stage-D join at 65, compute its exact work, Σ over surviving
+  combinations of |L_A||L_B| + |L_C||L_D|. Convert it to core-hours with the rate measured in W2. Run 65 only if
+  the projection is ≤ 500 core-hours (this container plus Kaggle). Otherwise stop and report the number.
+- **W4, reading the result at 65.**
+  - **Found:** a quadruple that passes the independent verifier. It is reported regardless of W0–W2.
+  - **Not found:** a claim of nonexistence is made only if all of the following hold. Otherwise the result is
+    "no solution found in an incomplete search".
+    - W0, W1 and W2 all PASS.
+    - No stage hit a cap or truncation.
+    - The stage-A quadruple lists at 65 match a second, independent stage-A implementation.
+    - The completeness ledger shows a stage-D record for every canonical combination.
+
+## What does not count
+
+- Our Gaussian cost model. It predicts solutions at 35, 47, 53 and 59, where there are none, so it is not
+  used for any decision here.
+- Any sampled stage.
