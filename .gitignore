@@ -33,3 +33,8 @@ logs/twosided/
 data/twosided_*.npz
 logs/wc/
 logs/posctrl/
+
+# live logs of running Williamson controls; final copies are committed as *_final.log
+logs/wil/n55.log
+logs/wil/n57.log
+logs/wil/n63.log
