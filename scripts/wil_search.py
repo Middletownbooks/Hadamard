@@ -12,6 +12,7 @@ from wil_common import expand, verify, rowsum_cases, epsilon
 T0 = time.time(); LAST = [T0]
 import os
 JOIN = os.environ.get("WIL_JOIN", "nb")
+CACHE_LIMIT = float(os.environ.get("WIL_CACHE_GB", "2")) * 2**30; CB = [0, 0]   # bytes, clears
 if JOIN == "nb":
     from wil_join_nb import Joiner
     JOINER = Joiner()
@@ -197,6 +198,10 @@ def main():
                     if key not in lift_cache:
                         lt = lift_table(n, lifts(n, p, q, qp[blk], qq[blk]))
                         lift_cache[key] = (np.empty(len(lt[0]), np.int8), None, None, None) if cost_only else lt
+                        CB[0] += sum(a.nbytes for a in lift_cache[key] if a is not None)
+                        if CB[0] > CACHE_LIMIT:            # bounded memory; results unaffected (lifts are recomputed)
+                            lift_cache.clear(); CB[0] = 0; CB[1] += 1
+                            lift_cache[key] = lt if not cost_only else (np.empty(len(lt[0]), np.int8), None, None, None)
                     T.append(lift_cache[key])
                 cr["ledger"] += 1
                 if time.time() - LAST[0] > 60:
@@ -214,7 +219,7 @@ def main():
         log(stage="case_done", **cr)
         rec["cases"].append(cr)
     rec["N_found"] = len(rec["solutions"]); rec["N_expanded"] = orbit_count(n, [s["halves"] for s in rec["solutions"]]); rec["secs"] = round(time.time() - T0, 1)
-    rec["lift_cache_entries"] = len(lift_cache)
+    rec["lift_cache_entries"] = len(lift_cache); rec["cache_clears"] = CB[1]
     json.dump(rec, open(out, "w"))
     log(stage="done", N_found=rec["N_found"], N_expanded=rec["N_expanded"], out=out)
 

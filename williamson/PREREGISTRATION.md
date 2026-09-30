@@ -99,3 +99,8 @@ nonnegative and sum to 4n. Such pairs are skipped on both sides.
 
 **Sharding (implementation only):** `--case c` and `--shard i/K`. Shard i takes the Z_p representatives with index
 ≡ i mod K. The shards partition the ledger exactly (checked at n = 21 and 35).
+
+**Implementation note (no change to method):** the lift cache is now bounded (`WIL_CACHE_GB`, default 2) and is
+cleared when it passes the limit. Lifts are recomputed on demand, so results are unaffected. Checked at n = 21 and
+35 with forced clears: identical solution sets. The unbounded cache reached about 7 GB at n = 55 and 57 and caused
+an OOM kill, so n = 55, 57 and 63 were restarted from scratch with the bound. The killed partial logs are kept.
