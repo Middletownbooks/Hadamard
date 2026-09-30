@@ -1,0 +1,23 @@
+{"stage": "A", "case": [9, 7, 7, 7], "Qp": 20, "Qq": 150813, "Qp_reps": 20, "Qq_reps": 16761, "t": 120.0}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 1, "of": 335220, "work": 0, "sols": 0, "cache": 4, "t": 120.1}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 23755, "of": 335220, "work": 588389682, "sols": 0, "cache": 16346, "t": 180.1}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 85626, "of": 335220, "work": 2177131817, "sols": 0, "cache": 16376, "t": 240.1}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 133143, "of": 335220, "work": 3504278406, "sols": 6, "cache": 23157, "t": 300.1}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 183756, "of": 335220, "work": 4917818173, "sols": 6, "cache": 28529, "t": 360.1}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 241460, "of": 335220, "work": 6620509815, "sols": 6, "cache": 29908, "t": 420.1}
+{"stage": "progress", "case": [9, 7, 7, 7], "ledger": 298667, "of": 335220, "work": 8292713988, "sols": 6, "cache": 30430, "t": 480.1}
+{"stage": "case_done", "case": [9, 7, 7, 7], "eps": 1, "Qp": 20, "Qq": 150813, "Qp_reps": 20, "Qq_reps": 16761, "combos": 335220, "combos_this_shard": 335220, "liftable": 334686, "work": 9393312862, "ledger": 335220, "sols": 6, "t": 518.1}
+{"stage": "A", "case": [11, 7, 7, 3], "Qp": 20, "Qq": 137826, "Qp_reps": 20, "Qq_reps": 15314, "t": 635.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 1, "of": 306280, "work": 0, "sols": 0, "cache": 30432, "t": 635.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 19823, "of": 306280, "work": 623545286, "sols": 0, "cache": 10212, "t": 695.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 38781, "of": 306280, "work": 1190074285, "sols": 0, "cache": 32649, "t": 755.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 57916, "of": 306280, "work": 1717578148, "sols": 0, "cache": 19061, "t": 815.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 95868, "of": 306280, "work": 2824523396, "sols": 0, "cache": 31971, "t": 875.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 111444, "of": 306280, "work": 3277642581, "sols": 0, "cache": 17868, "t": 935.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 153331, "of": 306280, "work": 4372045265, "sols": 0, "cache": 31454, "t": 995.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 190552, "of": 306280, "work": 5374566510, "sols": 0, "cache": 2689, "t": 1055.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 214503, "of": 306280, "work": 5915338676, "sols": 0, "cache": 23663, "t": 1115.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 228211, "of": 306280, "work": 6265336697, "sols": 0, "cache": 9732, "t": 1175.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 269233, "of": 306280, "work": 7201396810, "sols": 0, "cache": 24433, "t": 1235.0}
+{"stage": "progress", "case": [11, 7, 7, 3], "ledger": 289918, "of": 306280, "work": 7680233140, "sols": 0, "cache": 9000, "t": 1295.0}
+{"stage": "case_done", "case": [11, 7, 7, 3], "eps": -1, "Qp": 20, "Qq": 137826, "Qp_reps": 20, "Qq_reps": 15314, "combos": 306280, "combos_this_shard": 306280, "liftable": 305752, "work": 8038916920, "ledger": 306280, "sols": 0, "t": 1332.2}
