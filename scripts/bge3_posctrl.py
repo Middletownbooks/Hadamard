@@ -33,7 +33,7 @@ def assemble_ok(F,flip=False):
         Hm[off+I_*m:off+(I_+1)*m,off+J_*m:off+(J_+1)*m]=sg*F[L['k']][sig[L['sigma']](Yg,Xg)]
     return bool(np.array_equal(Hm@Hm.T,N*np.eye(N,dtype=np.int64))), Hm
 # ---- exact stage A
-RES=int(__import__('os').environ.get('MAXLIFT','3000')); res_rng=np.random.default_rng(2026); ncomp_seen=[0]   # reservoir sample of compressions
+RES=min(int(__import__('os').environ.get('MAXLIFT','3000')),50000); res_rng=np.random.default_rng(2026); ncomp_seen=[0]; res_max=[2.0]   # reservoir sample of compressions
 comp_list=[]; rng=np.random.default_rng(5); W=rng.integers(1,2**62,size=mc,dtype=np.int64).astype(np.uint64)
 for si,(s,cs) in enumerate(g['shifts']):
     L=[]
@@ -58,18 +58,27 @@ for si,(s,cs) in enumerate(g['shifts']):
     step=max(1,int(2e7//max(len(H_[d]),1)))
     for c0 in range(0,len(H_[c]),step):
         PR=(np.uint64(0)-(H_[c][c0:c0+step,None]+H_[d][None,:])).ravel(); lo=np.searchsorted(STs,PR); hi=np.searchsorted(STs,PR,side='right')
-        for q in np.nonzero(hi>lo)[0]:
-            ic,id_=divmod(int(q),len(H_[d])); ic+=c0
-            for r in range(lo[q],hi[q]):
-                ia,ib=divmod(int(o[r]),len(H_[b])); idx={a:ia,b:ib,c:ic,d:id_}
-                if np.array_equal(sum(PL[k][idx[k]] for k in range(4)),np.zeros(mc,np.int64)):
-                    found+=1; ncomp_seen[0]+=1; item=(si,np.array([L[k][0][idx[k]] for k in range(4)],np.int8))
+        q=np.nonzero(hi>lo)[0]
+        if len(q)==0: continue
+        cnt=(hi-lo)[q]; qq=np.repeat(q,cnt); pos=np.repeat(lo[q],cnt)+(np.arange(cnt.sum())-np.repeat(np.cumsum(cnt)-cnt,cnt))
+        icv=qq//len(H_[d])+c0; idv=qq%len(H_[d]); iav=o[pos]//len(H_[b]); ibv=o[pos]%len(H_[b])
+        for z0 in range(0,len(qq),1000000):
+            sl=slice(z0,z0+1000000); ix={a:iav[sl],b:ibv[sl],c:icv[sl],d:idv[sl]}
+            ok=(sum(PL[k][ix[k]] for k in range(4))==0).all(1); nok=int(ok.sum())
+            if not nok: continue
+            found+=nok; ncomp_seen[0]+=nok
+            pri=res_rng.random(nok); sel={k:ix[k][ok] for k in range(4)}
+            # keep the RES smallest priorities overall (uniform sample without replacement)
+            if len(comp_list)<RES or pri.min()<res_max[0]:
+                for t_ in np.argsort(pri)[:RES]:
+                    item=(float(pri[t_]),si,np.array([L[k][0][sel[k][t_]] for k in range(4)],np.int8))
                     if len(comp_list)<RES: comp_list.append(item)
-                    else:
-                        j_=int(res_rng.integers(0,ncomp_seen[0]))
-                        if j_<RES: comp_list[j_]=item
+                    elif item[0]<res_max[0]:
+                        jmax=int(np.argmax([x[0] for x in comp_list])); comp_list[jmax]=item
+                    else: break
+                    if len(comp_list)==RES: res_max[0]=max(x[0] for x in comp_list)
     log(dict(stage='A_shift',shift=[int(x) for x in s],sizes=sizes,compressions=found,secs=round(time.time()-t0,1)))
-ncomp_total=ncomp_seen[0]; MAXLIFT=RES   # comp_list is already a uniform reservoir sample of size <= MAXLIFT
+ncomp_total=ncomp_seen[0]; MAXLIFT=RES; comp_list=[(x[1],x[2]) for x in comp_list]   # uniform sample (smallest random priorities)
 log(dict(stage='A_done',compressions=ncomp_total,lifted=len(comp_list),sampled=ncomp_total>MAXLIFT))
 # ---- exact lift of every compression, filters, fast-lift completeness, object checks
 cellq=((co[:,0]%2)*3+(co[:,1]%3))*p2+(co[:,2]%p2)
