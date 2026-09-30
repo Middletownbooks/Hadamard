@@ -9,7 +9,12 @@ Nothing is sampled or capped. Usage: wil_search.py n p q [--no-mult] [--out FILE
 import sys, json, time, itertools, math, numpy as np
 from wil_common import expand, verify, rowsum_cases, epsilon
 
-T0 = time.time()
+T0 = time.time(); LAST = [T0]
+import os
+JOIN = os.environ.get("WIL_JOIN", "nb")
+if JOIN == "nb":
+    from wil_join_nb import Joiner
+    JOINER = Joiner()
 def log(**k):
     k["t"] = round(time.time() - T0, 1); print(json.dumps(k), flush=True)
 
@@ -140,6 +145,12 @@ def join4(n, T, eps, W, K1):
         return i, j, k
     sols = []; work = len(XA) * len(XB) + len(XC) * len(XD)
     if min(len(XA), len(XB), len(XC), len(XD)) == 0: return sols, work
+    if JOIN == "nb":
+        h = [(P.astype(np.uint64) @ W) for P in (PA, PB, PC, PD)]
+        for a, b, c, d in JOINER.run(h[0], MA, h[1], MB, h[2], MC, h[3], MD, int(E), int(K1)):
+            Q = np.stack([XA[a], XB[b], XC[c], XD[d]]).astype(np.int64)
+            if verify(Q): sols.append(Q)
+        return sols, work
     ci, dj, kcd = keys(PC, MC, PD, MD, -1, E)
     o = np.argsort(kcd); kcd = kcd[o]; ci, dj = ci[o], dj[o]
     step = max(1, 20_000_000 // max(1, len(XB)))
@@ -155,13 +166,13 @@ def join4(n, T, eps, W, K1):
 # ---------------- driver ----------------
 def main():
     n, p, q = map(int, sys.argv[1:4]); assert p * q == n and math.gcd(p, q) == 1 and p < q
-    mult = "--no-mult" not in sys.argv
-    out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else f"logs/wil_n{n}{'' if mult else '_nomult'}.json"
+    mult = "--no-mult" not in sys.argv; cost_only = "--cost-only" in sys.argv
+    out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else f"logs/wil_n{n}{'' if mult else '_nomult'}{'_cost' if cost_only else ''}.json"
     rng = np.random.default_rng(12345)
     hn = (n + 1) // 2
     W = rng.integers(1, 2**63, hn - 1, dtype=np.uint64) | np.uint64(1)
     K1 = np.uint64(rng.integers(1, 2**63, dtype=np.uint64) | 1)
-    rec = {"n": n, "p": p, "q": q, "mult_reduction": mult, "cases": [], "solutions": [], "caps_hit": False}
+    rec = {"n": n, "p": p, "q": q, "mult_reduction": mult, "cost_only": cost_only, "cases": [], "solutions": [], "caps_hit": False}
     lift_cache = {}
     for case in rowsum_cases(n):
         eps = epsilon(n, case)
@@ -177,12 +188,20 @@ def main():
                 for blk in range(4):
                     key = (qp[blk].tobytes(), qq[blk].tobytes())
                     if key not in lift_cache:
-                        lift_cache[key] = lift_table(n, lifts(n, p, q, qp[blk], qq[blk]))
+                        lt = lift_table(n, lifts(n, p, q, qp[blk], qq[blk]))
+                        lift_cache[key] = (np.empty(len(lt[0]), np.int8), None, None) if cost_only else lt
                     T.append(lift_cache[key])
                 cr["ledger"] += 1
+                if time.time() - LAST[0] > 60:
+                    LAST[0] = time.time()
+                    log(stage="progress", case=case, ledger=cr["ledger"], of=cr["combos"], work=cr["work"], sols=cr["sols"], cache=len(lift_cache))
                 if min(len(t[0]) for t in T) == 0: continue
                 cr["liftable"] += 1
-                sols, work = join4(n, T, eps, W, K1)
+                if cost_only:
+                    L = [len(t[0]) for t in T]; sols, work = [], L[0] * L[1] + L[2] * L[3]
+                    cr["max_pairs"] = max(cr.get("max_pairs", 0), L[0] * L[1], L[2] * L[3])
+                else:
+                    sols, work = join4(n, T, eps, W, K1)
                 cr["work"] += work; cr["sols"] += len(sols)
                 for Q in sols: rec["solutions"].append({"case": case, "halves": Q[:, :hn].tolist()})
         log(stage="case_done", **cr)

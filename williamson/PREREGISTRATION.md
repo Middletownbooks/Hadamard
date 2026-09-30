@@ -65,3 +65,18 @@ Every hit is checked by an independent verifier that computes PAFs directly from
 - Our Gaussian cost model. It predicts solutions at 35, 47, 53 and 59, where there are none, so it is not
   used for any decision here.
 - Any sampled stage.
+
+## Amendments
+
+**A1 (2026-09-30, before any W2 result was read): compiled stage-D join.** Same algorithm and same keys as
+`join4`: a meet in the middle on the PAF sum plus the product-condition mask. It is now in numba
+(`scripts/wil_join_nb.py`), with a 64-bit linear PAF hash so each pair's key costs O(1). Every hit is still
+re-verified exactly.
+- It gives the same solution sets as the Python join at n = 15, 21 and 35.
+- The W2 controls are rerun with it, so the W3 rate comes from the join that would run at 65.
+- A partial n = 45 run with the Python join (case 1: 2 solutions, 304 s) is kept as
+  `logs/wil/n45_pyjoin_partial.log`. The compiled join gives the same 2 solutions in 15.5 s.
+
+**Note, no change to method:** the mod-4 compression condition implied by the product condition (the four blocks'
+coset sums ≡ fixed residue mod 4) holds for every complementary compression quadruple at n = 35, 45 and 65. It is
+implied by complementarity, so it has no filtering power and is not used.
