@@ -25,6 +25,26 @@ for f in sorted(glob.glob(os.path.join(D, "*.log")) + glob.glob(os.path.join(D, 
                 loglines[(int(m.group(1)), int(m.group(2)))] = last
                 if last["sols"] > 0: need_json.append(m.group(0))
             last = None
+# notebook summary lines: "shard i: done ledger=L of L work=W sols=S ..." (case from a preceding "CASE n" line,
+# else inferred: the ledger must equal (#Z5 reps with index = i mod K) x Qq_reps for exactly one case)
+def expected(ci, i):
+    c = cost[cases[ci]]; return sum(1 for t in range(c["Qp_reps"]) if t % K == i) * c["Qq_reps"]
+ambiguous = []
+for f in sorted(glob.glob(os.path.join(D, "*.log")) + glob.glob(os.path.join(D, "*.txt"))):
+    cur = None
+    for line in open(f):
+        m0 = re.search(r"\bCASE\s*=?\s*(\d)\b", line)
+        if m0 and "shard" not in line: cur = int(m0.group(1)); continue
+        m = re.search(r"shard (\d+): done ledger=(\d+) of (\d+) work=(\d+) sols=(\d+)", line)
+        if not m: continue
+        i, led, of, work, sols = map(int, m.groups())
+        cand = [cur] if cur is not None else [ci for ci in range(len(cases)) if expected(ci, i) == led]
+        if len(cand) != 1 or expected(cand[0], i) != led or led != of:
+            ambiguous.append(line.strip()); continue
+        ci = cand[0]
+        loglines[(ci, i)] = {"case": list(cases[ci]), "ledger": led, "combos_this_shard": of, "work": work, "sols": sols}
+        if sols > 0: need_json.append(f"wil_n65_c{ci}_s{i}of{K}.json")
+report["unassigned_lines"] = ambiguous
 for ci, case in enumerate(cases):
     got = {}
     for (c, i), rec in loglines.items():
@@ -45,11 +65,12 @@ for ci, case in enumerate(cases):
                             "complete": not missing and ledger == cost[case]["combos"] and work == cost[case]["work"],
                             "sols": sum(c["sols"] for c in got.values())})
 report["need_json_for_solutions"] = sorted(set(need_json) - {os.path.basename(f) for f in glob.glob(os.path.join(D, "*.json"))})
-report["all_complete"] = all(c["complete"] for c in report["cases"]) and not report["need_json_for_solutions"]
+report["all_complete"] = all(c["complete"] for c in report["cases"]) and not report["need_json_for_solutions"] and not report["unassigned_lines"]
 report["N_found"] = len(report["solutions"]); report["all_verified"] = all(s["verified"] for s in report["solutions"])
 for c in report["cases"]:
     m = c["missing_shards"]
     print(c["case"], "shards", c["shards_present"], "/", K, "missing", (m if len(m) <= 12 else m[:12] + ["..."]),
           "ledger", c["ledger"], "/", c["combos"], "work %.3e / %.3e" % (c["work"], c["work_expected"]), "complete", c["complete"], "sols", c["sols"])
-print("all_complete", report["all_complete"], "| JSON still needed for:", report["need_json_for_solutions"]); print("solutions:", report["N_found"], "verified:", report["all_verified"])
+print("all_complete", report["all_complete"], "| JSON still needed for:", report["need_json_for_solutions"], "| unassigned lines:", len(report["unassigned_lines"]))
+for l in report["unassigned_lines"]: print("  UNASSIGNED:", l); print("solutions:", report["N_found"], "verified:", report["all_verified"])
 json.dump(report, open("williamson/n65_collected.json", "w"), default=int)

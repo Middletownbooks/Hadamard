@@ -1,2 +1,7 @@
 {"stage": "case_done", "case": [11, 9, 7, 3], "eps": 1, "Qp": 276, "Qq": 118113, "Qp_reps": 140, "Qq_reps": 19692, "combos": 2756880, "combos_this_shard": 98460, "liftable": 97765, "work": 544753884632, "ledger": 98460, "sols": 0, "t": 20932.2}
 {"stage": "done", "N_found": 0, "N_expanded": 0, "out": "/kaggle/working/wil65/wil_n65_c1_s10of32.json", "t": 20932.2}
+shard 4: done ledger=98965 of 98965 work=558586564774 sols=0 secs=23410.7
+24154.4s	11	shard 3: done ledger=98965 of 98965 work=561938150099 sols=0 secs=23673.6
+24424.4s	12	shard 5: done ledger=98965 of 98965 work=520934005487 sols=0 secs=23944.6
+25114.4s	13	shard 6: done ledger=98965 of 98965 work=571241321812 sols=0 secs=24655.1
+40654.5s	14	shard 7: done ledger=98965 of 98965 work=496989521254 sols=0 secs=16765.1
