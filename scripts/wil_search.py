@@ -177,6 +177,8 @@ def main():
     hn = (n + 1) // 2
     W = rng.integers(1, 2**63, hn - 1, dtype=np.uint64) | np.uint64(1)
     K1 = np.uint64(rng.integers(1, 2**63, dtype=np.uint64) | 1)
+    global CKPT
+    CKPT = out + ".ckpt" if "--no-ckpt" not in sys.argv else os.devnull
     rec = {"n": n, "p": p, "q": q, "mult_reduction": mult, "cost_only": cost_only, "shard": [SHI, SHK], "cases": [], "solutions": [], "caps_hit": False}
     lift_cache = {}
     CASES = rowsum_cases(n)
@@ -189,9 +191,21 @@ def main():
         cr = {"case": case, "eps": eps, "Qp": nqp, "Qq": nqq, "Qp_reps": len(Qp), "Qq_reps": len(Qq),
               "combos": len(Qp) * len(Qq), "combos_this_shard": sum(1 for t in range(len(Qp)) if t % SHK == SHI) * len(Qq), "liftable": 0, "work": 0, "ledger": 0, "sols": 0}
         log(stage="A", **{k: cr[k] for k in ("case", "Qp", "Qq", "Qp_reps", "Qq_reps")})
+        ck = {}                                   # checkpoint: finished Z_p reps of this case (survives restarts)
+        if os.path.exists(CKPT):
+            for line in open(CKPT):
+                try: d = json.loads(line)
+                except ValueError: continue          # a torn last line from a kill is ignored (that rep reruns)
+                if tuple(d["case"]) == tuple(case): ck[d["ip"]] = d
         for ip, qp in enumerate(Qp):
+            if ip % SHK != SHI: continue
+            if ip in ck:
+                d = ck[ip]
+                for k in ("ledger", "liftable", "work", "sols"): cr[k] += d[k]
+                rec["solutions"] += d["solutions"]; cr["resumed_reps"] = cr.get("resumed_reps", 0) + 1
+                continue
+            before = {k: cr[k] for k in ("ledger", "liftable", "work", "sols")}; nsol0 = len(rec["solutions"])
             for iq, qq in enumerate(Qq):
-                if ip % SHK != SHI: continue
                 T = []
                 for blk in range(4):
                     key = (qp[blk].tobytes(), qq[blk].tobytes())
@@ -216,6 +230,8 @@ def main():
                     sols, work = join4(n, T, eps, W, K1)
                 cr["work"] += work; cr["sols"] += len(sols)
                 for Q in sols: rec["solutions"].append({"case": case, "halves": Q[:, :hn].tolist()})
+            d = {"case": list(case), "ip": ip, **{k: cr[k] - before[k] for k in before}, "solutions": rec["solutions"][nsol0:]}
+            with open(CKPT, "a") as fh: fh.write(json.dumps(d) + "\n"); fh.flush(); os.fsync(fh.fileno())
         log(stage="case_done", **cr)
         rec["cases"].append(cr)
     rec["N_found"] = len(rec["solutions"]); rec["N_expanded"] = orbit_count(n, [s["halves"] for s in rec["solutions"]]); rec["secs"] = round(time.time() - T0, 1)
