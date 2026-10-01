@@ -38,3 +38,6 @@ logs/posctrl/
 logs/wil/n55.log
 logs/wil/n57.log
 logs/wil/n63.log
+
+# live W(65) shard logs (JSON results are committed)
+logs/wil65/*.log
