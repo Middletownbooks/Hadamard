@@ -1,0 +1,38 @@
+{"t": 191, "d": 2, "g": [[1, -1], [1, -1], [1, -1], [1, -1]], "orbits": 96, "classes": 95, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 2, "g": [[1, -1], [1, -1], [1, -1], [1, 1]], "orbits": 96, "classes": 95, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 2, "g": [[1, -1], [1, -1], [1, 1], [1, 1]], "orbits": 96, "classes": 95, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 2, "g": [[1, -1], [1, -1], [2, 1]], "orbits": 96, "classes": 95, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 2, "g": [[1, -1], [1, 1], [1, 1], [1, 1]], "orbits": 96, "classes": 95, "fix0": 6, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 2, "g": [[1, -1], [1, 1], [2, 1]], "orbits": 96, "classes": 95, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 2, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 96, "classes": 95, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 2, "g": [[1, 1], [1, 1], [2, 1]], "orbits": 96, "classes": 95, "fix0": 4, "feasible": true, "log2E": -151.3, "n_bits": 438.3, "per_class": -162.9}
+{"t": 191, "d": 2, "g": [[2, 1], [2, 1]], "orbits": 96, "classes": 95, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 5, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 39, "classes": 19, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[1, -1], [1, -1], [1, -1], [1, -1]], "orbits": 20, "classes": 19, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 10, "g": [[1, -1], [1, -1], [1, -1], [1, 1]], "orbits": 20, "classes": 19, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[1, -1], [1, -1], [1, 1], [1, 1]], "orbits": 20, "classes": 19, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[1, -1], [1, -1], [2, 1]], "orbits": 20, "classes": 19, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 10, "g": [[1, -1], [1, 1], [1, 1], [1, 1]], "orbits": 20, "classes": 19, "fix0": 6, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[1, -1], [1, 1], [2, 1]], "orbits": 20, "classes": 19, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 20, "classes": 19, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[1, 1], [1, 1], [2, 1]], "orbits": 20, "classes": 19, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 10, "g": [[2, 1], [2, 1]], "orbits": 20, "classes": 19, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 19, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 11, "classes": 5, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[1, -1], [1, -1], [1, -1], [1, -1]], "orbits": 6, "classes": 5, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 38, "g": [[1, -1], [1, -1], [1, -1], [1, 1]], "orbits": 6, "classes": 5, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[1, -1], [1, -1], [1, 1], [1, 1]], "orbits": 6, "classes": 5, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[1, -1], [1, -1], [2, 1]], "orbits": 6, "classes": 5, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 191, "d": 38, "g": [[1, -1], [1, 1], [1, 1], [1, 1]], "orbits": 6, "classes": 5, "fix0": 6, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[1, -1], [1, 1], [2, 1]], "orbits": 6, "classes": 5, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 6, "classes": 5, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[1, 1], [1, 1], [2, 1]], "orbits": 6, "classes": 5, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 191, "d": 38, "g": [[2, 1], [2, 1]], "orbits": 6, "classes": 5, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 179, "d": 2, "g": [[1, -1], [1, -1], [1, -1], [1, -1]], "orbits": 90, "classes": 89, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 179, "d": 2, "g": [[1, -1], [1, -1], [1, -1], [1, 1]], "orbits": 90, "classes": 89, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 179, "d": 2, "g": [[1, -1], [1, -1], [1, 1], [1, 1]], "orbits": 90, "classes": 89, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 179, "d": 2, "g": [[1, -1], [1, -1], [2, 1]], "orbits": 90, "classes": 89, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 179, "d": 2, "g": [[1, -1], [1, 1], [1, 1], [1, 1]], "orbits": 90, "classes": 89, "fix0": 6, "feasible": false, "why": "row sums"}
+{"t": 179, "d": 2, "g": [[1, -1], [1, 1], [2, 1]], "orbits": 90, "classes": 89, "fix0": 2, "feasible": true, "log2E": -138.5, "n_bits": 406.5, "per_class": -149.0}
+{"t": 179, "d": 2, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 90, "classes": 89, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 179, "d": 2, "g": [[1, 1], [1, 1], [2, 1]], "orbits": 90, "classes": 89, "fix0": 4, "feasible": true, "log2E": -137.3, "n_bits": 406.3, "per_class": -148.8}
+{"t": 179, "d": 2, "g": [[2, 1], [2, 1]], "orbits": 90, "classes": 89, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}

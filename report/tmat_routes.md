@@ -163,3 +163,47 @@ This matches the other analysis exactly.
   screen locally with the estimator, plus exact SAT on small slices.
   - If a twisted ansatz brings 669 to about 80 bits or less, the per-S k-tree join is embarrassingly parallel across
     S and would suit Kaggle.
+
+## 8. Twisted-symmetry screen (2026-10-06) [M for feasibility and validation; E for log₂E]
+
+**Ansatz** (`scripts/tmat_twist.py`): U = ⟨u⟩ ≤ (Z/t)* of order d, and g = (π, ε) ∈ B₄, a signed permutation of the four
+rows with g^d = 1, satisfying T_{π(i)}(u·x) = ε_i·T_i(x).
+- Labels propagate along each U-orbit by g, and position 0 must carry a g-fixed label.
+- The ΣPAF condition is invariant under this action, so there is one equation per class of ⟨U, −1⟩ on the nonzero
+  lags.
+- Twisting allows even d, where −1 ∈ U acts as a row swap or negation.
+- One representative of each B₄ conjugacy class (signed cycle type) was screened for every d | t − 1 with at least 3
+  orbits. For each: exact row-sum feasibility (an ILP over orbit contribution vectors, against every s with Σs² = t),
+  then the Gaussian log₂E.
+
+**Validation against brute force** (`twist_validate_final.txt`):
+- **Infeasibility claims are sound.** Every (t, d, g) marked infeasible has brute-force count 0. This covers 59
+  combinations at t = 13–43.
+- **Estimates where solutions exist:**
+
+  | (t, d, g) | brute force | estimate |
+  |---|---|---|
+  | (19, 3, untwisted) | 2^14.6 | 2^13.0 |
+  | (19, 3, 3-cycle twist) | 2^12.3 | 2^11.5 |
+
+  So the estimator underestimates by about 1–1.5 bits.
+
+**Results.** All 34 (d, g) combinations at t = 223 were screened, plus 38 at t = 191 and t = 179 together.
+
+| t (target) | feasible (d, g) | log₂E | n (bits) | reading |
+|---|---|---|---|---|
+| 223 (669) | d = 3, g = id | 68.2 | 156.8 | unchanged |
+| 223 (669) | d = 3, g = 3-cycle on rows | 66.5 | 156.5 | twist gains nothing |
+| 223 (669) | d = 6, g = row swap | −62.0 | 175.0 | empty: −1 ∈ U gives 37 classes for 38 orbits |
+| 223 (669) | d = 2, g = row swap | −189.4 | 524.4 | empty |
+| 191 (573) | d = 2, g = row swap | −151.3 | 438.3 | empty; every d = 5, 10, 19 and 38 twist is row-sum infeasible |
+| 179 (537) | d = 2, two classes of g | about −138 | about 406 | empty |
+
+All other combinations fail row sums or have no g-fixed label for position 0.
+
+**Conclusions:**
+- **The twisted-symmetry lead is closed for 669, 573 and 537.**
+- When −1 ∈ U, the lag classes no longer pair as {s, −s}, so halving the orbits costs as many constraints as it saves.
+- The order-3 row twist leaves the orbit count unchanged.
+- **669 stays at about 156 bits.** That is about 94 bits beyond the solved T(103) and out of reach of this method on
+  this hardware or on Kaggle.
