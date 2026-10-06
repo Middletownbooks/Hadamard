@@ -122,3 +122,29 @@ partial null carries no weight either way.
   PASS iff (a), (b) and (c) all hold. A construction that fails the verifier makes W2-T63 unevaluable, which
   counts as FAIL.
 - The W4 condition "W0, W1 and W2 all PASS" now reads "W0, W1, W2 (amended) and W2-T63 all PASS".
+
+## Addendum S (2026-10-06, after the W(65) null; registered before any SAT run): independent SAT cross-check
+
+**Encoding** (`scripts/wil_sat.py`, new code that shares nothing with `wil_search.py`):
+- **Variables:** one Boolean per half-position of each symmetric block (x = −1). That is 33 per block at n = 65.
+- **Row-sum case:** fixed per instance (the same 5 cases, re-enumerated independently). The middle entry's parity
+  is forced, and the half-weight is an exact cardinality constraint.
+- **Williamson condition:** for every lag s, the four blocks together have exactly 2n disagreements x_i ≠ x_{i+s}
+  over i ∈ Z_n. This is encoded with XOR auxiliaries and an exact cardinality constraint (totalizer), and is
+  equivalent to Σ_X PAF_X(s) = 0.
+- **Not used:** compressions to Z_5, lifts, PSD pruning, the product condition, hashing and the Z_5 multiplier
+  reduction.
+- **Splitting (only if needed for speed):** instances may be split by the Z_13 compression quadruple, taken from
+  the independent stage-A implementation (`wil_stageA_alt.py`). Canonicalisation under (Z_13)*/±1 is reimplemented
+  inside `wil_sat.py`.
+
+**Predictions:**
+- **S0 (validation):** by full enumeration with blocking clauses, SAT gives the same number of normalised quadruples
+  as the pipeline:
+  - N(15) = 24 and N(21) = 96, the brute-force values;
+  - 0 at n = 35;
+  - 12 at n = 45 (the pipeline's orbit-expanded count). This one is evaluated if it finishes within 6 core-hours,
+    otherwise it is reported as unevaluated.
+- **S1 (cross-check):** at n = 65 every instance returns UNSAT, with no instance left unsolved. A SAT result is
+  checked by the independent verifier and would contradict W(65). An instance that does not finish leaves S1
+  unevaluated, and that is reported.
