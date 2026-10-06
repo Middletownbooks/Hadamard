@@ -88,3 +88,29 @@ gives 2 hits. So the Alpöge 223 core does not give 669 for free.
    about 2^16 times the work for brute-force-like methods, less if pruning scales better.
 4. **669 (223/k = 3)** only if step 3 shows good scaling. At 157 bits it is in the range that has resisted the repo's
    523 work.
+
+## 6. Results so far (2026-10-06)
+
+- **Step 1, small slices decided [M]:**
+  - 191/k = 19: no solutions (20 cases UNSAT).
+  - 223/k = 37: no solutions (36 cases UNSAT).
+  - 571/k = 57: 44 of 58 cases UNSAT, then stopped. It needed 9.8 GB, apparently a memory leak across cases, so it was
+    deferred.
+  - 523/k = 29: deferred.
+- **T(103, k = 3) positive control: PASS for the k-tree method [M].**
+  - Method (`tmat_kt.py`):
+    1. Fix the support S = supp T₁ ∪ supp T₂ with |S| = ⌊m/2⌋ orbits.
+    2. Write T₁ and T₂ as (P ± R)/2 on S, and likewise on Sᶜ.
+    3. This gives **four independent lists** with PAF(P) + PAF(R) + PAF(P′) + PAF(R′) = 2t·δ, solved by the repo's
+       k-tree join (`kt_generic.kt_join4`).
+  - Sanity run with the known solution's S: found in 62 s.
+  - **Blind run:** a random S (seed 7) gave a solution on the **first S tried, in 720 s**. It differs from Schneider's
+    array. Built into an order-2060 matrix, it verifies H Hᵀ = 2060·I (`cw/T103_blind.json`).
+  - Comparison on the same instance:
+    - Tabu (`tmat_search.py tabu2`, about 42k it/s): best E = 2–3 after 141M iterations (56 min), no solution.
+    - SAT + PSD (`tmat_sat.py`): one row-sum case UNSAT in 211 s, the next still unfinished after 2 h.
+  - So the support split with the k-tree is the method of choice.
+- **Now running:** T(191, k = 5), the route to 573 (order 2292), with 4 seeds of the k-tree method.
+  - Lists are about 2^19 per side.
+  - Expected solutions per random S are about 2^−1.2 [E] (2^37.8 raw / 2^39 supports), against about 2^7 at
+    t = 103, so many S will be needed.
