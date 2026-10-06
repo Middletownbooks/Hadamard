@@ -1,12 +1,13 @@
 """Run bge3_normscreen over every feasible (log2E > 0) b>=3 config of the open orders, all proper divisors t of h."""
 import json, glob, subprocess, sys
-OPEN=[523, 571, 573, 599, 643, 647, 659, 669, 719, 739]
+OPEN=[int(x) for x in sys.argv[1].split(",")] if len(sys.argv)>1 else [523, 571, 573, 599, 643, 647, 659, 669, 719, 739]
+NMAX=float(sys.argv[2]) if len(sys.argv)>2 else 1e9
 rows={}
 for f in glob.glob('logs/bge3_cost_open/v*.log'):
     for l in open(f):
         if '"log2E"' not in l: continue
         r=json.loads(l)
-        if r['v'] in OPEN and r['log2E']>0:
+        if r['v'] in OPEN and r['log2E']>0 and r['n']<=NMAX:
             key=(r['v'],r['c'],tuple(r['Q']),r['d'],r['r'],r['L'])
             rows[key]=min(rows.get(key,1e9),r['n'])
 for (v,c,Q,d,r,L),n in sorted(rows.items(),key=lambda kv:(kv[0][0],kv[1])):
