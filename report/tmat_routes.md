@@ -114,3 +114,52 @@ gives 2 hits. So the Alpöge 223 core does not give 669 for free.
   - Lists are about 2^19 per side.
   - Expected solutions per random S are about 2^−1.2 [E] (2^37.8 raw / 2^39 supports), against about 2^7 at
     t = 103, so many S will be needed.
+
+## 7. Correction: T(191, k = 5) is empty, so 573 has no route here (2026-10-06, later)
+
+A second, independent analysis by another LLM pointed this out. I verified it before acting [M].
+
+**The row-sum condition.**
+- In T-form each row sum is s_i = T_i(0) + k·(integer), and exactly one row contains position 0.
+- So **three of the s_i are ≡ 0 (mod k) and one is ≡ ±1 (mod k), with Σ s_i² = t.**
+- §3 and §6 checked only the GS-form condition (each block sum ±1 mod k), which is necessary but not sufficient.
+
+**Exact enumeration of this condition over all targets.** Viable (t, k) pairs with k odd and at least 4 orbits:
+- (103, 3): the known solution's sums 7, 3, 3, 6 have residues 1, 0, 0, 0;
+- (223, 3);
+- (523, 3) and (523, 9);
+- (571, 3) and (571, 5);
+- (643, 3);
+- (659, 7);
+- (739, 3).
+
+**Dead:**
+- 191 (k = 5 and 19), 599, 647, 179 and 719: no k gives a viable pair.
+- The remaining k at 103, 223, 523, 571, 643 and 739.
+
+This matches the other analysis exactly.
+
+**Consequences:**
+- **573 has no T(191) route.** The T(191, k = 5) k-tree runs were stopped after about 1 h, having finished no S.
+- 191/k = 19 and 223/k = 37 are empty for this reason too, consistent with the SAT results in §6.
+- `tmat_estimate.py` now applies the exact condition, and its `rowsum_feasible` flag returns False for 191/5.
+
+**Independent confirmations from the other analysis:**
+- H(2884) was found independently, with a different order-7 Williamson quadruple. I checked that quadruple: it is
+  symmetric with ΣPAF = 28·δ.
+- The T-ansatz densities agree with ours.
+- The Alpöge cores are not in T-form.
+- Plain annealing cannot solve T(103).
+
+**Remaining composite target: 669 via T(223, k = 3).** Raw E is about 2^68, density about 2^-157.
+- **k-tree cost [E]:** 75 orbits, so a balanced S has about 37 orbits and each side list is about 2^36 entries
+  (2^17 at t = 103). Solutions per random S are about 2^68.2 / 2^75 ≈ 2^-7. A complete join on one S costs about 2^72
+  pair operations, and reaching 157 bits with a 4-list join needs lists of about 2^52, against the 2^36 one S can supply.
+- **Kaggle verdict:** 5 notebooks × 4 cores is roughly 2^5–2^8 more compute than here. That is nowhere near the gap,
+  so Kaggle is not useful for 669 with the current ansatz.
+- **What could change that:** extra structure that removes about 70 bits. The untested lead from both analyses is a
+  *twisted* symmetry: multipliers that also permute or negate the four rows (for example K of order 6 at t = 223,
+  with x ↦ −x acting as a row swap). This changes both the orbit count and the row-sum conditions. It is cheap to
+  screen locally with the estimator, plus exact SAT on small slices.
+  - If a twisted ansatz brings 669 to about 80 bits or less, the per-S k-tree join is embarrassingly parallel across
+    S and would suit Kaggle.

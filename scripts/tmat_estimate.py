@@ -49,10 +49,12 @@ def estimate(t, k, N=200000, seed=1):
     log2P = (np.sum(np.log(steps)) - 0.5 * C * math.log(2 * math.pi) - 0.5 * logdet - 0.5 * q) / math.log(2)
     log2E = 3 * m + log2P
     sym = math.log2(24 * 16 * (t - 1) / k)
-    # row sums: each block's sum is +-1 + k*j with j = (m-1) mod 2, |j| <= m-1; need a^2+b^2+c^2+d^2 = 4t
-    ach = {e + k * j for e in (1, -1) for j in range(-(m - 1), m) if (j - (m - 1)) % 2 == 0}
-    from tmat_sat import rowsum_cases
-    feas = [c for c in rowsum_cases(t) if all(x in ach or -x in ach for x in c)]
+    # T-form row sums: s_i = T_i(0) + k*(integer); exactly one row contains position 0, so three s_i = 0 (mod k) and
+    # one s_i = +-1 (mod k), with sum s_i^2 = t.  (A GS-form check +-1 mod k per block sum is NOT sufficient.)
+    import itertools
+    r = int(math.isqrt(t))
+    feas = [q for q in itertools.product(range(-r, r + 1), repeat=4) if sum(x * x for x in q) == t
+            and sorted(x % k for x in q).count(0) == 3 and any(x % k in (1, k - 1) for x in q)]
     if not feas:
         log2E = float("-inf")
     return {"rowsum_feasible": bool(feas), "t": t, "k": k, "orbits": m, "classes": C, "steps": sorted(set(steps.tolist())), "zero_on_lattice": on,
