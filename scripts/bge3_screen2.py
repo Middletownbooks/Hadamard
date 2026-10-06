@@ -65,8 +65,8 @@ for gi,(key,(d,r,lab,grp,abel)) in enumerate(cands):
             cur=cur[keep]
             if len(cur)>MAXST: ok=False; break
             if len(cur)==0: break
-        if not ok: rec['tests'][t]=None; continue
-        if len(cur)==0: rec['tests'][t]=False; continue            # no achievable block compression
+        if not ok: rec['tests'][t]=None; print(json.dumps(dict(partial=True,**rec),default=int),flush=True); continue
+        if len(cur)==0: rec['tests'][t]=False; print(json.dumps(dict(partial=True,**rec),default=int),flush=True); continue            # no achievable block compression
         cur=cur[:,corb]                                                          # expand to all classes
         X=cur.reshape((-1,)+tuple(Q+[t])).astype(float)
         F=np.fft.fftn(X,axes=tuple(range(1,len(Q)+2))); P=np.rint(np.abs(F)**2).reshape(len(cur),-1).astype(np.int64)
@@ -86,10 +86,11 @@ for gi,(key,(d,r,lab,grp,abel)) in enumerate(cands):
             S=(W[i0:i0+512,None,:]+W[None,:,:]).reshape(-1,W.shape[1]); S=S[(S<=T[None,:]).all(1)]
             if len(S): S=np.unique(S,axis=0); parts.append(S); tot+=len(S)
             if tot>4e7: over=True; break
-        if over: rec['tests'][t]=('too many pair sums',int(tot)); continue
+        if over: rec['tests'][t]=('too many pair sums',int(tot)); print(json.dumps(dict(partial=True,**rec),default=int),flush=True); continue
         S2=np.unique(np.concatenate(parts),axis=0) if parts else np.zeros((0,W.shape[1]),np.int64)
         key=lambda A: A.view(np.dtype((np.void,A.dtype.itemsize*A.shape[1]))).ravel()
         S2c=np.ascontiguousarray(S2); Nd=np.ascontiguousarray(T[None,:]-S2)
         feas=bool(np.isin(key(Nd),key(S2c)).any()) if len(S2) else False
         rec['tests'][t]=bool(feas)
+        print(json.dumps(dict(partial=True,**rec),default=int),flush=True)
     out.append(rec); print(json.dumps(rec,default=int),flush=True)
