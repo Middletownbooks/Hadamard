@@ -1,0 +1,126 @@
+# Open orders 2000–3000: review of unattempted ideas
+
+Date: 2026-10-06. Sources: every report, pre-registration and README in the repo, plus the screen and enumeration
+logs (`logs/b1_mult_open_*`, `logs/b1_rerank.log`, `logs/bge3_screen_*`, `logs/kt523_*`), and today's T-matrix work.
+
+**Open list:** v = 523, 537, 571, 573, 599, 643, 647, 659, 669, 719, 739.
+- 515 (order 2060) was done by Schneider.
+- 721 (order 2884) was done this session (`cw/RESULT_2884.md`).
+
+**Context:** both of those are 2026 results from other groups, Alpöge et al. below 2000 and Schneider + Codex at 2060.
+This range is being worked on actively.
+
+**Reference points for difficulty** (constraint bits n; lower is easier):
+- T(103): solved blind by the support-split k-tree in 12 min at n ≈ 63 [M].
+- v = 487, b = 0, d = 9: solved by the flat-pool k-tree at n′ ≈ 83 (flat-restricted) [M].
+- v = 523, b = 0, d = 9: n = 142 (n′ ≈ 91 flat). About 0.3 expected hits accumulated, none found [M/E].
+
+## 1. Best known route per open order (cheapest feasible configuration on record)
+
+| v (order) | b = 0 | b = 1 | b ≥ 3 | T-matrix / Cooper–Wallis | best | status |
+|---|---|---|---|---|---|---|
+| 523 (2092) | **d = 9: 142 (flat ≈ 91)** | d = 14: 172 | c = 4: 226 | = b = 0 | 142 | **partially run** (local + Kaggle run 1, about 0.3 expected hits) |
+| 537 (2148) | none | ruled out (d = 22, 11 infeasible); d = 6: 290 | no border (v+1 = 2·269) | T(179): no subgroup | 290 | effectively closed |
+| 571 (2284) | d = 5: 281; **d = 15 twisted: see §2** | d = 12: 203 | c = 22: 192 (screen undecided) | = b = 0 | 192–203, or about 95 twisted [E] | never run |
+| 573 (2292) | none | **d = 15: 193** | c = 14: 269 | T(191) dead | 193 | never run |
+| 599 (2396) | none | d = 11: 267 | c = 20 (Z20): 200 (survives, undecided) | dead | 200 | never run |
+| 643 (2572) | d = 3: 530 | none | c = 14: 232 (screen empty); c = 4: 425 | = b = 0 | 232 | never run |
+| 647 (2588) | none | d = 12: 213 | c = 18: 235 | dead | 213 | never run |
+| 659 (2636) | d = 7: 237 | d = 23 infeasible | c = 6: test 1 failed; c = 10: 237–242 | = b = 0 | 237 | never run |
+| 669 (2676) | none | none | – | T(223, k = 3): 157 | 157 | twisted T screen: no gain (`tmat_routes.md` §8) |
+| 719 (2876) | none | d = 179 infeasible | **c = 20: 227** (mod-5 check undecided) | dead | 227 | never run |
+| 739 (2956) | d = 9: 210 | d = 60: −203 log2E | c = 10: 229–235, not screened | = b = 0 | 210 | never run |
+
+## 2. Unattempted ideas, ranked
+
+### 1. Twisted multipliers for prime-v b = 0 cores: new, and opens 571 at d = 15
+
+**Ansatz.**
+- The multiplier group U has order d, with 3 | d and d odd.
+- The generator u fixes block A and cycles the blocks B → C → D → B, allowing signs whose product is +1.
+- Equivalently, X(u·x) = g(X)(x) with g a 3-cycle in the signed block-permutation group.
+- ΣPAF is invariant under this action, so there is one equation per class of ⟨U, −1⟩, i.e. (v − 1)/(2d) classes.
+
+**Why it matters.**
+- With no twist, d = 15 at v = 571 has 39 orbits but no realisable row sums (`nbits.py` gives ∞).
+- With the twist, block A's sum is ≡ ±1 (mod 30), and B, C, D share one sum ≡ ±1 (mod 10), so the row-sum
+  condition becomes a² + 3s² = 2284.
+- **a = 31, s = 21 works** [M, arithmetic].
+- That gives a 39-orbit, 19-class slice. The row-sum-blind estimate for this shape was n ≈ 95 bits [E, needs a proper
+  twisted estimate]. That is far below every other route for 571 (192–281), close to the demonstrated k-tree range
+  (63–91), and cheaper than 523's 142.
+
+**Other twisted slices** (exact arithmetic):
+- 571/57, 523/87 and 739/123: infeasible.
+- 523/9 and 739/9: feasible, but with the same orbit counts as untwisted. 523/9 forces profile (35, 17, 17, 17),
+  which Kaggle run 1 already searched untwisted.
+- 599, 647, 659 and 719 have no d with 3 | d among the useful divisors.
+
+**Precedent:** the published v = 479 core has a twisted automorphism of order 12 (`report/bge3_construction.md` §3).
+`REPORT.md` §6 lists "twisted automorphisms … not searched".
+
+**Next steps:**
+1. Write a twisted-GS estimator, adapted from `tmat_twist.py` with 16 sign labels per orbit and no product condition.
+   Validate it against brute force on small primes p ≡ 1 (mod 3).
+2. Decide feasibility at 571/15.
+3. If n is at most about 100: run a blind positive control with the same twist at a smaller prime, then search 571/15.
+   The flat-pool k-tree applies (four lists A, B, C, D), with C and D determined by B on each orbit, which needs a
+   2-list or 3-list variant. Alternatively, the support-split idea from `tmat_kt.py`.
+
+### 2. Continue v = 523, b = 0, d = 9 on Kaggle (partially run)
+
+- The v2 notebooks with the INSTANCE fix are ready (`kaggle/kt523_A2_*.py`, `kt523_B2_*.py`).
+- Accumulated so far: about 0.3 expected hits.
+- At about 3·10⁻³ hits per bucket, one expected hit takes about 300 buckets, roughly 50–75 Kaggle session-hours [E].
+- This is the most mature validated route in the repo, but it competes with Zarankiewicz/Hill for Kaggle time.
+
+### 3. b = 1 searches for 523, 573, 571 and 647 (never run)
+
+| v | d | n |
+|---|---|---|
+| 523 | 14 | 172 |
+| 573 | 15 | 193 |
+| 571 | 12 | 203 |
+| 647 | 12 | 213 |
+
+- The tools exist and were validated: `kt_b1.py` passed a planted v = 419 test.
+- These are 80–120 bits beyond anything demonstrated. Low priority.
+
+### 4. Undecided b ≥ 3 screens (never decided)
+
+| v | configuration | n |
+|---|---|---|
+| 571 | c = 22 | 192 (screen returned no verdict) |
+| 599 | c = 20, Q = Z20 | 200 (survives) |
+| 719 | c = 20 | 227 (mod-5 check undecided) |
+| 643 | c = 14 | 232 |
+| 739 | c = 10 | not screened |
+
+The c = 6 pipeline failed its blind positive control (`posctrl/RESULTS.md`), so even a pass would feed an
+unvalidated lift. Low priority.
+
+### 5. Literature routes considered and not recommended
+
+- **Williamson(-type) quadruples of order 191, 179 or 223**, combined with T(3) via Cooper–Wallis, would give 573,
+  537 or 669.
+  - W-type of order 179 or 223 would also have given 716 or 892, which were open until 2026.
+  - Circulant symmetric quadruples at about 190 sit near the Gaussian non-existence edge. W(65) is already empty.
+- **Yang / base-sequence multiplication.** It needs BS(n+1, n) with n ≥ 89 (537 = 3·179, 573 = 3·191,
+  669 = 3·223). Known BS only reach n ≈ 40, and no open v factors as (Yang number)·(2n+1) with a known BS.
+- **D-optimal transfer** (`report/dopt_transfer_audit.md`): a different problem. Only the arithmetic overlaps
+  (537, 573 and 643 satisfy the two-squares condition).
+- **The b = 1 half-shift structure** (`logs/b1_halfshift_cost.log`): about 2000 bits at 515 and 719. Hopeless.
+
+## 3. Closed today (for the record)
+
+- T-matrix / Cooper–Wallis routes: 573 (T(191) dead by T-form row sums), 537 (no subgroup), 669 (157 bits; twisted
+  T gives no gain).
+- Untwisted small T slices: 191/19, 223/37 (SAT UNSAT); 571/57 and 523/29 (row sums infeasible).
+
+## Recommendation
+
+1. Do idea 1 first. It is the only unattempted idea with a plausible n ≤ 100. A twisted estimator plus small-prime
+   validation is about an hour of work. If the estimate holds, 571 becomes the best target in the range, and the
+   search is k-tree style, so it would suit Kaggle.
+2. Keep idea 2 as the Kaggle-time fallback.
+3. Ideas 3–5 are not worth compute now.
