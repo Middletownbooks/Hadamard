@@ -48,7 +48,11 @@ identical border law, identical core condition. That is strong evidence that one
 Given v, the border is almost forced once c is chosen.
 - It needs an H(4b) for the corner.
 - It needs 4b rows of an H(4c) that are orthogonal to H4 ⊗ 1_c.
-- Both exist for every odd b in range. So the border itself is not what limits the choice.
+- Both exist for every odd b in range. **Correction (2026-10-06):** the corner is forced by the border and the core's
+  Q-compression, C = −K·Cbᵀ·Kcᵀ/(4c), and must be ±1. So a border has to be matched to *where* the compression sits.
+  Verified: on the v = 47 rung, Q-translations or negations of blocks B, C or D preserve the core condition but break
+  the Hadamard property with 347's border, while H-translations do not (`report/bge3_answer_review.md`). For c ≥ 10 no
+  matching border is known.
 
 The real choice is c (equivalently b) together with G ⊃ H. The admissible options are the even c ≥ 4 with c | v+1
 (so h = (v+1)/c − 1); see `logs/bge3_border_options.log`.
