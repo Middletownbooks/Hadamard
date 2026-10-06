@@ -52,3 +52,33 @@ this repo's measurements: T(103) took 12 min, while the T(191) and twisted-571 a
    unconfirmed: there is no core at h = 1, 3 or 5. The next step is the Gaussian cost estimate with this target.
 2. **Reproduce a solution in 479's own slice** (d = 12, r = 46, log₂E ≈ 11, T_min ≈ 2^71 by list methods). This is the
    test for any method that claims to beat the barrier.
+
+## Follow-up: cost of the generalized-Ψ architecture (answer §6), 2026-10-06
+
+**Tool:** `scripts/bge3_cost_psi.py`, which is `bge3_cost.py` with three changes:
+- the target is Σ_k PAF_k(q, z) = −4·Σ_{ψ∈Ψ} ψ(q) off 0, with b = |Ψ|;
+- only symmetry groups that preserve the target are kept;
+- the Gaussian model is unchanged.
+
+**Validation [M]:** with Ψ = all nontrivial characters it reproduces `bge3_cost.py` exactly on 347 (n = 200.9,
+log₂E = 55.5).
+
+**Runs** (Q = Z2³, Ψ = coordinate basis, b = 3, c = 8, v = 8h + 3, orbit counts r = 20–200; logs in
+`logs/genpsi/*_final.txt`):
+
+| v | h | configurations costed | log₂E > 0 | cheapest | list-method bound 2^((n − log₂E)/2) |
+|---|---|---|---|---|---|
+| 571 | 71 | 28 | 5 | d = 7, r = 88, L = 47: **n = 253, log₂E = 75.6** | ≈ 2^89 |
+| 523 | 65 | 315 (stopped; only larger r left) | 32 | d = 6, r = 108, L = 59: n = 314, log₂E = 93 | ≈ 2^111 |
+| 659 | 82 | 45 | 1 | d = 5, r = 144: n = 440, log₂E = 110 | ≈ 2^165 |
+| 643 | 80 | 378 | 0 | – | – |
+| 739 | 92 | 23 | 0 | – | – |
+
+**Verdict:** the generalized architecture does not open a cheaper route.
+- Its best case (571 at about 2^89) is worse than the original architecture's 571/c22 (about 2^80, answer §2.1).
+- 643 and 739 have no configuration with expected solutions in range.
+- The unscreened numbers are upper bounds on promise: exact screens can only remove configurations.
+- Its advantage (a border that always exists) does not offset the higher n, because b = 3 leaves the four blocks with
+  a less favourable target than b = c − 1.
+
+**Lead closed for these orders.**
