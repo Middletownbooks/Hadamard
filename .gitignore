@@ -46,3 +46,4 @@ logs/wil65/*.ckpt
 logs/wilsat/*.log
 logs/tmat/estimate.jsonl
 logs/tmat/*.log
+logs/tmat/twist_*.jsonl
