@@ -148,3 +148,35 @@ partial null carries no weight either way.
 - **S1 (cross-check):** at n = 65 every instance returns UNSAT, with no instance left unsolved. A SAT result is
   checked by the independent verifier and would contradict W(65). An instance that does not finish leaves S1
   unevaluated, and that is reported.
+
+### Amendment A-S1 (2026-10-06, after S0 at n ≤ 21 and before any n = 35, 45 or 65 result of the final encoding)
+
+**Why:** without extra relations the plain encoding took about 10.6 s per compression combo at n = 35 and over 20 min
+per Z_13 instance at n = 65, so S1 would be infeasible. On the user's instruction, the checker now encodes every
+known necessary Williamson relation, not only the PAF condition. Each is a classical theorem, and each is coded
+from its statement inside `wil_sat.py` without reusing code from `wil_search.py`.
+
+**Added relations:**
+- **Product condition** (Williamson):
+  - a_j b_j c_j d_j = ε for j ≠ 0, with ε = (−1)^(W−n) and W the total number of −1 entries;
+  - the opposite sign at j = 0.
+  - These are encoded as 4-literal parity clauses. They were checked on all brute-force solutions at n = 15, 21
+    and 25 before use.
+- **Redundant pair-count form:** the number of positions where two blocks are both −1, encoded as an exact
+  cardinality constraint (W − n) over AND auxiliaries.
+- **PSD bound:**
+  - PSD_X(k) ≤ 4n for every block X;
+  - PSD_X(k) + PSD_Y(k) ≤ 4n for every pair of blocks;
+  - both over all k.
+  - It is enforced by an IPASIR-UP external propagator (CaDiCaL 1.9.5). The propagator only adds blocking
+    clauses for complete blocks that violate the bound, so it prunes and never asserts.
+- **Splitting:** by the pair (Z_5 compression, Z_13 compression), each canonicalised under its own multiplier
+  group (the CRT action is independent on the two factors). The compressions are imposed as assumptions on unary
+  totalizer counters.
+  - This now uses the Z_5 reduction that Addendum S listed as unused. It is reimplemented, not shared.
+  - Counts are therefore of reps under this reduction, and are compared with the pipeline's per-case rep counts.
+
+**Validation already done with the final encoding:**
+- At n = 21, per-case counts of 22, 6 and 4 equal the pipeline's.
+- The S0 bars at 35 and 45 are unchanged.
+- S1 is unchanged: every n = 65 combo is UNSAT, none unsolved, or else S1 is reported unevaluated with measured cost.
