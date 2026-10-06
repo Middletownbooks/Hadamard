@@ -15,4 +15,4 @@ cat > /tmp/claude-0/-home-user-Hadamard/e1244fe7-42e1-5e13-91cc-287618221334/scr
 739 10 10 12 66 41 1
 739 10 10 12 70 41 1
 J
-cat /tmp/claude-0/-home-user-Hadamard/e1244fe7-42e1-5e13-91cc-287618221334/scratchpad/screen2_jobs.txt | xargs -P 2 -L 1 bash -c 'MAXST=1e7 timeout 7200 python3 scripts/bge3_screen2.py "$@" > logs/bge3_screen2_$0_c$1_d$3_r$4.log 2>&1; echo "{\"done\": \"$0 c$1 d$3 r$4\", \"exit\": $?}" >> logs/bge3_screen2_queue.log'
+cat /tmp/claude-0/-home-user-Hadamard/e1244fe7-42e1-5e13-91cc-287618221334/scratchpad/screen2_jobs.txt | xargs -P 2 -L 1 bash -c 'MAXST=1e7 timeout 7200 python3 scripts/bge3_screen2.py "$0" "$@" > logs/bge3_screen2_$0_c$1_d$3_r$4.log 2>&1; echo "{\"done\": \"$0 c$1 d$3 r$4\", \"exit\": $?}" >> logs/bge3_screen2_queue.log'
