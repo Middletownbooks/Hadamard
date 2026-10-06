@@ -36,17 +36,25 @@ The map is (A, B, C, D) = H₄·(T₁, …, T₄). The 8 sign patterns with prod
 n = 3m − log2 E is the number of constraint bits (comparable to the repo's `nbits` n). "Per class" is log2 of the
 expected solutions modulo the symmetry group 4!·2⁴·(t−1)/k.
 
-| target v (order) | t | k | orbits m | n (bits) | log2 E per class | reading |
+| target v (order) | t | k | orbits m | n (bits): tmat_estimate / nbits.py | log2 E per class | status |
 |---|---|---|---|---|---|---|
-| (control) 515 (2060) | 103 | 3 | 35 | **62.9** | 28.5 | solved by Schneider |
-| **573 (2292)** | 191 | 5 | 39 | **79.2** | 24.0 | **best new target: 16 bits above the solved control** |
-| 573 | 191 | 19 | 11 | 22.3 | −1.2 | probably empty; trivially enumerable (8^11 ≈ 2^33) |
-| 669 (2676) | 223 | 3 | 75 | 156.8 | 53.4 | solutions plentiful but hard (523-b=0 level) |
-| 669 | 223 | 37 | 7 | 15.1 | −5.2 | probably empty; enumerable |
+| (control) 515 (2060) | 103 | 3 | 35 | **62.9 / 62.4** | 28.5 | solved by Schneider; blind control running |
+| **573 (2292)** | 191 | 5 | 39 | **79.2 / 80.2** | 24.0 | **best new target: about 17 bits above the solved control** |
+| 573 | 191 | 19 | 11 | 22.3 | −1.2 | **decided [M]: no solutions** (SAT, all 20 row-sum cases UNSAT, 4 min) |
+| 669 (2676) | 223 | 3 | 75 | 156.8 / 156.6 | 53.4 | plentiful but hard (the 523-b=0 level) |
+| 669 | 223 | 37 | 7 | 15.1 | −5.2 | **decided [M]: no solutions** (SAT, all 36 row-sum cases UNSAT, 7.5 min) |
 | 537 (2148) | 179 | – | – | – | – | (Z/179)* has no useful odd subgroup (178 = 2·89); unrestricted T(179) is harder than 716 was |
 
-Prime v (w = 1) are given for reference only. They equal the b = 0 numbers: 523 at k = 9 is n = 141.9, k = 29 is n = 46.3
-(per class −2.0), and 571 at k = 3 is n = 466.
+**Prime v (w = 1), reference only.** These are identical to the b = 0 route:
+- 523/9: 141.9.
+- 571/5: 281.
+- 659/7: 237.
+- 739/9: 210.
+
+**Correction (same day).** The first version of the estimator did not check that row sums can be realised. Each block
+sum is ±1 + k·j with j ≡ m − 1 (mod 2). Without that check it reported 599/23 (66 bits), 571/19 (75), 571/15 (95),
+647/19 (87) and 647/17 as cheap. **All five are infeasible**: no row-sum quadruple with a² + b² + c² + d² = 4t is
+reachable, which `nbits.py` confirms (n = ∞). The check is now in `tmat_estimate.py` (`rowsum_feasible`).
 
 **The six known b = 0 cores (223, 283, 311, 463, 487, 491) are not in product form [M].** This was checked under all
 per-block shifts, reversals and negations (`tmat_core_check.py`). The checker's positive control, a scrambled T(103),

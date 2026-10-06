@@ -49,7 +49,13 @@ def estimate(t, k, N=200000, seed=1):
     log2P = (np.sum(np.log(steps)) - 0.5 * C * math.log(2 * math.pi) - 0.5 * logdet - 0.5 * q) / math.log(2)
     log2E = 3 * m + log2P
     sym = math.log2(24 * 16 * (t - 1) / k)
-    return {"t": t, "k": k, "orbits": m, "classes": C, "steps": sorted(set(steps.tolist())), "zero_on_lattice": on,
+    # row sums: each block's sum is +-1 + k*j with j = (m-1) mod 2, |j| <= m-1; need a^2+b^2+c^2+d^2 = 4t
+    ach = {e + k * j for e in (1, -1) for j in range(-(m - 1), m) if (j - (m - 1)) % 2 == 0}
+    from tmat_sat import rowsum_cases
+    feas = [c for c in rowsum_cases(t) if all(x in ach or -x in ach for x in c)]
+    if not feas:
+        log2E = float("-inf")
+    return {"rowsum_feasible": bool(feas), "t": t, "k": k, "orbits": m, "classes": C, "steps": sorted(set(steps.tolist())), "zero_on_lattice": on,
             "log2E": round(log2E, 1), "log2E_per_symclass": round(log2E - sym, 1), "N": N}
 
 if __name__ == "__main__":
