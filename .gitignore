@@ -44,3 +44,4 @@ logs/wil65/*.log
 logs/wil65/*.ckpt
 # live logs of SAT cross-check runs; final JSON records are committed
 logs/wilsat/*.log
+logs/tmat/estimate.jsonl
