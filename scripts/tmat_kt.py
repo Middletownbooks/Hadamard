@@ -81,9 +81,10 @@ if __name__ == "__main__":
         if "--known" in sys.argv:
             from cw_build import t103
             T = t103(); oid = {x: j for j, o in enumerate(orbits) for x in o}
-            Sset = sorted({oid[x] for x in range(t) if T[0, x] != 0 or T[1, x] != 0})
+            cands = [sorted({oid[x] for x in range(t) if T[a, x] != 0 or T[b, x] != 0}) for a, b in ((0, 1), (0, 2), (0, 3))]
+            Sset = min(cands, key=lambda c: abs(2 * len(c) - m))          # most balanced pairing
         else:
-            Sset = sorted(o for o in range(m) if rng.random() < 0.5)
+            Sset = sorted(rng.choice(m, m // 2 + int(rng.integers(0, 2)) * (m % 2), replace=False).tolist())
         T = run_S(t, orbits, reps, Sset, nb, seed * 1000 + i, quiet)
         rec = {"S_index": i, "S_orbits": len(Sset), "found": T is not None, "secs": round(time.time() - t0, 1)}
         if T is not None:
