@@ -66,6 +66,7 @@ for gi,(key,(d,r,lab,grp,abel)) in enumerate(cands):
             if len(cur)>MAXST: ok=False; break
             if len(cur)==0: break
         if not ok: rec['tests'][t]=None; continue
+        if len(cur)==0: rec['tests'][t]=False; continue            # no achievable block compression
         cur=cur[:,corb]                                                          # expand to all classes
         X=cur.reshape((-1,)+tuple(Q+[t])).astype(float)
         F=np.fft.fftn(X,axes=tuple(range(1,len(Q)+2))); P=np.rint(np.abs(F)**2).reshape(len(cur),-1).astype(np.int64)
