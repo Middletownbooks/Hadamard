@@ -124,3 +124,41 @@ unvalidated lift. Low priority.
    search is k-tree style, so it would suit Kaggle.
 2. Keep idea 2 as the Kaggle-time fallback.
 3. Ideas 3–5 are not worth compute now.
+
+## Update: twisted estimator for 571 (2026-10-06, later)
+
+**Estimator** (`scripts/gs_twist.py`): multiplier group U of order d, with a signed block permutation g ∈ B₄ satisfying
+g^d = 1. It uses 16 sign labels per orbit, no product condition, exact block-sum feasibility (ILP) and a Gaussian
+log₂E.
+
+**Validation [M]:**
+- **Consistency with `nbits.py`** when untwisted: 523/9 gives 141.9 vs 141.9, and 191/5 gives 79.1 vs 80.2.
+- **Brute force** (`logs/tmat/gs_twist_validate_final.txt`): every "infeasible" verdict has a brute-force count of 0.
+
+  | (t, d, twist) | brute force | estimate |
+  |---|---|---|
+  | (37, 9, 3-cycle) | 2^11.8 | 2^10.9 |
+  | (61, 15, 3-cycle) | 2^11.4 | 2^9.6 |
+
+  The estimate runs 1–2 bits low.
+- **A bug caught by this validation:** block-sum targets were generated over even integers whenever ⌊√(4t)⌋ was even,
+  giving false "infeasible" at 37/9. It is fixed. 571 was unaffected (⌊√2284⌋ = 47 is odd).
+
+**Result:** 571, d = 15, g = 3-cycle on (B, C, D), A fixed.
+- **Feasible**, with block sums (31, 21, 21, 21), 39 orbits and 19 classes.
+- log₂E = 59.4 (2^50.5 per symmetry class), **n = 94.6 bits** [E].
+- It is the only feasible g at d = 15.
+
+**Why it is still not a practical target.**
+- The twist gives C(x) = B(u⁻¹x) and D(x) = B(u⁻²x). The problem becomes a **2-list** equation,
+  PAF_A(c) = −Σⱼ PAF_B(uʲ c), with lopsided lists:
+  - A: U-invariant (order 15) with sum 31, about 2^35 choices;
+  - B: U³-invariant (order 5) with sum 21, about 2^110 choices.
+- Each B matches some A with probability about 2^−54.6.
+- Even a complete A table needs about 2^50 B evaluations. Flatness can recover at most about 14 bits, which still
+  leaves about 2^40 lookups into a table of roughly 300 GB.
+- The repo's measured local-search scaling (about 2^(0.55·n)) gives about 2^52 flips.
+- The 4-list independence that made v = 487 (k-tree) and T(103) (support split) tractable is gone.
+
+**Verdict:** the lead is documented as feasible but without an efficient algorithm. It does not beat 523, b = 0, d = 9,
+where the four blocks stay independent and the Kaggle k-tree is ready.

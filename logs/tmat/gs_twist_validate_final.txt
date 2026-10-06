@@ -1,0 +1,6 @@
+{"t": 37, "d": 9, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 5, "brute": 0, "brute_log2": null, "est_log2E": null, "feasible": false, "why": "row sums"}
+{"t": 37, "d": 9, "g": [[1, 1], [3, 1]], "orbits": 5, "brute": 3600, "brute_log2": 11.8, "est_log2E": 10.9, "feasible": true, "why": null}
+{"t": 61, "d": 15, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 5, "brute": 0, "brute_log2": null, "est_log2E": null, "feasible": false, "why": "row sums"}
+{"t": 61, "d": 15, "g": [[1, 1], [3, 1]], "orbits": 5, "brute": 2688, "brute_log2": 11.4, "est_log2E": 9.6, "feasible": true, "why": null}
+{"t": 109, "d": 27, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 5, "brute": 0, "brute_log2": null, "est_log2E": null, "feasible": false, "why": "row sums"}
+{"t": 109, "d": 27, "g": [[1, 1], [3, 1]], "orbits": 5, "brute": 0, "brute_log2": null, "est_log2E": null, "feasible": false, "why": "row sums"}
