@@ -116,7 +116,7 @@ Applied to b ≥ 3 (refined numbers from §2.3 where available):
 | 719 c8 d22 | 135 (plain) | 18 | 58.5 | 2^75 | **dead** (no admissible compression; confirmed with `bge3_cost2`) |
 | 659 c6 d9 | 204 (plain) | 86 | 68 | 2^144 | **dead** (§4.2) |
 | 647 c12 d13 | 179 (plain) | 37 | 71 | 2^119 | **dead** (§4.2) |
-| 599 c20 (Z2×Z10, 4 groups; Z20 g0) | 184–200 | ≤ 12 | ≥ 87 | – | **dead** (§4.2); Z20 group 1 undecided |
+| 599 c20 (Z2×Z10, all groups; Z20, both groups) | 184–200 | ≤ 12 | ≥ 87 | – | **dead** (§4.2 and the norm-budget screen) |
 | 643 c14 d12 | 206.6 (refined) | 2.0 total (plain 29) | ≈ 102 | 2^147 | alive; border unknown (c = 14) |
 | 647 c18 d12 | 233 (plain) | 36 | ≥ 98 | – | DP overflow |
 | 523 c4 d12 | 219.2 (refined, group 1) | **−32** (plain 3.5); group 0 flagged infeasible | – | – | effectively dead |
@@ -173,7 +173,7 @@ Results:
 - 523 c4 Z4 d12, rerun with the fixed sampler:
   - group 1: compression 54 bits, n_lift 219, **log₂E = −32** (plain model +3.5);
   - group 0: 6 lag-class combinations stay deterministic given the compression and miss the target, so it is flagged
-    infeasible. This is not independently confirmed.
+    infeasible. This agrees with the norm-budget screen (`bge3_normscreen.py`), which fails group 0 at t = 2 and t = 10.
 - 643 c14 d12: compression 69 bits, n_lift 207, **log₂E = 2.0** (plain 29).
 - Both get worse, not better.
 
@@ -391,10 +391,20 @@ reports the conditioned lift. It decided configurations the prompt lists as unde
 | 647 c12 Z12 d13 r60 L30 | "t = 1 undecided (re-running)" | **no admissible compression quadruple** (2698 single-block compressions) |
 | 659 c6 Z6 d9 r78 L39 | "queued" | **none**: row sums in {±1, ±17, ±19, …}, see §3.2 |
 | 599 c20 Z2×Z10 d14 r55 L30, groups 0–3 | "fails t = 1 (all 6 groups)" | confirmed: none |
-| 599 c20 Z20 d14 r60 L32, group 0 | "one fails, one undecided" | group 0: none; group 1: DP still too large (> 40 min) |
+| 599 c20 Z20 d14 r60 L32, group 0 | "one fails, one undecided" | group 0: none; group 1: my DP too large (> 40 min), but the norm-budget screen (commit 4888fd1, another session) decides it infeasible |
 | 647 c18 d12 r74 L39 | queued | DP overflow (5.4·10⁶ states) |
 | 571 c22 d10 r62 L35, groups 0–3 | "t = 1 passes; t = 5 re-running" | **admissible**: 60,384 quadruples, n_lift 168, log₂E 23.5 |
 | 719 c8 d22 r45 L23; 659 c6 d18 r52 L27; 739 c10 d18 r54 L29 | "fails t = 1" | confirmed: no admissible compression quadruple (cross-check of the two screens) |
+
+### 4.2b Norm-budget screen (another session, commits 4888fd1–1d0d968)
+
+`bge3_normscreen.py` uses the exact identity Σ_k ‖x_k‖² = (4v(ct − c + 1) + 4b(c − 1))/(ct) for compressions onto
+Q × Z_t. It is weaker than the full t = 1 DP but much faster.
+- **Where they overlap it agrees with every verdict here:** 599 c20 dead (all groups); 647 c12, 659 c6, 719 c8 and
+  c10, 739 c10 dead; 571 c22 survives.
+- **Its survivors with n ≤ 300:** 571 c22 (n 192), 719 c20 (227), 523 c4 group 1 (226), 643 c14 (232), 647 c18 (233),
+  659 c10 (242), 719 c18 (251), 573 c14 (269), 659 c4 Z4 r90 (288) and 719 c6 (289).
+- **Ranking.** 571 c22 is the cheapest survivor. By §2.1 every other survivor needs ≳ 2^((n − log₂E)/2) ≥ 2^95.
 
 ### 4.3 Row-sum granularity [T]
 
@@ -489,8 +499,9 @@ Treat it as an unconfirmed lead. The next step is a Gaussian cost run with this 
 
 ## 7. What to implement first
 
-1. **Screen with `bge3_cost2.py` plus the joint-residue filter** on every remaining candidate (571 c22; 599 Z20 g1;
-   647 c18; 643 c14; 719 c20).
+1. **Screen every remaining candidate in this order:** `bge3_normscreen.py` (fastest, exact), then `bge3_cost2.py`
+   (exact compression, calibrated lift), then the joint-residue filter. Candidates: the norm-screen survivors 571 c22,
+   643 c14, 647 c18, 719 c20, 719 c18, 659 c10, 573 c14 and 523 c4 group 1.
    - It is exact on the compression and calibrated to about 1.5 bits on the lift.
    - It already removed 647/c12, 659/c6 and 599/c20.
 2. **Border existence for c ≥ 10** before any core search there. Starting point:
