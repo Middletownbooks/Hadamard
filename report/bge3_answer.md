@@ -43,8 +43,8 @@ b = c − 1, m = ch, v = m + b; targets Σ_k |X̂_k(ψ, ω)|² = 4v, except 4b a
      - 599/c20/Z20, group 0.
    - [T/M] **The border is a real extra condition for c ≥ 6.** The corner is forced: C = −K·Cbᵀ·Kcᵀ/(4c) must be ±1.
      - c = 4: every compression has a border (2048/2048).
-     - c = 6: borders are known only for 347's exact compression placement (1 of 150 symmetry-equivalent placements
-       works with 347's frame).
+     - c = 6: borders are known only for 347's exact compression placement (at most 1 of 150 symmetry-equivalent
+       placements works with 347's frame).
      - **c ≥ 10: no border is known.** That covers every large-c open configuration (571, 599, 647, 739, 719/c20, 643, 573).
    - [T] A row-sum granularity lemma kills multiplier symmetries with large orbits on fixed rows.
    - [M] Lattice (2-adic) obstructions are real: one calibration slice predicted at 2^9 solutions has exactly 0, because
@@ -373,7 +373,9 @@ hopes would need r ≥ 27 (log₂E ≈ 0 territory) or symmetry outside Aut(Q) �
   - With frames derived from 347's K (random within-block permutations and signs, Kc solved exactly over 2^19 sign
     vectors), borders were found **only for 347's own placement**.
   - Of 150 copies of 347's compression transformed by core symmetries (per-block translation, negation, reversal, block
-    permutation), only 1 works with 347's frame.
+    permutation), at most 1 works with 347's frame: 1/150 and 0/150 in two runs with different seeds.
+  - For 6 sampled admissible compressions of each of the four profile types, with 20 frames each, no border was found
+    (`logs/bge3_answer/border.log`). That includes other placements of 347's own profile type (0,8,8,9).
   - [E] A random frame satisfies all (4b)² entry conditions with probability ~10^−15. **Borders must be built together
     with the compression.**
 - **Consequence.** Before any search with c ≥ 6:
@@ -386,7 +388,7 @@ hopes would need r ≥ 27 (log₂E ≈ 0 territory) or symmetry outside Aut(Q) �
 This is equivalent to the t = 1 screen with profile restriction, but faster because it works on class-orbits. It also
 reports the conditioned lift. It decided configurations the prompt lists as undecided or queued:
 
-| configuration | prompt status | result |
+| configuration | status in the prompt as posed | result |
 |---|---|---|
 | 647 c12 Z12 d13 r60 L30 | "t = 1 undecided (re-running)" | **no admissible compression quadruple** (2698 single-block compressions) |
 | 659 c6 Z6 d9 r78 L39 | "queued" | **none**: row sums in {±1, ±17, ±19, …}, see §3.2 |
@@ -404,7 +406,10 @@ Q × Z_t. It is weaker than the full t = 1 DP but much faster.
   c10, 739 c10 dead; 571 c22 survives.
 - **Its survivors with n ≤ 300:** 571 c22 (n 192), 719 c20 (227), 523 c4 group 1 (226), 643 c14 (232), 647 c18 (233),
   659 c10 (242), 719 c18 (251), 573 c14 (269), 659 c4 Z4 r90 (288) and 719 c6 (289).
-- **Ranking.** 571 c22 is the cheapest survivor. By §2.1 every other survivor needs ≳ 2^((n − log₂E)/2) ≥ 2^95.
+- **Ranking.** 571 c22 is the cheapest survivor. Every other survivor has n ≥ 226, so by §2.1 it needs
+  ≳ 2^((n − log₂E)/2): at least 2^93 when log₂E ≤ 40.
+  - The known values are: 643 c14 ≈ 2^102 (refined), 647 c18 ≈ 2^98, 573 c14 ≈ 2^130.
+  - 523 c4 group 1 has refined log₂E ≈ −32, i.e. no expected solutions.
 
 ### 4.3 Row-sum granularity [T]
 
@@ -502,8 +507,8 @@ Treat it as an unconfirmed lead. The next step is a Gaussian cost run with this 
 1. **Screen every remaining candidate in this order:** `bge3_normscreen.py` (fastest, exact), then `bge3_cost2.py`
    (exact compression, calibrated lift), then the joint-residue filter. Candidates: the norm-screen survivors 571 c22,
    643 c14, 647 c18, 719 c20, 719 c18, 659 c10, 573 c14 and 523 c4 group 1.
-   - It is exact on the compression and calibrated to about 1.5 bits on the lift.
-   - It already removed 647/c12, 659/c6 and 599/c20.
+   - `bge3_cost2.py` is exact on the compression and calibrated to about 1.5 bits on the lift.
+   - Together the screens have already removed 647/c12, 659/c6, 599/c20, 719/c8, 719/c10 and 739/c10.
 2. **Border existence for c ≥ 10** before any core search there. Starting point:
    - monomial compressions (δ = (8,4,2,0) or (6,4,4,4) for c = 22) in the 359 placement;
    - search frames by the ε-enumeration method in `bge3_border_check.py`.
