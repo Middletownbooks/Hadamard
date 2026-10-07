@@ -9,7 +9,7 @@ Pre-check (necessary): +-1 vectors on Q with Fourier support in Psi exist AND sp
 Options are reduced modulo Aut(Q) (orbit representatives; using a generating sample of Aut can only leave duplicate
 representatives, never lose an option).
 usage: bge3_options.py v [v ...] [--cmax 24] [--bmax 23] [--hmin 3]
-output: one JSON line per option: v, c, Q, b, h, psi (list of character vectors), n_psi_vectors, rank, precheck"""
+output: one JSON line per option: v, c, Q, b, h, psi (list of character vectors), n_psi_vectors (negative = lower bound,\n        scan stopped early at full rank), rank, precheck"""
 import sys, json, itertools, random
 import numpy as np
 
@@ -65,8 +65,9 @@ def psi_vectors(V, psi, c):
     out = [k for k in range(c) if k not in set(psi)]
     W = V[out]                                                              # rows: characters that must vanish
     cnt, basis = 0, np.zeros((0, c))
-    for s in range(0, 2 ** c, 1 << 16):
-        idx = np.arange(s, min(2 ** c, s + (1 << 16)), dtype=np.int64)
+    for s in range(0, 2 ** c, 1 << 18):
+        if basis.shape[0] == len(psi): return -cnt, len(psi)          # early exit: full rank reached (count is a lower bound)
+        idx = np.arange(s, min(2 ** c, s + (1 << 18)), dtype=np.int64)
         Y = 1 - 2 * ((idx[:, None] >> np.arange(c)) & 1)
         ok = np.abs(Y @ W.conj().T).max(1) < 1e-6
         if ok.any():
@@ -106,7 +107,7 @@ def options(v, cmax, bmax, hmin):
                             seen |= orb
                             n, rk = psi_vectors(V, list(psi), c)
                             yield dict(v=v, c=c, Q=Q, b=b, h=h, psi=[co[k].tolist() for k in psi],
-                                       orbit_size=len(orb), n_psi_vectors=n, rank=rk, precheck=bool(n > 0 and rk == b))
+                                       orbit_size=len(orb), n_psi_vectors=n, rank=rk, precheck=bool(n != 0 and rk == b))
 
 if __name__ == "__main__":
     vs, opt = args()
