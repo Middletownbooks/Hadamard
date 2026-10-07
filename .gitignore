@@ -56,3 +56,5 @@ logs/bge3_general/*.err
 logs/bge3_general/options_open.jsonl
 logs/bge3_general/options_rest.jsonl
 logs/bge3_general/run_*.log
+logs/bge3_general/screen_*.jsonl
+logs/bge3_general/options_open.err
