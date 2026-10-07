@@ -3,7 +3,7 @@ Symmetry: cyclic subgroups S = <(alpha, u)> of Aut(Q) x (Z/h)* (alpha an automor
 Blocks constant on S-orbits; lag classes = orbits of <S, -1> on G\\{0}; target -4b on H\\{0}, +4 off H.
 Gaussian estimate (as for b=1): n = -log2 P(4 random S-invariant blocks with the row-sum profile hit the target),
 log2E = sum_k log2 N_k(a_k) - n, over row-sum profiles sum a_k^2 = 4v.
-usage: bge3_cost_psi.py v Qmods(csv) all|basis [rmin rmax]      env NS (samples per row sum, default 3000)"""
+usage: bge3_cost_psi.py v Qmods(csv) all|basis|'k;k;..' [rmin rmax]      env NS (samples per row sum, default 3000)"""
 import sys, os, json, itertools, numpy as np
 from math import gcd, log, log2, pi
 sys.path.insert(0,'scripts')
@@ -13,11 +13,17 @@ v=int(sys.argv[1]); Q=[int(x) for x in sys.argv[2].split(',')]; c=int(np.prod(Q)
 PSI=sys.argv[3]                     # 'all' (original architecture) or 'basis' (Q elementary 2-group, Psi = coordinate characters)
 rmin=int(sys.argv[4]) if len(sys.argv)>4 else 20; rmax=int(sys.argv[5]) if len(sys.argv)>5 else 200
 Qco_=np.array(np.unravel_index(np.arange(c),Q)).T
-if PSI=='all':
-    psis=[np.array(p) for p in np.array(np.unravel_index(np.arange(1,c),Q)).T]
-elif PSI=='basis':
-    assert all(x==2 for x in Q); psis=[np.eye(len(Q),dtype=int)[i] for i in range(len(Q))]
-else: raise SystemExit('PSI must be all|basis')
+def parse_psi(spec):
+    """'all' | 'basis' | explicit characters 'k1,k2,..;k1,k2,..;...' (character k: q -> exp(2 pi i sum k_j q_j / Q_j))"""
+    if spec=='all': return [np.array(p) for p in np.array(np.unravel_index(np.arange(1,c),Q)).T]
+    if spec=='basis':
+        assert all(x==2 for x in Q); return [np.eye(len(Q),dtype=int)[i] for i in range(len(Q))]
+    out=[np.array([int(x) for x in t.split(',')])%np.array(Q) for t in spec.split(';')]
+    keys={tuple(k) for k in out}; assert len(keys)==len(out), 'duplicate character'
+    assert all(tuple((-k)%np.array(Q)) in keys for k in out), 'Psi must be closed under conjugation'
+    assert all(k.any() for k in out), 'Psi must not contain the trivial character'
+    return out
+psis=parse_psi(PSI)
 b=len(psis); assert (v-b)%c==0; h=(v-b)//c; m=c*h
 # sum_{psi in Psi} psi(q), real for conjugation-closed Psi
 psisum=np.array([sum(np.cos(2*np.pi*((q*p)/np.array(Q)).sum()) for p in psis) for q in Qco_])
