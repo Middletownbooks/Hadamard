@@ -9,7 +9,7 @@ usage: bge3_general_run.py options.jsonl out.jsonl [--par 4] [--top 3] [--rmax 1
 import sys, json, os, subprocess, itertools
 from concurrent.futures import ThreadPoolExecutor
 
-a = sys.argv[1:]; opts = {"--par": "4", "--top": "3", "--rmax": "160", "--stopafter": "3", "--only": ""}
+a = sys.argv[1:]; opts = {"--par": "4", "--top": "3", "--rmax": "160", "--stopafter": "3", "--only": "", "--maxcfg": "40"}
 for k in opts:
     if k in a: opts[k] = a[a.index(k) + 1]
 inp, outp = a[0], a[1]
@@ -24,7 +24,7 @@ def run(cmd, timeout, env=None):
     return [json.loads(l) for l in r.stdout.splitlines() if l.startswith("{")], r.stderr[-400:]
 
 def cost(o):
-    env = dict(os.environ, STOPAFTER=opts["--stopafter"])
+    env = dict(os.environ, STOPAFTER=opts["--stopafter"], MAXCFG=opts.get("--maxcfg", "40"), OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
     recs, err = run(["python3", "scripts/bge3_cost_psi.py", str(o["v"]), ",".join(map(str, o["Q"])), psi_arg(o),
                      "20", opts["--rmax"]], 7200, env)
     rows = [r for r in recs if "log2E" in r and r["log2E"] > 0]

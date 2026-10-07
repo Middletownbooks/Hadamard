@@ -148,3 +148,4 @@ for key,(d,r,lab,grp,abel) in sorted(seen.items(),key=lambda kv:(kv[1][1],-kv[1]
     res.append(dict(d=d,r=r,L=L,abelian=abel,**(best or dict(note='no feasible profile'))))
     print(json.dumps(dict(v=v,b=b,c=c,Q=Q,h=h,**res[-1]),default=int),flush=True)
     if sum(1 for x in res if x.get('log2E',-1)>0)>=int(os.environ.get('STOPAFTER','999')): break
+    if len(res)>=int(os.environ.get('MAXCFG','100000')): break          # cap on configurations costed (smallest r first)
