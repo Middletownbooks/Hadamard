@@ -1,0 +1,6 @@
+{"G": "Z2xZ13xZ23", "S": 33, "r": 30, "L": 15, "verdict": "DECIDED: no solutions", "screens": {"[0]": "cap", "[1]": true, "[2]": false}, "gauss_log2E": -9.7, "gauss_n": 102.4}
+{"G": "Z2xZ17xZ19", "S": 36, "r": 30, "L": 19, "verdict": "DECIDED: no solutions", "screens": {"[0]": "cap", "[1]": false}, "gauss_log2E": -48.0, "gauss_n": 142.1}
+{"G": "Z2xZ3xZ3xZ29", "S": 28, "r": 30, "L": 17, "verdict": "DECIDED: no solutions", "screens": {"[0]": "cap", "[1]": false}, "gauss_log2E": -1241.1, "gauss_n": 1340.0}
+{"G": "Z2xZ3xZ3xZ29", "S": 28, "r": 26, "L": 17, "verdict": "DECIDED: no solutions", "screens": {"[0]": "cap", "[1]": true, "[2]": false}, "gauss_log2E": -17.2, "gauss_n": 96.9}
+{"G": "Z2xZ3xZ3xZ29", "S": 28, "r": 30, "L": 17, "verdict": "DECIDED: no solutions", "screens": {"[0]": "cap", "[1]": "cap", "[2]": false}, "gauss_log2E": -16.3, "gauss_n": 109.9}
+{"G": "Z2xZ2xZ11xZ13", "S": 45, "r": 30, "L": 15, "verdict": "still undecided", "screens": {"[0]": "cap", "[1]": "cap", "[2]": true, "[0, 1]": "cap", "[0, 2]": true, "[1, 2]": true}, "gauss_log2E": -57.8, "gauss_n": 146.9}

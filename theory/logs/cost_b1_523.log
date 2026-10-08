@@ -1,0 +1,23 @@
+# G=Z2xZ3xZ3xZ29 kind=b1 slices costed=99
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 14, "r": 54, "L": 29, "feasible": true, "D": 28, "n": 191.0, "log2E": 3.5, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 14, "r": 60, "L": 31, "feasible": true, "D": 30, "n": 198.2, "log2E": 15.7, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 8, "r": 74, "L": 45, "feasible": true, "D": 44, "n": 241.6, "log2E": 32.1, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 8, "r": 74, "L": 45, "feasible": true, "D": 44, "n": 241.6, "log2E": 32.1, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 7, "r": 90, "L": 45, "feasible": true, "D": 44, "n": 249.7, "log2E": 86.8, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 138, "L": 77, "feasible": true, "D": 76, "n": 386.5, "log2E": 142.2, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 136, "L": 79, "feasible": true, "D": 78, "n": 397.9, "log2E": 122.8, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 144, "L": 79, "feasible": true, "D": 78, "n": 406.9, "log2E": 145.8, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 146, "L": 89, "feasible": true, "D": 88, "n": 472.2, "log2E": 88.6, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 174, "L": 89, "feasible": true, "D": 88, "n": 529.1, "log2E": 143.8, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 180, "L": 119, "feasible": true, "D": 118, "n": 677.6, "log2E": 19.6, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 2, "r": 270, "L": 149, "feasible": true, "D": 148, "n": 736.7, "log2E": 322.0, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 2, "r": 290, "L": 149, "feasible": true, "D": 148, "n": 750.6, "log2E": 388.2, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 4, "r": 232, "L": 119, "feasible": true, "D": 118, "n": 779.8, "log2E": 125.9, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 2, "r": 264, "L": 175, "feasible": true, "D": 174, "n": 884.6, "log2E": 150.0, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 2, "r": 348, "L": 175, "feasible": true, "D": 174, "n": 985.5, "log2E": 385.6, "null_mismatch": 0.0}
+# lowest-n with log2E<=0:
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 28, "r": 26, "L": 17, "feasible": true, "D": 16, "n": 96.9, "log2E": -17.1, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 28, "r": 30, "L": 17, "feasible": true, "D": 16, "n": 109.9, "log2E": -16.3, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 56, "r": 22, "L": 17, "feasible": true, "D": 16, "n": 119.5, "log2E": -56.9, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 56, "r": 22, "L": 17, "feasible": true, "D": 16, "n": 122.6, "log2E": -60.1, "null_mismatch": 0.0}
+{"G": "Z2xZ3xZ3xZ29", "kind": "b1", "S": 28, "r": 28, "L": 23, "feasible": true, "D": 22, "n": 140.5, "log2E": -54.9, "null_mismatch": 0.0}

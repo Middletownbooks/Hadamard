@@ -1,0 +1,880 @@
+### v=523 comps=[('C',5),('C',11),('C',19)]
+# G=Z5xZ11xZ19 n=1045 |Aut|=720 subgroups(GL up to conj)=162 (0.7s)
+# distinct slices with r<=30: 38
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 720, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 2.33}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 1.6}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 1.06}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 1.09}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 10, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 1.63}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.87}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 1.23}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 360, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 1.92}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 14, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 1.27}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 1.8}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 15, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.78}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 15, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 1.97}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 2.57}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 240, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 2.4}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 2.13}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.31}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 18, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.56}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 1.05}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 180, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.36}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.41}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.48}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.42}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 144, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.56}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.55}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 25, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.65}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 27, "L": 14, "surv": 504, "nsol": 0, "certified": null, "secs": 1.82}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 120, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 4.64}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 72, "r": 29, "L": 28, "surv": 0, "nsol": 0, "certified": null, "secs": 11.78}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 12.72}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 90, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 13.06}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 72, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 15.95}
+{"G": "Z5xZ11xZ19", "kind": "lp", "S": 60, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 15.4}
+# done: total solutions found 0  (112.4s)
+### v=537 comps=[('C',29),('C',37)]
+# G=Z29xZ37 n=1073 |Aut|=1008 subgroups(GL up to conj)=90 (0.3s)
+# distinct slices with r<=30: 33
+{"G": "Z29xZ37", "kind": "lp", "S": 1008, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z29xZ37", "kind": "lp", "S": 504, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z29xZ37", "kind": "lp", "S": 504, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z29xZ37", "kind": "lp", "S": 504, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 7, "L": 6, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 7, "L": 6, "surv": 0, "nsol": 0, "certified": null, "secs": 0.11}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 8, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 8, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1}
+{"G": "Z29xZ37", "kind": "lp", "S": 336, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 9, "L": 8, "surv": 8, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.11}
+{"G": "Z29xZ37", "kind": "lp", "S": 252, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.11}
+{"G": "Z29xZ37", "kind": "lp", "S": 168, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z29xZ37", "kind": "lp", "S": 168, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z29xZ37", "kind": "lp", "S": 126, "r": 13, "L": 12, "surv": 16, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z29xZ37", "kind": "lp", "S": 168, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z29xZ37", "kind": "lp", "S": 126, "r": 15, "L": 8, "surv": 24, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z29xZ37", "kind": "lp", "S": 126, "r": 15, "L": 8, "surv": 72, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z29xZ37", "kind": "lp", "S": 144, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 20, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.55}
+{"G": "Z29xZ37", "kind": "lp", "S": 112, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 1.7}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 21, "L": 20, "surv": 32, "nsol": 0, "certified": null, "secs": 1.66}
+{"G": "Z29xZ37", "kind": "lp", "S": 72, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 2.34}
+{"G": "Z29xZ37", "kind": "lp", "S": 72, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 2.1}
+{"G": "Z29xZ37", "kind": "lp", "S": 63, "r": 25, "L": 12, "surv": 736, "nsol": 0, "certified": null, "secs": 0.63}
+{"G": "Z29xZ37", "kind": "lp", "S": 84, "r": 26, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.88}
+{"G": "Z29xZ37", "kind": "lp", "S": 56, "r": 29, "L": 28, "surv": 54, "nsol": 0, "certified": null, "secs": 8.35}
+{"G": "Z29xZ37", "kind": "lp", "S": 56, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 19.36}
+{"G": "Z29xZ37", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.05}
+# done: total solutions found 0  (60.9s)
+### v=571 comps=[('C',7),('C',163)]
+# G=Z7xZ163 n=1141 |Aut|=972 subgroups(GL up to conj)=90 (9.0s)
+# distinct slices with r<=30: 40
+{"G": "Z7xZ163", "kind": "lp", "S": 972, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 1.22}
+{"G": "Z7xZ163", "kind": "lp", "S": 486, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z7xZ163", "kind": "lp", "S": 486, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z7xZ163", "kind": "lp", "S": 486, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z7xZ163", "kind": "lp", "S": 324, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z7xZ163", "kind": "lp", "S": 324, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z7xZ163", "kind": "lp", "S": 324, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z7xZ163", "kind": "lp", "S": 324, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12}
+{"G": "Z7xZ163", "kind": "lp", "S": 243, "r": 9, "L": 4, "surv": 8, "nsol": 0, "certified": null, "secs": 0.08}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.11}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 12, "L": 7, "surv": 18, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 14, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.16}
+{"G": "Z7xZ163", "kind": "lp", "S": 162, "r": 14, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z7xZ163", "kind": "lp", "S": 108, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z7xZ163", "kind": "lp", "S": 108, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z7xZ163", "kind": "lp", "S": 108, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z7xZ163", "kind": "lp", "S": 81, "r": 17, "L": 8, "surv": 392, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z7xZ163", "kind": "lp", "S": 81, "r": 17, "L": 8, "surv": 356, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z7xZ163", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z7xZ163", "kind": "lp", "S": 81, "r": 21, "L": 10, "surv": 1862, "nsol": 0, "certified": null, "secs": 0.18}
+{"G": "Z7xZ163", "kind": "lp", "S": 81, "r": 21, "L": 10, "surv": 608, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 0.46}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.42}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 25, "L": 24, "surv": 0, "nsol": 0, "certified": null, "secs": 3.0}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 26, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.94}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 26, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 1.42}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 4.27}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 28, "L": 15, "surv": 12816, "nsol": 0, "certified": null, "secs": 3.79}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 29, "L": 28, "surv": 0, "nsol": 0, "certified": null, "secs": 10.85}
+{"G": "Z7xZ163", "kind": "lp", "S": 54, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.95}
+# done: total solutions found 0  (55.0s)
+### v=573 comps=[('C',5),('C',229)]
+# G=Z5xZ229 n=1145 |Aut|=912 subgroups(GL up to conj)=60 (0.3s)
+# distinct slices with r<=30: 26
+{"G": "Z5xZ229", "kind": "lp", "S": 912, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z5xZ229", "kind": "lp", "S": 456, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z5xZ229", "kind": "lp", "S": 456, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z5xZ229", "kind": "lp", "S": 456, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 7, "L": 6, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 7, "L": 6, "surv": 0, "nsol": 0, "certified": null, "secs": 0.11}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 8, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 8, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z5xZ229", "kind": "lp", "S": 304, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.16}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 9, "L": 8, "surv": 4, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z5xZ229", "kind": "lp", "S": 228, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12}
+{"G": "Z5xZ229", "kind": "lp", "S": 152, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z5xZ229", "kind": "lp", "S": 152, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z5xZ229", "kind": "lp", "S": 114, "r": 13, "L": 12, "surv": 36, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z5xZ229", "kind": "lp", "S": 152, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35}
+{"G": "Z5xZ229", "kind": "lp", "S": 114, "r": 15, "L": 8, "surv": 100, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z5xZ229", "kind": "lp", "S": 114, "r": 15, "L": 8, "surv": 116, "nsol": 0, "certified": null, "secs": 0.14}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 20, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 21, "L": 20, "surv": 76, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z5xZ229", "kind": "lp", "S": 57, "r": 25, "L": 12, "surv": 6660, "nsol": 0, "certified": null, "secs": 0.57}
+{"G": "Z5xZ229", "kind": "lp", "S": 76, "r": 26, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.93}
+# done: total solutions found 0  (8.1s)
+### v=599 comps=[('E',3,2),('C',7),('C',19)]
+# G=Z3xZ3xZ7xZ19 n=1197 |Aut|=5184 subgroups(GL up to conj)=3110 (1.0s)
+# distinct slices with r<=30: 474
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 864, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 1.95}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.97}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.59}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 10, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.16}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 288, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 288, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 1296, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 13, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 13, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 13, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 13, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 13, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 13, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 13, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 13, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 13, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 13, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.93}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.56}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.71}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.72}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.9}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.61}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.61}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.5}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 8, "surv": 16, "nsol": 0, "certified": null, "secs": 1.54}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 8, "surv": 16, "nsol": 0, "certified": null, "secs": 0.74}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.51}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 8, "surv": 16, "nsol": 0, "certified": null, "secs": 0.86}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 1.05}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 15, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 15, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 15, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 15, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.92}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.94}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.51}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.35}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 288, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.07}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 288, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.36}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.36}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 17, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 17, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 648, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 19, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 19, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 20, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 20, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 21, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 21, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 21, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 21, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 21, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 23, "L": 14, "surv": 48, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.36}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 23, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 0.43}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.43}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 640, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.41}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.41}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.5}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.58}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.46}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.41}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.41}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.46}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.54}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 24, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.48}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 24, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.49}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.48}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.46}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.71}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.7}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.72}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.67}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.67}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.65}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.61}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.64}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.61}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.62}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.6}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.59}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 432, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.7}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 25, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.59}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.68}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.68}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.69}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.7}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.74}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.69}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.69}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 25, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.86}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.79}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.9}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.74}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.73}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.76}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 24, "surv": 0, "nsol": 0, "certified": null, "secs": 0.81}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 24, "surv": 0, "nsol": 0, "certified": null, "secs": 0.81}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 24, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.97}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.99}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.12}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.0}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.85}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.89}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.11}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.0}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.92}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.97}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.87}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.03}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.94}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.95}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.9}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.96}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.86}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 26, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.91}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.28}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 14, "surv": 1488, "nsol": 0, "certified": null, "secs": 1.69}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.77}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.78}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.64}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 1204, "nsol": 0, "certified": null, "secs": 1.82}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 1864, "nsol": 0, "certified": null, "secs": 1.81}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.86}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 1204, "nsol": 0, "certified": null, "secs": 1.79}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 1864, "nsol": 0, "certified": null, "secs": 1.71}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.81}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 1204, "nsol": 0, "certified": null, "secs": 1.88}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 14, "surv": 1864, "nsol": 0, "certified": null, "secs": 1.97}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 324, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.81}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 27, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 2.1}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 27, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.87}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 27, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.84}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 27, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.92}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 1.41}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 1.41}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 1.45}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.57}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.49}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 1.51}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 27, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 2.1}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 27, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 2.16}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 27, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 2.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 27, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 2.08}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.08}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.14}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.27}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.16}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.08}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.22}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 4.74}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.84}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.82}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.48}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.62}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.36}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 4.47}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 3.85}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 4.12}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 4.01}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 3.76}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 3.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 3.69}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 3.69}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 5.07}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.78}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.13}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.11}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.33}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.17}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.11}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.44}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 5.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 5.29}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 27, "surv": 8, "nsol": 0, "certified": null, "secs": 5.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 27, "surv": 8, "nsol": 0, "certified": null, "secs": 5.58}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 5.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.79}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.53}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 96, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 96, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.09}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.39}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.19}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.66}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 6.02}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.64}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.82}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.71}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 6.03}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 6.04}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.92}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.94}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.83}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.86}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 29, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 5.75}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 13.43}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 162, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 13.07}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.68}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.17}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.43}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.79}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 17, "surv": 936, "nsol": 0, "certified": null, "secs": 10.51}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 17, "surv": 1668, "nsol": 0, "certified": null, "secs": 10.11}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 9.87}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.3}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.11}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.11}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.31}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.17}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.92}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.51}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.91}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.62}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.83}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.56}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.91}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.88}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.42}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.21}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.77}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 15.06}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.97}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.34}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.9}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.91}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.59}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.86}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 144, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.32}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.97}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.85}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.82}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.94}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.12}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.14}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.26}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.99}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.7}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.15}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.79}
+{"G": "Z3xZ3xZ7xZ19", "kind": "lp", "S": 216, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.12}
+# done: total solutions found 0  (1183.0s)
+### v=599c comps=[('C',9),('C',7),('C',19)]
+# G=Z9xZ7xZ19 n=1197 |Aut|=648 subgroups(GL up to conj)=800 (4.8s)
+# distinct slices with r<=30: 116
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 648, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 14, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 15, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.23, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 18, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 324, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.34, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 21, "L": 20, "surv": 0, "nsol": 0, "certified": null, "secs": 0.35, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.38, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.48, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 108, "nsol": 0, "certified": null, "secs": 0.46, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.46, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.48, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.47, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.5, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.69, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.64, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.59, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.62, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 216, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.56, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.65, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 25, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 0.61, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 25, "L": 24, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.13, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.98, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.0, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 1.05, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.21, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.2, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.23, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 1.29, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 27, "L": 14, "surv": 0, "nsol": 0, "certified": null, "secs": 1.75, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.17, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 27, "L": 26, "surv": 0, "nsol": 0, "certified": null, "secs": 2.15, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.53, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.46, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.49, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.39, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 3.95, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.09, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.3, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 3.97, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.15, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 28, "L": 27, "surv": 0, "nsol": 0, "certified": null, "secs": 4.38, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 12.93, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 162, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 12.55, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 9.7, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.17, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.14, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 9.9, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.01, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 10.14, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.53, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 11.58, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.52, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 108, "r": 30, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 14.49, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.32, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.65, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.06, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.47, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.24, "undecided": null}
+{"G": "Z9xZ7xZ19", "kind": "lp", "S": 72, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.36, "undecided": null}
+# done: total solutions found 0  (338.7s)
+### v=643 comps=[('C',5),('C',257)]
+# G=Z5xZ257 n=1285 |Aut|=1024 subgroups(GL up to conj)=57 (412.6s)
+# distinct slices with r<=30: 24
+{"G": "Z5xZ257", "kind": "lp", "S": 1024, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 1.57, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 512, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 512, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 512, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 7, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 7, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 8, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 9, "L": 8, "surv": 4, "nsol": 0, "certified": null, "secs": 0.29, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 256, "r": 10, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.96, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 13, "L": 8, "surv": 68, "nsol": 0, "certified": null, "secs": 0.89, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 15, "L": 8, "surv": 100, "nsol": 0, "certified": null, "secs": 0.2, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 15, "L": 14, "surv": 4, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 128, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.82, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 64, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.99, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 64, "r": 22, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.71, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 64, "r": 23, "L": 14, "surv": 3412, "nsol": 0, "certified": null, "secs": 2.56, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 64, "r": 25, "L": 14, "surv": 7380, "nsol": 0, "certified": null, "secs": 1.12, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 64, "r": 26, "L": 25, "surv": 0, "nsol": 0, "certified": null, "secs": 2.58, "undecided": null}
+{"G": "Z5xZ257", "kind": "lp", "S": 64, "r": 27, "L": 26, "surv": 52, "nsol": 0, "certified": null, "secs": 3.82, "undecided": null}
+# done: total solutions found 0  (432.5s)
+### v=647 comps=[('C',3),('C',431)]
+# G=Z3xZ431 n=1293 |Aut|=860 subgroups(GL up to conj)=20 (0.3s)
+# distinct slices with r<=30: 9
+{"G": "Z3xZ431", "kind": "lp", "S": 860, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 430, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 430, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 430, "r": 6, "L": 3, "surv": 2, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 215, "r": 9, "L": 4, "surv": 18, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 172, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 86, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 86, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2, "undecided": null}
+{"G": "Z3xZ431", "kind": "lp", "S": 86, "r": 22, "L": 11, "surv": 1992, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+# done: total solutions found 0  (2.3s)
+### v=659 comps=[('C',3),('C',439)]
+# G=Z3xZ439 n=1317 |Aut|=876 subgroups(GL up to conj)=20 (0.3s)
+# distinct slices with r<=30: 10
+{"G": "Z3xZ439", "kind": "lp", "S": 876, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 438, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 438, "r": 6, "L": 3, "surv": 2, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 438, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 292, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 219, "r": 9, "L": 4, "surv": 18, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 146, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.44, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 146, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.14, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 146, "r": 14, "L": 7, "surv": 86, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z3xZ439", "kind": "lp", "S": 73, "r": 21, "L": 10, "surv": 2754, "nsol": 0, "certified": null, "secs": 0.5, "undecided": null}
+# done: total solutions found 0  (2.6s)
+### v=669 comps=[('C',7),('C',191)]
+# G=Z7xZ191 n=1337 |Aut|=1140 subgroups(GL up to conj)=40 (0.4s)
+# distinct slices with r<=30: 15
+{"G": "Z7xZ191", "kind": "lp", "S": 1140, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 570, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 570, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 570, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 380, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 285, "r": 9, "L": 4, "surv": 8, "nsol": 0, "certified": null, "secs": 0.11, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 190, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 190, "r": 12, "L": 7, "surv": 18, "nsol": 0, "certified": null, "secs": 0.15, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 228, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.53, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 190, "r": 14, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 114, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.83, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 114, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 95, "r": 21, "L": 10, "surv": 1862, "nsol": 0, "certified": null, "secs": 0.2, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 114, "r": 22, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22, "undecided": null}
+{"G": "Z7xZ191", "kind": "lp", "S": 76, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 1.47, "undecided": null}
+# done: total solutions found 0  (5.9s)
+### v=719 comps=[('C',3),('C',479)]
+# G=Z3xZ479 n=1437 |Aut|=956 subgroups(GL up to conj)=10 (0.4s)
+# distinct slices with r<=30: 5
+{"G": "Z3xZ479", "kind": "lp", "S": 956, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z3xZ479", "kind": "lp", "S": 478, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z3xZ479", "kind": "lp", "S": 478, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z3xZ479", "kind": "lp", "S": 478, "r": 6, "L": 3, "surv": 2, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z3xZ479", "kind": "lp", "S": 239, "r": 9, "L": 4, "surv": 18, "nsol": 0, "certified": null, "secs": 0.09, "undecided": null}
+# done: total solutions found 0  (1.2s)
+### v=739 comps=[('C',7),('C',211)]
+# G=Z7xZ211 n=1477 |Aut|=1260 subgroups(GL up to conj)=120 (0.5s)
+# distinct slices with r<=30: 42
+{"G": "Z7xZ211", "kind": "lp", "S": 1260, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.26, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 630, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 630, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 630, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 420, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 420, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 420, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 420, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.14, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 315, "r": 9, "L": 4, "surv": 8, "nsol": 0, "certified": null, "secs": 0.08, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.11, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 10, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 11, "L": 10, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 12, "L": 7, "surv": 18, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 252, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 14, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 210, "r": 14, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 140, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.24, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 180, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 105, "r": 17, "L": 8, "surv": 284, "nsol": 0, "certified": null, "secs": 0.14, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 105, "r": 17, "L": 8, "surv": 260, "nsol": 0, "certified": null, "secs": 0.14, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 126, "r": 17, "L": 16, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 126, "r": 18, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 105, "r": 21, "L": 10, "surv": 1946, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 105, "r": 21, "L": 10, "surv": 380, "nsol": 0, "certified": null, "secs": 0.19, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 126, "r": 22, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 84, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 84, "r": 22, "L": 21, "surv": 0, "nsol": 0, "certified": null, "secs": 1.22, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 90, "r": 23, "L": 22, "surv": 0, "nsol": 0, "certified": null, "secs": 0.55, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 90, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 84, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.78, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 70, "r": 25, "L": 24, "surv": 0, "nsol": 0, "certified": null, "secs": 0.75, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 70, "r": 28, "L": 15, "surv": 9306, "nsol": 0, "certified": null, "secs": 3.57, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 70, "r": 28, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 3.58, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 90, "r": 30, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 12.59, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 60, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.56, "undecided": null}
+{"G": "Z7xZ211", "kind": "lp", "S": 60, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 16.38, "undecided": null}
+# done: total solutions found 0  (66.2s)

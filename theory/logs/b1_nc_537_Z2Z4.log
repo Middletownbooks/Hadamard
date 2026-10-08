@@ -1,0 +1,10 @@
+# G=Z4xZ2xZ67 n=536 |Aut|=132 subgroups(GL up to conj)=20 (0.3s)
+# distinct slices with r<=30: 7
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 132, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.43, "undecided": null}
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 66, "r": 14, "L": 13, "surv": 0, "nsol": 0, "certified": null, "secs": 0.22, "undecided": null}
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 66, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.18, "undecided": null}
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 66, "r": 18, "L": 11, "surv": 456, "nsol": 0, "certified": null, "secs": 0.2, "undecided": null}
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 33, "r": 24, "L": 13, "surv": 16088, "nsol": 0, "certified": null, "secs": 16.33, "undecided": null}
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 44, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.61, "undecided": null}
+{"G": "Z4xZ2xZ67", "kind": "b1", "S": 22, "r": 30, "L": 29, "surv": 0, "nsol": 0, "certified": null, "secs": 17.75, "undecided": null}
+# done: total solutions found 0  (36.3s)

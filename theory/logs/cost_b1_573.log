@@ -1,0 +1,27 @@
+# G=Z2xZ2xZ11xZ13 kind=b1 slices costed=148
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 15, "r": 54, "L": 27, "feasible": true, "D": 26, "n": 166.8, "log2E": 20.8, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 15, "r": 54, "L": 27, "feasible": true, "D": 26, "n": 166.8, "log2E": 20.8, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 15, "r": 60, "L": 31, "feasible": true, "D": 30, "n": 206.8, "log2E": 6.1, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 108, "L": 59, "feasible": true, "D": 58, "n": 305.6, "log2E": 101.9, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 108, "L": 59, "feasible": true, "D": 58, "n": 305.6, "log2E": 101.9, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 110, "L": 59, "feasible": true, "D": 58, "n": 314.5, "log2E": 100.8, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 110, "L": 59, "feasible": true, "D": 58, "n": 314.5, "log2E": 100.8, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 115, "L": 63, "feasible": true, "D": 62, "n": 345.5, "log2E": 90.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 121, "L": 63, "feasible": true, "D": 62, "n": 368.0, "log2E": 91.4, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 120, "L": 71, "feasible": true, "D": 70, "n": 404.7, "log2E": 50.7, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 132, "L": 71, "feasible": true, "D": 70, "n": 453.8, "log2E": 49.6, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 4, "r": 155, "L": 89, "feasible": true, "D": 88, "n": 460.5, "log2E": 136.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 4, "r": 165, "L": 89, "feasible": true, "D": 88, "n": 475.7, "log2E": 160.8, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 3, "r": 198, "L": 99, "feasible": true, "D": 98, "n": 489.5, "log2E": 279.7, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 3, "r": 198, "L": 99, "feasible": true, "D": 98, "n": 489.5, "log2E": 279.7, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 5, "r": 156, "L": 79, "feasible": true, "D": 78, "n": 498.6, "log2E": 101.3, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 4, "r": 156, "L": 95, "feasible": true, "D": 94, "n": 503.2, "log2E": 97.3, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 4, "r": 176, "L": 95, "feasible": true, "D": 94, "n": 533.8, "log2E": 146.7, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 3, "r": 220, "L": 111, "feasible": true, "D": 110, "n": 589.2, "log2E": 268.1, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 6, "r": 165, "L": 83, "feasible": true, "D": 82, "n": 614.1, "log2E": 22.1, "null_mismatch": 0.0}
+# lowest-n with log2E<=0:
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 30, "r": 30, "L": 19, "feasible": true, "D": 18, "n": 127.3, "log2E": -37.9, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 30, "r": 30, "L": 19, "feasible": true, "D": 18, "n": 127.3, "log2E": -37.9, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 30, "r": 33, "L": 19, "feasible": true, "D": 18, "n": 135.8, "log2E": -31.8, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 60, "r": 24, "L": 15, "feasible": true, "D": 14, "n": 140.2, "log2E": -76.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ11xZ13", "kind": "b1", "S": 60, "r": 20, "L": 15, "feasible": true, "D": 14, "n": 140.9, "log2E": -84.8, "null_mismatch": 0.0}

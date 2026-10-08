@@ -1,0 +1,93 @@
+### b0 v=523
+# G=Z523 n=523 |Aut|=522 subgroups(GL up to conj)=12 (0.3s)
+# distinct slices with r<=30: 7
+{"G": "Z523", "kind": "b0", "S": 522, "r": 2, "L": 1, "surv": 0, "nsol": 0, "certified": null, "secs": 0.64}
+{"G": "Z523", "kind": "b0", "S": 261, "r": 3, "L": 1, "surv": 2, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z523", "kind": "b0", "S": 174, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.54}
+{"G": "Z523", "kind": "b0", "S": 87, "r": 7, "L": 3, "surv": 20, "nsol": 0, "certified": null, "secs": 0.08}
+{"G": "Z523", "kind": "b0", "S": 58, "r": 10, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 1.18}
+{"G": "Z523", "kind": "b0", "S": 29, "r": 19, "L": 9, "surv": 44354, "nsol": 0, "certified": null, "secs": 0.39}
+{"G": "Z523", "kind": "b0", "S": 18, "r": 30, "L": 29, "error": "too many survivors 22926617 > 4000000"}
+# done: total solutions found 0  (47.8s)
+### b1 v=523 (cyclic m=v-1)
+# G=Z2xZ9xZ29 n=522 |Aut|=168 subgroups(GL up to conj)=32 (0.4s)
+# distinct slices with r<=30: 10
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 168, "r": 12, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.43}
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 84, "r": 16, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.28}
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 84, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.32}
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 84, "r": 20, "L": 11, "surv": 0, "nsol": 0, "certified": null, "secs": 0.29}
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 56, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.4}
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 42, "r": 26, "L": 25, "surv": 720, "nsol": 0, "certified": null, "secs": 1.73}
+{"G": "Z2xZ9xZ29", "kind": "b1", "S": 28, "r": 28, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 4.41}
+./run_b0b1_cyclic.sh: line 6:  5713 Killed                  python3 sweep_b1.py "${B1[$v]}" $R b1
+### b0 v=537
+# G=Z3xZ179 n=537 |Aut|=356 subgroups(GL up to conj)=10 (0.6s)
+# distinct slices with r<=30: 5
+{"G": "Z3xZ179", "kind": "b0", "S": 356, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.43}
+{"G": "Z3xZ179", "kind": "b0", "S": 178, "r": 5, "L": 4, "surv": 0, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z3xZ179", "kind": "b0", "S": 178, "r": 6, "L": 3, "surv": 8, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z3xZ179", "kind": "b0", "S": 178, "r": 6, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z3xZ179", "kind": "b0", "S": 89, "r": 9, "L": 4, "surv": 32, "nsol": 0, "certified": null, "secs": 0.09}
+# done: total solutions found 0  (1.5s)
+### b1 v=537 (cyclic m=v-1)
+# G=Z8xZ67 n=536 |Aut|=264 subgroups(GL up to conj)=64 (0.3s)
+# distinct slices with r<=30: 27
+{"G": "Z8xZ67", "kind": "b1", "S": 264, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.31}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 9, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 9, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 10, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.13}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 10, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 10, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 12, "L": 7, "surv": 12, "nsol": 0, "certified": null, "secs": 0.16}
+{"G": "Z8xZ67", "kind": "b1", "S": 132, "r": 12, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 13, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.19}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 13, "L": 12, "surv": 0, "nsol": 0, "certified": null, "secs": 0.2}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 14, "L": 8, "surv": 0, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 15, "L": 8, "surv": 180, "nsol": 0, "certified": null, "secs": 0.15}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 15, "L": 9, "surv": 180, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 16, "L": 9, "surv": 0, "nsol": 0, "certified": null, "secs": 0.17}
+{"G": "Z8xZ67", "kind": "b1", "S": 88, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z8xZ67", "kind": "b1", "S": 66, "r": 18, "L": 9, "surv": 764, "nsol": 0, "certified": null, "secs": 0.18}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 19, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.25}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 19, "L": 18, "surv": 0, "nsol": 0, "certified": null, "secs": 0.37}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.3}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.33}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 22, "L": 21, "surv": 3288, "nsol": 0, "certified": null, "secs": 1.05}
+{"G": "Z8xZ67", "kind": "b1", "S": 33, "r": 24, "L": 12, "surv": 19548, "nsol": 0, "certified": null, "secs": 47.39}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.51}
+{"G": "Z8xZ67", "kind": "b1", "S": 44, "r": 28, "L": 15, "surv": 42828, "nsol": 0, "certified": null, "secs": 44.64}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/sweep_b1.py", line 36, in <module>
+    sols, info = solve(P, kind, max_solutions=2, verbose=False)
+                 ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/slicesolve.py", line 185, in solve
+    sols = _join4(P, kind, masks, rs, psd, paf, h, ht, target, bound, max_solutions)
+  File "/home/user/Hadamard/theory/slicesolve.py", line 219, in _join4
+    ok = (pc[blk][:, None, :] + pc[None, :, :] <= bound + 1e-6).all(-1)
+          ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 69.9 GiB for an array with shape (2000, 223464, 21) and data type float64
+### b0 v=571
+# G=Z571 n=571 |Aut|=570 subgroups(GL up to conj)=16 (0.3s)
+# distinct slices with r<=30: 8
+{"G": "Z571", "kind": "b0", "S": 570, "r": 2, "L": 1, "surv": 0, "nsol": 0, "certified": null, "secs": 0.21}
+{"G": "Z571", "kind": "b0", "S": 285, "r": 3, "L": 1, "surv": 2, "nsol": 0, "certified": null, "secs": 0.04}
+{"G": "Z571", "kind": "b0", "S": 190, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z571", "kind": "b0", "S": 114, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.1}
+{"G": "Z571", "kind": "b0", "S": 95, "r": 7, "L": 3, "surv": 20, "nsol": 0, "certified": null, "secs": 0.07}
+{"G": "Z571", "kind": "b0", "S": 57, "r": 11, "L": 5, "surv": 252, "nsol": 0, "certified": null, "secs": 0.1}
+{"G": "Z571", "kind": "b0", "S": 38, "r": 16, "L": 15, "surv": 6270, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z571", "kind": "b0", "S": 30, "r": 20, "L": 19, "surv": 56677, "nsol": 0, "certified": null, "secs": 0.44}
+# done: total solutions found 0  (1.9s)
+### b1 v=571 (cyclic m=v-1)
+# G=Z2xZ3xZ5xZ19 n=570 |Aut|=144 subgroups(GL up to conj)=81 (0.4s)
+# distinct slices with r<=30: 13
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 144, "r": 16, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.43}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 18, "L": 17, "surv": 0, "nsol": 0, "certified": null, "secs": 0.78}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 20, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.27}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 20, "L": 19, "surv": 0, "nsol": 0, "certified": null, "secs": 0.68}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 24, "L": 15, "surv": 0, "nsol": 0, "certified": null, "secs": 0.5}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 24, "L": 15, "surv": 148, "nsol": 0, "certified": null, "secs": 0.66}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 72, "r": 24, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 0.63}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 36, "r": 28, "L": 19, "surv": 22788, "nsol": 0, "certified": null, "secs": 28.05}
+{"G": "Z2xZ3xZ5xZ19", "kind": "b1", "S": 36, "r": 28, "L": 23, "surv": 0, "nsol": 0, "certified": null, "secs": 4.34}

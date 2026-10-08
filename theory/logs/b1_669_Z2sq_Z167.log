@@ -1,0 +1,10 @@
+# G=Z2xZ2xZ167 n=668 |Aut|=996 subgroups(GL up to conj)=20 (0.3s)
+# distinct slices with r<=30: 7
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 498, "r": 4, "L": 3, "surv": 0, "nsol": 0, "certified": null, "secs": 1.28}
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 249, "r": 6, "L": 3, "surv": 4, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 332, "r": 6, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.45}
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 166, "r": 7, "L": 5, "surv": 0, "nsol": 0, "certified": null, "secs": 0.12}
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 166, "r": 8, "L": 7, "surv": 0, "nsol": 0, "certified": null, "secs": 0.46}
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 166, "r": 9, "L": 5, "surv": 22, "nsol": 0, "certified": null, "secs": 0.09}
+{"G": "Z2xZ2xZ167", "kind": "b1", "S": 83, "r": 12, "L": 7, "surv": 106, "nsol": 0, "certified": null, "secs": 0.14}
+# done: total solutions found 0  (3.2s)

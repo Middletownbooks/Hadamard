@@ -1,0 +1,6 @@
+{"G": "Z2xZ2xZ2xZ67", "S": 11, "r": 56, "n": 179.0, "log2E": 24.7, "verdict": "KILLED", "screens": {"[0]": "too many compressed vectors after pruning (>1200000)", "[1]": false}, "gens": [[76, 63]]}
+{"G": "Z2xZ2xZ2xZ67", "S": 3, "r": 180, "n": 439.3, "log2E": 259.5, "verdict": "survives", "screens": {"[0]": "too many compressed vectors after pruning (>1200000)", "[1]": true}, "gens": [[61, 36]]}
+{"G": "Z2xZ2xZ2xZ67", "S": 3, "r": 180, "n": 439.3, "log2E": 259.5, "verdict": "survives", "screens": {"[0]": "too many compressed vectors after pruning (>1200000)", "[1]": true}, "gens": [[61, 28]]}
+{"G": "Z2xZ2xZ2xZ67", "S": 3, "r": 184, "n": 471.2, "log2E": 242.3, "verdict": "survives", "screens": {"[0]": "too many compressed vectors after pruning (>1200000)", "[1]": "too many compressed vectors after pruning (>1200000)"}, "gens": [[76, 36]]}
+{"G": "Z2xZ2xZ2xZ67", "S": 6, "r": 138, "n": 495.2, "log2E": 33.1, "verdict": "survives", "screens": {"[0]": "too many compressed vectors after pruning (>1200000)", "[1]": "too many compressed vectors after pruning (>1200000)"}, "gens": [[78, 0], [76, 36]]}
+{"G": "Z2xZ2xZ2xZ67", "S": 2, "r": 270, "n": 1046.8, "log2E": 11.7, "verdict": "survives", "screens": {"[0]": "too many compressed vectors after pruning (>1200000)", "[1]": "too many compressed vectors after pruning (>1200000)"}, "gens": [[78, 65]]}

@@ -1,0 +1,13 @@
+# G=Z2xZ2xZ2xZ67 kind=b1 slices costed=102
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 11, "r": 56, "L": 31, "feasible": true, "D": 30, "n": 178.8, "log2E": 24.9, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 3, "r": 180, "L": 91, "feasible": true, "D": 90, "n": 439.7, "log2E": 259.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 3, "r": 180, "L": 91, "feasible": true, "D": 90, "n": 439.7, "log2E": 259.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 3, "r": 184, "L": 95, "feasible": true, "D": 94, "n": 471.3, "log2E": 242.1, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 6, "r": 138, "L": 71, "feasible": true, "D": 70, "n": 494.1, "log2E": 34.2, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 2, "r": 270, "L": 203, "feasible": true, "D": 202, "n": 1047.7, "log2E": 10.9, "null_mismatch": 0.0}
+# lowest-n with log2E<=0:
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 33, "r": 20, "L": 11, "feasible": true, "D": 10, "n": 66.6, "log2E": -5.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 33, "r": 20, "L": 11, "feasible": true, "D": 10, "n": 66.6, "log2E": -5.0, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 44, "r": 22, "L": 15, "feasible": true, "D": 14, "n": 106.4, "log2E": -42.2, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 33, "r": 28, "L": 15, "feasible": true, "D": 14, "n": 120.4, "log2E": -32.6, "null_mismatch": 0.0}
+{"G": "Z2xZ2xZ2xZ67", "kind": "b1", "S": 66, "r": 28, "L": 15, "feasible": true, "D": 14, "n": 120.4, "log2E": -32.6, "null_mismatch": 0.0}

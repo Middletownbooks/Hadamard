@@ -49,3 +49,7 @@ logs/tmat/*.log
 logs/tmat/twist_*.jsonl
 logs/tmat/gs_twist_*.jsonl
 logs/bge3_screen2_*.log
+
+# theory arm: compiled nauty/Traces tools (build from theory/*.c, see report/theory_arm_2000_3000.md section 7)
+theory/hadaut
+theory/hadaut_traces
