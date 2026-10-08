@@ -9,7 +9,7 @@ usage: bge3_general_run.py options.jsonl out.jsonl [--par 4] [--top 3] [--rmax 1
 import sys, json, os, subprocess, itertools
 from concurrent.futures import ThreadPoolExecutor
 
-a = sys.argv[1:]; opts = {"--par": "4", "--top": "3", "--rmax": "160", "--stopafter": "3", "--only": "", "--maxcfg": "40"}
+a = sys.argv[1:]; opts = {"--par": "4", "--top": "3", "--rmax": "160", "--stopafter": "3", "--only": "", "--maxcfg": "40", "--resume": ""}
 for k in opts:
     if k in a: opts[k] = a[a.index(k) + 1]
 inp, outp = a[0], a[1]
@@ -32,6 +32,13 @@ def cost(o):
 
 options = [json.loads(l) for l in open(inp)]
 options = [o for o in options if o["precheck"] and o["c"] >= 4 and (not only or o["v"] in only)]
+done_keys = set()
+for f in [x for x in opts["--resume"].split(",") if x]:
+    for l in open(f):
+        try: r = json.loads(l)
+        except Exception: continue
+        if r.get("stage") == "cost": done_keys.add((r["v"], tuple(r["Q"]), r["psi"]))
+options = [o for o in options if (o["v"], tuple(o["Q"]), psi_arg(o)) not in done_keys]
 print(json.dumps({"stage": "start", "options": len(options)}), flush=True)
 results = []
 with ThreadPoolExecutor(int(opts["--par"])) as ex:

@@ -8,13 +8,14 @@ Pre-check (necessary): +-1 vectors on Q with Fourier support in Psi exist AND sp
 (the border frame needs sum_i K_ij K_ij^T = 4c P_Psi, which has rank b).
 Options are reduced modulo Aut(Q) (orbit representatives; using a generating sample of Aut can only leave duplicate
 representatives, never lose an option).
-usage: bge3_options.py v [v ...] [--cmax 24] [--bmax 23] [--hmin 3]
+usage: bge3_options.py v [v ...] [--cmax 24] [--bmax 23] [--hmin 3] [--skip K  (resume after K written options)]
 output: one JSON line per option: v, c, Q, b, h, psi (list of character vectors), n_psi_vectors (negative = lower bound,\n        scan stopped early at full rank), rank, precheck"""
 import sys, json, itertools, random
 import numpy as np
+SKIP = 0
 
 def args():
-    a = sys.argv[1:]; opt = {"--cmax": 24, "--bmax": 23, "--hmin": 3}
+    a = sys.argv[1:]; opt = {"--cmax": 24, "--bmax": 23, "--hmin": 3, "--skip": 0}
     vs = []
     i = 0
     while i < len(a):
@@ -105,12 +106,15 @@ def options(v, cmax, bmax, hmin):
                                     t_ = tuple(sorted(int(cp[k]) for k in s_))
                                     if t_ not in orb: orb.add(t_); stack.append(t_)
                             seen |= orb
+                            options.count = getattr(options, "count", 0) + 1
+                            if options.count <= SKIP: continue           # already written by a previous run
                             n, rk = psi_vectors(V, list(psi), c)
                             yield dict(v=v, c=c, Q=Q, b=b, h=h, psi=[co[k].tolist() for k in psi],
                                        orbit_size=len(orb), n_psi_vectors=n, rank=rk, precheck=bool(n != 0 and rk == b))
 
 if __name__ == "__main__":
     vs, opt = args()
+    SKIP = opt["--skip"]
     for v in vs:
         for rec in options(v, opt["--cmax"], opt["--bmax"], opt["--hmin"]):
             print(json.dumps(rec), flush=True)
