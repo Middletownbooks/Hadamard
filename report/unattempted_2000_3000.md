@@ -222,3 +222,11 @@ length-3 T-matrices via Cooper–Wallis, would give H(2148) or H(2676).
 - The decisive test is whether Aut(H(716)) has an element of order 179 with four row cycles. That needs nauty or
   Traces, which could not be built in this container.
 - **Untested.**
+
+**Update (2026-10-08, theory-arm session): resolved [M].** Traces was built from the nauty 2.8.8 source bundled in the
+pynauty sdist (`theory/hadaut_traces.c`).
+- |Aut(H(716))| = 4 = Z₂², with no element of order 179.
+- |Aut(H(892))| = 6 = Z₆, with no element of order 223. This confirms the Sylow argument above.
+- Neither group contains Q₈, which every Williamson-type (amicable, not necessarily circulant) form requires.
+- So neither 2026 matrix is a Williamson-type ingredient in any equivalent form. Details:
+  `report/theory_arm_2000_3000.md` §2.

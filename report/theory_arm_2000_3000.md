@@ -3,6 +3,7 @@
 Composition closure, the Frobenius group at 669, algebraic slices, and why no ≤ 2^45 decoupling was found.
 
 Date: 2026-10-08. Branch `claude/focused-planck-j1645f`. Code: `theory/`. Logs: `theory/logs/`.
+This answers `report/prompt_theory_arm.md`.
 
 **Tags:**
 - **[M]** verified by exact computation in this session. The script is named.
@@ -186,6 +187,11 @@ Notes:
 | H(892) | `data/hadamard_892.csv.gz` (b = 0 core, Z₂₂₃, d = 3) | 6 | τ; the order-3 multiplier, fixing the 4 index-0 rows; their products | 1203 s |
 
 Every element was re-verified as P·H·Qᵀ = H (`check_autgens.py`, generators in `theory/logs/aut*_traces_gens.txt`).
+
+This settles the item left "untested" in `report/unattempted_2000_3000.md` (Williamson-type check):
+- Aut(H(716)) has no element of order 179, and Aut(H(892)) none of order 223, so neither carries a circulant
+  Williamson-type form.
+- Neither contains Q₈, so neither carries a non-circulant one either.
 
 **Consequence.** A Williamson-type matrix (A, B, C, D pairwise amicable) gives an H(4n) that commutes with
 I ⊗ ρ(i) and I ⊗ ρ(j), right multiplication by the quaternion units. So its automorphism group contains a Q₈ whose central
