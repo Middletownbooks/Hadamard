@@ -1,0 +1,8 @@
+/home/user/Hadamard/scripts/bge3_exact_small.py:28: RuntimeWarning: overflow encountered in scalar multiply
+  Ht=np.int64(4*v)*wv[0]+(tgt.astype(np.int64)*wv[1:]).sum()
+{"v": 23, "b": 3, "c": 4, "Q": [2, 2], "h": 5, "d": 2, "r": 11, "L": 8, "blocks": 2048, "distinct": 342, "ordered_solutions": 196608, "log2E": 17.58}
+/home/user/Hadamard/scripts/bge3_exact_small.py:28: RuntimeWarning: overflow encountered in scalar multiply
+  Ht=np.int64(4*v)*wv[0]+(tgt.astype(np.int64)*wv[1:]).sum()
+{"v": 31, "b": 3, "c": 4, "Q": [2, 2], "h": 7, "d": 3, "r": 10, "L": 5, "blocks": 1024, "distinct": 184, "ordered_solutions": 18551808, "log2E": 24.15}
+{"v": 23, "c": 4, "Q": [2, 2], "h": 5, "d": 2, "r": 11, "L": 8, "psd_filtered_blocks": 126, "per_profile": {"(2, 4, 6, 6)": {"ordered_counts": [1024], "log2E": 10.0}}}
+{"v": 31, "c": 4, "Q": [2, 2], "h": 7, "d": 3, "r": 10, "L": 5, "psd_filtered_blocks": 180, "per_profile": {"(2, 2, 4, 10)": {"ordered_counts": [96624], "log2E": 16.56}}}

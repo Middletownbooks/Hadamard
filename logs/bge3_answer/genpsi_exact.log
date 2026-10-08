@@ -1,0 +1,48 @@
+r per block 16 blocks 65536
+PSD-filtered blocks 1352 row sums [-10, -8, -6, -4, -2, 2, 4, 6, 8, 10]
+profiles [(2, 2, 6, 8)]
+profile (2, 2, 6, 8) sizes [224, 224, 248, 8] found False
+profile (2, 2, 8, 6) sizes [224, 224, 8, 248] found False
+profile (2, 6, 2, 8) sizes [224, 248, 224, 8] found False
+profile (2, 6, 8, 2) sizes [224, 248, 8, 224] found False
+profile (2, 8, 2, 6) sizes [224, 8, 224, 248] found False
+profile (2, 8, 6, 2) sizes [224, 8, 248, 224] found False
+profile (6, 2, 2, 8) sizes [248, 224, 224, 8] found False
+profile (6, 2, 8, 2) sizes [248, 224, 8, 224] found False
+profile (6, 8, 2, 2) sizes [248, 8, 224, 224] found False
+profile (8, 2, 2, 6) sizes [8, 224, 224, 248] found False
+profile (8, 2, 6, 2) sizes [8, 224, 248, 224] found False
+profile (8, 6, 2, 2) sizes [8, 248, 224, 224] found False
+{"h": 3, "v": 27, "found": false, "core": null}
+r per block 24 blocks 16777216
+PSD-filtered blocks 54456 row sums [-12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12]
+profiles [(0, 6, 6, 10), (2, 2, 8, 10), (6, 6, 6, 8)]
+profile (0, 6, 6, 10) sizes [832, 8096, 8096, 6304] found False
+profile (0, 6, 10, 6) sizes [832, 8096, 6304, 8096] found False
+profile (0, 10, 6, 6) sizes [832, 6304, 8096, 8096] found False
+profile (6, 0, 6, 10) sizes [8096, 832, 8096, 6304] found False
+profile (6, 0, 10, 6) sizes [8096, 832, 6304, 8096] found False
+profile (6, 6, 0, 10) sizes [8096, 8096, 832, 6304] found False
+profile (6, 6, 10, 0) sizes [8096, 8096, 6304, 832] found False
+profile (6, 10, 0, 6) sizes [8096, 6304, 832, 8096] found False
+profile (6, 10, 6, 0) sizes [8096, 6304, 8096, 832] found False
+profile (10, 0, 6, 6) sizes [6304, 832, 8096, 8096] found False
+profile (10, 6, 0, 6) sizes [6304, 8096, 832, 8096] found False
+profile (10, 6, 6, 0) sizes [6304, 8096, 8096, 832] found False
+profile (2, 2, 8, 10) sizes [7936, 7936, 680, 6304] found False
+profile (2, 2, 10, 8) sizes [7936, 7936, 6304, 680] found False
+profile (2, 8, 2, 10) sizes [7936, 680, 7936, 6304] found False
+profile (2, 8, 10, 2) sizes [7936, 680, 6304, 7936] found False
+profile (2, 10, 2, 8) sizes [7936, 6304, 7936, 680] found False
+profile (2, 10, 8, 2) sizes [7936, 6304, 680, 7936] found False
+profile (8, 2, 2, 10) sizes [680, 7936, 7936, 6304] found False
+profile (8, 2, 10, 2) sizes [680, 7936, 6304, 7936] found False
+profile (8, 10, 2, 2) sizes [680, 6304, 7936, 7936] found False
+profile (10, 2, 2, 8) sizes [6304, 7936, 7936, 680] found False
+profile (10, 2, 8, 2) sizes [6304, 7936, 680, 7936] found False
+profile (10, 8, 2, 2) sizes [6304, 680, 7936, 7936] found False
+profile (6, 6, 6, 8) sizes [8096, 8096, 8096, 680] found False
+profile (6, 6, 8, 6) sizes [8096, 8096, 680, 8096] found False
+profile (6, 8, 6, 6) sizes [8096, 680, 8096, 8096] found False
+profile (8, 6, 6, 6) sizes [680, 8096, 8096, 8096] found False
+{"h": 5, "v": 43, "found": false, "core": null}

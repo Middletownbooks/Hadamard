@@ -49,6 +49,21 @@ logs/tmat/*.log
 logs/tmat/twist_*.jsonl
 logs/tmat/gs_twist_*.jsonl
 logs/bge3_screen2_*.log
+logs/bge3_normscreen_all.jsonl
+logs/bge3_normscreen_part2.jsonl
+logs/genpsi/*.log
+logs/bge3_general/*.err
+logs/bge3_general/options_open.jsonl
+logs/bge3_general/options_rest.jsonl
+logs/bge3_general/run_*.log
+logs/bge3_general/screen_*.jsonl
+logs/bge3_general/options_open.err
+logs/bge3_general/options_537.jsonl
+logs/bge3_general/options_rest20.jsonl
+logs/bge3_general/*.err
+logs/bge3_general/c12_*.log
+logs/bge3_general/run_523b.log
+logs/bge3_general/run_523c.log
 
 # theory arm: compiled nauty/Traces tools (build from theory/*.c, see report/theory_arm_2000_3000.md section 7)
 theory/hadaut

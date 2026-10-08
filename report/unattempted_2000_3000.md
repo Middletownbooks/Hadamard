@@ -162,3 +162,63 @@ log₂E.
 
 **Verdict:** the lead is documented as feasible but without an efficient algorithm. It does not beat 523, b = 0, d = 9,
 where the four blocks stay independent and the Kaggle k-tree is ready.
+
+## Update: b ≥ 3 screens finished, up to n = 300 bits (2026-10-06, later)
+
+**Tools**
+- **`bge3_screen2.py`:** the exact DP screen with three changes:
+  - per-block row sums restricted to feasible profiles;
+  - chunked Fourier pruning;
+  - a verdict printed after each test, so an OOM kill on a later t does not lose earlier results.
+- **`bge3_normscreen.py`:** a new exact necessary condition based on the identity
+  Σ_k ‖x̄_k‖² = (4v(ct − c + 1) + 4b(c − 1))/(ct) for the compression onto Q × Z_t.
+  - Verified exactly on the 479 and 347 cores at four values of t each.
+  - It decides cases the DP cannot. Example: for 599 with c = 20 and Q = Z20, group 1, the coset values are
+    restricted to {±1, ±27, ±29}, which makes the norm budget of 192 impossible.
+  - Positive control: the real 347 configuration passes at t = 1, 3 and 19.
+- **Two related facts:**
+  - **Q-character decomposition** (verified on 479 and 347). The ψ = 1 component is a complementary integer
+    quadruple over Z_h, with Σ PSD = 4v everywhere. Every ψ ≠ 1 has Σ PSD = 4v at ω ≠ 0 and 4b at ω = 0.
+  - **The t = 1 norm identity** gives Σ_k Σ_q x̄_k(q)² = (4v + 4b(c−1))/c.
+
+**Results** (every log₂E > 0 configuration with n ≤ 300; raw records in `logs/bge3_normscreen_part{1,2}.jsonl` and
+`logs/bge3_screen2_*`)
+
+| v | surviving b ≥ 3 configurations (n bits) | dead (screen that killed it) |
+|---|---|---|
+| 523 | c = 4, Q = Z4, d = 12 (226): passes DP t = 1, 5 and norm at every t (group 1) | – |
+| 571 | **c = 22, Q = Z22, d = 10 (192)**: DP t = 1 passes; norm t = 5 passes (DP t = 5 is memory-bound) | c = 4, all variants (norm t = 1) |
+| 573 | c = 14, d = 12 (269, 285): DP t = 1, 2 pass; norm passes every t | – |
+| 599 | none at or below 300 | c = 20, Z2×Z10 (DP t = 1); c = 20, Z20, both groups (norm); c = 8, all; c = 12, Z12 |
+| 643 | c = 14, d = 12 (232, 234): DP t = 1 passes; norm t = 3, 5, 9, 15 pass | – |
+| 647 | none at or below 300 | c = 12 (DP and norm); c = 18, all three variants (DP t = 1); c = 4 (norm) |
+| 659 | c = 10, d = 12, r = 70 (242; 2 of 6 groups); c = 4, r = 90 (288) | c = 6, all (DP and norm); c = 10, r = 66; c = 4, r = 76 and 80 |
+| 719 | c = 20, Z2×Z10 (227): DP t = 1; norm t = 5, 7. c = 6 (289) | c = 8, all; c = 10, all; c = 18, Z3×Z6 (DP t = 1) |
+| 739 | none at or below 300 | c = 10, all three (DP t = 1) |
+
+**Reading.**
+- **No b ≥ 3 route at or below 300 bits remains for 599, 647 or 739** (nor for 537 or 669, which had none).
+- **The cheapest survivors** are 571/c = 22 (192), then 523/c = 4 (226), 719/c = 20 (227), 643/c = 14 (232),
+  659/c = 10 (242) and 573/c = 14 (269).
+- **All of these are far beyond demonstrated search capability** (about 63–91 bits). A b ≥ 3 construction for any of
+  them needs a structural method, not more screening. The open questions for that are in
+  `report/prompt_bge3_opus.md`.
+
+## Check: are the 2026 matrices H(716) and H(892) Williamson-type? (2026-10-09)
+
+**Motivation.** 537 = 3·179 and 669 = 3·223. A Williamson-type quadruple of order 179 or 223, combined with trivial
+length-3 T-matrices via Cooper–Wallis, would give H(2148) or H(2676).
+
+**H(892), from the b = 0 core of length 223 [M].**
+- For circulant blocks, Williamson type means every pairwise cross-correlation is symmetric about some common shift.
+- Tested over all 16 reversal patterns and all per-block shifts: **no pair of blocks has a symmetric cross-correlation
+  about any centre.** Negations and a common multiplier cannot change this.
+- So the core is not Williamson-type in its circulant form.
+- A Williamson-type form of order 223 would need a Z₂₂₃ action on H(892). Sylow conjugacy (assuming 223² ∤ |Aut H|)
+  makes any such action conjugate to the core's own, so this is near-conclusive.
+
+**H(716), from the b = 1 bordered core of length 178.**
+- It does not plug in directly.
+- The decisive test is whether Aut(H(716)) has an element of order 179 with four row cycles. That needs nauty or
+  Traces, which could not be built in this container.
+- **Untested.**

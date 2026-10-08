@@ -156,25 +156,21 @@ independent lists?
 - Enumerate achievable x̄ per block (a DP over orbits, pruned by |F| bounds), then meet in the middle over the 4 blocks.
 - t = 1 is just the Q-compression, which is weak.
 
-**Cheapest feasible configurations (log₂E > 0) per open v:**
+**Screen status after this session** (exact DP screen with profile restriction, plus a new exact norm-budget screen:
+Σ_k ‖x̄_k‖² = (4v(ct − c + 1) + 4b(c − 1))/(ct) for the compression onto Q × Z_t, verified on 479 and 347). Every
+configuration with log₂E > 0 and n ≤ 300 was screened.
 
-| v | c | Q | h | d = \|S\| | r | L | n [E] | log₂E | screen |
-|---|---|---|---|---|---|---|---|---|---|
-| 719 | 8 | Z8 | 89 | 22 | 45 | 23 | 135 | 18 | **fails** t = 1 |
-| 659 | 6 | Z6 | 109 | 18 | 52 | 27 | 162 | 21 | **fails** t = 1 |
-| 739 | 10 | Z10 | 73 | 18 | 54 | 29 | 174 | 15 | **fails** t = 1 |
-| 647 | 12 | Z12 | 53 | 13 | 60 | 30 | 179 | 37 | t = 1 undecided (re-running) |
-| 599 | 20 | Z2×Z10 | 29 | 14 | 55 | 30 | 184 | 9 | fails t = 1 (all 6 groups) |
-| 571 | 22 | Z22 | 25 | 10 | 62 | 35 | 192 | 30 | t = 1 passes; t = 5 re-running |
-| 599 | 20 | Z20 | 29 | 14 | 60 | 32 | 200 | 12.5 | one group fails t = 1, one undecided |
-| 515 | 6 | Z6 | 85 | 8 | 70 | 39 | 201 | 53 | t = 1 passes (v = 515 is now solved by others, as 2060 = 4·5·103, Cooper–Wallis) |
-| 659 | 6 | Z6 | 109 | 9 | 78 | 39 | 204 | 86 | queued |
-| 719 | 10 | Z10 | 71 | 14 | 60 | 35 | 203 | 11 | queued |
-| 523 | 4 | Z4 | 130 | 12 | 64 | 39 | 226 | 3.5 | passes t = 1 and t = 5 |
-| 719 | 20 | Z2×Z10 | 35 | 12 | 66 | 41 | 227 | – | t = 1 passes; t = 5 queued |
-| 643 | 14 | Z14 | 45 | 12 | 72 | 39 | 232 | 29 | queued |
-| 647 | 18 | Z18 | 35 | 12 | 74 | 39 | 233 | 36 | queued |
-| 573 | 14 | Z14 | 40 | 12 | 76 | 43 | 269 | 9 | queued |
+| v | surviving configurations (n bits [E]) | dead at or below 300 bits |
+|---|---|---|
+| 571 | **c = 22, Q = Z22, h = 25, d = 10, r = 62, L = 35 (192)**: passes t = 1 and the t = 5 norm test | c = 4 (all) |
+| 523 | c = 4, Q = Z4, h = 130, d = 12, r = 64, L = 39 (226): passes t = 1, t = 5 and the norm test at every t | – |
+| 719 | c = 20, Q = Z2×Z10, h = 35, d = 12, r = 66, L = 41 (227); c = 6 (289) | c = 8, c = 10, c = 18 |
+| 643 | c = 14, Q = Z14, h = 45, d = 12, r = 72 or 74, L = 39 (232–234) | – |
+| 659 | c = 10, Q = Z10, h = 65, d = 12, r = 70, L = 41 (242); c = 4, r = 90 (288) | c = 6 (all) |
+| 573 | c = 14, Q = Z14, h = 40, d = 12, r = 76 or 80 (269–285) | – |
+| 599, 647, 739 | **none** | every b ≥ 3 configuration with n ≤ 300 |
+
+For comparison, the published 479 core sits at n ≈ 151 and 347 at n ≈ 201.
 
 Other notes:
 - 537 has no border (v + 1 = 2·269).

@@ -1,0 +1,7 @@
+{"c": 4, "compressions_tested": 2048, "with_border": 2048}
+{"test": "347 own compression, 347 frame", "border": true}
+{"test": "core-symmetry transforms of 347 compression, 347 frame", "with_border": 0, "of": 150}
+{"profile": [0, 0, 5, 20], "admissible_multisets": 432, "tested": 6, "frames_each": 20, "with_border": 0}
+{"profile": [0, 0, 8, 17], "admissible_multisets": 432, "tested": 6, "frames_each": 20, "with_border": 0}
+{"profile": [0, 5, 8, 12], "admissible_multisets": 3888, "tested": 6, "frames_each": 20, "with_border": 0}
+{"profile": [0, 8, 8, 9], "admissible_multisets": 2160, "tested": 6, "frames_each": 20, "with_border": 0}
