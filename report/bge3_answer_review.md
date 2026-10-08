@@ -82,3 +82,29 @@ log₂E = 55.5).
   a less favourable target than b = c − 1.
 
 **Lead closed for these orders.**
+
+## Generalized options for 523 with c = 12 (2026-10-08)
+
+**Tools:** `bge3_options.py` (enumerator) and `bge3_cost_psi.py` (cost model).
+
+**What the cost run found:** seven c = 12 options (Ψ of size 7, b = 7, h = 43), the cheapest generalized routes seen so
+far.
+
+| options | Q | (d, r, L) | n | log₂E | list bound |
+|---|---|---|---|---|---|
+| 3 Ψ classes | Z3×Z2×Z2 | (14, 49, 26) | ≈ 147 | ≈ 22.4 | ≈ 2^62 |
+| 1 Ψ class | Z3×Z2×Z2 | (14, 56, 31) | ≈ 195 | ≈ 3 | – |
+| 3 Ψ classes | Z4×Z3 | (14, 49, 27) | ≈ 155 | ≈ 14 | ≈ 2^71 |
+
+**Screens** (`scripts/run_c12_screens.sh`; h = 43 is prime, so only t = 1 applies):
+- **All 7 pass the norm-budget screen** (N₁ = 888).
+- **All 7 fail the exact DP screen at t = 1**, in every symmetry group with these (d, r, L). No admissible
+  Q-compression quadruple exists.
+
+**Check of the generalized DP screen [M]:**
+- For two of these Ψ, the screen's spectral target (4v − 4m at ψ ∈ Ψ, ω = 0, else 4v) equals the FFT of the cost
+  model's lag target (4v·δ − 4·Σ_{ψ∈Ψ} ψ(q)) to within 10⁻¹², in the screen's own index convention.
+- With Ψ = all it reproduces the original screens: 647 c12 dead, 347 passes.
+
+**Caveat:** each screen covers the symmetry groups of that option's cheapest configuration. Other (d, r)
+configurations of the same Ψ have higher n and were not screened.
