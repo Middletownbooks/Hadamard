@@ -203,3 +203,22 @@ where the four blocks stay independent and the Kaggle k-tree is ready.
 - **All of these are far beyond demonstrated search capability** (about 63–91 bits). A b ≥ 3 construction for any of
   them needs a structural method, not more screening. The open questions for that are in
   `report/prompt_bge3_opus.md`.
+
+## Check: are the 2026 matrices H(716) and H(892) Williamson-type? (2026-10-09)
+
+**Motivation.** 537 = 3·179 and 669 = 3·223. A Williamson-type quadruple of order 179 or 223, combined with trivial
+length-3 T-matrices via Cooper–Wallis, would give H(2148) or H(2676).
+
+**H(892), from the b = 0 core of length 223 [M].**
+- For circulant blocks, Williamson type means every pairwise cross-correlation is symmetric about some common shift.
+- Tested over all 16 reversal patterns and all per-block shifts: **no pair of blocks has a symmetric cross-correlation
+  about any centre.** Negations and a common multiplier cannot change this.
+- So the core is not Williamson-type in its circulant form.
+- A Williamson-type form of order 223 would need a Z₂₂₃ action on H(892). Sylow conjugacy (assuming 223² ∤ |Aut H|)
+  makes any such action conjugate to the core's own, so this is near-conclusive.
+
+**H(716), from the b = 1 bordered core of length 178.**
+- It does not plug in directly.
+- The decisive test is whether Aut(H(716)) has an element of order 179 with four row cycles. That needs nauty or
+  Traces, which could not be built in this container.
+- **Untested.**
