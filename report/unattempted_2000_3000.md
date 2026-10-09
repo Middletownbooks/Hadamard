@@ -231,3 +231,43 @@ pynauty sdist (`theory/hadaut_traces.c`).
 - Neither group contains Q₈, which every Williamson-type (amicable, not necessarily circulant) form requires.
 - So neither 2026 matrix is a Williamson-type ingredient in any equivalent form. Details:
   `report/theory_arm_2000_3000.md` §2.
+
+## Paley-coset ansatz (from the 359/419 forensics), 2026-10-09 [M unless marked]
+
+**Forensics, verified independently:**
+- The published v = 359 core is *exactly* of this form on its Z₁₁ factor. 116 of its 128 Z₁₁-cosets are ±Legendre(11)
+  on Z₁₁* and the other 12 are constant on Z₁₁*; random signs give about 0.2 Legendre cosets.
+- 419 is approximately of this form: 99 twisted and 16 constant cosets out of 152.
+- The half-shift template of 167 and 179 is also confirmed (combined log₁₀ P = −71.4 and −78.0 on the repo's own cores).
+
+**Ansatz** (`scripts/paley_ansatz.py`). Take G = G′ × Z_p. On each coset, x is α at z = 0 and, on z ≠ 0, either ±χ(z)
+(twisted) or ±1 (constant). That gives 3 bits per coset.
+- The core condition reduces **exactly** to 3 equations per h ∈ G′: lags (h, 0), (h, square) and (h, non-square).
+  Validated against FFT on random labellings.
+- **Exhaustive search** finds solutions at v = 15, 21, 33, 35 (b = 0) and 29 (b = 1); these are saved as positive
+  controls.
+
+**Exact screen** (row sums plus the within-coset equations, which are additive per coset). It agrees with the exact
+counts on all 11 calibration cases. For example, it shows why v = 45 (b = 1, p = 11) is empty: the equations force
+exactly one constant coset, which makes that block's |row sum| ≥ 6.
+
+**Open orders** (`logs/paley_h0_open.jsonl`):
+- **Empty (exact):**
+  - b = 0 with G′ = Z₁, and with G′ = Z₃ for 537, 573 and 669;
+  - b = 1 for 719 (Z₂), 669 (Z₄), 643 (Z₆), 537 (Z₈), 659 (Z₁₄), 523 (Z₁₈) and 739 (Z₁₈).
+- **Pass the screen:**
+  - b = 1: 599 (Z₂₆×Z₂₃, Z₄₆×Z₁₃), 571 (Z₃₀×Z₁₉, Z₁₁₄×Z₅, Z₁₉₀×Z₃), 647 (Z₃₄×Z₁₉, Z₃₈×Z₁₇), 573 (Z₄₄×Z₁₃,
+    Z₅₂×Z₁₁), 659 (Z₉₄×Z₇) and 643 (Z₂₁₄×Z₃);
+  - b = 0 with p = 3: 537, 573 and 669.
+
+**Cost estimates [E]** (row-sum-conditioned Gaussian, within about 2 bits of the exact counts where the screen
+passes):
+- **Full slices:** expected solutions are positive, log₂E = +28 (599 over Z₂₆×Z₂₃) to +47 (647 over Z₃₈×Z₁₇).
+  But the constraint counts are 264–386 bits, so the list-method cost is roughly 2^118 or more.
+- **Multiplier-symmetric slices** (u a square mod p, labels constant on u-orbits of G′): the best so far is 571 over
+  Z₃₀×Z₁₉ with u = 19 (18 orbits) at log₂E ≈ −10 (202 constraint bits); 599 with u = 3 gives about −3 (99 bits).
+- **Anti-symmetric slices** (u a non-square mod p, as in 359) **are exactly impossible for b = 1** [P/M]:
+  - twisted signs alternate around each orbit, so Σ_g x(g, z) = W (the constant-coset sum) for every z ≠ 0;
+  - hence Σ_h PAF_k(h, 0) = A_k² + (p − 1)·W_k² exactly;
+  - with b = 1 row sums (±2, 0, 0, 0), W_k ∈ {−1, 0, 1}, and the total falls short of 4m − 4(n′ − 1). For example,
+    at 599 over Z₂₆×Z₂₃ the maximum is 2116 against the 2292 needed.
