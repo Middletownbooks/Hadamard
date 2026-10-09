@@ -1,2 +1,4 @@
 {"stage1_ys": 2, "alpha_bits_x10": 354, "joined": 1, "stage1": 2}
 {"y": 0, "ref_solutions": 6, "new": {"sizes": [8171, 510, 4072, 16348], "full_sizes": [8192, 512, 4096, 16384], "setup_secs": 0.09, "classes": [56, 21, 49, 16], "kept_log2": [17.4, 20.7], "P": 2, "hash_hits": 6, "overflow": 0, "probes_log2": 20.8, "perm": [3, 1, 0, 2], "join_secs": 1.28, "solutions": 6, "core_ok": true, "hadamard": true, "secs": 210.61}, "ref_secs": 210.73, "agree": true}
+{"y": 1, "ref_solutions": 6, "new": {"sizes": [8171, 510, 4072, 16348], "full_sizes": [8192, 512, 4096, 16384], "setup_secs": 0.07, "classes": [56, 21, 49, 16], "kept_log2": [17.4, 20.7], "P": 2, "hash_hits": 6, "overflow": 0, "probes_log2": 20.8, "perm": [3, 1, 0, 2], "join_secs": 0.46, "solutions": 6, "core_ok": true, "hadamard": true, "secs": 183.45}, "ref_secs": 149.35, "agree": true}
+{"summary": true, "compared": 2, "agree": 2}
