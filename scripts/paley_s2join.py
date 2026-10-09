@@ -3,7 +3,8 @@
 Given a stage-1 solution (alpha A, constant-coset signs W; beta = A - W), find u (+-1 on the twisted multiplier orbits,
 0 on constant cosets) with
     sum_k [PAF(beta_k) + p PAF(u_k)] = 4v delta        (S2 real)
-    sum_k [CC(beta_k, u_k) - CC(u_k, beta_k)] = 0      (S2 imaginary, "X = 0")
+    sum_k [CC(beta_k, u_k) - CC(u_k, beta_k)] = 0      (S2 imaginary, "X = 0"; p = 3 mod 4)
+    sum_k [CC(beta_k, u_k) + CC(u_k, beta_k)] = 0      (the chi-coefficient when p = 1 mod 4: chi is even, chi* = chi)
 Per block k the candidates are all 2^L_k sign vectors on its L_k twisted orbits.  Signatures are reduced to independent
 coordinates (one lag per orbit of <mu, -1> for the PAF part, one per <mu>-orbit pair {h, -h} for X); constant
 coordinates are checked against the target up front (early reject).
@@ -46,7 +47,7 @@ def ccx_rev(g, f):
     g = np.atleast_2d(g); n = g.shape[1]
     return np.stack([(g * np.roll(f, -h)[None, :]).sum(1) for h in range(n)], 1)
 
-def coord_reps(n, mu):
+def coord_reps(n, mu, sym=False):
     """PAF coordinates: one lag per orbit of <mu, -1> (h != 0; lag 0 is constant per block);
     X coordinates: one lag per <mu>-orbit, keeping only one of each pair {O, -O} (X(-h) = -X(h); X = 0 on O = -O)"""
     seen, paf_reps = {0}, []
@@ -66,6 +67,8 @@ def coord_reps(n, mu):
         neg = {(-y) % n for y in o}
         seen |= o | neg
         if neg != o: x_reps.append(h)
+    if sym:                                    # p = 1 mod 4: X is symmetric, same reps as the PAF part plus lag 0
+        x_reps = [0] + paf_reps
     return paf_reps, x_reps
 
 def block_lists(A, W, p, n, orbs, paf_reps, x_reps):
@@ -140,6 +143,7 @@ def csr(keys, M):
     return start, order
 
 def compress_features(U, beta, p, d):
+    sym = (p % 4 == 1)
     """Z_d-level statistic per candidate (additive over blocks): compressions ub[r] = sum_{g = r mod d} u(g);
     F = (PAF_d(betabar) + p PAF_d(ubar) at lags 0..d//2,  Xbar_d at lags 1..(d-1)//2).  Target: (4v, 0, ..., 0)."""
     U = np.asarray(U, np.int64)
@@ -147,8 +151,9 @@ def compress_features(U, beta, p, d):
     cols = []
     for h in range(d // 2 + 1):
         cols.append(p * (ub * np.roll(ub, -h, axis=1)).sum(1) + int((bb * np.roll(bb, -h)).sum()))
-    for h in range(1, (d - 1) // 2 + 1):
-        cols.append((bb[None, :] * np.roll(ub, -h, axis=1)).sum(1) - (ub * np.roll(bb, -h)[None, :]).sum(1))
+    for h in (range(0, d // 2 + 1) if sym else range(1, (d - 1) // 2 + 1)):
+        sg = 1 if sym else -1
+        cols.append((bb[None, :] * np.roll(ub, -h, axis=1)).sum(1) + sg * (ub * np.roll(bb, -h)[None, :]).sum(1))
     return np.stack(cols, 1)
 
 @numba.njit(cache=True)
@@ -242,7 +247,8 @@ def block_data(Ak, Wk, v, p, n, mu, seed, dcomp):
     key = (Ak.tobytes(), Wk.tobytes(), p, n, mu, seed, dcomp)
     if key in _CACHE:
         _CACHE[key] = _CACHE.pop(key); return _CACHE[key]          # LRU refresh
-    orbs = orbits(n, mu); paf_reps, x_reps = coord_reps(n, mu)
+    sym = (p % 4 == 1)
+    orbs = orbits(n, mu); paf_reps, x_reps = coord_reps(n, mu, sym)
     A4 = np.zeros((4, n), np.int64); W4 = np.zeros((4, n), np.int64); A4[0] = Ak; W4[0] = Wk
     beta = (Ak - Wk).astype(np.float64)
     tw = [o for o in orbs if Wk[o[0]] == 0]; L = len(tw)
@@ -253,7 +259,8 @@ def block_data(Ak, Wk, v, p, n, mu, seed, dcomp):
     Uh = np.fft.rfft(U.astype(np.float32), axis=1); bh = np.fft.rfft(beta)
     Pu = np.rint(np.fft.irfft(np.abs(Uh) ** 2, n=n, axis=1)).astype(np.int64)
     Pb = np.rint(np.fft.irfft(np.abs(bh) ** 2, n=n)).astype(np.int64)
-    X = np.rint(np.fft.irfft(np.conj(bh)[None, :] * Uh - np.conj(Uh) * bh[None, :], n=n, axis=1)).astype(np.int64)
+    sgn = 1.0 if sym else -1.0                 # X = CC(beta, u) -+ CC(u, beta)  (p = 3 / 1 mod 4)
+    X = np.rint(np.fft.irfft(np.conj(bh)[None, :] * Uh + sgn * np.conj(Uh) * bh[None, :], n=n, axis=1)).astype(np.int64)
     del Uh
     lag0 = int(Pb[0] + p * Pu[0, 0])
     sig = np.concatenate([(Pb[None, paf_reps] + p * Pu[:, paf_reps]), X[:, x_reps]], 1).astype(np.int32)
