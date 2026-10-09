@@ -136,7 +136,18 @@ def exact_count(v, b, n, p):
         tot += cnt * pairs.get(need, 0)
     return tot
 
+def rowsum_feasible(v, b, n, p):
+    """row sum of a block = sum_g alpha_g + (p-1) * sum_g w_g (twisted cosets sum to 0 on Z_p^*); exact DP over cosets"""
+    per = {a + (p - 1) * w for a, t, s_ in LABELS for w in [0 if t else s_]}
+    S = {0}
+    for _ in range(n): S = {x + y for x in S for y in per}
+    if b == 0:
+        import itertools as it
+        return any(a*a + b_*b_ + c*c + d*d == 4 * v for a, b_, c, d in it.product(sorted(S), repeat=4))
+    return (2 in S or -2 in S) and 0 in S                                 # b=1 row sums (+-2, 0, 0, 0)
+
 def gauss_estimate(v, b, n, p, N=200000, seed=1):
+    if not rowsum_feasible(v, b, n, p): return {"v": v, "b": b, "n": n, "p": p, "feasible": False, "why": "row sums"}
     C, nqr = corr_table(p); m = n * p
     tgt = np.full((n, 3), -4 * b, np.int64); tgt[0, 0] = 4 * m; T = tgt.reshape(-1)
     rng = np.random.default_rng(seed)
@@ -171,3 +182,115 @@ if __name__ == "__main__" and sys.argv[1] in ("count", "estimate"):
     if sys.argv[1] == "count":
         import math; c = exact_count(v, b, n, p); out["exact_count"] = c; out["exact_log2"] = round(math.log2(c), 1) if c else None
     print(json.dumps(out), flush=True)
+
+
+# ---------------- row-sum-conditioned estimate (as nbits.py does) ----------------
+def block_rowsum(lab, p):
+    a = np.array([LABELS[i][0] for i in range(8)]); w = np.array([0 if LABELS[i][1] else LABELS[i][2] for i in range(8)])
+    return a[lab].sum(1) + (p - 1) * w[lab].sum(1)
+
+def count_rowsum(n, p):
+    """exact number of labelings per block row sum (DP over cosets)"""
+    from collections import Counter
+    per = Counter(LABELS[i][0] + (p - 1) * (0 if LABELS[i][1] else LABELS[i][2]) for i in range(8))
+    D = Counter({0: 1})
+    for _ in range(n):
+        E = Counter()
+        for x, cx in D.items():
+            for y, cy in per.items(): E[x + y] += cx * cy
+        D = E
+    return D
+
+def sample_rowsum(n, p, a, N, rng, tries=200):
+    out = []
+    for _ in range(tries):
+        lab = rng.integers(0, 8, (max(N, 20000), n)); lab = lab[block_rowsum(lab, p) == a]
+        out.append(lab)
+        if sum(len(x) for x in out) >= N: break
+    lab = np.concatenate(out)[:N]
+    return lab if len(lab) >= min(N, 2000) else None
+
+def gauss_estimate2(v, b, n, p, N=60000, seed=1, maxprof=8):
+    import math, itertools as it
+    C, nqr = corr_table(p); m = n * p; rng = np.random.default_rng(seed)
+    tgt = np.full((n, 3), -4 * b, np.int64); tgt[0, 0] = 4 * m; T = tgt.reshape(-1)
+    cnt = count_rowsum(n, p); A = sorted(a for a in cnt if a >= 0)
+    if b == 0:
+        profs = [q for q in it.combinations_with_replacement(A, 4) if sum(x * x for x in q) == 4 * v]
+    else:
+        profs = [(2, 0, 0, 0)] if (2 in cnt and 0 in cnt) else []
+    if not profs: return {"v": v, "b": b, "n": n, "p": p, "feasible": False, "why": "row sums"}
+    profs = sorted(profs, key=lambda q: -sum(math.log2(cnt[x]) for x in q))[:maxprof]
+    stats = {}
+    def st(a):
+        if a not in stats:
+            lab = sample_rowsum(n, p, a, N, rng)
+            if lab is None: stats[a] = None
+            else:
+                R = reduced_paf(lab, n, C).reshape(len(lab), -1); stats[a] = (R.mean(0), np.cov(R.T), R)
+        return stats[a]
+    best = None; tot = 0.0
+    for q in profs:
+        S = [st(a) for a in q]
+        if any(s is None for s in S): continue
+        perms = len(set(it.permutations(q))); signs = 2 ** sum(1 for x in q if x != 0)
+        mu = sum(s[0] for s in S); Cv = sum(s[1] for s in S)
+        keep = [j for j in range(len(T)) if j != 0]
+        # drop exactly duplicated coordinates (PAF(h,c) = PAF(-h,c'))
+        Rcat = sum(s[2][:2000] for s in S)
+        cols, seen = [], {}
+        for j in keep:
+            key = Rcat[:, j].tobytes()
+            if key in seen: continue
+            seen[key] = j; cols.append(j)
+        mu_ = mu[cols]; C_ = Cv[np.ix_(cols, cols)]; T_ = T[cols]
+        w, V = np.linalg.eigh(C_); kw = w > 1e-6 * w.max(); pr = V.T @ (T_ - mu_)
+        if (~kw).any() and np.abs(pr[~kw]).max() > 1e-6 * max(1, np.abs(pr).max()): continue
+        d = Rcat[:, cols] - Rcat[0, cols]; steps = np.array([max(1, int(np.gcd.reduce(np.abs(d[:, j])))) for j in range(len(cols))])
+        lp = (np.log(steps).sum() - 0.5 * kw.sum() * math.log(2 * math.pi) - 0.5 * np.log(w[kw]).sum() - 0.5 * (pr[kw] ** 2 / w[kw]).sum()) / math.log(2)
+        lE = sum(math.log2(cnt[x]) for x in q) + lp + math.log2(perms * signs)
+        tot += 2 ** lE
+        if best is None or lE > best[1]: best = (list(q), round(lE, 1), round(-lp, 1))
+    if best is None: return {"v": v, "b": b, "n": n, "p": p, "feasible": False, "why": "no admissible profile"}
+    return {"v": v, "b": b, "n": n, "p": p, "free_bits": 12 * n, "log2E_total": round(math.log2(tot), 1) if tot > 0 else None,
+            "best_profile": best[0], "best_profile_log2E": best[1], "best_profile_constraint_bits": best[2]}
+
+if __name__ == "__main__" and sys.argv[1] in ("estimate2", "count2"):
+    v, b, n, p = map(int, sys.argv[2:6]); out = gauss_estimate2(v, b, n, p)
+    if sys.argv[1] == "count2":
+        import math; c = exact_count(v, b, n, p); out["exact_log2"] = round(math.log2(c), 1) if c else None
+    print(json.dumps(out), flush=True)
+
+
+# ---------------- exact screen: row sums + within-coset (h = 0) equations ----------------
+def exact_h0_screen(v, b, n, p):
+    """Per-coset additive invariants: row sum r(L), within-coset PAF e(L, QR), e(L, NQR) (lag (0, s), s != 0).
+    Block value = sum over its n cosets; DP over cosets gives the reachable set per block; then require a
+    row-sum profile and sum_k e_k = target at (0, QR) and (0, NQR).  Exact necessary condition."""
+    import itertools as it
+    C, nqr = corr_table(p)
+    r = [LABELS[L][0] + (p - 1) * (0 if LABELS[L][1] else LABELS[L][2]) for L in range(8)]
+    e = [[int(sum(LC[L, i] * LC[L, j] * C[i, j, c] for i in range(3) for j in range(3))) for c in (1, 2)] for L in range(8)]
+    S = {(0, 0, 0)}
+    for _ in range(n):
+        S = {(x[0] + r[L], x[1] + e[L][0], x[2] + e[L][1]) for x in S for L in range(8)}
+    tgtQ = tgtN = -4 * b
+    by_r = {}
+    for rs, eq, en in S: by_r.setdefault(rs, set()).add((eq, en))
+    if b == 0:
+        rows = sorted(by_r)
+        profs = [q for q in it.product([x for x in rows if x >= 0], repeat=4) if sum(x * x for x in q) == 4 * v and list(q) == sorted(q)]
+        cand = [[s * x for s, x in zip(signs, q)] for q in profs for signs in it.product((1, -1), repeat=4)]
+    else:
+        cand = [[a, 0, 0, 0] for a in (2, -2)]
+    for q in cand:
+        sets = [by_r.get(a) for a in q]
+        if any(s is None for s in sets): continue
+        s12 = {(x[0] + y[0], x[1] + y[1]) for x in sets[0] for y in sets[1]}
+        s34 = {(x[0] + y[0], x[1] + y[1]) for x in sets[2] for y in sets[3]}
+        if any((tgtQ - x[0], tgtN - x[1]) in s34 for x in s12):
+            return {"v": v, "b": b, "n": n, "p": p, "h0_screen": True, "profile": q}
+    return {"v": v, "b": b, "n": n, "p": p, "h0_screen": False}
+
+if __name__ == "__main__" and sys.argv[1] == "h0":
+    v, b, n, p = map(int, sys.argv[2:6]); print(json.dumps(exact_h0_screen(v, b, n, p)))
