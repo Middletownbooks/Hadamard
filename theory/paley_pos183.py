@@ -107,13 +107,16 @@ def q_level_solutions(P, A, W, cos):
             ok = (S <= tgt[None, :]).all(1)
             for b_ in np.nonzero(ok)[0]: T[S[b_].tobytes()].append((a, int(b_)))
         return T
-    T01 = table(0, 1); T23 = table(2, 3); out = []
+    T01 = table(0, 1); T23 = table(2, 3); idx = []
     for kb, lst in T01.items():
         need = (tgt - np.frombuffer(kb, np.int64)).astype(np.int64).tobytes()
-        for (a, b_) in lst:
-            for (c, d) in T23.get(need, []):
-                out.append([per[0][0][a], per[1][0][b_], per[2][0][c], per[3][0][d]])
-    return out
+        if need not in T23: continue
+        L1 = np.array(lst, np.int64); L2 = np.array(T23[need], np.int64)
+        I = np.repeat(np.arange(len(L1)), len(L2)); J = np.tile(np.arange(len(L2)), len(L1))
+        idx.append(np.stack([L1[I, 0], L1[I, 1], L2[J, 0], L2[J, 1]], 1))
+    if not idx: return np.zeros((0, 4, 8), np.int64)
+    idx = np.concatenate(idx)
+    return np.stack([per[k][0][idx[:, k]] for k in range(4)], 1)          # (N, 4, 8)
 
 def stage2(P, A, W, cos, max_sols=4, QS=None):
     """exact.  For |H'| = 2 the S2/X conditions split by the restriction lambda = psi(t) = +-1:
@@ -133,10 +136,15 @@ def stage2(P, A, W, cos, max_sols=4, QS=None):
     Bh = np.array([[sum(beta[k][g] * chi_val(c, g) for g in range(n)) for c in chars] for k in range(4)])   # (4, 8) Z[i]
     psi_s = np.array([[chi_val(c, reps[q]) for c in chars] for q in range(8)])                           # (8 cosets, 8 chars)
     if QS is None: QS = q_level_solutions(P, A, W, cos)
-    groups = defaultdict(list)
-    for sol in QS:
-        Z = tuple(tuple(int(q) for q in range(8) if sol[k][q] == 0 and W[k, reps[q]] == 0) for k in range(4))
-        groups[Z].append(sol)
+    groups = {}
+    if len(QS):
+        tw = np.array([[W[k, reps[q]] == 0 for q in range(8)] for k in range(4)])          # (4, 8) coset has twisted pos
+        zm = ((QS == 0) & tw[None, :, :])                                                  # (N, 4, 8)
+        keys = (zm.reshape(len(QS), 32) * (1 << np.arange(32, dtype=np.int64))[None, :]).sum(1)
+        uk, first = np.unique(keys, return_index=True)
+        for kv, i0 in zip(uk.tolist(), first.tolist()):
+            Z = tuple(tuple(int(q) for q in range(8) if (kv >> (8 * k + q)) & 1) for k in range(4))
+            groups[Z] = [QS[i0]]
     sols = []; work = 0
     def block_sigs(k, Zk):
         m = len(Zk); S = 1 - 2 * ((np.arange(2 ** m)[:, None] >> np.arange(m)) & 1)                 # (2^m, m)
@@ -183,9 +191,24 @@ def main(max_cores=3):
     S = C8Family(); mods, n_full, co_full, sig, chars, cos_full = S.group(2)
     lam = np.where((co_full[:, 0] + co_full[:, 1]) % 2 == 0, 1, -1)
     gs = gadgets(P, cos, t)
-    n_s1 = 0; found = []; s2work = 0; nQ_tot = [0]; Qcache = {}
+    n_s1 = 0; found = []; s2work = 0; nQ_tot = [0]; Qcache = {}; seen_orbits = set()
     for gi, (W, J) in enumerate(gs):
         for A in stage1(P, cos, W, J):
+            # per-block symmetries preserving compression, PAFs and X: translation by t in H', reflection g -> -g
+            # (with u -> -u, the NQR multiplier on Z_p, so X_k is unchanged); process one stage-1 solution per orbit
+            key = []
+            for k in range(4):
+                imgs = []
+                for tr in (0, t):
+                    for rf in (False, True):
+                        perm = np.array([int(P.add[int(P.G.idx(-P.G.co[g])) if rf else g, tr]) for g in range(P.n)])
+                        a2 = np.zeros(P.n, np.int64); w2 = np.zeros(P.n, np.int64)
+                        a2[perm] = A[k]; w2[perm] = W[k]
+                        imgs.append(a2.tobytes() + w2.tobytes())
+                key.append(min(imgs))
+            key = tuple(key)
+            if key in seen_orbits: continue
+            seen_orbits.add(key)
             n_s1 += 1
             hk = tuple(tuple(np.nonzero(W[k] != 0)[0].tolist()) for k in range(4))
             if hk not in Qcache: Qcache[hk] = q_level_solutions(P, A, W, cos)

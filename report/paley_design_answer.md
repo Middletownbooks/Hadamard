@@ -24,8 +24,8 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
 
 3. **(C) New exact obstructions.**
    - **599 at b = 1 (G′ = Z₂₆, p = 23), the prompt's top b = 1 option, contains no Paley-coset core at all** (§4, [P]).
-   - The same "w-magnitude" screen also kills the b = 1 Paley options of 523 (p = 29), 537, 643, 659 (p = 47), 669, 719 and
-     739 (p = 41), and many b ≥ 3 options [M].
+   - The new "w-magnitude" screen kills it. Its other kills (the b = 1 Paley options of 523, 537, 643, 659 (p = 47), 669,
+     719 and 739, and 25 b ≥ 3 options) already fail the norm identity, i.e. the repo's h0 screen [M].
    - The doubly-twisted ("iterated Paley") b = 1 slices of 599, 647, 659 and 643 are exactly empty, killed by their compression
      onto G″ [M].
    - The doubly-twisted slices of 571, 573 and 599 (c = 6) are predicted empty (log₂E = −11 to −46) [E].
@@ -45,11 +45,16 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
      - the fact that the border-forced compression pins α to about 50 bits at 359.
 
 5. **Positive controls [M].**
+   - The exact two-stage design pipeline (§7.2) constructs and verifies Hadamard matrices H(116), H(172), H(228),
+     H(284) and H(340): b = 1, p = 7, n′ = 4–12, each in at most a few seconds (`theory/paley_b1pipe.py`).
+   - At p = 11 it proves v = 67 and v = 89 empty. The Gaussian estimate for 89 was +28.7, so Gaussian estimates overcount
+     when the w-gadget is rigid; 599 at b = 1 shows the same pattern (prompt: +28, exactly empty here).
    - Exact stage 1 at 359, given the published compression and gadget, enumerates all 4096 stage-1 solutions in 25 min;
      the published α is among them.
    - The published 359 border, inflated, serves the whole c = 8, p = 11 family. For v = 183 exactly 2 single-deviation
-     compressions are admissible.
-   - The exact two-stage pipeline at v = 183: see §7 for the outcome.
+     compressions are admissible. The c = 4 builder rebuilds a verified H(1916) from the 479 core with a border found
+     automatically.
+   - None of this reaches ≤ 2^45 at 359 or at an open order (§7.3).
 
 ---
 
@@ -166,7 +171,9 @@ Proof:
 - This is checked mechanically by `theory/paley_wscreen.py b1` [M].
 - The repo's h0 screen passed this option because it uses only h′ = 0 and row sums.
 
-**The screen over all options** [M] (`theory/logs/paley_wscreen_b1.jsonl`, `…_bge3.jsonl`):
+**The screen over all options** [M] (`theory/logs/paley_wscreen_b1.jsonl`, `…_bge3.jsonl`).
+**The only new kill is 599 (p = 23).** Every other dead option has no (K, N₋, N₊) at all, i.e. it fails the norm identity,
+which is part of the repo's h0 screen.
 - **b = 1, dead:**
   - 523 (p = 29);
   - 537 (p = 67);
@@ -295,48 +302,78 @@ Proof:
   supply S2 values of size about 10 only.
 - The exact small-case searches (13 cases with b ≥ 3 or b = 1) found no (C, D) solution except at v = 57.
 
-## 7. Question 4: positive control at 359
+## 7. Question 4: positive controls, and why 359 stays out of reach
 
-**Stage 1 is solved exactly [M]** (`theory/paley_stage1.py check359`):
+### 7.1 Stage 1 at 359 is solved exactly [M]
+
+`theory/paley_stage1.py check359`:
 - Inputs: the published compression and gadget.
 - Per-block α lists: 98,304, 16,384, 4 and 279,936 (2^50.7 combinations).
 - A hashed meet-in-the-middle finds **all 4096 stage-1 solutions in 25 min** on one core.
-- The published α is among them, and every solution has N₋ = 11, as the norm identity requires.
-- The solutions are per-block symmetry images: 4, 16, 4 and 64 distinct α per block.
+- The published α is among them, and every solution has N₋ = 11.
+- The solutions are per-block symmetry images: 4, 16, 4 and 64 distinct α per block. So up to symmetry, the published
+  compression and gadget admit essentially one y.
 
-**Stage 2 is the bottleneck [M, E]:**
-- **Gaussian count** (`theory/paley_compfix.py`):
-  - 116 u-bits against 125.9 constraint bits gives log₂E = −9.9 per y;
-  - with compression and gadget fixed, the whole system has log₂E = −7.9.
-  - So with the border-forced compression and the published gadget, the published core is essentially the only one.
-- **Exact Q-level count** (`theory/paley_stage2_levels.py`):
-  - given the published y, **2^30.2 Q-level u-compressions** satisfy the Q-level part of S2 exactly;
-  - 2^84.8 of the 2^116 u-configurations pass it.
-  - The λ = −1 and λ = ±i levels must then remove about 95 bits through further joins of about 2^27 each.
-  - About 2^57 per y.
-- **Local search on stage 2 fails [M].** SA on u alone, given the published y, never finds the known solution in
-  6 × 3·10⁸ steps (final cost 160–320).
-- **The other exact decompositions all cost about 2^(N/2) = 2^55–2^58 per y**: Z₂²-character halves, G′/A₁ phases and
-  block meet-in-the-middle.
+### 7.2 The exact two-stage pipeline and its positive controls [M]
 
-**Cost of the design route at 359 [E]:**
-- about 2^8 (compression, gadget) classes (needed because each class holds about 2^−8 solutions);
-- × 2^57 per y in stage 2;
-- ≈ **2^65**, against a target of ≤ 2^45.
-- The authors' local search evidently did better in the full ansatz, where log₂E = +67.7 and solutions are dense.
+**Pipeline.**
+1. The norm identity gives (K, N₋, N₊).
+2. Enumerate w-gadgets up to per-block translation and reflection, filtered by Lemma 4.
+   - Translation preserves every PAF and X_k.
+   - Reflection is combined with u ↦ −u (the NQR multiplier), which also preserves X_k (checked on 359).
+3. **Stage 1.** Take every α with the required row sums (b = 1) or the border-forced compression (b ≥ 3), and run an
+   exact 2+2 join on S1.
+4. **Stage 2.** Exact 2+2 join on (ΣPAF(β) + pΣPAF(u), X) = (4vδ, 0).
+   - For |H′| = 2 the levels decouple exactly: the Q-level sees only the coset sums u_Q, and the λ = −1 level sees only
+     the signs on the cosets with u_Q = 0 (`theory/paley_pos183.py`).
+5. **Completion.**
+   - b = 1: the bordered GS array with border rows and columns S, T ∈ H(4), constant on blocks. The corner is forced,
+     Cn = −S Σᵀ T/4, with Σ the block row-sum matrix. Checked by rebuilding H(668) from the published 167 core.
+   - b ≥ 3, c = 4: `border_c4`. Checked by rebuilding H(1916) from the published 479 core with an automatically found
+     border.
+   - b ≥ 3, c = 8: the 359 border, inflated. Checked by rebuilding H(1436).
 
-**Positive control at v = 183** (the smallest member of 359's family: c = 8, b = 7, p = 11, G′ = Z₂²×Z₄, |H′| = 2) [M]:
-- `theory/paley_c8family.py` rebuilds the published H(1436) exactly. It recomputes the corner from
-  C = −K_big Core^T Kc_big/(32h) and reuses K and Kc, inflated by h.
-- **Exactly 2 of the 64 single-deviation 183-compressions are accepted by the 359 border**: deviations (2, −2, 2, 4) with
-  constants (−2, 2, −2, −2), and its negation.
-- The norm identity forces K = 4 with N₋ = 3. Two pairs in two different blocks are needed, because a same-block pair of
-  pairs leaves ±200 off H′.
-- Stage 2 decouples exactly for |H′| = 2:
-  - the Q-level involves only u_Q;
-  - the λ = −1 level involves only the signs on the u_Q = 0 cosets.
-- Measured per stage-1 solution: about 3·10⁶ Q-level solutions.
-- RESULT: (pending; filled in below)
+**Results** (`theory/paley_b1pipe.py`, `theory/logs/paley_b1pipe_*.log`; every H checked as H Hᵀ = N I in exact integers):
+
+| v | b | p | n′ | result | time |
+|---|---|---|---|---|---|
+| 29 | 1 | 7 | 4 | **H(116)** | 0.7 s |
+| 43 | 1 | 7 | 6 | **H(172)** | 0.8 s |
+| 57 | 1 | 7 | 8 | **H(228)** | 1.4 s |
+| 71 | 1 | 7 | 10 | **H(284)** | 2.6 s |
+| 85 | 1 | 7 | 12 | **H(340)** | 29.8 s |
+| 67 | 1 | 11 | 6 | exactly empty (16 gadget classes, 0 stage-1 solutions) | 0.0 s |
+| 89 | 1 | 11 | 8 | exactly empty (33 classes, 0 stage-1 solutions), although the Gaussian estimate says log₂E = +28.7 | 0.1 s |
+| 133 | 1 | 11 | 12 | RESULT133 | |
+| 99, 177 | 1 | 7, 11 | 14, 16 | RESULT99177 | |
+| 183 | 7 | 11 | 16 | 17 stage-1 orbit classes with the 359-border compression swept exactly, no core. About 2^21.5 Q-level solutions and 30,912 zero patterns each. The sweep then stopped (memory) | 9 min |
+
+**Reading.**
+- At p = 7 the norm identity gives 2K − N₋ = n′ − 1, so K is at least about n′/2. Stage 2 keeps slack, and the first
+  stage-1 solution always completed.
+- At p = 11 small orders can be empty even when the Gaussian model predicts 2^28 solutions. The model ignores how rigid
+  the gadget is. This is the same failure as at 599 (b = 1), where the Gaussian estimate is +28 and the ansatz is exactly
+  empty (Theorem 5).
+
+### 7.3 Why the pipeline does not reach 359 or an open order at ≤ 2^45
+
+**Stage 2 is the wall.**
+- The exact 2+2 join holds 2^(n′ − K/4) per list, i.e. about 2^(2n′) pairs. That is feasible here up to n′ ≈ 16.
+- At 359 the Q-level count is exact: **2^30.2 Q-level solutions** given the published y, with 2^84.8 of 2^116
+  u-configurations passing.
+- Solving the remaining levels per Q-solution:
+  - naively: about 2^27 each, so about 2^57 per y;
+  - with the pair-sum / zero-pattern decoupling of §7.2 extended to Z₄: estimated 2^44–2^48 per y [E].
+- Stage 2 has log₂E = −9.9 per y [E]. So about 2^10 distinct y-classes are needed, i.e. about 2^8 (compression, gadget)
+  classes.
+- Total: **2^54–2^58 at 359** [E].
+- **SA on stage 2 fails [M]:** given the published y, SA never finds the known u in 6 × 3·10⁸ steps (final cost
+  160–320).
+
+**At the open orders it is worse.**
+- b = 1 needs n′ ≥ 26: 571 (30), 647 (34, 38), 599 (46), 573 (44, 52), 659 (94).
+- b ≥ 3, p = 11 needs n′ = 54–64.
+- So the stage-2 joins are 2^60 or more, and Gaussian log₂E per y is negative wherever p ≥ 11.
 
 ## 8. Question 5: the b ≥ 3, p = 11 options and their borders
 
