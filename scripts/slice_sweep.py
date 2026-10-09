@@ -19,13 +19,13 @@ def orbit_partition(n, u):
     return tuple(sorted(out))
 
 if __name__ == "__main__":
-    a = sys.argv[1:]; opt = {"--omin": "8", "--omax": "40", "--N": "20000", "--b": "1"}; pos = []; i = 0
+    a = sys.argv[1:]; opt = {"--omin": "8", "--omax": "40", "--N": "20000", "--b": "1", "--umin": "2"}; pos = []; i = 0
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: pos.append(int(a[i])); i += 1
     v, p = pos; b = int(opt["--b"]); n = (v - b) // p; assert n * p == v - b and n % p
     seen = {}
-    for u in range(2, n):
+    for u in range(int(opt["--umin"]), n):
         if gcd(u, n) != 1: continue
         part = orbit_partition(n, u)
         if part in seen: continue
