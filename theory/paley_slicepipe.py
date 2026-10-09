@@ -56,7 +56,7 @@ def expand(vals, orbs_sel, n, base=None):
     for j, o in enumerate(orbs_sel): M[:, o] = vals[:, [j]]
     return M
 
-def run_gadget(W, Jp, v, p, n, orbs, max_cores=1, log=None, stats=None):
+def run_gadget(W, Jp, v, p, n, orbs, max_cores=1, log=None, stats=None, stage2=True, record=None):
     """W (4, n) gadget (w on constant orbits), Jp (4, n) bool J' mask.  Returns list of finished cores."""
     m = n * p; TJ = np.full(n, -4 * p, np.int64); TJ[0] = 4 * m - 4 * (p - 1); rs = [2, 0, 0, 0]
     lists = []
@@ -75,13 +75,24 @@ def run_gadget(W, Jp, v, p, n, orbs, max_cores=1, log=None, stats=None):
         stats['alpha_bits_x10'] = stats.get('alpha_bits_x10', 0) + int(10 * sum(math.log2(len(l[0])) for l in lists))
         stats['joined'] = stats.get('joined', 0) + 1
     found = []
-    for i, j in BP.join2x2([l[1] for l in lists], TJ):
-        a0, a1 = divmod(i, len(lists[1][0])); a2, a3 = divmod(j, len(lists[3][0]))
-        A = np.array([lists[0][0][a0], lists[1][0][a1], lists[2][0][a2], lists[3][0][a3]])
+    # pair the largest alpha list with the smallest (S1 is a symmetric sum over blocks); guard memory
+    ordr = sorted(range(4), key=lambda k: len(lists[k][0]))
+    perm = [ordr[3], ordr[0], ordr[2], ordr[1]]
+    if len(lists[perm[0]][0]) * len(lists[perm[1]][0]) > (1 << 28):
+        if stats is not None: stats['too_big'] = stats.get('too_big', 0) + 1
+        return []
+    L_ = [lists[k] for k in perm]
+    for i, j in BP.join2x2([l[1] for l in L_], TJ):
+        a0, a1 = divmod(i, len(L_[1][0])); a2, a3 = divmod(j, len(L_[3][0]))
+        sel = [L_[0][0][a0], L_[1][0][a1], L_[2][0][a2], L_[3][0][a3]]
+        A = np.zeros((4, n), np.int64)
+        for slot, k in enumerate(perm): A[k] = sel[slot]
         if stats is not None: stats['stage1'] = stats.get('stage1', 0) + 1
         if not BP.lemma6_real_chars(A, W, p, n):
             if stats is not None: stats['lemma6_cut'] = stats.get('lemma6_cut', 0) + 1
             continue
+        if record is not None: record.append((A.copy(), W.copy(), Jp.copy()))
+        if not stage2: continue
         for U in stage2_slice(A, W, p, v, n, orbs):
             rec = BP.finish(A, U, W, v, p, n); found.append(rec)
             if log: log(CORE=True, **{k_: rec[k_] for k_ in rec if k_ != 'X'})
@@ -267,12 +278,13 @@ def predicted_stage1(W, Jp, p, n, orbs, rng, N=3000):
         return None
     return bits - c1
 
-def guided(v, p, n, mu, K, Nm, max_runs=300, seed=0, B=2, Stight=(-2, -1, 0, 1), thresh=0.0, max_cores=1, time_cap=6000):
+def guided(v, p, n, mu, K, Nm, max_runs=300, seed=0, B=2, Stight=(-2, -1, 0, 1), thresh=0.0, max_cores=1, time_cap=6000, kmax=None, stage2=True):
     """designed gadgets as in `designed`, restricted to |t_k| <= 1, alpha-feasible, and RANKED by the predicted stage-1
     yield: only gadgets with Gaussian log2 E(stage 1) > thresh run the exact stages"""
     rng = np.random.default_rng(seed); orbs = orbits(n, mu); r = len(orbs); osz = [len(o) for o in orbs]
-    t0 = time.time(); BG = block_gadgets(n, orbs, K, B)
+    t0 = time.time(); BG = block_gadgets(n, orbs, kmax or K, B)
     BG = {sz: [g for g in lst if abs(g[1]) <= 1] for sz, lst in BG.items()}
+    rec = [] if not stage2 else None
     BG = {sz: lst for sz, lst in BG.items() if lst}
     sizes = sorted(BG)
     logf = open(os.path.join(ROOT, 'theory', 'logs', f'paley_slicepipe_guided_v{v}_mu{mu}_K{K}_s{seed}.log'), 'w')
@@ -302,9 +314,16 @@ def guided(v, p, n, mu, K, Nm, max_runs=300, seed=0, B=2, Stight=(-2, -1, 0, 1),
         preds.append(round(pr, 1))
         if pr <= thresh: agg['low_yield'] += 1; continue
         runs += 1; st = {}
-        fnd = run_gadget(W, Jp, v, p, n, orbs, max_cores=max_cores, stats=st, log=L)
+        n_before = len(rec) if rec is not None else 0
+        fnd = run_gadget(W, Jp, v, p, n, orbs, max_cores=max_cores, stats=st, log=L, stage2=stage2, record=rec)
         for k_, val in st.items():
             if k_ != 'alpha_lists': agg[k_] += val
+        if rec is not None:
+            L(gadget_run=runs, predicted=round(pr, 1), alpha_lists=st.get('alpha_lists'), stage1_new=len(rec) - n_before,
+              secs=round(time.time() - t0, 1))
+            if len(rec) > n_before:
+                np.savez_compressed(os.path.join(ROOT, 'theory', 'logs', f'paley_slicepipe_stage1_v{v}_mu{mu}_K{K}_s{seed}.npz'),
+                                    A=np.array([x[0] for x in rec]), W=np.array([x[1] for x in rec]), Jp=np.array([x[2] for x in rec]))
         if fnd:
             found += fnd; L(gadget_run=runs, predicted=round(pr, 1), W=W.tolist(), Jp=Jp.astype(int).tolist(), secs=round(time.time() - t0, 1)); break
         if runs % 10 == 0: L(progress=True, runs=runs, tried=tried, **agg, secs=round(time.time() - t0, 1))
@@ -324,6 +343,11 @@ if __name__ == "__main__":
         a = list(map(int, sys.argv[2:]))
         v, p, n, mu, K, Nm = a[:6]; ng = a[6] if len(a) > 6 else 300; sd = a[7] if len(a) > 7 else 0
         guided(v, p, n, mu, K, Nm, ng, sd)
+    elif cmd == 'guided1':                      # stage 1 only (large slices): record y's, no stage-2 join
+        a = list(map(int, sys.argv[2:]))
+        v, p, n, mu, K, Nm = a[:6]; ng = a[6] if len(a) > 6 else 50; sd = a[7] if len(a) > 7 else 0
+        km = a[8] if len(a) > 8 else 14; cap = a[9] if len(a) > 9 else 6000
+        guided(v, p, n, mu, K, Nm, ng, sd, kmax=km, stage2=False, time_cap=cap)
     elif cmd == 'random':
         a = list(map(int, sys.argv[2:]))
         v, p, n, mu, K, Nm = a[:6]; ng = a[6] if len(a) > 6 else 200; sd = a[7] if len(a) > 7 else 0

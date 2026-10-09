@@ -36,14 +36,17 @@ def join2x2(P, T, seed=5):
     key = lambda M: (M.astype(np.uint64) * wts[None, :]).sum(1)
     k = [key(M) for M in P]
     K01 = (k[0][:, None] + k[1][None, :]).reshape(-1); order = np.argsort(K01, kind='stable'); Ks = K01[order]
-    need = ((np.asarray(T).astype(np.uint64) * wts).sum() - k[2][:, None] - k[3][None, :]).reshape(-1)
-    lo = np.searchsorted(Ks, need, 'left'); hi = np.searchsorted(Ks, need, 'right')
+    kT = (np.asarray(T).astype(np.uint64) * wts).sum()
     n1, n3 = len(P[1]), len(P[3])
-    for jj in np.nonzero(hi > lo)[0]:
-        a2, a3 = divmod(int(jj), n3)
-        for i in order[lo[jj]:hi[jj]]:
-            a0, a1 = divmod(int(i), n1)
-            if (P[0][a0] + P[1][a1] + P[2][a2] + P[3][a3] == T).all(): yield int(i), int(jj)
+    step = max(1, (1 << 24) // max(n3, 1))                 # chunk the (2,3) side: at most ~2^24 pair keys at a time
+    for c0 in range(0, len(P[2]), step):
+        need = (kT - k[2][c0:c0 + step, None] - k[3][None, :]).reshape(-1)
+        lo = np.searchsorted(Ks, need, 'left'); hi = np.searchsorted(Ks, need, 'right')
+        for jj in np.nonzero(hi > lo)[0]:
+            a2, a3 = divmod(int(jj), n3); a2 += c0
+            for i in order[lo[jj]:hi[jj]]:
+                a0, a1 = divmod(int(i), n1)
+                if (P[0][a0] + P[1][a1] + P[2][a2] + P[3][a3] == T).all(): yield int(i), a2 * n3 + a3
 
 def block_shapes(n, kmax):
     """signed point sets (positions, w-signs) up to translation and reflection, |set| <= kmax"""

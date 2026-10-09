@@ -16,12 +16,21 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
 
 1. **(A) No Hadamard matrix of an open order was constructed.**
 
-2. **(B) No design brings an open-order option to ≤ 2^45 operations.**
+2. **(B) Not reached, but one route comes close.** No design is shown to bring an open-order option to ≤ 2^45
+   operations.
    - There is an exact reason why the natural designs fail (§2, §6).
    - After every exact reduction found here, the problem is a "stage 2": a critically constrained complex-complementary
      ±1 problem on G′ with about 4n′ free bits and about n′ equations.
    - Every decomposition I could make still costs about 2^(2n′) for it: 2^55–2^58 per candidate at 359, more at the open
      orders.
+   - **The closest route is the authors' own 419 design, transferred to 573 (§7.5). It is the best (B)-type result
+     here: validated end-to-end at 419, costed at the edge of the 2^45 target at 573.**
+     - The published 419 core turns out to be an exact Paley(11) core inside an order-3 multiplier slice.
+     - The same slice at 573 (p = 11, G′ = Z₅₂) is predicted non-empty (log₂E = +23 [E]).
+     - The exact slice pipeline rebuilds a verified 419 core from its gadget in 4 minutes.
+     - The same design route, run from scratch, also finds a **new** H(1676) in 272 s.
+     - At 573 it already produces stage-1 solutions (8 in 129 s from one designed gadget). Stage 2 is costed at
+       2^44–2^50 [E] and was not run.
 
 3. **(C) New exact obstructions.**
    - **599 at b = 1 (G′ = Z₂₆, p = 23), the prompt's top b = 1 option, contains no Paley-coset core at all** (§4, [P]).
@@ -44,6 +53,10 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
      - stage 2, a GS system over the ring Z[(1+√−p)/2] for Z = β + √−p·u.
 
      They are coupled only through the ±1 entry constraint.
+   - **The ansatz is a multiplier orbit slice:** that of the automorphism group 1 × QR_p of G′ × Z_p (§7.5). So
+     "Paley + multiplier" designs are orbit slices of product groups.
+   - **The published 419 core (b = 1) is an exact Paley(11) core on G′ = Z₃₈, invariant under ×7.** So both published
+     Paley-coset cores, 359 and 419, use p = 11 [M].
    - Consequences:
      - the norm identity (forced K);
      - the w-magnitude screen;
@@ -550,8 +563,9 @@ Logs: `theory/logs/paley_split_b1_*.log`.
 - **The published gadget, held fixed (`given419`).** α and u are searched exactly in the slice: per-block α lists
   (495, 56, 924, 1848), an exact S1 join, Lemma 6 at both real characters, then an exact stage-2 join over u on the
   twisted orbits.
-  - It found 3 stage-1 solutions and **a verified H(1676) in 241 s**.
-  - The core is in `data/core_v419_b1_paley.txt` and is re-verified by `paley_b1pipe.py verify`.
+  - It produced **a verified H(1676) in 145–241 s** (two runs; the first needed 3 stage-1 solutions, the second 1).
+  - The core is re-verified by `paley_b1pipe.py verify`. The command writes it to `data/core_v419_b1_paley.txt`; it is
+    not committed, because the committed 419 core is the from-scratch one below.
   - This is the stage-1 + stage-2 analogue of the 359 control of §7.1, at a b = 1, p = 11 order.
 - **Gadgets drawn at random in the slice:** 400 gadgets each at K = 15 and K = 16, all passing Lemma 4 and Lemma 6,
   give **0 stage-1 solutions** (`theory/logs/paley_slicepipe_v419_mu7_K1*_s*.log`).
@@ -560,11 +574,24 @@ Logs: `theory/logs/paley_split_b1_*.log`.
   Z₃₈. But:
   - most such gadgets have |t_k| ≥ 2, which makes α infeasible;
   - the feasible ones have Gaussian stage-1 yields of 2^−3 to 2^−23, against **2^+6.9 for the published gadget**.
-- **Yield-guided search** (|t_k| ≤ 1, α-feasible, run only when the predicted stage-1 yield exceeds 1): GUIDED419.
+- **Yield-guided search, from scratch [M]** (`paley_slicepipe.py guided 419 11 38 7 15 8 400 4`,
+  `theory/logs/paley_slicepipe_guided_v419_mu7_K15_s4.log`). Designed gadgets as above, restricted to |t_k| ≤ 1 and
+  α-feasible, with the exact stages run only when the Gaussian stage-1 yield of that gadget exceeds 1:
+  - 1,069 candidate gadgets were screened: 568 failed the s(h) filter, 436 were α-infeasible, 60 had low yield.
+  - Their predicted yields have median 2^−26.9, 90th percentile 2^−2.2 and 99th percentile 2^+5.6.
+  - **The 5th gadget run exactly (predicted 2^+6.6) gave a core: a new verified H(1676) in 272 s** on one core,
+    gadget screening included.
+  - It has K = 15 (the published core has K = 16) and is ×7-invariant. It is in
+    `data/core_v419_b1_paley_guided_K15.txt` and re-verified by `paley_b1pipe.py verify`.
+  - **This is a complete positive control of a design route at a b = 1, p = 11 order:** gadget designed, α and u
+    exact, border by closed form, no input from the published core.
 - **Reading.**
   - Given a good gadget, the slice pipeline is fast: about 2^25 work per gadget at 419.
-  - Gadget design is the bottleneck, exactly as at 359 (§6.1). The gadget has to be a cyclotomic near-difference
-    family whose row sums t_k are small and whose cross-correlation with α can absorb S1.
+  - Gadget design was the bottleneck, as at 359 (§6.1). It is solved at 419 by three steps:
+    - **design:** cyclotomic near-difference sets on the multiplier orbits, with |PAF_w| ≤ 2 and |t_k| ≤ 1;
+    - **exact filters:** Lemma 4, Lemma 6 and α-feasibility;
+    - **ranking:** each gadget's Gaussian stage-1 yield.
+  - Random gadgets give nothing (0 in 800).
 
 **Cost at 573 in the same design [E].**
 - Per block the slice has 20 orbits (4 fixed points and 16 triples of ×29 on Z₅₂). With 0–4 constant orbits per
@@ -574,9 +601,25 @@ Logs: `theory/logs/paley_split_b1_*.log`.
   - stage 2 per y costs about 2^34–2^38 (2+2 join), less after splitting by the Lemma 6 classes.
 - The split predicts a stage-2 shortfall of 9–15 bits per y, so about 2^10 good y's are needed: **about 2^44–2^48 in
   stage 2**, plus the cost of finding enough good gadgets.
-- At 419 the gadget search is the unsolved part, so **this is not yet a ≤ 2^45 algorithm for 573.** It is the most
-  concrete route I found: the authors' own 419 design, transferred to the only open order where its slice is predicted
-  non-empty.
+- **Gadget search, measured at 573 [M]** (`paley_slicepipe.py guided1`, stage 1 only,
+  `theory/logs/paley_slicepipe_guided_v573_mu29_K2*_s*.log`). The designed-gadget generator works unchanged on Z₅₂.
+  - It takes about 1–2 minutes per exact stage-1 join, with α lists of 700–77,000 per block.
+  - The first K = 22 gadget run (predicted 2^1.4) gave **8 stage-1 solutions** in 129 s, all passing Lemma 6 at both
+    real characters (`theory/logs/paley_slicepipe_stage1_v573_mu29_K22_s1.npz`).
+  - The first two K = 21 gadgets gave none.
+- **Stage 2 for those y's [E]** (`theory/paley_s2predict.py`, `theory/logs/paley_s2predict_573_K22.log`):
+  - u-lists of 2^15, 2^16, 2^19 and 2^18 per block, so the exact 2+2 join is about 2^34 per y (not run here);
+  - predicted yield 2^−15.5 per y, against the slice average of 2^−9 to 2^−16.
+  - On this instance, stage 2 alone needs about 2^15 y's × 2^34 ≈ 2^49.
+- **So for 573 the route is costed at about 2^44–2^50 [E], not validated.** It is the most concrete route I found:
+  - it is the authors' own 419 design;
+  - it is validated end-to-end at 419;
+  - it is transferred to the only open order where its slice is predicted non-empty.
+- **The gap to ≤ 2^45 is stage 2.** Two things would close it:
+  - gadgets ranked by predicted stage-2 yield as well as stage-1 yield;
+  - a level (Z₄ × Z₁₃) decomposition of the u-join, of the kind that gave the 359 Q-level count (§7.3).
+
+  Neither is built here.
 
 ## 8. Question 5: the b ≥ 3, p = 11 options and their borders
 
@@ -661,4 +704,11 @@ python3 theory/paley_slices.py 659 1 7 94 --slice even    # 659 even slice: -15.
 python3 theory/paley_border_c6.py 599                # 347 border vs the 599 c = 6 compressions (about 25 min)
 python3 theory/paley_pipeline.py check479            # c = 4 completion: rebuilds and verifies H(1916) from the 479 core
 python3 theory/paley_pipeline.py run179              # 179: no single-bump compression
+python3 theory/paley_anatomy419.py                   # published 419 = exact Paley(11) core, x7-invariant (Theorem 1, Lemmas 4, 6)
+python3 theory/paley_slices.py 573 1 11 52 --slice mult:29   # Paley + multiplier slices (also 419 ... 38 --slice mult:7)
+python3 theory/paley_split_slice.py 573 11 52 29     # stage split inside the slice (also 419 11 38 7)
+python3 theory/paley_slicepipe.py given419           # 419 with the published gadget fixed: H(1676) in about 3 min
+python3 theory/paley_slicepipe.py guided 419 11 38 7 15 8 400 4   # 419 from scratch (designed gadgets): H(1676) in 272 s
+python3 theory/paley_slicepipe.py random 419 11 38 7 16 11 400 1  # random gadgets: no stage-1 solution
+python3 theory/paley_slicepipe.py guided1 573 11 52 29 21 12 40 0 13 3000   # 573, stage 1 only (records y's)
 ```
