@@ -4,3 +4,33 @@
 {"gadget_run": 3, "predicted": 0.5, "alpha_lists": [11440, 25740, 3432, 3432], "stage1_new": 0, "stage2_pred": null, "secs": 226.8}
 {"gadget_run": 4, "predicted": 0.6, "alpha_lists": [12870, 1716, 25740, 3432], "stage1_new": 0, "stage2_pred": null, "secs": 289.6}
 {"gadget_run": 5, "predicted": 1.7, "alpha_lists": [1716, 77220, 12870, 2002], "stage1_new": 16, "stage2_pred": {"log2E": -17.5, "u_lists_log2": [14, 20, 18, 15]}, "secs": 373.4}
+{"gadget_run": 6, "predicted": 0.9, "alpha_lists": [10010, 25740, 5005, 3432], "stage1_new": 0, "stage2_pred": null, "secs": 457.5}
+{"gadget_run": 7, "predicted": 0.2, "alpha_lists": [12870, 5005, 1716, 8008], "stage1_new": 0, "stage2_pred": null, "secs": 490.9}
+{"gadget_run": 8, "predicted": 3.6, "alpha_lists": [11440, 1430, 12870, 6864], "stage1_new": 0, "stage2_pred": null, "secs": 549.8}
+{"gadget_run": 9, "predicted": 1.7, "alpha_lists": [5005, 12870, 8008, 1716], "stage1_new": 0, "stage2_pred": null, "secs": 596.7}
+{"gadget_run": 10, "predicted": 2.4, "alpha_lists": [5005, 3003, 3003, 19448], "stage1_new": 0, "stage2_pred": null, "secs": 642.6}
+{"progress": true, "runs": 10, "tried": 7547, "s_cut": 6961, "low_yield": 349, "alpha_infeasible": 227, "alpha_bits_x10": 5062, "joined": 10, "stage1": 16, "secs": 642.6}
+{"gadget_run": 11, "predicted": 0.2, "alpha_lists": [3003, 19448, 1430, 25740], "stage1_new": 0, "stage2_pred": null, "secs": 720.5}
+{"gadget_run": 12, "predicted": 0.7, "alpha_lists": [62920, 1716, 20592, 18018], "stage1_new": 0, "stage2_pred": null, "secs": 1029.8}
+{"gadget_run": 13, "predicted": 2.0, "alpha_lists": [11440, 5005, 1716, 19448], "stage1_new": 0, "stage2_pred": null, "secs": 1075.7}
+{"gadget_run": 14, "predicted": 1.9, "alpha_lists": [5005, 25740, 19448, 2376], "stage1_new": 24, "stage2_pred": {"log2E": -14.8, "u_lists_log2": [17, 18, 19, 15]}, "secs": 1158.4}
+{"gadget_run": 15, "predicted": 2.5, "alpha_lists": [1716, 6006, 8008, 8008], "stage1_new": 5, "stage2_pred": {"log2E": -17.3, "u_lists_log2": [14, 17, 17, 17]}, "secs": 1206.8}
+{"gadget_run": 16, "predicted": 2.0, "alpha_lists": [19448, 715, 19448, 3432], "stage1_new": 8, "stage2_pred": {"log2E": -14.0, "u_lists_log2": [19, 15, 19, 16]}, "secs": 1247.0}
+{"gadget_run": 17, "predicted": 1.2, "alpha_lists": [8008, 3432, 6435, 11440], "stage1_new": 0, "stage2_pred": null, "secs": 1296.2}
+{"gadget_run": 18, "predicted": 1.8, "alpha_lists": [1716, 8008, 6435, 19448], "stage1_new": 0, "stage2_pred": null, "secs": 1416.5}
+{"gadget_run": 19, "predicted": 2.2, "alpha_lists": [2002, 5544, 77220, 25740], "stage1_new": 0, "stage2_pred": null, "secs": 1593.8}
+{"gadget_run": 20, "predicted": 3.2, "alpha_lists": [1485, 24024, 77220, 2002], "stage1_new": 64, "stage2_pred": {"log2E": -14.5, "u_lists_log2": [15, 19, 20, 15]}, "secs": 1688.3}
+{"progress": true, "runs": 20, "tried": 16227, "s_cut": 14929, "low_yield": 782, "alpha_infeasible": 496, "alpha_bits_x10": 10220, "joined": 20, "stage1": 117, "secs": 1688.3}
+{"gadget_run": 21, "predicted": 2.3, "alpha_lists": [12870, 3003, 12870, 2574], "stage1_new": 0, "stage2_pred": null, "secs": 1724.1}
+{"gadget_run": 22, "predicted": 0.9, "alpha_lists": [12870, 12870, 1716, 5005], "stage1_new": 0, "stage2_pred": null, "secs": 1763.5}
+{"gadget_run": 23, "predicted": 0.9, "alpha_lists": [25740, 6864, 24024, 4752], "stage1_new": 0, "stage2_pred": null, "secs": 1929.7}
+{"gadget_run": 24, "predicted": 4.0, "alpha_lists": [6864, 25740, 19448, 1716], "stage1_new": 0, "stage2_pred": null, "secs": 2038.3}
+{"gadget_run": 25, "predicted": 4.0, "alpha_lists": [62920, 18018, 1716, 20592], "stage1_new": 0, "stage2_pred": null, "secs": 2341.9}
+{"gadget_run": 26, "predicted": 0.6, "alpha_lists": [1716, 6864, 19448, 8008], "stage1_new": 0, "stage2_pred": null, "secs": 2417.5}
+{"gadget_run": 27, "predicted": 0.7, "alpha_lists": [1716, 25740, 3003, 25740], "stage1_new": 0, "stage2_pred": null, "secs": 2483.0}
+{"gadget_run": 28, "predicted": 1.7, "alpha_lists": [12870, 6435, 8008, 2574], "stage1_new": 0, "stage2_pred": null, "secs": 2525.2}
+{"gadget_run": 29, "predicted": 0.1, "alpha_lists": [11440, 3432, 25740, 1430], "stage1_new": 0, "stage2_pred": null, "secs": 2616.9}
+{"gadget_run": 30, "predicted": 2.2, "alpha_lists": [3003, 19448, 25740, 1287], "stage1_new": 16, "stage2_pred": {"log2E": -16.3, "u_lists_log2": [15, 19, 18, 15]}, "secs": 2670.8}
+{"progress": true, "runs": 30, "tried": 23299, "s_cut": 21442, "low_yield": 1117, "alpha_infeasible": 710, "alpha_bits_x10": 15378, "joined": 30, "stage1": 133, "secs": 2670.8}
+{"gadget_run": 31, "predicted": 2.7, "alpha_lists": [6864, 25740, 6006, 18018], "stage1_new": 10, "stage2_pred": {"log2E": -14.4, "u_lists_log2": [16, 18, 17, 18]}, "secs": 2850.5}
+{"summary": true, "v": 573, "mu": 29, "K": 23, "Nminus": 18, "runs": 31, "tried": 23832, "cores": 0, "hadamard": [], "predicted_yield_p50_p90_p99": [-12.2, -2.9, 2.0], "s_cut": 21929, "low_yield": 1145, "alpha_infeasible": 727, "alpha_bits_x10": 15918, "joined": 31, "stage1": 143, "secs": 2850.5}

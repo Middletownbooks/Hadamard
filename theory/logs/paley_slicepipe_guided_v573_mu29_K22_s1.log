@@ -2,3 +2,26 @@
 {"gadget_run": 1, "predicted": 1.4, "alpha_lists": [1716, 6006, 24024, 25740], "stage1_new": 8, "stage2_pred": {"log2E": -15.5, "u_lists_log2": [15, 16, 19, 18]}, "secs": 135.7}
 {"gadget_run": 2, "predicted": 1.5, "alpha_lists": [3003, 6006, 11440, 20592], "stage1_new": 22, "stage2_pred": {"log2E": -15.5, "u_lists_log2": [17, 16, 17, 18]}, "secs": 226.9}
 {"gadget_run": 3, "predicted": 0.6, "alpha_lists": [62920, 1430, 8008, 6864], "stage1_new": 0, "stage2_pred": null, "secs": 310.5}
+{"gadget_run": 4, "predicted": 4.0, "alpha_lists": [3003, 77220, 6435, 6006], "stage1_new": 64, "stage2_pred": {"log2E": -14.0, "u_lists_log2": [16, 20, 17, 17]}, "secs": 450.3}
+{"gadget_run": 5, "predicted": 2.3, "alpha_lists": [1430, 25740, 25740, 6435], "stage1_new": 16, "stage2_pred": {"log2E": -15.8, "u_lists_log2": [15, 18, 18, 17]}, "secs": 567.3}
+{"gadget_run": 6, "predicted": 0.2, "alpha_lists": [3003, 24024, 1716, 77220], "stage1_new": 0, "stage2_pred": null, "secs": 680.0}
+{"gadget_run": 7, "predicted": 0.8, "alpha_lists": [11440, 6006, 6006, 6864], "stage1_new": 0, "stage2_pred": null, "secs": 747.3}
+{"gadget_run": 8, "predicted": 0.3, "alpha_lists": [1287, 12870, 25740, 5005], "stage1_new": 0, "stage2_pred": null, "secs": 807.7}
+{"gadget_run": 9, "predicted": 0.8, "alpha_lists": [2002, 77220, 2574, 12870], "stage1_new": 0, "stage2_pred": null, "secs": 902.3}
+{"gadget_run": 10, "predicted": 1.2, "alpha_lists": [11440, 6864, 77220, 1287], "stage1_new": 0, "stage2_pred": null, "secs": 1016.7}
+{"progress": true, "runs": 10, "tried": 4418, "s_cut": 3977, "alpha_infeasible": 82, "low_yield": 232, "lemma6_cut": 117, "alpha_bits_x10": 5218, "joined": 10, "stage1": 110, "secs": 1016.7}
+{"gadget_run": 11, "predicted": 0.5, "alpha_lists": [10010, 25740, 8008, 4752], "stage1_new": 0, "stage2_pred": null, "secs": 1116.9}
+{"gadget_run": 12, "predicted": 1.8, "alpha_lists": [5005, 11440, 18018, 6006], "stage1_new": 0, "stage2_pred": null, "secs": 1197.0}
+{"gadget_run": 13, "predicted": 1.7, "alpha_lists": [15444, 25740, 3432, 18018], "stage1_new": 7, "stage2_pred": {"log2E": -13.1, "u_lists_log2": [18, 18, 16, 18]}, "secs": 1431.3}
+{"gadget_run": 14, "predicted": 0.4, "alpha_lists": [8008, 77220, 2574, 6864], "stage1_new": 0, "stage2_pred": null, "secs": 1565.9}
+{"gadget_run": 15, "predicted": 0.9, "alpha_lists": [62920, 3432, 5005, 5005], "stage1_new": 0, "stage2_pred": null, "secs": 1699.0}
+{"gadget_run": 16, "predicted": 2.2, "alpha_lists": [12870, 2574, 12870, 5005], "stage1_new": 0, "stage2_pred": null, "secs": 1742.6}
+{"gadget_run": 17, "predicted": 2.3, "alpha_lists": [15444, 25740, 25740, 1716], "stage1_new": 8, "stage2_pred": {"log2E": -15.5, "u_lists_log2": [18, 18, 18, 14]}, "secs": 1984.5}
+{"gadget_run": 18, "predicted": 2.0, "alpha_lists": [15444, 12870, 4752, 25740], "stage1_new": 6, "stage2_pred": {"log2E": -12.7, "u_lists_log2": [18, 18, 16, 18]}, "secs": 2210.8}
+{"gadget_run": 19, "predicted": 2.1, "alpha_lists": [10010, 25740, 5005, 6864], "stage1_new": 6, "stage2_pred": {"log2E": -15.0, "u_lists_log2": [17, 18, 17, 16]}, "secs": 2311.3}
+{"gadget_run": 20, "predicted": 1.2, "alpha_lists": [2376, 19448, 3003, 77220], "stage1_new": 0, "stage2_pred": null, "secs": 2448.8}
+{"progress": true, "runs": 20, "tried": 8502, "s_cut": 7654, "alpha_infeasible": 162, "low_yield": 425, "lemma6_cut": 241, "alpha_bits_x10": 10524, "joined": 20, "stage1": 137, "secs": 2448.8}
+{"gadget_run": 21, "predicted": 2.8, "alpha_lists": [6864, 25740, 24024, 1287], "stage1_new": 4, "stage2_pred": {"log2E": -14.5, "u_lists_log2": [16, 18, 19, 15]}, "secs": 2546.9}
+{"gadget_run": 22, "predicted": 4.1, "alpha_lists": [2002, 18018, 6435, 25740], "stage1_new": 0, "stage2_pred": null, "secs": 2656.6}
+{"gadget_run": 23, "predicted": 2.2, "alpha_lists": [62920, 8008, 1716, 3003], "stage1_new": 0, "stage2_pred": null, "secs": 2724.6}
+{"summary": true, "v": 573, "mu": 29, "K": 22, "Nminus": 15, "runs": 23, "tried": 9769, "cores": 0, "hadamard": [], "predicted_yield_p50_p90_p99": [-13.7, -3.2, 2.2], "s_cut": 8807, "alpha_infeasible": 176, "low_yield": 500, "lemma6_cut": 263, "alpha_bits_x10": 12082, "joined": 23, "stage1": 141, "secs": 2724.6}

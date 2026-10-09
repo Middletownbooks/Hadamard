@@ -29,9 +29,11 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
      - The same slice at 573 (p = 11, G′ = Z₅₂) is predicted non-empty (log₂E = +23 [E]).
      - The exact slice pipeline rebuilds a verified 419 core from its gadget in 4 minutes.
      - The same design route, run from scratch, also finds a **new** H(1676) in 272 s.
-     - At 573 it already produces stage-1 solutions: 46 y's from three designed gadgets, about 2 minutes per gadget.
-     - Ranking gadgets by predicted core yield (calibrated at 419) costs the first 573 core at about 2^49 [E] with
-       plain stage-2 joins, about 2^4 above target. Stage 2 was not run at 573.
+     - At 573 it already produces stage-1 solutions: 392 y's from 19 of 61 designed gadgets, in about 45 minutes on
+       three cores.
+     - Ranking gadgets by predicted core yield (calibrated at 419) costs the first 573 core at about 2^48–2^49 [E]
+       with plain stage-2 joins, about 2^3–2^4 above target. The stage-2 joins are independent per y, so the work is
+       embarrassingly parallel. Stage 2 was not run at 573.
 
 3. **(C) New exact obstructions.**
    - **599 at b = 1 (G′ = Z₂₆, p = 23), the prompt's top b = 1 option, contains no Paley-coset core at all** (§4, [P]).
@@ -613,7 +615,13 @@ Logs: `theory/logs/paley_split_b1_*.log`.
   - It takes about 1–2 minutes per exact stage-1 join, with α lists of 700–77,000 per block.
   - The first K = 22 gadget run (predicted 2^1.4) gave **8 stage-1 solutions** in 129 s, all passing Lemma 6 at both
     real characters (`theory/logs/paley_slicepipe_stage1_v573_mu29_K22_s1.npz`).
-  - Over the three K = 21–23 runs, 3 of the first 10 gadgets run exactly gave 8, 22 and 16 stage-1 solutions.
+  - Over the three K = 21–23 runs: **61 gadgets were run exactly in about 45 minutes on three cores.**
+    - The K = 21 run was stopped after 22 minutes by the container memory limit, with three large joins running at
+      once.
+    - 19 gadgets produced stage-1 solutions: **392 y's in total**, all passing Lemma 6 at both real characters
+      (`theory/logs/paley_slicepipe_stage1_v573_mu29_K2*_s*.npz`).
+    - Per-y stage-2 predictions are 2^−11.9 to 2^−12.6 at K = 21, 2^−12.7 to 2^−15.8 at K = 22 and 2^−14.0 to
+      2^−17.5 at K = 23.
   - The first two K = 21 gadgets gave none.
 - **Stage 2 for those y's [E]** (`theory/paley_s2predict.py`, `theory/logs/paley_s2predict_573_K22.log`):
   - u-lists of 2^15, 2^16, 2^19 and 2^18 per block, so the exact 2+2 join is about 2^34 per y (not run here);
@@ -634,8 +642,15 @@ Logs: `theory/logs/paley_split_b1_*.log`.
     - Hence about 2^9.5 gadgets × 2^2.8 y × 2^36.6 ≈ **2^49 to a first core**.
   - The exact stage-1 runs agree: 8, 22 and 16 y's from three gadgets, with per-y stage-2 predictions of 2^−15.5,
     2^−15.5 and 2^−17.5 (`theory/logs/paley_slicepipe_guided_v573_mu29_K2*_s*.log`).
-- **So for 573 the route is costed at about 2^49 [E] with plain 2+2 stage-2 joins, not validated.** That is about
-  2^4 above the target. It is the most concrete route I found:
+- **Practical cost [E].**
+  - Stage 1 is cheap: stage-1 solutions came at about one per 10–20 core-seconds (392 in about 2.3 core-hours).
+  - A first core needs about 2^12 of them (per-y stage-2 yield about 2^−12).
+  - Stage 2 is a 2+2 join of u-lists of 2^15–2^20 per block, about 2^36 per y when bucketed by a residue of the
+    signature (2^25 memory per bucket).
+  - Total: **about 2^48 operations, embarrassingly parallel over y.** Roughly days on one core in C, or hours on a
+    small cluster. Not run here.
+- **So for 573 the route is costed at about 2^48–2^49 [E] with plain 2+2 stage-2 joins, not validated.** That is
+  about 2^3–2^4 above the target. It is the most concrete route I found:
   - it is the authors' own 419 design;
   - it is validated end-to-end at 419;
   - it is transferred to the only open order where its slice is predicted non-empty.
