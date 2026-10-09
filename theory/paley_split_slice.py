@@ -111,7 +111,10 @@ def main(v, p, n, mu, N=20000, seed=1):
                 if tw[k, orbs[j][0]]:
                     U[:, k, orbs[j]] = rng.choice((1, -1), N)[:, None]
         S2 = (paf(beta[None]).sum(1) + p * paf(U).sum(1))[:, 1:half + 1]
-        X = (cc(U, np.broadcast_to(beta, U.shape)) - cc(np.broadcast_to(beta, U.shape), U)).sum(1)[:, 1:half]
+        if p % 4 == 1:     # chi even: the chi-coefficient is symmetric, CC(u, beta) + CC(beta, u), lags 0..n/2
+            X = (cc(U, np.broadcast_to(beta, U.shape)) + cc(np.broadcast_to(beta, U.shape), U)).sum(1)[:, 0:half + 1]
+        else:
+            X = (cc(U, np.broadcast_to(beta, U.shape)) - cc(np.broadcast_to(beta, U.shape), U)).sum(1)[:, 1:half]
         c2, r2, d2 = gauss_logp(np.concatenate([S2, X], 1), np.zeros(S2.shape[1] + X.shape[1], np.int64), 'S2X')
         H2 = sum(1 for k in range(4) for j in range(r) if tw[k, orbs[j][0]])
         rec = dict(v=v, p=p, n=n, mu=mu, orbits=r, K=K, Nminus=Nm, Nplus=Np, H1=round(H1, 1), C1=round(c1, 1),
