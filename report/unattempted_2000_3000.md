@@ -350,3 +350,29 @@ the remaining ones still running):
 - What would change this is a better solver for the reduced system: a large GPU anneal, or the designed-w-then-α-then-u
   pipeline with a much stronger stage solver. Kaggle GPU time is the natural place to test it, with 359 (n′ = 32) as
   the calibration target before any open order.
+
+## Review of `report/paley_design_answer.md` (fresh max-reasoning session), 2026-10-09
+
+**Independently verified here [M]:**
+- **New H(1676) core** (`data/core_v419_b1_paley_guided_K15.txt`), checked with my own FFT code, not the session's
+  verifier:
+  - Σ PAF = −4 at every nonzero lag, both over Z₃₈ × Z₁₁ and after the CRT map to cyclic Z₄₁₈;
+  - row sums (2, 0, 0, 0);
+  - exact Paley(11) form, ×7-invariant, K = 15;
+  - not the published core (that one has K = 16).
+- **573 stage 1:** all 392 recorded y's (`theory/logs/paley_slicepipe_stage1_v573_mu29_K2*_s*.npz`) satisfy S1 exactly
+  (Σ PAF_y = 4m − 4(p−1) at 0 and −4p elsewhere). All have row sums (±2, 0, 0, 0), are ×29-invariant and distinct.
+- **Theorem 5 (599, b = 1, p = 23 is empty):**
+  - re-derived by hand: 5N₋ + 6N₊ = 25 ⇒ K = N₋ = 5;
+  - 484|s| ≤ 92 + 104 + 220 < 484 ⇒ s ≡ 0 ⇒ Σt_k² = 5 ⇒ some |t_k| = 2 ⇒ |Σα_k| ≥ 42 > 26.
+  - **This corrects the claim above** that the 599/Z₂₆×Z₂₃ slice (Gaussian +28, 264 bits) is within the authors' reach.
+    It is exactly empty, and the Gaussian estimator overcounts at b = 1, p ≥ 11.
+
+**Consequence: the best open-order route on record is 573 in the Paley(11) + ×29 slice (G′ = Z₅₂)**, transferred
+from the authors' own 419 design:
+- validated end-to-end at 419 (a new core, from scratch, in 272 s);
+- stage 1 is cheap at 573 (about one y per 10–20 core-seconds);
+- stage 2 is costed at about 2^36 per y with a per-y yield of 2^−12 to 2^−17 [E], so about 2^48 in total, and the work
+  is embarrassingly parallel over y. **Stage 2 has not yet been run at 573.**
+- **Risk:** the per-y stage-2 yield comes from a Gaussian model calibrated on only two 419 gadgets. The same model
+  overcounted at every p = 11, b = 1 control without the multiplier slice (Lemma 6 / rigid gadgets).
