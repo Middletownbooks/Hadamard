@@ -376,3 +376,35 @@ from the authors' own 419 design:
   is embarrassingly parallel over y. **Stage 2 has not yet been run at 573.**
 - **Risk:** the per-y stage-2 yield comes from a Gaussian model calibrated on only two 419 gadgets. The same model
   overcounted at every p = 11, b = 1 control without the multiplier slice (Lemma 6 / rigid gadgets).
+
+## 573 slice route: stage-2 join engine and calibration, 2026-10-09 [M unless marked]
+
+**Engine** (`scripts/paley_s2join.py`), exact stage 2 for the Paley(p) + multiplier slice (b = 1):
+- **Candidate lists:** per block, all u on the twisted ×μ-orbits (2^15–2^20 at 573), with FFT-computed signatures
+  reduced to one lag per ⟨μ, −1⟩-orbit for S2-real and one per ⟨μ⟩-orbit pair for X.
+- **Deduplication:** equal signatures are kept once, and every hit is re-checked exactly.
+- **Z₄ class split (new):** the Z_d-compressed S2 equations are additive over blocks. Joining at class level first
+  keeps only the class pairs that the other side can complete. At 573 (d = 4) this cuts each side from **2^34 pairs to
+  2^22–2^25**, so the per-y join drops by about 2^10. The other session's report said a 2^4 cut would suffice.
+- **Join kernel:** numba hashed 2+2 join, with residue passes on a separate additive hash modulo a prime. A plain
+  `key mod 2^k` is badly non-uniform because signature parities are fixed, and that overflowed the table. The kernel
+  stores duplicate AB keys once and retries if a pass overflows.
+- **Completion:** a hit is finished by the bordered GS construction (`theory/paley_b1pipe.finish`, exact H Hᵀ = N I),
+  which writes the core to `data/core_v573_b1_paley.txt`.
+- Per-block data is cached across y's, since blocks recur heavily between y's of the same gadget.
+
+**Calibration on 419** (`paley_s2join.py check419`, `logs/s2join_check419_record.jsonl`):
+- The test uses y's from the published 419 gadget.
+- On every y compared, the engine finds the same solutions as the reference numpy join of the other session (6 each,
+  on 3 y's with the first kernel and 1 with the final one).
+- Each completes to a **verified H(1676)**. The engine's join takes 0.5–2.6 s, against 160–210 s for the reference.
+
+**Throughput at 573 [M]:** median about 28 s per y on one core (setup 4–28 s, join 15–60 s), with about 2^25 hash
+probes per y.
+
+**Production [running]:** stage 2 over all 392 recorded 573 y's (`logs/s2join_573_*.jsonl`) on three cores. With a
+predicted per-y yield of 2^−12 to 2^−17 [E], the expected number of cores from these 392 is about 0.01–0.1.
+
+**Cost to a first 573 core [E]:** about 2^12–2^17 y's at about 40 core-seconds each (about 20 s of stage 1 plus 20–30 s
+of stage 2). That is about 2 core-days at the optimistic end and about 60 core-days at the pessimistic end. It is
+embarrassingly parallel over gadgets and y's, so it suits Kaggle CPU sessions (4 cores × 12 h ≈ 4,000 y's per session).
