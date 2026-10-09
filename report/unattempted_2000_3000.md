@@ -271,3 +271,82 @@ passes):
   - hence Σ_h PAF_k(h, 0) = A_k² + (p − 1)·W_k² exactly;
   - with b = 1 row sums (±2, 0, 0, 0), W_k ∈ {−1, 0, 1}, and the total falls short of 4m − 4(n′ − 1). For example,
     at 599 over Z₂₆×Z₂₃ the maximum is 2116 against the 2292 needed.
+
+**Symmetric slices, completed runs (b = 1)** [E]: 571 over Z₃₀×Z₁₉ with u = 19: −9.9 (202 constraint bits); 599 with u = 3:
+−3.2 (99); **647 over Z₃₈×Z₁₇ with u = 7: −4.8 (148)**. Every other completed slice is at −15 or below. No slice has
+log₂E > 0.
+
+## Paley-coset ansatz for the bordered b ≥ 3 architecture (the form 359 actually has), 2026-10-09 [M unless marked]
+
+**Tool** (`scripts/paley_bge3.py`):
+- G = G′ × Z_p with p | h and p ∤ c, so Z_p ≤ H and H = H′ × Z_p with H′ of index c in G′.
+- Lag (h′, s) lies in H iff h′ ∈ H′, so the reduced target is −4b on H′ × {0, QR, NQR} ∖ (0, 0) and +4 elsewhere.
+- G′ may be any abelian group.
+- Two exact screens:
+  - **h0**: within-coset equations plus row sums, with Σr² = 4v for b ≥ 3;
+  - **qnorm** (new): compression onto Q = G′/H′. Per block, (r, N = Σ_q y_q², s, d) are additive over the cosets, and
+    the conditions are Σr² = 4v, ΣN = 4(h + b), Σs = −4b and Σd = 0.
+
+**Positive control: the published 359 core.**
+- On G′ = Z₂²×Z₈ with H′ = ⟨(0, 0, 2)⟩, p = 11, it lies exactly in the ansatz (116 twisted and 12 constant cosets).
+- Its reduced equations equal the b = 7 target exactly, and it passes both screens.
+
+**Exact decomposition for p ≡ 3 mod 4** (proved by expanding the correlation table; verified on 359 and on solutions
+found here):
+- Write x = α·δ + u·χ + w·ε per coset, and let Y and X be the symmetric and antisymmetric parts of the (QR, NQR)
+  equations. Then:
+  - R₀ = PAF_α + (p−1)(PAF_u + PAF_w);
+  - Y = −PAF_u + (p−2)·PAF_w + CC(α,w) + CC(w,α);
+  - X = CC(α−w, u) − CC(u, α−w).
+- So R₀ + (p−1)·Y = PAF(y), where y = α + (p−1)·w is the vector of Z_p-coset sums. The core condition therefore splits
+  into two stages:
+  - **(stage 1)** a G′-level "compressed core" y ∈ {±1, ±(p−2), ±p} with Σ PAF_y = 4p off H′ and −4bp on H′ ∖ 0;
+  - **(stage 2)** the twisted signs u: a ±1 GS-type system Σ PAF_u = (p−2)·PAF_w + CC(α,w) + CC(w,α) − T_s, together
+    with the linear condition X = 0.
+- In 359 every component is separately two-valued off H′:
+  - Σ PAF_u = −4;
+  - Σ PAF_α = 44 = 4p;
+  - Σ PAF_w = 0;
+  - CC(α,w) + CC(w,α) = 0.
+- 359's w is **algebraic**:
+  - block A's w is a bent function on Z₂², placed on the two Z₈-levels 0 and 6 with opposite signs;
+  - blocks B and D have w on a single H′-coset; block C has none.
+  - So the authors designed w and searched α and u.
+
+**Cost of 359 in this slice** [E]:
+- The full Paley slice has 384 free bits, **303.6 constraint bits** and log₂E = +67.7.
+- For the published y, stage 2 alone has 116 free bits against 119.6 constraint bits (log₂E = −3.6). The published y is
+  a lucky one, so staging moves the difficulty around but does not remove it.
+- **The authors therefore solved a system of about 300 constraint bits.** That is far beyond the 63–91 bits our list
+  methods have reached.
+- Competitive reading: any open-order Paley slice at or below about 300 bits is within their demonstrated reach. That
+  includes the b = 1 slices 599/Z₂₆×Z₂₃ (264 bits, +27.9) and 571/Z₃₀×Z₁₉ (298, +40.9) above.
+
+**Our solvers on the reduced system** (`scripts/paley_ls.py`: tabu, or numba simulated annealing with `--sa 1`;
+`scripts/paley_staged.py`: two-stage):
+- They find verified cores quickly for bordered v = 15, 27, 31, 39, 47, 59 (n′ ≤ 10) and for b = 0 v = 21, 33, 35.
+- They fail at n′ = 12–28: v = 51, 63, 65, 87, which have log₂E ≈ +60 and 70–76 constraint bits [E], even with
+  3·10⁸-step anneals.
+- Exact compressions onto Q and onto Z_p do not explain those failures; both pass.
+- On 359 itself (n′ = 32), plain tabu reaches cost 4800 and staged search stalls in stage 1.
+- **The SA wall for bordered Paley systems is about n′ = 12. Every open-order option has n′ ≥ 28.**
+
+**Open orders** (59 options with p ∥ m, p ∤ c, c | n′; `logs/paley_bge3_screen_snapshot.jsonl`, 23 decided so far,
+the remaining ones still running):
+- **Dead (exact):**
+  - every option with p ≥ 29: 599 c = 4, 8, 10, 20; 647 c = 6, 12; 659 c = 4, 6, 22; 719 c = 4, 8, 10, 12, 24;
+    739 c = 10; 571 c = 4;
+  - p = 23: 719 c = 30, killed by h0; **739 c = 4 and 647 c = 4 (the c = 4 options, whose borders always exist), killed
+    by qnorm**;
+  - p = 19 and 17: 599 c = 30; 719 c = 36, 40; 647 c = 36.
+- Still to screen: the small-p options (n′ ≥ 40), including 599 c = 6 and 669 c = 10 with p = 11 (n′ = 54 and 60). Even
+  if they pass, n′ is far beyond our SA wall, and each would need a border matched to its compression.
+
+**Verdict.**
+- The 359 route is now understood: a Paley(p) twist with a designed sparse w, then search on a reduced system of about
+  300 bits.
+- It does not give us a cheap route to an open order. Every open-order option either dies on an exact screen or sits
+  at n′ ≥ 28, where our annealer fails even on instances with abundant solutions.
+- What would change this is a better solver for the reduced system: a large GPU anneal, or the designed-w-then-α-then-u
+  pipeline with a much stronger stage solver. Kaggle GPU time is the natural place to test it, with 359 (n′ = 32) as
+  the calibration target before any open order.

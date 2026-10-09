@@ -141,7 +141,7 @@ def rowsum_feasible(v, b, n, p):
     per = {a + (p - 1) * w for a, t, s_ in LABELS for w in [0 if t else s_]}
     S = {0}
     for _ in range(n): S = {x + y for x in S for y in per}
-    if b == 0:
+    if b != 1:                                                           # b = 0 and bordered b >= 3: sum r^2 = 4v
         import itertools as it
         return any(a*a + b_*b_ + c*c + d*d == 4 * v for a, b_, c, d in it.product(sorted(S), repeat=4))
     return (2 in S or -2 in S) and 0 in S                                 # b=1 row sums (+-2, 0, 0, 0)
@@ -277,7 +277,7 @@ def exact_h0_screen(v, b, n, p):
     tgtQ = tgtN = -4 * b
     by_r = {}
     for rs, eq, en in S: by_r.setdefault(rs, set()).add((eq, en))
-    if b == 0:
+    if b != 1:
         rows = sorted(by_r)
         profs = [q for q in it.product([x for x in rows if x >= 0], repeat=4) if sum(x * x for x in q) == 4 * v and list(q) == sorted(q)]
         cand = [[s * x for s, x in zip(signs, q)] for q in profs for signs in it.product((1, -1), repeat=4)]
@@ -342,7 +342,7 @@ def exact_h0_screen_fast(v, b, n, p):
                     if (not p1) or True: arr[sidx, d + D0] = True
     def prof_list():
         rows = sorted(block)
-        if b == 0:
+        if b != 1:
             pos = [x for x in rows if x >= 0 and -x in block]
             return [list(q) for q in it.combinations_with_replacement(pos, 4) if sum(x * x for x in q) == 4 * v]
         return [[2, 0, 0, 0]] if 2 in block and 0 in block else []
