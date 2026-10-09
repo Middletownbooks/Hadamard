@@ -73,6 +73,8 @@ Notes. These are measurements unless a note says otherwise.
   - P_k(ω) against P_l(ω+m/2).
 
   The best raw result was p ≈ 10^−6.9, before a Bonferroni correction over ~10^6 tests, i.e. nothing. The strongest half-shift effect in the whole set is block A of v=419: PAF_A(209) = +130, a 274/418 self-agreement at half shift, p ≈ 10^−9.7 uncorrected. **I need the definition behind the 10^−55 and 10^−59.5 figures** (which sequence representation, which statistic) to relate it to flatness. The b=1 cores are not flat, so whatever that structure is, it is not the flatness fingerprint.
+
+  **Update (2026-10-09): resolved.** The structure is a run pattern, not a mean, so the sums above cancel. In natural GS coordinates every block of 167 and 179 is x = [p | q | −p | q] with |p| ≈ h/2, apart from 1–2 entries per block. σ(y) = x(y)x(y+h) has 4–6 sign changes per block, against a null of about h/2 = 42 or 44, giving combined p = 10^−71.4 and 10^−78.0. See `report/alpoge_methods_forensics.md` §4.
 - **The largest block share is not a filter signature.** In the flat cores, max P_k(ω)/v ≤ 1.97 (share ≤ 0.494). A hard "share ≤ ½" filter alone would only bring the share variance down to 0.0187 (Dirichlet conditioned on it), so it cannot explain 0.005. The observed maxima are what general flatness predicts.
 
 ## 3. W1 — null calibration [M]
@@ -185,7 +187,7 @@ Together with 13/13 failures at 40M flips, the S3 time-to-solution at v=151 is �
 ## 6. What I could not determine / explicit uncertainties
 
 - The method the Alpöge group actually used. Everything in §5 is a hypothesis that fits the census; it is not evidence of their method.
-- The half-shift statistic in 167/179 (definition needed).
+- The half-shift statistic in 167/179 (definition needed). **Resolved 2026-10-09:** `report/alpoge_methods_forensics.md` §4.
 - The flat-block count at v=283 below ρ ≈ 0.34. Plain WL did not converge there, so the prompt's ~2^38 per slot (and ~2^32 flat solutions) is neither confirmed nor refuted. My rough number (~2^33 per row sum) is unreliable.
 - **Pools are trajectory samples, not uniform over flat blocks.** The partial-join/Gaussian agreement suggests the covariance is representative, but a bias of a few percent in n′ cannot be excluded.
 - **S3 cost at v=151** rests on 3 long runs (67M, 218M, >400M flips), so the median is only roughly known.

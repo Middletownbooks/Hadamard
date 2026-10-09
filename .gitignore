@@ -68,3 +68,9 @@ logs/bge3_general/run_523c.log
 # theory arm: compiled nauty/Traces tools (build from theory/*.c, see report/theory_arm_2000_3000.md section 7)
 theory/hadaut
 theory/hadaut_traces
+
+# forensics: numpy caches and uncompressed copies of the user-supplied originals (the .txt.gz copies are committed)
+forensics/*.npy
+forensics/originals/*.npy
+forensics/originals/matrix_H*.txt
+forensics/Hadamard668_announced.lean

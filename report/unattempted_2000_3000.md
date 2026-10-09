@@ -110,6 +110,7 @@ unvalidated lift. Low priority.
 - **D-optimal transfer** (`report/dopt_transfer_audit.md`): a different problem. Only the arithmetic overlaps
   (537, 573 and 643 satisfy the two-squares condition).
 - **The b = 1 half-shift structure** (`logs/b1_halfshift_cost.log`): about 2000 bits at 515 and 719. Hopeless.
+  Update (2026-10-09): the structure is now characterised as a two-arc template (`report/alpoge_methods_forensics.md` §4). With the published-style arc supports, each of the two independent halves has log₂E ≈ +31 at 167/179, +6 at 419, +2 at 443 and −13 at 523 (about 535 constraint bits per half). The verdict stands.
 
 ## 3. Closed today (for the record)
 
