@@ -289,8 +289,74 @@ def exact_h0_screen(v, b, n, p):
         s12 = {(x[0] + y[0], x[1] + y[1]) for x in sets[0] for y in sets[1]}
         s34 = {(x[0] + y[0], x[1] + y[1]) for x in sets[2] for y in sets[3]}
         if any((tgtQ - x[0], tgtN - x[1]) in s34 for x in s12):
-            return {"v": v, "b": b, "n": n, "p": p, "h0_screen": True, "profile": q}
+            return {"v": v, "b": b, "n": n, "p": p, "h0_screen": True, "profile": [int(x) for x in q]}
     return {"v": v, "b": b, "n": n, "p": p, "h0_screen": False}
 
 if __name__ == "__main__" and sys.argv[1] == "h0":
     v, b, n, p = map(int, sys.argv[2:6]); print(json.dumps(exact_h0_screen(v, b, n, p)))
+
+
+# ---------------- fast exact h0 screen (aggregate form, 2-D boolean DP + convolution) ----------------
+def exact_h0_screen_fast(v, b, n, p):
+    """Same condition as exact_h0_screen, computed via aggregates.
+    Per coset: twisted (alpha, beta): r = alpha, s = -1, d = alpha*beta*[p = 1 mod 4]
+               constant (alpha, gamma): r = alpha + (p-1)*gamma, s = p - 2 + 2*alpha*gamma, d = 0
+    (s = within-coset PAF averaged over QR/NQR, d = their half-difference / 2).  Target: sum_k s_k = -4b, sum_k d_k = 0,
+    row sums: profile with sum a^2 = 4v (b=0) or (+-2, 0, 0, 0) (b=1)."""
+    import itertools as it
+    from scipy.signal import fftconvolve
+    p1 = (p % 4 == 1)
+    R = n * p; S0 = n; Smax = n * p                       # r in [-R, R], s in [-n, n*p]
+    # constant part: G[Nc] = bool array over (r, s) for Nc constant cosets
+    const_steps = [(a + (p - 1) * g, p - 2 + 2 * a * g) for a in (1, -1) for g in (1, -1)]
+    shape = (2 * R + 1, Smax + S0 + 1)
+    G = np.zeros(shape, bool); G[R, S0] = True            # zero cosets: r=0, s=0
+    consts = [G]
+    for _ in range(n):
+        H = np.zeros(shape, bool)
+        for dr, ds in const_steps:
+            src = consts[-1]
+            rs = slice(max(0, -dr), shape[0] - max(0, dr)); rd = slice(max(0, dr), shape[0] - max(0, -dr))
+            ss = slice(max(0, -ds), shape[1] - max(0, ds)); sd = slice(max(0, ds), shape[1] - max(0, -ds))
+            H[rd, sd] |= src[rs, ss]
+        consts.append(H)
+    # block reachable set as dict r -> bool array over (s, d)  (d in [-n, n])
+    D0 = n
+    block = {}
+    for Nc in range(n + 1):
+        Nt = n - Nc
+        C = consts[Nc]
+        # twisted part: r_t, d with parity Nt, |r_t| <= Nt, |d| <= Nt (d = 0 if not p1); s contribution -Nt
+        rts = range(-Nt, Nt + 1, 2)
+        ds = list(range(-Nt, Nt + 1, 2)) if p1 else [0]
+        if not p1 and Nt % 2 == 1 and False: pass
+        for rt in rts:
+            rows = np.nonzero(C.any(1))[0]
+            for ri in rows:
+                rc = ri - R; rtot = rc + rt
+                svec = C[ri]                                  # over s index (s = idx - S0)
+                arr = block.setdefault(rtot, np.zeros((Smax + S0 + 1, 2 * D0 + 1), bool))
+                sidx = np.nonzero(svec)[0] - Nt               # shift by -Nt
+                sidx = sidx[sidx >= 0]
+                for d in ds:
+                    if (not p1) or True: arr[sidx, d + D0] = True
+    def prof_list():
+        rows = sorted(block)
+        if b == 0:
+            pos = [x for x in rows if x >= 0 and -x in block]
+            return [list(q) for q in it.combinations_with_replacement(pos, 4) if sum(x * x for x in q) == 4 * v]
+        return [[2, 0, 0, 0]] if 2 in block and 0 in block else []
+    tS = -4 * b
+    for q in prof_list():
+        conv = None
+        for a in q:
+            A = block[a].astype(float)
+            conv = A if conv is None else (fftconvolve(conv, A) > 0.5).astype(float)
+        # conv index: s_total + 4*S0 ; d_total + 4*D0
+        si, di = tS + 4 * S0, 4 * D0
+        if 0 <= si < conv.shape[0] and conv[si, di] > 0.5:
+            return {"v": v, "b": b, "n": n, "p": p, "h0_screen": True, "profile": [int(x) for x in q]}
+    return {"v": v, "b": b, "n": n, "p": p, "h0_screen": False}
+
+if __name__ == "__main__" and sys.argv[1] == "h0fast":
+    v, b, n, p = map(int, sys.argv[2:6]); print(json.dumps(exact_h0_screen_fast(v, b, n, p)))
