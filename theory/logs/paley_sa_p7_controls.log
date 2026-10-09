@@ -1,0 +1,15 @@
+/home/user/Hadamard/scripts/paley_ls.py:5: SyntaxWarning: invalid escape sequence '\ '
+  must equal the target: 4m at (0, 0); -4b on H' x {0, QR, NQR} \ (0, 0); +4 elsewhere (b >= 3: H' of index c in G');
+{"v": 57, "b": 1, "p": 7, "mods": [8], "seed": 11, "found": true, "final_cost": 0, "steps": 100000000, "secs": 6.0, "verified": true}
+/home/user/Hadamard/scripts/paley_ls.py:5: SyntaxWarning: invalid escape sequence '\ '
+  must equal the target: 4m at (0, 0); -4b on H' x {0, QR, NQR} \ (0, 0); +4 elsewhere (b >= 3: H' of index c in G');
+{"v": 71, "b": 1, "p": 7, "mods": [10], "seed": 11, "found": false, "final_cost": 144, "steps": 100000000, "secs": 31.3}
+{"v": 71, "b": 1, "p": 7, "mods": [10], "seed": 12, "found": false, "final_cost": 80, "steps": 100000000, "secs": 30.8}
+{"v": 71, "b": 1, "p": 7, "mods": [10], "seed": 13, "found": false, "final_cost": 80, "steps": 100000000, "secs": 32.1}
+{"v": 71, "b": 1, "p": 7, "mods": [10], "seed": 14, "found": false, "final_cost": 272, "steps": 100000000, "secs": 32.2}
+/home/user/Hadamard/scripts/paley_ls.py:5: SyntaxWarning: invalid escape sequence '\ '
+  must equal the target: 4m at (0, 0); -4b on H' x {0, QR, NQR} \ (0, 0); +4 elsewhere (b >= 3: H' of index c in G');
+{"v": 85, "b": 1, "p": 7, "mods": [12], "seed": 11, "found": false, "final_cost": 336, "steps": 100000000, "secs": 35.5}
+{"v": 85, "b": 1, "p": 7, "mods": [12], "seed": 12, "found": false, "final_cost": 272, "steps": 100000000, "secs": 37.6}
+{"v": 85, "b": 1, "p": 7, "mods": [12], "seed": 13, "found": false, "final_cost": 320, "steps": 100000000, "secs": 36.3}
+{"v": 85, "b": 1, "p": 7, "mods": [12], "seed": 14, "found": false, "final_cost": 400, "steps": 100000000, "secs": 36.5}

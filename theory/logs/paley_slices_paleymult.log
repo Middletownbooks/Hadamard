@@ -1,0 +1,9 @@
+{"v": 419, "b": 1, "p": 11, "mods": [38], "slice": "mult:7", "orbits": 14, "free_bits": 168, "log2E": 21.1, "profile": [2, 0, 0, 0], "constraint_bits": 123.9, "eqs": 20}
+{"v": 419, "b": 1, "p": 11, "mods": [38], "slice": "full", "orbits": 38, "free_bits": 456, "log2E": 96.1, "profile": [2, 0, 0, 0], "constraint_bits": 339.8, "eqs": 56}
+{"v": 573, "b": 1, "p": 11, "mods": [52], "slice": "mult:29", "orbits": 20, "free_bits": 240, "log2E": 23.2, "profile": [2, 0, 0, 0], "constraint_bits": 192.7, "eqs": 29}
+{"v": 573, "b": 1, "p": 11, "mods": [52], "slice": "mult:5", "orbits": 16, "free_bits": 192, "log2E": -13.0, "profile": [2, 0, 0, 0], "constraint_bits": 180.6, "eqs": 26}
+{"v": 573, "b": 1, "p": 11, "mods": [52], "slice": "mult:49", "orbits": 12, "free_bits": 144, "log2E": -23.7, "profile": [2, 0, 0, 0], "constraint_bits": 144.2, "eqs": 19}
+{"v": 571, "b": 1, "p": 19, "mods": [30], "slice": "mult:7", "orbits": 12, "free_bits": 144, "log2E": -141.9, "profile": [2, 0, 0, 0], "constraint_bits": 260.7, "eqs": 18}
+{"v": 571, "b": 1, "p": 19, "mods": [30], "slice": "mult:11", "orbits": 20, "free_bits": 240, "log2E": -15.9, "profile": [2, 0, 0, 0], "constraint_bits": 231.9, "eqs": 30}
+{"v": 571, "b": 1, "p": 19, "mods": [30], "slice": "mult:19", "orbits": 18, "free_bits": 216, "log2E": -10.3, "profile": [2, 0, 0, 0], "constraint_bits": 202.1, "eqs": 28}
+{"v": 647, "b": 1, "p": 19, "mods": [34], "slice": "mult:13", "orbits": 10, "free_bits": 120, "log2E": -37.5, "profile": [2, 0, 0, 0], "constraint_bits": 134.6, "eqs": 18}

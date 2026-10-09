@@ -1,3 +1,3 @@
 {"v": 43, "p": 7, "n": 6, "KN": [[3, 1, 2], [4, 3, 1], [5, 5, 0]]}
-{"CORE": true, "K": 3, "Nminus": 1, "core_ok": true, "rowsums": [2, 0, 0, 0], "hadamard": true, "N": 172, "secs": 0.8}
-{"summary": true, "gadgets": 170, "stage1": 1, "cores": 1, "secs": 0.8}
+{"CORE": true, "K": 3, "Nminus": 1, "core_ok": true, "rowsums": [2, 0, 0, 0], "hadamard": true, "N": 172, "secs": 1.0}
+{"summary": true, "gadgets": 170, "stage1": 1, "cores": 1, "lemma6_gadgets_cut": 0, "lemma6_y_cut": 0, "secs": 1.0}

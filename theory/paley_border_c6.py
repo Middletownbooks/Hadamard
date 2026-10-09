@@ -9,7 +9,7 @@ block-constant compression is annihilated: admissibility depends on xbar only mo
     sum_k |dev^_k(xi)|^2 = 4b on Q^ \ 1, (2) test the corner once per pattern, (3) list the block constants that give
     sum_k r_k^2 = 4v with odd entries (|H| = 99 odd) -- every such compression is admissible.
 usage: python3 theory/paley_border_c6.py [v]"""
-import sys, os, json, itertools as it
+import sys, os, json, math, itertools as it
 from collections import defaultdict
 import numpy as np
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -59,16 +59,26 @@ def main(v=599):
                 if corner_ok([np.array(x) for x in dv]): admissible.append(dv)
     # constants giving sum r^2 = 4v (odd entries): xbar_k = const_k + dev_k
     sols = []
-    for dv in admissible[:2000]:
+    for dv in admissible:
         sd = [sum(d) for d in dv]
         for cs in it.product(range(-17, 18, 2), repeat=4):
             if sum((6 * cs[k] + sd[k]) ** 2 for k in range(4)) == 4 * v:
                 sols.append(dict(dev=[[int(x) for x in d] for d in dv], const=[int(x) for x in cs], rows=[int(6 * cs[k] + sd[k]) for k in range(4)]))
                 break
+    # alpha bits at fixed compression, assuming a balanced gadget (y_Q = alpha_Q, as in 359): sum log2 C(|H'|, #minus)
+    hs = 9
+    for sl in sols:
+        ys = [[sl['const'][k] + x for x in sl['dev'][k]] for k in range(4)]
+        sl['alpha_bits'] = round(sum(math.log2(math.comb(hs, (hs - y) // 2)) for row in ys for y in row if abs(y) <= hs), 1)
+    ab = sorted(sl['alpha_bits'] for sl in sols)
     out = dict(v=v, control_347_ok=corner_ok(comp347), constant_shifts_annihilated=shift_ok,
                deviation_patterns_tested=tested, admissible_patterns=len(admissible),
-               admissible_with_rowsums_4v=len(sols), examples=sols[:4])
+               admissible_with_rowsums_4v=len(sols),
+               alpha_bits_min=ab[0] if ab else None, alpha_bits_median=ab[len(ab) // 2] if ab else None,
+               alpha_bits_max=ab[-1] if ab else None, examples=sols[:4])
     print(json.dumps(out))
+    with open(os.path.join(ROOT, 'theory', 'logs', f'paley_border_c6_{v}_admissible.json'), 'w') as fh:
+        json.dump(sols, fh)
 
 if __name__ == "__main__":
     main(int(sys.argv[1]) if len(sys.argv) > 1 else 599)

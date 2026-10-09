@@ -1,0 +1,19 @@
+{"v": 419, "p": 11, "n": 38, "mu": 7, "orbits": 14, "K": 15, "Nminus": 8, "B": 2, "Stight": [-2, -1, 0, 1], "block_gadgets": {"0": 1, "1": 4, "2": 4, "3": 24, "4": 96, "5": 96, "6": 216, "7": 780, "8": 768, "9": 672, "10": 2616, "11": 2304, "12": 1560, "13": 4296, "14": 3600, "15": 1032}, "secs": 2.3}
+{"progress": true, "gadgets": 20, "tried": 316, "s_cut": 267, "lemma6_cut": 29, "secs": 2.6}
+{"progress": true, "gadgets": 40, "tried": 586, "s_cut": 495, "lemma6_cut": 50, "jp_fail": 1, "secs": 2.8}
+{"progress": true, "gadgets": 60, "tried": 970, "s_cut": 823, "lemma6_cut": 83, "jp_fail": 4, "secs": 3.2}
+{"progress": true, "gadgets": 80, "tried": 1367, "s_cut": 1171, "lemma6_cut": 106, "jp_fail": 10, "secs": 3.5}
+{"progress": true, "gadgets": 100, "tried": 1670, "s_cut": 1429, "lemma6_cut": 130, "jp_fail": 11, "secs": 3.7}
+{"progress": true, "gadgets": 120, "tried": 2096, "s_cut": 1796, "lemma6_cut": 167, "jp_fail": 13, "secs": 3.9}
+{"progress": true, "gadgets": 140, "tried": 2396, "s_cut": 2056, "lemma6_cut": 184, "jp_fail": 16, "secs": 4.3}
+{"progress": true, "gadgets": 160, "tried": 2833, "s_cut": 2434, "lemma6_cut": 219, "jp_fail": 20, "secs": 4.5}
+{"progress": true, "gadgets": 180, "tried": 3136, "s_cut": 2687, "lemma6_cut": 245, "jp_fail": 24, "secs": 4.9}
+{"progress": true, "gadgets": 200, "tried": 3513, "s_cut": 3015, "lemma6_cut": 270, "jp_fail": 28, "secs": 5.0}
+{"progress": true, "gadgets": 220, "tried": 3935, "s_cut": 3389, "lemma6_cut": 297, "jp_fail": 29, "secs": 5.3}
+{"progress": true, "gadgets": 240, "tried": 4281, "s_cut": 3681, "lemma6_cut": 325, "jp_fail": 35, "secs": 5.5}
+{"progress": true, "gadgets": 260, "tried": 4621, "s_cut": 3965, "lemma6_cut": 360, "jp_fail": 36, "secs": 5.8}
+{"progress": true, "gadgets": 280, "tried": 5062, "s_cut": 4346, "lemma6_cut": 392, "jp_fail": 44, "secs": 6.1}
+{"progress": true, "gadgets": 300, "tried": 5400, "s_cut": 4644, "lemma6_cut": 409, "jp_fail": 47, "secs": 6.8}
+{"progress": true, "gadgets": 320, "tried": 5916, "s_cut": 5086, "lemma6_cut": 455, "jp_fail": 55, "secs": 7.0}
+{"progress": true, "gadgets": 340, "tried": 6295, "s_cut": 5409, "lemma6_cut": 485, "jp_fail": 61, "secs": 7.3}
+{"progress": true, "gadgets": 360, "tried": 6756, "s_cut": 5802, "lemma6_cut": 530, "jp_fail": 64, "secs": 7.8}

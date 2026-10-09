@@ -9,7 +9,8 @@ Stage 2: u on the twisted positions.  Exact: group each block's u by its coset s
          (characters of Q are real) is sum_k [betahat_Q,k(xi)^2 + p uhat_Q,k(xi)^2] = 4v for every xi, a condition on
          the groups only; compatible group 4-tuples are then joined on the full lag-domain signature
          (sum PAF(beta) + p PAF(u), X) = (4v delta, 0).
-usage: python3 theory/paley_pipeline.py run179 [max_gadgets] [seed]"""
+usage: python3 theory/paley_pipeline.py run179 [max_gadgets] [seed]
+       python3 theory/paley_pipeline.py check479          (rebuild + verify H(1916) from the 479 core)"""
 import sys, os, json, time, itertools as it, math
 from collections import defaultdict
 import numpy as np
@@ -175,11 +176,19 @@ def full_matrix_c4(F, mods, qidx, b):
     H = np.zeros((N, N), np.int64); H[:off, :off] = C; H[:off, off:] = Kbig; H[off:, :off] = Kcbig; H[off:, off:] = Core
     return H, dict(border=True, corner_pm1=True, N=N, hadamard=bool(np.array_equal(H @ H.T, N * np.eye(N, dtype=np.int64))))
 
-def test479():
+def check479():
+    """completion check: rebuild H(1916) from the published 479 core (b = 3, G' x Z_p = Z2 x Z2 x Z119, Q = Z2^2) with a
+    c = 4 border found automatically by border_c4, and verify H H^T = N I exactly"""
     from hadlib import Core as HCore
     core = HCore(os.path.join(ROOT, 'data/core_v479_b3.txt'))
-    X = [np.asarray(x).reshape(-1) for x in core.X] if hasattr(core, 'X') else None
-    raise SystemExit
+    mods = core.mods; m = core.m
+    co = np.array(np.unravel_index(np.arange(m), mods)).T
+    qidx = co[:, 0] * 2 + co[:, 1]                       # H = Z119 (last factor), Q = Z2 x Z2
+    t0 = time.time()
+    H, info = full_matrix_c4(core.X, mods, qidx, 3)
+    info['secs'] = round(time.time() - t0, 1)
+    print(json.dumps(info))
+    return info
 
 def run179(max_gadgets=200, seed=0):
     v, b, p = 179, 3, 11
@@ -202,6 +211,9 @@ def run179(max_gadgets=200, seed=0):
                     if not ok: continue
                     if sum(sum(x) ** 2 for x in xq) != 4 * v: continue
                     comps.append(xq)
+    if not comps:                                     # report section 7.2: no balanced c = 4 compression exists for 179
+        print(json.dumps(dict(v=v, b=b, p=p, balanced_single_bump_compressions=0, note='179 has no admissible compression in this family')))
+        return []
     rng.shuffle(comps)
     pairs = []
     for c0 in range(n):
@@ -249,3 +261,4 @@ def run179(max_gadgets=200, seed=0):
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "run179": run179(int(sys.argv[2]) if len(sys.argv) > 2 else 200, int(sys.argv[3]) if len(sys.argv) > 3 else 0)
+    elif cmd == "check479": check479()

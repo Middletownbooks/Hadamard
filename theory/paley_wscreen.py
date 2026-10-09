@@ -12,7 +12,10 @@ This confines s(h') to a small set S(h').  Summing PAF(w) over G' gives the exac
     K + sum_{h' != 0} s(h') = sum_k (sum_g w_k(g))^2 =: sum_k t_k^2,
 while the row sums r_k = (sum alpha_k) + (p-1) t_k with |sum alpha_k| <= n', sum alpha_k = n' (mod 2), and the row-sum
 profile (+-2,0,0,0) for b = 1 or sum r_k^2 = 4v for b != 1, confine the t_k.  The (K, N_-, N_+) come from the h' = 0
-equation sum y^2 = T_J(0).  An option is killed if no (K, t_1..t_4, s) satisfies all of this.
+equation sum y^2 = T_J(0).  Lemma 6 (S2 at the trivial character): sum_k (r_k - p t_k)^2 + p sum_k rho_k^2 = 4v with
+rho_k = sum_g u_k(g) = n' - K_k (mod 2), |rho_k| <= n' - K_k, and K_k = t_k (mod 2).
+An option is killed if no (K, t_1..t_4, s, rho) satisfies all of this.  ('one' / 'b1' / 'bge3' accept --norho to
+reproduce the screen without Lemma 6.)
 usage: python3 theory/paley_wscreen.py b1                 (all b = 1 options of the open orders, p = 3 mod 4)
        python3 theory/paley_wscreen.py bge3               (b >= 3 options, p = 3 mod 4)
        python3 theory/paley_wscreen.py one v b p n' [|H'|]"""
@@ -51,7 +54,24 @@ def S_allowed(TJ, p, n, K):
         if ok: out.append(s)
     return out
 
-def screen(v, b, p, n, hsz=1, verbose=False):
+def rho_ok(Q, ts, n):
+    """u row sums (report section 4, Lemma 6): exists rho in Z^4 with sum rho_k^2 = Q, rho_k = n - K_k = n - t_k (mod 2)
+    (K_k = #constant cosets of block k = t_k mod 2) and |rho_k| <= n - |t_k|"""
+    if Q < 0: return False
+    par = [(n - t) % 2 for t in ts]; cap = [n - abs(t) for t in ts]
+    rng = [[r for r in range(0, cap[k] + 1) if r % 2 == par[k] and r * r <= Q] for k in range(4)]
+    for r0 in rng[0]:
+        for r1 in rng[1]:
+            q1 = Q - r0 * r0 - r1 * r1
+            if q1 < 0: break
+            for r2 in rng[2]:
+                q2 = q1 - r2 * r2
+                if q2 < 0: break
+                r3 = math.isqrt(q2)
+                if r3 * r3 == q2 and r3 % 2 == par[3] and r3 <= cap[3]: return True
+    return False
+
+def screen(v, b, p, n, hsz=1, verbose=False, rho=True):
     """hsz = |H'| for b >= 3 (H' of index c = b + 1 in G'); lag classes: n - 1 nonzero lags, of which hsz - 1 in H'"""
     res = {"v": v, "b": b, "p": p, "n'": n, "H'": hsz}
     KNs = KN_options(v, b, p, n)
@@ -96,6 +116,10 @@ def screen(v, b, p, n, hsz=1, verbose=False):
                     if sum(abs(t) for t in ts) > K: continue
                     if (sum(abs(t) for t in ts) - K) % 2: continue          # sum |supp w_k| = K, t_k = |supp| mod 2
                     need = sum(t * t for t in ts) - K
+                    if need in tot and rho:
+                        # Lemma 6: sum_k (r_k - p t_k)^2 + p sum_k rho_k^2 = 4v  (S2 at the trivial character)
+                        num = 4 * v - sum((r - p * t) ** 2 for r, t in zip(rs, ts))
+                        if num % p or not rho_ok(num // p, ts, n): continue
                     if need in tot:
                         alive.append(dict(K=K, Nminus=Nm, Nplus=Np, profile=rs, t=list(ts), Soff=Soff, SH=SH, sum_s=need))
                         if not verbose: break
@@ -128,10 +152,10 @@ def bge3_options():
     return out
 
 if __name__ == "__main__":
-    cmd = sys.argv[1]
+    cmd = sys.argv[1]; RHO = "--norho" not in sys.argv; sys.argv = [a for a in sys.argv if a != "--norho"]
     if cmd in ("b1", "bge3"):
         for o in (b1_options() if cmd == "b1" else bge3_options()):
-            r = screen(*o)
+            r = screen(*o, rho=RHO)
             print(json.dumps({k: r[k] for k in ("v", "b", "p", "n'", "H'", "alive")} | ({"witness": r["witness"]} if r["alive"] else {"KN": r.get("KN")})), flush=True)
     elif cmd == "one":
-        a = list(map(int, sys.argv[2:])); r = screen(*a, verbose=False); print(json.dumps(r))
+        a = list(map(int, sys.argv[2:])); r = screen(*a, verbose=False, rho=RHO); print(json.dumps(r))

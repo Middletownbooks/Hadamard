@@ -6,7 +6,8 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
 **Tags.**
 - **[M]** verified by exact computation here; the script is named.
 - **[P]** proved here; the proof is in the text.
-- **[E]** Gaussian estimate (same conventions as `scripts/paley_bge3.py`, recalibrated on 359 below).
+- **[E]** Gaussian estimate (same conventions as `scripts/paley_bge3.py`, recalibrated on 359 below). It matched every
+  exact control at p = 7, but overcounts badly at b = 1, p ≥ 11 (§7.2, §7.4).
 - **[L]** literature recollection, not re-checked.
 
 ---
@@ -30,7 +31,12 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
      onto G″ [M].
    - The doubly-twisted slices of 571, 573 and 599 (c = 6) are predicted empty (log₂E = −11 to −46) [E].
    - Every "X-killing" design is predicted empty or arithmetically impossible: even slices (log₂E = −22 at 359, −50 to −59
-     at 571/647/573), swap pairs, convolution designs and odd/odd slices (§6).
+     at 571/647/573, −15 at 659), swap pairs, convolution designs and odd/odd slices (§6).
+   - **Lemma 6 (new, [P, M]):** S2 at the real characters of G′ fixes the row sums of u by stage-1 data, with a parity
+     condition. Consequences:
+     - for b = 1 the four blocks cannot all contain an odd number of constant cosets;
+     - it is the exact reason why every stage-1 solution at v = 111 and v = 133 (p = 11) fails to complete;
+     - it prunes gadgets, but kills no open option by itself (§4.1).
 
 4. **New structure [P, M].**
    - The Paley-coset ansatz splits exactly into two independent quadratic systems on G′:
@@ -46,15 +52,29 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
 
 5. **Positive controls [M].**
    - The exact two-stage design pipeline (§7.2) constructs and verifies Hadamard matrices H(116), H(172), H(228),
-     H(284) and H(340): b = 1, p = 7, n′ = 4–12, each in at most a few seconds (`theory/paley_b1pipe.py`).
-   - At p = 11 it proves v = 67 and v = 89 empty. The Gaussian estimate for 89 was +28.7, so Gaussian estimates overcount
-     when the w-gadget is rigid; 599 at b = 1 shows the same pattern (prompt: +28, exactly empty here).
+     H(284), H(340) and H(396): b = 1, p = 7, n′ = 4–14 (`theory/paley_b1pipe.py`).
+     - Each takes at most 30 s, except H(396), which takes 3 min.
+     - H(396) lives on the non-cyclic group Z₁₄ × Z₇.
+     - Every core is re-checked independently by `paley_b1pipe.py verify`.
+   - At p = 11 it proves v = 67, 89 and 111 exactly empty, and v = 133 empty with at most 4 constant cosets per block,
+     although the Gaussian estimates are +23 to +40.
+     - At 67 and 89 stage 1 is already empty, because the gadget is rigid.
+     - At 111 and 133 every stage-1 solution violates Lemma 6.
+     - So the Gaussian model is not trustworthy for p ≥ 11 at b = 1. 599 at b = 1 shows the same pattern (prompt: +28,
+       exactly empty here).
    - Exact stage 1 at 359, given the published compression and gadget, enumerates all 4096 stage-1 solutions in 25 min;
      the published α is among them.
    - The published 359 border, inflated, serves the whole c = 8, p = 11 family. For v = 183 exactly 2 single-deviation
      compressions are admissible. The c = 4 builder rebuilds a verified H(1916) from the 479 core with a border found
      automatically.
    - None of this reaches ≤ 2^45 at 359 or at an open order (§7.3).
+
+6. **Where the difficulty sits at the open orders [E] (§7.4).**
+   - The most slack-rich open option is 659 at b = 1 (G′ = Z₉₄, p = 7): log₂E up to +236 in the full ansatz.
+   - But stage 2 given y has a deficit of 99–167 bits, so no staged method can reach it. It needs a joint solver, and the
+     X-killing even slice is dead (−15).
+   - For 571 and 647 (p = 19) stage 2 per y is near break-even, and all the cost sits in the rigid stage 1. That is the
+     regime where the Gaussian model failed at every p ≥ 11 control.
 
 ---
 
@@ -91,7 +111,7 @@ Scripts: `theory/paley_*.py`. Logs: `theory/logs/paley_*`, `theory/logs/stage1_*
   - **(S1)** Σ_k y_k y_k* = T_J. This is p × (the Z_p-coefficient) plus (S2 real), using (p−1)² = p² − 2p + 1.
 - Equivalently, in characters ψ of G′:
   - S2: Σ_k |β̂_k(ψ) + i√p·û_k(ψ)|² = 4v for every ψ.
-  - S1: Σ_k |ŷ_k(ψ)|² = 4v off H′^⊥, 4b on H′^⊥∖1 (b ≥ 3), and Σ r_k² = 4v at ψ = 1.
+  - S1: Σ_k |ŷ_k(ψ)|² = 4v off H′^⊥, 4b on H′^⊥∖1 (b ≥ 3), and Σ r_k² = T̂_J(1) at ψ = 1 (4v for b ≥ 3, 4 for b = 1).
 - In the ring O = Z[π]: Σ_k Z′_k Z′_k^† = v·δ, where † is inversion composed with complex conjugation.
   - Entries are ±π, ±π̄ (twisted, norm (p+1)/4), ±1 (J′) or 0 (J).
 - This is the algebra decomposition span{I, Q_p, J} ⊗ Q ≅ Q × Q(√−p) of the Paley tournament scheme, applied blockwise.
@@ -199,6 +219,50 @@ which is part of the repo's h0 screen.
   - The p = 11 options (599 c = 6, 669 c = 10, 719 c = 16, 643 c = 28) survive, because (p−1)² = 100 is too small for
     the bound to bite.
 - Stage 1 uses only coset sums, so the screen applies verbatim to p ≡ 1 (mod 4).
+
+### 4.1 Lemma 6: S2 at the real characters fixes the u row sums [P, M]
+
+**Lemma 6.**
+- Let ψ be a character of G′ with ψ² = 1, and write f̂(ψ) = Σ_g ψ(g) f(g).
+- On every core of the ansatz (any b):
+
+      Σ_k û_k(ψ)² = (4v − T̂_J(ψ))/p + 2 Σ_k ŷ_k(ψ) ŵ_k(ψ) − p Σ_k ŵ_k(ψ)²,
+
+  with û_k(ψ) ≡ |T_k| (mod 2) and |û_k(ψ)| ≤ |T_k|, where T_k is the set of twisted cosets of block k (|T_k| = n′ − K_k).
+- At ψ = 1, writing ρ_k = Σu_k, this reads Σ_k (r_k − p t_k)² + p Σ_k ρ_k² = 4v.
+
+Proof:
+1. S2 (real) at ψ gives Σ_k β̂_k² + p Σ_k û_k² = 4v.
+2. Substitute β = α − w = y − p·w, and use S1 at ψ: Σ_k ŷ_k² = T̂_J(ψ).
+3. The parity holds because û_k(ψ) is a ±1-sum over T_k. ∎
+
+The proof uses only S1 and the 1-component of XX*, which is ββ* + pUU* for either sign of χ* = ±χ. So Lemma 6 also
+holds verbatim for p ≡ 1 (mod 4).
+
+**Corollary 6.1 (b = 1).**
+- At ψ = 1, Σ_k ρ_k² = 4n′ + 4t₀ − p Σ_k t_k², where block 0 is the block with row sum 2.
+- Since t_k ≡ K_k ≡ ρ_k (mod 2), reducing mod 8 shows that **the four blocks cannot all have an odd number of constant
+  cosets**:
+  - if all four were odd, both sides would be ≡ 4 (mod 8) only if n′ + t₀ − p is odd;
+  - but n′ is even and t₀, p are odd, so n′ + t₀ − p is even.
+
+**Verification and use [M].**
+- Verified exactly at every real character on the published 359 core and on all six b = 1 controls of §7.2
+  (`theory/paley_lemma6.py`, `theory/logs/paley_lemma6.log`).
+  - At 359, K_k = (8, 2, 0, 2) and t = ρ = 0.
+- **It explains the p = 11 failures.**
+  - At v = 111 the exact pipeline finds 8 stage-1 solutions. All have t = (1, ±1, ±1, ±1) and K_k = (1, 1, 1, 1), so
+    Σρ² = 40 + 4 − 44 = 0 while every ρ_k is odd. Impossible.
+  - At v = 133 the same holds: 8 stage-1 solutions, all with K_k = (1, 1, 1, 1), which Corollary 6.1 forbids.
+  - The lattice test `theory/paley_s2lattice.py` independently finds the stage-2 target outside the congruence lattice
+    for every one of these 16 stage-1 solutions (`theory/logs/paley_s2lattice_111.log`, `…_133.log`). The Gaussian
+    model predicted 2^13.5 (111) and 2^15.9 (133) completions per y.
+- **Screen.** Added to `theory/paley_wscreen.py` (with K_k ≡ t_k and |ρ_k| ≤ n′ − |t_k|). It changes no verdict for
+  the open-order options screened (`theory/logs/paley_wscreen_*_rho.jsonl`): it removes witnesses, not options.
+- **Pipeline filter.** In `theory/paley_b1pipe.py`, ψ = 1 filters gadgets and ψ = (−1)^g filters stage-1 solutions.
+  - At 111 it removes the 8 gadget shapes behind those stage-1 solutions, and at 133 the 16 shapes behind its 8, so
+    stage 2 is never entered.
+  - At p = 7 it cuts nothing; every control still completes.
 
 ## 5. Question 1: iterated Paley
 
@@ -341,19 +405,29 @@ which is part of the repo's h0 screen.
 | 43 | 1 | 7 | 6 | **H(172)** | 0.8 s |
 | 57 | 1 | 7 | 8 | **H(228)** | 1.4 s |
 | 71 | 1 | 7 | 10 | **H(284)** | 2.6 s |
-| 85 | 1 | 7 | 12 | **H(340)** | 29.8 s |
-| 67 | 1 | 11 | 6 | exactly empty (16 gadget classes, 0 stage-1 solutions) | 0.0 s |
-| 89 | 1 | 11 | 8 | exactly empty (33 classes, 0 stage-1 solutions), although the Gaussian estimate says log₂E = +28.7 | 0.1 s |
-| 133 | 1 | 11 | 12 | RESULT133 | |
-| 99, 177 | 1 | 7, 11 | 14, 16 | RESULT99177 | |
+| 85 | 1 | 7 | 12 | **H(340)** | 27 s |
+| 99 | 1 | 7 | 14 | **H(396)**, on the non-cyclic G = Z₁₄ × Z₇ | 191 s |
+| 45 | 1 | 11 | 4 | exactly empty: no gadget has feasible row sums | 0.0 s |
+| 67 | 1 | 11 | 6 | exactly empty (16 gadget classes, 0 stage-1 solutions); Gaussian log₂E = +23 (split estimator) | 0.0 s |
+| 89 | 1 | 11 | 8 | exactly empty (33 classes, 0 stage-1 solutions); Gaussian log₂E = +28.7 | 0.1 s |
+| 111 | 1 | 11 | 10 | exactly empty (1,700 classes). 8 stage-1 solutions, all killed by Lemma 6; Gaussian log₂E = +28 (split estimator) | 6.5 s |
+| 133 | 1 | 11 | 12 | exactly empty with ≤ 4 constant cosets per block. Without Lemma 6: 24,856 classes, 8 stage-1 solutions, none completes. With Lemma 6: 24,792 classes, 0 stage-1 solutions (the 16 gadget shapes it removes carry all 8). Gaussian log₂E = +33 (split) / +40 (`paley_slices.py`) | 358 s |
+| 177 | 1 | 11 | 16 | not run: the class count grows from 1,700 (111) to 24,856 (133), so 177 should have ≳ 10^5 classes [E], each with a 2^27-pair stage-1 join | — |
+| 179 | 3 | 11 | 16 | no control possible with a balanced gadget (\|y_Q\| ≤ 4): Corollary 3 forces three single-bump blocks and one flat block (Q = Z₂²), with row sums in {±2, ±6, ±10, ±14} and {0, ±8, ±16}, and no four such squares sum to 4v = 716 [P, M: `paley_pipeline.py run179`]. The b ≥ 3 control was run at 183 instead | 0 s |
 | 183 | 7 | 11 | 16 | 17 stage-1 orbit classes with the 359-border compression swept exactly, no core. About 2^21.5 Q-level solutions and 30,912 zero patterns each. The sweep then stopped (memory) | 9 min |
 
 **Reading.**
 - At p = 7 the norm identity gives 2K − N₋ = n′ − 1, so K is at least about n′/2. Stage 2 keeps slack, and the first
   stage-1 solution always completed.
-- At p = 11 small orders can be empty even when the Gaussian model predicts 2^28 solutions. The model ignores how rigid
-  the gadget is. This is the same failure as at 599 (b = 1), where the Gaussian estimate is +28 and the ansatz is exactly
-  empty (Theorem 5).
+- At p = 11 every order through n′ = 12 is empty, even though the Gaussian models predict 2^23–2^40 solutions
+  (`paley_split_b1.py`: 67 +23, 111 +28, 133 +33; `paley_slices.py`: 89 +28.7, 133 +40). The models miss two exact
+  effects:
+  - the rigid gadget (Lemma 4), which empties stage 1 at 67 and 89;
+  - Lemma 6, which blocks every stage-1 solution at 111 and 133.
+- This is the same failure as at 599 (b = 1), where the Gaussian estimate is +28 and the ansatz is exactly empty
+  (Theorem 5).
+- No p = 11, b = 1 core has been seen at any order. The next orders, 155 and 177 (n′ = 14, 16), pass both screens but
+  are beyond the present exact pipeline.
 
 ### 7.3 Why the pipeline does not reach 359 or an open order at ≤ 2^45
 
@@ -375,25 +449,172 @@ which is part of the repo's h0 screen.
 - b ≥ 3, p = 11 needs n′ = 54–64.
 - So the stage-2 joins are 2^60 or more, and Gaussian log₂E per y is negative wherever p ≥ 11.
 
+### 7.4 Where the difficulty sits at the open b = 1 options [E]
+
+**Method.** `theory/paley_split_b1.py` splits the Gaussian estimate (same density estimator as `paley_compfix.py`) for
+each (K, N₋, N₊) allowed by the norm identity, with the exact row sums imposed:
+- stage-1 log₂E: (gadget, J/J′ choice, w, α) placements minus the S1 bits;
+- stage-2 log₂E per y: u bits minus the S2 and X bits, given one sampled y.
+
+Logs: `theory/logs/paley_split_b1_*.log`.
+
+| option | n′ | stage 1 log₂E | stage 2 per y | core log₂E (best K) | exact pipeline |
+|---|---|---|---|---|---|
+| 85, p = 7 (control) | 12 | +35 … +44 | +2 … +8 | +48 | core at the first stage-1 solution |
+| 67, p = 11 (control) | 6 | +14 | +9 | +23 | stage 1 empty |
+| 111, p = 11 (control) | 10 | +18 | +9 | +28 | stage 2 empty (Lemma 6) |
+| 133, p = 11 (control) | 12 | +18 … +23 | +10 … +11 | +33 | stage 2 empty (Lemma 6) |
+| **659, p = 7, Z₉₄** | 94 | +255 … +372 | **−99 … −167** | **+236** (K = 72) | — |
+| 573, p = 11, Z₅₂ | 52 | +86 … +121 | −23 … −37 | +89 (K = 22) | — |
+| 571, p = 19, Z₃₀ | 30 | +25 … +32 | +1 … +4 | +33 (K = 7) | — |
+| 647, p = 19, Z₃₄ | 34 | +35 … +38 | −4 … 0 | +35 (K = 7) | — |
+
+**Reading.**
+- **659 at p = 7 is the most slack-rich open option** in the ansatz: +236 here, and +288.5 from the full-ansatz
+  estimator `paley_slices.py` (`theory/logs/paley_slices_659_p7.log`). p = 7 is also the regime where the Gaussian
+  model was right at every control (n′ = 4–14).
+  - Stage 2 per y is 99–167 bits short. No staged method (fix y, then solve for u) can work: it needs about 2^100
+    stage-1 solutions per core.
+  - The X-killing even slice is dead (log₂E = −15.3) and the center slice is infeasible (`theory/paley_slices.py`).
+  - What is needed is a joint solver on the 1128-bit, 140-equation system. That is the single most promising open-order
+    target I found for a non-staged search. Nothing here reaches it.
+- **571 and 647 at p = 19:** stage 2 per y is near break-even, so the whole cost is in stage 1.
+  - Stage 1 at p ≥ 11 is the rigid-gadget regime, where the Gaussian model overcounted at every control (67, 89, 111,
+    133, and 599 at p = 23).
+  - So their +33 and +35 should be read as upper bounds.
+- **573 at p = 11** has both problems: a rigid stage 1, and a stage 2 that is short by 23–37 bits.
+
+**Scaling at p = 7 (b = 1, cyclic G′) [E].** Stage 2 per y, over the K range, falls steadily:
+
+| n′ | 12 (v = 85) | 20 (141) | 30 (211) | 40 (281) | 60 (421) | 94 (659) |
+|---|---|---|---|---|---|---|
+| stage 2 per y | +2 … +8 | −8 … +5 | −26 … −3 | −39 … −15 | −88 … −43 | −167 … −99 |
+| core log₂E (best K) | +48 | +73 | +100 | +126 | +171 | +236 |
+
+- So the staged route is open only up to n′ ≈ 20–25.
+- The exact 2+2 join for stage 2 costs about 2^(1.75 n′), since u has about 3.5 n′ bits. That is 2^24.5 at n′ = 14
+  (H(396) took 3 min) and 2^35 at n′ = 20.
+- So **the exact pipeline tops out near n′ ≈ 20 even where solutions are plentiful.**
+- The joint annealer of the repo (`scripts/paley_ls.py --sa 1`, 10⁸ proposals per restart) is weaker still: it solves
+  v = 57 (n′ = 8) but not v = 71 or 85 (n′ = 10, 12), where the exact pipeline succeeds (`theory/logs/paley_sa_p7_controls.log`).
+- **659 needs n′ = 94.**
+
+### 7.5 The published 419 core is a Paley(11) core in a multiplier slice, and 573 has the same slice [M, E]
+
+**The Paley-coset ansatz is a multiplier orbit slice [P].**
+- On G = G′ × Z_p, a sequence is constant on the orbits of the multiplier group {μ : μ ≡ square (mod p), μ ≡ 1 (mod n′)}
+  iff on each Z_p-coset it takes one value at z = 0, one on the squares and one on the non-squares.
+- Writing these three values as α, u + w and −u + w, that is exactly x = αδ + uχ + wε, with exactly one of u, w nonzero
+  because the values are ±1.
+- So the Paley-coset ansatz **is** the orbit slice of that order-(p−1)/2 group. Adding a multiplier μ on G′ gives the
+  orbit slice of the product group: the labels (α, type, sign) become constant on the orbits of g ↦ μg.
+
+**419 [M]** (`theory/paley_anatomy419.py`, `theory/logs/paley_anatomy419.log`):
+- The published b = 1 core `data/core_v419_b1.txt` becomes, after translating blocks B, C, D by 208 (which preserves
+  every PAF), an **exact Paley-coset core with p = 11 on G′ = Z₃₈**.
+- Its labels are invariant under g ↦ 7g (order 3), so it lies in the "Paley(11) + mult:7" slice. That is the order-15
+  multiplier slice the forensics identified (`report/alpoge_methods_forensics.md` §5).
+- The forensics' "8 of 56 orbit pairs deviate from the Legendre twist" are its constant cosets.
+- Data:
+  - K = 16 (N₋ = 11, N₊ = 5) with K_k = (1, 13, 2, 0); the norm identity holds.
+  - t = (−1, −1, 0, 0) and ρ = (1, 5, −6, 8).
+  - Lemma 4 values s(h) ∈ {−2, −1, 0}.
+  - S1, S2 and X = 0 hold exactly, and Lemma 6 holds at both real characters.
+  - The gadget is a single J coset in A; in B, the J coset {0}, three J′ triples and one J triple; the J′ pair {0, 19}
+    in C; and nothing in D.
+- **So the two published Paley-coset cores, 359 (b = 7) and 419 (b = 1), both use p = 11.**
+
+**Slice estimates [E]** (`theory/paley_slices.py`, `theory/logs/paley_slices_paleymult.log`):
+
+| option | slice | orbits / block | free bits | constraint bits | log₂E |
+|---|---|---|---|---|---|
+| 419 (control, solved by its authors) | Paley(11) + ×7 (order 3) | 14 | 168 | 124 | +21.1 |
+| 419 | full Paley(11) | 38 | 456 | 340 | +96.1 |
+| **573**, p = 11, G′ = Z₅₂ | Paley(11) + ×29 (order 3 on Z₁₃) = the repo's d = 15 slice | 20 | 240 | 193 | **+23.2** |
+| 573 | + ×5 (order 4) / + ×49 (order 6) | 16 / 12 | 192 / 144 | 181 / 144 | −13.0 / −23.7 |
+| 571, p = 19, G′ = Z₃₀ | + ×7 / ×11 / ×19 | 12 / 20 / 18 | 144 / 240 / 216 | 261 / 232 / 202 | −142 / −15.9 / −10.3 |
+| 647, p = 19, G′ = Z₃₄ | + ×13 (order 4) | 10 | 120 | 135 | −37.5 |
+
+- **573 + ×29 is the only open-order analogue of 419's slice that is predicted non-empty.** Its log₂E is about the same
+  as 419's (+23 against +21), but it has 69 more constraint bits.
+- The repo had costed this slice as "d = 15: 193 bits, never run" (`report/unattempted_2000_3000.md` §3).
+
+**Stage split inside the slices [E]** (`theory/paley_split_slice.py`, `theory/logs/paley_split_slice_*.log`):
+
+| slice | stage 1 log₂E | u bits (stage 2) | stage 2 per y | core log₂E |
+|---|---|---|---|---|
+| 419, ×7 (K = 13–17) | +11 … +18 | 49–50 | −0.5 … −3.5 | +10 … +15 |
+| 573, ×29 (K = 17–25) | +19 … +34 | 68–73 | −8.6 … −15.7 | +10 … +23 (best K = 21) |
+
+**Exact slice pipeline at 419 [M]** (`theory/paley_slicepipe.py`):
+- **The published gadget, held fixed (`given419`).** α and u are searched exactly in the slice: per-block α lists
+  (495, 56, 924, 1848), an exact S1 join, Lemma 6 at both real characters, then an exact stage-2 join over u on the
+  twisted orbits.
+  - It found 3 stage-1 solutions and **a verified H(1676) in 241 s**.
+  - The core is in `data/core_v419_b1_paley.txt` and is re-verified by `paley_b1pipe.py verify`.
+  - This is the stage-1 + stage-2 analogue of the 359 control of §7.1, at a b = 1, p = 11 order.
+- **Gadgets drawn at random in the slice:** 400 gadgets each at K = 15 and K = 16, all passing Lemma 4 and Lemma 6,
+  give **0 stage-1 solutions** (`theory/logs/paley_slicepipe_v419_mu7_K1*_s*.log`).
+- **"Designed" gadgets:** signed unions of ×7-orbits with |PAF_w| ≤ 2 in every block and s(h) ∈ {−2, …, 1}. The
+  published gadget is one of them: its 13-coset block has PAF_w ∈ {−1, 0} off 0, a cyclotomic near-difference set of
+  Z₃₈. But:
+  - most such gadgets have |t_k| ≥ 2, which makes α infeasible;
+  - the feasible ones have Gaussian stage-1 yields of 2^−3 to 2^−23, against **2^+6.9 for the published gadget**.
+- **Yield-guided search** (|t_k| ≤ 1, α-feasible, run only when the predicted stage-1 yield exceeds 1): GUIDED419.
+- **Reading.**
+  - Given a good gadget, the slice pipeline is fast: about 2^25 work per gadget at 419.
+  - Gadget design is the bottleneck, exactly as at 359 (§6.1). The gadget has to be a cyclotomic near-difference
+    family whose row sums t_k are small and whose cross-correlation with α can absorb S1.
+
+**Cost at 573 in the same design [E].**
+- Per block the slice has 20 orbits (4 fixed points and 16 triples of ×29 on Z₅₂). With 0–4 constant orbits per
+  block, α lists hold 2^11–2^16 (exact DP counts) and u lists 2^16–2^20.
+- Given a good gadget:
+  - stage 1 costs about 2^28–2^32 per gadget (exact 2+2 join);
+  - stage 2 per y costs about 2^34–2^38 (2+2 join), less after splitting by the Lemma 6 classes.
+- The split predicts a stage-2 shortfall of 9–15 bits per y, so about 2^10 good y's are needed: **about 2^44–2^48 in
+  stage 2**, plus the cost of finding enough good gadgets.
+- At 419 the gadget search is the unsolved part, so **this is not yet a ≤ 2^45 algorithm for 573.** It is the most
+  concrete route I found: the authors' own 419 design, transferred to the only open order where its slice is predicted
+  non-empty.
+
 ## 8. Question 5: the b ≥ 3, p = 11 options and their borders
 
 | option | n′ | \|H′\| | K range (norm identity) | w-screen | border |
 |---|---|---|---|---|---|
-| 599 c = 6 (b = 5) | 54 | 9 | 17–24 | alive | **reuse 347's border (same b = 5)**: admissible compressions below |
-| 669 c = 10 (b = 9) | 60 | 6 | 17–25 | alive | none known |
-| 719 c = 16 (b = 15) | 64 | 4 | 17–24 | alive | none known. Sylvester H(64) ⊇ H₄⊗1₁₆ gives candidate K = H₄ ⊗ (rows 2–16 of H₁₆), corner untested |
-| 643 c = 28 (b = 27) | 56 | 2 | 10–14 | alive | none known |
+| 599 c = 6 (b = 5) | 54 | 9 | 17–24 | alive (also with Lemma 6) | **347's border (same b = 5) admits 384 explicit two-valued compressions** [M], below |
+| 669 c = 10 (b = 9) | 60 | 6 | 17–25 | alive (also with Lemma 6) | none known |
+| 719 c = 16 (b = 15) | 64 | 4 | 17–24 | alive (also with Lemma 6) | none known. Sylvester H(64) ⊇ H₄⊗1₁₆ gives candidate K = H₄ ⊗ (rows 2–16 of H₁₆), corner untested |
+| 643 c = 28 (b = 27) | 56 | 2 | 10–14 | alive (also with Lemma 6) | none known |
 
 **Which design transfers.**
-- Stage 1 transfers (exact meet-in-the-middle given compression and gadget).
-- Nothing else does. Stage 2 has (4n′ − K) = 192–239 free bits and about n′ = 54–64 equations, a deficit of about −10 to
-  −20, so roughly 2^100 or more per y.
+- In principle, all of the 359 machinery transfers: border-forced compression, designed gadget, exact stage 1, then
+  stage 2. **None of it is cheap at these sizes.**
+- **Stage 1 is no longer small.** At 359, the compression pins α to 50.7 bits because |H′| = 4.
+  - At 599 c = 6 we have |H′| = 9. With the compression fixed and a balanced gadget, α still carries
+    Σ log₂ C(9, #minus) = 136.9 bits, the same for every one of the 384 admissible compressions below
+    (`theory/logs/paley_border_c6_599_admissible.json`).
+  - So the exact stage-1 join costs about 2^68, not the 2^25 of 359.
+- **Stage 2** has 4n′ − K = 192–239 free bits and about n′ = 54–64 equations, a deficit of about 10 to 20 bits. That is
+  roughly 2^100 or more per y.
 
 **Border–compression matching (computable).**
 - The corner is forced, C = −K Cb^T Kc^T/(4c), so a compression is admissible for a given border iff K Cb^T Kc^T ∈ ±4c
   entrywise.
 - For c = 8 (359's border) the accepted single-deviation compressions are tabulated in §7 (183) and include 359's own.
-- For c = 6 (347's border) at v = 599: see below. (pending)
+- **For c = 6 (347's border) at v = 599 [M]** (`theory/paley_border_c6.py`, `theory/logs/paley_border_c6_599.log`):
+  - The 347 border reproduces 347's own corner.
+  - It annihilates block-constant compressions [P, checked on 20 random shifts]. So admissibility depends only on the
+    deviation pattern.
+  - Of the 1,244,160 two-valued deviation quadruples (each block's compression takes two values 2 apart) with the
+    compressed spectrum required by Corollary 3 (Σ_k |d̂_k(ξ)|² = 4b = 20 for ξ ≠ 1), **384 are accepted by the
+    border**.
+  - All 384 extend to row sums with Σr_k² = 4v, e.g. (−42, −2, 22, −12).
+  - So **599 c = 6 has explicit, border-admissible compressions.** The border is not the obstruction there; the
+    stage costs above are.
+  - Not tested: compressions with a deviation of ±4 in some block (compatible with Corollary 3, but outside the
+    two-valued family).
+- For c = 10, 16 and 28 no border is known, and none was constructed here.
 
 ## 9. What would change the picture
 
@@ -401,9 +622,14 @@ which is part of the repo's h0 screen.
    Σ_k Im(β̂ conj(û)) = 0 for a given β, i.e. a "complex building set" over Z[π].
    - None exists in the literature I know [L].
    - The exact level decomposition (§2) is the place to look: each level is a complementary-family problem over Q.
-2. **Better local search in the full ansatz** rather than more structure.
+2. **Better joint (non-staged) search in the full ansatz**, rather than more structure.
    - The published 359 sits in a space with log₂E = +67.7 and about 300 constraint bits; the authors solved it.
-   - The open b = 1 options 571 (+40.7, 298 bits) and 647 (+42.6, 343 bits) are in the same class.
+   - **The best-placed open target is 659 at b = 1 (G′ = Z₉₄, p = 7), not 571 or 647.**
+     - It has log₂E ≈ +236 to +288 (two estimators, §7.4).
+     - It is in the p = 7 regime, where every exact control (n′ = 4–14) behaved as the Gaussian model predicts.
+     - Its stage 2 per y is 99–167 bits short, so the search must be joint.
+   - 571 and 647 (p = 19; +29 to +43 by either estimator) are in the rigid-gadget regime, where the Gaussian model
+     overcounted at every p ≥ 11 control. Lemma 6 and Lemma 4 should be built into any search there.
    - The repo's tabu/SA fail already at n′ = 12–28, so the solver, not the ansatz, is the gap.
 3. **A c = 16 border** (Sylvester-type, untested) would open 719 c = 16 to the same stage-1 machinery. Its stage 2 is
    still out of range.
@@ -423,4 +649,16 @@ python3 theory/paley_stage2_levels.py                # exact Q-level count of st
 python3 theory/paley_c8family.py selftest            # 359 border reused for the c = 8 family
 python3 theory/paley_pos183.py                       # two-stage positive control at v = 183
 python3 theory/paley_swap.py search 55 0 11 5        # swap-pair design control
+python3 theory/paley_wscreen.py b1 --norho           # the screen without Lemma 6 (same verdicts)
+python3 theory/paley_lemma6.py                       # Lemma 6 at every real character: 359 + all b = 1 controls
+bash theory/run_paley_b1pipe.sh                      # exact b = 1 pipeline on all small controls (H(116)..H(396), p = 11 empties)
+python3 theory/paley_b1pipe.py 99 7 14               # H(396) over the non-cyclic Z14 x Z7 (3 min)
+python3 theory/paley_b1pipe.py 111 11 10             # p = 11: exactly empty (Lemma 6 cuts the 8 gadgets)
+python3 theory/paley_b1pipe.py verify data/core_v*_b1_paley.txt   # independent check of every control core
+python3 theory/paley_s2lattice.py 111 11 10          # stage-2 congruence-lattice test (without Lemma 6)
+python3 theory/paley_split_b1.py 659 7 94            # stage split [E]; also 571 19 30, 647 19 34, 573 11 52, 85 7 12, ...
+python3 theory/paley_slices.py 659 1 7 94 --slice even    # 659 even slice: -15.3
+python3 theory/paley_border_c6.py 599                # 347 border vs the 599 c = 6 compressions (about 25 min)
+python3 theory/paley_pipeline.py check479            # c = 4 completion: rebuilds and verifies H(1916) from the 479 core
+python3 theory/paley_pipeline.py run179              # 179: no single-bump compression
 ```
