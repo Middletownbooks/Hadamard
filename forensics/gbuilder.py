@@ -48,10 +48,12 @@ if __name__ == '__main__':
     lay2 = infer_layout(H2, m2)
     norm = lambda L, mm: {k: (a, b, e, (c if c < mm // 2 else c - mm), s) for k, (a, b, e, c, s) in L.items()}
     print('H(1964) has the same layout (shifts compared as signed residues):', norm(lay2, m2) == norm(lay, m))
-    for f in ['seq_v223_g.txt', 'seq_v283_g.txt']:
+    for f in ['seq_v223_g.txt', 'seq_v283_g.txt', 'seq_v487_g.txt']:
         hdr, seqs = read_seq(os.path.join(HERE, 'originals', f)); mm = len(seqs[0])
         lay_m = {k: (a, b, e, c if c < m // 2 else mm - (m - c), s) for k, (a, b, e, c, s) in lay.items()}
         Hb = build(seqs, lay_m, mm); N = 4 * mm
         ok = np.array_equal(Hb @ Hb.T, N * np.eye(N, dtype=np.int64))
         np.save(os.path.join(HERE, 'originals', f.replace('.txt', '_built.npy')), Hb)
-        print(f'{f} ("{hdr}"): rebuilt with the g layout, HH^T = NI: {ok}')
+        hoa = np.loadtxt(__import__('gzip').open(os.path.join(HERE, '..', 'data', f'hadamard_{N}.csv.gz')), delimiter=',', dtype=np.int64)
+        Hn = Hb * Hb[:, :1]; Hn = Hn * Hn[:1, :]
+        print(f'{f} ("{hdr}"): rebuilt with the g layout, HH^T = NI: {ok};  normalising it gives the hoa64 copy: {np.array_equal(Hn, hoa)}')

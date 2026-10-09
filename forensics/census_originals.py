@@ -25,10 +25,12 @@ def natural_core(v, b, func, H=None, seqs=None):
         X = np.array([H[off, off + q * m: off + (q + 1) * m] for q in range(4)])
         return np.array([X[0]] + [X[q][neg] for q in (1, 2, 3)]), g
     g = G((m,)); I = np.arange(m)
-    if b == 1:
+    if seqs is not None:
+        X = np.array(seqs)                                   # records: row 0 of the first block row
+    elif b == 1:
         X = np.array([x for _, x in core_seqs(H, m)])
     else:
-        X = np.array(seqs) if seqs is not None else np.array([H[0, q * m:(q + 1) * m] for q in range(4)])
+        X = np.array([H[0, q * m:(q + 1) * m] for q in range(4)])
     return np.array([X[0]] + [X[q][(-1 - I) % m] for q in (1, 2, 3)]), g
 def stabiliser(X, g):
     e = int(np.lcm.reduce(g.mods)); scal = [a for a in range(2, e) if gcd(a, e) == 1]
@@ -48,7 +50,7 @@ def orbits(g, U, c):
     return r
 if __name__ == '__main__':
     rows = []
-    srcs = [('m', n) for n in originals()] + [('s', f) for f in sorted(glob.glob(os.path.join(HERE, 'originals', 'seq_v*_g.txt')))]
+    srcs = [('m', n) for n in originals()] + [('s', f) for f in sorted(glob.glob(os.path.join(HERE, 'originals', 'seq_v*.txt')))]
     for kind, f in srcs:
         if kind == 's':
             hdr, seqs = read_seq(f); H = None; meta = dict(re.findall(r'(\w+)=(\w+)', hdr)); f = os.path.basename(f)

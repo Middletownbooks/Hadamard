@@ -8,7 +8,7 @@ Reported per block:
   * in natural GS coordinates (blocks B, C, D un-reversed by y -> -1-y, undoing the back-identity R of the array),
     the arc [M, h-1] on which sigma = +1 and the exceptions, i.e. x = [p | q | -p | q] with |p| = M up to the exceptions;
   * the parity lemma check: sum_k PAF_{c_k}(1) must be even (it is -2), while four proper arcs would make it odd.
-Inputs: the authors' original files (167, 179, 443) and, for 419, the repo core extracted from the normalised hoa64 copy."""
+Inputs: the authors' original files (167, 179, 443) and, for 419, the records rederived by hbuilder.py."""
 import os, sys
 from math import comb, log10
 import numpy as np
@@ -64,5 +64,7 @@ if __name__ == '__main__':
     for name, v in [('matrix_H668_v167_h_b1', 167), ('matrix_H716_v179_h_b1', 179), ('matrix_H1772_v443_h_b1', 443)]:
         H = load_any(name)
         analyse(f'v={v} (authors\' original, natural coordinates)', natural(core_seqs(H, v - 1)))
-    c = Core(os.path.join(HERE, '..', 'data', 'core_v419_b1.txt'))
-    analyse('v=419 (repo core from the normalised hoa64 copy)', c.X)
+    from gbuilder import read_seq
+    _, rec = read_seq(os.path.join(HERE, 'originals', 'seq_v419_h_rederived.txt')); I = np.arange(418)
+    analyse('v=419 (records rederived from the hoa64 copy, natural coordinates)',
+            np.array([rec[0]] + [rec[q][(-1 - I) % 418] for q in (1, 2, 3)]))

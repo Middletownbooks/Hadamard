@@ -2,7 +2,10 @@
 
 Date: 2026-10-09.
 
-**Data.** The analysis uses the authors' own (unnormalised) matrices, supplied by the user, for 8 of the 12 orders: v = 167, 179, 311, 347, 359, 443, 479, 491. For two more, v = 223 and 283, it uses their record sequences. v = 419 and 487 are covered only by the repo's cores, which were extracted from the normalised hoa64 copies.
+**Data.** The analysis covers all 12 orders:
+- the authors' own (unnormalised) matrices, supplied by the user, for 8 orders: v = 167, 179, 311, 347, 359, 443, 479, 491;
+- their record sequences for v = 223, 283 and 487;
+- for v = 419, records rederived from the normalised hoa64 copy (§1.1). These are exact up to, at most, a common translation of all four sequences, which none of the statistics below depend on.
 
 **Files.** Scripts and data are in `forensics/` (see `forensics/README.md`).
 
@@ -31,17 +34,21 @@ Date: 2026-10-09.
 
    The novelty is in finding the four sequences, not in the arrays.
 3. **Every record sits in a sharply restricted search space, and the restriction is chosen order by order [M].**
-   - **Multiplier orbits, for 10 of 12 orders.** The groups have d = 3–15 and give 42–128 orbits per block. In 6 of the 8 orbit-type cores we have in the authors' own coordinates, the orbits are centred exactly at the origin; 443 and 491 are shifted by 2.
+   - **Multiplier orbits, for 10 of 12 orders.** The groups have d = 3–15 and give 42–128 orbits per block. In 6 of the 9 orbit-type records in the authors' own coordinates, the orbits are centred exactly at the origin; 443, 487 and 491 are shifted by 2.
    - **167 and 179 use no multiplier group. They use a half-shift template.**
      - In natural Goethals–Seidel coordinates every block is x = [p | q | −p | q] with |p| ≈ h/2 (h = (v−1)/2), apart from 1–2 entries per block (5 per core).
      - The chance probability is 10^−71.4 for 167 and 10^−78.0 for 179.
      - This is the "half-shift structure" that `REPORT.md` could not reproduce. Its tests summed x(i)·x(i+h), which a two-step sign pattern cancels to about 0.
-   - **359 is, in addition, almost Legendre on its Z₁₁ factor.** In 116 of the 128 Z₁₁-cosets, x(g, z) = ε(g)·(z/11) for z ≠ 0 (p ≈ 10^−21). No other core shows a signed relation of this kind.
+   - **The two cores whose group contains Z₁₁ (359 and 419) are both nearly Legendre-twisted on that factor.** They are almost anti-invariant under the non-squares of Z₁₁:
+     - 359: 116 of 128 orbit pairs, p ≈ 10^−21. Equivalently, x(g, z) = ε(g)·(z/11) for z ≠ 0 in 116 of 128 Z₁₁-cosets.
+     - 419: 48 of 56 orbit pairs, p ≈ 10^−7.
+
+     No such twist appears for the other primes tested (7, 13, 17, 19) or in any other core.
    - **The b = 0 cores have individually flat blocks** (`REPORT.md` §0; not re-measured here).
 4. **What the template buys [P/E].**
    - Fixing σ(y) = x(y)·x(y+h) splits the b = 1 equations exactly into two independent problems on Z_h: one periodic, one negacyclic.
    - Their supports are complementary arcs, so both problems are nearly aperiodic.
-   - At v = 167 each half has about 165 sign bits and 136–138 constraint bits; at 179, 177–179 and 148–150. The unrestricted core at 167 has 664 sign bits and 333 constraint bits. That puts each half in the same size class as the orbit slices used at 419 and 443.
+   - At v = 167 each half has about 165 sign bits and 136–138 constraint bits; at 179, 177–179 sign bits and 148–150 constraint bits. The unrestricted core at 167 has 664 sign bits and 333 constraint bits. That puts each half in the same size class as the orbit slices used at 419 and 443.
    - Parity rules out four exact arcs [P]. The published exceptions sit where parity allows them.
    - At 167 and 179 every multiplier slice of useful size is predicted empty (log₂E between −56 and −17, from `logs/b1_mult_validation.log`). That is presumably why a non-orbit reduction was used there.
    - The template's expected solutions per half fall:
@@ -73,8 +80,30 @@ Date: 2026-10-09.
 | `matrix_H1964_v491_g_b0` | v=491 … func=g b=0 | yes | no | core = `data/core_v491_b0.txt` up to translation and the R convention |
 | `seq_v223_g.txt` | v=223 N=892 func=g b=0 | rebuilt with the `g` layout: yes | – | records, not a matrix |
 | `seq_v283_g.txt` | v=283 N=1132 func=g b=0 | rebuilt with the `g` layout: yes | – | byte-identical to `data/seq_v283_g.txt` |
+| `seq_v487_g.txt` | v=487 N=1948 func=g b=0 | rebuilt with the `g` layout: yes | no | core = `data/core_v487_b0.txt` after a common translation by 2 |
+| `seq_v419_h_rederived.txt` | v=419 N=1676 func=h b=1 | rebuilt with the `h` layout: yes | by construction | rederived from `data/hadamard_1676.csv.gz` (§1.1) |
 
 So the repo's existing cores (hoa64-derived, plus `data/orig_bge3`) describe the same matrices, re-labelled. For 668, 716, 1244 and 1388 this was checked through the normalised hoa64 copies; for the others, through the cores.
+
+What hoa64 changed:
+- For 443, 487 and 491, the copies are the authors' matrices with all four sequences translated by 2. This moves the multiplier fixed point from 2 to 0.
+- For 359 and 479, the cores are identical to the authors'; the difference lies outside the core.
+- 347, 668, 716 and 1244 are pure normalisations.
+
+### 1.1 Rederiving the 419 records from the normalised copy [M]
+
+The `h` builder's border is the same in all three b = 1 originals, so it does not depend on the records. Normalisation is hoa = diag(H[:,0])·H·diag(H[0,0]·H[0,:]), and H's first row and first column belong to that fixed border. So the original is recovered exactly as
+
+  H = diag(col₀)·hoa·diag(H₀₀·row₀),
+
+using the builder's own row₀ and col₀ (`forensics/hbuilder.py`).
+
+Validation:
+- On the hoa64 copies of 668 and 716 this returns the authors' originals exactly.
+- On 1772 it returns an exact `h`-builder matrix, but with the sequences translated by 2, which is hoa64's relabelling.
+- On 1676 the result is an exact `h`-builder matrix and Hadamard. Its records are in `forensics/originals/seq_v419_h_rederived.txt`.
+
+The remaining uncertainty is a possible common translation. hoa64 re-centred exactly the records whose fixed point is 2, and the rederived 419 has its fixed point at 0. So the authors' 419 record is centred at either 0 or 2. Every statistic in this report is translation-invariant.
 
 ## 2. The builders [M]
 
@@ -93,10 +122,13 @@ So the repo's existing cores (hoa64-derived, plus `data/orig_bge3`) describe the
 
 "Natural coordinates" below always undo this reversal.
 
-**`h` (b = 1).**
-- Four border rows and columns come first.
-- Then comes a 4×4 block array whose first block row is (circulant, back-circulant, back-circulant, back-circulant).
-- Row sums are (±2, 0, 0, 0).
+**`h` (b = 1).** Inferred from H(668); 716 and 1772 are rebuilt exactly from their records.
+- Four border rows and columns come first. They are record-independent.
+- The 4×4 corner has rows (− + + −), (+ − + −), (+ + − −), (− − − −).
+- Border rows 0–3 are constant on the core column-blocks, with signs (−,−,−,+), (−,−,+,−), (−,+,−,−), (+,−,−,−).
+- Border columns 0–3 are constant on the core row-blocks, with signs (+,−,−,+), (+,−,+,−), (+,+,−,−), (−,−,−,−).
+- The core is the same Goethals–Seidel array as `g`.
+- Row sums of the records are (±2, 0, 0, 0).
 
 **`u`, `v`, `w` (b = 7, 5, 3).**
 - The core starts at offset 4b.
@@ -118,15 +150,15 @@ So the repo's existing cores (hoa64-derived, plus `data/orig_bge3`) describe the
 | 311 | 1244 | 0 | g | Z₃₁₁ | 5 | 63 | 0 | flat blocks |
 | 347 | 1388 | 5 | v | Z₂×Z₃×Z₅₇ | 6 | 70 | 0 | – |
 | 359 | 1436 | 7 | u | Z₂²×Z₈×Z₁₁ | 5 | 96 | 0 | **Legendre(11) twist** (§5) |
-| 419 | 1676 | 1 | h | Z₄₁₈ | 15 | 42 | (no original) | – |
+| 419 | 1676 | 1 | h | Z₄₁₈ | 15 | 42 | 0 (rederived; 0 or 2) | **Legendre(11) twist** (§5) |
 | 443 | 1772 | 1 | h | Z₄₄₂ | 12 | 50 | 2 | – |
 | 479 | 1916 | 3 | w | Z₂²×Z₁₁₉ | 4 scalar (12 with the GL(2,2) twist, `bge3_construction.md`) | 128 (46) | 0 | – |
-| 487 | 1948 | 0 | g | Z₄₈₇ | 9 | 55 | (no original) | flat blocks |
+| 487 | 1948 | 0 | g | Z₄₈₇ | 9 | 55 | 2 | flat blocks |
 | 491 | 1964 | 0 | g | Z₄₉₁ | 7 | 71 | 2 | flat blocks |
 
 Notes:
-- The d and r values agree with the census in `REPORT.md`; the rows for 419 and 487 come from there.
-- The new information is the anchoring: the authors' records put U's fixed point at the origin in every case except 443 and 491, which are shifted by 2.
+- The d and r values agree with the census in `REPORT.md`.
+- The new information is the anchoring: the authors' records put U's fixed point at the origin in every case except 443, 487 and 491, which are shifted by 2.
 - A common translation of all four blocks is a symmetry of the problem, so the shift by 2 is a storage detail, not a method signal.
 
 ## 4. The half-shift template (167, 179)
@@ -151,7 +183,7 @@ apart from the exceptions listed below. Here "sign changes" counts sign changes 
 | 179 | D | 4 | −20.1 | [44, 88] | 46 hole |
 
 - **Combined.** log₁₀ P = −71.4 (167) and −78.0 (179).
-- **The b = 1 cores from orbit slices show nothing.** 443 (original) gives −1.4 and 419 (repo core) gives −3.9.
+- **The b = 1 cores from orbit slices show nothing.** 443 (original) gives −1.4 and 419 (rederived) gives −3.9.
 - **Anchoring.** All arcs end at h−1 in natural coordinates. In the stored records, B, C and D are reversed (§2), so there the arcs start at 0. The template is anchored to the authors' origin.
 
 **Why `REPORT.md` missed it.** Its statistics were sums, such as agreement of x(i+h) with x(i) and PAF(h). For σ ≈ ±(two equal halves), those sums are about 0. The structure is in the run pattern, not the mean. `scripts/b1_cyclotomy.py` did see "±1 purity" ≈ 0.96–0.98, because an arc is reflection-symmetric about its own centre, but it did not identify the arcs.
@@ -232,24 +264,29 @@ Each core has exactly one near-end pair (167: B's hole at 41 and C's extra point
   So at the two smallest b = 1 orders the usual orbit reduction is predicted empty, while the half-shift template has room to spare. At 419 and 443 the reverse holds: orbit slices work, and the template is down to 2^6 and 2^2 solutions per half.
 - **For the open orders this is a dead end.** At v = 523 each half already has log₂E ≈ −13 and about 535 constraint bits. That agrees with the earlier, cruder "hopeless" verdict in `unattempted_2000_3000.md`.
 
-## 5. The Legendre(11) twist in 359 [M]
+## 5. The Legendre(11) twist in 359 and 419 [M]
 
-U (order 5) is generated by multipliers ≡ 1 (mod 8) that act as the squares on Z₁₁. So every Z₁₁-coset {(a, b, c, z)} carries three orbit values: z = 0, z a square, and z a non-square.
+`forensics/signed_orbits.py` tests every core for signed relations beyond its stabiliser U. For each multiplier class a with a ∉ U but a² ∈ U, the U-orbits pair up as (O, aO). The test counts pairs with x(aO) = −x(O) ("anti") against a fair-coin null.
 
-The multiplier a = 17 is the identity on Z₂×Z₂×Z₈ and a non-square on Z₁₁. Under it:
+**Result.** Exactly one class per core stands out, and only in the two cores whose group has a Z₁₁ factor. In both, it is the class that acts as a non-square on Z₁₁ and trivially modulo U elsewhere.
 
-| block | anti-invariant cosets (x(g, 6z) = −x(g, z)) |
-|---|---|
-| A | 24 of 32 |
-| B | 30 of 32 |
-| C | 32 of 32 |
-| D | 30 of 32 |
+| v | group | U | class a (action) | anti pairs, per block | total | log₁₀ p (corrected) |
+|---|---|---|---|---|---|---|
+| 359 | Z₂²×Z₈×Z₁₁ | order 5 (squares on Z₁₁) | 17 (identity on Z₂²×Z₈, non-square on Z₁₁) | A 24/32, B 30/32, C 32/32, D 30/32 | 116/128 | −21.8 (−21.0 over 7 classes) |
+| 419 | Z₂×Z₁₁×Z₁₉ | order 15 (squares on Z₁₁, order 3 on Z₁₉) | 7 (non-square on Z₁₁, in U's image on Z₁₉) | A 13/14, B 9/14, C 12/14, D 14/14 | 48/56 | −7.3 (−6.9 over 3 classes) |
 
-Each such coset has x(g, z) = ε(g)·(z/11) for z ≠ 0. The total is 116 of 128, against a fair-coin null: two-sided p = 10^−21.8, or 10^−21.0 after correcting for the 7 involution classes tested. The 12 other cosets are constant on Z₁₁*.
+The other classes are null, including the non-square classes of the other primes. Examples:
+- 419, a = 27 (non-square on Z₁₉): log₁₀ p = −0.4;
+- 347 (Z₁₉ non-square): −0.5;
+- 479 (Z₇ non-square): 0.0;
+- 443 (Z₁₃/Z₁₇ classes): ≥ −1.0;
+- every b = 0 core: ≥ −0.3.
 
-`forensics/signed_orbits.py` runs the same test on every core. Nothing else is significant: |log₁₀ p| ≤ 1.0 for all of them.
+**What it means for 359.** U acts on the Z₁₁ coordinate alone, so the relation reads coset by coset: in 116 of 128 Z₁₁-cosets, x(g, z) = ε(g)·(z/11) for z ≠ 0. The other 12 cosets are constant on Z₁₁*.
 
-Reading [I]: 359's search space was biased toward a Kronecker-like "K-sequence ⊗ Paley(11)" form, with δ(g) on the z = 0 column. The exact form would leave 4·64 = 256 free bits instead of 4·96 = 384. The solution sits 12 cosets away from it.
+**Reading [I].** Both searches seem to have been biased toward a Kronecker-like "sequence on G/Z₁₁ ⊗ Paley(11)" form. Under the exact form, x(g, z) = δ(g) at z = 0 and ε(g)·(z/11) otherwise. That reduces each core to sequences on G/Z₁₁, of order 32 for 359 and 38 for 419: for 359, 4·64 = 256 free bits instead of 4·96 = 384. Neither solution is exact: 12 of 128 cosets (359) and 8 of 56 orbit pairs (419) deviate. That is the same "template plus a few deviations" picture as the half-shift cores.
+
+**Relevance to the open orders [I].** Z₁₁ appears in the theory-arm's one surviving b = 1 slice, 573 over Z₂²×Z₁₁×Z₁₃ (n ≈ 167; see `report/theory_arm_2000_3000.md`). Z₁₁ is also available for 599 (b = 5, m = 594 = 2·3³·11) and 669 (b = 9, m = 660 = 2²·3·5·11), and with larger borders for 571, 643, 659 and 719. Whether an exact or near Legendre(11) restriction keeps solutions there is untested.
 
 ## 6. What the evidence supports [I]
 
@@ -257,7 +294,7 @@ The records look like one strong generic solver applied to a menu of classical r
 
 - orbit slices (multiplier groups, in 479 with a GL(2,2) twist);
 - the half-shift template at the two smallest b = 1 orders;
-- a Legendre-biased slice at 359;
+- a Legendre(11)-biased slice at 359 and 419, the two orders with a Z₁₁ factor;
 - for b = 0, an objective or pool that yields individually flat blocks.
 
 `REPORT.md` §0.5 found "flat pools + k-tree join" consistent at v = 487, but not proven.
@@ -274,12 +311,13 @@ Nothing in the outputs identifies the solver itself. The `func` letters name bui
 ```
 cd forensics
 python3 load_originals.py      # verify every original; compare with hoa64 and the formal-conjectures 668
-python3 gbuilder.py            # g layout from H(1244); same in H(1964); rebuild 892/1132 from records
+python3 gbuilder.py            # g layout from H(1244); same in H(1964); rebuild 892/1132/1948 from records
+python3 hbuilder.py            # h layout and fixed border; rederive the 419 records from the hoa64 copy (validated on 668, 716, 1772)
 python3 census_originals.py    # §3 table
-python3 halfshift_b1.py        # §4.1 table (167, 179, 443 originals; 419 repo core)
+python3 halfshift_b1.py        # §4.1 table (167, 179, 443 originals; 419 rederived)
 python3 template_parity.py     # §4.3 parity search
 python3 template_cost.py       # §4.4 costs and scaling
-python3 signed_orbits.py       # §5 and the null results for every other core
+python3 signed_orbits.py       # §5: the Legendre(11) twist in 359 and 419, null elsewhere
 ```
 
 ## Sources (secondary; primary pages were not reachable from this container)

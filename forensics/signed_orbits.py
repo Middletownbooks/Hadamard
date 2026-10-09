@@ -46,7 +46,7 @@ def run(v, b, X, g):
     else:
         print(f'v={v}: |U|={d}: no involution classes mod U')
 if __name__ == '__main__':
-    for f in sorted(glob.glob(os.path.join(HERE, 'originals', 'matrix_H*.txt*')) + glob.glob(os.path.join(HERE, 'originals', 'seq_v*_g.txt'))):
+    for f in sorted(glob.glob(os.path.join(HERE, 'originals', 'matrix_H*.txt*')) + glob.glob(os.path.join(HERE, 'originals', 'seq_v*.txt'))):
         base = os.path.basename(f).replace('.gz', '').replace('.txt', '')
         if base.startswith('seq'):
             hdr, seqs = read_seq(f); H = None
