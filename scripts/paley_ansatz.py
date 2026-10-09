@@ -360,3 +360,92 @@ def exact_h0_screen_fast(v, b, n, p):
 
 if __name__ == "__main__" and sys.argv[1] == "h0fast":
     v, b, n, p = map(int, sys.argv[2:6]); print(json.dumps(exact_h0_screen_fast(v, b, n, p)))
+
+
+# ---------------- multiplier-symmetric slices: labels constant on orbits of g -> u*g on G' ----------------
+# u in (Z/m)^*, u mod p a quadratic residue (so chi(u z) = chi(z) and the ansatz is preserved):
+#   x(u g, u z) = x(g, z)  <=>  label(u g mod n) = label(g).
+def mult_orbits(n, un):
+    seen, orbs = set(), []
+    for g in range(n):
+        if g in seen: continue
+        o, x = [], g
+        while x not in o: o.append(x); x = (x * un) % n
+        seen.update(o); orbs.append(o)
+    return orbs
+
+def expand(lab_orb, orbs, n):
+    lab = np.zeros((lab_orb.shape[0], n), np.int64)
+    for j, o in enumerate(orbs): lab[:, o] = lab_orb[:, [j]]
+    return lab
+
+def count_rowsum_orb(orbs, p):
+    from collections import Counter
+    D = Counter({0: 1})
+    for o in orbs:
+        per = Counter(len(o) * (LABELS[i][0] + (p - 1) * (0 if LABELS[i][1] else LABELS[i][2])) for i in range(8))
+        E = Counter()
+        for x, cx in D.items():
+            for y, cy in per.items(): E[x + y] += cx * cy
+        D = E
+    return D
+
+def gauss_estimate_sym(v, b, n, p, un, N=60000, seed=1):
+    import math, itertools as it
+    orbs = mult_orbits(n, un); k = len(orbs)
+    C, nqr = corr_table(p); m = n * p; rng = np.random.default_rng(seed)
+    tgt = np.full((n, 3), -4 * b, np.int64); tgt[0, 0] = 4 * m; T = tgt.reshape(-1)
+    cnt = count_rowsum_orb(orbs, p)
+    if b == 1:
+        profs = [(2, 0, 0, 0)] if (2 in cnt and 0 in cnt) else []
+    else:
+        A = sorted(a for a in cnt if a >= 0)
+        profs = [q for q in it.combinations_with_replacement(A, 4) if sum(x * x for x in q) == 4 * v]
+    if not profs: return {"v": v, "n": n, "p": p, "u": un, "orbits": k, "feasible": False, "why": "row sums"}
+    sizes = np.array([len(o) for o in orbs])
+    rsum = lambda lo: (np.array([LABELS[i][0] for i in range(8)])[lo] * sizes).sum(1) + (p - 1) * (np.array([0 if LABELS[i][1] else LABELS[i][2] for i in range(8)])[lo] * sizes).sum(1)
+    def samp(a):
+        out = []
+        for _ in range(400):
+            lo = rng.integers(0, 8, (40000, k)); lo = lo[rsum(lo) == a]; out.append(lo)
+            if sum(len(x) for x in out) >= N: break
+        lo = np.concatenate(out)[:N]
+        return None if len(lo) < 1000 else reduced_paf(expand(lo, orbs, n), n, C).reshape(len(lo), -1)
+    best = None; tot = 0.0; cache = {}
+    for q in profs[:8]:
+        Rs = [cache.setdefault(a, samp(a)) for a in q]
+        if any(r is None for r in Rs): continue
+        mu = sum(r.mean(0) for r in Rs); Cv = sum(np.cov(r.T) for r in Rs)
+        Rc = sum(r[:1000] for r in Rs)
+        cols, seen = [], {}
+        for j in range(1, len(T)):
+            key = Rc[:, j].tobytes()
+            if key in seen: continue
+            seen[key] = j; cols.append(j)
+        mu_ = mu[cols]; C_ = Cv[np.ix_(cols, cols)]; T_ = T[cols]
+        w, V = np.linalg.eigh(C_); kw = w > 1e-6 * w.max(); pr = V.T @ (T_ - mu_)
+        if (~kw).any() and np.abs(pr[~kw]).max() > 1e-6 * max(1, np.abs(pr).max()): continue
+        d = Rc[:, cols] - Rc[0, cols]; steps = np.array([max(1, int(np.gcd.reduce(np.abs(d[:, j])))) for j in range(len(cols))])
+        lp = (np.log(steps).sum() - 0.5 * kw.sum() * math.log(2 * math.pi) - 0.5 * np.log(w[kw]).sum() - 0.5 * (pr[kw] ** 2 / w[kw]).sum()) / math.log(2)
+        perms = len(set(it.permutations(q))); signs = 2 ** sum(1 for x in q if x != 0)
+        lE = sum(math.log2(cnt[x]) for x in q) + lp + math.log2(perms * signs)
+        tot += 2 ** lE
+        if best is None or lE > best[1]: best = (list(q), round(lE, 1), round(-lp, 1), int(kw.sum()))
+    if best is None: return {"v": v, "n": n, "p": p, "u": un, "orbits": k, "feasible": False, "why": "no admissible profile"}
+    return {"v": v, "b": b, "n": n, "p": p, "u_mod_n": un, "orbits": k, "bits_per_block": round(math.log2(8) * k, 1),
+            "log2E": round(math.log2(tot), 1), "constraint_bits": best[2], "eqs": best[3], "profile": best[0]}
+
+def sym_options(n, p):
+    """multipliers u mod n' (units, order d > 1) that lift to u in (Z/m)^* with u mod p a QR: always possible (take u = 1 mod p)."""
+    from math import gcd
+    out = {}
+    for un in range(2, n):
+        if gcd(un, n) != 1: continue
+        orbs = mult_orbits(n, un); out.setdefault(len(orbs), un)
+    return sorted(out.items())                                    # (number of orbits, a representative u)
+
+if __name__ == "__main__" and sys.argv[1] == "estsym":
+    v, b, n, p = map(int, sys.argv[2:6])
+    for k, un in sym_options(n, p):
+        if k < 4: continue
+        print(json.dumps(gauss_estimate_sym(v, b, n, p, un)), flush=True)
