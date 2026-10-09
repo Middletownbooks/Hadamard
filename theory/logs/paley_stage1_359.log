@@ -1,0 +1,10 @@
+{"list_sizes": [98304, 16384, 4, 279936], "log2_total": 50.7, "secs": 6.3}
+  need = tkey - key(R[i3][j3:j3 + 1])[0] - K4
+{"stage1_solutions": 4096, "secs": 1519.0}
+{"published_alpha_found": true, "solutions": 4096, "N_minus_of_solutions": [11]}
+
+real	25m19.652s
+user	24m58.651s
+sys	0m2.611s
+
+[exited with code 0]

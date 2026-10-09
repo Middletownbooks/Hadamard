@@ -1,0 +1,8 @@
+{"v": 71, "b": 1, "G''": [2], "primes": [5, 7], "bits_per_block": 18, "compression_groups": 1296, "compatible_group_quads": 1008, "solutions": 0, "secs": 67.7, "examples_verified_fft": null}
+{"v": 111, "b": 1, "G''": [2], "primes": [5, 11], "bits_per_block": 18, "compression_groups": 3136, "compatible_group_quads": 2128, "solutions": 0, "secs": 27.9, "examples_verified_fft": null}
+{"v": 131, "b": 1, "G''": [2], "primes": [5, 13], "bits_per_block": 18, "compression_groups": 4356, "compatible_group_quads": 1848, "solutions": 0, "secs": 36.4, "examples_verified_fft": null}
+{"v": 155, "b": 1, "G''": [2], "primes": [7, 11], "bits_per_block": 18, "compression_groups": 5776, "compatible_group_quads": 2688, "solutions": 0, "secs": 66.8, "examples_verified_fft": null}
+{"v": 171, "b": 1, "G''": [2], "primes": [5, 17], "bits_per_block": 18, "compression_groups": 4356, "compatible_group_quads": 1456, "solutions": 0, "secs": 33.7, "examples_verified_fft": null}
+{"v": 183, "b": 1, "G''": [2], "primes": [7, 13], "bits_per_block": 18, "compression_groups": 3844, "compatible_group_quads": 784, "solutions": 0, "secs": 23.5, "examples_verified_fft": null}
+{"v": 191, "b": 1, "G''": [2], "primes": [5, 19], "bits_per_block": 18, "compression_groups": 4356, "compatible_group_quads": 336, "solutions": 0, "secs": 29.5, "examples_verified_fft": null}
+{"planted_G''": [2], "primes": [5, 7], "solutions": 49152, "compatible_group_quads": 1889664, "note": "planted target from 4 random blocks; solvable target found"}

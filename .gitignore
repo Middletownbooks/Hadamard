@@ -84,3 +84,8 @@ logs/paley_ls_359_s*.log
 logs/paley_ls_controls.jsonl
 logs/paley_sa_ctrl_v*.log
 logs/paley_bge3_jobs_rest.txt
+
+# paley design session: regenerable caches (theory/paley_splice359.py, theory/paley_stage1.py)
+theory/logs/template359.npz
+theory/logs/stage1_359_solutions.npy
+theory/logs/H732_*.npy
