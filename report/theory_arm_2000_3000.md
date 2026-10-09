@@ -57,6 +57,8 @@ This answers `report/prompt_theory_arm.md`.
      - H(28), H(32), H(60) and H(72) via Legendre pairs at ℓ = 13, 15, 29 and 35;
      - H(36) and H(52) via b = 1 over Z₂³ and Z₂²×Z₃;
      - H(340) via b = 1 over Z₂²×Z₃×Z₇ with a symmetry group of order 6, the same shape as the 573 group;
+     - H(228) via b = 1 over Z₂³×Z₇ (|S| = 3), the same shape as the 537 group Z₂³×Z₆₇;
+     - H(212) via b = 1 over Z₂²×Z₁₃ (|S| = 3) (`find_controls.py`, `theory/logs/controls/find_controls.log`);
      - H(52) and H(76) via b = 0.
 
 6. **New or clarified lemmas [P]** (§6):
@@ -482,7 +484,7 @@ All under `theory/`. Every "0 solutions" is an exhaustive result for the stated 
 | script | what it does | control |
 |---|---|---|
 | `abgroup.py`, `subgroups.py` | abelian groups G, Aut(G) = GL-parts × units, all subgroups up to GL-conjugacy (Goursat) | subgroup counts match hand counts: Aut(Z₅×Z₇) has 16; S₃×Z₂ up to conjugacy has 10; Aut(Z₈×Z₆₇) has 64 |
-| `slicesolve.py` | exhaustive solver for S-invariant LP / b=1 / b=0 slices: numba Gray code, PSD and row-sum filters, exact integer PAF, exact hash join, memory caps that report "undecided" | `test_controls.py`: certified H(28), H(60), H(32), H(72), H(36), H(52), H(52), H(76); `control_340.py`: certified H(340) from b = 1 over Z₂²×Z₃×Z₇ with \|S\| = 6 |
+| `slicesolve.py` | exhaustive solver for S-invariant LP / b=1 / b=0 slices: numba Gray code, PSD and row-sum filters, exact integer PAF, exact hash join, memory caps that report "undecided" | `test_controls.py`: certified H(28), H(60), H(32), H(72), H(36), H(52), H(52), H(76); `control_340.py`: certified H(340) from b = 1 over Z₂²×Z₃×Z₇ with \|S\| = 6; `find_controls.py`: certified H(228) (Z₂³×Z₇, \|S\| = 3) and H(212) (Z₂²×Z₁₃, \|S\| = 3) |
 | `certify.py` | builds the full matrix (two-circulant LP, bordered GS for any abelian G, GS) and checks H·Hᵀ = N·I | same |
 | `sweep_b1.py`, `run_lp_all.sh`, `run_b0b1_cyclic.sh` | all slices with r ≤ 30 per group | – |
 | `cost.py`, `cost_sweep.py` | Gaussian n and log₂E (exact uniform row-sum sampling) | matches the repo's model conventions |
