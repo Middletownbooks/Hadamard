@@ -449,3 +449,75 @@ if __name__ == "__main__" and sys.argv[1] == "estsym":
     for k, un in sym_options(n, p):
         if k < 4: continue
         print(json.dumps(gauss_estimate_sym(v, b, n, p, un)), flush=True)
+
+
+# ---------------- anti-symmetric slices (u mod p a NON-residue, as in the published 359 core) ----------------
+# x(u g, u z) = x(g, z) with chi(u z) = -chi(z): twisted label sign flips at each step of the orbit, constant unchanged;
+# odd-length orbits must be constant.
+def expand_anti(lab_orb, orbs, n):
+    lab = np.zeros((lab_orb.shape[0], n), np.int64)
+    flip = np.array([LABELS.index((a, t, -s if t else s)) for a, t, s in LABELS])   # twisted sign flip
+    for j, o in enumerate(orbs):
+        cur = lab_orb[:, j].copy()
+        for g in o:
+            lab[:, g] = cur; cur = flip[cur]
+    return lab
+
+def gauss_estimate_anti(v, b, n, p, un, N=60000, seed=1):
+    import math, itertools as it
+    orbs = mult_orbits(n, un); k = len(orbs)
+    allowed = [list(range(8)) if len(o) % 2 == 0 else [i for i in range(8) if LABELS[i][1] == 0] for o in orbs]
+    C, nqr = corr_table(p); m = n * p; rng = np.random.default_rng(seed)
+    tgt = np.full((n, 3), -4 * b, np.int64); tgt[0, 0] = 4 * m; T = tgt.reshape(-1)
+    # row-sum counts (twisted cosets contribute alpha only; sign flips do not change row sums)
+    from collections import Counter
+    D = Counter({0: 1})
+    for o, al in zip(orbs, allowed):
+        per = Counter(len(o) * (LABELS[i][0] + (p - 1) * (0 if LABELS[i][1] else LABELS[i][2])) for i in al)
+        E = Counter()
+        for x, cx in D.items():
+            for y, cy in per.items(): E[x + y] += cx * cy
+        D = E
+    cnt = D
+    profs = [(2, 0, 0, 0)] if b == 1 and 2 in cnt and 0 in cnt else (
+        [q for q in it.combinations_with_replacement(sorted(a for a in cnt if a >= 0), 4) if sum(x * x for x in q) == 4 * v] if b == 0 else [])
+    if not profs: return {"v": v, "n": n, "p": p, "u": un, "anti": True, "orbits": k, "feasible": False, "why": "row sums"}
+    def samp(a):
+        out = []
+        for _ in range(400):
+            lo = np.stack([rng.choice(al, 40000) for al in allowed], 1)
+            lab = expand_anti(lo, orbs, n)
+            rs = np.array([LABELS[i][0] + (p - 1) * (0 if LABELS[i][1] else LABELS[i][2]) for i in range(8)])[lab].sum(1)
+            out.append(lab[rs == a])
+            if sum(len(x) for x in out) >= N: break
+        lab = np.concatenate(out)[:N]
+        return None if len(lab) < 1000 else reduced_paf(lab, n, C).reshape(len(lab), -1)
+    best = None; tot = 0.0; cache = {}
+    for q in profs[:8]:
+        Rs = [cache.setdefault(a, samp(a)) for a in q]
+        if any(r is None for r in Rs): continue
+        mu = sum(r.mean(0) for r in Rs); Cv = sum(np.cov(r.T) for r in Rs); Rc = sum(r[:1000] for r in Rs)
+        cols, seen = [], {}
+        for j in range(1, len(T)):
+            key = Rc[:, j].tobytes()
+            if key in seen: continue
+            seen[key] = j; cols.append(j)
+        mu_ = mu[cols]; C_ = Cv[np.ix_(cols, cols)]; T_ = T[cols]
+        w, V = np.linalg.eigh(C_); kw = w > 1e-6 * w.max(); pr = V.T @ (T_ - mu_)
+        if (~kw).any() and np.abs(pr[~kw]).max() > 1e-6 * max(1, np.abs(pr).max()): continue
+        d = Rc[:, cols] - Rc[0, cols]; steps = np.array([max(1, int(np.gcd.reduce(np.abs(d[:, j])))) for j in range(len(cols))])
+        lp = (np.log(steps).sum() - 0.5 * kw.sum() * math.log(2 * math.pi) - 0.5 * np.log(w[kw]).sum() - 0.5 * (pr[kw] ** 2 / w[kw]).sum()) / math.log(2)
+        perms = len(set(it.permutations(q))); signs = 2 ** sum(1 for x in q if x != 0)
+        lE = sum(math.log2(cnt[x]) for x in q) + lp + math.log2(perms * signs)
+        tot += 2 ** lE
+        if best is None or lE > best[1]: best = (list(q), round(lE, 1), round(-lp, 1), int(kw.sum()))
+    if best is None: return {"v": v, "n": n, "p": p, "u": un, "anti": True, "orbits": k, "feasible": False, "why": "no admissible profile"}
+    bits = sum(math.log2(len(al)) for al in allowed)
+    return {"v": v, "b": b, "n": n, "p": p, "u_mod_n": un, "anti": True, "orbits": k, "bits_per_block": round(bits, 1),
+            "log2E": round(math.log2(tot), 1), "constraint_bits": best[2], "eqs": best[3], "profile": best[0]}
+
+if __name__ == "__main__" and sys.argv[1] == "estanti":
+    v, b, n, p = map(int, sys.argv[2:6])
+    for k, un in sym_options(n, p):
+        if k < 4: continue
+        print(json.dumps(gauss_estimate_anti(v, b, n, p, un)), flush=True)
