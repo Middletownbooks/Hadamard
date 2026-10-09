@@ -1,0 +1,6 @@
+{"v": 573, "p": 11, "n": 52, "mu": 29, "orbits": 20, "K": 23, "Nminus": 18, "B": 2, "thresh": 0.0, "block_gadgets": {"0": 1, "1": 8, "2": 12, "3": 24, "5": 192, "6": 320, "7": 1536, "8": 1968, "9": 3840, "11": 6304, "12": 4824, "13": 7312}}
+{"gadget_run": 1, "predicted": 2.3, "alpha_lists": [3432, 19448, 2002, 10010], "stage1_new": 0, "stage2_pred": null, "secs": 74.2}
+{"gadget_run": 2, "predicted": 0.4, "alpha_lists": [3003, 5005, 8008, 20592], "stage1_new": 0, "stage2_pred": null, "secs": 147.3}
+{"gadget_run": 3, "predicted": 0.5, "alpha_lists": [11440, 25740, 3432, 3432], "stage1_new": 0, "stage2_pred": null, "secs": 226.8}
+{"gadget_run": 4, "predicted": 0.6, "alpha_lists": [12870, 1716, 25740, 3432], "stage1_new": 0, "stage2_pred": null, "secs": 289.6}
+{"gadget_run": 5, "predicted": 1.7, "alpha_lists": [1716, 77220, 12870, 2002], "stage1_new": 16, "stage2_pred": {"log2E": -17.5, "u_lists_log2": [14, 20, 18, 15]}, "secs": 373.4}

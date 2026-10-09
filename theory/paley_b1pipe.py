@@ -11,7 +11,8 @@ Reductions (report sections 2, 4):
     = 4v with rho_k = |T_k| (mod 2); at psi = (-1)^g the same with (y^, w^)  -- filters gadgets and stage-1 solutions;
   * stage 2: u on twisted positions, exact 2+2 join on (sum PAF(beta) + p PAF(u), X) = (4v delta, 0).
 usage: python3 theory/paley_b1pipe.py v p n [max_cores]
-       python3 theory/paley_b1pipe.py verify data/core_v*_b1_paley.txt"""
+       python3 theory/paley_b1pipe.py verify data/core_v*_b1_paley.txt
+       python3 theory/paley_b1pipe.py verifycyclic data/core_v167_b1.txt   (bordered-GS completion on a published core)"""
 import sys, os, json, time, itertools as it, math
 from collections import defaultdict
 import numpy as np
@@ -254,7 +255,19 @@ def verify(path):
     had = bool(Hm is not None and np.array_equal(Hm @ Hm.T, N * np.eye(N, dtype=np.int64)))
     return dict(file=os.path.basename(path), v=v, N=N, n=n, p=p, core_ok=core_ok, abs_rowsums=rows, hadamard=had)
 
+def verify_cyclic(path):
+    """completion check on a repo-format b = 1 core (header 'v=.. N=.. b=1 m=..', cyclic Z_m in natural order):
+    bordered GS over G = Z_1 x Z_m, exact H H^T = N I (validates bordered_gs, e.g. on data/core_v167_b1.txt)"""
+    L = [l for l in open(path).read().split('\n') if l.strip()]
+    hd = dict(t.split('=') for t in L[0].split() if '=' in t); v, m = int(hd['v']), int(hd['m'])
+    X = np.array([[1 if c == '+' else -1 for c in l.split('=')[1].strip()] for l in L[1:5]], np.int64)
+    Hm = bordered_gs(X, 1, m); N = 4 * v
+    return dict(file=os.path.basename(path), v=v, N=N, hadamard=bool(Hm is not None and np.array_equal(Hm @ Hm.T, N * np.eye(N, dtype=np.int64))))
+
 if __name__ == "__main__":
+    if sys.argv[1] == 'verifycyclic':
+        for f in sys.argv[2:]: print(json.dumps(verify_cyclic(f)))
+        sys.exit()
     if sys.argv[1] == 'verify':
         for f in sys.argv[2:]: print(json.dumps(verify(f)))
         sys.exit()

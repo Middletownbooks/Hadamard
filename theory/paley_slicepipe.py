@@ -278,6 +278,23 @@ def predicted_stage1(W, Jp, p, n, orbs, rng, N=3000):
         return None
     return bits - c1
 
+def predicted_stage2(A, W, p, n, orbs, rng, N=4000):
+    """Gaussian log2 E of stage-2 completions for one y, and the u-list sizes (log2) per block [E]"""
+    from paley_compfix import gauss_logp
+    beta = A - W; tw = [[o for o in orbs if W[k, o[0]] == 0] for k in range(4)]; half = n // 2
+    U = np.zeros((N, 4, n), np.int64)
+    for k in range(4):
+        for o in tw[k]: U[:, k, o] = rng.choice((1, -1), N)[:, None]
+    P = lambda M: np.rint(np.fft.ifft(np.abs(np.fft.fft(M, axis=-1)) ** 2, axis=-1).real).astype(np.int64)
+    C = lambda f, g: np.rint(np.fft.ifft(np.conj(np.fft.fft(f, axis=-1)) * np.fft.fft(g, axis=-1), axis=-1).real).astype(np.int64)
+    S2 = (P(beta[None]).sum(1) + p * P(U).sum(1))[:, 1:half + 1]
+    X = (C(np.broadcast_to(beta, U.shape), U) - C(U, np.broadcast_to(beta, U.shape))).sum(1)[:, 1:half]
+    try:
+        c2, _, _ = gauss_logp(np.concatenate([S2, X], 1), np.zeros(S2.shape[1] + X.shape[1], np.int64), 'S2X')
+    except AssertionError:
+        return None
+    return dict(log2E=round(sum(len(t) for t in tw) - c2, 1), u_lists_log2=[len(t) for t in tw])
+
 def guided(v, p, n, mu, K, Nm, max_runs=300, seed=0, B=2, Stight=(-2, -1, 0, 1), thresh=0.0, max_cores=1, time_cap=6000, kmax=None, stage2=True):
     """designed gadgets as in `designed`, restricted to |t_k| <= 1, alpha-feasible, and RANKED by the predicted stage-1
     yield: only gadgets with Gaussian log2 E(stage 1) > thresh run the exact stages"""
@@ -319,8 +336,11 @@ def guided(v, p, n, mu, K, Nm, max_runs=300, seed=0, B=2, Stight=(-2, -1, 0, 1),
         for k_, val in st.items():
             if k_ != 'alpha_lists': agg[k_] += val
         if rec is not None:
+            s2p = None
+            if len(rec) > n_before:
+                s2p = predicted_stage2(rec[n_before][0], rec[n_before][1], p, n, orbs, rng)
             L(gadget_run=runs, predicted=round(pr, 1), alpha_lists=st.get('alpha_lists'), stage1_new=len(rec) - n_before,
-              secs=round(time.time() - t0, 1))
+              stage2_pred=s2p, secs=round(time.time() - t0, 1))
             if len(rec) > n_before:
                 np.savez_compressed(os.path.join(ROOT, 'theory', 'logs', f'paley_slicepipe_stage1_v{v}_mu{mu}_K{K}_s{seed}.npz'),
                                     A=np.array([x[0] for x in rec]), W=np.array([x[1] for x in rec]), Jp=np.array([x[2] for x in rec]))

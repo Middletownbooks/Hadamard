@@ -1,2 +1,4 @@
 {"v": 573, "p": 11, "n": 52, "mu": 29, "orbits": 20, "K": 22, "Nminus": 15, "B": 2, "thresh": 0.0, "block_gadgets": {"0": 1, "1": 8, "2": 12, "3": 24, "5": 192, "6": 320, "7": 1536, "8": 1968, "9": 3840, "11": 6304, "12": 4824, "13": 7312}}
-{"gadget_run": 1, "predicted": 1.4, "alpha_lists": [1716, 6006, 24024, 25740], "stage1_new": 8, "secs": 129.0}
+{"gadget_run": 1, "predicted": 1.4, "alpha_lists": [1716, 6006, 24024, 25740], "stage1_new": 8, "stage2_pred": {"log2E": -15.5, "u_lists_log2": [15, 16, 19, 18]}, "secs": 135.7}
+{"gadget_run": 2, "predicted": 1.5, "alpha_lists": [3003, 6006, 11440, 20592], "stage1_new": 22, "stage2_pred": {"log2E": -15.5, "u_lists_log2": [17, 16, 17, 18]}, "secs": 226.9}
+{"gadget_run": 3, "predicted": 0.6, "alpha_lists": [62920, 1430, 8008, 6864], "stage1_new": 0, "stage2_pred": null, "secs": 310.5}
