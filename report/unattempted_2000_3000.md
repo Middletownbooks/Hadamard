@@ -408,3 +408,11 @@ predicted per-y yield of 2^−12 to 2^−17 [E], the expected number of cores fr
 **Cost to a first 573 core [E]:** about 2^12–2^17 y's at about 40 core-seconds each (about 20 s of stage 1 plus 20–30 s
 of stage 2). That is about 2 core-days at the optimistic end and about 60 core-days at the pessimistic end. It is
 embarrassingly parallel over gadgets and y's, so it suits Kaggle CPU sessions (4 cores × 12 h ≈ 4,000 y's per session).
+
+## **H(2292) constructed (v = 573), 2026-10-09** [M]
+
+The 573 slice route worked. On the 141st recorded y (gadget K = 21, y-index 20), the stage-2 engine found a b = 1 core
+in the Paley(11) + ×29 slice. It completes to a Hadamard matrix of order 2292, verified independently
+(`report/RESULT_2292.md`, `data/H2292_packed.npz`, `data/core_v573_b1.txt`, `scripts/verify_h2292.py`).
+
+The Gaussian per-y yield estimate (2^−12 to 2^−17) turned out pessimistic for this run: 1 hit in 141 y's.
