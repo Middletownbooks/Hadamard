@@ -561,10 +561,10 @@ python3 theory/p571_p19gadgets.py --out theory/logs/p571/p19/gadget_classes.pkl 
 python3 theory/p571_p19gadget_check.py theory/logs/p571/p19/gadget_classes.pkl     # brute-force check of 7 distributions
 python3 theory/p571_p19cpsat.py testpartial; python3 theory/p571_p19cpsat.py testy # encoding tests (planted)
 python3 theory/p571_p19control419.py                      # both models accept the published 419 core (p = 11, n = 38)
-python3 theory/p571_p19cpsat.py theory/logs/p571/p19/gadget_classes.pkl --time 1 --log theory/logs/p571/p19/cpsat_s1_chunk0.jsonl
+python3 theory/p571_p19cpsat.py theory/logs/p571/p19/gadget_classes.pkl --time 1 --log theory/logs/p571/p19/cpsat_s1_chunk0.jsonl   # pass 1 (archived: verdicts_pass1.jsonl.gz)
 python3 theory/p571_p19cpsat.py theory/logs/p571/p19/gadget_classes.pkl --only theory/logs/p571/p19/unresolved.txt --time 2 --workers 4 --log theory/logs/p571/p19/cpsat_s1_pass2.jsonl
 python3 theory/p571_p19status.py                          # verdicts per gadget distribution; writes unresolved.txt
 python3 theory/p571_p19crosscheck.py y 400; python3 theory/p571_p19crosscheck.py dp 400; python3 theory/p571_p19crosscheck.py pass2 200 10
-python3 theory/p571_p19lagdp.py estimate theory/logs/p571/p19/gadget_classes.pkl 'theory/logs/p571/p19/cpsat_s1_chunk*.jsonl' 100
+python3 theory/p571_p19lagdp.py estimate theory/logs/p571/p19/gadget_classes.pkl 'theory/logs/p571/p19/verdicts_pass1.jsonl.gz,theory/logs/p571/p19/cpsat_s1_pass2.jsonl' 100
 python3 theory/p571_finish.py data/core_v79_b1_p571method_c79.txt
 ```

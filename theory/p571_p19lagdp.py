@@ -6,7 +6,8 @@ dynamic programme along the cycles of g -> g + h (PAF(h) only couples consecutiv
 sum of the A-values next to gadgets; the row sum is additive).  The class is infeasible if for some h the target
 -76 - 324 s(h) is not in the sumset sigma_0 + sigma_1 + sigma_2 + sigma_3.  No solver is involved.
 usage: python3 theory/p571_p19lagdp.py classes.pkl [--start i] [--count c] [--log file]
-       python3 theory/p571_p19lagdp.py estimate classes.pkl 'theory/logs/p571/p19/cpsat_s1_*.jsonl' [nsample]
+       python3 theory/p571_p19lagdp.py estimate classes.pkl 'verdict-file-glob[,glob...]' [nsample]
+         (e.g. 'theory/logs/p571/p19/verdicts_pass1.jsonl.gz,theory/logs/p571/p19/cpsat_s1_pass2.jsonl')
          (exact-marginal estimate log2 [N_A prod_h f_h] of the number of stage-1 solutions per class, for random
           samples of refuted and unresolved classes; f_h = exact fraction of row-sum-consistent A meeting lag h)"""
 import sys, os, json, time, pickle
@@ -156,9 +157,11 @@ def estimate_cli(pkl, verdict_glob, nsample, seed=1):
     import glob, random, statistics
     cl = pickle.load(open(pkl, 'rb'))
     keys = sorted(cl, key=lambda c: (cl[c]['K'], str(cl[c]['dist']), str(c)))
+    import gzip
     verdict = {}
-    for f in sorted(glob.glob(verdict_glob)):
-        for l in open(f):
+    files = [f for g in verdict_glob.split(',') for f in sorted(glob.glob(g))]
+    for f in files:                                   # later files override UNKNOWN verdicts of earlier ones
+        for l in (gzip.open(f, 'rt') if f.endswith('.gz') else open(f)):
             r = json.loads(l)
             if r['st'] != 'UNKNOWN' or r['i'] not in verdict: verdict[r['i']] = r['st']
     random.seed(seed); res = {}

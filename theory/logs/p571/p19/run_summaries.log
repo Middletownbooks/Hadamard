@@ -1,0 +1,54 @@
+== cpsat_s1_chunk0.out
+(no summary line)
+== cpsat_s1_chunk0b.out
+(no summary line)
+== cpsat_s1_chunk0c.out
+{"summary": true, "range": [13052, 17674], "statuses": {"UNKNOWN": 650, "INFEASIBLE": 3972}}
+== cpsat_s1_chunk1.out
+(no summary line)
+== cpsat_s1_chunk1b.out
+(no summary line)
+== cpsat_s1_chunk1c.out
+(no summary line)
+== cpsat_s1_chunk2.out
+(no summary line)
+== cpsat_s1_chunk2b.out
+(no summary line)
+== cpsat_s1_chunk2c.out
+(no summary line)
+== cpsat_s1_chunk3.out
+(no summary line)
+== cpsat_s1_chunk3b.out
+(no summary line)
+== cpsat_s1_chunk3c.out
+{"summary": true, "range": [62252, 70696], "statuses": {"INFEASIBLE": 8388, "UNKNOWN": 56}}
+== cpsat_s1_pass2.out
+(no summary line)
+== cpsat_s1_pass2b.out
+{"summary": true, "range": [0, 70696], "statuses": {"UNKNOWN": 4259, "INFEASIBLE": 6809}}
+== cpsat_s1_r0.out
+{"summary": true, "range": [0, 70696], "statuses": {"UNKNOWN": 1839, "INFEASIBLE": 4280}}
+== cpsat_s1_r1.out
+{"summary": true, "range": [0, 70696], "statuses": {"UNKNOWN": 1784, "INFEASIBLE": 4335}}
+== cpsat_s1_r2.out
+{"summary": true, "range": [0, 70696], "statuses": {"UNKNOWN": 1849, "INFEASIBLE": 4269}}
+== cpsat_s1_r3.out
+{"summary": true, "range": [0, 70696], "statuses": {"UNKNOWN": 1764, "INFEASIBLE": 4354}}
+== crosscheck_dp.out
+{"summary": true, "mode": "dp", "sample": 400, "pool": 59578, "tally": {"cert": 130, "none": 270}, "secs": 166.8}
+== crosscheck_pass2.out
+{"summary": true, "mode": "pass2", "sample": 200, "pool": 11118, "tally": {"INFEASIBLE": 154, "UNKNOWN": 46}, "secs": 674.7}
+== crosscheck_y.out
+{"summary": true, "mode": "y", "sample": 400, "pool": 59578, "tally": {"INFEASIBLE": 400}, "secs": 29.3}
+== lagdp_k6_all.out
+{"summary": true, "range": [0, 10008], "cert_lag_hist": {"1": 2874, "2": 2436, "3": 894, "4": 232, "5": 508, "6": 524, "7": 170, "8": 244, "9": 329, "10": 491, "11": 89, "12": 223, "13": 43, "14": 61, "None": 890}, "secs": 359.6}
+== modely_k6_all.out
+{"summary": true, "range": [0, 70696], "statuses": {"INFEASIBLE": 10008}}
+== run_v115.out
+(no summary line)
+== run_v191.out
+(no summary line)
+== run_v267.out
+(no summary line)
+== run_v305.out
+(no summary line)
