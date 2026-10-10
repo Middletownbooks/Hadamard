@@ -87,3 +87,62 @@ if __name__ == "__main__":
                           profiles=len(sols), log2_weighted=(round(math.log2(tot), 1) if tot else None))), flush=True)
     sols.sort(key=lambda t: -t[1])
     for P, w in sols[:10]: print(json.dumps(dict(profile=P, log2w=round(math.log2(w), 1))))
+
+# ---------------------------------------------------------------- lag-0 filter [P]
+# Each block's reachable (J, rho) set (J = sum |O| [|y| = 3] over both halves, rho = sum |O| y0 y1) inside a profile
+# is computed exactly as a 2-D boolean array; the c = 0 / c != 0 orbit groups are independent (OR-convolution), and
+# within a group every a = 0 config pairs with every a = 1 config.  A profile survives iff sum_k J_k = J_tot (the
+# J-coset count forced by S1 at lag 0) and sum_k rho_k = -6 (S1 at lag q, i.e. lag0(L1) - lag0(L2)) are reachable.
+from numpy.fft import rfft2, irfft2
+
+def _orconv(A, B):
+    """boolean OR-convolution of 2-D arrays (index offsets add)"""
+    s0 = A.shape[0] + B.shape[0] - 1; s1 = A.shape[1] + B.shape[1] - 1
+    C = irfft2(rfft2(A.astype(float), (s0, s1)) * rfft2(B.astype(float), (s0, s1)), (s0, s1))
+    return C > 0.5
+
+class Lag0:
+    def __init__(self, inst):
+        from p571_hsolve import group_lists
+        self.inst = inst; self.gl = group_lists
+        self.w0, self.w1 = fibre_weights(inst)
+        self.RMAX = 9 * inst.q                     # |rho| <= 9 q per block
+        self.cache = {}; self.pair = {}
+    def block(self, p):
+        if p in self.cache: return self.cache[p]
+        inst = self.inst; arr = None
+        for g, w in ((0, self.w0), (1, self.w1)):
+            orb = [i for i in range(inst.R) if w[i]]
+            V0, _ = self.gl(w, p[0] if g == 0 else p[1]); V1, _ = self.gl(w, p[2] if g == 0 else p[3])
+            if len(V0) == 0 or len(V1) == 0: self.cache[p] = None; return None
+            sz = inst.sizes[orb]
+            J0 = ((np.abs(V0) == 3) * sz).sum(1); J1 = ((np.abs(V1) == 3) * sz).sum(1)
+            rho = (V0 * sz) @ V1.T
+            Jg = (J0[:, None] + J1[None, :]).ravel(); Rg = rho.ravel()
+            A = np.zeros((int(2 * sz.sum()) + 1, 2 * self.RMAX + 1), bool); A[Jg, Rg + self.RMAX] = True
+            arr = A if arr is None else _orconv(arr, A)[:, self.RMAX:self.RMAX + 2 * self.RMAX + 1]
+        self.cache[p] = arr; return arr
+    def pairsum(self, p, q):
+        key = (p, q)
+        if key not in self.pair:
+            A, B = self.block(p), self.block(q)
+            self.pair[key] = None if A is None or B is None else _orconv(A, B)     # rho offset 2*RMAX
+        return self.pair[key]
+    def ok(self, P, Jtot, rhotot=-6):
+        AB = self.pairsum(tuple(P[0]), tuple(P[1])); CD = self.pairsum(tuple(P[2]), tuple(P[3]))
+        if AB is None or CD is None: return False
+        R2 = 2 * self.RMAX
+        # need (j, r) with AB[j, r + R2] and CD[Jtot - j, rhotot - r + R2]
+        for j in np.nonzero(AB.any(1))[0]:
+            jj = Jtot - j
+            if jj < 0 or jj >= CD.shape[0]: continue
+            ra = np.nonzero(AB[j])[0] - R2; rc = rhotot - ra + R2
+            okm = (rc >= 0) & (rc < CD.shape[1])
+            if CD[jj, rc[okm]].any(): return True
+        return False
+
+def lag0_filter(inst, sols):
+    Jtot = (4 * inst.m - 8 - 8 * inst.q) // 8                    # sum y^2 = 2q*4 + 8 J = T_J(0) = 4m - 8
+    L = Lag0(inst)
+    keep = [(P, w) for P, w in sols if L.ok(P, Jtot)]
+    return keep, Jtot

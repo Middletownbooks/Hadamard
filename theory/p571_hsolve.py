@@ -618,14 +618,19 @@ class ProfileBlock:
                   (1, 0): group_lists(w0, Y10), (1, 1): group_lists(w1, Y1s)}
         self.ok = all(len(self.L[k][0]) for k in self.L)
         self.prof = prof; self.w0, self.w1 = w0, w1
-    def sample(self, N, rng):
-        """N weighted random y-configs (2, R)"""
+    def sample(self, N, rng, lam=0.0):
+        """N weighted random y-configs (2, R); lam > 0 biases each orbit group towards |y0| = |y1| orbit by orbit
+        (weight exp(lam * #matches)), i.e. towards both-free / both-J orbit pairs (more D-freedom in stage 2)"""
         out = np.zeros((N, 2, self.R), np.int64)
-        for a in (0, 1):
-            for g, orb in ((0, self.g0), (1, self.g1)):
-                V, W = self.L[(a, g)]
-                pick = rng.choice(len(V), size=N, p=W / W.sum())
-                out[:, a, orb] = V[pick]
+        for g, orb in ((0, self.g0), (1, self.g1)):
+            V0, W0 = self.L[(0, g)]; V1, W1 = self.L[(1, g)]
+            if lam == 0.0:
+                p0 = rng.choice(len(V0), size=N, p=W0 / W0.sum()); p1 = rng.choice(len(V1), size=N, p=W1 / W1.sum())
+            else:
+                match = ((np.abs(V0)[:, None, :] == np.abs(V1)[None, :, :]).sum(2)).astype(float)
+                Wp = W0[:, None] * W1[None, :] * np.exp(lam * (match - match.max()))
+                flat = rng.choice(Wp.size, size=N, p=(Wp / Wp.sum()).ravel()); p0, p1 = np.divmod(flat, len(V1))
+            out[:, 0, orb] = V0[p0]; out[:, 1, orb] = V1[p1]
         return out
     def refinements(self, x1):
         """all y (2, R) in this profile with y0 + y1 = x1: per group, y0 options from the a = 0 list filtered so that
@@ -647,7 +652,7 @@ class ProfileBlock:
             out[:, 1, orb] = np.tile(np.repeat(A1, rep, axis=0), (til, 1))
         return out
 
-def stage1z(inst, profs, L1=4096, n_profiles=4, seed=0, log=False, max_y=1000, max_l1=10 ** 6):
+def stage1z(inst, profs, L1=4096, n_profiles=4, seed=0, log=False, max_y=1000, max_l1=10 ** 6, lam=0.0):
     """exact stage 1 inside Z10-compression profiles (theory/p571_z10profiles.py): L1 join on X1 classes of
     profile-consistent y's, then the L2 join over all profile-consistent refinements of each L1 solution"""
     from p571_z10profiles import fibre_weights
@@ -658,7 +663,7 @@ def stage1z(inst, profs, L1=4096, n_profiles=4, seed=0, log=False, max_y=1000, m
         if not all(b.ok for b in blocks): continue
         X = []
         for b in blocks:
-            Ys = b.sample(4 * L1, rng); x1 = np.unique(Ys[:, 0] + Ys[:, 1], axis=0)
+            Ys = b.sample(4 * L1, rng, lam=lam); x1 = np.unique(Ys[:, 0] + Ys[:, 1], axis=0)
             X.append(x1[rng.permutation(len(x1))[:L1]])
         sig = [sig_real(x, inst.N) for x in X]
         l1, st1 = join_all(sig, inst.t1, seed=seed * 7919 + len(found))
@@ -691,16 +696,20 @@ if __name__ == "__main__" and sys.argv[1] in ("stage1",):
         if opt['--out'] and ys: np.savez_compressed(opt['--out'], Y=np.array(ys))
 
 if __name__ == "__main__" and sys.argv[1] in ('stage1c', 'stage1d', 'stage1z'):
-    a = sys.argv[2:]; opt = {"--L": "4096", "--np": "10", "--seed": "0", "--out": "", "--skip": "0"}; pos = []; i = 0
+    a = sys.argv[2:]; opt = {"--L": "4096", "--np": "10", "--seed": "0", "--out": "", "--skip": "0", "--profiles": "", "--lam": "0", "--maxy": "1000"}; pos = []; i = 0
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: pos.append(int(a[i])); i += 1
     inst = Inst(pos[0], pos[1:])
     if sys.argv[1] == 'stage1z':
         from p571_z10profiles import profiles as zprof
-        sols, _ = zprof(inst); sols.sort(key=lambda t: -t[1]); rng0 = np.random.default_rng(int(opt['--seed']))
+        if opt.get('--profiles'):
+            import pickle; sols = pickle.load(open(opt['--profiles'], 'rb'))
+        else: sols, _ = zprof(inst)
+        sols.sort(key=lambda t: -t[1])
         sk = int(opt['--skip']); profs = [p for p, w in sols[sk:]]
-        ys = stage1z(inst, profs, L1=int(opt['--L']), n_profiles=int(opt['--np']), seed=int(opt['--seed']), log=True)
+        ys = stage1z(inst, profs, L1=int(opt['--L']), n_profiles=int(opt['--np']), seed=int(opt['--seed']), log=True,
+                     lam=float(opt['--lam']), max_y=int(opt['--maxy']))
         ok = [y_to_x_check(inst, y) for y in ys]
         print(json.dumps(dict(total_ys=len(ys), all_S1_exact=bool(all(ok)) if ys else None)), flush=True)
         if opt['--out'] and ys: np.savez_compressed(opt['--out'], Y=np.array(ys))
