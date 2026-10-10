@@ -1,0 +1,5 @@
+/home/user/Hadamard/scripts/paley_ls.py:5: SyntaxWarning: invalid escape sequence '\ '
+  must equal the target: 4m at (0, 0); -4b on H' x {0, QR, NQR} \ (0, 0); +4 elsewhere (b >= 3: H' of index c in G');
+/home/user/Hadamard/scripts/paley_bge3.py:4: SyntaxWarning: invalid escape sequence '\ '
+  index c.  Core: GS quadruple over G with sum_k PAF_k = 4m at 0, -4b on H \ {0}, +4 off H.
+{"v": 191, "n": 10, "cores": 0, "results": []}

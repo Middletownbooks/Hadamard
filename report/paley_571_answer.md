@@ -47,13 +47,22 @@ Scripts: `theory/p571_*.py`. Logs: `theory/logs/p571/`, `theory/logs/p571_*.json
      - It kills, exactly, slices with large Gaussian estimates: the **211 ×27 analogue** (+70 [E]) and 18 small-order
        slices (§4.1).
      - **571 passes it**, with s₀ = 2 forced.
-   - **The Z₁₉-cubes slice at v = 115** (the Z₁₉ part of 571's slice on its own) is **exactly empty** [M]: exhaustive
-     stage 1 (2304 y's), then the full stage 2. Its Gaussian estimate was +22.6.
+   - **The Z₁₉-cubes slice at v = 115** (a smaller order with the same Z₁₉ structure) is **exactly empty** [M]:
+     exhaustive stage 1 (2304 y's), then the full stage 2. Its Gaussian estimate was +22.6.
    - **For 571 ×27 the exact arithmetic thins the slice but does not empty it** [M]:
      - exactly 19,200 compressed (Z₁₀) profiles satisfy the four rational-character equations;
      - 2304 of them survive the exact lag-0 / lag-95 test (§4.3), carrying weighted mass 2^204.3 of 2^237.7;
      - real S1 solutions exist inside them.
-   - So no (C) result for 571. The slice is alive, and its difficulty is stage 2.
+   - So the ×27 slice is alive, and its difficulty is stage 2.
+   - **571's second-best slice, ⟨61⟩ = Paley(19) on Z₃₀ (Gaussian +39.9), is mostly empty [P, M] (§7).**
+     - Exact lemmas reduce it to 70,696 gadget classes, with (K, N₋) = (6, 1) or (7, 6).
+     - **All 10,008 classes with (K, N₋) = (6, 1) have no stage-1 solution** compatible with S2 at ψ (Lemma 7.4). On
+       a 400-class sample, pure S1 alone is already infeasible. So no core of this slice has six constant cosets.
+     - For (7, 6), 49,570 of the 60,688 classes have no stage-1 solution. The other 11,118 are unresolved.
+     - Method: CP-SAT, cross-checked by a second formulation, a solver-free lag DP, planted tests, and a positive
+       control on the published 419 core.
+     - The exact-marginal estimate for the unresolved classes is about 2^−12 stage-1 solutions in total [E]. The same
+       estimator gives 2^18.3 on the (non-empty) published 419 class.
 
 ---
 
@@ -108,7 +117,7 @@ Scripts: `theory/p571_*.py`. Logs: `theory/logs/p571/`, `theory/logs/p571_*.json
 | M (generators mod 570) | order | orbits / block | equations | log₂E | residues mod 3 / 5 / 19 | comment |
 |---|---|---|---|---|---|---|
 | ⟨103⟩ = the ×27 slice | 12 | 66 | 37 | **+40.5** | 1 / all / cubes | best; fixes Z₆ |
-| ⟨61⟩ | 9 | 90 | 45 | +39.9 | 1 / 1 / squares | = full Paley(19) on Z₃₀ (the repo's p = 19 option, rigid stage 1) |
+| ⟨61⟩ | 9 | 90 | 45 | +39.9 | 1 / 1 / squares | = full Paley(19) on Z₃₀; K = 6 part exactly empty, K = 7 mostly (§7) |
 | ⟨11, 49⟩ | 12 | 84 | 47 | +22.5 | ±1 / ±1 / {1,7,11} | = Paley(5) + ×11; contains the pure flip, so Z′ is real and z* ≡ 0 |
 | ⟨83⟩ (new: flip on Z₃) | 12 | 70 | 37 | +18.3 | ±1 / all / {1,7,11} | stage 2 per y −39 … −46 [E] |
 | ⟨11, 31⟩ | 12 | 80 | 47 | +2.0 | ±1 / 1 / cubes | |
@@ -337,7 +346,134 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
   about 37 s). At 4 cores, 2^52 pairs is about 2^52 / 6·10⁷ s⁻¹ ≈ 2.4 years. Even uncalibrated, 2^47.6 is about 30 days.
   **So (A) was not attempted.**
 
-## 7. Q3 (the 19 factor) and Q4 (b ≥ 3)
+## 7. The Paley(19) slice ⟨61⟩: K = 6 is empty, K = 7 reduced to a residue (Q3) [P, M, E]
+
+**What the slice is.**
+- 61 ≡ 1 (mod 30) and 61 ≡ 4 (mod 19). So ⟨61⟩ fixes Z₃₀ pointwise and acts on Z₁₉ as the squares.
+- Its slice is exactly the Paley(19) ansatz on G′ = Z₃₀: on each Z₁₉-coset g of each block, x is constant on QR and
+  on QNR.
+- The Gaussian gives +39.9, second only to ×27 (§2). The repo's earlier split had put all its cost in a "rigid"
+  stage 1 (`report/paley_design_answer.md` §7.4).
+
+**Notation.**
+- A coset is either twisted (x = a at 0, ±u on QR/QNR) or a gadget (x = a at 0, w on all of Z₁₉*).
+- A_k(g) = a; W_k(g) = w on gadgets and 0 on twisted cosets.
+- y_k = A_k + 18W_k is the Z₁₉-compression. A gadget is J if a = w (y = 19w) and J′ if a = −w (y = 17w); write ε = +1
+  for J and −1 for J′.
+- **S1:** Σ_k PAF(y_k)(h) = −76 for h ≠ 0, Σ_k Σ_g y_k(g)² = 2208, and row sums r = (2, 0, 0, 0) after reordering and
+  negating blocks.
+- **S2:** with ẑ_k = (A_k − W_k) + u_k√−19 on Z₃₀ (u = 0 on gadgets), Σ_k PAF_C(ẑ_k) = 4v·δ.
+
+**Lemma 7.1 [P].** The number of gadgets K and the number of J′ gadgets N₋ satisfy (K, N₋) ∈ {(6, 1), (7, 6)}.
+- Proof: lag 0 gives n_tw + 289N₋ + 361N₊ = 2208 with n_tw + K = 120, so 4N₋ + 5N₊ = 29.
+
+**Lemma 7.2 [P].** t_k = Σ_g W_k(g) ∈ {−1, 0, 1}.
+- Proof: Σ_g A_k(g) = r_k − 18t_k and |Σ_g A_k(g)| ≤ 30.
+- So a block with an odd number of gadgets has Σ A_k ∈ {−16, ±18, 20}: only 5–7 minority entries out of 30.
+
+**Lemma 7.3 [P] (gadget autocorrelation and X-sums).**
+- Expand PAF(y) = PAF(A) + 18X + 324·PAF(W), where X_k(h) = Σ_{g ∈ supp W_k} W_k(g)(A_k(g+h) + A_k(g−h)) is a sum of
+  2K_k terms ±1.
+- Then for every h ≠ 0, s(h) := Σ_k PAF(W_k)(h) ∈ {0, −1}, and s(15) = 0.
+- Also x_h := Σ_k X_k(h) ∈ [8, 2K] where s(h) = −1, and x_h ∈ [−10, 2] where s(h) = 0.
+- Proof: in Σ_k PAF(A_k) + 18x + 324s = −76 we have |Σ_k PAF(A_k)| ≤ 120 and |x| ≤ 2K ≤ 14. A pair at distance 15
+  counts twice, so s(15) is even.
+- Since Σ_{h≠0} s(h) = Σt_k² − K, exactly K − #odd lags have s = −1, in ± pairs, where #odd counts the blocks with
+  odd K_k. Call these the special lags.
+
+**Lemma 7.4 [P] (S2 at the two real characters).**
+- At the trivial character: Σ_k (r_k − 19t_k)² + 19Σ_k ρ_k² = 4v, with ρ_k = Σ_g u_k(g) ≡ 30 − K_k (mod 2).
+  - With |t_k| ≤ 1 this rules out four odd K_k: Σρ² would be 48 or 40, but four odd squares sum to 4 (mod 8).
+- At ψ = (−1)^g: Σ_k Ŵ_k(2Â_k + 17Ŵ_k) = Σ_k û_k², with û_k ≡ 30 − K_k (mod 2) and |û_k| ≤ 30 − K_k (hats taken at
+  ψ).
+- Proof: at a real character the Gauss sum √−19 is imaginary, so S2 reads Σ_k [β̂_k² + 19û_k²] = 4v with β = A − W.
+  Subtract S1 at ψ, which is Σ_k (Â_k + 18Ŵ_k)² = 4v.
+
+**Lemma 7.5 [P] (forced terms).**
+- If g and g + h are gadgets of the same block, the two X-terms that join them are fixed: ε(g+h)W(g)W(g+h) and
+  ε(g)W(g)W(g+h).
+- For K = 6 (one J′ gadget), every special lag has a forced −1. So x_d ≤ 10 there and Σ_k PAF(A_k)(d) ≥ 68.
+
+**Computation [M].**
+1. **Gadget classes.** `theory/p571_p19gadgets.py` lists every gadget configuration (W, ε) that satisfies Lemmas
+   7.1–7.5 at the gadget level.
+   - Symmetries used: per-block translation and reflection, negation of blocks 1–3, permutations of blocks 1–3, and
+     the global multipliers of Z₃₀.
+   - Result: **70,696 classes** (10,008 with K = 6 and 60,688 with K = 7) in 5.4 min
+     (`theory/logs/p571/p19/gadgets.log`).
+   - **Cross-check [M]** (`theory/p571_p19gadget_check.py`, `theory/logs/p571/p19/gadget_check.log`): an
+     independent brute force reproduces the enumerator's class sets exactly on 6 distributions, 3,456 classes in all.
+     It enumerates every signed set with a gadget at 0 in each non-empty block, with no excess pruning and no join,
+     applies the conditions directly and canonicalises.
+     - (0,2,2,2): 296; (1,2,2,1): 224; (2,2,1,1): 216; (0,3,2,1): 456;
+     - (1,2,2,2): 800; (2,2,2,1): 1,464.
+2. **Stage 1 for every class (exact).** `theory/p571_p19cpsat.py` builds one OR-tools CP-SAT model per class:
+   - Booleans for A on the twisted cosets, with A = εW on gadgets;
+   - the row sums;
+   - the 15 lag equations exactly (one XOR literal per product of two twisted cosets);
+   - Lemma 7.4 at ψ as a domain constraint.
+
+   **Result [M]** (`theory/logs/p571/p19/verdicts_pass1.jsonl.gz`, `status_pass1.log`; 1 worker, 0.3–3 s per class,
+   about 2 CPU-hours):
+   - **(K, N₋) = (6, 1): all 10,008 classes INFEASIBLE.**
+   - **(K, N₋) = (7, 6): 49,570 of 60,688 INFEASIBLE; 11,118 UNKNOWN** (`theory/logs/p571/p19/unresolved.txt`).
+     - Fully refuted distributions (K₀, K₁, K₂, K₃): (0,5,1,1), (0,5,2,0), (0,6,1,0), (0,7,0,0), (7,0,0,0).
+     - The residue sits where three or four blocks carry 1–2 gadgets (most of all in (1,2,2,2), (1,3,2,1), (2,2,2,1)
+       and (2,3,1,1)). There the forced X-terms are J′J′ pairs (+1), so the special lags are not extreme and the
+       problem is generic.
+   - No class was found feasible.
+3. **Validation.**
+   - Partially planted instances (all but 24 A-values fixed to a random A, targets computed from it) are solved and
+     reproduce the planted lag sums (`p571_p19cpsat.py testpartial`, `testy`).
+   - Lag-subset models behave consistently. For example, the class in which K₁ = K₂ = K₃ = 2 at distances 3, 5 and 9
+     with one J′ is infeasible from lag 5 alone, and this is checked by hand. Lag 5 forces x₅ = 8 and Σ PAF(A)(5) = 104,
+     which allows only one minority arc per block along the 6-cycles of the shift. In block 1 the 6-cycle through the
+     J′ gadget at 0 is then mixed, with a single minus at 0, and the other 14 minus entries cannot fill whole 6-cycles.
+   - **Second formulation [M]** (`p571_p19crosscheck.py y 400 5`, `theory/logs/p571/p19/crosscheck_y.jsonl`). Model y
+     is written directly in y = A + 18W: no X/s algebra and no Lemma 7.4, so it is pure S1. On 400 random refuted
+     classes it gives **400/400 INFEASIBLE** (29 s in all). So on this sample, S1 alone has no solution.
+   - **Solver-free certificates [M]** (`p571_p19crosscheck.py dp 400`, `theory/p571_p19lagdp.py`).
+     - For one lag at a time, a DP along the cycles of g ↦ g + h computes exactly the set of σ_k(h) = PAF(A_k)(h) +
+       18X_k(h) per block, over all A_k with the right row sum. It agrees with random sampling of A.
+     - **130 of 400 random refuted classes (32.5 %) already fail a single lag.** The others need several lags at once.
+   - **Positive control [M]** (`theory/p571_p19control419.py`, `theory/logs/p571/p19/control419.log`). Both
+     formulations, generalised to Paley(p) on Z_n, are OPTIMAL on the published 419 core (p = 11, n = 38, K = 16,
+     N₋ = 11) with its A fixed.
+     - From scratch on that class they stay UNKNOWN after 600 s with 4 workers. CP-SAT refutes rigid classes quickly
+       but does not find solutions of generic ones.
+     - So UNKNOWN must not be read as "probably infeasible", and nothing below relies on it.
+     - Simulated annealing on stage 1 (`theory/p571_p19anneal.py control419 300`) does not find a solution of that
+       class either (best cost 32 in 300 s). So it is not used as a probe at 571: a failure there would mean nothing.
+   - **Smaller p = 19 orders do not calibrate 571 [M].** The Paley(19) ansatz at v = 115, 191, 267 and 305
+     (`theory/p571_p19small.py`, `theory/logs/paley_b1pipe_v*_p19.log`) is empty already at the gadget level. For
+     n ≤ 16 the bound behind Lemma 7.3 leaves no room for a special lag. The 571 regime, with K ≥ 4 and special lags
+     that can be met, starts only at n ≈ 22–28.
+
+**Conclusion (C) [M, E].**
+- **[M] No core in the ⟨61⟩ slice has (K, N₋) = (6, 1).** None of the 10,008 classes has a stage-1 solution meeting
+  Lemma 7.4 at ψ.
+  - The refutation is by CP-SAT, which on the samples agrees with the pure-S1 formulation.
+  - About a third of the refuted classes also carry a solver-free one-lag certificate.
+- **[M] For (K, N₋) = (7, 6), 49,570 of the 60,688 classes are refuted the same way.**
+- **11,118 classes are unresolved after pass 1.** A 4-worker, 10 s pass on a random sample of 200 of them refutes
+  154 of 200 (77 %) (half of those refutations take under 0.4 s; the other 46 stay UNKNOWN at 10 s; `crosscheck_pass2.jsonl`). So a full second pass (about 3 h on 4 cores) would leave roughly 2,600 classes.
+- **[E] The residue is very likely empty, but this is not proved.**
+  - Estimator: for each unresolved class, N_A·∏_h f_h, where f_h is the exact fraction of row-sum-consistent A
+    meeting lag h (`p571_p19lagdp.py estimate`, `theory/logs/p571/p19/estimate_residue.log`). This treats the lags as
+    independent but uses exact marginals.
+  - Result: on a random sample of 100 unresolved classes, median 2^−39.2 and maximum 2^−20.0 stage-1 solutions per class, with no class impossible at a single lag. That is about 3·10⁻⁴ ≈ 2^−11.8 expected stage-1 solutions over all 11,118. For comparison, 100 refuted classes give median 2^−57.1, and 28 of them are impossible at a single lag.
+  - For comparison, the same estimator gives 2^18.3 on the published 419 class, which does contain solutions. In the
+    repo, 419 gadgets with predicted yield around 2^−27 never gave a stage-1 solution (400 tries,
+    `report/paley_design_answer.md` §7.5).
+- **So ⟨61⟩, the second-best slice of 571 (+39.9), is mostly empty.** Exactly: every core in it would need seven
+  constant cosets in one of the 11,118 listed configurations.
+
+**First computation to run (⟨61⟩ residue).** Re-run `theory/p571_p19cpsat.py --only theory/logs/p571/p19/unresolved.txt
+--workers 4 --time 10`, which removes about three quarters of the residue. Then give the survivors to a dedicated exact solver,
+for example one per-class join on the Z₂-level split of Z₃₀ (y₊ on Z₁₅, then y₋). Classes that stay UNKNOWN after
+120 s with 4 workers, such as the (1,2,2,2) ones, need such a solver.
+
+## 8. Q3 (the 19 factor) and Q4 (b ≥ 3)
 
 **Q3: cubic or sextic twists.**
 - In ×27 the Z₁₉-part of the orbits is already the cubic classes C₀, C₁, C₂. On the mixed orbits ×27 adds exactly the
@@ -356,7 +492,7 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
   c ≥ 10.
 - Not pursued here. Theorem 4's argument applies verbatim to bordered cores, with targets (T₀ − T_s) in place of 4v.
 
-## 8. What would change the picture
+## 9. What would change the picture
 
 1. **A faster S-level join.** The current kernel does 1–1.5·10⁷ pairs/s/core. A radix-partitioned sort-merge or a GPU
    kernel at 10⁹ pairs/s would put 2^48 at a few days. But the calibrated cost (2^52–2^56) would still take months to
@@ -364,9 +500,9 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
 2. **Selecting y.** The screen picks the best of 1651 y at 2^47.6 [E, uncalibrated]. The method has a floor of
    (C₂ − h_D)/2 (§6.1), so more D-level freedom h_D is the only lever. That would need S1 solutions with about 30 or
    more both-free orbit pairs and y₀ = y₁ on them; the most seen is 29.
-3. **A pointwise-fixed factor for stage 2.** The S/D split works because Z₂ is pointwise fixed. A slice of 571 fixing a
-   larger group pointwise, with stage 2 intact, does not exist among the 81 subgroups. The only ones fixing Z₆ with
-   positive log₂E are ×27 and ⟨61⟩ (§2).
+3. **A pointwise-fixed factor for stage 2.** The S/D split works because Z₂ is pointwise fixed.
+   - The only slices fixing Z₆ with positive log₂E are ×27 and ⟨61⟩ (§2).
+   - ⟨61⟩ fixes all of Z₃₀, but its stage 1 is rigid: what is left of it is the residue of §7.
 4. **The joint S1+S2 arithmetic.** The rational-character profiles of stage 2 (sums of four Eisenstein norms at θ₀, θ₅
    for L3 and L4) are exact. They are not strong enough for a class split (§6.3), but they are cheap filters on y:
    - y fixes the residues of the stage-2 fibre sums mod (1 − ω);
@@ -379,7 +515,7 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
 3. Only if the measured cost per core is at or below about 2^47, run `p571_hsolve.stage2` on that y with full S-lists
    (2^45–2^46 pairs, about a week on 4 cores with the current kernel).
 
-## 9. Reproduce
+## 10. Reproduce
 
 ```
 python3 theory/p571_slicelib.py 570 217                  # x27 slice estimate (+40.5); also 572 133 157 (573), 418 45 267 (419)
@@ -398,5 +534,13 @@ python3 theory/p571_hsolve.py stage1z 570 103 --profiles theory/logs/p571/z10_la
 python3 theory/p571_s2est.py theory/logs/p571/y571_zl0.npz 570 103; python3 theory/p571_screen.py theory/logs/p571/y571_*.npz
 python3 theory/p571_s3calib.py theory/logs/p571/y571_zl0.npz 0 65536 --seeds 3   # S-level calibration at 571: 1, 0, 0 vs 2^3.5
 python3 theory/p571_test_plant571.py                      # planted S-solutions recovered at full 571 size
+python3 theory/p571_p19gadgets.py --out theory/logs/p571/p19/gadget_classes.pkl   # 70,696 Paley(19) gadget classes (5 min)
+python3 theory/p571_p19gadget_check.py theory/logs/p571/p19/gadget_classes.pkl     # brute-force check of 7 distributions
+python3 theory/p571_p19cpsat.py testpartial; python3 theory/p571_p19cpsat.py testy # encoding tests (planted)
+python3 theory/p571_p19control419.py                      # both models accept the published 419 core (p = 11, n = 38)
+python3 theory/p571_p19cpsat.py theory/logs/p571/p19/gadget_classes.pkl --time 1 --log theory/logs/p571/p19/cpsat_s1_chunk0.jsonl
+python3 theory/p571_p19status.py                          # verdicts per gadget distribution; writes unresolved.txt
+python3 theory/p571_p19crosscheck.py y 400; python3 theory/p571_p19crosscheck.py dp 400; python3 theory/p571_p19crosscheck.py pass2 200 10
+python3 theory/p571_p19lagdp.py estimate theory/logs/p571/p19/gadget_classes.pkl 'theory/logs/p571/p19/cpsat_s1_chunk*.jsonl' 100
 python3 theory/p571_finish.py data/core_v79_b1_p571method_c79.txt
 ```
