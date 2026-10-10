@@ -125,3 +125,32 @@ passes 573 and 419: their Paley slices use only the squares mod 11.
 - The index-6/12/24 slices on composite cofactors: 537 ×59 (35 orbits), 647 ×353 (+36), 739 ×215 (+62), 523 ×53.
 - These need a stage split over a composite Z_q (several Gauss-period fields). The 571 session's level machinery
   covers part of it.
+
+## 6. 523 quartic slice: exact stage 1 found; stage 2 needs a structured solver (2026-10-10) [M/E]
+
+- **Stage 1 is non-empty [M].** `scripts/cyclo_stage1_cpsat.py 18 29 4` finds a verified y on Z₁₈ in 323 s
+  (`logs/cyclo/stage1_cpsat_523.json`): Σ PAF = 1976 at lag 0 and −116 elsewhere, rows (2, 0, 0, 0). The letters
+  used are 62 × |1|, 6 × |13| and 4 × |15|.
+  - Controls: the same model finds a v = 41 solution in 3.8 s, and proves the 537 sextic slice INFEASIBLE in 3.5 s.
+    The latter matches the exhaustive enumerator.
+- **Stage 2 model** (`scripts/cyclo_stage2_cpsat.py`):
+  - The exact reduction is R(h, t) = Σ_k Σ_g [α_g c_{g+h,t} + c_{g,t′} α_{g+h} + Σ_ij N_t(i, j) c_{g,i} c_{g+h,j}] = −4,
+    with N the order-4 cyclotomic numbers of Z₂₉ and t′ the class of −s. That is 36 independent equations; the lags
+    (h, 0) follow from stage 1.
+  - Control: given the y of the verified H(164) core, it recovers a full core (FFT-checked) in 0.1 s.
+- **On 523's y: UNKNOWN after 1800 s** (`logs/cyclo/stage2_cpsat_523_y0.json`).
+  - A planted instance of the same size (random α, c; targets computed from it) is also UNKNOWN after 600 s, while a
+    planted v = 41 instance is solved instantly (`logs/cyclo/stage2_cpsat_controls.jsonl`).
+  - So CP-SAT cannot solve stage 2 at 523 size, and the UNKNOWN on the real y carries no information.
+- **Stage-2 size for this y [E]:**
+  - 6 choices per |y| = 1 coset and 4 per |y| = 13 or 15 coset, so H₂ ≈ 180 bits;
+  - mean yield +47 per y (Gaussian), so C₂ ≈ 133 constraint bits;
+  - plain meet in the middle costs about 2^(C₂/2) ≈ 2^66 per y. Not tractable as is.
+- **What is needed:** a hierarchical exact stage-2 solver.
+  - Z₁₈ = Z₂ × Z₉ is fixed pointwise, so the condition splits exactly into an S level (x₀ + x₁) and a D level
+    (x₀ − x₁) on Z₉ × Z₂₉. Entries lie in {0, ±2}, with exactly one of S and D nonzero at each point.
+  - Z₉'s rational characters (Z₃-compression) give further class splits.
+  - The 571 session's S/D machinery (`theory/p571_hsolve.py`) is the template. Its cost floor is about
+    (C₂ − h_D)/2, where h_D is the D-level freedom. With 2^47 completions per y, the slack is very large, and sublists
+    can be chosen freely, which the 571 case lacked.
+  - Costing this split exactly is the next design step.

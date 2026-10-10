@@ -30,7 +30,7 @@ def cyclo_numbers(q, s, cls):
             if w: N[t, cls[z], cls[w]] += 1
     return N, reps
 
-def solve(F, q, s, Y, time_limit=1800, workers=4, seed=0):
+def solve(F, q, s, Y, time_limit=1800, workers=4, seed=0, targets=None):
     f = (q - 1) // s; cls, g0 = classes(q, s); N, reps = cyclo_numbers(q, s, cls)
     tneg = [int(cls[(q - reps[t]) % q]) for t in range(s)]          # class of -s for s in C_t
     M = cp_model.CpModel()
@@ -69,7 +69,7 @@ def solve(F, q, s, Y, time_limit=1800, workers=4, seed=0):
                         for j in range(s):
                             if N[t, i, j]:
                                 terms.append(int(N[t, i, j]) * (2 * prod(b[k][g][1 + i], b[k][g2][1 + j]) - 1))
-            M.Add(sum(terms) == -4); n_eq += 1
+            M.Add(sum(terms) == (-4 if targets is None else int(targets[h][t]))); n_eq += 1
     S = cp_model.CpSolver(); S.parameters.max_time_in_seconds = time_limit; S.parameters.num_workers = workers
     S.parameters.random_seed = seed
     t0 = time.time(); st = S.Solve(M); name = S.StatusName(st)
@@ -81,12 +81,31 @@ def solve(F, q, s, Y, time_limit=1800, workers=4, seed=0):
                 X[k, g, 0] = 2 * S.Value(b[k][g][0]) - 1
                 for z in range(1, q): X[k, g, z] = 2 * S.Value(b[k][g][1 + cls[z]]) - 1
         P = sum(np.rint(np.fft.ifft2(np.abs(np.fft.fft2(X[k])) ** 2).real).astype(np.int64) for k in range(4))
-        ok = bool(P[0, 0] == 4 * F * q and (P.ravel()[1:] == -4).all())
+        ok = bool(P[0, 0] == 4 * F * q and (P.ravel()[1:] == -4).all()) if targets is None else None
         assert (X.reshape(4, F, q).sum(2) == np.array(Y)).all()
         out.update(core_ok=ok, X=X.reshape(4, -1).tolist())
     return out
 
-if __name__ == "__main__":
+def planted(F, q, s, seed=0, time_limit=600, workers=4):
+    """planted control: random alpha, c; targets R(h, t) computed from it; CP-SAT must recover a solution"""
+    rng = np.random.default_rng(seed); f = (q - 1) // s; cls, g0 = classes(q, s); N, reps = cyclo_numbers(q, s, cls)
+    al = rng.choice([1, -1], (4, F)); c = rng.choice([1, -1], (4, F, s))
+    Y = (al + f * c.sum(2)).tolist()
+    X = np.zeros((4, F, q), np.int64)
+    for k in range(4):
+        for g in range(F):
+            X[k, g, 0] = al[k, g]
+            for z in range(1, q): X[k, g, z] = c[k, g, cls[z]]
+    P = sum(np.rint(np.fft.ifft2(np.abs(np.fft.fft2(X[k])) ** 2).real).astype(np.int64) for k in range(4))
+    T = [[int(P[h, reps[t]]) for t in range(s)] for h in range(F)]
+    r = solve(F, q, s, Y, time_limit, workers, seed, targets=T); r.pop('X', None); r['planted'] = True
+    return r
+
+
+if __name__ == "__main__" and sys.argv[1] == "planted":
+    F, q, s = map(int, sys.argv[2:5]); tl = float(sys.argv[5]) if len(sys.argv) > 5 else 600
+    print(json.dumps(planted(F, q, s, seed=int(sys.argv[6]) if len(sys.argv) > 6 else 0, time_limit=tl)), flush=True)
+elif __name__ == "__main__":
     a = sys.argv[1:]; opt = {"--time": "1800", "--workers": "4", "--seed": "0", "--out": ""}; pos = []; i = 0
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
@@ -102,3 +121,4 @@ if __name__ == "__main__":
         with open(opt["--out"], 'w') as fh:
             fh.write(f"v={m + 1} N={4 * (m + 1)} b=1 m={m} cyclic Z{m} (CRT of Z{F} x Z{q}); generalised Paley slice s={s}; scripts/cyclo_stage2_cpsat.py\n")
             for nm, row in zip('ABCD', Xc): fh.write(nm + '=' + ''.join('+' if t > 0 else '-' for t in row) + '\n')
+
