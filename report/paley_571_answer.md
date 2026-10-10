@@ -6,9 +6,10 @@ Scripts: `theory/p571_*.py`. Logs: `theory/logs/p571/`, `theory/logs/p571_*.json
 **Tags.**
 - **[M]** verified by exact computation here; the script is named.
 - **[P]** proved here; the proof is in the text.
-- **[E]** Gaussian estimate. Calibrated here against exact counts (§5.3).
-  - At p = 3 it overcounts the stage-2 yield per y by 2^1.5–2^3.5.
-  - Whole slices it predicts rich can be exactly empty (§4).
+- **[E]** estimate: Gaussian unless stated; §7 uses exact per-lag marginals instead.
+  - The Gaussian is calibrated against exact counts (§5.3). At p = 3 it overcounts the stage-2 yield per y by
+    2^1.5–2^3.5 (v = 79), and the 571 S-level count by about 2^5.
+  - Whole slices it predicts rich can be exactly empty (§4, §7).
 
 ---
 
@@ -56,8 +57,10 @@ Scripts: `theory/p571_*.py`. Logs: `theory/logs/p571/`, `theory/logs/p571_*.json
    - So the ×27 slice is alive, and its difficulty is stage 2.
    - **571's second-best slice, ⟨61⟩ = Paley(19) on Z₃₀ (Gaussian +39.9), is mostly empty [P, M] (§7).**
      - Exact lemmas reduce it to 70,696 gadget classes, with (K, N₋) = (6, 1) or (7, 6).
-     - **All 10,008 classes with (K, N₋) = (6, 1) have no stage-1 solution** compatible with S2 at ψ (Lemma 7.4). On
-       a 400-class sample, pure S1 alone is already infeasible. So no core of this slice has six constant cosets.
+     - **All 10,008 classes with (K, N₋) = (6, 1) have no stage-1 solution, even before any S2 condition.**
+       - 9,118 of them (91 %) fail a single lag in a solver-free exact DP.
+       - All 10,008 are infeasible in two independent CP-SAT formulations.
+       - So no core of this slice has six constant cosets.
      - For (7, 6), 49,570 of the 60,688 classes have no stage-1 solution. The other 11,118 are unresolved.
      - Method: CP-SAT, cross-checked by a second formulation, a solver-free lag DP, planted tests, and a positive
        control on the published 419 core.
@@ -450,10 +453,11 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
      that can be met, starts only at n ≈ 22–28.
 
 **Conclusion (C) [M, E].**
-- **[M] No core in the ⟨61⟩ slice has (K, N₋) = (6, 1).** None of the 10,008 classes has a stage-1 solution meeting
-  Lemma 7.4 at ψ.
-  - The refutation is by CP-SAT, which on the samples agrees with the pure-S1 formulation.
-  - About a third of the refuted classes also carry a solver-free one-lag certificate.
+- **[M] No core in the ⟨61⟩ slice has (K, N₋) = (6, 1). Stage 1 alone is already empty for all 10,008 classes.**
+  - **9,118** classes have a solver-free single-lag certificate (`theory/logs/p571/p19/lagdp_k6_all.jsonl`). The lag
+    that fails is 1 in 2,874 classes, 2 in 2,436 and 3 in 894; the rest are spread over lags 4–14.
+  - The other **890** are infeasible both in model A (with Lemma 7.4) and in model y (pure S1). Model y is run on all
+    10,008 classes (`theory/logs/p571/p19/modely_k6_all.jsonl`, at most 0.47 s per class).
 - **[M] For (K, N₋) = (7, 6), 49,570 of the 60,688 classes are refuted the same way.**
 - **11,118 classes are unresolved after pass 1.** A 4-worker, 10 s pass on a random sample of 200 of them refutes
   154 of 200 (77 %) (half of those refutations take under 0.4 s; the other 46 stay UNKNOWN at 10 s; `crosscheck_pass2.jsonl`). So a full second pass (about 3 h on 4 cores) would leave roughly 2,600 classes.
