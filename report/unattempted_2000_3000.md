@@ -416,3 +416,33 @@ in the Paley(11) + ×29 slice. It completes to a Hadamard matrix of order 2292, 
 (`report/RESULT_2292.md`, `data/H2292_packed.npz`, `data/core_v573_b1.txt`, `scripts/verify_h2292.py`).
 
 The Gaussian per-y yield estimate (2^−12 to 2^−17) turned out pessimistic for this run: 1 hit in 141 y's.
+
+## After H(2292): slice sweep over the other open orders, 2026-10-10 [M/E]
+
+**Sweep** (`scripts/slice_sweep.py`; Paley(p) + multiplier slices, b = 1; Gaussian estimate as in `theory/paley_slices.py`):
+
+| order | slice | orbits per block | log₂E | constraint bits | outcome |
+|---|---|---|---|---|---|
+| 647 | p = 17, Z₃₈, ×7 | 14 | −4.7 | | about 2,200 designed gadgets, 0 stage-1 solutions |
+| 571 | p = 19, Z₃₀, ×19 / ×11 | | −10.6 / −16.3 | | |
+| 571 | p = 5, Z₁₁₄, ×11 | 28 | **+20.6** | | stage-2 starved (split below) |
+| 571 | p = 3, Z₁₉₀, ×27 | 22 | **+40.6** | 200 | stage-2 starved (split below) |
+| 571 | p = 3, Z₁₉₀, ×31 / ×61 / ×69 | 40 / 30 / 36 | +98 / +40 / +46 | | stage-2 starved (same p = 3 cause) |
+| 599 | b = 5, p = 11, Z₅₄, multiplier slices | | −468 to −605, or no admissible profile | | dead |
+
+- 659 (p = 7) and 643 (p = 3) have no multiplier slice with 10–40 orbits.
+- p ≡ 1 (mod 4) is now supported: the χ-term is symmetric, CC(β, u) + CC(u, β) = 0. This is implemented in
+  `paley_s2join.py` and `theory/paley_split_slice.py` and validated by a verified H(164) at p = 5.
+
+**Why 571 is out of reach of the staged pipeline** (`logs/split_571_p3_mu27_partial_record.log`, `logs/split_571_p5_mu11.log`):
+- **p = 3:** the norm identity forces N₊ = 189 J-cosets, which leaves 61–68 twisted u-bits against about 107–116
+  stage-2 constraint bits. Stage 1 gives 2^37–2^49 y's, but stage 2 yields 2^−39 to 2^−53 per y.
+- **p = 5, ×11:** stage 2 yields 2^−77 to 2^−105 per y.
+- In both slices the core mass is real but reachable only jointly.
+
+**Joint local search fails its positive control** (`scripts/slice_sa.py`):
+- Orbit-label annealing and best-move tabu were tried on the exact orbit-weighted objective; the incremental updates
+  were unit-checked against full recomputation.
+- Neither solves the 419 slice: best cost about 1,800–2,800 over 8 restarts of 2·10⁵ tabu steps and 5 restarts of
+  5·10⁷ anneal steps. That slice is known to have solutions (+21; the staged pipeline finds them in minutes).
+- So local search on these reduced systems is not a viable joint solver, and a GPU port would not change that.
