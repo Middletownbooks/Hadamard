@@ -61,7 +61,8 @@ Scripts: `theory/p571_*.py`. Logs: `theory/logs/p571/`, `theory/logs/p571_*.json
        - 9,118 of them (91 %) fail a single lag in a solver-free exact DP.
        - All 10,008 are infeasible in two independent CP-SAT formulations.
        - So no core of this slice has six constant cosets.
-     - For (7, 6), 49,570 of the 60,688 classes have no stage-1 solution. The other 11,118 are unresolved.
+     - For (7, 6), 50,669 of the 60,688 classes have no stage-1 solution. The other 10,019 are unresolved (at the time
+       of writing; the second pass is still running).
      - Method: CP-SAT, cross-checked by a second formulation, a solver-free lag DP, planted tests, and a positive
        control on the published 419 core.
      - The exact-marginal estimate for the unresolved classes is about 2^−12 stage-1 solutions in total [E]. The same
@@ -458,10 +459,17 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
     that fails is 1 in 2,874 classes, 2 in 2,436 and 3 in 894; the rest are spread over lags 4–14.
   - The other **890** are infeasible both in model A (with Lemma 7.4) and in model y (pure S1). Model y is run on all
     10,008 classes (`theory/logs/p571/p19/modely_k6_all.jsonl`, at most 0.47 s per class).
-- **[M] For (K, N₋) = (7, 6), 49,570 of the 60,688 classes are refuted the same way.**
-- **11,118 classes are unresolved after pass 1.** A 4-worker, 10 s pass on a random sample of 200 of them refutes
+- **[M] For (K, N₋) = (7, 6), 50,669 of the 60,688 classes are refuted the same way**: 49,570 in pass 1 and 1,099 in
+  pass 2.
+  - Pass 2 uses 4 workers and 2 s per class, over the pass-1 UNKNOWNs in index order
+    (`theory/logs/p571/p19/cpsat_s1_pass2.jsonl`). It is still running.
+  - At the time of writing it has processed 2,045 classes, mostly in the hardest distributions, and refuted 1,099. No
+    class has been found feasible.
+  - **10,019 classes remain unresolved** (`theory/logs/p571/p19/unresolved.txt`, `status_current.log`).
+- **11,118 classes were unresolved after pass 1.** A 4-worker, 10 s pass on a random sample of 200 of them refutes
   154 of 200 (77 %; half of those take under 0.4 s, and the other 46 stay UNKNOWN at 10 s; `crosscheck_pass2.jsonl`).
-  So a full second pass (about 3 h on 4 cores) would leave roughly 2,600 classes.
+  The sequential pass 2 refutes less (54 % so far), because it started in the hardest distributions. The final
+  residue should lie between about 2,600 and 5,000 classes.
 - **[E] The residue is very likely empty, but this is not proved.**
   - Estimator: for each unresolved class, N_A·∏_h f_h, where f_h is the exact fraction of row-sum-consistent A
     meeting lag h (`p571_p19lagdp.py estimate`, `theory/logs/p571/p19/estimate_residue.log`). This treats the lags as
@@ -474,10 +482,11 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
     gadgets with predicted yield around 2^−27 never gave a stage-1 solution (400 tries,
     `report/paley_design_answer.md` §7.5).
 - **So ⟨61⟩, the second-best slice of 571 (+39.9), is mostly empty.** Exactly: every core in it would need seven
-  constant cosets in one of the 11,118 listed configurations.
+  constant cosets in one of the 10,019 listed configurations.
 
-**First computation to run (⟨61⟩ residue).** Re-run `theory/p571_p19cpsat.py --only theory/logs/p571/p19/unresolved.txt
---workers 4 --time 10`, which removes about three quarters of the residue. Then give the survivors to a dedicated exact solver,
+**First computation to run (⟨61⟩ residue).** Finish pass 2 with `theory/p571_p19cpsat.py
+theory/logs/p571/p19/gadget_classes.pkl --only theory/logs/p571/p19/unresolved.txt --workers 4 --time 2`. That is about
+3–4 h on 4 cores, and a 10 s limit removes more. Then give the survivors to a dedicated exact solver,
 for example one per-class join on the Z₂-level split of Z₃₀ (y₊ on Z₁₅, then y₋). Classes that stay UNKNOWN after
 120 s with 4 workers, such as the (1,2,2,2) ones, need such a solver.
 
