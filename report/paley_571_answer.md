@@ -1,4 +1,4 @@
-# v = 571 in the Paley + multiplier slices: the p = 3 re-split, exact compression arithmetic, and a hierarchical solver
+# v = 571 in the Paley + multiplier slices: the p = 3 re-split, exact compression arithmetic, a hierarchical solver, and the Paley(19) slice
 
 Date: 2026-10-10. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_571_design.md`.
 Scripts: `theory/p571_*.py`. Logs: `theory/logs/p571/`, `theory/logs/p571_*.jsonl`.
@@ -196,8 +196,8 @@ Proof:
    4[(5s₀ ± 1)² + 25Σ_{k≥1} s_k²] = 4v. ∎
 
 **Consequences [M]** (`theory/p571_controls.py`, `theory/logs/p571/controls_scan.jsonl`):
-- **571:** 571 = 11² + 25·18 with 18 = 3² + 3² + 0² = 4² + 1² + 1². s₀ = 2 is forced (the case u = −14 needs 15, which is
-  ≡ 7 mod 8). So **571 passes** for every slice mapping onto Z₅*. In the ×27 slice:
+- **571:** 571 = 11² + 25·18 with 18 = 3² + 3² + 0² = 4² + 1² + 1². s₀ = 2 is forced (the case 5s₀ + 1 = −14 needs 15 as a sum
+  of three squares, but 15 ≡ 7 mod 8). So **571 passes** for every slice mapping onto Z₅*. In the ×27 slice:
   - the Z₅-compression of X₁ is pinned to A₀ = 18;
   - {A₁, A₂, A₃} = {±24, ±24, 0} or {±32, ±8, ±8}.
 - **211:** the only candidate s₀ = 1 needs 7 to be a sum of three squares, so **every 211 slice mapping onto Z₅* is empty**,
@@ -335,7 +335,7 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
   - Its compressions (Eisenstein sums over 95-point fibres), the Z₁₀-compressions (19-point fibres, 6–7 values per
     orbit) and S′ itself are all nearly injective on the S-classes.
   - The rational characters (θ₀, θ₅) give sums of four Eisenstein norms, which take only O(v) values. So class pairs are
-    almost all completable (§6.4).
+    almost all completable.
 - The S-level is a dense 4-list problem with about 89 bits of class entropy and about 60 bits of constraints. A meet in
   the middle costs about 2^44.5 per y.
 
@@ -346,7 +346,7 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
   - Gaussian: 2^47.6 for the best screened y;
   - with the 571 S-level calibration (§5.3): **about 2^52–2^56 pair operations per core**.
 - The current numba kernel does 1–1.5·10⁷ pairs per second per core (`theory/p571_test_plant571.py`: 2·2^28 pairs in
-  about 37 s). At 4 cores, 2^52 pairs is about 2^52 / 6·10⁷ s⁻¹ ≈ 2.4 years. Even uncalibrated, 2^47.6 is about 30 days.
+  about 37 s). At 4 cores, 2^52 pairs is about 2^52 / 6·10⁷ s⁻¹ ≈ 2.4 years. Even uncalibrated, 2^47.6 is about 40 days.
   **So (A) was not attempted.**
 
 ## 7. The Paley(19) slice ⟨61⟩: K = 6 is empty, K = 7 reduced to a residue (Q3) [P, M, E]
@@ -460,14 +460,18 @@ With a pairing bias (`--lam 1.5/3`), 334 and 314 more y's have more both-free or
     10,008 classes (`theory/logs/p571/p19/modely_k6_all.jsonl`, at most 0.47 s per class).
 - **[M] For (K, N₋) = (7, 6), 49,570 of the 60,688 classes are refuted the same way.**
 - **11,118 classes are unresolved after pass 1.** A 4-worker, 10 s pass on a random sample of 200 of them refutes
-  154 of 200 (77 %) (half of those refutations take under 0.4 s; the other 46 stay UNKNOWN at 10 s; `crosscheck_pass2.jsonl`). So a full second pass (about 3 h on 4 cores) would leave roughly 2,600 classes.
+  154 of 200 (77 %; half of those take under 0.4 s, and the other 46 stay UNKNOWN at 10 s; `crosscheck_pass2.jsonl`).
+  So a full second pass (about 3 h on 4 cores) would leave roughly 2,600 classes.
 - **[E] The residue is very likely empty, but this is not proved.**
   - Estimator: for each unresolved class, N_A·∏_h f_h, where f_h is the exact fraction of row-sum-consistent A
     meeting lag h (`p571_p19lagdp.py estimate`, `theory/logs/p571/p19/estimate_residue.log`). This treats the lags as
     independent but uses exact marginals.
-  - Result: on a random sample of 100 unresolved classes, median 2^−39.2 and maximum 2^−20.0 stage-1 solutions per class, with no class impossible at a single lag. That is about 3·10⁻⁴ ≈ 2^−11.8 expected stage-1 solutions over all 11,118. For comparison, 100 refuted classes give median 2^−57.1, and 28 of them are impossible at a single lag.
-  - For comparison, the same estimator gives 2^18.3 on the published 419 class, which does contain solutions. In the
-    repo, 419 gadgets with predicted yield around 2^−27 never gave a stage-1 solution (400 tries,
+  - Result: on a random sample of 100 unresolved classes, the median is 2^−39.2 and the maximum 2^−20.0 stage-1
+    solutions per class, and no class is impossible at a single lag. That is about 3·10⁻⁴ ≈ 2^−11.8 expected stage-1
+    solutions over all 11,118. On 100 refuted classes the median is 2^−57.1, and 28 of them are impossible at a
+    single lag.
+  - The same estimator gives 2^18.3 on the published 419 class, which does contain solutions. In the repo, 419
+    gadgets with predicted yield around 2^−27 never gave a stage-1 solution (400 tries,
     `report/paley_design_answer.md` §7.5).
 - **So ⟨61⟩, the second-best slice of 571 (+39.9), is mostly empty.** Exactly: every core in it would need seven
   constant cosets in one of the 11,118 listed configurations.
@@ -489,6 +493,8 @@ for example one per-class join on the Z₂-level split of Z₃₀ (y₊ on Z₁�
 - The smallest order with the same Z₁₉ structure is v = 115 (Z₁₁₄ = Z₆ × Z₁₉, with M acting as the cubes on Z₁₉ and
   fixing Z₆). That slice is **exactly empty** [M] (§5.2). It is a smaller analogue, not a sub-slice of 571.
 - Plain doubly-quadratic twists were already shown empty or negative (`report/paley_design_answer.md` §5).
+- The quadratic Paley structure on the 19 factor alone is the ⟨61⟩ slice. It is treated exactly in §7: its K = 6 part
+  is empty and its K = 7 part is reduced to a residue.
 - Answer: no.
 
 **Q4: b ≥ 3.**
