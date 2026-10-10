@@ -1,0 +1,75 @@
+{"v": 43, "q": 7, "gens": [], "lifted": [], "order": 1, "R": 7, "theta_tests": {}, "log2E": 100.2, "constraint_bits": 58.6}
+{"v": 43, "q": 7, "gens": [2], "lifted": [37], "order": 3, "R": 3, "theta_tests": {}, "log2E": 30.6, "constraint_bits": 29.4}
+{"v": 43, "q": 7, "gens": [6], "lifted": [13], "order": 2, "R": 4, "theta_tests": {}, "log2E": 42.6, "constraint_bits": 42.4}
+{"v": 67, "q": 11, "gens": [3], "lifted": [25], "order": 5, "R": 3, "theta_tests": {}, "log2E": 22.8, "constraint_bits": 36.5}
+{"v": 67, "q": 11, "gens": [10], "lifted": [43], "order": 2, "R": 6, "theta_tests": {}, "log2E": 58.1, "constraint_bits": 73.6}
+{"v": 79, "q": 13, "gens": [3], "lifted": [55], "order": 3, "R": 5, "theta_tests": {}, "log2E": 54.0, "constraint_bits": 52.2}
+{"v": 79, "q": 13, "gens": [4], "lifted": [43], "order": 6, "R": 3, "theta_tests": {}, "log2E": 17.3, "constraint_bits": 42.0}
+{"v": 79, "q": 13, "gens": [5], "lifted": [31], "order": 4, "R": 4, "theta_tests": {}, "log2E": 29.6, "constraint_bits": 52.6}
+{"v": 79, "q": 13, "gens": [12], "lifted": [25], "order": 2, "R": 7, "theta_tests": {}, "log2E": 65.1, "constraint_bits": 90.1}
+{"v": 103, "q": 17, "gens": [2], "lifted": [19], "order": 8, "R": 3, "theta_tests": {}, "log2E": 14.0, "constraint_bits": 45.3}
+{"v": 103, "q": 17, "gens": [4], "lifted": [55], "order": 4, "R": 5, "theta_tests": {}, "log2E": 35.9, "constraint_bits": 69.6}
+{"v": 103, "q": 17, "gens": [16], "lifted": [67], "order": 2, "R": 9, "theta_tests": {}, "log2E": 78.1, "constraint_bits": 124.3}
+{"v": 115, "q": 19, "gens": [4], "lifted": [61], "order": 9, "R": 3, "theta_tests": {}, "log2E": 15.7, "constraint_bits": 43.6}
+{"v": 115, "q": 19, "gens": [7], "lifted": [7], "order": 3, "R": 7, "theta_tests": {}, "log2E": 75.0, "constraint_bits": 78.1}
+{"v": 115, "q": 19, "gens": [8], "lifted": [103], "order": 6, "R": 4, "theta_tests": {}, "log2E": 22.6, "constraint_bits": 59.5}
+{"v": 139, "q": 23, "gens": [2], "lifted": [25], "order": 11, "R": 3, "theta_tests": {}, "log2E": 13.2, "constraint_bits": 46.0}
+{"v": 151, "q": 25, "gens": [2], "R": 3, "theta_tests": {"5": false}, "dead": true}
+{"v": 151, "q": 25, "gens": [4], "lifted": [79], "order": 10, "R": 5, "theta_tests": {}, "log2E": -1140.4, "constraint_bits": 1242.1}
+{"v": 151, "q": 25, "gens": [6], "lifted": [31], "order": 5, "R": 9, "theta_tests": {}, "log2E": -2651.4, "constraint_bits": 2850.5}
+{"v": 151, "q": 25, "gens": [7], "lifted": [7], "order": 4, "R": 7, "theta_tests": {"5": true}, "log2E": 46.8, "constraint_bits": 105.5}
+{"v": 175, "q": 29, "gens": [4], "lifted": [91], "order": 14, "R": 3, "theta_tests": {}, "log2E": 7.7, "constraint_bits": 51.6}
+{"v": 175, "q": 29, "gens": [7], "lifted": [7], "order": 7, "R": 5, "theta_tests": {}, "log2E": 39.3, "constraint_bits": 66.1}
+{"v": 175, "q": 29, "gens": [12], "lifted": [157], "order": 4, "R": 8, "theta_tests": {}, "log2E": 51.2, "constraint_bits": 124.7}
+{"v": 187, "q": 31, "gens": [2], "lifted": [157], "order": 5, "R": 7, "theta_tests": {}, "log2E": 63.5, "constraint_bits": 88.7}
+{"v": 187, "q": 31, "gens": [6], "lifted": [37], "order": 6, "R": 6, "theta_tests": {}, "log2E": 32.7, "constraint_bits": 96.0}
+{"v": 187, "q": 31, "gens": [7], "lifted": [7], "order": 15, "R": 3, "theta_tests": {}, "log2E": 10.1, "constraint_bits": 49.2}
+{"v": 187, "q": 31, "gens": [15], "lifted": [139], "order": 10, "R": 4, "theta_tests": {}, "log2E": 14.8, "constraint_bits": 67.4}
+{"v": 211, "q": 35, "gens": [2], "R": 6, "theta_tests": {"5": false}, "dead": true}
+{"v": 211, "q": 35, "gens": [3], "R": 5, "theta_tests": {"5": false, "7": true}, "dead": true}
+{"v": 211, "q": 35, "gens": [4], "lifted": [109], "order": 6, "R": 9, "theta_tests": {}, "log2E": 47.7, "constraint_bits": 150.0}
+{"v": 211, "q": 35, "gens": [19], "lifted": [19], "order": 6, "R": 8, "theta_tests": {"7": true}, "log2E": -8.0, "constraint_bits": 181.4}
+{"v": 211, "q": 35, "gens": [2, 3], "R": 4, "theta_tests": {"5": false, "7": true}, "dead": true}
+{"v": 211, "q": 35, "gens": [4, 6], "lifted": [109, 181], "order": 12, "R": 6, "theta_tests": {"7": true}, "log2E": -327.8, "constraint_bits": 451.5}
+{"v": 211, "q": 35, "gens": [6, 8], "R": 8, "theta_tests": {"5": false}, "dead": true}
+{"v": 223, "q": 37, "gens": [3], "lifted": [151], "order": 18, "R": 3, "theta_tests": {}, "log2E": 5.3, "constraint_bits": 54.0}
+{"v": 223, "q": 37, "gens": [7], "lifted": [7], "order": 9, "R": 5, "theta_tests": {}, "log2E": 35.3, "constraint_bits": 70.0}
+{"v": 223, "q": 37, "gens": [8], "lifted": [193], "order": 12, "R": 4, "theta_tests": {}, "log2E": 12.7, "constraint_bits": 69.4}
+{"v": 223, "q": 37, "gens": [11], "lifted": [85], "order": 6, "R": 7, "theta_tests": {}, "log2E": 36.6, "constraint_bits": 115.6}
+{"v": 247, "q": 41, "gens": [2], "lifted": [43], "order": 20, "R": 3, "theta_tests": {}, "log2E": 4.0, "constraint_bits": 55.3}
+{"v": 247, "q": 41, "gens": [3], "lifted": [85], "order": 8, "R": 6, "theta_tests": {}, "log2E": 27.0, "constraint_bits": 101.7}
+{"v": 247, "q": 41, "gens": [4], "lifted": [127], "order": 10, "R": 5, "theta_tests": {}, "log2E": 19.6, "constraint_bits": 85.8}
+{"v": 247, "q": 41, "gens": [10], "lifted": [133], "order": 5, "R": 9, "theta_tests": {}, "log2E": 81.1, "constraint_bits": 118.2}
+{"v": 259, "q": 43, "gens": [2], "lifted": [217], "order": 14, "R": 4, "theta_tests": {}, "log2E": 10.4, "constraint_bits": 71.8}
+{"v": 259, "q": 43, "gens": [4], "lifted": [133], "order": 7, "R": 7, "theta_tests": {}, "log2E": 57.3, "constraint_bits": 94.9}
+{"v": 259, "q": 43, "gens": [7], "lifted": [7], "order": 6, "R": 8, "theta_tests": {}, "log2E": 40.5, "constraint_bits": 135.2}
+{"v": 259, "q": 43, "gens": [9], "lifted": [181], "order": 21, "R": 3, "theta_tests": {}, "log2E": 6.5, "constraint_bits": 52.7}
+{"v": 283, "q": 47, "gens": [2], "lifted": [49], "order": 23, "R": 3, "theta_tests": {}, "log2E": 5.9, "constraint_bits": 53.4}
+{"v": 295, "q": 49, "gens": [2], "lifted": [247], "order": 21, "R": 5, "theta_tests": {}, "log2E": -2762.7, "constraint_bits": 2862.1}
+{"v": 295, "q": 49, "gens": [3], "R": 3, "theta_tests": {"7": false}, "dead": true}
+{"v": 295, "q": 49, "gens": [6], "lifted": [55], "order": 14, "R": 7, "theta_tests": {}, "log2E": -4586.6, "constraint_bits": 4733.9}
+{"v": 295, "q": 49, "gens": [19], "lifted": [19], "order": 6, "R": 9, "theta_tests": {"7": true}, "log2E": 44.1, "constraint_bits": 155.3}
+{"v": 319, "q": 53, "gens": [4], "lifted": [163], "order": 26, "R": 3, "theta_tests": {}, "log2E": 1.8, "constraint_bits": 57.5}
+{"v": 319, "q": 53, "gens": [10], "lifted": [169], "order": 13, "R": 5, "theta_tests": {}, "log2E": 30.3, "constraint_bits": 75.1}
+{"v": 331, "q": 55, "gens": [2], "R": 5, "theta_tests": {"5": false, "11": false}, "dead": true}
+{"v": 331, "q": 55, "gens": [3], "lifted": [223], "order": 20, "R": 6, "theta_tests": {"5": true}, "log2E": -122.2, "constraint_bits": 243.9}
+{"v": 331, "q": 55, "gens": [4], "lifted": [169], "order": 10, "R": 9, "theta_tests": {}, "log2E": 18.6, "constraint_bits": 176.2}
+{"v": 331, "q": 55, "gens": [19], "R": 8, "theta_tests": {"11": false}, "dead": true}
+{"v": 331, "q": 55, "gens": [2, 3], "R": 4, "theta_tests": {"5": false, "11": false}, "dead": true}
+{"v": 331, "q": 55, "gens": [4, 6], "R": 6, "theta_tests": {"11": false}, "dead": true}
+{"v": 355, "q": 59, "gens": [3], "lifted": [121], "order": 29, "R": 3, "theta_tests": {}, "log2E": 3.9, "constraint_bits": 55.3}
+{"v": 367, "q": 61, "gens": [3], "lifted": [247], "order": 10, "R": 7, "theta_tests": {}, "log2E": 24.4, "constraint_bits": 127.7}
+{"v": 367, "q": 61, "gens": [4], "lifted": [187], "order": 30, "R": 3, "theta_tests": {}, "log2E": 0.2, "constraint_bits": 59.1}
+{"v": 367, "q": 61, "gens": [8], "lifted": [313], "order": 20, "R": 4, "theta_tests": {}, "log2E": 4.6, "constraint_bits": 77.5}
+{"v": 367, "q": 61, "gens": [12], "lifted": [73], "order": 15, "R": 5, "theta_tests": {}, "log2E": 27.7, "constraint_bits": 77.6}
+{"v": 367, "q": 61, "gens": [21], "lifted": [265], "order": 12, "R": 6, "theta_tests": {}, "log2E": 18.5, "constraint_bits": 110.2}
+{"v": 391, "q": 65, "gens": [2], "R": 7, "theta_tests": {"5": false, "13": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [7], "R": 7, "theta_tests": {"5": false, "13": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [17], "R": 8, "theta_tests": {"5": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [19], "R": 8, "theta_tests": {"13": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [2, 3], "R": 4, "theta_tests": {"5": false, "13": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [2, 7], "R": 5, "theta_tests": {"5": false, "13": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [3, 4], "R": 6, "theta_tests": {"5": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [4, 6], "R": 6, "theta_tests": {"13": false}, "dead": true}
+{"v": 391, "q": 65, "gens": [4, 9], "lifted": [199, 139], "order": 12, "R": 9, "theta_tests": {}, "log2E": -12.4, "constraint_bits": 206.1}
+{"v": 391, "q": 65, "gens": [8, 12], "R": 8, "theta_tests": {"5": false}, "dead": true}
