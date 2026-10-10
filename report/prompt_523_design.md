@@ -53,7 +53,7 @@ Write to `report/paley_523_answer.md`, with scripts in `theory/q523_*.py`. Commi
 
   where:
   - t′ is the class of −s for s ∈ C_t, so t′ = t + 2 mod 4;
-  - N_t(i, j) = #{z ∈ C_i : z + s ∈ C_t-rep shifted into C_j} are the order-4 cyclotomic numbers of F₂₉.
+  - N_t(i, j) = #{z ∈ C_i : z + s_t ∈ C_j}, with s_t a fixed representative of C_t, are the order-4 cyclotomic numbers of F₂₉.
   The lags (h, 0) follow from stage 1. There are 36 independent equations after R(−h, t) = R(h, t′).
 - Verified [M]: `scripts/cyclo_stage2_cpsat.py` uses exactly this reduction. Given the y of a verified H(164) core
   (v = 41, Paley(5) on Z₈), it rebuilds a full core, FFT-checked on Z₈ × Z₅.
