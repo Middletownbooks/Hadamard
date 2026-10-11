@@ -110,3 +110,5 @@ logs/cyclo/stage2_cpsat_*.json
 data/core_v523_b1_cyclo4.txt
 logs/msweep34/
 logs/q523/prod/ckpt/
+logs/q523/prod/*.jsonl
+logs/q523/prod_*.out
