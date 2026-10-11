@@ -331,7 +331,9 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - D-checks: about 0.5 ms per S-solution;
   - **the first core appeared after about 1.07·10^7 S-solutions checked over the three workers.** Model:
     2^{D_def} = 2^23.32 = 1.04·10^7 per core. This is one Poisson event, so it is consistent, not a precise
-    calibration (FINAL_V235_COUNT);
+    calibration. The whole round checked 15.6M S-solutions: 6.01M and 6.05M on workers 1 and 2 with no core, and
+    about 3.56M on worker 0 up to its core. That is 1 core against 1.5 expected. There were 60.5 D₃-solutions per
+    S-solution;
   - core `data/core_v235_b1_q523_v235e_w0.txt`; bordered completion `data/H940_v235_q523.npz`;
   - verified by `theory/q523_finish.py` (H Hᵀ = 940·I exactly, SHA-256 of the packed rows c9e84f66…) and by
     `theory/paley_b1pipe.py verifycyclic` (`logs/q523/finish_v235.json`).
