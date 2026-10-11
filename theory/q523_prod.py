@@ -58,6 +58,8 @@ if __name__ == "__main__":
     jobs = [(F, q, s, pos[3], opt["--tag"], w, int(opt["--seed"]) + w, float(opt["--hours"]), float(opt["--logN"]),
              int(opt["--K"]), int(opt["--rows"]), float(opt["--beta"]), '--planted' in flags, '--resume' in flags, W_,
              '--big' in flags, float(opt["--pass"])) for w in range(W_)]
-    with mp.get_context("fork").Pool(W_) as pool:
-        res = pool.map(worker, jobs)
-    print(json.dumps(res))
+    # independent processes (not a Pool): a worker killed by the OOM killer or a signal ends alone, the others go on
+    ctx = mp.get_context("fork"); procs = [ctx.Process(target=worker, args=(j,)) for j in jobs]
+    for p_ in procs: p_.start()
+    for p_ in procs: p_.join()
+    print(json.dumps([dict(worker=w, exitcode=p_.exitcode) for w, p_ in enumerate(procs)]))
