@@ -15,49 +15,64 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ## 0. Bottom line
 
-<!-- BOTTOM-LINE: filled in at the end of the run -->
+<!-- status line updated during the 523 run -->
 
-1. **(A) H(2092): PENDING** (see §6).
+1. **(A) H(2092): not found yet. The 523 production run is in progress (§6).**
+   - It runs on 4 workers with the pipeline that produced H(940) at v = 235.
+   - Expected cost: about 80 core-hours per core [E, calibrated], i.e. about 20 hours on this machine. Cores
+     arrive as a Poisson process. Status: §6.
 
-2. **(B) A stage-2 method below 2^45 per core, validated.**
-   - **Method** (§3): the Z₂ = Z₁₈/Z₉ split of stage 2 into an S level and a D level (both exact quadruple
-     conditions over O_K on Z₉), with
-     - a **two-level Wagner tree** for the S level: first merge on the Z₃ compression, done at the level of parents
-       (row sums), second merge on the order-9 equations; one side is a union of many parents' fibres;
-     - a compiled **D-check** for every S-solution: Z₃ class split on D, then the order-18 equations.
-   - **Cost at 523 [E, calibrated]**, for the CP-SAT y of `logs/cyclo/stage1_cpsat_523.json`:
-     - S level: 2^40.0 pair operations;
-     - D-checks: 2^26.5 S-solutions × about 2^17 operations each = 2^43.5;
-     - **total about 2^43.6 per core.**
-   - **Calibration at full 523 size [M vs E]:**
-     - S-step: 8 runs, 477 S-solutions found against 427 predicted; per-run error −1.5 … +0.7 bits;
-     - last level (order-18 characters): measured on real S-solutions, the D-success is 2^−26.5 … 2^−26.8 per
-       S-solution, against 2^−26.5 from the model.
-   - **Controls [M]:**
-     - planted 523 instances: the pipeline recovers the planted solution 3/3, at full size;
-     - H(316) (v = 79, Z₆ × quartic Z₁₃), verified by two independent finishers;
-     - **H(940), v = 235 (Z₁₈ × quartic Z₁₃, the 523 shape), found by the production pipeline and verified by two
-       independent finishers** (§4).
-   - **The floor of the route** is the D-deficit D_def = C(D|S) − h_D ≈ 26.5 bits (§3.4). It is robust: it does not
-     move under any reweighting of the S-lists, because the S-level energy equation pins the D-freedom of
-     S-solutions [M]. It depends on y; §5 screens y's.
+2. **(B) A stage-2 method at about 2^44 per core, validated end to end at the 523 shape.**
+   - **Method** (§3). The Z₂ = Z₁₈/Z₉ split of stage 2 gives an S level and a D level, both exact quadruple
+     conditions over O_K on Z₉. Then:
+     - **S level:** a two-level Wagner tree. The first merge is on the Z₃ compression, at the level of parents (row
+       sums). The second merge is on the order-9 equations, over a union of parent-pair fibre products, with a
+       radix-partitioned, cache-resident join.
+     - **D level:** a compiled, row-factored D-check for every S-solution: the Z₃ class split on D, a bitset 2+2
+       join, then the order-18 equations with an exact prefilter on lags 0 and 3.
+   - **Cost at 523 for the y of §5** [M speeds × E count]:
+     - S-solutions needed: 2^{D_def} = 2^26.1;
+     - each costs 2^18.1 pair visits (2^{F + 1 − n}, K = 32, n ≈ 37.5) plus one 1.5 ms D-check;
+     - total: 2^44.2 pair visits and 2^26.1 D-checks, **about 80 core-hours**.
+     - The ideal Wagner cost 2^40.7 is out of reach because a Z₃ middle value has only a few hundred parent pairs
+       (§3.3).
+   - **H(940), v = 235** (Z₁₈ × quartic Z₁₃, the 523 shape; §4) [M]:
+     - found by the production pipeline;
+     - **the first core came after 1.07·10^7 S-solutions against 1.04·10^7 predicted**, and the whole round gave
+       1 core in 15.6M against 1.5 expected;
+     - verified by two independent finishers (H Hᵀ = 940·I).
+   - **Calibration at 523 [M vs E]:**
+     - D-success per S-solution: 2^−26.5 … −26.8 measured, 2^−26.5 from the model (§3.4);
+     - S-solutions per middle value: 1.6–2 bits above the Gaussian prediction at production size, so the prediction
+       is conservative;
+     - planted full-size 523 instances: 5/5 recovered;
+     - H(316) at v = 79.
+   - **Floor of the route.** The D-deficit D_def = C(D|S) − h_D ≈ 26 bits is pinned by the S-level energy equation
+     (§3.4) and moves by at most about 0.5 bit with y (§5). The S-step per S-solution is set by how many parent
+     pairs share a Z₃ middle value (§3.3).
 
 3. **(C) Exact results [P, M].**
    - **739 ×127 (Z₁₈ × quartic Z₄₁) is exactly empty [P]**: its stage-1 lag-0 equation has no solution (§7).
      The Gaussian had given +57.
-   - The stage-2 lattice of the 523 y contains the target (no parity obstruction), and the sampled lattice used by
-     every estimate is the exact one [M] (§2.3).
+   - The 523 stage-2 lattice contains the target (no parity obstruction), and the sampled lattice used by every
+     estimate is the exact one [M] (§2.3).
+   - **Stage-1 structure [M]:**
+     - every block PAF value is 2 mod 4;
+     - the mod-8 class vectors of the four blocks must XOR to all-ones;
+     - the PSDs at j = 9, 6, 3 are integers summing exactly to 4v.
+     These explain why naive joins and annealing fail. A residue-aware 4-list join finds many stage-1 solutions (§5).
    - No exact obstruction to the 523 quartic slice was found.
 
-4. **New structure [P, M].**
+4. **New structure and answers to Q2–Q4 [P, M, E].**
    - Stage 2 is exactly Σ_k Z_k Z_k^† = 4v·δ in O_K[Z₁₈], with Z = Σ_j (c_j − α) η_j in the Gauss-period basis;
      α is a function of y (§1).
-   - The coset alphabet splits into a quadratic coordinate e and a quartic coordinate e₁ ∈ 2·Z[i] with
-     complementary supports; no stage-2 equation depends on e alone (Q2, §1.3).
-   - Per-level constraint budget (§2): the S level costs 83.3 bits, its order-9 part 51.5 bits on 16.4 bits of fibre
-     per block; the D level given S costs 63.0 bits on 36.5 bits of freedom.
-   - **Energy pinning [M]:** the Z₃ lag-0 equation forces parents of typical fibre size (no "big-fibre" parents), and
-     the S-level lag-0 equation forces the D-freedom of S-solutions to its typical value (§3.2, §3.4).
+   - **Q2.** The quadratic subfield gives parity congruences only; no stage-2 equation depends on the quadratic
+     coordinate alone (§1.3).
+   - **Q3.** Within a composition, the cost of a y depends only on the pairing of its letters across (g, g + 9), by
+     an exact table of H(D|S). Across compositions D_def stays within 25.7–26.5 (§5).
+   - **Q4.** Moving D information earlier costs more than it saves (§8).
+   - **Energy pinning [M].** The Z₃ lag-0 equation forces typical parents, and the S-level lag-0 equation forces
+     the D-freedom of S-solutions to its typical value (§3.2, §3.4).
 
 ---
 
