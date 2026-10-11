@@ -22,7 +22,7 @@ import numba
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from q523_lib import zcoords, pz
 from q523_sdsolve import SDInst, seq_sig, next_prime, d_check, assemble, verify, write_core, planted_target, join_all
-from q523_dcheck_nb import DCheckNB as DChecker
+from q523_dcheck2 import DCheck2 as DChecker
 
 # ------------------------------------------------------------------ candidates and fibres
 def block_candidates(inst, k, beta, nrow, K, rng):
@@ -206,6 +206,125 @@ def _scan_left(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p0, g, bs2, sh2, hk, h
                             slot = (slot + 1) & mask
     return nh
 
+# ------------------------------------------------------------------ radix-partitioned multi-parent join kernel
+@numba.njit(cache=True)
+def _emit(keyX, resX, offX, keyY, rstY, offY, lpX, lpY, P, lo_res, sgn, kT, sh, cnt, pos, outk, outi, count_only):
+    """pairs (x, y) over the parent pairs with (resX[x] + resY[y]) % P == lo_res (CSR ranges, no per-pair test);
+    key = keyX + keyY (sgn > 0) or kT - keyX - keyY (sgn < 0); counts (count_only) or scatters by key >> sh"""
+    n = 0
+    for j in range(lpX.shape[0]):
+        fx = lpX[j]; fy = lpY[j]
+        for x in range(offX[fx], offX[fx + 1]):
+            ry = (lo_res - resX[x]) % P
+            kx = keyX[x] if sgn > 0 else kT - keyX[x]
+            for t in range(rstY[fy, ry], rstY[fy, ry + 1]):
+                key = kx + keyY[t] if sgn > 0 else kx - keyY[t]
+                part = np.int64(key >> sh)
+                if count_only:
+                    cnt[part] += 1
+                else:
+                    i = pos[part]; outk[i] = key; outi[i] = (np.int64(x) << 32) | np.int64(t); pos[part] = i + 1
+                n += 1
+    return n
+
+@numba.njit(cache=True)
+def _emit_cap(keyX, resX, offX, keyY, rstY, offY, lpX, lpY, P, lo_res, sgn, kT, sh, pos, end, outk, outi):
+    """as _emit (write pass) into fixed partition slots pos[i] .. end[i]; returns False if a slot overflowed"""
+    ok = True
+    for j in range(lpX.shape[0]):
+        fx = lpX[j]; fy = lpY[j]
+        for x in range(offX[fx], offX[fx + 1]):
+            ry = (lo_res - resX[x]) % P
+            kx = keyX[x] if sgn > 0 else kT - keyX[x]
+            for t in range(rstY[fy, ry], rstY[fy, ry + 1]):
+                key = kx + keyY[t] if sgn > 0 else kx - keyY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < end[part]:
+                    outk[i] = key; outi[i] = (np.int64(x) << 32) | np.int64(t); pos[part] = i + 1
+                else:
+                    ok = False
+    return ok
+
+@numba.njit(cache=True)
+def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, maxhits):
+    """exact matches between left keys Lk[l0:l1] and right needs Rk[r0:r1] (bitset prefilter on the left keys, a small
+    table of the right candidates, left rescan); bs is zero and hv is -1 on entry and on exit"""
+    # the top rbits bits are constant inside a partition: the bitset uses the next bb bits
+    sh = np.uint64(64 - bb); ur = np.uint64(rbits); m63 = np.uint64(63); one = np.uint64(1); s6 = np.uint64(6)
+    for i in range(l0, l1):
+        h = (Lk[i] << ur) >> sh; bs[h >> s6] |= one << (h & m63)
+    size = hk.shape[0]; mask = size - 1; umask = np.uint64(mask); nu = 0; cap = size // 2
+    used = np.empty(cap, np.int64)
+    i = r0
+    while i < r1:
+        while i < r1 and nu < cap:
+            key = Rk[i]; h = (key << ur) >> sh
+            if (bs[h >> s6] >> (h & m63)) & one:
+                slot = np.int64(key & umask)
+                while hv[slot] >= 0: slot = (slot + 1) & mask
+                hk[slot] = key; hv[slot] = i; used[nu] = slot; nu += 1
+            i += 1
+        if nu > 0:
+            for t in range(l0, l1):
+                key = Lk[t]; slot = np.int64(key & umask)
+                while hv[slot] >= 0:
+                    if hk[slot] == key:
+                        if nh < maxhits:
+                            a = Li[t] >> 32; b = Li[t] & 0xFFFFFFFF; ri = hv[slot]
+                            hits[nh, 0] = a; hits[nh, 1] = b; hits[nh, 2] = Ri[ri] >> 32; hits[nh, 3] = Ri[ri] & 0xFFFFFFFF
+                        nh += 1
+                    slot = (slot + 1) & mask
+            for u in range(nu): hv[used[u]] = -1
+            nu = 0
+    for i in range(l0, l1):
+        h = (Lk[i] << ur) >> sh; bs[h >> s6] = np.uint64(0)
+    return nh
+
+@numba.njit(cache=True)
+def mjoin_rad(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
+              lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk, Li, Rk, Ri, bs, bb, hk, hv, maxhits):
+    """Same output as mjoin.  One pass per residue class p of the left pairs (about 2^23 pairs each): the left pairs
+    of class p and the right pairs of class rT - p are generated from the CSR residue ranges, scattered into 2^rbits
+    radix partitions by their top key bits (count pass, then write pass), and each partition is joined in cache
+    (_part_join).  Every fibre element is visited 2 x P times in total instead of per pair-batch."""
+    nparts = 1 << rbits; shp = np.uint64(64 - rbits)
+    cntL = np.zeros(nparts, np.int64); cntR = np.zeros(nparts, np.int64)
+    stL = np.zeros(nparts + 1, np.int64); stR = np.zeros(nparts + 1, np.int64)
+    pos = np.zeros(nparts, np.int64)
+    hits = np.zeros((maxhits, 4), np.int64); nh = 0; nl = 0; nr = 0; over = 0
+    # fixed-capacity partitions (keys are uniform, so partition sizes are within a few per mille of the mean);
+    # a residue class that overflows a partition is redone with an exact count pass
+    slotL = Lk.shape[0] // nparts; slotR = Rk.shape[0] // nparts
+    endL = np.zeros(nparts, np.int64); endR = np.zeros(nparts, np.int64)
+    for p in range(P):
+        q = (rT - p) % P
+        for i in range(nparts): pos[i] = i * slotL; endL[i] = (i + 1) * slotL
+        okL = _emit_cap(keyA, resA, offA, keyB, rstB, offB, lpA, lpB, P, p, 1, kT, shp, pos, endL, Lk, Li)
+        for i in range(nparts): stL[i] = i * slotL; cntL[i] = pos[i] - i * slotL
+        for i in range(nparts): pos[i] = i * slotR; endR[i] = (i + 1) * slotR
+        okR = _emit_cap(keyC, resC, offC, keyD, rstD, offD, rpC, rpD, P, q, -1, kT, shp, pos, endR, Rk, Ri)
+        for i in range(nparts): stR[i] = i * slotR; cntR[i] = pos[i] - i * slotR
+        if not (okL and okR):
+            over += 1
+            cntL[:] = 0; cntR[:] = 0
+            _emit(keyA, resA, offA, keyB, rstB, offB, lpA, lpB, P, p, 1, kT, shp, cntL, pos, Lk, Li, True)
+            _emit(keyC, resC, offC, keyD, rstD, offD, rpC, rpD, P, q, -1, kT, shp, cntR, pos, Rk, Ri, True)
+            stL[0] = 0; stR[0] = 0
+            for i in range(nparts):
+                stL[i + 1] = stL[i] + cntL[i]; stR[i + 1] = stR[i] + cntR[i]
+            if stL[nparts] > Lk.shape[0] or stR[nparts] > Rk.shape[0]:
+                return hits[:min(nh, maxhits)], nh, nl, nr, -1               # buffers too small
+            for i in range(nparts): pos[i] = stL[i]
+            _emit(keyA, resA, offA, keyB, rstB, offB, lpA, lpB, P, p, 1, kT, shp, cntL, pos, Lk, Li, False)
+            for i in range(nparts): pos[i] = stR[i]
+            _emit(keyC, resC, offC, keyD, rstD, offD, rpC, rpD, P, q, -1, kT, shp, cntR, pos, Rk, Ri, False)
+        for i in range(nparts):
+            nl += cntL[i]; nr += cntR[i]
+            if cntL[i] > 0 and cntR[i] > 0:
+                nh = _part_join(Lk, Li, stL[i], stL[i] + cntL[i], Rk, Ri, stR[i], stR[i] + cntR[i], bs, bb, rbits, hk, hv,
+                                hits, nh, maxhits)
+    return hits[:min(nh, maxhits)], nh, nl, nr, over
+
 # ------------------------------------------------------------------ multi-parent join kernel
 @numba.njit(cache=True)
 def mjoin(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
@@ -353,7 +472,7 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
         Lk, wL = trim(L, C[0][2], C[1][2]); Rk, wR = trim(R, C[2][2], C[3][2])
         # materialise the fibres used
         need = [sorted({p[0] for p in Lk}), sorted({p[1] for p in Lk}), sorted({p[0] for p in Rk}), sorted({p[1] for p in Rk})]
-        P = next_prime(max(2, 2 ** wL / ((1 << tbits) * 0.6)))
+        P = next_prime(max(2, 2 ** wL / 2.0 ** 23))                  # residue classes of about 2^23 left pairs
         sides = []; fid = []
         for k in range(4):
             fibres = []
@@ -380,14 +499,15 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
             pred = wL + wR - g['bits']
             log(dict(stage="prediction", centre=ci, fine_bits=g['bits'], mahal=g.get('mahal'), predicted_s_solutions_log2=round(pred, 2)))
         t1 = time.time()
-        # cache-resident join (mjoin_bs): about 2^20 left pairs per pass, 1 MB prefilter bitset
-        G = max(1, int(round(P * 2.0 ** 20 / 2.0 ** wL)))
-        if bufs is None:
-            bufs = (np.zeros(1 << 17, np.uint64), np.zeros(1 << 15, np.uint64), np.zeros(1 << 19, np.uint64),
-                    np.full(1 << 19, -1, np.int64), np.zeros(1 << 19, np.int64))
-        bs_, bs2_, hk_, hc_, hd_ = bufs
-        hits, nh, nlp, nrp, ov = mjoin_bs(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
-                                          Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, G, bs_, 23, bs2_, 21, hk_, hc_, hd_, 1 << 23)
+        # radix-partitioned join (mjoin_rad): one pass per residue class, 16 partitions joined in cache
+        cap = int(max(2 ** wL, 2 ** wR) / P * 1.06) + (1 << 18)
+        if bufs is None or bufs[0].shape[0] < cap:
+            bufs = (np.zeros(cap, np.uint64), np.zeros(cap, np.int64), np.zeros(cap, np.uint64), np.zeros(cap, np.int64),
+                    np.zeros(1 << 17, np.uint64), np.zeros(1 << 19, np.uint64), np.full(1 << 19, -1, np.int64))
+        Lk_, Li_, Rk_, Ri_, bs_, hk_, hv_ = bufs
+        hits, nh, nlp, nrp, ov = mjoin_rad(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
+                                           Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, 4, Lk_, Li_, Rk_, Ri_, bs_, 23, hk_, hv_,
+                                           1 << 23)
         pr = nlp + nrp
         # exact re-check
         sols = []

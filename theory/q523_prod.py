@@ -29,8 +29,8 @@ def worker(args):
     if resume:
         files = sorted(glob.glob(os.path.join(cdir, f"*_y{yh}_c*.npy")))[w::nw]
         if files:
-            from q523_dcheck_nb import DCheckNB
-            dchk = DCheckNB(inst, seed)
+            from q523_dcheck2 import DCheck2
+            dchk = DCheck2(inst, seed)
             for f in files:
                 if os.path.exists(stop): break
                 if W.resume_ckpt(inst, f, dchk, out, log, stop, seed, beta): return dict(cores=1)

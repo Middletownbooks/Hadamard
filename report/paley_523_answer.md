@@ -208,23 +208,48 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ### 3.4 The D-check and the D-deficit
 
-- Given an S-solution, D runs over the product of the D-options (2^9.3 per block). `theory/q523_dcheck_nb.py`
-  (compiled, about 6 ms per S-solution at 523):
-  1. enumerate the options;
-  2. take the Z₃ class split on D (row sums D₃, the d ∈ {2, 6} equations);
-  3. run a radix-partitioned 2+2 join of the D₃ values;
-  4. for each D₃-solution, join its group members on the full D level.
-- Validated against an independent implementation on 24 planted cases at v = 79 and 523 (identical solution sets).
+- Given an S-solution, D runs over the product of the D-options (2^9.3 per block). The D-check finds all D that
+  satisfy the order-18 equations:
+  1. take the Z₃ class split on D: row sums D₃, the d ∈ {2, 6} equations;
+  2. join the D₃ values 2+2;
+  3. for each D₃-solution, check its group members on the full D level.
+- **Row factorisation (`theory/q523_dcheck2.py`).** The D-options of a block are a product over its 9 pairs, and the
+  three Z₃ rows {0,3,6}, {1,4,7}, {2,5,8} split this product.
+  - So the D₃ groups are exactly the triples of distinct per-row sums (at most 216 row-configurations per row), and
+    no configuration of the block has to be enumerated.
+  - The Z₃-level signature of a triple is a sum of per-row self terms (lag 0) and per-row-pair cross terms (lag 1).
+  - On Z₉, lags 0 and 3 stay inside a row. So they are sums of per-row-configuration terms, cached per S-solution.
+    Every member combination is first checked exactly on lags 0 and 3; only survivors get the full signature.
+  - The 2+2 join of the distinct Z₃-level signature keys uses a cache-resident bitset prefilter
+    (`bitset_join4` in `theory/q523_dcheck_nb.py`).
+- **Validation [M]:** identical output to the first compiled version (`theory/q523_dcheck_nb.py`) and to the Python
+  reference (`theory/q523_dcheck.py`):
+  - 24 planted cases at v = 235 and 523;
+  - 122 real 523 S-solutions (almost all with no D-solution), same D₃-solution counts and solution sets.
+- **Speed at 523 [M]** (122 real S-solutions, one core): **1.5 ms per S-solution** (was 4.5–7 ms).
+  - Split: blocks 0.21 ms, D₃ join about 1.0 ms, expansion 0.2 ms, full level about 0.1 ms.
+- **Bug found and fixed in this session [M].** The first compiled version returned its whole zero-filled solution
+  buffer from two early exits (no D₃ match, oversized block). Every S-solution without a D₃ match then reported 64
+  all-zero "solutions", and assembly stopped with an alphabet assertion.
+  - Both earlier v = 235 control runs died at their first empty D-check.
+  - The calibrations below are unaffected: they used the Python reference or planted cases, which always have a
+    D₃ match.
+  - The test now includes unplanted S-solutions.
 - **Measured on real 523 S-solutions** (`theory/q523_dfine_calib.py`, 34–54 S-solutions per run):
   - 2^7.5–7.7 D₃-solutions per S-solution and 2^10.4–10.8 D-candidates;
   - order-18 equations 37.2–37.3 bits on the real residuals (Mahalanobis 0.2–0.5);
   - **D-success 2^−26.8, 2^−26.7, 2^−26.5 per S-solution** (model: 2^{h_D − C(D|S)} = 2^−26.5).
-- **The deficit is pinned [M].** Reweighting the S-lists by m(S)^β, β = 1 … 4, leaves the D-freedom of the
-  S-solutions found at 36.0–36.3 bits. The S-level lag-0 equation forces the S-energy to half the total, which
-  balances S = 0 pairs (6 D-options) against S-full pairs (1 option).
+- **The deficit is pinned [M].**
+  - Reweighting the S-lists by m(S)^β, β = 1 … 4, leaves the D-freedom of the S-solutions found at 36.0–36.3 bits.
+    The S-level lag-0 equation forces the S-energy to half the total, which balances S = 0 pairs (6 D-options)
+    against S-full pairs (1 option).
   - The unconditional model's lower deficits at β > 1 were averages over all configurations, not over S-solutions.
   - A symmetric type tilt (more S = 0 and S-full pairs together) gives D_def = 26.3–26.8 for γ = 1 … 8 [E].
   - The "S-determined D-lag-0" filter rejects nothing in practice (34/34 passed).
+- **Ordering S-solutions by D-freedom does not pay [M]** (`theory/q523_dorder.py`, 42 real S-solutions).
+  - The D-freedom hd = log₂ #D-configurations is 35.8 ± 0.76 bits.
+  - It predicts the D-candidates well (correlation 0.95 with log₂ #candidates).
+  - But the top half by hd holds 69% of the candidates and takes 59% of the D-check time, a gain of at most 1.17×.
 
 ### 3.5 Calibration at full 523 size [M vs E]
 
@@ -267,7 +292,54 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ## 5. Choosing y (Q3) [E, M]
 
-PENDING (y-screen `theory/q523_yscreen.py`).
+### 5.1 Stage 1 is abundant, but structured
+
+- **4-list join for stage 1** (`theory/q523_ymitm.py`):
+  - random block lists with the lag-0 composition and the rows built in;
+  - a middle value on a few lags, a 2+2 hash join on the rest, every hit verified exactly;
+  - each y is stored in a canonical form (per-block translation and reversal), so duplicates can be dropped.
+- **v = 235:** about 10^5 distinct stage-1 solutions per middle value (N = 2^20 per block) [M].
+- **523:** composition (6×13, 4×15) gave 4 new y in about 2 min, and (10×13, 1×15) gave 11 y in 5 min [M].
+  - Every y in `logs/q523/y523/` is verified exactly.
+  - A naive join fails for the other compositions. Two exact structures explain why [M]:
+    1. **Residues mod 8.** Every block PAF value is 2 mod 4, so the target needs the four blocks' mod-8 class vectors
+       to XOR to all-ones. For some compositions a block has very few patterns (68 mod-16 patterns for a block with a
+       single 13).
+    2. **Exact PSD values.** At j = 9, 6, 3 the PSDs are integers (A², with A the alternating sum, and the norms of
+       the order-3 and order-6 class sums), and Σ_k PSD_k(j) = 2092 must hold exactly. One failed join had every
+       left pair at A_A² + A_B² = 4 while the right pairs needed 1860.
+  - Simulated annealing on the lag residuals stalls at E = 16 (one lag off by 4) for the same reason
+    (`theory/q523_ysa.py`).
+
+### 5.2 What a y changes [M, E]
+
+- **Within a composition, only the pairing of letters across (g, g + 9) matters.**
+  - C(D|S) agrees to ±0.05 bit for all y of a composition (16 y screened, `theory/q523_yscreen.py`).
+  - h_D is exact from the pair types. H(D|S) per pair (y(g), y(g+9)):
+
+| pair | H(D \| S) bits |
+|---|---|
+| (±1, ±1) | 1.097 |
+| (±1, ±13 or ±15) | 0.792 |
+| (13 or 15, same sign) | 0.75 |
+| (13 or 15, opposite signs) | 0.5 |
+| any dead letter (±27, ±29) | 0 |
+
+  - Example, composition (10×13, 1×15): h_D is 36.16 or 36.44, so D_def is 26.44 or 26.14.
+  - The lag-9 equation (Σ_k Σ_{g<9} y_k(g) y_k(g+9) = −58) limits the number of same-sign big–big pairs. The best
+    reachable D_def in this composition is about 25.9 [E].
+- **Across compositions [E]** (`theory/q523_ycomp.py`):
+  - method: covariance-only Gaussian (Mahalanobis term dropped) on random letter placements; it reproduces C(D|S)
+    of real y to ±0.07 bit;
+  - result: D_def 25.7–26.5 for all six compositions tested, including dead-letter ones. The best estimate is
+    (1×15, 2×29) at about 25.7.
+- **Conclusion (Q3).**
+  - The y choice moves the cost by at most about 0.5 bit (1.4×). The screen is cheap (5 s per y), but it is not a
+    lever.
+  - Used here: `logs/q523/y523_best.json` (10×13, 1×15, h_D = 36.44).
+    - C₂ 146.2, C_mid 51.2, D_def 26.14, so 2^26.14 S-solutions per core;
+    - exact lattice rank 35 with the target inside;
+    - planted full-size test 2/2.
 
 ## 6. The 523 run
 
