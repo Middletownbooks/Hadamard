@@ -371,8 +371,10 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     about 3.56M on worker 0 up to its core. That is 1 core against 1.5 expected. There were 60.5 D₃-solutions per
     S-solution;
   - core `data/core_v235_b1_q523_v235e_w0.txt`; bordered completion `data/H940_v235_q523.npz`;
-  - verified by `theory/q523_finish.py` (H Hᵀ = 940·I exactly, SHA-256 of the packed rows c9e84f66…) and by
-    `theory/paley_b1pipe.py verifycyclic` (`logs/q523/finish_v235.json`).
+  - verified by `theory/q523_finish.py` (H Hᵀ = 940·I exactly, SHA-256 of the packed rows c9e84f66…), by
+    `theory/paley_b1pipe.py verifycyclic` (`logs/q523/finish_v235.json`), and by `scripts/verify_h2092.py`, which
+    shares no code with `theory/` (pattern of `scripts/verify_h2292.py`; same SHA-256). The same script will verify
+    the 523 core.
   - Three earlier attempts were lost to bugs, all now fixed:
     - v235a and v235b: the D-check buffer bug of §3.4;
     - v235d: the OOM killer, during the exact re-check of about 2^21 hits per centre. That re-check built Python
@@ -540,4 +542,5 @@ python3 theory/q523_prod.py 18 29 4 logs/q523/y523_best.json --tag p523f --worke
 python3 logs/q523/tally_523.py                                                  # S-solutions produced / D-checked / expected cores
 python3 theory/q523_joinbench.py --classes 64 --p0 1000                         # mjoin_rad vs mjoin_rad2 on one full-size centre
 python3 theory/q523_finish.py data/core_v79_b1_q523_sdsolve.txt                # completion + exact H H^T = N I
+python3 scripts/verify_h2092.py data/core_v235_b1_q523_v235e_w0.txt OUT.npz  # independent check (H(940); the 523 core likewise)
 ```
