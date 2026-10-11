@@ -324,6 +324,12 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - bordered GS verified by `theory/q523_finish.py` (independent finisher) and by `theory/paley_b1pipe.py
     verifycyclic`: H Hᵀ = 316·I. SHA-256 of the packed rows: ccef126a….
 - **v = 235** (Z₁₈ × quartic Z₁₃, the 523 shape with q = 13; production pipeline `theory/q523_prod.py`): PENDING_V235.
+  - Three earlier attempts were lost to bugs, all now fixed:
+    - v235a and v235b: the D-check buffer bug of §3.4;
+    - v235d: the OOM killer, during the exact re-check of about 2^21 hits per centre. That re-check built Python
+      objects of about 2 KB per hit; it is now vectorised and stores 36 bytes per S-solution. All processes of the
+      session share a 14.3 GB memory cgroup.
+  - The driver now runs independent worker processes, so a killed worker no longer hangs a multiprocessing pool.
   - Model: D_def = 23.3, so about 2^23.3 S-solutions per core. The Wagner join at logN 35 predicts about 2^21 per
     middle value.
 
