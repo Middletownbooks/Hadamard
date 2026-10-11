@@ -29,7 +29,9 @@ def worker(args):
     yh = hashlib.sha1(json.dumps(Y).encode()).hexdigest()[:8] + ("p" if planted else "")
     cdir = os.path.join(d, 'ckpt'); os.makedirs(cdir, exist_ok=True)
     if resume:
-        files = sorted(glob.glob(os.path.join(cdir, f"*_y{yh}_c*.npy")))[w::nw]
+        # orphaned D-check checkpoints only: a live worker rewrites its progress file every 2000 checks (seconds)
+        files = sorted(f for f in glob.glob(os.path.join(cdir, f"*_y{yh}_c*.npy"))
+                       if time.time() - os.path.getmtime(f[:-4] + '.json' if os.path.exists(f[:-4] + '.json') else f) > 300)[w::nw]
         if files:
             from q523_dcheck2 import DCheck2
             dchk = DCheck2(inst, seed)
