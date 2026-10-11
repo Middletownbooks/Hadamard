@@ -239,16 +239,25 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - The best balance is K ≈ 32–40 with all available parent pairs: n ≈ 37.5–38.9. The ideal n ≈ 40 is out of reach
     with these parents.
   - **Realised S-step per S-solution: 2^{F + 1 − n} ≈ 2^18.1 pair visits (K = 32).**
-- **Kernels** (`theory/q523_wagner.py`, all three return identical hits on every test [M]):
+- **Kernels** (`theory/q523_wagner.py`, all four return identical hits on every test [M]):
   1. `mjoin`: residue passes into a 2^20-entry hash table (about 28 MB, so mostly DRAM latency);
   2. `mjoin_bs`: an L2 bitset prefilter per pass. It is 2.1–2.3× faster, but every pass visits every left fibre
      element, which costs about 2.4·10^6 visits per S-solution at 523 whatever n is;
-  3. `mjoin_rad` (production): one pass per residue class of about 2^23 pairs. The pairs are scattered by their top
-     key bits into 16 partitions, and each partition is joined in cache with two bitsets.
+  3. `mjoin_rad`: one pass per residue class of about 2^23 pairs. The pairs are scattered by their top key bits
+     into 16 partitions, and each partition is joined in cache with two bitsets. About 26 ns per pair visit at 523;
+  4. `mjoin_rad2` (production from 2026-10-11 23:24 UTC): `mjoin_rad` with two residue classes per pass and 32
+     partitions, so each fibre element is visited once per two classes. It also has no modulo in the inner loop,
+     puts the smaller side of each partition in the bitset, and clears the bitset by a sweep.
+     - On a full-size 523 centre (sides 2^37.6 and 2^37.0, 64 residue classes, three samples) it returns the same
+       hit set as `mjoin_rad` (9,142–9,372 hits) and is 1.46–1.61× faster (`theory/q523_joinbench.py`).
+     - Whole runs give the same S-solutions as before: v = 235 (13,323, two centres) and 523 (9,438, K = 32,
+       logN 33).
+     - Profile of `mjoin_rad` per residue class: pair emission 59% (half of it the per-element residue arithmetic
+       and range lookups), partition joins 41%.
 - **Other details:**
   - 64 row sums per row (2^18 Z₃ candidates per block); middle values chosen among realised left sums;
   - parent pairs by linear hashing;
-  - fibres of up to 24 configurations per row (Gumbel top-K by multiplicity weight);
+  - fibres of up to K configurations per row, K = 32 in production (Gumbel top-K by multiplicity weight);
   - every hit re-checked exactly;
   - each S-join's S-solutions and its D-check progress are checkpointed (`theory/q523_prod.py --resume`).
 
@@ -274,6 +283,9 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - 122 real 523 S-solutions (almost all with no D-solution), same D₃-solution counts and solution sets.
 - **Speed at 523 [M]** (122 real S-solutions, one core): **1.5 ms per S-solution** (was 4.5–7 ms).
   - Split: blocks 0.21 ms, D₃ join about 1.0 ms, expansion 0.2 ms, full level about 0.1 ms.
+  - Under the production load (4 workers, 3000 real S-solutions): 1.79 ms, of which blocks 0.27 ms, D₃ join 1.21 ms
+    and expansion plus full level 0.36 ms. The D₃ join enumerates about 2^16.9 key pairs per side (378–589 distinct
+    keys per block), which is the size of the 2+2 join itself, so little more is to be had there.
 - **Bug found and fixed in this session [M].** The first compiled version returned its whole zero-filled solution
   buffer from two early exits (no D₃ match, oversized block). Every S-solution without a D₃ match then reported 64
   all-zero "solutions", and assembly stopped with an alphabet assertion.
@@ -517,5 +529,6 @@ python3 theory/q523_prod.py 18 13 4 logs/q523/y_v235_a.json --tag v235e --worker
 python3 theory/q523_prod.py 18 29 4 logs/q523/y523_best.json --tag p523f --workers 3 --hours 400 --logN 38 --K 32 \
     --rows 64 --beta 1 --seed 6000 --pass 23 --resume                         # the 523 run (and p523i: --workers 1 --seed 9000)
 python3 logs/q523/tally_523.py                                                  # S-solutions produced / D-checked / expected cores
+python3 theory/q523_joinbench.py --classes 64 --p0 1000                         # mjoin_rad vs mjoin_rad2 on one full-size centre
 python3 theory/q523_finish.py data/core_v79_b1_q523_sdsolve.txt                # completion + exact H H^T = N I
 ```
