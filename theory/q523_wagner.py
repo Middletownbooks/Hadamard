@@ -576,6 +576,8 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
             cbase = f"{ckpt}_c{ci}"; np.save(cbase + '.npy', P4)
             with open(cbase + '.json', 'w') as fh: json.dump(dict(done=0, n=len(P4)), fh)
         if jfile and os.path.exists(jfile): os.remove(jfile)
+        del sides, A, B, Cc, Dd, hits, H, sols, P4all          # the D-checks need only P4: free the join's memory
+        import gc; gc.collect()
         nf, nd3, core = dcheck_list(inst, dchk, P4, 0, out, log, stopfile, cbase, seed, beta, t0, stats, found)
         if cbase:
             for f in (cbase + '.npy', cbase + '.json'):
