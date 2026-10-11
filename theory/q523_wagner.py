@@ -192,8 +192,43 @@ def dlag0_filter(inst, pidx4):
     return tuple(inst.TD[0]) in reach
 
 # ------------------------------------------------------------------ driver
+def dcheck_list(inst, dchk, P4, start, out, log, stopfile, ckpt, seed, beta, t0, stats, found):
+    """D-check the S-solutions P4[start:] (array (n, 4, F2) of pair indices); progress is written to ckpt + '.json'
+    every 2000 checks so that a restarted worker resumes there (resume_ckpt).  Returns (checked, d3_solutions, core)."""
+    nf = 0; nd3 = 0
+    for i in range(start, len(P4)):
+        p4 = [P4[i, k].astype(np.int64) for k in range(4)]
+        nf += 1
+        dsols, info = dchk.check(p4)
+        nd3 += info['d3_solutions']
+        for D4 in dsols:
+            S4 = [S_of(inst, k, p4[k])[0] for k in range(4)]
+            Z, AC = assemble(inst, S4, D4); ok, X = verify(inst, AC)
+            stats["cores"] += int(ok); found.append(AC)
+            log(dict(stage="CORE", ok=ok, secs=round(time.time() - t0, 1)))
+            if ok and out: write_core(inst, X, out, f"q523_wagner seed={seed} beta={beta}")
+            if ok and stopfile: open(stopfile, 'w').write(json.dumps(dict(seed=seed, out=out)))
+            if ok: return nf, nd3, True
+        if ckpt and (i + 1) % 2000 == 0:
+            with open(ckpt + '.json', 'w') as fh: json.dump(dict(done=i + 1, n=len(P4)), fh)
+    return nf, nd3, False
+
+def resume_ckpt(inst, path, dchk, out, log, stopfile, seed=0, beta=1.0):
+    """finish the D-checks of a checkpointed S-join (path = .npy of pair indices, progress in path[:-4] + '.json')"""
+    t0 = time.time(); P4 = np.load(path); base = path[:-4]; start = 0
+    if os.path.exists(base + '.json'):
+        try: start = json.load(open(base + '.json'))['done']
+        except Exception: start = 0
+    stats = dict(cores=0); found = []
+    nf, nd3, core = dcheck_list(inst, dchk, P4, start, out, log, stopfile, base, seed, beta, t0, stats, found)
+    log(dict(stage="D-check (resumed)", file=os.path.basename(path), start=start, checked=nf, d3_solutions=nd3,
+             secs=round(time.time() - t0, 1)))
+    for f in (path, base + '.json'):
+        if os.path.exists(f): os.remove(f)
+    return found
+
 def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out=None, log=print, max_dcheck=None,
-        deadline=None, stopfile=None, predict=True):
+        deadline=None, stopfile=None, predict=True, ckpt=None):
     t0 = time.time(); rng = np.random.default_rng(seed)
     rows = [block_candidates(inst, k, beta, nrow, K, rng) for k in range(4)]
     C = [cand_table(inst, rows[k]) for k in range(4)]
@@ -260,18 +295,18 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
         log(dict(stage="S-join", centre=ci, parents=(len(Lk), len(Rk)), side_log2=(round(wL, 2), round(wR, 2)), P=P,
                  hash_hits=int(nh), overflow=int(ov), probes_log2=round(math.log2(max(1, pr)), 2), s_solutions=len(sols),
                  secs=round(time.time() - t1, 1)))
-        t2 = time.time(); nf = 0; nd3 = 0
-        for pidx4, S4 in (sols if max_dcheck is None else sols[:max_dcheck]):
-            nf += 1
-            dsols, info = dchk.check(pidx4)
-            nd3 += info['d3_solutions']
-            for D4 in dsols:
-                Z, AC = assemble(inst, S4, D4); ok, X = verify(inst, AC)
-                stats["cores"] += int(ok); found.append(AC)
-                log(dict(stage="CORE", ok=ok, secs=round(time.time() - t0, 1)))
-                if ok and out: write_core(inst, X, out, f"q523_wagner seed={seed} beta={beta}")
-                if ok and stopfile: open(stopfile, 'w').write(json.dumps(dict(seed=seed, out=out)))
-                if ok: return found, stats
+        t2 = time.time()
+        use = sols if max_dcheck is None else sols[:max_dcheck]
+        P4 = np.array([[p4[k].astype(np.uint8) for k in range(4)] for p4, S4 in use], np.uint8).reshape(len(use), 4, inst.F2)
+        cbase = None
+        if ckpt and len(use):
+            cbase = f"{ckpt}_c{ci}"; np.save(cbase + '.npy', P4)
+            with open(cbase + '.json', 'w') as fh: json.dump(dict(done=0, n=len(P4)), fh)
+        nf, nd3, core = dcheck_list(inst, dchk, P4, 0, out, log, stopfile, cbase, seed, beta, t0, stats, found)
+        if cbase:
+            for f in (cbase + '.npy', cbase + '.json'):
+                if os.path.exists(f): os.remove(f)
+        if core: return found, stats
         stats["passed_filter"] += nf; stats["d3_solutions"] += nd3
         log(dict(stage="D-check", centre=ci, checked=nf, d3_solutions=nd3, secs=round(time.time() - t2, 1),
                  total_s=stats["s_solutions"], total_secs=round(time.time() - t0, 1)))

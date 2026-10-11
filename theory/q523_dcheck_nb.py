@@ -1,7 +1,7 @@
 r"""Fully compiled D-check (numba): one call per S-solution, no Python in the inner loops
 (report/paley_523_answer.md, section 3).  Same algorithm and output as theory/q523_dcheck.DChecker:
 D-options per block given S -> configurations -> D3 groups (row sums of D) -> 2+2 join of the D3 values on the
-Z3-compressed D-level signature -> per D3-solution 2+2 join of the group members on the full D-level signature;
+Z3-compressed D-level signature (cache-resident bitset prefilter, exact radix join as fallback) -> per D3-solution 2+2 join of the group members on the full D-level signature;
 solutions re-checked exactly.  `python3 theory/q523_dcheck_nb.py test` compares with DChecker on planted cases."""
 import sys, os, json, math, time
 import numpy as np
@@ -149,8 +149,52 @@ def radix_join4(kA, kB, kC, kD, kT, rbits, cap):
     return out[:min(n, out.shape[0])], n
 
 @numba.njit(cache=True)
+def bitset_join4(kA, kB, kC, kD, kT, bs, bb, ht_k, ht_v, cap):
+    """all (a, b, c, d) with kA[a] + kB[b] + kC[c] + kD[d] == kT (uint64), by a cache-resident bitset prefilter:
+    pass 1 sets the bit of every left key (top bits of kA + kB); pass 2 keeps the right needs kT - kC - kD whose bit
+    is set (about nR * nL / 2^bits false positives) in a small open-addressing table; pass 3 scans the left pairs again,
+    looks each key up in that table (exact) and clears its bit.  bs (at least 2^bb / 64 words, all zero on entry and
+    on exit; the caller picks bb so that 2^bb >= 32 * nA * nB), ht_k / ht_v (power-of-two size; ht_v all -1 on entry
+    and on exit) are reused across calls.  Returns (matches (<= cap, 4), number of matches, table overflow flag: then the result is incomplete)."""
+    nA = kA.shape[0]; nB = kB.shape[0]; nC = kC.shape[0]; nD = kD.shape[0]
+    sh = np.uint64(64 - bb); m63 = np.uint64(63); one = np.uint64(1)
+    for a in range(nA):
+        ka = kA[a]
+        for b in range(nB):
+            h = (ka + kB[b]) >> sh
+            bs[h >> np.uint64(6)] |= one << (h & m63)
+    size = ht_k.shape[0]; mask = size - 1; umask = np.uint64(mask); nh = 0; over = 0
+    used = np.empty(size // 2, np.int64)                  # slots filled in this call (ht_v is all -1 on entry and exit)
+    for c in range(nC):
+        kc = kT - kC[c]
+        for d in range(nD):
+            key = kc - kD[d]; h = key >> sh
+            if (bs[h >> np.uint64(6)] >> (h & m63)) & one:
+                if 2 * (nh + 1) > size:
+                    over = 1; continue
+                slot = np.int64(key & umask)
+                while ht_v[slot] >= 0: slot = (slot + 1) & mask
+                ht_k[slot] = key; ht_v[slot] = c * nD + d; used[nh] = slot; nh += 1
+    out = np.zeros((min(cap, 4096), 4), np.int64); n = 0
+    for a in range(nA):
+        ka = kA[a]
+        for b in range(nB):
+            key = ka + kB[b]; h = key >> sh
+            bs[h >> np.uint64(6)] = np.uint64(0)
+            if nh == 0: continue
+            slot = np.int64(key & umask)
+            while ht_v[slot] >= 0:
+                if ht_k[slot] == key:
+                    if n < out.shape[0]:
+                        w = ht_v[slot]; out[n, 0] = a; out[n, 1] = b; out[n, 2] = w // nD; out[n, 3] = w % nD
+                    n += 1
+                slot = (slot + 1) & mask
+    for i in range(nh): ht_v[used[i]] = -1
+    return out[:min(n, out.shape[0])], n, over
+
+@numba.njit(cache=True)
 def dcheck_nb(pidx4, dval, dstart, dcnt, rows, T, nl, w3, wf, wd, k3T, kfT, T3, TF, maxn, maxsol,
-              tab, tst, stamp):
+              tab, tst, stamp, bs, htk, htv):
     """returns (n_d3_solutions, n_solutions, solutions (maxsol, 4, G, s), status).  tab (size, 2) uint64 interleaved
     key/value table and tst stamps are reused across calls (stamp distinct per call); the table actually used is the
     smallest power of two >= 2 * (left pairs), so it stays cache-resident.  Blocks are paired largest-with-smallest by
@@ -159,7 +203,7 @@ def dcheck_nb(pidx4, dval, dstart, dcnt, rows, T, nl, w3, wf, wd, k3T, kfT, T3, 
     sols = np.zeros((maxsol, 4, G, s), np.int64); ns = 0
     bl = [_block(pidx4[k], dval[k], dstart[k], dcnt[k], rows, T, w3, wd, maxn) for k in range(4)]
     for k in range(4):
-        if bl[k][0] < 0: return 0, 0, sols, -1
+        if bl[k][0] < 0: return 0, 0, sols[:0], -1
     nq_ = np.array([bl[k][6].shape[0] for k in range(4)])
     ordk = np.argsort(nq_)                       # ascending
     # pairing: (largest, smallest) on the right (probe side), the middle two on the left (table side) or vice versa
@@ -168,10 +212,14 @@ def dcheck_nb(pidx4, dval, dstart, dcnt, rows, T, nl, w3, wf, wd, k3T, kfT, T3, 
         A, B, C, D = C, D, A, B
     kA = bl[A][6]; kB = bl[B][6]; kC = bl[C][6]; kD = bl[D][6]
     nA = kA.shape[0]; nB = kB.shape[0]
-    nL = nA * nB; rbits = 0
-    while (nL >> rbits) > 2048 and rbits < 16: rbits += 1
-    cap = 1 << 16
-    hq, nh = radix_join4(kA, kB, kC, kD, k3T, rbits, cap)
+    nL = nA * nB; cap = 1 << 16
+    bb = 16
+    while (1 << bb) < 32 * nL and bb < 24: bb += 1
+    hq, nh, ov = bitset_join4(kA, kB, kC, kD, k3T, bs, bb, htk, htv, cap)
+    if ov:                                       # too many prefilter hits for the table: exact radix join instead
+        rbits = 0
+        while (nL >> rbits) > 2048 and rbits < 16: rbits += 1
+        hq, nh = radix_join4(kA, kB, kC, kD, k3T, rbits, cap)
     q4 = np.zeros((cap, 4), np.int64); nq = 0
     ua = np.zeros(4, np.int64)
     for i in range(hq.shape[0]):
@@ -193,7 +241,7 @@ def dcheck_nb(pidx4, dval, dstart, dcnt, rows, T, nl, w3, wf, wd, k3T, kfT, T3, 
                             q4[nq, 0] = a; q4[nq, 1] = b; q4[nq, 2] = c; q4[nq, 3] = d; nq += 1
     nd3 = nq
     if nq > cap: nq = cap
-    if nq == 0: return nd3, 0, sols, 0
+    if nq == 0: return nd3, 0, sols[:0], 0
     b0 = bl[0]; b1 = bl[1]; b2 = bl[2]; b3 = bl[3]
     nd0 = np.zeros(b0[3].shape[0] - 1, np.bool_); nd1 = np.zeros(b1[3].shape[0] - 1, np.bool_)
     nd2 = np.zeros(b2[3].shape[0] - 1, np.bool_); nd3_ = np.zeros(b3[3].shape[0] - 1, np.bool_)
@@ -247,6 +295,8 @@ class DCheckNB:
     def _alloc(self):
         size = 1 << self.tbits
         self.tab = np.zeros((size, 2), np.uint64); self.tst = np.zeros(size, np.int64); self.stamp = 0
+        self.bs = np.zeros(1 << 18, np.uint64)                       # 2^24-bit prefilter (bitset_join4)
+        self.htk = np.zeros(1 << 18, np.uint64); self.htv = np.full(1 << 18, -1, np.int64)
 
     def check(self, pidx4, maxsol=64):
         p4 = np.array([np.asarray(p, np.int64) for p in pidx4])
@@ -254,7 +304,7 @@ class DCheckNB:
             self.stamp += 1
             nd3, ns, sols, st = dcheck_nb(p4, self.dval, self.dstart, self.dcnt, self.rows, self.inst.cy.T, self.inst.nl,
                                            self.w3, self.wf, self.wd, self.k3T, self.kfT, self.T3, self.TF, self.maxn, maxsol,
-                                           self.tab, self.tst, self.stamp)
+                                           self.tab, self.tst, self.stamp, self.bs, self.htk, self.htv)
             if st != -2: break
             self.tbits += 1; self._alloc()
         return [list(x) for x in sols], dict(d3_solutions=int(nd3), status=int(st))
@@ -278,4 +328,16 @@ if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "test":
             kb = sorted(tuple(np.concatenate([np.ravel(x) for x in s_]).tolist()) for s_ in b)
             n += 1; agree += int(ka == kb and ia['d3_solutions'] == ib['d3_solutions'] and len(kb) >= 1)
         res[f"F{F}_q{q}"] = dict(agree=agree, total=n, secs_ref=round(t_ref, 2), secs_nb=round(t_nb, 2))
+    # unplanted S-solutions of a real S-join (almost all have no D-solution): identical (usually empty) results
+    import q523_wagner as W
+    Y = json.load(open(os.path.join(ROOT, 'logs/cyclo/stage1_cpsat_523.json')))['y']; inst = SDInst(18, 29, 4, Y); got = []
+    class Grab:
+        def __init__(self, *a, **k): pass
+        def check(self, p): got.append(p); return [], dict(d3_solutions=0)
+    W.DChecker = Grab; W.run(inst, 1.0, 64, 24, 27.5, 1, 5, 20, None, lambda d: None)
+    dn = DCheckNB(inst); ref = DChecker(inst); agree = 0
+    for p4 in got:
+        a, ia = ref.check(p4); b, ib = dn.check(p4)
+        agree += int(len(a) == len(b) and ia['d3_solutions'] == ib['d3_solutions'])
+    res["F18_q29_unplanted"] = dict(agree=agree, total=len(got))
     print(json.dumps(res))
