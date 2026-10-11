@@ -433,12 +433,12 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - D-check: 1.6–1.75 ms per S-solution;
   - S-solutions per middle value: 1.6–1.7 bits above the Gaussian prediction, as at v = 235;
   - so about 4–5 ms per S-solution in all, which is 80–100 core-hours per expected core.
-- **Status (2026-10-11 07:45 UTC):**
-  - p523e has run for 6.3 h, the three p523f workers for 5.0 h;
-  - 7 middle values have been joined, giving 16.9M S-solutions (each 1.6–1.7 bits above its prediction);
-  - **14.6M are D-checked (2^23.8, about 0.2 expected cores), and there is no core yet.**
-  - Throughput is about 3M checked S-solutions per hour on 4 cores, so a core is expected after about 23 h of
-    running; the run continues.
+- **Status (2026-10-11 12:58 UTC):**
+  - the K = 32 workers have run for 9 h; on memory grounds the fourth worker now runs K = 24 (p523h, about 1.6 GB),
+    because four K = 32 workers peak near the 14.3 GB cgroup;
+  - 13 middle values have been joined, giving 33.2M S-solutions (each 1.6–1.7 bits above its prediction);
+  - **23.0M are D-checked (2^24.5, about 0.31 expected cores), and there is no core yet.**
+  - The run continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
 
