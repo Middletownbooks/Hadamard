@@ -246,11 +246,13 @@ def _emit_cap(keyX, resX, offX, keyY, rstY, offY, lpX, lpY, P, lo_res, sgn, kT, 
     return ok
 
 @numba.njit(cache=True)
-def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, maxhits):
-    """exact matches between left keys Lk[l0:l1] and right needs Rk[r0:r1] (bitset prefilter on the left keys, a small
-    table of the right candidates, left rescan); bs is zero and hv is -1 on entry and on exit"""
-    # the top rbits bits are constant inside a partition: the bitset uses the next bb bits
-    sh = np.uint64(64 - bb); ur = np.uint64(rbits); m63 = np.uint64(63); one = np.uint64(1); s6 = np.uint64(6)
+def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, maxhits, bs2, bb2):
+    """exact matches between left keys Lk[l0:l1] and right needs Rk[r0:r1]: bitset bs over the left keys, right
+    candidates (bit set) into a small table and a second bitset bs2, left rescan filtered by bs2 then looked up exactly.
+    bs, bs2 are zero and hv is -1 on entry and on exit"""
+    # the top rbits bits are constant inside a partition: the bitsets use the next bits
+    ur = np.uint64(rbits); sh = np.uint64(64 - bb); sh2 = np.uint64(64 - bb2)
+    m63 = np.uint64(63); one = np.uint64(1); s6 = np.uint64(6)
     for i in range(l0, l1):
         h = (Lk[i] << ur) >> sh; bs[h >> s6] |= one << (h & m63)
     size = hk.shape[0]; mask = size - 1; umask = np.uint64(mask); nu = 0; cap = size // 2
@@ -263,10 +265,13 @@ def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, 
                 slot = np.int64(key & umask)
                 while hv[slot] >= 0: slot = (slot + 1) & mask
                 hk[slot] = key; hv[slot] = i; used[nu] = slot; nu += 1
+                h2 = (key << ur) >> sh2; bs2[h2 >> s6] |= one << (h2 & m63)
             i += 1
         if nu > 0:
             for t in range(l0, l1):
-                key = Lk[t]; slot = np.int64(key & umask)
+                key = Lk[t]; h2 = (key << ur) >> sh2
+                if not ((bs2[h2 >> s6] >> (h2 & m63)) & one): continue
+                slot = np.int64(key & umask)
                 while hv[slot] >= 0:
                     if hk[slot] == key:
                         if nh < maxhits:
@@ -274,7 +279,8 @@ def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, 
                             hits[nh, 0] = a; hits[nh, 1] = b; hits[nh, 2] = Ri[ri] >> 32; hits[nh, 3] = Ri[ri] & 0xFFFFFFFF
                         nh += 1
                     slot = (slot + 1) & mask
-            for u in range(nu): hv[used[u]] = -1
+            for u in range(nu):
+                key = hk[used[u]]; h2 = (key << ur) >> sh2; bs2[h2 >> s6] = np.uint64(0); hv[used[u]] = -1
             nu = 0
     for i in range(l0, l1):
         h = (Lk[i] << ur) >> sh; bs[h >> s6] = np.uint64(0)
@@ -282,7 +288,7 @@ def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, 
 
 @numba.njit(cache=True)
 def mjoin_rad(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
-              lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk, Li, Rk, Ri, bs, bb, hk, hv, maxhits):
+              lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk, Li, Rk, Ri, bs, bb, hk, hv, maxhits, bs2, bb2):
     """Same output as mjoin.  One pass per residue class p of the left pairs (about 2^23 pairs each): the left pairs
     of class p and the right pairs of class rT - p are generated from the CSR residue ranges, scattered into 2^rbits
     radix partitions by their top key bits (count pass, then write pass), and each partition is joined in cache
@@ -322,7 +328,7 @@ def mjoin_rad(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, 
             nl += cntL[i]; nr += cntR[i]
             if cntL[i] > 0 and cntR[i] > 0:
                 nh = _part_join(Lk, Li, stL[i], stL[i] + cntL[i], Rk, Ri, stR[i], stR[i] + cntR[i], bs, bb, rbits, hk, hv,
-                                hits, nh, maxhits)
+                                hits, nh, maxhits, bs2, bb2)
     return hits[:min(nh, maxhits)], nh, nl, nr, over
 
 # ------------------------------------------------------------------ multi-parent join kernel
@@ -503,11 +509,12 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
         cap = int(max(2 ** wL, 2 ** wR) / P * 1.06) + (1 << 18)
         if bufs is None or bufs[0].shape[0] < cap:
             bufs = (np.zeros(cap, np.uint64), np.zeros(cap, np.int64), np.zeros(cap, np.uint64), np.zeros(cap, np.int64),
-                    np.zeros(1 << 17, np.uint64), np.zeros(1 << 19, np.uint64), np.full(1 << 19, -1, np.int64))
-        Lk_, Li_, Rk_, Ri_, bs_, hk_, hv_ = bufs
+                    np.zeros(1 << 17, np.uint64), np.zeros(1 << 19, np.uint64), np.full(1 << 19, -1, np.int64),
+                    np.zeros(1 << 15, np.uint64))
+        Lk_, Li_, Rk_, Ri_, bs_, hk_, hv_, bs2_ = bufs
         hits, nh, nlp, nrp, ov = mjoin_rad(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
                                            Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, 4, Lk_, Li_, Rk_, Ri_, bs_, 23, hk_, hv_,
-                                           1 << 23)
+                                           1 << 23, bs2_, 21)
         pr = nlp + nrp
         # exact re-check
         sols = []
