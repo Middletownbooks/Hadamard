@@ -19,8 +19,9 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 1. **(A) H(2092): not found yet. The 523 production run is in progress (§6).**
    - It runs on 4 workers with the pipeline that produced H(940) at v = 235.
-   - Realised cost: about 90 core-hours per expected core (4.2–4.8 ms per S-solution, 2^26.1 S-solutions per core),
-     i.e. about 23 hours on this machine. Cores arrive as a Poisson process. Status: §6.
+   - Realised cost: about 75 core-hours per expected core (about 3.6 ms per S-solution since the kernel upgrade of
+     §3.3, 2^26.1 S-solutions per core), i.e. about 19 hours on this machine. Cores arrive as a Poisson process.
+     Status: §6.
 
 2. **(B) A stage-2 method at about 2^44 per core, validated end to end at the 523 shape.**
    - **Method** (§3). The Z₂ = Z₁₈/Z₉ split of stage 2 gives an S level and a D level, both exact quadruple
@@ -33,8 +34,8 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
    - **Cost at 523 for the y of §5** [M speeds × E count]:
      - S-solutions needed: 2^{D_def} = 2^26.1;
      - each costs 2^18.1 pair visits (2^{F + 1 − n}, K = 32, n ≈ 37.5) plus one 1.5–1.8 ms D-check;
-     - total: 2^44.2 pair visits and 2^26.1 D-checks. Measured: **about 90 core-hours** (the joins find 1.6 bits
-       more S-solutions than predicted, and visit a pair in about 26 ns; §3.6).
+     - total: 2^44.2 pair visits and 2^26.1 D-checks. Measured: **about 75 core-hours** with the current join
+       kernel, 90 with the previous one (the joins find 1.6 bits more S-solutions than predicted; §3.6).
      - The ideal Wagner cost 2^40.7 is out of reach because a Z₃ middle value has only a few hundred parent pairs
        (§3.3).
    - **H(940), v = 235** (Z₁₈ × quartic Z₁₃, the 523 shape; §4) [M]:
@@ -332,7 +333,11 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - measured join speed: 22–30 ns per pair visit (2^37.4–2^38.8 visits per K = 32 join, four workers) [M];
   - the K = 32 joins find 1.55–1.75 bits more S-solutions than the Gaussian predicts (§6), so a found S-solution
     costs 2.4–3.0 ms of join [M], not the 7 ms of the prediction;
-  - **realised total: 4.2–4.8 ms per S-solution, about 90 core-hours per expected core** [M rates × E count];
+  - **realised total with `mjoin_rad`: 4.2–4.8 ms per S-solution, about 90 core-hours per expected core** [M rates ×
+    E count];
+  - with `mjoin_rad2` (from 23:24 UTC on 2026-10-11) the production joins run 1.24–1.65× faster (residue classes
+    per second on the same three centres, before and after the switch), so about 1.8 ms of join + 1.8 ms of D-check:
+    **about 3.6 ms per S-solution, 75 core-hours per expected core** [M rates × E count];
   - smaller lists are worse: K = 24 at logN 35 cost 8.7 ms of join + 1.9 ms of D-check per S-solution (p523h, §6).
 - **Ideal Wagner cost:** 2^{(F + D_def)/2 + 1} ≈ 2^40.7 pair visits. It needs one middle value with about 5000
   parent pairs per side, and the Z₃ middle level only offers about 500 (§3.3). That is the gap between this route's
@@ -431,7 +436,8 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 ## 6. The 523 run
 
 - **y:** `logs/q523/y523_best.json` (§5). D_def = 26.14, so a core needs about 2^26.14 ≈ 7.4·10^7 S-solutions [E].
-- **Runs** (`logs/q523/prod/`, all on the same y; "excess" is log₂ found − log₂ predicted per middle value):
+- **Runs** (`logs/q523/prod/`, all on the same y; the live logs are copied to `logs/q523/snap/` at each status update;
+  "excess" is log₂ found − log₂ predicted per middle value):
 
 | tag | lists | middle values | S-solutions found | excess (bits) | ms per S-solution: join + D-check | cores |
 |---|---|---|---|---|---|---|
@@ -448,7 +454,10 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - K = 32 joins visit 2^37.4–2^38.8 pairs in 1.1–4.0 hours (22–30 ns per pair visit) and find 2^19.9–2^22.7
     S-solutions each, 1.55–1.75 bits above the Gaussian prediction;
   - D-check: 1.7–1.9 ms per S-solution (1.5 ms on an idle machine, §3.4);
-  - so 4.2–4.8 ms per S-solution in all at K = 32, about 90 core-hours per expected core; K = 24 lists cost 10.6 ms.
+  - so 4.2–4.8 ms per S-solution in all at K = 32, about 90 core-hours per expected core; K = 24 lists cost 10.6 ms;
+  - since 23:24 UTC the join kernel `mjoin_rad2` (§3.3) runs 1.24–1.65× faster in production: about 3.6 ms per
+    S-solution, 75 core-hours per expected core. (The `secs` of an S-join record count only the part of the join run
+    by the process that finished it, so per-centre rates of resumed joins are taken from their checkpoints.)
 - **Memory fix and restart (2026-10-11 22:50 UTC).**
   - A K = 32 worker held 3.3–3.7 GB, so only three fitted into the 14.3 GB cgroup and the fourth ran K = 24 lists
     (p523h), at 2.4× the cost per S-solution.

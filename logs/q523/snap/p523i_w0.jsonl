@@ -1,0 +1,7 @@
+{"stage": "start", "seed": 9000, "logN": 38.0, "K": 32, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791759119.4}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 3.1, "worker": 0, "t": 1791759122.5}
+{"stage": "prediction", "centre": 0, "fine_bits": 54.53, "mahal": 1.25, "predicted_s_solutions_log2": 19.83, "worker": 0, "t": 1791759186.3}
+{"stage": "start", "seed": 9000, "logN": 38.0, "K": 32, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791761031.1}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 2.8, "worker": 0, "t": 1791761033.8}
+{"stage": "prediction", "centre": 0, "fine_bits": 54.53, "mahal": 1.25, "predicted_s_solutions_log2": 19.83, "worker": 0, "t": 1791761103.1}
+{"stage": "S-join resumed", "centre": 0, "next_pass": 2277, "passes": 11897, "hits": 578356, "worker": 0, "t": 1791761103.1}
