@@ -36,7 +36,8 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
    - **Controls [M]:**
      - planted 523 instances: the pipeline recovers the planted solution 3/3, at full size;
      - H(316) (v = 79, Z₆ × quartic Z₁₃), verified by two independent finishers;
-     - v = 235 (Z₁₈ × quartic Z₁₃, the same shape as 523): PENDING (§4).
+     - **H(940), v = 235 (Z₁₈ × quartic Z₁₃, the 523 shape), found by the production pipeline and verified by two
+       independent finishers** (§4).
    - **The floor of the route** is the D-deficit D_def = C(D|S) − h_D ≈ 26.5 bits (§3.4). It is robust: it does not
      move under any reweighting of the S-lists, because the S-level energy equation pins the D-freedom of
      S-solutions [M]. It depends on y; §5 screens y's.
@@ -323,7 +324,17 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - core `data/core_v79_b1_q523_sdsolve.txt`;
   - bordered GS verified by `theory/q523_finish.py` (independent finisher) and by `theory/paley_b1pipe.py
     verifycyclic`: H Hᵀ = 316·I. SHA-256 of the packed rows: ccef126a….
-- **v = 235** (Z₁₈ × quartic Z₁₃, the 523 shape with q = 13; production pipeline `theory/q523_prod.py`): PENDING_V235.
+- **H(940), v = 235** (Z₁₈ × quartic Z₁₃: the 523 shape with q = 13), found by the production pipeline
+  (`theory/q523_prod.py`, the same code as the 523 run) [M]:
+  - y `logs/q523/y_v235_a.json`; 3 workers; lists K = 24; one middle value each at logN 35;
+  - S-joins: 6.36M, 6.01M and 6.05M S-solutions (2^22.6 each; predicted 2^21.0) in about 1450 s each;
+  - D-checks: about 0.5 ms per S-solution;
+  - **the first core appeared after about 1.07·10^7 S-solutions checked over the three workers.** Model:
+    2^{D_def} = 2^23.32 = 1.04·10^7 per core. This is one Poisson event, so it is consistent, not a precise
+    calibration (FINAL_V235_COUNT);
+  - core `data/core_v235_b1_q523_v235e_w0.txt`; bordered completion `data/H940_v235_q523.npz`;
+  - verified by `theory/q523_finish.py` (H Hᵀ = 940·I exactly, SHA-256 of the packed rows c9e84f66…) and by
+    `theory/paley_b1pipe.py verifycyclic` (`logs/q523/finish_v235.json`).
   - Three earlier attempts were lost to bugs, all now fixed:
     - v235a and v235b: the D-check buffer bug of §3.4;
     - v235d: the OOM killer, during the exact re-check of about 2^21 hits per centre. That re-check built Python
