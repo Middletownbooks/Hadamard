@@ -422,12 +422,19 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 | p523a | K = 24, logN 35, first kernel | stopped for the kernel upgrade | – | – | – |
 | p523b | full row fibres | stopped: F = 61.3 (predicted 2^11.2 per centre) | – | – | – |
 | p523c | K = 24, logN 35, radix kernel | 1 | 114,471 (2^16.8; predicted 2^15.8) | 114,471 | 0 |
-| p523d | K = 32, all parent pairs, pass 2^24 | PENDING_P523D | | | |
+| p523d | K = 32, all parent pairs, pass 2^24 | restarted on the checkpointed code | – | – | – |
+| p523e | K = 32, all parent pairs (sides 2^37.3), pass 2^24 | 1 | 3,491,410 (2^21.7; predicted 2^20.05) in 8,087 s | running | 0 |
+| p523f w0 | K = 32, pass 2^23 | 1 (join running) | about 5.8M projected (predicted 2^20.5) | – | – |
+| p523f w1 | K = 32, pass 2^23 | 1 + running | 1,218,177 (2^20.2; predicted 2^18.6) in 4,272 s | 1,218,177 | 0 |
+| p523f w2 | K = 32, pass 2^23 | 1 | 2,883,195 (2^21.5; predicted 2^19.8) in 8,199 s | running | 0 |
 
-- **Measured rates [M]:**
-  - S-join: 1,103 s for 2^35.6 pair visits with the CPU oversubscribed;
-  - D-check: 1.3–1.6 ms per S-solution.
-- **Status: PENDING_STATUS.**
+- **Measured rates [M], 4 workers on 4 cores:**
+  - S-join: 2.3–3.5 ms per S-solution found (K = 32 joins of 2^37–2^38 pair visits, 1.2–2.3 hours each);
+  - D-check: 1.6–1.75 ms per S-solution;
+  - S-solutions per middle value: 1.6–1.7 bits above the Gaussian prediction, as at v = 235;
+  - so about 4–5 ms per S-solution in all, which is 80–100 core-hours per expected core.
+- **Status (2026-10-11, 6 h into the 4-worker run):** about 5.2M S-solutions D-checked (about 0.07 expected cores),
+  no core yet; the run continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
 
