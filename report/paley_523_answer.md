@@ -203,18 +203,25 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   2^{(F + D_def)/2 + 1} pair visits.
 - **Measured limits [M]** (`theory/q523_wagner.py`, y of §5):
 
-| lists | parent pairs per middle value | side 2^n | F (fine bits) |
-|---|---|---|---|
-| 64 row sums/row, K = 24 per row | 90 used at n = 34 (about 256 available) | ≤ 2^35.5 | 53.3–53.5 |
-| 128 row sums/row, K = 24 | 321–461 (all available) | 2^35.6–35.9 | 53.7–53.8 |
-| 64 row sums/row, K = 48 | 2 | 2^34.5 | 57.1–57.3 |
-| full row fibres (K = 1000) | 1 | 2^35.8 | 60.8–61.3 |
+| lists (row sums per row, fibre cap K per row) | parent pairs per middle value | side 2^n | F (fine bits) | F + 1 − n |
+|---|---|---|---|---|
+| 64, K = 24 | 90 used at n = 34 (about 256 available) | ≤ 2^35.5 | 53.3–53.5 | 19.3 at n = 35 |
+| 128, K = 24 | 321–461 (all available) | 2^35.6–35.9 | 53.7–53.8 | 18.9 |
+| 256, K = 24 (lazy parents, 10^7 per block) | 182–426 | 2^35.1–35.8 | 53.7 | 18.9 |
+| 64, K = 32 (all pairs) | 164–202 | 2^37.2–37.5 | 54.4–54.5 | **18.1** |
+| 64, K = 40 (all pairs) | 121–163 | 2^38.5–38.9 | 55.6–55.7 | 18.0 |
+| 64, K = 48 | 2 used at n = 34.5 | 2^34.5 | 57.1–57.3 | – |
+| full row fibres (K = 1000) | 1 | 2^35.8 | 60.8–61.3 | – |
 
-  - Pair Z₃ partial sums carry about 33 bits, not the 28 estimated earlier, so a middle value has few parent pairs.
-  - Larger per-row fibres cost several bits of F: the top-K choice by multiplicity weight concentrates the
-    S-signatures near the target.
-  - So n ≈ 36 is the practical maximum, and the ideal n ≈ 40 is out of reach with these parents.
-  - **Realised S-step per S-solution: 2^{F + 1 − n} ≈ 2^{18.9}–2^{19.3} pair visits.**
+  - Pair Z₃ partial sums carry 33–38 bits, not the 28 estimated earlier, so a middle value has only a few hundred
+    parent pairs.
+  - More row sums do not help (`theory/q523_wagner2.py`). Lazy parents with 256 row sums per row (10^7 parents per
+    block) still give at most about 430 pairs, because the extra parents have atypical Z₃ signatures.
+  - Larger per-row fibres (K) cost F: the top-K choice by multiplicity weight concentrates the S-signatures near the
+    target. Each doubling of K adds about 6 bits of side for 3–4 bits of F.
+  - The best balance is K ≈ 32–40 with all available parent pairs: n ≈ 37.5–38.9. The ideal n ≈ 40 is out of reach
+    with these parents.
+  - **Realised S-step per S-solution: 2^{F + 1 − n} ≈ 2^18.1 pair visits (K = 32).**
 - **Kernels** (`theory/q523_wagner.py`, all three return identical hits on every test [M]):
   1. `mjoin`: residue passes into a 2^20-entry hash table (about 28 MB, so mostly DRAM latency);
   2. `mjoin_bs`: an L2 bitset prefilter per pass. It is 2.1–2.3× faster, but every pass visits every left fibre
@@ -373,7 +380,20 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ## 6. The 523 run
 
-PENDING.
+- **y:** `logs/q523/y523_best.json` (§5). D_def = 26.14, so a core needs about 2^26.1 ≈ 7·10^7 S-solutions [E].
+- **Runs** (`logs/q523/prod/`):
+
+| tag | lists | middle values | S-solutions found | D-checks | cores |
+|---|---|---|---|---|---|
+| p523a | K = 24, logN 35, first kernel | stopped for the kernel upgrade | – | – | – |
+| p523b | full row fibres | stopped: F = 61.3 (predicted 2^11.2 per centre) | – | – | – |
+| p523c | K = 24, logN 35, radix kernel | 1 | 114,471 (2^16.8; predicted 2^15.8) | 114,471 | 0 |
+| p523d | K = 32, all parent pairs, pass 2^24 | PENDING_P523D | | | |
+
+- **Measured rates [M]:**
+  - S-join: 1,103 s for 2^35.6 pair visits with the CPU oversubscribed;
+  - D-check: 1.3–1.6 ms per S-solution.
+- **Status: PENDING_STATUS.**
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
 

@@ -288,7 +288,7 @@ def _part_join(Lk, Li, l0, l1, Rk, Ri, r0, r1, bs, bb, rbits, hk, hv, hits, nh, 
 
 @numba.njit(cache=True)
 def mjoin_rad(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
-              lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk, Li, Rk, Ri, bs, bb, hk, hv, maxhits, bs2, bb2):
+              lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk, Li, Rk, Ri, bs, bb, hk, hv, maxhits, bs2, bb2, p_lo=0, p_hi=-1):
     """Same output as mjoin.  One pass per residue class p of the left pairs (about 2^23 pairs each): the left pairs
     of class p and the right pairs of class rT - p are generated from the CSR residue ranges, scattered into 2^rbits
     radix partitions by their top key bits (count pass, then write pass), and each partition is joined in cache
@@ -302,7 +302,8 @@ def mjoin_rad(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, 
     # a residue class that overflows a partition is redone with an exact count pass
     slotL = Lk.shape[0] // nparts; slotR = Rk.shape[0] // nparts
     endL = np.zeros(nparts, np.int64); endR = np.zeros(nparts, np.int64)
-    for p in range(P):
+    if p_hi < 0: p_hi = P
+    for p in range(p_lo, p_hi):
         q = (rT - p) % P
         for i in range(nparts): pos[i] = i * slotL; endL[i] = (i + 1) * slotL
         okL = _emit_cap(keyA, resA, offA, keyB, rstB, offB, lpA, lpB, P, p, 1, kT, shp, pos, endL, Lk, Li)
@@ -449,41 +450,65 @@ def resume_ckpt(inst, path, dchk, out, log, stopfile, seed=0, beta=1.0):
         if os.path.exists(f): os.remove(f)
     return found
 
+def recheck(inst, sides, hits, tS, chunk=1 << 17):
+    """exact S-level check of join hits (vectorised in chunks): indices of the hits whose four S-sequences sum to tS"""
+    T = inst.cy.T; keep = []
+    for st in range(0, len(hits), chunk):
+        h = hits[st:st + chunk]; tot = 0
+        for k in range(4):
+            tot = tot + seq_sig(S_of(inst, k, sides[k].pidx_all[h[:, k]]), T, inst.nl)
+        keep.append(st + np.nonzero((tot == tS[None, :]).all(1))[0])
+    return np.concatenate(keep) if keep else np.zeros(0, np.int64)
+
 def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out=None, log=print, max_dcheck=None,
-        deadline=None, stopfile=None, predict=True, ckpt=None):
+        deadline=None, stopfile=None, predict=True, ckpt=None, big_middle=False, pass_log2=23.0, start_centre=0,
+        join_ckpt_secs=600.0):
+    """Centres are reproducible: the lists and hash weights come from seed, and centre ci uses its own generator
+    default_rng([seed, ci]).  With ckpt set, the S-join of centre ci saves its hits and next pass to
+    ckpt_c{ci}_join.npz every join_ckpt_secs, and a run started at that centre (start_centre) continues there."""
     t0 = time.time(); rng = np.random.default_rng(seed)
     rows = [block_candidates(inst, k, beta, nrow, K, rng) for k in range(4)]
-    C = [cand_table(inst, rows[k]) for k in range(4)]
-    log(dict(stage="candidates", per_block=[len(c[0]) for c in C], secs=round(time.time() - t0, 1)))
+    if big_middle:
+        from q523_wagner2 import BigMiddle, choose_middle_big
+        bm = BigMiddle(inst, rows); C = None
+        log(dict(stage="candidates", per_block=[int(np.prod(n)) for n in bm.n], big_middle=True, secs=round(time.time() - t0, 1)))
+        lsz_of = lambda k, i: bm.lsz(k, i)
+        grid_of = lambda k, i: np.array(bm.unflat(k, i), np.int64)
+    else:
+        C = [cand_table(inst, rows[k]) for k in range(4)]
+        log(dict(stage="candidates", per_block=[len(c[0]) for c in C], secs=round(time.time() - t0, 1)))
+        lsz_of = lambda k, i: C[k][2][i]
+        grid_of = lambda k, i: C[k][0][i]
     T = inst.cy.T; tS = inst.tsigS(); found = []
     D = tS.shape[0]
     wts = rng.integers(1, 2 ** 63, D, dtype=np.int64).astype(np.uint64) | np.uint64(1)
     rho = rng.integers(1, 1 << 30, D, dtype=np.int64)
     stats = dict(s_solutions=0, passed_filter=0, d3_solutions=0, cores=0, pairs_log2=[]); dchk = DChecker(inst, seed)
     bufs = None
-    for ci in range(ncent):
+    for ci in range(start_centre, ncent):
         if deadline is not None and time.time() > deadline: break
         if stopfile is not None and os.path.exists(stopfile): break
-        best = choose_middle(inst, C, rng)
+        rng = np.random.default_rng([seed, ci])
+        best = choose_middle_big(bm, rng, inst.tsig3()) if big_middle else choose_middle(inst, C, rng)
         if best is None:
             log(dict(stage="middle", note="no middle value with both sides non-empty")); continue
         sc, c, L, R, wl, wr = best
         # keep the heaviest parent pairs until each side has about 2^logN configuration pairs
-        def trim(Pp, la, lb):
-            Pp = sorted(Pp, key=lambda ij: -(la[ij[0]] + lb[ij[1]])); keep = []; tot = 0.0
+        def trim(Pp, ka, kb):
+            Pp = sorted(Pp, key=lambda ij: -(lsz_of(ka, ij[0]) + lsz_of(kb, ij[1]))); keep = []; tot = 0.0
             for i, j in Pp:
-                keep.append((i, j)); tot += 2 ** (la[i] + lb[j])
+                keep.append((i, j)); tot += 2 ** (lsz_of(ka, i) + lsz_of(kb, j))
                 if math.log2(tot) >= logN: break
             return keep, math.log2(tot)
-        Lk, wL = trim(L, C[0][2], C[1][2]); Rk, wR = trim(R, C[2][2], C[3][2])
+        Lk, wL = trim(L, 0, 1); Rk, wR = trim(R, 2, 3)
         # materialise the fibres used
         need = [sorted({p[0] for p in Lk}), sorted({p[1] for p in Lk}), sorted({p[0] for p in Rk}), sorted({p[1] for p in Rk})]
-        P = next_prime(max(2, 2 ** wL / 2.0 ** 23))                  # residue classes of about 2^23 left pairs
+        P = next_prime(max(2, 2 ** wL / 2.0 ** pass_log2))            # residue classes of about 2^pass_log2 left pairs
         sides = []; fid = []
         for k in range(4):
             fibres = []
             for ci_ in need[k]:
-                pidx, S = materialise(inst, k, rows[k], C[k][0][ci_], K)
+                pidx, S = materialise(inst, k, rows[k], grid_of(k, ci_), K)
                 fibres.append((pidx, seq_sig(S, T, inst.nl))); del S
             sides.append(Side(fibres, wts, rho, P)); fid.append({x: i for i, x in enumerate(need[k])})
         lpA = np.array([fid[0][i] for i, j in Lk], np.int64); lpB = np.array([fid[1][j] for i, j in Lk], np.int64)
@@ -512,28 +537,45 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
                     np.zeros(1 << 17, np.uint64), np.zeros(1 << 19, np.uint64), np.full(1 << 19, -1, np.int64),
                     np.zeros(1 << 15, np.uint64))
         Lk_, Li_, Rk_, Ri_, bs_, hk_, hv_, bs2_ = bufs
-        hits, nh, nlp, nrp, ov = mjoin_rad(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
+        # the join runs in chunks of passes; with ckpt, hits and the next pass are saved every join_ckpt_secs
+        jfile = f"{ckpt}_c{ci}_join.npz" if ckpt else None
+        p0 = 0; H = []; nh = 0; nlp = 0; nrp = 0; ov = 0
+        if jfile and os.path.exists(jfile):
+            z = np.load(jfile); p0 = int(z['next_p']); H = [z['hits']]; nh = int(z['nh']); nlp = int(z['nl']); nrp = int(z['nr'])
+            log(dict(stage="S-join resumed", centre=ci, next_pass=p0, passes=P, hits=nh))
+        chunk = max(1, P // 512); tl = time.time()
+        while p0 < P:
+            p1 = min(P, p0 + chunk)
+            h_, n_, l_, r_, o_ = mjoin_rad(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
                                            Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, 4, Lk_, Li_, Rk_, Ri_, bs_, 23, hk_, hv_,
-                                           1 << 23, bs2_, 21)
+                                           1 << 20, bs2_, 21, p0, p1)
+            if o_ < 0: raise RuntimeError("mjoin_rad: pass buffers too small")
+            if n_ > (1 << 20): raise RuntimeError("mjoin_rad: more than 2^20 hits in one chunk")
+            if len(h_): H.append(h_.copy())                       # copy: h_ is a view of the 32 MB kernel buffer
+            nh += n_; nlp += l_; nrp += r_; ov += o_; p0 = p1
+            if jfile and (time.time() - tl > join_ckpt_secs) and p0 < P:
+                hh = np.concatenate(H) if H else np.zeros((0, 4), np.int64)
+                np.savez(jfile + '.tmp.npz', hits=hh, next_p=p0, nh=nh, nl=nlp, nr=nrp); os.replace(jfile + '.tmp.npz', jfile)
+                tl = time.time()
+        hits = np.concatenate(H) if H else np.zeros((0, 4), np.int64)
         pr = nlp + nrp
-        # exact re-check
-        sols = []
-        for a, b, cc, dd in hits:
-            p4 = [A.pidx_all[a].astype(np.int64), B.pidx_all[b].astype(np.int64), Cc.pidx_all[cc].astype(np.int64), Dd.pidx_all[dd].astype(np.int64)]
-            S4 = [S_of(inst, k, p4[k])[0] for k in range(4)]
-            tot = sum(seq_sig(x[None], T, inst.nl)[0] for x in S4)
-            if (tot == tS).all(): sols.append((p4, S4))
+        # exact re-check (vectorised)
+        good = recheck(inst, sides, hits, tS)
+        P4all = np.stack([sides[k].pidx_all[hits[good, k]] for k in range(4)], 1).astype(np.uint8) if len(good) else \
+            np.zeros((0, 4, inst.F2), np.uint8)
+        sols = P4all
         stats["s_solutions"] += len(sols); stats["pairs_log2"].append(round(math.log2(max(1, pr)), 2))
         log(dict(stage="S-join", centre=ci, parents=(len(Lk), len(Rk)), side_log2=(round(wL, 2), round(wR, 2)), P=P,
                  hash_hits=int(nh), overflow=int(ov), probes_log2=round(math.log2(max(1, pr)), 2), s_solutions=len(sols),
                  secs=round(time.time() - t1, 1)))
         t2 = time.time()
         use = sols if max_dcheck is None else sols[:max_dcheck]
-        P4 = np.array([[p4[k].astype(np.uint8) for k in range(4)] for p4, S4 in use], np.uint8).reshape(len(use), 4, inst.F2)
+        P4 = np.ascontiguousarray(use, np.uint8).reshape(len(use), 4, inst.F2)
         cbase = None
         if ckpt and len(use):
             cbase = f"{ckpt}_c{ci}"; np.save(cbase + '.npy', P4)
             with open(cbase + '.json', 'w') as fh: json.dump(dict(done=0, n=len(P4)), fh)
+        if jfile and os.path.exists(jfile): os.remove(jfile)
         nf, nd3, core = dcheck_list(inst, dchk, P4, 0, out, log, stopfile, cbase, seed, beta, t0, stats, found)
         if cbase:
             for f in (cbase + '.npy', cbase + '.json'):
