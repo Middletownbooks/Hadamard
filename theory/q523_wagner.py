@@ -109,6 +109,103 @@ def materialise(inst, k, rows, grid_row, K):
     for g in range(inst.F2): S[:, g] = inst.pairs[k][g]['S'][pidx[:, g]]
     return pidx, S
 
+# ------------------------------------------------------------------ cache-resident multi-parent join kernel
+@numba.njit(cache=True)
+def _rng2(lo, G, P):
+    """the residue range lo, lo+1, ..., lo+G-1 (mod P) as at most two plain intervals"""
+    lo = lo % P
+    if lo + G <= P: return lo, lo + G, 0, 0
+    return lo, P, 0, lo + G - P
+
+@numba.njit(cache=True)
+def mjoin_bs(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
+             lpA, lpB, rpC, rpD, P, rT, kT, G, bs, bb, bs2, bb2, hk, hc, hd, maxhits):
+    """Same output as mjoin (all (a, b, c, d) with keyA + keyB + keyC + keyD == kT over the parent pairs, residues
+    adding up to rT mod P), but each pass takes G consecutive residue classes of the left pairs and works in cache:
+      1. every left key of the pass sets a bit in bs (2^bb bits);
+      2. every right need kT - keyC - keyD of the matching residues whose bit is set goes into the table hk/hc/hd
+         and sets a bit in bs2 (2^bb2 bits);
+      3. the left pairs are rescanned: a key whose bs2 bit is set is looked up in the table (exact 64-bit match).
+    bs, bs2 are zero and hc is -1 on entry and on exit.  Returns (hits, n_hits, n_left_pairs, n_right_pairs, flushes)."""
+    sh = np.uint64(64 - bb); sh2 = np.uint64(64 - bb2); m63 = np.uint64(63); one = np.uint64(1); s6 = np.uint64(6)
+    size = hk.shape[0]; mask = size - 1; umask = np.uint64(mask); cap = size // 2
+    used = np.empty(cap + 1, np.int64)
+    hits = np.zeros((maxhits, 4), np.int64); nh = 0; nl = 0; nr = 0; flushes = 0
+    for p0 in range(0, P, G):
+        g = min(G, P - p0)
+        # 1. left keys -> bs
+        for j in range(lpA.shape[0]):
+            fa = lpA[j]; fb = lpB[j]
+            for a in range(offA[fa], offA[fa + 1]):
+                ka = keyA[a]
+                l1, h1, l2, h2 = _rng2(p0 - resA[a], g, P)
+                for t in range(rstB[fb, l1], rstB[fb, h1]):
+                    h = (ka + keyB[t]) >> sh; bs[h >> s6] |= one << (h & m63); nl += 1
+                for t in range(rstB[fb, l2], rstB[fb, h2]):
+                    h = (ka + keyB[t]) >> sh; bs[h >> s6] |= one << (h & m63); nl += 1
+        # 2. right needs (residues rT - p0 - g + 1 .. rT - p0) filtered by bs -> table, bs2
+        nu = 0; j = 0; c = -1; resume = False
+        jr = 0
+        while jr < rpC.shape[0]:
+            fc = rpC[jr]; fd = rpD[jr]
+            for c in range(offC[fc], offC[fc + 1]):
+                kc = kT - keyC[c]
+                l1, h1, l2, h2 = _rng2(rT - p0 - g + 1 - resC[c], g, P)
+                for part in range(2):
+                    lo = rstD[fd, l1] if part == 0 else rstD[fd, l2]
+                    hi = rstD[fd, h1] if part == 0 else rstD[fd, h2]
+                    for t in range(lo, hi):
+                        need = kc - keyD[t]; nr += 1; h = need >> sh
+                        if (bs[h >> s6] >> (h & m63)) & one:
+                            if nu >= cap:
+                                # 3'. table full: run the left rescan for the current table, then empty it
+                                flushes += 1
+                                nh = _scan_left(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p0, g, bs2, sh2, hk, hc, hd,
+                                                umask, mask, hits, nh, maxhits, False, bs, sh)
+                                for i in range(nu):
+                                    hc[used[i]] = -1
+                                    h2_ = hk[used[i]] >> sh2; bs2[h2_ >> s6] = np.uint64(0)
+                                nu = 0
+                            slot = np.int64(need & umask)
+                            while hc[slot] >= 0: slot = (slot + 1) & mask
+                            hk[slot] = need; hc[slot] = c; hd[slot] = t; used[nu] = slot; nu += 1
+                            h2_ = need >> sh2; bs2[h2_ >> s6] |= one << (h2_ & m63)
+            jr += 1
+        # 3. left rescan against the table; clears bs on the way
+        nh = _scan_left(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p0, g, bs2, sh2, hk, hc, hd, umask, mask, hits, nh,
+                        maxhits, True, bs, sh)
+        for i in range(nu):
+            hc[used[i]] = -1
+            h2_ = hk[used[i]] >> sh2; bs2[h2_ >> s6] = np.uint64(0)
+    return hits[:min(nh, maxhits)], nh, nl, nr, flushes
+
+@numba.njit(cache=True)
+def _scan_left(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p0, g, bs2, sh2, hk, hc, hd, umask, mask, hits, nh, maxhits,
+               clear, bs, sh):
+    m63 = np.uint64(63); one = np.uint64(1); s6 = np.uint64(6)
+    for j in range(lpA.shape[0]):
+        fa = lpA[j]; fb = lpB[j]
+        for a in range(offA[fa], offA[fa + 1]):
+            ka = keyA[a]
+            l1, h1, l2, h2 = _rng2(p0 - resA[a], g, P)
+            for part in range(2):
+                lo = rstB[fb, l1] if part == 0 else rstB[fb, l2]
+                hi = rstB[fb, h1] if part == 0 else rstB[fb, h2]
+                for t in range(lo, hi):
+                    key = ka + keyB[t]
+                    if clear:
+                        h = key >> sh; bs[h >> s6] = np.uint64(0)
+                    hb = key >> sh2
+                    if (bs2[hb >> s6] >> (hb & m63)) & one:
+                        slot = np.int64(key & umask)
+                        while hc[slot] >= 0:
+                            if hk[slot] == key:
+                                if nh < maxhits:
+                                    hits[nh, 0] = a; hits[nh, 1] = t; hits[nh, 2] = hc[slot]; hits[nh, 3] = hd[slot]
+                                nh += 1
+                            slot = (slot + 1) & mask
+    return nh
+
 # ------------------------------------------------------------------ multi-parent join kernel
 @numba.njit(cache=True)
 def mjoin(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
@@ -238,6 +335,7 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
     wts = rng.integers(1, 2 ** 63, D, dtype=np.int64).astype(np.uint64) | np.uint64(1)
     rho = rng.integers(1, 1 << 30, D, dtype=np.int64)
     stats = dict(s_solutions=0, passed_filter=0, d3_solutions=0, cores=0, pairs_log2=[]); dchk = DChecker(inst, seed)
+    bufs = None
     for ci in range(ncent):
         if deadline is not None and time.time() > deadline: break
         if stopfile is not None and os.path.exists(stopfile): break
@@ -282,8 +380,15 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
             pred = wL + wR - g['bits']
             log(dict(stage="prediction", centre=ci, fine_bits=g['bits'], mahal=g.get('mahal'), predicted_s_solutions_log2=round(pred, 2)))
         t1 = time.time()
-        hits, nh, ov, pr = mjoin(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst, Dd.off,
-                                 lpA, lpB, rpC, rpD, P, rT, kT, tbits, 1 << 22, 0, P)
+        # cache-resident join (mjoin_bs): about 2^20 left pairs per pass, 1 MB prefilter bitset
+        G = max(1, int(round(P * 2.0 ** 20 / 2.0 ** wL)))
+        if bufs is None:
+            bufs = (np.zeros(1 << 17, np.uint64), np.zeros(1 << 15, np.uint64), np.zeros(1 << 19, np.uint64),
+                    np.full(1 << 19, -1, np.int64), np.zeros(1 << 19, np.int64))
+        bs_, bs2_, hk_, hc_, hd_ = bufs
+        hits, nh, nlp, nrp, ov = mjoin_bs(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
+                                          Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, G, bs_, 23, bs2_, 21, hk_, hc_, hd_, 1 << 23)
+        pr = nlp + nrp
         # exact re-check
         sols = []
         for a, b, cc, dd in hits:
