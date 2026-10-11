@@ -1,0 +1,4 @@
+{"stage": "start", "seed": 301, "logN": 33.0, "K": 24, "rows": 64, "beta": 1.0, "planted": false, "worker": 1, "t": 1791677642.5}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 4.1, "worker": 1, "t": 1791677646.6}
+{"stage": "prediction", "centre": 0, "fine_bits": 48.86, "mahal": 1.16, "predicted_s_solutions_log2": 17.14, "worker": 1, "t": 1791677664.9}
+{"stage": "S-join", "centre": 0, "parents": [45, 45], "side_log2": [33.0, 33.0], "P": 13669, "hash_hits": 360739, "overflow": 0, "probes_log2": 34.0, "s_solutions": 360739, "secs": 1379.1, "worker": 1, "t": 1791679044.0}

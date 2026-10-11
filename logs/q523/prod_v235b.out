@@ -1,0 +1,31 @@
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "/home/user/Hadamard/theory/q523_prod.py", line 25, in worker
+    found, st = W.run(inst, beta, rows, K, logN, 10 ** 6, seed, 20, out, log, None, time.time() + 3600 * hours, stop, predict=True)
+                ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/q523_wagner.py", line 269, in run
+    Z, AC = assemble(inst, S4, D4); ok, X = verify(inst, AC)
+            ~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/q523_sdsolve.py", line 267, in assemble
+    assert len(j) == 1, "assembled coset not in the alphabet"
+           ^^^^^^^^^^^
+AssertionError: assembled coset not in the alphabet
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/q523_prod.py", line 41, in <module>
+    res = pool.map(worker, jobs)
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 774, in get
+    raise self._value
+AssertionError: assembled coset not in the alphabet

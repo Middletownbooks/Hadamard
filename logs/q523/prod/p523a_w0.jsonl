@@ -1,0 +1,3 @@
+{"stage": "start", "seed": 1000, "logN": 35.0, "K": 24, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791681533.2}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 2.7, "worker": 0, "t": 1791681535.9}
+{"stage": "prediction", "centre": 0, "fine_bits": 53.45, "mahal": 0.93, "predicted_s_solutions_log2": 16.25, "worker": 0, "t": 1791681565.4}
