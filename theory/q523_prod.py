@@ -28,21 +28,29 @@ def worker(args):
     log(dict(stage="start", seed=seed, logN=logN, K=K, rows=rows, beta=beta, planted=planted))
     yh = hashlib.sha1(json.dumps(Y).encode()).hexdigest()[:8] + ("p" if planted else "")
     cdir = os.path.join(d, 'ckpt'); os.makedirs(cdir, exist_ok=True)
+    cpre = os.path.join(cdir, f"{tag}_w{w}_y{yh}")
     if resume:
-        # orphaned D-check checkpoints only: a live worker rewrites its progress file every 2000 checks (seconds)
-        files = sorted(f for f in glob.glob(os.path.join(cdir, f"*_y{yh}_c*.npy"))
-                       if time.time() - os.path.getmtime(f[:-4] + '.json' if os.path.exists(f[:-4] + '.json') else f) > 300)[w::nw]
-        if files:
+        # this worker's own interrupted D-checks (its earlier process is gone), then orphaned D-check checkpoints of
+        # other runs: a live worker rewrites its progress file every 2000 checks (seconds), so idle > 5 min means dead
+        own = sorted(glob.glob(cpre + "_c*.npy"), key=lambda f: int(f[len(cpre) + 2:-4]))
+        other = sorted(f for f in glob.glob(os.path.join(cdir, f"*_y{yh}_c*.npy"))
+                       if not os.path.basename(f).startswith(f"{tag}_w")
+                       and time.time() - os.path.getmtime(f[:-4] + '.json' if os.path.exists(f[:-4] + '.json') else f) > 300)[w::nw]
+        if own or other:
             from q523_dcheck2 import DCheck2
             dchk = DCheck2(inst, seed)
-            for f in files:
+            for f in own + other:
                 if os.path.exists(stop): break
                 if W.resume_ckpt(inst, f, dchk, out, log, stop, seed, beta): return dict(cores=1)
-    cpre = os.path.join(cdir, f"{tag}_w{w}_y{yh}")
     start = 0
-    if resume:                                                  # an interrupted S-join of this worker (same command line)
-        js = sorted(glob.glob(cpre + "_c*_join.npz"))
-        if js: start = int(js[-1][len(cpre) + 2:].split('_')[0])
+    if resume:
+        # same command line: continue after the last centre whose S-join this worker logged, or inside an
+        # interrupted S-join (its checkpoint)
+        for l in open(os.path.join(d, f"{tag}_w{w}.jsonl")):
+            try: rec = json.loads(l)
+            except ValueError: continue
+            if rec.get('stage') == 'S-join': start = max(start, int(rec['centre']) + 1)
+        for j in glob.glob(cpre + "_c*_join.npz"): start = max(start, int(j[len(cpre) + 2:].split('_')[0]))
     found, st = W.run(inst, beta, rows, K, logN, 10 ** 6, seed, 20, out, log, None, time.time() + 3600 * hours, stop, predict=True,
                       ckpt=cpre, big_middle=big, pass_log2=plog, start_centre=start)
     log(dict(stage="done", **st))

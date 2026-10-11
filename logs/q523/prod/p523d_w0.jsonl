@@ -1,0 +1,4 @@
+{"stage": "start", "seed": 4000, "logN": 38.0, "K": 32, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791686383.1}
+{"stage": "D-check (resumed)", "file": "p523c_w0_yec3b2ee8_c0.npy", "start": 76000, "checked": 38471, "d3_solutions": 8986734, "secs": 68.1, "worker": 0, "t": 1791686451.2}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 2.5, "worker": 0, "t": 1791686453.7}
+{"stage": "prediction", "centre": 0, "fine_bits": 54.59, "mahal": 1.28, "predicted_s_solutions_log2": 20.23, "worker": 0, "t": 1791686521.0}

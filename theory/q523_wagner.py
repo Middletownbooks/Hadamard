@@ -377,7 +377,8 @@ def mjoin(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD
 
 class Side:
     """concatenated fibres of one block for the join: keys/residues sorted per fibre by residue, CSR by residue;
-    configurations kept as uint8 pair-S indices (S is rebuilt from them on demand)"""
+    configurations kept as uint8 pair-S indices (S is rebuilt from them on demand); fibres is any iterable of
+    (pidx, sig) pairs and is consumed one fibre at a time"""
     def __init__(self, fibres, wts, rho, P):
         keys = []; res = []; offs = [0]; rst = []; pid = []
         for pidx, sig in fibres:
@@ -504,13 +505,16 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
         # materialise the fibres used
         need = [sorted({p[0] for p in Lk}), sorted({p[1] for p in Lk}), sorted({p[0] for p in Rk}), sorted({p[1] for p in Rk})]
         P = next_prime(max(2, 2 ** wL / 2.0 ** pass_log2))            # residue classes of about 2^pass_log2 left pairs
-        sides = []; fid = []
-        for k in range(4):
-            fibres = []
+        # one fibre at a time: a Side keeps 25 bytes per configuration, the int64 signatures (about 300 bytes) are
+        # dropped as soon as the fibre's keys are taken (a list of all of them held about 2.5 GB at K = 32)
+        def fibres_of(k):
             for ci_ in need[k]:
                 pidx, S = materialise(inst, k, rows[k], grid_of(k, ci_), K)
-                fibres.append((pidx, seq_sig(S, T, inst.nl))); del S
-            sides.append(Side(fibres, wts, rho, P)); fid.append({x: i for i, x in enumerate(need[k])})
+                sig = seq_sig(S, T, inst.nl); del S
+                yield pidx, sig
+        sides = []; fid = []
+        for k in range(4):
+            sides.append(Side(fibres_of(k), wts, rho, P)); fid.append({x: i for i, x in enumerate(need[k])})
         lpA = np.array([fid[0][i] for i, j in Lk], np.int64); lpB = np.array([fid[1][j] for i, j in Lk], np.int64)
         rpC = np.array([fid[2][i] for i, j in Rk], np.int64); rpD = np.array([fid[3][j] for i, j in Rk], np.int64)
         kT = (tS.astype(np.int64).astype(np.uint64) * wts).sum(); rT = int(((tS % P) * (rho % P) % P).sum() % P)
