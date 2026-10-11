@@ -71,7 +71,16 @@ def _block(pidx, dval, dstart, dcnt, rows, T, w3, wd, maxn):
         for t in range(2 * s):
             sig3[q, t] = buf[t]; acc += np.uint64(buf[t]) * w3[t]
         k3[q] = acc
-    return status, cfg, order, gstart[:ng + 1], k3, sig3
+    # distinct signatures (D3 and -D3 share one: the D-options of a block are closed under global negation)
+    so = np.argsort(k3)
+    ustart = np.zeros(ng + 1, np.int64); ufirst = np.zeros(ng, np.int64); nu = 0
+    for i in range(ng):
+        if i == 0 or k3[so[i]] != k3[so[i - 1]]:
+            ustart[nu] = i; ufirst[nu] = so[i]; nu += 1
+    ustart[nu] = ng
+    uk = np.zeros(nu, np.uint64)
+    for u in range(nu): uk[u] = k3[ufirst[u]]
+    return status, cfg, order, gstart[:ng + 1], k3, sig3, uk, so, ustart[:nu + 1]
 
 @numba.njit(cache=True)
 def _fullsig(cfg, order, gstart, need, T, nl, wf):
@@ -151,27 +160,37 @@ def dcheck_nb(pidx4, dval, dstart, dcnt, rows, T, nl, w3, wf, wd, k3T, kfT, T3, 
     bl = [_block(pidx4[k], dval[k], dstart[k], dcnt[k], rows, T, w3, wd, maxn) for k in range(4)]
     for k in range(4):
         if bl[k][0] < 0: return 0, 0, sols, -1
-    nq_ = np.array([bl[k][4].shape[0] for k in range(4)])
+    nq_ = np.array([bl[k][6].shape[0] for k in range(4)])
     ordk = np.argsort(nq_)                       # ascending
     # pairing: (largest, smallest) on the right (probe side), the middle two on the left (table side) or vice versa
     A = ordk[1]; B = ordk[2]; C = ordk[0]; D = ordk[3]
     if nq_[A] * nq_[B] > nq_[C] * nq_[D]:
         A, B, C, D = C, D, A, B
-    kA = bl[A][4]; kB = bl[B][4]; kC = bl[C][4]; kD = bl[D][4]
+    kA = bl[A][6]; kB = bl[B][6]; kC = bl[C][6]; kD = bl[D][6]
     nA = kA.shape[0]; nB = kB.shape[0]
     nL = nA * nB; rbits = 0
     while (nL >> rbits) > 2048 and rbits < 16: rbits += 1
     cap = 1 << 16
     hq, nh = radix_join4(kA, kB, kC, kD, k3T, rbits, cap)
     q4 = np.zeros((cap, 4), np.int64); nq = 0
+    ua = np.zeros(4, np.int64)
     for i in range(hq.shape[0]):
-        a = hq[i, 0]; b = hq[i, 1]; c = hq[i, 2]; d = hq[i, 3]
-        ok = True
-        for t in range(T3.shape[0]):
-            if bl[A][5][a, t] + bl[B][5][b, t] + bl[C][5][c, t] + bl[D][5][d, t] != T3[t]:
-                ok = False; break
-        if ok:
-            q4[nq, A] = a; q4[nq, B] = b; q4[nq, C] = c; q4[nq, D] = d; nq += 1
+        ua[A] = hq[i, 0]; ua[B] = hq[i, 1]; ua[C] = hq[i, 2]; ua[D] = hq[i, 3]
+        # expand each distinct signature to its member D3 groups
+        for g0 in range(bl[0][8][ua[0]], bl[0][8][ua[0] + 1]):
+            a = bl[0][7][g0]
+            for g1 in range(bl[1][8][ua[1]], bl[1][8][ua[1] + 1]):
+                b = bl[1][7][g1]
+                for g2 in range(bl[2][8][ua[2]], bl[2][8][ua[2] + 1]):
+                    c = bl[2][7][g2]
+                    for g3 in range(bl[3][8][ua[3]], bl[3][8][ua[3] + 1]):
+                        d = bl[3][7][g3]
+                        ok = True
+                        for t in range(T3.shape[0]):
+                            if bl[0][5][a, t] + bl[1][5][b, t] + bl[2][5][c, t] + bl[3][5][d, t] != T3[t]:
+                                ok = False; break
+                        if ok and nq < cap:
+                            q4[nq, 0] = a; q4[nq, 1] = b; q4[nq, 2] = c; q4[nq, 3] = d; nq += 1
     nd3 = nq
     if nq > cap: nq = cap
     if nq == 0: return nd3, 0, sols, 0
