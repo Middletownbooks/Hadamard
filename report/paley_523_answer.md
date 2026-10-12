@@ -44,7 +44,8 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
        1 core in 15.6M against 1.5 expected;
      - verified by two independent finishers (H Hᵀ = 940·I).
    - **Calibration at 523 [M vs E]:**
-     - D-success per S-solution: 2^−26.5 … −26.8 measured, 2^−26.5 from the model (§3.4);
+     - D-success per S-solution: 2^−26.5 … −26.8 measured, 2^−26.5 from the model (§3.4); for the production y,
+       2^−26.02 measured on 1000 production S-solutions against 2^−26.14 from the model;
      - S-solutions per middle value: 1.6–2 bits above the Gaussian prediction at production size, so the prediction
        is conservative;
      - planted full-size 523 instances: 5/5 recovered;
