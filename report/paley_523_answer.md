@@ -298,6 +298,12 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - 2^7.5–7.7 D₃-solutions per S-solution and 2^10.4–10.8 D-candidates;
   - order-18 equations 37.2–37.3 bits on the real residuals (Mahalanobis 0.2–0.5);
   - **D-success 2^−26.8, 2^−26.7, 2^−26.5 per S-solution** (model: 2^{h_D − C(D|S)} = 2^−26.5).
+- **Measured on production S-solutions** (y of §5, K = 32 lists; `theory/q523_dsuccess_real.py` on 1000 S-solutions
+  drawn from one production join, saved in `logs/q523/ssol_sample_p523f_w2_c7.npy`):
+  - 2^7.84 D₃-solutions and 2^11.21 D-candidates per S-solution;
+  - order-18 equations 37.23 bits on the real residuals (Mahalanobis 0.05);
+  - **D-success 2^−26.02 per S-solution** against the model's 2^−26.14 (a 500-solution subsample gives 2^−26.06).
+    So the production y needs about 6.8·10^7 S-solutions per core.
 - **The deficit is pinned [M].**
   - Reweighting the S-lists by m(S)^β, β = 1 … 4, leaves the D-freedom of the S-solutions found at 36.0–36.3 bits.
     The S-level lag-0 equation forces the S-energy to half the total, which balances S = 0 pairs (6 D-options)
@@ -438,7 +444,8 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ## 6. The 523 run
 
-- **y:** `logs/q523/y523_best.json` (§5). D_def = 26.14, so a core needs about 2^26.14 ≈ 7.4·10^7 S-solutions [E].
+- **y:** `logs/q523/y523_best.json` (§5). D_def = 26.14 (model), so a core needs about 2^26.14 ≈ 7.4·10^7
+  S-solutions [E]; measured on 1000 production S-solutions, 2^26.02 ≈ 6.8·10^7 (§3.4).
 - **Runs** (`logs/q523/prod/`, all on the same y; the live logs are copied to `logs/q523/snap/` at each status update;
   "excess" is log₂ found − log₂ predicted per middle value):
 
@@ -474,11 +481,12 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     after the last centre it joined. This was tested by killing and resuming a v = 235 run in mid D-check.
   - The tally (`logs/q523/tally_523.py`) now also counts the checks a killed process made before its D-check was
     resumed: 0.92M checks, previously missed.
-- **Status (2026-10-12 02:57 UTC; tally `python3 logs/q523/tally_523.py`):**
-  - 48 middle values have been joined, giving 69.9M S-solutions;
-  - **67.0M are D-checked (2^26.00, about 0.91 expected cores), and there is no core yet.**
-  - With no core, the probability of seeing none so far is e^−0.91 = 0.40.
-  - With four K = 32 workers and `mjoin_rad2` the run checks about 4M S-solutions per hour, about 19 hours per
+- **Status (2026-10-12 05:35 UTC; tally `python3 logs/q523/tally_523.py`):**
+  - 51 middle values have been joined, giving 80.0M S-solutions;
+  - **75.5M are D-checked (2^26.17): 1.02 expected cores by the model, 1.11 by the measured D-success. There is no
+    core yet.**
+  - With no core, the probability of seeing none so far is e^−1.11 = 0.33.
+  - With four K = 32 workers and `mjoin_rad2` the run checks about 4M S-solutions per hour, about 17–19 hours per
     expected core. The run continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]

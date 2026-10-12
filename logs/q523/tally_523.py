@@ -14,5 +14,7 @@ live = 0
 for f in glob.glob('logs/q523/prod/ckpt/p523*_c*.json'):
     live += json.load(open(f))['done']
 tot = checked + live
+# expected cores: model D_def = 26.14 (section 5) and the D-success measured on 1000 production S-solutions,
+# 2^-26.02 (theory/q523_dsuccess_real.py)
 print(json.dumps(dict(middle_values=joins, s_solutions_produced=prod, d_checked=tot, d_checked_log2=round(math.log2(max(tot, 1)), 2),
-                      expected_cores=round(tot / 2 ** 26.14, 3), cores=cores)))
+                      expected_cores=round(tot / 2 ** 26.14, 3), expected_cores_measured=round(tot / 2 ** 26.02, 3), cores=cores)))
