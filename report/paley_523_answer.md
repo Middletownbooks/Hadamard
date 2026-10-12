@@ -474,12 +474,12 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     after the last centre it joined. This was tested by killing and resuming a v = 235 run in mid D-check.
   - The tally (`logs/q523/tally_523.py`) now also counts the checks a killed process made before its D-check was
     resumed: 0.92M checks, previously missed.
-- **Status (2026-10-11 22:55 UTC; tally `python3 logs/q523/tally_523.py`):**
-  - 44 middle values have been joined, giving 56.4M S-solutions;
-  - **54.9M are D-checked (2^25.71, about 0.74 expected cores), and there is no core yet.**
-  - With no core, the probability of seeing none so far is e^−0.74 = 0.48.
-  - Throughput was about 3.0M D-checked S-solutions per hour on 4 cores before the restart; with four K = 32
-    workers it should be about 3.2M per hour, about 23 hours per expected core. The run continues.
+- **Status (2026-10-12 02:57 UTC; tally `python3 logs/q523/tally_523.py`):**
+  - 48 middle values have been joined, giving 69.9M S-solutions;
+  - **67.0M are D-checked (2^26.00, about 0.91 expected cores), and there is no core yet.**
+  - With no core, the probability of seeing none so far is e^−0.91 = 0.40.
+  - With four K = 32 workers and `mjoin_rad2` the run checks about 4M S-solutions per hour, about 19 hours per
+    expected core. The run continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
 

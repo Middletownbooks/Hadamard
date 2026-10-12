@@ -6,3 +6,5 @@
 {"stage": "prediction", "centre": 0, "fine_bits": 54.53, "mahal": 1.25, "predicted_s_solutions_log2": 19.83, "worker": 0, "t": 1791761103.1}
 {"stage": "S-join resumed", "centre": 0, "next_pass": 2277, "passes": 11897, "hits": 578356, "worker": 0, "t": 1791761103.1}
 {"stage": "S-join", "centre": 0, "parents": [103, 227], "side_log2": [36.54, 37.83], "P": 11897, "hash_hits": 3016580, "overflow": 0, "probes_log2": 38.32, "s_solutions": 3016580, "secs": 5800.1, "worker": 0, "t": 1791766903.1}
+{"stage": "D-check", "centre": 0, "checked": 3016580, "d3_solutions": 698607886, "secs": 5748.5, "total_s": 3016580, "total_secs": 11620.5, "worker": 0, "t": 1791772651.6}
+{"stage": "prediction", "centre": 1, "fine_bits": 54.53, "mahal": 1.27, "predicted_s_solutions_log2": 19.58, "worker": 0, "t": 1791772708.4}
