@@ -13,3 +13,6 @@
 {"stage": "S-join", "centre": 3, "parents": [132, 237], "side_log2": [36.87, 37.89], "P": 14983, "hash_hits": 4103323, "overflow": 0, "probes_log2": 38.47, "s_solutions": 4103323, "secs": 9800.1, "worker": 0, "t": 1791754253.6}
 {"stage": "start", "seed": 6000, "logN": 38.0, "K": 32, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791759118.3}
 {"stage": "start", "seed": 6000, "logN": 38.0, "K": 32, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791761030.1}
+{"stage": "D-check (resumed)", "file": "p523f_w0_yec3b2ee8_c3.npy", "start": 3536000, "checked": 567323, "d3_solutions": 129904244, "secs": 1139.1, "worker": 0, "t": 1791762169.2}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 2.5, "worker": 0, "t": 1791762171.8}
+{"stage": "prediction", "centre": 4, "fine_bits": 54.59, "mahal": 1.28, "predicted_s_solutions_log2": 20.36, "worker": 0, "t": 1791762243.6}

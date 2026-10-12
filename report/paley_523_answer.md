@@ -335,9 +335,10 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     costs 2.4–3.0 ms of join [M], not the 7 ms of the prediction;
   - **realised total with `mjoin_rad`: 4.2–4.8 ms per S-solution, about 90 core-hours per expected core** [M rates ×
     E count];
-  - with `mjoin_rad2` (from 23:24 UTC on 2026-10-11) the production joins run 1.24–1.65× faster (residue classes
-    per second on the same three centres, before and after the switch), so about 1.8 ms of join + 1.8 ms of D-check:
-    **about 3.6 ms per S-solution, 75 core-hours per expected core** [M rates × E count];
+  - with `mjoin_rad2` (from 23:24 UTC on 2026-10-11) the production joins run 1.34–1.79× faster (residue classes
+    per second on the same three centres, before the switch and over the rest of each join after it), so about
+    1.8 ms of join + 1.8 ms of D-check: **about 3.6 ms per S-solution, 75 core-hours per expected core** [M rates ×
+    E count];
   - smaller lists are worse: K = 24 at logN 35 cost 8.7 ms of join + 1.9 ms of D-check per S-solution (p523h, §6).
 - **Ideal Wagner cost:** 2^{(F + D_def)/2 + 1} ≈ 2^40.7 pair visits. It needs one middle value with about 5000
   parent pairs per side, and the Z₃ middle level only offers about 500 (§3.3). That is the gap between this route's
@@ -457,9 +458,10 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     S-solutions each, 1.55–1.75 bits above the Gaussian prediction;
   - D-check: 1.7–1.9 ms per S-solution (1.5 ms on an idle machine, §3.4);
   - so 4.2–4.8 ms per S-solution in all at K = 32, about 90 core-hours per expected core; K = 24 lists cost 10.6 ms;
-  - since 23:24 UTC the join kernel `mjoin_rad2` (§3.3) runs 1.24–1.65× faster in production: about 3.6 ms per
+  - since 23:24 UTC the join kernel `mjoin_rad2` (§3.3) runs 1.34–1.79× faster in production (three centres joined
+    partly with each kernel: 1.59 → 2.18, 1.89 → 3.39 and 1.24 → 1.66 residue classes per second): about 3.6 ms per
     S-solution, 75 core-hours per expected core. (The `secs` of an S-join record count only the part of the join run
-    by the process that finished it, so per-centre rates of resumed joins are taken from their checkpoints.)
+    by the process that finished it.)
 - **Memory fix and restart (2026-10-11 22:50 UTC).**
   - A K = 32 worker held 3.3–3.7 GB, so only three fitted into the 14.3 GB cgroup and the fourth ran K = 24 lists
     (p523h), at 2.4× the cost per S-solution.

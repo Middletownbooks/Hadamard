@@ -25,3 +25,4 @@
 {"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 2.7, "worker": 2, "t": 1791761032.8}
 {"stage": "prediction", "centre": 6, "fine_bits": 54.55, "mahal": 1.28, "predicted_s_solutions_log2": 19.81, "worker": 2, "t": 1791761095.0}
 {"stage": "S-join resumed", "centre": 6, "next_pass": 2280, "passes": 20807, "hits": 326065, "worker": 2, "t": 1791761095.0}
+{"stage": "S-join", "centre": 6, "parents": [175, 129], "side_log2": [37.34, 37.01], "P": 20807, "hash_hits": 2969883, "overflow": 0, "probes_log2": 38.19, "s_solutions": 2969883, "secs": 5470.8, "worker": 2, "t": 1791766565.8}
