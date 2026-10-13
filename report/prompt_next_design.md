@@ -97,7 +97,7 @@ So screen exactly first. An estimate is evidence only after the exact screens pa
 | 971 | ×469 | −1 on Z₅; index 8 on Z₉₇ | +36.2 | compressed to Z₁₀ (6 orbits per block) UNKNOWN at 600 s |
 | 947 | ×21 | composite (Z₁₁ index 5, Z₄₃ index 6) | +28.3 | compression along Z₄₃ UNKNOWN at 600 s |
 | 859 | ×289 | composite (Z₁₁, Z₁₃) | +27.4 | both compressions UNKNOWN at 600 s |
-| 647 | ×183 | composite | +24.6 | not run |
+| 647 | ×183 | composite | +24.6 | compression along Z₁₇ UNKNOWN at 600 s |
 
 Also exactly empty: 947 ×45 (s = 3 odd forces |y| ≥ 13, so lag 0 fails [P]) and 971 ×79 (compressed
 stage 1 INFEASIBLE [M]).
