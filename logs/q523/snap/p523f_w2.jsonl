@@ -52,3 +52,6 @@
 {"stage": "D-check", "centre": 13, "checked": 2833590, "d3_solutions": 665900264, "secs": 5826.6, "total_s": 7421825, "total_secs": 29068.3, "worker": 2, "t": 1791883621.9}
 {"stage": "prediction", "centre": 14, "fine_bits": 54.39, "mahal": 1.24, "predicted_s_solutions_log2": 19.72, "worker": 2, "t": 1791883681.2}
 {"stage": "S-join", "centre": 14, "parents": [136, 140], "side_log2": [36.98, 37.13], "P": 16139, "hash_hits": 2556434, "overflow": 0, "probes_log2": 38.06, "s_solutions": 2556434, "secs": 6249.6, "worker": 2, "t": 1791889930.8}
+{"stage": "D-check", "centre": 14, "checked": 2556434, "d3_solutions": 580792537, "secs": 5056.5, "total_s": 9978259, "total_secs": 40433.8, "worker": 2, "t": 1791894987.4}
+{"stage": "prediction", "centre": 15, "fine_bits": 54.53, "mahal": 1.26, "predicted_s_solutions_log2": 20.29, "worker": 2, "t": 1791895077.6}
+{"stage": "S-join", "centre": 15, "parents": [234, 132], "side_log2": [37.78, 37.04], "P": 28151, "hash_hits": 4142469, "overflow": 0, "probes_log2": 38.46, "s_solutions": 4142469, "secs": 8238.2, "worker": 2, "t": 1791903315.8}

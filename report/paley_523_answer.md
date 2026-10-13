@@ -520,7 +520,9 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     plant and search with the same tables): `theory/q523_algebra.py` re-run on 2026-10-13 gives `arith_ok` (the q = 29
     η-basis tables against complex numerics), `P_vs_fft_523` (the stage-2 signature against a direct 2-D FFT PAF at
     the 523 shape with the production y) and the target 4v·δ on the H(164) core; the same target formula produced
-    the verified H(940) at v = 235.
+    the verified H(940) at v = 235. The target itself follows in one line from the checked map
+    P(h, l) = Q(h, rep_l) − Q(h, 0) (Q the 2-D PAF sum on Z₁₈ × Z₂₉): a b = 1 core has Q = 4m at (0, 0) and −4
+    elsewhere, so P = −4 − 4m = −4v at h = 0 and −4 − (−4) = 0 at h ≠ 0, for any q and s.
   - The run checks about 4M S-solutions per hour, about 17–19 hours per expected core. It continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
