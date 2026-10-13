@@ -52,7 +52,7 @@ y = α + f·σ, with σ a sum of s signs.
 | 523 | ×181 | Z₁₈ × quartic Z₂₉ | +92.1 | alive; production run elsewhere |
 | 947 | ×45 | Z₂₂ × cubic Z₄₃ (f = 14) | +30.8 | **empty [P]**: s = 3 is odd, so y = α + 14·(odd) and \|y\| ≥ 13; lag 0 needs Σy² = 3616 over 88 entries (minimum 88·169). An earlier run of `gp_z2screen` passed it because `q523_stage1.compositions` assumes ±1 is a letter; fixed in `gp_z2screen.py` |
 | 971 | ×79 | −1 on Z₅; index 16 on Z₉₇ | +17.7 | **empty [M]**: compressed stage 1 INFEASIBLE (31 s) |
-| 947 | ×49 | Paley(11) × order 3 on Z₈₆ (the H(2292) shape) | +37.3 | **compression along Z₄₃ FEASIBLE** (verified y in `logs/gp_screen/c947_49_K43_y.json`); along Z₁₁ UNKNOWN at 1200 s; w-screen alive. Paley split [E]: stage 1 +33 … +46, stage 2 −19 … −22 per y (573: −9.6), core +14 … +24 (573: +23) |
+| 947 | ×49 | Paley(11) × order 3 on Z₈₆ (the H(2292) shape) | +37.3 | **compression along Z₄₃ FEASIBLE** (verified y in `logs/gp_screen/c947_49_K43_y.json`); along Z₁₁ UNKNOWN at 1200 s; w-screen alive. Paley split [E]: stage 1 +33 … +48, stage 2 −19 … −23 per y (573: −9.6), core +14 … +24.4 (573: +23) |
 | 947, 859 | ×21, ×289 | composite | +28.3, +27.4 | compressions UNKNOWN at 600 s |
 | 739 | ×215 | fixes Z₂; −1 on Z₉, index 8 on Z₄₁ | +61.9 | survives; compressed stage 1 along Z₄₁ (Z₁₈, 10 orbit letters per block, 18 letters) UNKNOWN after 900 s and 1200 s; along Z₉ (Z₈₂) UNKNOWN after 1200 s |
 | 647 | ×353 | fixes Z₂; index 4 on Z₁₇, index 6 on Z₁₉ | +36.2 | survives; both compressions (Z₃₈, Z₃₄) UNKNOWN after 1200 s |
