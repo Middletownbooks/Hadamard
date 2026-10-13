@@ -110,3 +110,52 @@ if __name__ == "__main__":
                           letter_sets=[l if len(l) <= 12 else (l[:3] + ['...'] + l[-3:]) for l in C['letters']],
                           lag_classes=len(C['lreps']) - 1, **r)), flush=True)
     if opt["--dump"]: json.dump(C, open(opt["--dump"], "w"))
+
+def stage2_estimate(F, p, gens, Y, N=20000, seed=1, chunk=500):
+    """[E] stage 2 given a compressed stage-1 y for any slice on Z_F x F_q (same method as theory/nd_stage2_est.py):
+    patterns of the M_g-orbits on each fibre with the right signed sum, uniform; full-group PAF by 3-D FFT at one lag
+    per <M, -1>-orbit; lattice Gaussian"""
+    import itertools
+    from nd_fq_sweep import Group, closure, orbits_of
+    from q523_gauss import gauss_bits
+    Gr = Group(F, p); n = Gr.n; q = Gr.q; rng = np.random.default_rng(seed)
+    M = closure([Gr.act(u, e) for (u, e) in gens], n)
+    lab, orbs = orbits_of(M, n)
+    ng = Gr.neg(); Mm = M + [ng[pm] for pm in M]
+    llab, lorbs = orbits_of(Mm, n); reps = [o[0] for o in lorbs]
+    Fo = -np.ones(F, np.int64); freps = []
+    for g in range(F):
+        if Fo[g] >= 0: continue
+        o = sorted({int(pm[g * q]) // q for pm in M}); Fo[o] = len(freps); freps.append(g)
+    parts = []
+    for g in freps:
+        P = {}
+        for z in range(q): P[int(lab[g * q + z])] = P.get(int(lab[g * q + z]), 0) + 1
+        parts.append(sorted(P.items()))
+    Y = np.array(Y)
+    def pats(j, t):
+        sz = [s_ for _, s_ in parts[j]]; out = []
+        for msk in range(1 << len(sz)):
+            if sum(s_ if (msk >> i) & 1 else -s_ for i, s_ in enumerate(sz)) == t:
+                out.append([1 if (msk >> i) & 1 else -1 for i in range(len(sz))])
+        return np.array(out, np.int8).reshape(-1, len(sz))
+    PT = [[pats(j, int(Y[k][b])) for j, b in enumerate(freps)] for k in range(4)]
+    H2 = sum(math.log2(len(P_)) for pk in PT for P_ in pk)
+    zi = np.arange(q); shape = (F, p, p)
+    gidx = np.repeat(np.arange(F), q); aidx = np.tile(zi % p, F); bidx = np.tile(zi // p, F)
+    repg = np.array([r // q for r in reps]); repz = np.array([r % q for r in reps])
+    V = np.zeros((N, len(reps)), np.int64)
+    for st in range(0, N, chunk):
+        c = min(chunk, N - st); acc = 0
+        for k in range(4):
+            L_ = np.zeros((c, len(orbs)), np.int8)
+            for j in range(len(freps)):
+                P_ = PT[k][j]; pick = P_[rng.integers(len(P_), size=c)]
+                for i, (o, s_) in enumerate(parts[j]): L_[:, o] = pick[:, i]
+            X = L_[:, lab].astype(np.float64)
+            A = np.zeros((c,) + shape); A[:, gidx, aidx, bidx] = X
+            fa = np.fft.fftn(A, axes=(1, 2, 3)); acc = acc + np.fft.ifftn(fa * fa.conj(), axes=(1, 2, 3)).real
+        V[st:st + c] = np.rint(acc[:, repg, repz % p, repz // p]).astype(np.int64)
+    T = np.array([4 * n if r == 0 else -4 for r in reps], np.int64)
+    gb = gauss_bits(V, T)
+    return dict(H2=round(H2, 2), lag_classes=len(reps), **gb, stage2_log2E=round(H2 - gb['bits'], 2) if gb.get('in_lattice') else -math.inf)

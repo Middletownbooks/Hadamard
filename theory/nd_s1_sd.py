@@ -148,7 +148,9 @@ class Problem:
     # ---------------- alpha ----------------
     def alphas(self):
         """all M-invariant +-1 sequences on Z_F"""
-        no = len(self.reps); A = np.empty((1 << no, self.F), np.int64)
+        no = len(self.reps)
+        if no > 22: raise RuntimeError(f"too many orbits for the alpha enumeration ({no})")
+        A = np.empty((1 << no, self.F), np.int64)
         for msk in range(1 << no):
             vals = np.array([1 if (msk >> j) & 1 else -1 for j in range(no)])
             A[msk] = vals[self.Fo]
@@ -166,6 +168,8 @@ class Problem:
         idx = {tuple(a): i for i, a in enumerate(A.tolist())}
         neg = np.array([idx[tuple((-a).tolist())] for a in A])
         I0c = I0[np.minimum(I0, neg[I0]) == I0]
+        if len(I2) * len(I0c) > 3 * 10 ** 7 or len(I0c) ** 2 > 6 * 10 ** 7:
+            raise RuntimeError(f"alpha lists too large ({len(I2)} x {len(I0c)})")
         nl = P.shape[1]
         base = np.array([mod ** i for i in range(nl)], dtype=object)
         if mod ** nl < 2 ** 62:

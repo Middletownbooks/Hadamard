@@ -1,0 +1,31 @@
+{"job": "970 469 97", "F": 10, "n": 5, "f0": 6, "orbits": 6, "alpha_quads": 8, "row2": 11, "row0_classes": 6, "S_solutions": 66, "stage1_solutions": 12, "all_verified": true, "complete": true, "secs": 0.1}
+{"job": "946 21 43", "F": 22, "n": 11, "f0": 7, "orbits": 12, "alpha_quads": 40, "row2": 572, "row0_classes": 307, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 1.6}
+{"job": "946 49 43", "F": 22, "n": 11, "f0": 3, "orbits": 6, "alpha_quads": 289, "row2": 21, "row0_classes": 11, "S_solutions": 566, "stage1_solutions": 200, "all_verified": true, "complete": false, "secs": 0.1}
+{"job": "946 47 43", "F": 22, "n": 11, "f0": 7, "orbits": 6, "alpha_quads": 4, "row2": 10, "row0_classes": 6, "S_solutions": 32, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 0.0}
+{"job": "946 23 43", "F": 22, "n": 11, "f0": 21, "orbits": 22, "error": "alpha lists too large (646646 x 352716)", "secs": 75.4}
+{"job": "822 59 137", "F": 6, "n": 3, "f0": 17, "orbits": 4, "alpha_quads": 0, "row2": 3, "row0_classes": 2, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 0.0}
+{"job": "906 155 151", "F": 6, "n": 3, "f0": 15, "orbits": 4, "alpha_quads": 0, "row2": 3, "row0_classes": 2, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 0.0}
+{"job": "646 353 19", "F": 34, "n": 17, "f0": 3, "orbits": 10, "alpha_quads": 35907, "row2": 341, "row0_classes": 171, "S_solutions": 1244, "stage1_solutions": 200, "all_verified": true, "complete": false, "secs": 49.4}
+{"job": "646 353 17", "F": 38, "n": 19, "f0": 4, "orbits": 14, "error": "too many alpha-quadruples", "secs": 24.4}
+{"job": "646 183 19", "F": 34, "n": 17, "f0": 3, "orbits": 10, "alpha_quads": 35907, "row2": 341, "row0_classes": 171, "S_solutions": 17480, "stage1_solutions": 200, "all_verified": true, "complete": false, "secs": 212.9}
+{"job": "646 183 17", "F": 38, "n": 19, "f0": 2, "orbits": 8, "alpha_quads": 732160, "row2": 128, "row0_classes": 64, "S_solutions": 1960, "stage1_solutions": 200, "all_verified": true, "complete": false, "secs": 43.6}
+{"job": "858 289 13", "F": 66, "n": 33, "f0": 3, "orbits": 18, "error": "alpha lists too large (87381 x 43691)", "secs": 5.3}
+{"job": "858 289 11", "F": 78, "n": 39, "f0": 5, "orbits": 30, "error": "too many orbits for the alpha enumeration (30)", "secs": 0.0}
+{"job": "946 49 11", "F": 86, "n": 43, "f0": 5, "orbits": 30, "error": "too many orbits for the alpha enumeration (30)", "secs": 0.0}
+{"job": "946 47 11", "F": 86, "n": 43, "f0": 5, "orbits": 14, "error": "too many alpha-quadruples", "secs": 24.9}
+{"job": "fq 18 7 7,4", "F": 18, "n": 9, "f0": 4, "orbits": 10, "alpha_quads": 565348, "row2": 256, "row0_classes": 136, "S_solutions": 863136, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 1305.0}
+{"job": "fq 18 7 7,20", "F": 18, "n": 9, "f0": 4, "orbits": 10, "alpha_quads": 565348, "row2": 256, "row0_classes": 136, "S_solutions": 863136, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 1305.7}
+{"job": "fq 18 7 17,4", "F": 18, "n": 9, "f0": 6, "orbits": 10, "alpha_quads": 144, "row2": 171, "row0_classes": 86, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 1.1}
+{"job": "fq 18 7 7,2", "F": 18, "n": 9, "f0": 8, "orbits": 10, "alpha_quads": 182, "row2": 130, "row0_classes": 70, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 0.0}
+{"job": "fq 18 7 7,10", "F": 18, "n": 9, "f0": 8, "orbits": 10, "alpha_quads": 182, "row2": 130, "row0_classes": 70, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 0.0}
+{"job": "fq 18 7 1,4", "F": 18, "n": 9, "f0": 12, "orbits": 18, "error": "alpha lists too large (43758 x 24310)", "secs": 2.5}
+{"job": "fq 18 7 1,8", "F": 18, "n": 9, "f0": 6, "orbits": 18, "error": "alpha lists too large (46971 x 25126)", "secs": 2.0}
+{"job": "fq 30 5 7,4", "F": 30, "n": 15, "f0": 3, "orbits": 12, "error": "too many alpha-quadruples", "secs": 21.7}
+{"job": "fq 30 5 17,8", "F": 30, "n": 15, "f0": 3, "orbits": 10, "alpha_quads": 317548, "row2": 341, "row0_classes": 171, "S_solutions": 2562, "stage1_solutions": 200, "all_verified": true, "complete": false, "secs": 11.1}
+{"job": "fq 30 5 7,14", "F": 30, "n": 15, "f0": 3, "orbits": 12, "error": "too many alpha-quadruples", "secs": 21.5}
+{"job": "fq 30 5 7,2", "F": 30, "n": 15, "f0": 3, "orbits": 12, "error": "too many alpha-quadruples", "secs": 23.0}
+{"job": "fq 30 5 19,2", "F": 30, "n": 15, "f0": 6, "orbits": 18, "error": "alpha lists too large (43695 x 21850)", "secs": 3.1}
+{"job": "fq 30 5 11,2", "F": 30, "n": 15, "f0": 6, "orbits": 20, "error": "alpha lists too large (174803 x 87422)", "secs": 14.6}
+{"job": "fq 30 5 17,2", "F": 30, "n": 15, "f0": 3, "orbits": 10, "alpha_quads": 317548, "row2": 341, "row0_classes": 171, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 119.8}
+{"job": "fq 30 5 17,14", "F": 30, "n": 15, "f0": 3, "orbits": 10, "alpha_quads": 317548, "row2": 341, "row0_classes": 171, "S_solutions": 0, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 120.7}
+{"job": "fq 30 5 29,2", "F": 30, "n": 15, "f0": 6, "orbits": 16, "error": "alpha lists too large (10923 x 5462)", "secs": 0.5}

@@ -56,12 +56,57 @@ def main(m, mu, K, Y, N=20000, levels=None, seed=1):
         _, keep = np.unique(V[:200].T, axis=0, return_index=True); keep = np.sort(keep)
         return gauss_bits(V[:, keep], T[keep])
     out = dict(m=m, mu=mu, K=K, F=F, H2=round(H2, 2), orders=ds)
+    if F % 2 == 0 and (F // 2) % 2 == 1:
+        out['h_D'] = round(h_D(S, Y, pats), 2)
     allb = bits(ds); out['all'] = allb
     if levels:
         for lv in levels:
             out['level_' + ','.join(map(str, lv))] = bits(lv)
     print(json.dumps(out), flush=True)
     return out
+
+def h_D(S, Y, pats):
+    """exact H(D | S) for the Z_2 split of Z_F (F = 2n, n odd): per block and per M-orbit pair {e0(b), e1(b)} (b over
+    the M-orbit representatives of Z_n, each counted once), the joint x-values on the two fibres; S = x(e0, z) + x(e1, z)
+    as a function on Z_K; H(D|S) = E log2 mult(S) under uniform independent patterns of the two lifts"""
+    from collections import Counter
+    F, m, K = S.F, S.m, S.K; n = F // 2
+    e0 = [next(g for g in range(F) if g % 2 == 0 and g % n == b) for b in range(n)]
+    e1 = [next(g for g in range(F) if g % 2 == 1 and g % n == b) for b in range(n)]
+    # M-orbit representatives on Z_n
+    Mg = S.Mg; seen = set(); breps = []
+    for b in range(n):
+        if b in seen: continue
+        breps.append(b)
+        for a in Mg: seen.add(b * a % n)
+    # fibre of g in Z_F: elements x of Z_m with x mod F = g, ordered by x mod K; map part (orbit id) -> list of z
+    def fib(g):
+        z = {}
+        for x in range(g, m, F): z.setdefault(int(S.orb[x]), []).append(x % K)
+        return z
+    tot = 0.0
+    for k in range(4):
+        for b in breps:
+            g0, g1 = e0[b], e1[b]
+            j0, j1 = int(S.Fo[g0]), int(S.Fo[g1])
+            f0, f1 = fib(g0), fib(g1)
+            P0, P1 = pats[k][j0], pats[k][j1]
+            # pattern columns correspond to S.parts[j] order; the fibre of g (not the rep) is an M-image of the rep's
+            # fibre: use the parts of the representative and map by the multiplier taking rep -> g
+            def xvals(j, g, P):
+                rep = S.freps[j]; a = next(a for a in Mg if rep * a % F == g)
+                vals = np.zeros((len(P), K), np.int64)
+                for i, (o, sz) in enumerate(S.parts[j]):
+                    zs = [(x * a) % m % K for x in range(rep, m, F) if int(S.orb[x]) == o]
+                    vals[:, zs] = P[:, [i]]
+                return vals
+            X0 = xvals(j0, g0, P0); X1 = xvals(j1, g1, P1)
+            cnt = Counter()
+            for u in X0:
+                for w in X1: cnt[tuple(u + w)] += 1
+            N = len(X0) * len(X1)
+            tot += sum((c / N) * math.log2(c) for c in cnt.values())
+    return tot
 
 if __name__ == "__main__":
     a = sys.argv[1:]; opt = {"--idx": "0", "--N": "20000", "--levels": ""}; pos = []; i = 0
