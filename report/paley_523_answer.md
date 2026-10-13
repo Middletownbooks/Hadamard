@@ -306,6 +306,21 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - order-18 equations 37.23 bits on the real residuals (Mahalanobis 0.05);
   - **D-success 2^−26.02 per S-solution** against the model's 2^−26.14 (a 500-solution subsample gives 2^−26.06).
     So the production y needs about 6.8·10^7 S-solutions per core.
+- **The Gaussian tail of the D-level, checked where it can be counted [M against E]** (`theory/q523_dtail_check.py`,
+  all 2.36M D-candidates of the same 1000 S-solutions). Exact fraction of candidates hitting the target on a subset
+  of the Z₉ lags against the Gaussian fitted to the same candidates:
+
+| lags | hits | exact (bits) | Gaussian (bits) |
+|---|---|---|---|
+| 0 | 255,807 | 3.21 | 3.19 |
+| 1 | 171 | 13.76 | 13.66 |
+| 2 | 193 | 13.58 | 13.66 |
+| 0, 3 | 1,405 | 10.72 | 10.72 |
+| 0, 1 | 24 | 16.59 | 16.85 |
+| all (0–4) | 0 | – | 37.2 |
+
+  - Agreement within 0.1–0.26 bit up to 17 bits, and where they differ the candidates hit slightly more often than
+    the Gaussian says. The 37.2 bits of the full level are an extrapolation of the same fit.
 - **The deficit is pinned [M].**
   - Reweighting the S-lists by m(S)^β, β = 1 … 4, leaves the D-freedom of the S-solutions found at 36.0–36.3 bits.
     The S-level lag-0 equation forces the S-energy to half the total, which balances S = 0 pairs (6 D-options)
@@ -496,6 +511,8 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - **179.2M are D-checked (2^27.42): 2.42 expected cores by the model, 2.63 by the measured D-success. There is no
     core yet.**
   - With no core, the probability of seeing none so far is e^−2.63 = 0.07.
+  - The D-level Gaussian behind the measured D-success matches exact counts on 2.36M real D-candidates to within
+    0.26 bit wherever counting is possible (up to 17 bits; §3.4).
   - Checks for silent losses: no D-solution of any kind has been recorded (no `CORE` line, verified or not); on the
     1000 sampled production S-solutions the largest D₃-solution count is 1610, far below the expansion cap of 65,536,
     and every D-check ran on the compiled path (status 0).
