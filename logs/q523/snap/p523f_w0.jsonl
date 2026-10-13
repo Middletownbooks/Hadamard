@@ -35,3 +35,7 @@
 {"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 18.6, "worker": 0, "t": 1791851311.7}
 {"stage": "prediction", "centre": 9, "fine_bits": 54.36, "mahal": 1.24, "predicted_s_solutions_log2": 20.2, "worker": 0, "t": 1791851367.7}
 {"stage": "S-join resumed", "centre": 9, "next_pass": 10650, "passes": 16007, "hits": 2396832, "worker": 0, "t": 1791851372.4}
+{"stage": "S-join", "centre": 9, "parents": [133, 193], "side_log2": [36.97, 37.59], "P": 16007, "hash_hits": 3601929, "overflow": 0, "probes_log2": 38.31, "s_solutions": 3601929, "secs": 2063.7, "worker": 0, "t": 1791853431.4}
+{"stage": "D-check", "centre": 9, "checked": 3601929, "d3_solutions": 811431082, "secs": 6156.0, "total_s": 3601929, "total_secs": 8294.2, "worker": 0, "t": 1791859587.3}
+{"stage": "prediction", "centre": 10, "fine_bits": 54.5, "mahal": 1.25, "predicted_s_solutions_log2": 19.45, "worker": 0, "t": 1791859643.2}
+{"stage": "S-join", "centre": 10, "parents": [180, 98], "side_log2": [37.33, 36.61], "P": 20611, "hash_hits": 2259410, "overflow": 0, "probes_log2": 38.02, "s_solutions": 2259410, "secs": 5131.3, "worker": 0, "t": 1791864774.5}

@@ -491,11 +491,11 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     every checkpoint is idle, so the "idle > 5 min means orphaned" rule picked them up. One remainder (629,305 checks)
     was done twice before p523i was stopped. A run now takes another run's checkpoints only when named with `--adopt`,
     and the tally counts each checkpoint file once.
-- **Status (2026-10-13 00:30 UTC; tally `python3 logs/q523/tally_523.py`):**
-  - 69 middle values have been joined, giving 139.3M S-solutions;
-  - **136.7M are D-checked (2^27.03): 1.85 expected cores by the model, 2.01 by the measured D-success. There is no
+- **Status (2026-10-13 04:31 UTC; tally `python3 logs/q523/tally_523.py`):**
+  - 74 middle values have been joined, giving 157.2M S-solutions;
+  - **152.8M are D-checked (2^27.19): 2.07 expected cores by the model, 2.25 by the measured D-success. There is no
     core yet.**
-  - With no core, the probability of seeing none so far is e^−2.01 = 0.13.
+  - With no core, the probability of seeing none so far is e^−2.25 = 0.11.
   - Checks for silent losses: no D-solution of any kind has been recorded (no `CORE` line, verified or not); on the
     1000 sampled production S-solutions the largest D₃-solution count is 1610, far below the expansion cap of 65,536,
     and every D-check ran on the compiled path (status 0).
