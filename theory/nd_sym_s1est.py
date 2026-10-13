@@ -9,7 +9,7 @@ Here:
   * the probability that the remaining lags (h = 1 .. F/2) hit the target is the lattice-coordinate Gaussian of
     theory/q523_gauss.py fitted to quadruples drawn uniformly from that set (energy split drawn with its exact weight,
     then each block uniform in its (energy, row) class by backward sampling of the DP).
-usage: python3 theory/nd_sym_s1est.py F q s [--N 200000] [--seed 1]"""
+usage: python3 theory/nd_sym_s1est.py F q s [--N 200000] [--seed 1] [--nosym]   (q may be a prime power)"""
 import sys, os, math, json
 import numpy as np
 from collections import defaultdict
@@ -21,8 +21,11 @@ def letters(q, s):
     L = sorted({a + f * c for a in (1, -1) for c in range(-s, s + 1, 2)})
     return L, f
 
+SYM = True
+
 def orbit_positions(F):
-    """negation orbits of Z_F: representative and size"""
+    """negation orbits of Z_F (or single points with --nosym): representative and size"""
+    if not SYM: return [(g, 1) for g in range(F)]
     seen = set(); reps = []
     for g in range(F):
         if g in seen: continue
@@ -60,7 +63,9 @@ def sample_block(reps, tabs, L, unit, e, r, rng):
 
 def expand(F, reps, vals):
     y = np.zeros(F, np.int64)
-    for (g, w), v in zip(reps, vals): y[g] = v; y[(-g) % F] = v
+    for (g, w), v in zip(reps, vals):
+        y[g] = v
+        if SYM: y[(-g) % F] = v
     return y
 
 def main(F, q, s, N=200000, seed=1):
@@ -112,6 +117,7 @@ def main(F, q, s, N=200000, seed=1):
 
 if __name__ == "__main__":
     a = sys.argv[1:]; opt = {"--N": "200000", "--seed": "1"}; pos = []; i = 0
+    if "--nosym" in a: SYM = False; a.remove("--nosym")
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: pos.append(int(a[i])); i += 1
