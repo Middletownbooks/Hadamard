@@ -487,6 +487,10 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   was reclaimed and the workers were killed. The disk survived; all four workers were restarted with `--resume` from
   their checkpoints (interrupted D-checks continue from their last 2000-check mark, joins from their last 10-minute
   checkpoint), so no S-solution was lost, only about 1.8 hours of run time.
+  - On that restart p523i also took up p523f's two interrupted D-checks, which p523f was resuming itself: after a crash
+    every checkpoint is idle, so the "idle > 5 min means orphaned" rule picked them up. One remainder (629,305 checks)
+    was done twice before p523i was stopped. A run now takes another run's checkpoints only when named with `--adopt`,
+    and the tally counts each checkpoint file once.
 - **Status (2026-10-13 00:30 UTC; tally `python3 logs/q523/tally_523.py`):**
   - 69 middle values have been joined, giving 139.3M S-solutions;
   - **136.7M are D-checked (2^27.03): 1.85 expected cores by the model, 2.01 by the measured D-success. There is no
