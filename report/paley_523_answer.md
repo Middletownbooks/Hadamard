@@ -491,14 +491,19 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     every checkpoint is idle, so the "idle > 5 min means orphaned" rule picked them up. One remainder (629,305 checks)
     was done twice before p523i was stopped. A run now takes another run's checkpoints only when named with `--adopt`,
     and the tally counts each checkpoint file once.
-- **Status (2026-10-13 04:31 UTC; tally `python3 logs/q523/tally_523.py`):**
-  - 74 middle values have been joined, giving 157.2M S-solutions;
-  - **152.8M are D-checked (2^27.19): 2.07 expected cores by the model, 2.25 by the measured D-success. There is no
+- **Status (2026-10-13 08:33 UTC; tally `python3 logs/q523/tally_523.py`):**
+  - 78 middle values have been joined, giving 166.5M S-solutions;
+  - **164.9M are D-checked (2^27.30): 2.23 expected cores by the model, 2.42 by the measured D-success. There is no
     core yet.**
-  - With no core, the probability of seeing none so far is e^−2.25 = 0.11.
+  - With no core, the probability of seeing none so far is e^−2.42 = 0.09.
   - Checks for silent losses: no D-solution of any kind has been recorded (no `CORE` line, verified or not); on the
     1000 sampled production S-solutions the largest D₃-solution count is 1610, far below the expansion cap of 65,536,
     and every D-check ran on the compiled path (status 0).
+  - Check that the equations searched are the right ones at q = 29 (the planted tests cannot see this, since they
+    plant and search with the same tables): `theory/q523_algebra.py` re-run on 2026-10-13 gives `arith_ok` (the q = 29
+    η-basis tables against complex numerics), `P_vs_fft_523` (the stage-2 signature against a direct 2-D FFT PAF at
+    the 523 shape with the production y) and the target 4v·δ on the H(164) core; the same target formula produced
+    the verified H(940) at v = 235.
   - The run checks about 4M S-solutions per hour, about 17–19 hours per expected core. It continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
