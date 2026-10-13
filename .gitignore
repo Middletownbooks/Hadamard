@@ -113,3 +113,7 @@ logs/q523/prod/ckpt/
 logs/q523/prod/*.jsonl
 logs/q523/prod_*.out
 logs/q523/prod/*.STOP
+logs/c4_wscreen_run.log
+logs/c4_wscreen_3000_4000.jsonl
+logs/c4_qnorm_3000_4000.jsonl
+logs/cyclo/stage1_cpsat_F*.json
