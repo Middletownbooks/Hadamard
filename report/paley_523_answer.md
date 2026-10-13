@@ -19,8 +19,9 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 1. **(A) H(2092): not found yet. The 523 production run is in progress (§6).**
    - It runs on 4 workers with the pipeline that produced H(940) at v = 235.
-   - Expected cost: about 80 core-hours per core [E, calibrated], i.e. about 20 hours on this machine. Cores
-     arrive as a Poisson process. Status: §6.
+   - Realised cost: about 75 core-hours per expected core (about 3.6 ms per S-solution since the kernel upgrade of
+     §3.3, 2^26.1 S-solutions per core), i.e. about 19 hours on this machine. Cores arrive as a Poisson process.
+     Status: §6.
 
 2. **(B) A stage-2 method at about 2^44 per core, validated end to end at the 523 shape.**
    - **Method** (§3). The Z₂ = Z₁₈/Z₉ split of stage 2 gives an S level and a D level, both exact quadruple
@@ -32,19 +33,22 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
        join, then the order-18 equations with an exact prefilter on lags 0 and 3.
    - **Cost at 523 for the y of §5** [M speeds × E count]:
      - S-solutions needed: 2^{D_def} = 2^26.1;
-     - each costs 2^18.1 pair visits (2^{F + 1 − n}, K = 32, n ≈ 37.5) plus one 1.5 ms D-check;
-     - total: 2^44.2 pair visits and 2^26.1 D-checks, **about 80 core-hours**.
+     - each costs 2^18.1 pair visits (2^{F + 1 − n}, K = 32, n ≈ 37.5) plus one 1.5–1.8 ms D-check;
+     - total: 2^44.2 pair visits and 2^26.1 D-checks. Measured: **about 75 core-hours** with the current join
+       kernel, 90 with the previous one (the joins find 1.6 bits more S-solutions than predicted; §3.6).
      - The ideal Wagner cost 2^40.7 is out of reach because a Z₃ middle value has only a few hundred parent pairs
        (§3.3).
    - **H(940), v = 235** (Z₁₈ × quartic Z₁₃, the 523 shape; §4) [M]:
      - found by the production pipeline;
      - **the first core came after 1.07·10^7 S-solutions against 1.04·10^7 predicted**, and the whole round gave
        1 core in 15.6M against 1.5 expected;
-     - verified by two independent finishers (H Hᵀ = 940·I).
+     - verified by three independent checks (H Hᵀ = 940·I), one of them `scripts/verify_h2092.py`, which shares
+       no code with the pipeline.
    - **Calibration at 523 [M vs E]:**
-     - D-success per S-solution: 2^−26.5 … −26.8 measured, 2^−26.5 from the model (§3.4);
-     - S-solutions per middle value: 1.6–2 bits above the Gaussian prediction at production size, so the prediction
-       is conservative;
+     - D-success per S-solution: 2^−26.5 … −26.8 measured, 2^−26.5 from the model (§3.4); for the production y,
+       2^−26.02 measured on 1000 production S-solutions against 2^−26.14 from the model;
+     - S-solutions per middle value: 1.55–1.75 bits above the Gaussian prediction at production size (K = 32), so
+       the prediction is conservative;
      - planted full-size 523 instances: 5/5 recovered;
      - H(316) at v = 79.
    - **Floor of the route.** The D-deficit D_def = C(D|S) − h_D ≈ 26 bits is pinned by the S-level energy equation
@@ -238,16 +242,25 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - The best balance is K ≈ 32–40 with all available parent pairs: n ≈ 37.5–38.9. The ideal n ≈ 40 is out of reach
     with these parents.
   - **Realised S-step per S-solution: 2^{F + 1 − n} ≈ 2^18.1 pair visits (K = 32).**
-- **Kernels** (`theory/q523_wagner.py`, all three return identical hits on every test [M]):
+- **Kernels** (`theory/q523_wagner.py`, all four return identical hits on every test [M]):
   1. `mjoin`: residue passes into a 2^20-entry hash table (about 28 MB, so mostly DRAM latency);
   2. `mjoin_bs`: an L2 bitset prefilter per pass. It is 2.1–2.3× faster, but every pass visits every left fibre
      element, which costs about 2.4·10^6 visits per S-solution at 523 whatever n is;
-  3. `mjoin_rad` (production): one pass per residue class of about 2^23 pairs. The pairs are scattered by their top
-     key bits into 16 partitions, and each partition is joined in cache with two bitsets.
+  3. `mjoin_rad`: one pass per residue class of about 2^23 pairs. The pairs are scattered by their top key bits
+     into 16 partitions, and each partition is joined in cache with two bitsets. About 26 ns per pair visit at 523;
+  4. `mjoin_rad2` (production from 2026-10-11 23:24 UTC): `mjoin_rad` with two residue classes per pass and 32
+     partitions, so each fibre element is visited once per two classes. It also has no modulo in the inner loop,
+     puts the smaller side of each partition in the bitset, and clears the bitset by a sweep.
+     - On a full-size 523 centre (sides 2^37.6 and 2^37.0, 64 residue classes, three samples) it returns the same
+       hit set as `mjoin_rad` (9,142–9,372 hits) and is 1.46–1.61× faster (`theory/q523_joinbench.py`).
+     - Whole runs give the same S-solutions as before: v = 235 (13,323, two centres) and 523 (9,438, K = 32,
+       logN 33).
+     - Profile of `mjoin_rad` per residue class: pair emission 59% (half of it the per-element residue arithmetic
+       and range lookups), partition joins 41%.
 - **Other details:**
   - 64 row sums per row (2^18 Z₃ candidates per block); middle values chosen among realised left sums;
   - parent pairs by linear hashing;
-  - fibres of up to 24 configurations per row (Gumbel top-K by multiplicity weight);
+  - fibres of up to K configurations per row, K = 32 in production (Gumbel top-K by multiplicity weight);
   - every hit re-checked exactly;
   - each S-join's S-solutions and its D-check progress are checkpointed (`theory/q523_prod.py --resume`).
 
@@ -273,6 +286,9 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - 122 real 523 S-solutions (almost all with no D-solution), same D₃-solution counts and solution sets.
 - **Speed at 523 [M]** (122 real S-solutions, one core): **1.5 ms per S-solution** (was 4.5–7 ms).
   - Split: blocks 0.21 ms, D₃ join about 1.0 ms, expansion 0.2 ms, full level about 0.1 ms.
+  - Under the production load (4 workers, 3000 real S-solutions): 1.79 ms, of which blocks 0.27 ms, D₃ join 1.21 ms
+    and expansion plus full level 0.36 ms. The D₃ join enumerates about 2^16.9 key pairs per side (378–589 distinct
+    keys per block), which is the size of the 2+2 join itself, so little more is to be had there.
 - **Bug found and fixed in this session [M].** The first compiled version returned its whole zero-filled solution
   buffer from two early exits (no D₃ match, oversized block). Every S-solution without a D₃ match then reported 64
   all-zero "solutions", and assembly stopped with an alphabet assertion.
@@ -284,6 +300,12 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
   - 2^7.5–7.7 D₃-solutions per S-solution and 2^10.4–10.8 D-candidates;
   - order-18 equations 37.2–37.3 bits on the real residuals (Mahalanobis 0.2–0.5);
   - **D-success 2^−26.8, 2^−26.7, 2^−26.5 per S-solution** (model: 2^{h_D − C(D|S)} = 2^−26.5).
+- **Measured on production S-solutions** (y of §5, K = 32 lists; `theory/q523_dsuccess_real.py` on 1000 S-solutions
+  drawn from one production join, saved in `logs/q523/ssol_sample_p523f_w2_c7.npy`):
+  - 2^7.84 D₃-solutions and 2^11.21 D-candidates per S-solution;
+  - order-18 equations 37.23 bits on the real residuals (Mahalanobis 0.05);
+  - **D-success 2^−26.02 per S-solution** against the model's 2^−26.14 (a 500-solution subsample gives 2^−26.06).
+    So the production y needs about 6.8·10^7 S-solutions per core.
 - **The deficit is pinned [M].**
   - Reweighting the S-lists by m(S)^β, β = 1 … 4, leaves the D-freedom of the S-solutions found at 36.0–36.3 bits.
     The S-level lag-0 equation forces the S-energy to half the total, which balances S = 0 pairs (6 D-options)
@@ -312,15 +334,23 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 ### 3.6 Cost per core (Q1 answer)
 
 - A core needs 2^{D_def} S-solutions [E, calibrated in §3.4]. Each one costs:
-  - **S-step:** 2^{F + 1 − n} pair visits (§3.3; F ≈ 53.3–53.8 and n ≈ 35–36 [M]);
-  - **D-check:** 1.5 ms [M] (§3.4).
-- **523, y of §5 (D_def = 26.14):**
-  - S-step: 2^{26.14 + 54.3 − 35} ≈ 2^45.4 pair visits at n = 35, or 2^45.0 at n = 35.9 (128 row sums per row);
-  - D-checks: 2^26.14 × 1.5 ms = 31 core-hours;
-  - S-joins at the measured join speed: PENDING_SJOIN.
+  - **S-step:** 2^{F + 1 − n} pair visits (§3.3; F ≈ 54.4–54.5 and n ≈ 37–38 with K = 32 [M]);
+  - **D-check:** 1.5 ms on an idle machine, 1.8 ms with four workers sharing it [M] (§3.4, §6).
+- **523, y of §5 (D_def = 26.14, so 2^26.14 ≈ 7.4·10^7 S-solutions per core):**
+  - S-step: 2^{26.14 + 18.1} ≈ 2^44.2 pair visits;
+  - measured join speed: 22–30 ns per pair visit (2^37.4–2^38.8 visits per K = 32 join, four workers) [M];
+  - the K = 32 joins find 1.55–1.75 bits more S-solutions than the Gaussian predicts (§6), so a found S-solution
+    costs 2.4–3.0 ms of join [M], not the 7 ms of the prediction;
+  - **realised total with `mjoin_rad`: 4.2–4.8 ms per S-solution, about 90 core-hours per expected core** [M rates ×
+    E count];
+  - with `mjoin_rad2` (from 23:24 UTC on 2026-10-11) the production joins run 1.34–1.79× faster (residue classes
+    per second on the same three centres, before the switch and over the rest of each join after it), so about
+    1.8 ms of join + 1.8 ms of D-check: **about 3.6 ms per S-solution, 75 core-hours per expected core** [M rates ×
+    E count];
+  - smaller lists are worse: K = 24 at logN 35 cost 8.7 ms of join + 1.9 ms of D-check per S-solution (p523h, §6).
 - **Ideal Wagner cost:** 2^{(F + D_def)/2 + 1} ≈ 2^40.7 pair visits. It needs one middle value with about 5000
   parent pairs per side, and the Z₃ middle level only offers about 500 (§3.3). That is the gap between this route's
-  2^45 and its ideal.
+  2^44 and its ideal.
 - **Floor of the route** with these parents: 2^{D_def} × (2^{F + 1 − n_max} + D-check). D_def does not respond to
   list reweighting (§3.4) and moves by at most about 0.5 bit with y (§5).
 
@@ -350,8 +380,10 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
     about 3.56M on worker 0 up to its core. That is 1 core against 1.5 expected. There were 60.5 D₃-solutions per
     S-solution;
   - core `data/core_v235_b1_q523_v235e_w0.txt`; bordered completion `data/H940_v235_q523.npz`;
-  - verified by `theory/q523_finish.py` (H Hᵀ = 940·I exactly, SHA-256 of the packed rows c9e84f66…) and by
-    `theory/paley_b1pipe.py verifycyclic` (`logs/q523/finish_v235.json`).
+  - verified by `theory/q523_finish.py` (H Hᵀ = 940·I exactly, SHA-256 of the packed rows c9e84f66…), by
+    `theory/paley_b1pipe.py verifycyclic` (`logs/q523/finish_v235.json`), and by `scripts/verify_h2092.py`, which
+    shares no code with `theory/` (pattern of `scripts/verify_h2292.py`; same SHA-256). The same script will verify
+    the 523 core.
   - Three earlier attempts were lost to bugs, all now fixed:
     - v235a and v235b: the D-check buffer bug of §3.4;
     - v235d: the OOM killer, during the exact re-check of about 2^21 hits per centre. That re-check built Python
@@ -414,20 +446,60 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ## 6. The 523 run
 
-- **y:** `logs/q523/y523_best.json` (§5). D_def = 26.14, so a core needs about 2^26.1 ≈ 7·10^7 S-solutions [E].
-- **Runs** (`logs/q523/prod/`):
+- **y:** `logs/q523/y523_best.json` (§5). D_def = 26.14 (model), so a core needs about 2^26.14 ≈ 7.4·10^7
+  S-solutions [E]; measured on 1000 production S-solutions, 2^26.02 ≈ 6.8·10^7 (§3.4).
+- **Runs** (`logs/q523/prod/`, all on the same y; the live logs are copied to `logs/q523/snap/` at each status update;
+  "excess" is log₂ found − log₂ predicted per middle value):
 
-| tag | lists | middle values | S-solutions found | D-checks | cores |
-|---|---|---|---|---|---|
-| p523a | K = 24, logN 35, first kernel | stopped for the kernel upgrade | – | – | – |
-| p523b | full row fibres | stopped: F = 61.3 (predicted 2^11.2 per centre) | – | – | – |
-| p523c | K = 24, logN 35, radix kernel | 1 | 114,471 (2^16.8; predicted 2^15.8) | 114,471 | 0 |
-| p523d | K = 32, all parent pairs, pass 2^24 | PENDING_P523D | | | |
+| tag | lists | middle values | S-solutions found | excess (bits) | ms per S-solution: join + D-check | cores |
+|---|---|---|---|---|---|---|
+| p523a | K = 24, logN 35, first kernel | stopped for the kernel upgrade | – | – | – | – |
+| p523b | full row fibres | stopped: F = 61.3 (predicted 2^11.2 per centre) | – | – | – | – |
+| p523c (D-checks finished by p523d) | K = 24, logN 35 | 1 | 114,471 | 1.0 | 9.6 + 1.8 | 0 |
+| p523e (D-checks finished by p523g) | K = 32, logN 38, pass 2^24 | 2 | 5,815,230 | 1.64–1.69 | 2.6 + 1.7 | 0 |
+| p523f, 3 workers | K = 32, logN 38, pass 2^23 | 14 + running | 46,036,472 | 1.55–1.74 | 2.6 + 1.8 | 0 |
+| p523g | K = 32, logN 38 | 1 | 948,056 | 1.61 | 4.2 + 1.8 | 0 |
+| p523h | K = 24, logN 35 | 26 | 3,522,576 | 1.03–1.22 | 8.7 + 1.9 | 0 |
+| p523i | K = 32, logN 38 (replaces p523h) | running | – | – | – | – |
 
-- **Measured rates [M]:**
-  - S-join: 1,103 s for 2^35.6 pair visits with the CPU oversubscribed;
-  - D-check: 1.3–1.6 ms per S-solution.
-- **Status: PENDING_STATUS.**
+- **Measured rates [M], 4 workers on 4 cores:**
+  - K = 32 joins visit 2^37.4–2^38.8 pairs in 1.1–4.0 hours (22–30 ns per pair visit) and find 2^19.9–2^22.7
+    S-solutions each, 1.55–1.75 bits above the Gaussian prediction;
+  - D-check: 1.7–1.9 ms per S-solution (1.5 ms on an idle machine, §3.4);
+  - so 4.2–4.8 ms per S-solution in all at K = 32, about 90 core-hours per expected core; K = 24 lists cost 10.6 ms;
+  - since 23:24 UTC the join kernel `mjoin_rad2` (§3.3) runs 1.34–1.79× faster in production (three centres joined
+    partly with each kernel: 1.59 → 2.18, 1.89 → 3.39 and 1.24 → 1.66 residue classes per second): about 3.6 ms per
+    S-solution, 75 core-hours per expected core. (The `secs` of an S-join record count only the part of the join run
+    by the process that finished it.)
+- **Memory fix and restart (2026-10-11 22:50 UTC).**
+  - A K = 32 worker held 3.3–3.7 GB, so only three fitted into the 14.3 GB cgroup and the fourth ran K = 24 lists
+    (p523h), at 2.4× the cost per S-solution.
+  - About 2.5 GB of it was the int64 S-signatures of one block's fibres (about 300 bytes per configuration). They
+    were kept in a list while the block's join keys were built, and the last block's list stayed alive through the
+    join and the D-checks. The fibres are now consumed one at a time.
+  - The new code gives identical S-solutions on a v = 235 test (13,323 of 13,323, same digest). A K = 32 worker now
+    needs about 1.5 GB during its join, and all four workers run K = 32 (p523f resumed, p523i replaces p523h).
+  - A restarted worker now resumes its own interrupted D-check whatever the age of its progress file, then continues
+    after the last centre it joined. This was tested by killing and resuming a v = 235 run in mid D-check.
+  - The tally (`logs/q523/tally_523.py`) now also counts the checks a killed process made before its D-check was
+    resumed: 0.92M checks, previously missed.
+- **Outage (2026-10-12 22:41 – 2026-10-13 00:29 UTC).** The session went idle with no watch armed, the container
+  was reclaimed and the workers were killed. The disk survived; all four workers were restarted with `--resume` from
+  their checkpoints (interrupted D-checks continue from their last 2000-check mark, joins from their last 10-minute
+  checkpoint), so no S-solution was lost, only about 1.8 hours of run time.
+  - On that restart p523i also took up p523f's two interrupted D-checks, which p523f was resuming itself: after a crash
+    every checkpoint is idle, so the "idle > 5 min means orphaned" rule picked them up. One remainder (629,305 checks)
+    was done twice before p523i was stopped. A run now takes another run's checkpoints only when named with `--adopt`,
+    and the tally counts each checkpoint file once.
+- **Status (2026-10-13 00:30 UTC; tally `python3 logs/q523/tally_523.py`):**
+  - 69 middle values have been joined, giving 139.3M S-solutions;
+  - **136.7M are D-checked (2^27.03): 1.85 expected cores by the model, 2.01 by the measured D-success. There is no
+    core yet.**
+  - With no core, the probability of seeing none so far is e^−2.01 = 0.13.
+  - Checks for silent losses: no D-solution of any kind has been recorded (no `CORE` line, verified or not); on the
+    1000 sampled production S-solutions the largest D₃-solution count is 1610, far below the expansion cap of 65,536,
+    and every D-check ran on the compiled path (status 0).
+  - The run checks about 4M S-solutions per hour, about 17–19 hours per expected core. It continues.
 
 ## 7. 739 (Q5): the quartic slice is exactly empty [P, M]
 
@@ -455,13 +527,13 @@ Scripts: `theory/q523_*.py`. Logs: `logs/q523/`. Cores: `data/core_v*_b1_q523_*.
 
 ## 9. What would change the picture
 
-- **A larger middle level.** The S-step costs 2^{F + 1 − n} per S-solution, and n is capped near 36 because a Z₃
-  middle value has only about 500 parent pairs (§3.3). Two changes would allow n ≈ 39:
-  - enumerate parents lazily, about 2^24 per block, by hashing their Z₃ signatures through the per-row
-    decomposition (self + cross terms, as in the D-check);
-  - make fibres cheaper in memory.
-  The S-step would then fall below the D-check, and a core would cost about 2^26.1 D-checks ≈ 33 core-hours
-  instead of about 80–100.
+- **A larger middle level.** The S-step costs 2^{F + 1 − n} per S-solution. With K = 32 lists n ≈ 37–38, because a
+  Z₃ middle value has only a few hundred parent pairs (§3.3).
+  - Lazy parents (up to 2^24 per block, `theory/q523_wagner2.py`) give no more pairs than 128 row sums per row
+    (182–426 against 321–461): the extra parents have atypical Z₃ signatures.
+  - Larger K raises F almost as fast as n (§3.3).
+  - A middle level with n ≈ 40 at F ≈ 54 would bring the S-step to about 2^15 pair visits per S-solution, well
+    below the D-check. A core would then cost about 2^26.1 D-checks ≈ 37 core-hours instead of about 90.
 - **The D-deficit.** It is pinned by the S-level energy equation (§3.4) and moves by at most about 0.5 bit with y
   (§5). The only further lever found is the pairing of big letters across (g, g + 9). It is capped by the lag-9
   equation and is worth about 0.25 bit.
@@ -486,7 +558,11 @@ python3 theory/q523_ymitm.py 18 29 4 --comp 13:10,15:1,1:61 --N 20 --secs 300 --
 python3 theory/q523_yscreen.py 18 29 4 logs/q523/y523/*.json                   # y-screen (section 5)
 python3 theory/q523_ycomp.py 18 29 4 --real logs/q523/y523_best.json --comps "15:1,29:2,1:69" # composition screen
 python3 theory/q523_stage1.py 18 41 4 --list-comps                              # 739: no lag-0 composition (section 7)
-python3 theory/q523_prod.py 18 13 4 logs/q523/y_v235_a.json --tag v235d --workers 3 --logN 35 --seed 500 --resume
-python3 theory/q523_prod.py 18 29 4 logs/q523/y523_best.json --tag p523c --workers 4 --logN 35 --seed 3000 --resume
+python3 theory/q523_prod.py 18 13 4 logs/q523/y_v235_a.json --tag v235e --workers 3 --logN 35 --K 24 --seed 600 --resume   # H(940)
+python3 theory/q523_prod.py 18 29 4 logs/q523/y523_best.json --tag p523f --workers 3 --hours 400 --logN 38 --K 32 \
+    --rows 64 --beta 1 --seed 6000 --pass 23 --resume                         # the 523 run (and p523i: --workers 1 --seed 9000)
+python3 logs/q523/tally_523.py                                                  # S-solutions produced / D-checked / expected cores
+python3 theory/q523_joinbench.py --classes 64 --p0 1000                         # mjoin_rad vs mjoin_rad2 on one full-size centre
 python3 theory/q523_finish.py data/core_v79_b1_q523_sdsolve.txt                # completion + exact H H^T = N I
+python3 scripts/verify_h2092.py data/core_v235_b1_q523_v235e_w0.txt OUT.npz  # independent check (H(940); the 523 core likewise)
 ```

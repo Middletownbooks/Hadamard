@@ -1,0 +1,7 @@
+{"stage": "start", "seed": 7000, "logN": 38.0, "K": 32, "rows": 64, "beta": 1.0, "planted": false, "worker": 0, "t": 1791710862.0}
+{"stage": "D-check (resumed)", "file": "p523e_w0_yec3b2ee8_c1.npy", "start": 840000, "checked": 1483820, "d3_solutions": 331833627, "secs": 2806.8, "worker": 0, "t": 1791713668.9}
+{"stage": "candidates", "per_block": [262144, 262144, 262144, 262144], "secs": 2.5, "worker": 0, "t": 1791713671.4}
+{"stage": "prediction", "centre": 0, "fine_bits": 54.5, "mahal": 1.27, "predicted_s_solutions_log2": 18.24, "worker": 0, "t": 1791713709.0}
+{"stage": "S-join", "centre": 0, "parents": [103, 78], "side_log2": [36.45, 36.29], "P": 11213, "hash_hits": 948056, "overflow": 0, "probes_log2": 37.37, "s_solutions": 948056, "secs": 3953.8, "worker": 0, "t": 1791717662.8}
+{"stage": "D-check", "centre": 0, "checked": 948056, "d3_solutions": 204173545, "secs": 1655.2, "total_s": 948056, "total_secs": 5649.1, "worker": 0, "t": 1791719318.0}
+{"stage": "prediction", "centre": 1, "fine_bits": 54.41, "mahal": 1.27, "predicted_s_solutions_log2": 20.06, "worker": 0, "t": 1791719384.5}

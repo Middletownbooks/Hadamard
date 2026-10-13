@@ -9,11 +9,12 @@ with every right parent pair with Z3sig(phi_2) + Z3sig(phi_3) = T3 - c.  The S-s
 configurations from these fibres whose full S-signatures (S-level PAF on Z_F2, lags 0..F2/2) sum to T_S: a 2+2 join
 whose sides are unions of fibre products over many parents (so a side is not limited to one parent's fibres).
 Fibres hold up to K configurations per row (sampled without replacement with weight prod m(s)^beta, m(s) = number of
-D-options of the pair value s).  Join: residue passes (additive hash mod P), cache-sized open-addressing table,
-numba; every hit is re-checked exactly.
-D-lag-0 filter: the D-level lag-0 value sum_g |D(g)|^2 depends on S except on pairs whose options differ in norm; an
-S-solution is kept only if the D-level lag-0 target is reachable (exact subset-sum over those pairs).
-D-check: theory/q523_sdsolve.d_check (Z3 class split on D, then the full D-level join); assembly and 2-D FFT check.
+D-options of the pair value s).  Join (production kernel mjoin_rad2): passes of join_G residue classes of an additive
+hash mod P; the pairs of a pass are scattered into radix partitions by their top key bits and each partition is
+joined in cache (two bitsets and a small table); numba; every hit is re-checked exactly.  The earlier kernels
+(mjoin, mjoin_bs, mjoin_rad) return the same hits and are kept for the tests.
+D-check: theory/q523_dcheck2.py (row-factored: Z3 class split on D, bitset 2+2 join, full D level); assembly and
+2-D FFT check.  (dlag0_filter, the S-determined D-lag-0 test, rejected nothing in practice and is not used.)
 usage: python3 theory/q523_wagner.py F q s y.json [--beta 1.5] [--rows 24] [--K 24] [--logN 30] [--ncent 4]
           [--seed 0] [--table-bits 20] [--out core.txt] [--planted]"""
 import sys, os, json, math, time, itertools as it
@@ -332,6 +333,164 @@ def mjoin_rad(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, 
                                 hits, nh, maxhits, bs2, bb2)
     return hits[:min(nh, maxhits)], nh, nl, nr, over
 
+# ------------------------------------------------------------------ radix join, G residue classes per pass (production)
+@numba.njit(cache=True)
+def _emit2(keyX, resX, offX, keyY, rstY, lpX, lpY, P, lo, G, sgn, kT, sh, pos, end, outk, outi):
+    """pairs (x, y) over the parent pairs with (resX[x] + resY[y]) % P in lo, lo + 1, ..., lo + G - 1 (mod P), from
+    the CSR residue ranges (at most two intervals per x); key = keyX + keyY (sgn > 0) or kT - keyX - keyY (sgn < 0),
+    scattered into fixed partition slots pos[i] .. end[i] by key >> sh.  Returns False if a slot overflowed."""
+    ok = True
+    for j in range(lpX.shape[0]):
+        fx = lpX[j]; fy = lpY[j]
+        for x in range(offX[fx], offX[fx + 1]):
+            r0 = lo - resX[x]
+            if r0 < 0: r0 += P
+            r1 = r0 + G
+            if r1 <= P:
+                a0 = rstY[fy, r0]; a1 = rstY[fy, r1]; b0 = 0; b1 = 0
+            else:
+                a0 = rstY[fy, r0]; a1 = rstY[fy, P]; b0 = rstY[fy, 0]; b1 = rstY[fy, r1 - P]
+            kx = keyX[x] if sgn > 0 else kT - keyX[x]
+            xi = np.int64(x) << 32
+            for t in range(a0, a1):
+                key = kx + keyY[t] if sgn > 0 else kx - keyY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < end[part]:
+                    outk[i] = key; outi[i] = xi | np.int64(t); pos[part] = i + 1
+                else:
+                    ok = False
+            for t in range(b0, b1):
+                key = kx + keyY[t] if sgn > 0 else kx - keyY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < end[part]:
+                    outk[i] = key; outi[i] = xi | np.int64(t); pos[part] = i + 1
+                else:
+                    ok = False
+    return ok
+
+@numba.njit(cache=True)
+def _emit2_count(keyX, resX, offX, keyY, rstY, lpX, lpY, P, lo, G, sgn, kT, sh, cnt):
+    for j in range(lpX.shape[0]):
+        fx = lpX[j]; fy = lpY[j]
+        for x in range(offX[fx], offX[fx + 1]):
+            r0 = lo - resX[x]
+            if r0 < 0: r0 += P
+            r1 = r0 + G
+            if r1 <= P:
+                a0 = rstY[fy, r0]; a1 = rstY[fy, r1]; b0 = 0; b1 = 0
+            else:
+                a0 = rstY[fy, r0]; a1 = rstY[fy, P]; b0 = rstY[fy, 0]; b1 = rstY[fy, r1 - P]
+            kx = keyX[x] if sgn > 0 else kT - keyX[x]
+            for t in range(a0, a1):
+                key = kx + keyY[t] if sgn > 0 else kx - keyY[t]
+                cnt[np.int64(key >> sh)] += 1
+            for t in range(b0, b1):
+                key = kx + keyY[t] if sgn > 0 else kx - keyY[t]
+                cnt[np.int64(key >> sh)] += 1
+
+@numba.njit(cache=True)
+def _part_join2(Sk, Si, s0, s1, Bk, Bi, b0, b1, s_is_left, bs, bb, rbits, hk, hv, hits, nh, maxhits, bs2, bb2):
+    """exact key matches between the smaller side S = Sk[s0:s1] and the bigger side B = Bk[b0:b1] of a partition:
+    bitset bs over S, the B keys that hit it go into a small table (and bitset bs2), then S is rescanned through bs2
+    and looked up exactly.  Hits are (left x, left t, right x, right t) whichever side is S.  bs is cleared by a
+    sequential sweep, bs2 and the table through the inserted keys; bs, bs2 zero and hv = -1 on entry and exit."""
+    ur = np.uint64(rbits); sh = np.uint64(64 - bb); sh2 = np.uint64(64 - bb2)
+    m63 = np.uint64(63); one = np.uint64(1); s6 = np.uint64(6)
+    for i in range(s0, s1):
+        h = (Sk[i] << ur) >> sh; bs[h >> s6] |= one << (h & m63)
+    size = hk.shape[0]; mask = size - 1; umask = np.uint64(mask); nu = 0; cap = size // 2
+    used = np.empty(cap, np.int64)
+    i = b0
+    while i < b1:
+        while i < b1 and nu < cap:
+            key = Bk[i]; h = (key << ur) >> sh
+            if (bs[h >> s6] >> (h & m63)) & one:
+                slot = np.int64(key & umask)
+                while hv[slot] >= 0: slot = (slot + 1) & mask
+                hk[slot] = key; hv[slot] = i; used[nu] = slot; nu += 1
+                h2 = (key << ur) >> sh2; bs2[h2 >> s6] |= one << (h2 & m63)
+            i += 1
+        if nu > 0:
+            for t in range(s0, s1):
+                key = Sk[t]; h2 = (key << ur) >> sh2
+                if not ((bs2[h2 >> s6] >> (h2 & m63)) & one): continue
+                slot = np.int64(key & umask)
+                while hv[slot] >= 0:
+                    if hk[slot] == key:
+                        if nh < maxhits:
+                            bi = hv[slot]
+                            if s_is_left:
+                                hits[nh, 0] = Si[t] >> 32; hits[nh, 1] = Si[t] & 0xFFFFFFFF
+                                hits[nh, 2] = Bi[bi] >> 32; hits[nh, 3] = Bi[bi] & 0xFFFFFFFF
+                            else:
+                                hits[nh, 0] = Bi[bi] >> 32; hits[nh, 1] = Bi[bi] & 0xFFFFFFFF
+                                hits[nh, 2] = Si[t] >> 32; hits[nh, 3] = Si[t] & 0xFFFFFFFF
+                        nh += 1
+                    slot = (slot + 1) & mask
+            for u in range(nu):
+                key = hk[used[u]]; h2 = (key << ur) >> sh2; bs2[h2 >> s6] = np.uint64(0); hv[used[u]] = -1
+            nu = 0
+    # clear bs: a sequential sweep of the words the partition can touch (all of them) is cheaper than a rescan of S
+    nw = np.int64(1) << np.int64(bb - 6)
+    if (s1 - s0) * 4 > nw:
+        for w in range(nw): bs[w] = np.uint64(0)
+    else:
+        for i in range(s0, s1):
+            h = (Sk[i] << ur) >> sh; bs[h >> s6] = np.uint64(0)
+    return nh
+
+@numba.njit(cache=True)
+def mjoin_rad2(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
+               lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk, Li, Rk, Ri, bs, bb, hk, hv, maxhits, bs2, bb2, G, p_lo=0, p_hi=-1):
+    """Same hits as mjoin_rad (as a set).  Each pass takes the G residue classes p .. p + G - 1 of the left pairs
+    together (and the right classes rT - p - G + 1 .. rT - p), so a fibre element is visited once per G classes;
+    pairs are scattered into 2^rbits partitions by their top key bits and each partition is joined in cache
+    (_part_join2).  p_lo .. p_hi is cut into passes of G classes (the last one shorter)."""
+    nparts = 1 << rbits; shp = np.uint64(64 - rbits)
+    cntL = np.zeros(nparts, np.int64); cntR = np.zeros(nparts, np.int64)
+    stL = np.zeros(nparts + 1, np.int64); stR = np.zeros(nparts + 1, np.int64)
+    pos = np.zeros(nparts, np.int64)
+    hits = np.zeros((maxhits, 4), np.int64); nh = 0; nl = 0; nr = 0; over = 0
+    slotL = Lk.shape[0] // nparts; slotR = Rk.shape[0] // nparts
+    endL = np.zeros(nparts, np.int64); endR = np.zeros(nparts, np.int64)
+    if p_hi < 0: p_hi = P
+    p = p_lo
+    while p < p_hi:
+        g = min(G, p_hi - p)
+        q = rT - p - g + 1
+        q = ((q % P) + P) % P
+        for i in range(nparts): pos[i] = i * slotL; endL[i] = (i + 1) * slotL
+        okL = _emit2(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p, g, 1, kT, shp, pos, endL, Lk, Li)
+        for i in range(nparts): stL[i] = i * slotL; cntL[i] = pos[i] - i * slotL
+        for i in range(nparts): pos[i] = i * slotR; endR[i] = (i + 1) * slotR
+        okR = _emit2(keyC, resC, offC, keyD, rstD, rpC, rpD, P, q, g, -1, kT, shp, pos, endR, Rk, Ri)
+        for i in range(nparts): stR[i] = i * slotR; cntR[i] = pos[i] - i * slotR
+        if not (okL and okR):
+            over += 1
+            cntL[:] = 0; cntR[:] = 0
+            _emit2_count(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p, g, 1, kT, shp, cntL)
+            _emit2_count(keyC, resC, offC, keyD, rstD, rpC, rpD, P, q, g, -1, kT, shp, cntR)
+            stL[0] = 0; stR[0] = 0
+            for i in range(nparts):
+                stL[i + 1] = stL[i] + cntL[i]; stR[i + 1] = stR[i] + cntR[i]
+            if stL[nparts] > Lk.shape[0] or stR[nparts] > Rk.shape[0]:
+                return hits[:min(nh, maxhits)], nh, nl, nr, -1
+            for i in range(nparts): pos[i] = stL[i]; endL[i] = stL[i + 1]
+            _emit2(keyA, resA, offA, keyB, rstB, lpA, lpB, P, p, g, 1, kT, shp, pos, endL, Lk, Li)
+            for i in range(nparts): pos[i] = stR[i]; endR[i] = stR[i + 1]
+            _emit2(keyC, resC, offC, keyD, rstD, rpC, rpD, P, q, g, -1, kT, shp, pos, endR, Rk, Ri)
+        for i in range(nparts):
+            nl += cntL[i]; nr += cntR[i]
+            if cntL[i] > 0 and cntR[i] > 0:
+                if cntR[i] <= cntL[i]:
+                    nh = _part_join2(Rk, Ri, stR[i], stR[i] + cntR[i], Lk, Li, stL[i], stL[i] + cntL[i], False, bs, bb, rbits,
+                                     hk, hv, hits, nh, maxhits, bs2, bb2)
+                else:
+                    nh = _part_join2(Lk, Li, stL[i], stL[i] + cntL[i], Rk, Ri, stR[i], stR[i] + cntR[i], True, bs, bb, rbits,
+                                     hk, hv, hits, nh, maxhits, bs2, bb2)
+        p += g
+    return hits[:min(nh, maxhits)], nh, nl, nr, over
+
 # ------------------------------------------------------------------ multi-parent join kernel
 @numba.njit(cache=True)
 def mjoin(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD,
@@ -377,7 +536,8 @@ def mjoin(keyA, resA, offA, keyB, rstB, offB, keyC, resC, offC, keyD, rstD, offD
 
 class Side:
     """concatenated fibres of one block for the join: keys/residues sorted per fibre by residue, CSR by residue;
-    configurations kept as uint8 pair-S indices (S is rebuilt from them on demand)"""
+    configurations kept as uint8 pair-S indices (S is rebuilt from them on demand); fibres is any iterable of
+    (pidx, sig) pairs and is consumed one fibre at a time"""
     def __init__(self, fibres, wts, rho, P):
         keys = []; res = []; offs = [0]; rst = []; pid = []
         for pidx, sig in fibres:
@@ -462,10 +622,11 @@ def recheck(inst, sides, hits, tS, chunk=1 << 17):
 
 def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out=None, log=print, max_dcheck=None,
         deadline=None, stopfile=None, predict=True, ckpt=None, big_middle=False, pass_log2=23.0, start_centre=0,
-        join_ckpt_secs=600.0):
+        join_ckpt_secs=600.0, join_G=2):
     """Centres are reproducible: the lists and hash weights come from seed, and centre ci uses its own generator
     default_rng([seed, ci]).  With ckpt set, the S-join of centre ci saves its hits and next pass to
-    ckpt_c{ci}_join.npz every join_ckpt_secs, and a run started at that centre (start_centre) continues there."""
+    ckpt_c{ci}_join.npz every join_ckpt_secs, and a run started at that centre (start_centre) continues there.
+    The join takes join_G residue classes per pass (mjoin_rad2; same hits as mjoin_rad, about 1.5x faster at G = 2)."""
     t0 = time.time(); rng = np.random.default_rng(seed)
     rows = [block_candidates(inst, k, beta, nrow, K, rng) for k in range(4)]
     if big_middle:
@@ -504,13 +665,16 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
         # materialise the fibres used
         need = [sorted({p[0] for p in Lk}), sorted({p[1] for p in Lk}), sorted({p[0] for p in Rk}), sorted({p[1] for p in Rk})]
         P = next_prime(max(2, 2 ** wL / 2.0 ** pass_log2))            # residue classes of about 2^pass_log2 left pairs
-        sides = []; fid = []
-        for k in range(4):
-            fibres = []
+        # one fibre at a time: a Side keeps 25 bytes per configuration, the int64 signatures (about 300 bytes) are
+        # dropped as soon as the fibre's keys are taken (a list of all of them held about 2.5 GB at K = 32)
+        def fibres_of(k):
             for ci_ in need[k]:
                 pidx, S = materialise(inst, k, rows[k], grid_of(k, ci_), K)
-                fibres.append((pidx, seq_sig(S, T, inst.nl))); del S
-            sides.append(Side(fibres, wts, rho, P)); fid.append({x: i for i, x in enumerate(need[k])})
+                sig = seq_sig(S, T, inst.nl); del S
+                yield pidx, sig
+        sides = []; fid = []
+        for k in range(4):
+            sides.append(Side(fibres_of(k), wts, rho, P)); fid.append({x: i for i, x in enumerate(need[k])})
         lpA = np.array([fid[0][i] for i, j in Lk], np.int64); lpB = np.array([fid[1][j] for i, j in Lk], np.int64)
         rpC = np.array([fid[2][i] for i, j in Rk], np.int64); rpD = np.array([fid[3][j] for i, j in Rk], np.int64)
         kT = (tS.astype(np.int64).astype(np.uint64) * wts).sum(); rT = int(((tS % P) * (rho % P) % P).sum() % P)
@@ -530,10 +694,12 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
             pred = wL + wR - g['bits']
             log(dict(stage="prediction", centre=ci, fine_bits=g['bits'], mahal=g.get('mahal'), predicted_s_solutions_log2=round(pred, 2)))
         t1 = time.time()
-        # radix-partitioned join (mjoin_rad): one pass per residue class, 16 partitions joined in cache
-        cap = int(max(2 ** wL, 2 ** wR) / P * 1.06) + (1 << 18)
-        if bufs is None or bufs[0].shape[0] < cap:
-            bufs = (np.zeros(cap, np.uint64), np.zeros(cap, np.int64), np.zeros(cap, np.uint64), np.zeros(cap, np.int64),
+        # radix-partitioned join (mjoin_rad2): join_G residue classes per pass, 2^rbits partitions joined in cache
+        G = join_G; rbits = 4 + max(0, int(round(math.log2(G))))
+        capL = int(G * 2 ** wL / P * 1.06) + (1 << 18); capR = int(G * 2 ** wR / P * 1.06) + (1 << 18)
+        if bufs is None or bufs[0].shape[0] < capL or bufs[2].shape[0] < capR:
+            bufs = None; Lk_ = Li_ = Rk_ = Ri_ = None                # release the old pass buffers first
+            bufs = (np.zeros(capL, np.uint64), np.zeros(capL, np.int64), np.zeros(capR, np.uint64), np.zeros(capR, np.int64),
                     np.zeros(1 << 17, np.uint64), np.zeros(1 << 19, np.uint64), np.full(1 << 19, -1, np.int64),
                     np.zeros(1 << 15, np.uint64))
         Lk_, Li_, Rk_, Ri_, bs_, hk_, hv_, bs2_ = bufs
@@ -543,14 +709,14 @@ def run(inst, beta=1.5, nrow=24, K=24, logN=30.0, ncent=4, seed=0, tbits=20, out
         if jfile and os.path.exists(jfile):
             z = np.load(jfile); p0 = int(z['next_p']); H = [z['hits']]; nh = int(z['nh']); nlp = int(z['nl']); nrp = int(z['nr'])
             log(dict(stage="S-join resumed", centre=ci, next_pass=p0, passes=P, hits=nh))
-        chunk = max(1, P // 512); tl = time.time()
+        chunk = max(G, (P // 512) // G * G); tl = time.time()
         while p0 < P:
             p1 = min(P, p0 + chunk)
-            h_, n_, l_, r_, o_ = mjoin_rad(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
-                                           Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, 4, Lk_, Li_, Rk_, Ri_, bs_, 23, hk_, hv_,
-                                           1 << 20, bs2_, 21, p0, p1)
-            if o_ < 0: raise RuntimeError("mjoin_rad: pass buffers too small")
-            if n_ > (1 << 20): raise RuntimeError("mjoin_rad: more than 2^20 hits in one chunk")
+            h_, n_, l_, r_, o_ = mjoin_rad2(A.key, A.res, A.off, B.key, B.rst, B.off, Cc.key, Cc.res, Cc.off, Dd.key, Dd.rst,
+                                            Dd.off, lpA, lpB, rpC, rpD, P, rT, kT, rbits, Lk_, Li_, Rk_, Ri_, bs_, 23, hk_, hv_,
+                                            1 << 20, bs2_, 21, G, p0, p1)
+            if o_ < 0: raise RuntimeError("mjoin_rad2: pass buffers too small")
+            if n_ > (1 << 20): raise RuntimeError("mjoin_rad2: more than 2^20 hits in one chunk")
             if len(h_): H.append(h_.copy())                       # copy: h_ is a view of the 32 MB kernel buffer
             nh += n_; nlp += l_; nrp += r_; ov += o_; p0 = p1
             if jfile and (time.time() - tl > join_ckpt_secs) and p0 < P:
