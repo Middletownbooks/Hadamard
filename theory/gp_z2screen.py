@@ -47,6 +47,9 @@ def distributions(c):
 def screen(F, q, s):
     v = F * q + 1
     comps, lw = compositions(F, q, s)
+    # q523_stage1.compositions fills the remainder with |y| = 1, which is a letter only for even s
+    mags = {abs(a + (q - 1) // s * sum(c)) for a in (1, -1) for c in it.product((1, -1), repeat=s)}
+    comps = [c for c in comps if all(n == 0 or a in mags for a, n in c.items())]
     res = []
     for c in comps:
         big = sorted(a for a in c if a > 1 for _ in range(c[a]))
