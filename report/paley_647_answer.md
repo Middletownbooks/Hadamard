@@ -11,7 +11,7 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line and run status
 
-*Status at 10:50 UTC 2026-10-14; this section is updated as the run proceeds.*
+*Status at 11:40 UTC 2026-10-14; this section is updated as the run proceeds.*
 
 **Correction made 10:30–10:50 UTC (§4.1).**
 - The stabiliser used to deduplicate joint solutions applied the reversal z → −z to all four blocks at once.
@@ -26,7 +26,8 @@ and calibration named); [L] literature recollection, unchecked.
   classes.
 
 1. **(A) No H(2588) yet.**
-   - Production now runs one join per class (§4): 0 cores so far against 0.30 expected, counted once per class.
+   - Production now runs one join per class (§4): 0 cores so far against 0.49 expected, counted once per class
+     (47 of 436 classes touched).
    - The whole of y_B #0 holds about **2.7 expected cores** at the two central energy classes, for about 75
      core-hours (about 19 hours on four workers).
 
@@ -57,8 +58,8 @@ and calibration named); [L] literature recollection, unchecked.
      - the unchanged pipeline (joint test → classes → exact S-join → D-check → full PAF → bordered Goethals–Seidel)
        found **3 cores of H(1980)** in y_B #13;
      - each passes the independent `scripts/verify_h2588.py`, H Hᵀ = 1980·I exactly;
-     - counted once per class, the run has **3 cores against 2.39 expected** by the pooled Gaussian (559 classes), so
-       the calibrated D-level prediction holds at full depth on the same-shape slice;
+     - counted once per class, the run has **3 cores against 3.66 expected** by the pooled Gaussian (821 classes in
+       10 y_B), so the calibrated D-level prediction holds at full depth on the same-shape slice;
      - plants are 10/10 there too.
 
 3. **(C) No obstruction.** S-solutions are abundant. The D-target lies in the D-lattice of every calibrated
@@ -359,6 +360,11 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   - The unit workers were retired, each right after its current energy class.
   - Class mode started on four workers (`c*.jsonl`, `run_c*.log`).
   - 25 classes were already complete (calibration, per-joint and unit runs) and 411 were left.
+- **11:20–11:38 UTC:** the 495 control found and verified 3 H(1980) cores (§5.2). It was stopped at 11:38 UTC.
+- **From 11:38 UTC:** capped joint scan of the small 647 y_B orbits (`p647_ybscan.py`, `logs/p647/ybscan.log`):
+  5, 9, 13, 10, 12, 6, 21, 11, smallest first by the size precheck (`p647_jsize.py`, `logs/p647/jsize_647.jsonl`).
+- **Tally at 11:40 UTC** (counted once per class): 47 classes touched (15 finished in class mode, 2^28.2 candidates
+  each), 2^33.77 distinct D-candidates, **0.49 expected cores, 0 found**, 13.0 core-hours.
 - **Tally at 10:50 UTC** (counted once per class):
   - 28 classes touched;
   - 2^33.08 distinct D-candidates;
@@ -417,8 +423,8 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
     - j = 2129: `b7d3890d…`.
   - The core of j = 529 was re-derived by `theory/p647_ctrl_core.py`. The run that found it was restarted between
     its record and its core file.
-  - **Over 559 classes of 7 y_B: 3 cores against 2.39 expected** (pooled Gaussian, C(D|S) ≈ 22.8 from the fits).
-    The full-depth D-level Gaussian holds on the same-shape slice.
+  - **Final: 821 classes in 10 y_B, 3 cores against 3.66 expected** (pooled Gaussian, C(D|S) ≈ 22.8 from the
+    fits; Poisson P(≤ 3) = 0.50). The full-depth D-level Gaussian holds on the same-shape slice.
   - H(1980) is not a new order. The point is that the 647 pipeline and its calibration produce cores where cores
     are expected.
 - **The pipeline is validated on 495:**
@@ -449,8 +455,10 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
   `full_495_83_classes.log`):
   - a size precheck (`theory/p647_jsize.py`, `logs/p647/jsize_495.jsonl`) finds 50 of the 102 y_B orbits exactly
     empty (energy), and the 52 others are taken smallest first;
-  - each joint test runs in a child under a 5 GB address-space cap (`theory/p647_captest.py`). y_B #11 and #12
-    exceed it (the joint test materialises every joint-level S-solution) and are recorded as undecided.
+  - each joint test runs in a child under a 5 GB address-space cap (`theory/p647_captest.py`). y_B #11, #12 and #96
+    exceed it (the joint test materialises every joint-level S-solution) and are recorded as undecided;
+  - all 12 slack-0 orbits are done. The run was stopped at 11:38 UTC, before the larger slack-96 to slack-288
+    orbits, which mostly exceed the cap; its core went to the 647 y_B scan.
 
 ---
 
