@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/ab_s1_direct.py", line 73, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/ab_s1_direct.py", line 42, in main
+    Y, E = block_vectors(sl, Emax)
+           ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/user/Hadamard/theory/ab_s1_direct.py", line 24, in block_vectors
+    cur = np.concatenate([np.repeat(cur, len(L[j]), 0)[idx], np.tile(L[j], len(E))[idx][:, None]], 1)
+                          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py", line 481, in repeat
+    return _wrapfunc(a, 'repeat', repeats, axis=axis)
+  File "/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py", line 54, in _wrapfunc
+    return bound(*args, **kwds)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 5.57 GiB for an array with shape (74760192, 10) and data type int64

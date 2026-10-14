@@ -22,7 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OPEN = [571, 599, 643, 659, 719, 739, 751, 823, 839, 859, 863, 883, 907, 917, 919, 947, 955, 971, 991]
 
 
-def configs(v, max_orbits, c=4):
+def configs(v, max_orbits, c=4, min_orbits=0):
     if (v + 1) % c: return []
     h = (v + 1) // c - 1; out = []
     Qm = [2, 2] if c == 4 else [2, 3]
@@ -41,7 +41,7 @@ def configs(v, max_orbits, c=4):
                            mods=Qm + factors + [q], nQ=2, U=U)
                 try: sl = W.build(SD.cfg_from_json(json.dumps(cfg)))
                 except Exception: continue
-                if len(sl.breps) <= max_orbits: out.append((cfg, sl))
+                if min_orbits <= len(sl.breps) <= max_orbits: out.append((cfg, sl))
     return out
 
 
@@ -51,7 +51,8 @@ def main():
     mo = int(a[a.index('--max-orbits') + 1]) if '--max-orbits' in a else 16
     mv = int(a[a.index('--max-vectors') + 1]) if '--max-vectors' in a else 2 * 10 ** 7
     cc = int(a[a.index('--c') + 1]) if '--c' in a else 4
-    logf = os.path.join(ROOT, f'logs/ab/paley_c{cc}.jsonl'); outdir = os.path.join(ROOT, f'logs/ab/paley_c{cc}')
+    tagl = ('_' + a[a.index('--tag') + 1]) if '--tag' in a else ''
+    logf = os.path.join(ROOT, f'logs/ab/paley_c{cc}{tagl}.jsonl'); outdir = os.path.join(ROOT, f'logs/ab/paley_c{cc}')
     os.makedirs(outdir, exist_ok=True)
     done = set()
     if os.path.exists(logf):
@@ -62,7 +63,7 @@ def main():
         with open(logf, 'a') as fh: fh.write(json.dumps(rec) + "\n")
         print(json.dumps(rec), flush=True)
     for v in vs:
-        for cfg, sl in configs(v, mo, cc):
+        for cfg, sl in configs(v, mo, cc, int(a[a.index('--min-orbits') + 1]) if '--min-orbits' in a else 0):
             key = json.dumps(cfg, sort_keys=True)
             if key in done: continue
             t0 = time.time(); rec = dict(cfg=cfg, orbits=int(sl.r), L1=len(sl.breps))
