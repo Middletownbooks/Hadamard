@@ -10,7 +10,7 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line
 
-1. **(A) H(3732) is built: v = 933, b = 0 (Goethals–Seidel, array `g`) [M].**
+1. **(A) H(3732) is built: v = 933, open on the prompt's list; b = 0 (Goethals–Seidel, array `g`) [M].**
    - Four ±1 circulants of length 933 with Σ_k PAF_k = 3732·δ. Over Z₉₃₃ = Z₃ × Z₃₁₁, each sequence is constant on the
      sets {g} × C_j, where the C_j = 17^j·M are the ten cosets of the index-10 subgroup M = ⟨260⟩ (order 31) of
      F₃₁₁^*. That is 33 sign orbits per block.
@@ -180,7 +180,9 @@ s is balanced, so each of the four patterns occurs exactly c times. Grouped by p
 H₄ ⊗ 1_cᵀ, and the remaining 4c − 4 rows form a frame. H(2c) is known for every multiple of 4 below 668 [L] (668 is the smallest open order), so frames exist for
 every even c ≤ 332. Checked numerically for c = 6 and c = 10 (Paley I H(12) and H(20)) [M]. ∎
 
-**Lemma 2 (the corner is always orthogonal; only its flatness is in question).**
+**Lemma 2 (the corner is always orthogonal; only its flatness is in question).** This restates
+`report/bge3_answer.md` §4.1 ("C is automatically √(4b) times an orthogonal matrix") with a proof, and adds the
+explicit inverse K = −C·Kc·Cb/(4b).
 - Let V ⊂ R^{4c} be the block-balanced subspace (dimension 4b), Π_V the projection onto it, and K, Kc frames, so
   that Kᵀ K = Kcᵀ Kc = 4c·Π_V.
 - The compressed GS array Cb of the Q-compressions z_k satisfies Cb Cbᵀ = I₄ ⊗ M(Σ_k PAF_Q(z_k)), M(·) the group
@@ -204,6 +206,13 @@ above is checked on the 347 template [M]:
 - K = −C·Kc·Cb/20 exactly.
 
 359's character twist multiplies Cb by diagonal ±1 matrices and changes V accordingly.
+
+**Validation of the search formulation [M]** (`theory/ab_border10.py --c 6 --published`). 347's compression,
+shifted block by block to ±1 values, is an h = 1 Q-level solution (Σ_k PAF = 24, 4, 4, 4, 4, 4). With the published
+Kc, the admissible set {k block-balanced ±1 : −k·Cbᵀ·Kcᵀ/24 ∈ {±1}^20} has exactly 40 elements: ±(the 20 rows of
+the published K). So given (z, Kc), the other frame is rigid. A template is a pair of frames that are mutually
+unbiased after the rotation Cb|_V/√(4b). Consistent with `report/bge3_answer.md` §4.1, a random frame has no
+partner, and borders must be built together with the compression.
 
 **Consequences.**
 - c ≥ 10 is not blocked by frames. The open question is the flatness of the corner for some Q-level compression z
@@ -369,7 +378,7 @@ with the DP fibre sampler `ab_gauss.stage2_sampled`, checked against the enumera
 | 917 | q = 131, s = 13, U = −1 | pass | **0** | – | **empty [M]** |
 | 955 | q = 191, s = 19, U = −1 | pass | **0** | – | **empty [M]** |
 | 917 | q = 131, s = 10 or 13, U = 1 | pass | not enumerated (7 orbits × 22 letters) | – | fibres 7 × 10 or 7 × 13 (≈ 2^50): the cross join needs another level |
-| 955 | q = 191, s = 19, U = 1 | pass | running | – | fibres 5 × 19 |
+| 955 | q = 191, s = 19, U = 1 | pass | 3,265,000 | +35.9 (H₂ 329, C₂ 293) | fibres 5 × 19 (≈ 2^53 per block): blocked at the cross level |
 | 917, 955 | q = 7 or 5 (index 2 or 3) with an order-13 or order-19 multiplier on Z₁₃₁ or Z₁₉₁ | pass | not run | – | stage 1 is itself a b = 0 problem on Z₁₃₁ or Z₁₉₁ |
 | 537, 669, 789 | every s ≤ 6 | **A fails** | – | – | **empty [M]** |
 | 917, 955 | s = 2, 5; 955 also s = 10 (all U); 917 s = 10 with U ≠ 1 | **A fails** | – | – | **empty [M]** |
@@ -384,6 +393,19 @@ with the DP fibre sampler `ab_gauss.stage2_sampled`, checked against the enumera
   screens. 669, 537 and 789 have q − 1 = 2·3·37, 2·89 and 2·131: the mid-size indices are missing or dead.
 - 917 and 955 have F = 7 and 5. With U = 1 their fibres are too large; with the U that make 3 rows, either stage 1
   is empty (U = −1) or stage 2 is negative (index 13), or s is 26 or 38 and the dual level has too many vectors.
+- **Cost rule of the dual/cross pipeline [E, checked on 933].**
+  - A dual solution with fibre product 2^F yields about 2^{F − C_cross} cores. Its cross join costs at least
+    2^{F/2} when the fibres are balanced.
+  - So the cost per core is about 2^{C_cross − F/2} on the best dual solutions, and it needs F ≲ C_cross plus about
+    15 for the dual join to supply enough dual solutions.
+  - 933: C_cross ≈ 42 and F ≈ 34.6 give 2^{24.7} (measured 2^{25.7}).
+  - 917 at s = 10, U = 1: F ≈ 4·45 and C_cross ≈ 30·4.2 = 126. The yield is ample, but each fibre is ≈ 2^45, so the
+    2 + 2 cross join is ≈ 2^90 per dual solution.
+  - 955 at s = 19: the same, with fibres ≈ 2^53.
+  - The twisted multiplier ⟨(−1, m₀)⟩ with m₀ of order 2·19 on Z₁₉₁ (955), or 2·13 on Z₁₃₁ (917), gives a 933-like
+    shape: rows {0}, {±1}, {±2} (and {±3}), 10 columns, and only 6⁵ or 8⁵ dual vectors per block. But −1 already lies
+    in the slice group, so the cross equations are not halved: 20 cross equations (≈ 85 bits) against fibres of
+    about 2^12 per block. The yield is about 2^{−40} per dual solution, so it is not viable [E, counting].
 - The next level these need is a split of the dual level. For 917 at s = 26 the period field of index 26 has a
   degree-13 subfield (26 = 2·13), which gives a natural two-step dual. This is the first computation proposed in §9.
 
@@ -480,7 +502,7 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 3. **c = 10 corner flatness (669, 789).**
    - Enumerate the Q-level solutions z on Z₁₀ and Z₂ × Z₅ for h = 66 and 78 (screen A's DP lists them).
    - For each z, search frames K, Kc from H₂ ⊗ H(20) (Lemma 1), with block-internal signed column permutations, for a
-     flat corner. Lemma 2 reduces this to ±1-ness of K = −C·Kc·Cbᵀ/(4b).
+     flat corner. Lemma 2 reduces this to ±1-ness of K = −C·Kc·Cb/(4b).
    - A hit gives a c = 10 template, and §3's transfer then gives both orders.
 4. **659, c = 4.** Finish exact stage 1 (`logs/ab/c4_batch.jsonl`). Then compute the level decomposition (H_S, C_S,
    h_D, C(D|S)) with `theory/ab_levels.py` on its y's, and cost the hierarchical solver.

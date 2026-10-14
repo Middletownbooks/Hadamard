@@ -129,30 +129,38 @@ class S1SD:
         self.TD = np.array([(T1[b] - T1[n2 + b]) // 4 for b in range(n2)], np.int64)
         assert ((T1[:n2] + T1[n2:]) % 4 == 0).all() and ((T1[:n2] - T1[n2:]) % 4 == 0).all()
 
-    def alphas(self):
+    def alphas(self, keep=None, chunk=1 << 20):
+        """all alpha vectors (one sign per G'-orbit, restricted by tset); keep(vals) -> bool mask filters each chunk,
+        so that L1 up to ~30 is possible when a strong filter (the border class) is given"""
         L1 = len(self.sl.breps)
-        if L1 > 24: raise RuntimeError("too many G'-orbits for alpha enumeration")
         allowed = [[a for a in (1, -1) if self.tset[j][a]] for j in range(L1)]
         free = [j for j in range(L1) if len(allowed[j]) == 2]
+        if len(free) > 24 and keep is None: raise RuntimeError("too many G'-orbits for alpha enumeration")
         n = 1 << len(free)
-        vals = np.empty((n, L1), np.int64)
-        for j in range(L1):
-            if len(allowed[j]) == 1: vals[:, j] = allowed[j][0]
-        idx = np.arange(n, dtype=np.int64)
-        for t, j in enumerate(free): vals[:, j] = 2 * ((idx >> t) & 1) - 1
-        return vals
+        out = []
+        for c0 in range(0, n, chunk):
+            idx = np.arange(c0, min(n, c0 + chunk), dtype=np.int64)
+            vals = np.empty((len(idx), L1), np.int64)
+            for j in range(L1):
+                if len(allowed[j]) == 1: vals[:, j] = allowed[j][0]
+            for t, j in enumerate(free): vals[:, j] = 2 * ((idx >> t) & 1) - 1
+            out.append(vals[keep(vals)] if keep is not None else vals)
+        return np.concatenate(out) if out else np.zeros((0, L1), np.int64)
 
     def alpha_quads(self, rowquads):
         """canonical alpha-quadruples: alpha_k up to sign (alpha at orbit of 0 = +1 if allowed), sorted"""
         f0 = self.f0; mod, rmod = 4 * f0, 2 * f0; sl = self.sl
-        A = self.alphas()
         if self.zallow is not None:
-            full = A[:, sl.borb]
-            cs = np.zeros((len(A), self.zallow.shape[1]), np.int64)
-            for q in range(self.zallow.shape[1]): cs[:, q] = full[:, self.qfull == q].sum(1)
-            zm = {tuple(r) for r in (self.zallow % (2 * f0)).tolist()}
-            keepz = np.array([tuple(r) in zm for r in (cs % (2 * f0)).tolist()])
-            A = A[keepz]
+            cq = self.zallow.shape[1]; md = 2 * f0
+            Wq = np.zeros((len(sl.breps), cq), np.int64)          # orbit j -> number of its elements in coset q
+            for g_ in range(len(sl.borb)): Wq[sl.borb[g_], self.qfull[g_]] += 1
+            base = md ** np.arange(cq, dtype=np.int64)
+            zcode = np.unique(((self.zallow % md) @ base))
+            def keepf(A):
+                return np.isin(((A @ Wq) % md) @ base, zcode)
+            A = self.alphas(keep=keepf)
+        else:
+            A = self.alphas()
         # canonical sign: keep alpha and its negative once (if -alpha is also admissible)
         key = {tuple(a): i for i, a in enumerate(A.tolist())}
         keep = []
