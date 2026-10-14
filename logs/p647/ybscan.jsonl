@@ -4,3 +4,5 @@
 {"k": 9, "attempt": 1}
 {"k": 9, "joint": 13392, "S_solutions": 32640, "pairs": [7590, 46200, 89220, 82200], "layer_options": [[1626, 10116], [10386, 25290], [24390, 26265], [25290, 25965]], "note": null, "pairs_needed": null, "secs": 71.6, "stabiliser": 144, "classes": 279, "H_max": 78.66, "H_median": 78.53, "classes_H_ge_79": 0, "yield_sum_log2": 36.08}
 {"k": 13, "attempt": 1}
+{"k": 13, "joint": 24624, "S_solutions": 234504, "pairs": [36270, 22680, 89100, 208380], "layer_options": [[26265, 10506], [1506, 25965], [9756, 24390], [26265, 24390]], "note": null, "pairs_needed": null, "secs": 168.4, "stabiliser": 144, "classes": 518, "H_max": 78.78, "H_median": 77.80000000000001, "classes_H_ge_79": 0, "yield_sum_log2": 37.02}
+{"k": 10, "attempt": 1}

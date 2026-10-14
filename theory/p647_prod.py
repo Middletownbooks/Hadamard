@@ -22,7 +22,9 @@ Class mode (--classes, from 10:40 UTC): one joint solution per true symmetry cla
 logs/p647/joint_yb0_classes.json), the K central classes, skipping energy classes any earlier run already joined for
 that symmetry class; queue logs/p647/prod/queue_classes.json; checkpoints c{w}_els.jsonl (with the live deep-tail
 counts) and c{w}.jsonl.
-usage: python3 theory/p647_prod.py --classes --worker W --workers N --els 2 [--busy-units 13,14,16] [--yb 0,9,13]
+usage: python3 theory/p647_prod.py --build-queue --yb 0,9,13 --els 2      (H-ordered queue over several y_B orbits)
+       python3 theory/p647_prod.py --multi --worker W --els 2              (claims from that queue; restart-safe)
+       python3 theory/p647_prod.py --classes --worker W --workers N --els 2 [--busy-units 13,14,16] [--yb 0,9,13]
        (--yb: the y_B orbits whose classes are taken in turn, each with its own queue queue_classes_yb{k}.json and
         checkpoints yb{k}c{w}_els.jsonl, yb{k}c{w}.jsonl; their joint solutions and classes come from p647_ybscan.py)
        python3 theory/p647_prod.py --worker W --workers N [--els K] [--kernel p|q] [--rule none|score:t:beta] [--queue FILE]
@@ -342,6 +344,95 @@ def main_classes(w, W, K, log, busy_units=(), yb=0):
         with open(sp, "a") as f: f.write(json.dumps(r) + "\n")
         log(json.dumps(dict(stage="class_done", worker=w, **r)))
 
+# ---------------------------------------------------------------- multi mode: one H-ordered queue over several y_B orbits
+CLAIMS = os.path.join(PROD, "claims")
+
+def build_multi_queue(ybs, K, log=print):
+    """queue_multi.json: every class of the given y_B orbits not yet complete at K energy classes, ordered by the H of
+    its representative (higher H, higher yield: report section 4.2), as [yb, class] pairs; may be rebuilt at any time
+    (workers re-read it before every claim; claims and finished records make rebuilds safe)"""
+    ent = []
+    for yb in ybs:
+        C = json.load(open(os.path.join(PC.LOG, f"joint_yb{yb}_classes.json")))
+        done, full = class_done_els(C, yb)
+        for c in range(len(C['reps'])):
+            if c in full or len(done.get(c, ())) >= K: continue
+            ent.append((-C['H'][c], yb, c))
+    ent.sort()
+    qp = os.path.join(PROD, "queue_multi.json")
+    json.dump(dict(K=K, yb=list(ybs), order=[[yb, c] for _, yb, c in ent], built=time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())),
+              open(qp + ".tmp", "w"))
+    os.replace(qp + ".tmp", qp)
+    log(json.dumps(dict(stage="queue_multi", K=K, yb=list(ybs), classes=len(ent),
+                        H_top=[round(-h, 2) for h, _, _ in ent[:3]], H_bottom=[round(-h, 2) for h, _, _ in ent[-3:]])))
+
+def _claim(yb, c, w):
+    os.makedirs(CLAIMS, exist_ok=True)
+    try:
+        fd = os.open(os.path.join(CLAIMS, f"yb{yb}_c{c}"), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        return False
+    os.write(fd, str(w).encode()); os.close(fd); return True
+
+def main_multi(w, K, log):
+    """worker w: claims the first unclaimed [yb, class] of queue_multi.json (atomic claim file), joins it like class
+    mode (its K central energy classes, skipping energy classes already joined for that class by any run), records
+    it in m{w}.jsonl; a restarted worker first finishes its own unfinished claims."""
+    os.makedirs(PROD, exist_ok=True)
+    X, ys = PC.load_setup()
+    reps, oi, maps = orbit_maps(X); NH = P.lag_tensor(X, oi)
+    sols_c = {}; C_c = {}
+    def data(yb):
+        if yb not in sols_c:
+            sols_c[yb] = PC.joint_solutions(X, ys, yb)[1]
+            C_c[yb] = json.load(open(os.path.join(PC.LOG, f"joint_yb{yb}_classes.json")))
+        return sols_c[yb], C_c[yb]
+    sp = os.path.join(PROD, f"m{w}.jsonl"); rule = f"none|els{K}"
+    def finished():
+        fin = set()
+        for f in _glob.glob(os.path.join(PROD, "m*.jsonl")):
+            for line in open(f):
+                try:
+                    r = json.loads(line)
+                    if r.get('rule') == rule: fin.add((r['yb'], r['class']))
+                except Exception: pass
+        return fin
+    log(json.dumps(dict(stage="start_multi", worker=w, K=K)))
+    while True:
+        if os.path.exists(os.path.join(PROD, "STOP")): log(json.dumps(dict(stage="stopped", worker=w))); return
+        fin = finished()
+        mine = []
+        if os.path.isdir(CLAIMS):
+            for fn in os.listdir(CLAIMS):
+                try:
+                    if open(os.path.join(CLAIMS, fn)).read().strip() == str(w):
+                        yb, c = fn[2:].split("_c"); mine.append((int(yb), int(c)))
+                except Exception: pass
+        todo = [e for e in mine if e not in fin]
+        if not todo:
+            Q = json.load(open(os.path.join(PROD, "queue_multi.json"))); assert Q['K'] == K
+            nxt = None
+            for yb, c in Q['order']:
+                if (yb, c) in fin or os.path.exists(os.path.join(CLAIMS, f"yb{yb}_c{c}")): continue
+                if _claim(yb, c, w): nxt = (yb, c); break
+            if nxt is None: log(json.dumps(dict(stage="queue_empty", worker=w))); return
+            todo = [nxt]
+        yb, c = todo[0]
+        sols, C = data(yb)
+        done, full = class_done_els(C, yb)
+        if c in full or len(done.get(c, ())) >= K:
+            with open(sp, "a") as f: f.write(json.dumps(dict(yb=yb, **{'class': c}, rule=rule, skipped="already complete")) + "\n")
+            continue
+        j = C['reps'][c]
+        try:
+            r = run_one(X, ys[yb], sols[j], j, w, rule, maps, NH, oi, log, K=K, prefix=class_tag(yb),
+                        pre_done=sorted(done.get(c, ())), nested=True)
+        except KeyboardInterrupt:
+            log(json.dumps(dict(stage="stopped", worker=w, yb=yb, cls=c))); return
+        r = dict(r, **{'class': c, 'yb': yb, 'H': C['H'][c], 'pre_done': sorted(done.get(c, ()))})
+        with open(sp, "a") as f: f.write(json.dumps(r) + "\n")
+        log(json.dumps(dict(stage="class_done", worker=w, **r)))
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     opt = {"--worker": "0", "--workers": "1", "--rule": "none", "--queue": os.path.join(PROD, "queue.json"), "--els": "0", "--kernel": "p",
@@ -350,6 +441,12 @@ if __name__ == "__main__":
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: i += 1
+    if "--build-queue" in a:
+        build_multi_queue([int(x) for x in opt["--yb"].split(",")], int(opt["--els"]), log=lambda s: print(s, flush=True))
+        sys.exit()
+    if "--multi" in a:
+        main_multi(int(opt["--worker"]), int(opt["--els"]), log=lambda s: print(s, flush=True))
+        sys.exit()
     if "--classes" in a:
         bu = [int(x) for x in opt["--busy-units"].split(",")] if opt.get("--busy-units") else []
         for yb_ in [int(x) for x in opt["--yb"].split(",")]:

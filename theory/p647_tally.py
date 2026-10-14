@@ -86,10 +86,12 @@ def main(cdgs=34.8, as_json=False):
     # class mode
     CM = dict(classes_done=0, classes_partial=0, S=0, cand=0, hits=0, secs=0.0)
     cd = set(); cp_ = set()
-    for f in sorted(glob.glob(os.path.join(PROD, "c*.jsonl"))):
+    for f in sorted(glob.glob(os.path.join(PROD, "c*.jsonl"))) + sorted(glob.glob(os.path.join(PROD, "m*.jsonl"))):
         if f.endswith("_els.jsonl"): continue
         for line in open(f):
-            try: cd.add(json.loads(line)['class'])
+            try:
+                r = json.loads(line)
+                if r.get('yb', 0) == 0 and 'skipped' not in r: cd.add(r['class'])
             except Exception: pass
     for f in sorted(glob.glob(os.path.join(PROD, "c*_els.jsonl"))):
         for line in open(f):
@@ -154,11 +156,12 @@ def main(cdgs=34.8, as_json=False):
     # forecast for y_B #0 at the class mode's K energy classes: per H group (>= 79 / < 79) the mean D-candidates of
     # the classes finished in class mode, times the classes of that group not yet finished there
     Hc = CJ['H']; fin_c = set(); grp = {True: [], False: []}
-    for f in sorted(glob.glob(os.path.join(PROD, "c*.jsonl"))):
+    for f in sorted(glob.glob(os.path.join(PROD, "c*.jsonl"))) + sorted(glob.glob(os.path.join(PROD, "m*.jsonl"))):
         if f.endswith("_els.jsonl"): continue
         for line in open(f):
             try: r = json.loads(line)
             except Exception: continue
+            if r.get('yb', 0) != 0 or 'skipped' in r: continue
             fin_c.add(r['class'])
             if not r.get('pre_done'): grp[Hc[r['class']] >= 79.0].append(r['cand'])
     left = {g: sum(1 for c in range(CJ['classes']) if (Hc[c] >= 79.0) == g and c not in fin_c and per_class.get(c, 0) == 0)
