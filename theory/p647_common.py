@@ -24,6 +24,9 @@ def joint_solutions(X, ys, k=0, log=print):
     path = os.path.join(LOG, f"joint_yb{k}.json")
     if os.path.exists(path):
         d = json.load(open(path)); return d['rec'], d['sols']
+    if os.path.exists(path + ".gz"):                    # large ones are committed compressed
+        import gzip
+        d = json.load(gzip.open(path + ".gz", "rt")); return d['rec'], d['sols']
     t0 = time.time()
     rec, sols = X.J.test(ys[k])
     os.makedirs(LOG, exist_ok=True)
