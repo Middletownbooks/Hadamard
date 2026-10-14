@@ -454,7 +454,7 @@ bordered batches `theory/ab_cbatch.py` → `logs/ab/c4_batch.jsonl`, `logs/ab/c6
 
 **Exact batches [M]** (`theory/ab_cbatch.py`: screen A, then exact stage 1, restricted for c = 6 and c = 8 to the
 border class of the 347 and 359 templates; configurations with ≤ 26 G'-orbits; 1,200 s and a 4–4.5 GB cap each).
-State at 19:00 UTC (the c = 4 and c = 6 batches were still running):
+Final state: the c = 8 batch ran to completion; the c = 4 and c = 6 batches were stopped at 19:00 UTC, after about 3 hours:
 
 | batch | configurations | empty (A fails) | stage 1 empty in the border class | survivors | memory or time cap | > 26 orbits |
 |---|---|---|---|---|---|---|
@@ -503,6 +503,8 @@ cyclic multiplier group on a cyclic factor of H' = Z_{h/q}, keeping ≤ 16 G'-or
     - 751, q = 17, s = 4, ⟨3⟩ on Z₁₁: 311,296 stage-1 solutions [M] in 102 PAF-signature classes. Stage 2 is
       about −72 bits per y [E] (mahal 5.8), so about 2^−54 cores are expected in all: **dead**.
     - Remaining (839 at q = 11; 955; 991): PAL_C4_REST
+  - **c = 4 with 17–24 G'-orbits** (`logs/ab/paley_c4_o24.jsonl`): 20 configurations (739, 751, 823, 839, 863, 955).
+    10 fail screen A (**empty [M]**); 10 exceed the direct stage-1 cap (6·10⁷ block vectors) and are undecided.
   - **c = 6 sweep (347's border class)** (`logs/ab/paley_c6.jsonl`): every configuration with ≤ 16 orbits (659,
     719, 839, 863, 947, 971: 19 in all) **fails screen A, empty [M]**. 599 and 917 have none that small.
   - Validation of the c = 6 path on the controls v = 35 and v = 47: stage 1, then the 347 border fit (8 bordered
