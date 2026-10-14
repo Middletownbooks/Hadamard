@@ -1,4 +1,4 @@
-# Next design: exact status of the live slices, a new F_{p²} family, and the best remaining route (647 ×183)
+# Next design: exact status of the live slices, why the Gaussians fail on doubly-staged slices, and a new F_{p²} family
 
 Date: 2026-10-13. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_next_design.md`.
 Scripts: `theory/nd_*.py`. Logs: `logs/nd/`.
@@ -12,31 +12,26 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
 
 1. **(A) No new Hadamard matrix this session.**
 
-2. **(B) Not reached.** No route is validated end to end at ≤ 2^45 per core.
-   - **Best costed route: 647 ×183, i.e. H(2588) (§5).**
-     - Both of its compressed stage 1s are exactly non-empty [M].
-     - Once a stage-1 solution y_B on Z₃₄ is fixed, the rest of the core is a problem shaped like 523's stage 2, and
-       slightly smaller. Its constraint budget, against 523's:
-
-       | | 647 ×183 (given y_B) | 523 |
-       |---|---|---|
-       | all constraints | 126.4–127.4 bits | 146.2 bits |
-       | S-level | 72.6–72.9 bits | 83.3 bits |
-       | middle level | 22.8–22.9 bits | 31.8 bits |
-       | D-deficit D_def | 25.4–26.7 bits | 26.1 bits |
-       | completions per y_B | +15.4 … +18.8 | +34 per y |
-
-     - The 523 route ported to this slice projects to about 2^41–2^44 operations per core [E]. That is not yet
-       calibrated for this shape, and the solver is not built.
-     - First computation: §5.4.
+2. **(B) Not reached.** No route is validated end to end at ≤ 2^45 per core, and no candidate has a credible cost
+   below that.
+   - **647 ×183 looked best on Gaussians and failed the exact joint test (§5).**
+     - Both compressions are exactly non-empty [M].
+     - Given a stage-1 y_B, the level budget looked like a smaller 523: C₂ ≈ 127 bits, D_def ≈ 26, +15 … +19
+       completions per y_B [E]; a 523-style route projected to 2^41–2^44.
+     - But the exact **joint stage 1** has no solution for the 4 y_B where it could be decided [M]. Here y_A (the other
+       compression) is a nearly determined function of the labels given y_B.
+     - The same-shape smaller orders 239 and 443 are exactly empty [M], so no positive control of this shape exists.
+     - **The Gaussian estimate given y_B is invalid for doubly-staged slices** (§9.4). Next computation: the exhaustive
+       joint test over all y_B (§5.4).
    - **Other routes, costed and out of reach [E]:**
-     - 971 ×469: ≥ 2^60 (§3);
+     - 971 ×469: ≥ 2^60, and the same doubly-staged caveat applies (§3);
      - 947 ×49: ≥ 2^65 (§6);
      - 883 on Z₁₈ × F₄₉: no route (§4).
 
 3. **(C) Exact obstructions [P, M]** (§1, §2, §7).
    - **739 ×215 is exactly empty**: its stage 1 has no solution. This kills the most valuable candidate below 3000.
    - Also exactly empty:
+     - 839 ×13 (Gaussian +101.7), 839 ×7, 863 ×3;
      - 947 ×21, ×47 and ×23;
      - 823 ×59;
      - 907 ×155;
@@ -63,7 +58,15 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
      - a level-budget tool with exact h_D (`theory/nd_levels.py`): it reproduces the 523 S, D, Z₃, Z₁ and h_D
        figures.
 
-5. **(D) Ranked candidates with their next computations: §8.**
+5. **Why the Gaussians failed so often [M].** Every slice whose multiplier acts on two prime factors has two
+   compressions. Given one compression, the other depends on only a handful of discrete values per block.
+   - The lattice Gaussian treats that level as continuous and can be off by more than 10 bits.
+   - The F_q control at v = 55 (pattern model 2^11, exact 0) and the 647 joint test (implied ~2^16, exact 0) show it.
+   - The 523 slice is immune: its dual compression is a sum of 18 signs per class, close to continuous, which is why its
+     calibrations held.
+   - **Rule:** for such slices, decide the joint stage 1 exactly before costing anything (`theory/nd_doubly.py`).
+
+6. **(D) Ranked candidates with their next computations: §8.**
 
 ---
 
@@ -78,12 +81,25 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
 | 823 | ×59 | Z₆ (−1 on Z₃) × index 8 on Z₁₃₇ (f = 17) | +7.9 | **empty** | no α-quadruple mod 68 [M] |
 | 907 | ×155 | Z₆ (−1 on Z₃) × index 10 on Z₁₅₁ (f = 15) | +13.6 | **empty** | no α-quadruple mod 60 [M] |
 | 933 | ×37 | Z₄ × index 8 on Z₂₃₃ (f = 29) | +30.6 | **empty** | [P] lag 0: letters ±1 + 58t; 57² − 1 = 3248 > 2800 − 16, so only ±1 fits, but Σy² must be 2800 over 16 entries |
+| 839 | ×13, ×7 | Z₂ × index 38 / 22 on Z₄₁₉ (f = 11 / 19) | **+101.7**, +58.0 | **empty** | [P, M] below |
+| 863 | ×3 | Z₂ × index 10 on Z₄₃₁ (f = 43) | +26.7 | **empty** | [P, M] below |
 | 883 | Z₁₈ × F₄₉, (7,4) and (7,20) | ×7 on Z₁₈ (order 3) × index 4 on F₄₉* | +64.3 whole, +22.6 stage 1 | **stage 1 empty** | 565,348 α-quadruples, 863,136 S-solutions, 0 completions (1344 s) [M] |
 | 883 | Z₁₈ × F₄₉, (17,4), (7,2), (7,10) | −1 or ×7 on Z₁₈ with index 4 or 2 on F₄₉* | +37.4, +20.9, +20.8 | **stage 1 empty** | 144 / 182 / 182 α-quadruples, 0 S-solutions [M] |
 | 751 | Z₃₀ × F₂₅, (17,2), (17,14) | ×17 (order 4) on Z₃₀ with index 2 | +12.6 | **stage 1 empty** | 317,548 α-quadruples, 0 S-solutions [M] |
 | 883 | Z₁₈ × F₄₉, (1,3) | GP, index 3 | +26.8 | **empty** | [P] no lag-0 composition (letters ±15, ±17, ±47, ±49 only) |
 | 883 | Z₁₈ × F₄₉, (1,2) | Paley(49) | +4.0 | **empty** | [P] lag 0: 3264 is not 2208a + 2400b |
 | 751 | Z₃₀ × F₂₅, (1,2) | Paley(25) | +25.8 | **empty** | [P] lag 0 (`nd_sym_s1est.py 30 25 2 --nosym`: no quadruple) |
+
+**Proof for the Z₂ × Z_q slices of 839 and 863 [P]** (also `nd_s1_sd.py`: 1 α-quadruple, 1 S-solution, 0 completions).
+1. With F = 2 the S/D split is trivial. Stage 1 reduces to (y₀ − 1)² + y₁² + y₂² + y₃² = v, where y_k = y_k(0),
+   block 0 has row 2, every y ≡ ±1 (mod 2f), and y₀ ≡ 1 (mod 2f) (because 2 − y₀ must also be a letter).
+2. Both v are ≡ 7 (mod 8), so y₀ = 1 is impossible: v would be a sum of three squares, which Legendre's theorem
+   forbids.
+3. Otherwise (y₀ − 1)² ≥ 4f².
+   - At 863 (f = 43) and at 839 ×7 (f = 19), 4f² > v.
+   - At 839 ×13 (f = 11) the only option is (y₀ − 1)² = 484, which leaves 355. But 355 is not a sum of three squares
+     from {1, 441, 529, …}.
+4. So no stage-1 solution exists. ∎ The +101.7 Gaussian was meaningless.
 
 **Proof for 947 ×23 [P].**
 1. The slice is Z₂₂ × Paley(43), with p = 43 and n′ = 22. The letters are α + 42w with w ∈ {0, ±1}, i.e.
@@ -170,6 +186,14 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
     2^{131/2}.
   - Every hierarchy tried leaves ≥ 2^60 per core [E].
   - Sub-slices with more symmetry are dead: 971 ×81, ×221, ×79 and ×101 are all empty.
+- **Doubly-staged caveat (§9.4).** The 54.5-bit trivial-character level is the *dual* compression onto Z₉₇.
+  - Per block it has X(0) fixed by the rows and eight class values X_j = 2Y_j with Y_j ∈ [−5, 5] and ΣY_j = 0.
+  - That is discrete, so the +36.8 may be far too high.
+- **Exact test of the dual compression.** It is a small stage-1 problem: Σ_{k,j} Y² = 80 and eight lag equations
+  (`theory/nd_971_dual.py`). The exact solver there is validated on plants.
+  - CP-SAT returns UNKNOWN even on a planted instance (120 s), and on the generic model (1200 s).
+  - The exhaustive energy-split join has about 2^40 pair steps: a numba job of hours, not run.
+  - If it is empty, 971 ×469 is dead.
 
 ---
 
@@ -267,7 +291,7 @@ Neither model yields a cheap solver:
 
 ---
 
-## 5. 647: the doubly-staged slices (Q3) — the best remaining route [M, E]
+## 5. 647: the doubly-staged slices (Q3) [M, E]
 
 ### 5.1 Structure [P]
 
@@ -294,14 +318,35 @@ Neither model yields a cheap solver:
 
 So neither 647 slice has an obstruction at the compressed level.
 
-**Joint stage 1 of ×183 is non-empty [M]** (`logs/nd/s1_647_joint_z2.log`).
-- The two compressions must agree on the Z₂ level: per block, the row and the alternating sum A_k, with
-  Σ A_k² = 2588.
-- Among the solutions found, the value with rows (0, 0, 0, 2) and |A| = (2, 30, 30, 28) is shared by 45 stage-1A and
-  56 stage-1B solutions. So consistent pairs (y_A, y_B) exist.
-- What remains is the cross level (χ ≠ 1, ψ ≠ 1): 126.6 − 40.6 ≈ 86 bits given both y's [E].
+**The joint stage 1 is the real filter [M]** (`theory/nd_doubly.py`, `theory/nd_647_joint.py`).
+- Agreeing on the Z₂ level (per block: the row and the alternating sum, with Σ A_k² = 2588) is necessary but far from
+  sufficient. One Z₂ value, rows (0, 0, 0, 2) with |A| = (2, 30, 30, 28), is shared by 45 stage-1A and 56 stage-1B
+  solutions (`logs/nd/s1_647_joint_z2.log`), yet the aligned pairs admit **no** labelling of any block
+  (DP count 0).
+- The exact joint test, given y_B:
+  1. A DP over the 64 M-orbits per block (state: the residual y_B rows and the partial y_A sums) lists every
+     achievable y_A for that block, with its label multiplicity.
+  2. An exact 2+2 join then solves the stage-1A equations on Z₃₈.
+- For ×183 the per-block option lists have 33,489 / 10,980 / 33,489 / 10,980 entries, with multiplicities 2^35–2^36
+  each (the sum matches H₂ = 142 bits).
+- **Result: no y_A satisfies stage 1A for y_B #0 and y_B #36** (8 minutes each; further y_B in
+  `logs/nd/joint647_183_first.log`).
+- The Gaussian of §5.3 had implied about 2^16 joint solutions per y_B (2^57 option quadruples against the 40.6-bit
+  χ = 1 level). The failure has the same cause as the F_q control (§4.4): the χ = 1 level depends on a handful of
+  discrete values per block (y_A at z = 0 is fixed by y_B; each class value has a few options), so the
+  lattice-Gaussian has no meaning there.
+- **Validation of the joint and cross-level machinery [M]:** planted instances at the same shape (v = 443, ×225) are
+  recovered.
+  - The joint step returns the planted y_A in 8/8 cases.
+  - The cross-level 2+2 join returns the planted labelling in 7/7 cases where the join fits; the eighth was skipped by
+    the size cap.
+- **Same-shape smaller orders are exactly empty [M].** The only smaller orders with exactly this shape (order 4 on Z₁₇;
+  order 6 on Z_q′ with μ⁴ of order 3) are v = 239 and v = 443.
+  - 239 ×115: stage 1B is empty.
+  - 443 ×225: stage 1B has exactly 64 canonical solutions and none has a joint completion, so the slice is empty.
+  - So no positive control of this shape exists below 647.
 
-### 5.3 The cheap ordering: fix y_B, then run a 523-style S/D route [E]
+### 5.3 The Gaussian view given y_B (a smaller 523), now known to be misleading [E]
 
 Given y_B, the remainder of the core is all characters with ψ ≠ 1, which includes the stage-1A content. It is a
 cyclotomic problem over Z₃₄ = Z₂ × Z₁₇ with Z₁₉-fibres. Level budgets from `theory/nd_levels.py`
@@ -317,44 +362,29 @@ cyclotomic problem over Z₃₄ = Z₂ × Z₁₇ with Z₁₉-fibres. Level bud
 | *523, y of record* | 179.7 | 146.0 | 83.3 | 83.2 | – | 31.8 (Z₃) | 36.4 | +34.1 | 26.1 |
 
 **Reading.**
-- For ×183 the stage 2 given y_B is a smaller copy of 523's stage 2:
-  - fewer constraint bits (127 against 146) and a smaller S-level (73 against 83);
-  - a smaller middle level (23 against 32);
-  - the same D-deficit (≈ 26);
-  - healthy Mahalanobis distances (1.2–1.5).
-- **Projected cost of the 523 route here [E, not yet calibrated for this shape]:**
-  - 2^{D_def} ≈ 2^26 S-solutions per core;
-  - each costs 2^{F + 1 − n} pair visits, with F ≈ 72.8 − 22.9 ≈ 50 fine bits; at the 523 side size n ≈ 36, that is
-    about 2^15;
-  - plus a D-check of the 523 kind;
-  - total about **2^41 pair visits + 2^26 D-checks, roughly 2^41–2^44**: tens of core-hours, below the 2^45 target.
-- **Caveats.**
-  - 523's realised S-step depended on how many parent pairs share a middle value (§3.3 of
-    `report/paley_523_answer.md`); that has to be measured here.
-  - The middle level is now the trivial Z₁₇-character (one parent value per block, a Z₁₉-function), not a Z₃ split.
-- For ×353 the target sits 4–4.7 standard deviations out, so its estimates are less reliable, and D_def ≈ 29–31.
+- On these Gaussians, ×183 given y_B looks like a smaller copy of 523's stage 2: 127 constraint bits against 146, an
+  S-level of 73 against 83, the same D_def ≈ 26, and Mahalanobis distances of 1.2–1.5. A 523-style route would cost
+  about 2^41–2^44.
+- **But the χ = 1 level (the stage-1A content, 40.6 bits) is discrete, not Gaussian.**
+  - Given y_B, the per-block y_A option lists have 10⁴ entries, and the exact joint join finds **no** consistent y_A
+    for 4 of 4 decided y_B (§5.2).
+  - So the estimate of +15 … +19 completions per y_B is not trustworthy; the true number may be 0 for every y_B.
+- ×353 shows the same warning more directly (target 4–4.7 standard deviations out).
 
-### 5.4 Exact first computation (647 ×183)
+### 5.4 Exact next computation (647 ×183): the exhaustive joint stage 1
 
-1. **Choose y_B.** Among the ≥ 200 exact Z₃₄ solutions (`logs/nd/s1sols/cyc_646_183_19.json`), take the one with the
-   lowest D_def (#160: 25.4) by `nd_levels.py 646 183 19 FILE --idx i`.
-2. **Port the 523 pipeline to a general cyclic slice given y.**
-   - S level: the Z₂ pair sums on Z₁₇ with the Z₁₉-fibre patterns.
-   - Parents: the χ = 1 (Z₁₇-trivial) sums per block. Their equations are the 22.9-bit middle level.
-   - Fibres: the S-configurations per parent.
-   - Join: a Wagner two-level join on the 50 fine bits.
-   - D-check: the D options given S per coset pair (h_D ≈ 28 bits in all), checked by a 2+2 join on the D level.
-   - The algebra needs no new derivation: the PAF signature of any configuration on Z₆₄₆ is computed directly by FFT
-     (as in `nd_stage2_est.py`), so the levels are integer projections of lag sums.
-3. **Positive control at a smaller order of the same shape.** Z₂ × Z₁₇ × Z_q′ with the same order-4 action on Z₁₇
-   and a GP action on Z_q′:
-   - v = 239 (q′ = 7, index 3, f = 2);
-   - v = 443 (q′ = 13, index 4, f = 3).
-
-   Both share the Z₃₄ stage-1B structure. Steps: stage 1B by `nd_s1_sd.py`, then the ported pipeline, then bordered
-   GS completion and `verify_h2292.py`-style verification.
-4. **Measure, as for 523:** S-solutions per middle value against the Gaussian, D-success per S-solution, ms per
-   S-solution. Then run 647 on 4 cores.
+The slice is decided by the joint stage 1, and that is a finite exact computation.
+1. **Enumerate every canonical stage-1B solution:**
+   `nd_s1_sd.py 646 183 19 --max-sol 10**9 --out ...`. The cap of 200 was reached after 213 s; the full count is
+   unknown, Gaussian about 2^16 ordered.
+2. **For each y_B, run the joint test** (`nd_doubly.Doubly(646, 183, 17, 19).joint(yB)`): the y_A option lists by DP,
+   then the exact 2+2 join on the Z₃₈ stage-1A equations.
+   - Today: about 8 minutes per y_B in numpy; 2 of 6 y_B exceeded the in-memory join cap (32,400 × 33,489 lists).
+   - A numba join with the left side bucketed by a middle value removes the cap and gives about 1 minute per y_B.
+3. **If every y_B fails, 647 ×183 is exactly empty [M].**
+   - Any joint solution goes to the cross level (`Doubly.cross`), validated on planted instances. There, H(x | y_A, y_B)
+     is exact and every core is found by an exact 2+2 join or, for long lists, by an S/D split on Z₂.
+4. **Same procedure for ×353**, after its Z₃₈ compression (undecided by α-first) is enumerated by a non-α method.
 
 ---
 
@@ -363,7 +393,9 @@ cyclotomic problem over Z₃₄ = Z₂ × Z₁₇ with Z₁₉-fibres. Level bud
 - **Status.**
   - The Z₄₃ compression (Z₂₂) is non-empty [M], with ≥ 200 solutions.
   - The Paley(11) compression (Z₈₆, the real stage 1) is undecided: 30 orbits per block is too many for α-first.
-  - The gadget search (`paley_slicepipe.py guided1 947 11 86 49 32 11`) is in `logs/nd/guided1_947_K32.log`.
+  - The gadget search (`paley_slicepipe.py guided1 947 11 86 49 32 11 60 0 14 3300`, the tool that produced 573's
+    y's) ran for its full hour without recording a stage-1 y (`logs/nd/guided1_947_K32.log`). At 573 it took 10–20
+    core-seconds per y.
 - **Stage split** (`logs/nd/split_947_mu49.log`, the estimator of the 573 design):
   - stage 1: +33 … +48 per gadget class;
   - stage 2: **−18.6 … −23.4 per y**, with 106–109 u-bits and C₂ ≈ 128–130 bits;
@@ -401,7 +433,8 @@ are listed here).
 | 955 | ×289 | dead before |
 | 971 | ×81, ×221, ×79, ×101 dead before; **×469** | **alive** (§3) |
 | 751, 883, 919, 991 | no cyclic slice > 0 in 16–90 orbits | see §4 for noncyclic |
-| 839, 863 | sweeps still running at the time of writing | – |
+| 839 | **×13** (78, +101.7), **×7** (46, +58.0) | **empty** [P, M] |
+| 863 | **×3** (22, +26.7) | **empty** [P, M] |
 
 **Below 750.**
 - **537:** ×5, ×137, ×17 (+5.3, +4.9, +1.2) compress to Z₈ = Z₂·Z₄, where the S/D split needs another form
@@ -428,8 +461,10 @@ are listed here).
 | 8 | 947 (3788) | ×49 | Z₂₂ compression non-empty; Z₈₆ open | ≥ 2^65 [E] | not recommended |
 | – | 537 | ×5, ×137, ×17 | not screened (F = 8) | ≤ +5 | negacyclic S/D variant |
 
-**Dead this session:** 739 ×215; 947 ×21, ×47, ×23; 823 ×59; 907 ×155; 933 ×37; 883 F₄₉ (7,4), (7,20), (1,3),
-(1,2); 751 F₂₅ (1,2).
+**Dead this session:**
+- cyclic: 739 ×215; 839 ×13, ×7; 863 ×3; 947 ×21, ×47, ×23; 823 ×59; 907 ×155; 933 ×37;
+- F₄₉ slices of 883: (7,4), (7,20), (17,4), (7,2), (7,10), (1,3), (1,2);
+- F₂₅ slices of 751: (17,2), (17,14), (1,2).
 
 ---
 
