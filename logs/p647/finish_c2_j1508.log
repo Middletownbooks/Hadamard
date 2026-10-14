@@ -1,0 +1,5 @@
+{"stage": "core_written", "path": "data/core_v647_b1_p647_c2_j1508_0.txt", "rows": [2, 0, 0, 0]}
+{"stage": "internal_bordered_gs", "hadamard": true, "N": 2588}
+{"core": "data/core_v647_b1_p647_c2_j1508_0.txt", "m": 646, "N": 2588, "paf_lag0": 2584, "paf_offzero_values": [-4], "rowsums": [2, 0, 0, 0], "core_ok": true}
+{"hadamard": true, "N": 2588, "border": "pub/H2292/border.json", "saved": "data/H2588_packed.npz", "sha256_of_packed_rows": "d301ed452c36b8b8493bba9883535e912546a5a4792645bcb75f38254af5a6cb", "S": [[1, 1, 1, 1], [1, 1, -1, -1], [1, -1, 1, -1], [1, -1, -1, 1]], "T": [[1, 1, 1, -1], [1, 1, -1, 1], [1, -1, 1, 1], [-1, 1, 1, 1]], "corner": [[-1, -1, -1, -1], [-1, -1, 1, 1], [-1, 1, -1, 1], [1, -1, -1, 1]]}
+{"stage": "pub_bundle", "dir": "pub/H2588", "files": ["H2588_normalized.txt.gz", "border.json", "sequences_Z646.txt", "verify.py"], "sha256_of_packed_rows": "d301ed452c36b8b8493bba9883535e912546a5a4792645bcb75f38254af5a6cb"}
