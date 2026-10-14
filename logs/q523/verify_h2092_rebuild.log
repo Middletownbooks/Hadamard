@@ -1,0 +1,6 @@
+packed: N 2092 HH^T == N I: True
+packed sha256 9594b975bbec1f10774ba462751dde7e946d2943050aca11f7c2896ef7d44e36
+core: PAF sum at 0 2088 off-zero values [-4] rows [2, 0, 0, 0]
+x181 invariant: True
+GS core: diag {2088} GS GS^T == 4m I + ... checking border completion
+rebuilt bordered GS from core: Hadamard True order 2092
