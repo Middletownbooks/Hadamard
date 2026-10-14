@@ -1,0 +1,4 @@
+{"k": 0, "layer_options": [[183, 183], [61, 180], [61, 180], [183, 183]], "energy_slack": 2016, "pairs": [3672, 1224, 1224, 3672], "sigma_distinct": [187, 144, 144, 187], "S_solutions": 0, "S_join_log2": 13.97, "joint": 0, "secs": 0.22}
+{"k": 1, "layer_options": [[60, 183], [60, 183], [183, 183], [183, 183]], "energy_slack": 1728, "pairs": [900, 900, 2673, 2673], "sigma_distinct": [144, 144, 187, 187], "S_solutions": 0, "S_join_log2": 13.97, "joint": 0, "secs": 0.07}
+{"k": 2, "layer_options": [[183, 183], [180, 180], [180, 180], [183, 183]], "energy_slack": 1728, "pairs": [2673, 2673, 2874, 2673], "sigma_distinct": [187, 187, 187, 187], "S_solutions": 0, "S_join_log2": 15.07, "joint": 0, "secs": 0.12}
+{"k": 3, "layer_options": [[180, 180], [180, 180], [183, 183], [183, 183]], "energy_slack": 2016, "pairs": [4152, 4152, 4032, 4032], "sigma_distinct": [187, 187, 187, 187], "S_solutions": 0, "S_join_log2": 15.07, "joint": 0, "secs": 0.12}

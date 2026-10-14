@@ -1,0 +1,42 @@
+{"F": 82, "p": 3, "q": 9, "v": 739, "subgroups": 74}
+{"gens": [[1, 1], [23, 0]], "order": 80, "orbits": 20, "equations": 19, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 56.5, "constraint_bits": Infinity, "rank": 18, "log2E": -Infinity}
+{"gens": [[1, 2], [5, 0]], "order": 80, "orbits": 18, "equations": 17, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 48.2, "constraint_bits": 87.53, "rank": 16, "log2E": -36.3}
+{"gens": [[1, 2], [5, 1]], "order": 80, "orbits": 16, "equations": 15, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 41.9, "constraint_bits": Infinity, "rank": 13, "log2E": -Infinity}
+{"gens": [[1, 4], [7, 0]], "order": 80, "orbits": 20, "equations": 19, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 56.9, "constraint_bits": Infinity, "rank": 17, "log2E": -Infinity}
+{"gens": [[1, 4], [7, 2]], "order": 80, "orbits": 16, "equations": 15, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 41.9, "constraint_bits": Infinity, "rank": 13, "log2E": -Infinity}
+{"gens": [[1, 1], [3, 0]], "order": 64, "orbits": 24, "equations": 23, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 74.3, "constraint_bits": 520.5, "rank": 22, "log2E": -443.2}
+{"gens": [[5, 1]], "order": 40, "orbits": 24, "equations": 15, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 73.4, "constraint_bits": Infinity, "rank": 14, "log2E": -Infinity}
+{"gens": [[5, 3]], "order": 40, "orbits": 24, "equations": 15, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 73.4, "constraint_bits": Infinity, "rank": 14, "log2E": -Infinity}
+{"gens": [[7, 0]], "order": 40, "orbits": 36, "equations": 19, "fixes_ZF": false, "index_on_Fq": 8, "rowsum_bits": 124.4, "constraint_bits": Infinity, "rank": 17, "log2E": -Infinity}
+{"gens": [[7, 1]], "order": 40, "orbits": 22, "equations": 21, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 69.3, "constraint_bits": Infinity, "rank": 19, "log2E": -Infinity}
+{"gens": [[7, 2]], "order": 40, "orbits": 24, "equations": 15, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 75.6, "constraint_bits": Infinity, "rank": 13, "log2E": -Infinity}
+{"gens": [[7, 3]], "order": 40, "orbits": 22, "equations": 21, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 69.3, "constraint_bits": Infinity, "rank": 19, "log2E": -Infinity}
+{"gens": [[7, 4]], "order": 40, "orbits": 28, "equations": 19, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 90.6, "constraint_bits": Infinity, "rank": 17, "log2E": -Infinity}
+{"gens": [[7, 5]], "order": 40, "orbits": 22, "equations": 21, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 69.3, "constraint_bits": Infinity, "rank": 19, "log2E": -Infinity}
+{"gens": [[7, 6]], "order": 40, "orbits": 24, "equations": 15, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 75.6, "constraint_bits": Infinity, "rank": 13, "log2E": -Infinity}
+{"gens": [[7, 7]], "order": 40, "orbits": 22, "equations": 21, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 69.3, "constraint_bits": Infinity, "rank": 19, "log2E": -Infinity}
+{"gens": [[23, 1]], "order": 40, "orbits": 28, "equations": 19, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 86.8, "constraint_bits": 110.56, "rank": 18, "log2E": -20.8}
+{"gens": [[37, 1]], "order": 40, "orbits": 36, "equations": 19, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 116.6, "constraint_bits": 731.5, "rank": 18, "log2E": -611.9}
+{"gens": [[1, 2], [23, 0]], "order": 40, "orbits": 30, "equations": 29, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 92.8, "constraint_bits": 163.61, "rank": 28, "log2E": -67.8}
+{"gens": [[1, 4], [5, 0]], "order": 40, "orbits": 30, "equations": 29, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 94.8, "constraint_bits": 170.24, "rank": 28, "log2E": -72.4}
+{"gens": [[1, 4], [5, 2]], "order": 40, "orbits": 26, "equations": 25, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 79.8, "constraint_bits": 124.12, "rank": 24, "log2E": -41.3}
+{"gens": [[1, 1], [9, 0]], "order": 32, "orbits": 44, "equations": 43, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 150.0, "constraint_bits": 957.65, "rank": 42, "log2E": -804.6}
+{"gens": [[1, 2], [3, 0]], "order": 32, "orbits": 36, "equations": 35, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 117.2, "constraint_bits": 196.72, "rank": 34, "log2E": -76.5}
+{"gens": [[1, 2], [3, 1]], "order": 32, "orbits": 34, "equations": 33, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 113.1, "constraint_bits": 177.11, "rank": 32, "log2E": -61.0}
+{"gens": [[5, 0]], "order": 20, "orbits": 54, "equations": 29, "fixes_ZF": false, "index_on_Fq": 8, "rowsum_bits": 194.4, "constraint_bits": 190.2, "rank": 28, "log2E": 7.2}
+{"gens": [[5, 2]], "order": 20, "orbits": 42, "equations": 41, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 145.7, "constraint_bits": 204.65, "rank": 40, "log2E": -56.0}
+{"gens": [[5, 4]], "order": 20, "orbits": 46, "equations": 29, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 160.7, "constraint_bits": 169.06, "rank": 28, "log2E": -5.4}
+{"gens": [[5, 6]], "order": 20, "orbits": 42, "equations": 41, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 145.7, "constraint_bits": 204.61, "rank": 40, "log2E": -56.0}
+{"gens": [[23, 2]], "order": 20, "orbits": 46, "equations": 29, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 158.0, "constraint_bits": 155.29, "rank": 28, "log2E": 5.8}
+{"gens": [[37, 2]], "order": 20, "orbits": 54, "equations": 29, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 189.5, "constraint_bits": 175.64, "rank": 28, "log2E": 16.8}
+{"gens": [[1, 4], [23, 0]], "order": 20, "orbits": 50, "equations": 49, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 172.9, "constraint_bits": 269.38, "rank": 48, "log2E": -93.5}
+{"gens": [[1, 1], [81, 0]], "order": 16, "orbits": 84, "equations": 83, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 307.9, "constraint_bits": 1911.95, "rank": 82, "log2E": -1601.0}
+{"gens": [[1, 2], [9, 0]], "order": 16, "orbits": 66, "equations": 65, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 238.9, "constraint_bits": 366.08, "rank": 64, "log2E": -124.2}
+{"gens": [[1, 2], [9, 1]], "order": 16, "orbits": 64, "equations": 63, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 230.9, "constraint_bits": 353.17, "rank": 62, "log2E": -119.3}
+{"gens": [[1, 4], [3, 0]], "order": 16, "orbits": 60, "equations": 59, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 212.4, "constraint_bits": 319.01, "rank": 58, "log2E": -103.6}
+{"gens": [[1, 4], [3, 1]], "order": 16, "orbits": 54, "equations": 53, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 194.8, "constraint_bits": 265.63, "rank": 52, "log2E": -67.8}
+{"gens": [[1, 4], [3, 2]], "order": 16, "orbits": 56, "equations": 55, "fixes_ZF": false, "index_on_Fq": 2, "rowsum_bits": 198.8, "constraint_bits": 279.66, "rank": 54, "log2E": -77.8}
+{"gens": [[1, 4], [3, 3]], "order": 16, "orbits": 54, "equations": 53, "fixes_ZF": false, "index_on_Fq": 1, "rowsum_bits": 194.8, "constraint_bits": 265.45, "rank": 52, "log2E": -67.6}
+{"gens": [[23, 0]], "order": 10, "orbits": 90, "equations": 49, "fixes_ZF": false, "index_on_Fq": 8, "rowsum_bits": 336.5, "constraint_bits": 277.34, "rank": 48, "log2E": 62.1}
+{"gens": [[23, 4]], "order": 10, "orbits": 82, "equations": 81, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 302.7, "constraint_bits": 420.07, "rank": 80, "log2E": -114.4}
+{"gens": [[37, 4]], "order": 10, "orbits": 90, "equations": 49, "fixes_ZF": false, "index_on_Fq": 4, "rowsum_bits": 333.3, "constraint_bits": 269.82, "rank": 48, "log2E": 66.5}
