@@ -29,7 +29,7 @@ and calibration named); [L] literature recollection, unchecked.
 2. **The method is validated end to end at the same shape [M], and its Gaussian is calibrated against exact counts.**
    - The same code builds H(372) (v = 93 = 3·31) and H(852) (v = 213 = 3·71), both verified by the independent
      verifier.
-   - The cross-level Gaussian (lattice-exact, `theory/ab_b0z3_calib.py`) is within about 1 bit of the exact core
+   - The cross-level Gaussian (lattice-exact, `theory/ab_b0z3_calib.py`) is within about 1.5 bits of the exact core
      counts, in both directions, at q = 71 and at q = 311 (§4.5).
 3. **b ≥ 3: the staged pipeline reproduces the published 347 slice end to end (positive control) [M].**
    - In 347's own slice (b = 5, c = 6, G = Z₂ × Z₃ × Z₃ × Z₁₉, index 6 on Z₁₉) the hierarchical stage-2 solver
@@ -52,12 +52,15 @@ and calibration named); [L] literature recollection, unchecked.
    - b ≥ 3:
      - every GP slice of 571 at c = 4 (q = 71, s = 2, 5, 7, 10, 14) dies at the Q-level;
      - 863, c = 4, s = 6, U = −1: exact stage 1 is empty (31,188 α-quadruples);
-     - 863, c = 6, in 347's border class: empty;
+     - 863, c = 6, q = 13, s = 4, H' = Z₁₁, U = ⟨−1 on Z₃ × Z₁₁, ×3 on Z₁₁⟩, in 347's border class: empty;
      - 599, c = 6, q = 11, s = 2, H' = Z₉, with five multiplier groups (§7): empty.
 6. **(D)** The ranked table is §8.
    - The other composite orders reach b = 0 GP slices whose stage 2 is Gaussian-positive, but whose fibres are too
-     large for the 933 pipeline (917 at s = 26 with an order-3 multiplier: +52 bits per y over 38,380 y's; 955 at
-     s = 38: +113 bits per y). They need one more level (§6).
+     large for the 933 pipeline. They need one more level (§6):
+     - 917 at s = 26 with an order-3 multiplier: +52 bits per y, over 38,380 y's;
+     - 955 at s = 19: +35.9 bits per y, over 3.27·10⁶ y's;
+     - 955 at s = 38 with −1: +113 bits per y;
+     - 669 at s = 37: +30.8 bits per y, over 131,006 y's.
    - The best b ≥ 3 survivor is 659 at c = 4 (q = 41, s = 8), where stage 2 has C₂ ≈ 285 bits (§7).
 
 ---
@@ -177,8 +180,8 @@ any other row. In H₂ ⊗ H(2c), the four rows (r, r), (s, s), (r, −r), (s, �
 - in column j of the second half: (1, s_j, −1, −s_j).
 
 s is balanced, so each of the four patterns occurs exactly c times. Grouped by pattern, the four rows are
-H₄ ⊗ 1_cᵀ, and the remaining 4c − 4 rows form a frame. H(2c) is known for every multiple of 4 below 668 [L] (668 is the smallest open order), so frames exist for
-every even c ≤ 332. Checked numerically for c = 6 and c = 10 (Paley I H(12) and H(20)) [M]. ∎
+H₄ ⊗ 1_cᵀ, and the remaining 4c − 4 rows form a frame. H(2c) is known for every multiple of 4 below 668 [L]; 668
+is the smallest open order. So frames exist for every even c ≤ 332. Checked numerically for c = 6 and c = 10 (Paley I H(12) and H(20)) [M]. ∎
 
 **Lemma 2 (the corner is always orthogonal; only its flatness is in question).** This restates
 `report/bge3_answer.md` §4.1 ("C is automatically √(4b) times an orthogonal matrix") with a proof, and adds the
@@ -188,8 +191,9 @@ explicit inverse K = −C·Kc·Cb/(4b).
 - The compressed GS array Cb of the Q-compressions z_k satisfies Cb Cbᵀ = I₄ ⊗ M(Σ_k PAF_Q(z_k)), M(·) the group
   matrix (the GS identity over Q). Its eigenvalues are Σ_k |ẑ_k(ψ)|² = 4b on V (ψ ≠ 1, the Q-level equation of §1.2)
   and 4v on V^⊥.
-- Cb and Cbᵀ map block-constant vectors to block-constant vectors, so they preserve V.
-- The same holds for Cbᵀ Cb (the transposed array is again of GS type).
+- Cb and Cbᵀ map block-constant vectors (V^⊥) to block-constant vectors. Each is the adjoint of the other, so each
+  also preserves V = (V^⊥)^⊥.
+- Likewise Cbᵀ Cb = I₄ ⊗ M(Σ_k PAF_Q(z_k)), since the transposed array is again of GS type, so Cbᵀ Cb = 4b on V.
 - Hence the forced corner C = −K Cbᵀ Kcᵀ/(4c) (the convention of §3 and `theory/ab_assemble.py`) satisfies
   C Cᵀ = K Cbᵀ (4c·Π_V) Cb Kᵀ/(16c²) = 4b·K Kᵀ/(4c) = 4b·I
   for every Q-level solution z and every pair of frames.
