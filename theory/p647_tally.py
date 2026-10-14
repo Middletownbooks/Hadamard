@@ -112,6 +112,30 @@ def main(cdgs=34.8, as_json=False):
     for (c, EL), v in per_cel.items(): per_class[c] = per_class.get(c, 0) + v
     for c, v in calc.items(): per_class[c] = max(per_class.get(c, 0), v)
     cand = sum(per_class.values())
+    # other y_B orbits in class mode (p647_prod.py --classes --yb k; checkpoints yb{k}c{w}_els.jsonl), once per class
+    other = {}
+    for f in sorted(glob.glob(os.path.join(PROD, "yb*c*_els.jsonl"))):
+        k = int(os.path.basename(f)[2:].split("c")[0])
+        cp_k = os.path.join(ROOT, "logs", "p647", f"joint_yb{k}_classes.json")
+        if not os.path.exists(cp_k): continue
+        cof_k = json.load(open(cp_k))['class_of']
+        d = other.setdefault(k, dict(cel={}, S=0, hits=0, secs=0.0))
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            key = (cof_k[r['j']], r['EL']); d['cel'][key] = max(d['cel'].get(key, 0), r['cand'])
+            d['S'] += r['S']; d['hits'] += r['hits']; d['secs'] += r['secs']
+            if 'nested' in r:
+                ncand += r['cand']; nest = [a + b for a, b in zip(nest, r['nested'])]
+    out['other_yb'] = {}
+    for k, d in sorted(other.items()):
+        ck = sum(d['cel'].values())
+        out['other_yb'][k] = dict(classes_touched=len({c for c, EL in d['cel']}), cand=ck,
+                                  cand_log2=round(math.log2(ck), 3) if ck else None, hits=d['hits'],
+                                  expected=round(ck * 2.0 ** -cdgs, 3), core_hours=round(d['secs'] / 3600, 2))
+        cand += ck; T['secs'] += d['secs']
+    out['deep_tail'] = dict(candidates=ncand, candidates_log2=round(math.log2(ncand), 3) if ncand else None,
+                            rows=[dict(rank=min(q + 1, 11), hits=nest[q], expected=round(ncand * 2.0 ** -GB[q], 2)) for q in range(3, 12)])
     # the old dedupe (3,488 orbits of the stabiliser without per-block reversal) for comparison: it counts each class
     # once per member orbit touched, i.e. up to 8 times
     om = json.load(open(os.path.join(ROOT, "logs", "p647", "joint_yb0_orbits.json"))).get('orbit_of')
@@ -138,7 +162,8 @@ def main(cdgs=34.8, as_json=False):
     out['forecast_yb0'] = fc
     D = out.get('class_mode', {})
     secs = T['secs'] + U['secs'] + D.get('secs', 0.0)
-    out['total'] = dict(classes_touched=len(per_class), classes=CJ['classes'], core_hours=round(secs / 3600, 2), cand_classes=cand,
+    out['total'] = dict(classes_touched=len(per_class) + sum(v['classes_touched'] for v in out['other_yb'].values()),
+                        classes_yb0=CJ['classes'], core_hours=round(secs / 3600, 2), cand_classes=cand,
                         cand_log2=round(math.log2(cand), 3) if cand else None, cdgs=cdgs,
                         expected_cores=round(cand * 2.0 ** -cdgs, 3),
                         unit_mode_old_count_expected=round(old * 2.0 ** -cdgs, 3),
@@ -148,6 +173,7 @@ def main(cdgs=34.8, as_json=False):
         for w, W in out['workers'].items(): print(w, json.dumps(W))
         print('units', json.dumps(U)); print('class_mode', json.dumps(out['class_mode'])); print('calibration', json.dumps(C))
         print('deep_tail', json.dumps(out['deep_tail'])); print('forecast_yb0', json.dumps(out['forecast_yb0']))
+        print('other_yb', json.dumps(out['other_yb']))
         print('TOTAL', json.dumps(out['total']))
     return out
 

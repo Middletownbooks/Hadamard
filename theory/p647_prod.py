@@ -22,7 +22,9 @@ Class mode (--classes, from 10:40 UTC): one joint solution per true symmetry cla
 logs/p647/joint_yb0_classes.json), the K central classes, skipping energy classes any earlier run already joined for
 that symmetry class; queue logs/p647/prod/queue_classes.json; checkpoints c{w}_els.jsonl (with the live deep-tail
 counts) and c{w}.jsonl.
-usage: python3 theory/p647_prod.py --classes --worker W --workers N --els 2 [--busy-units 13,14,16]
+usage: python3 theory/p647_prod.py --classes --worker W --workers N --els 2 [--busy-units 13,14,16] [--yb 0,9,13]
+       (--yb: the y_B orbits whose classes are taken in turn, each with its own queue queue_classes_yb{k}.json and
+        checkpoints yb{k}c{w}_els.jsonl, yb{k}c{w}.jsonl; their joint solutions and classes come from p647_ybscan.py)
        python3 theory/p647_prod.py --worker W --workers N [--els K] [--kernel p|q] [--rule none|score:t:beta] [--queue FILE]
        python3 theory/p647_prod.py --units --worker W --workers N --els 2"""
 import sys, os, json, math, time
@@ -261,10 +263,21 @@ def main_units(w, W, K, log, units_path=None):
 # ---------------------------------------------------------------- class mode: one joint solution per true symmetry class
 import glob as _glob
 
-def class_done_els(C):
+def class_tag(yb):
+    """checkpoint prefix of class mode for y_B #yb (y_B #0 keeps the original names c{w}_els.jsonl, c{w}.jsonl)"""
+    return "c" if yb == 0 else f"yb{yb}c"
+
+def class_done_els(C, yb=0):
     """left-energy classes already joined per symmetry class (theory/p647_classes.py), from the unit-mode, the old
     per-joint-mode and the class-mode checkpoints; and the classes done completely by the calibration runs"""
     cof = C['class_of']; done = {}; full = set()
+    if yb != 0:
+        for f in _glob.glob(os.path.join(PROD, f"{class_tag(yb)}*_els.jsonl")):
+            for line in open(f):
+                try: r = json.loads(line)
+                except Exception: continue
+                done.setdefault(cof[r['j']], set()).add(r['EL'])
+        return done, full
     for f in _glob.glob(os.path.join(PROD, "u*_els.jsonl")):
         for line in open(f):
             try: r = json.loads(line)
@@ -280,19 +293,22 @@ def class_done_els(C):
         for line in open(cp): full.add(cof[json.loads(line)['j']])
     return done, full
 
-def main_classes(w, W, K, log, busy_units=()):
+def main_classes(w, W, K, log, busy_units=(), yb=0):
     """worker w of W over the true symmetry classes of y_B #0 (436; report section 4.1): for each class one joint
     solution (its representative), the K central left-energy classes, skipping those any earlier run already joined
     for that class.  Queue logs/p647/prod/queue_classes.json is built once (untouched classes by predicted yield, then
     the classes already partly done or in progress elsewhere); checkpoints c{w}_els.jsonl, c{w}.jsonl."""
     os.makedirs(PROD, exist_ok=True)
-    X, ys = PC.load_setup(); rec, sols = PC.joint_solutions(X, ys, 0)
+    X, ys = PC.load_setup(); rec, sols = PC.joint_solutions(X, ys, yb)
     reps, oi, maps = orbit_maps(X); NH = P.lag_tensor(X, oi)
-    C = json.load(open(os.path.join(PC.LOG, "joint_yb0_classes.json")))
-    qp = os.path.join(PROD, "queue_classes.json" if K == 2 else f"queue_classes_K{K}.json")
+    C = json.load(open(os.path.join(PC.LOG, f"joint_yb{yb}_classes.json")))
+    if 'classes' not in C or isinstance(C['classes'], list): C['classes'] = len(C['reps'])
+    tg = class_tag(yb)
+    qn = ("queue_classes" if yb == 0 else f"queue_classes_yb{yb}") + ("" if K == 2 else f"_K{K}") + ".json"
+    qp = os.path.join(PROD, qn)
     if not os.path.exists(qp):
-        done, full = class_done_els(C)
-        busy = {c for u in busy_units for c in C['unit_classes'][u]}
+        done, full = class_done_els(C, yb)
+        busy = {c for u in busy_units for c in C['unit_classes'][u]} if yb == 0 else set()
         todo = [c for c in range(C['classes']) if c not in full and len(done.get(c, ())) < K]
         fresh = sorted((c for c in todo if not done.get(c) and c not in busy), key=lambda c: (-C['H'][c], c))
         late = sorted((c for c in todo if done.get(c) or c in busy), key=lambda c: (-C['H'][c], c))
@@ -302,7 +318,7 @@ def main_classes(w, W, K, log, busy_units=()):
         os.replace(tmp, qp)
     Q = json.load(open(qp)); assert Q['K'] == K
     mine = [c for i, c in enumerate(Q['order']) if i % W == w]
-    sp = os.path.join(PROD, f"c{w}.jsonl"); fin = set()
+    sp = os.path.join(PROD, f"{tg}{w}.jsonl"); fin = set()
     rule = f"none|els{K}"
     if os.path.exists(sp):
         for line in open(sp):
@@ -310,33 +326,36 @@ def main_classes(w, W, K, log, busy_units=()):
                 r = json.loads(line)
                 if r.get('rule') == rule: fin.add(r['class'])
             except Exception: pass
-    log(json.dumps(dict(stage="start_classes", worker=w, workers=W, K=K, classes=len(mine), finished=len(fin))))
+    log(json.dumps(dict(stage="start_classes", worker=w, workers=W, K=K, yb=yb, classes=len(mine), finished=len(fin))))
     for c in mine:
         if c in fin: continue
         if os.path.exists(os.path.join(PROD, "STOP")): log(json.dumps(dict(stage="stopped", worker=w))); return
-        done, full = class_done_els(C)
+        done, full = class_done_els(C, yb)
         if c in full: continue
         j = C['reps'][c]
         try:
-            r = run_one(X, ys[0], sols[j], j, w, rule, maps, NH, oi, log, K=K, prefix="c",
+            r = run_one(X, ys[yb], sols[j], j, w, rule, maps, NH, oi, log, K=K, prefix=tg,
                         pre_done=sorted(done.get(c, ())), nested=True)
         except KeyboardInterrupt:
             log(json.dumps(dict(stage="stopped", worker=w, cls=c))); return
-        r = dict(r, **{'class': c, 'pre_done': sorted(done.get(c, ()))})
+        r = dict(r, **{'class': c, 'yb': yb, 'pre_done': sorted(done.get(c, ()))})
         with open(sp, "a") as f: f.write(json.dumps(r) + "\n")
         log(json.dumps(dict(stage="class_done", worker=w, **r)))
 
 if __name__ == "__main__":
     a = sys.argv[1:]
     opt = {"--worker": "0", "--workers": "1", "--rule": "none", "--queue": os.path.join(PROD, "queue.json"), "--els": "0", "--kernel": "p",
-           "--busy-units": ""}
+           "--busy-units": "", "--yb": "0"}
     i = 0
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: i += 1
     if "--classes" in a:
         bu = [int(x) for x in opt["--busy-units"].split(",")] if opt.get("--busy-units") else []
-        main_classes(int(opt["--worker"]), int(opt["--workers"]), int(opt["--els"]), log=lambda s: print(s, flush=True), busy_units=bu)
+        for yb_ in [int(x) for x in opt["--yb"].split(",")]:
+            main_classes(int(opt["--worker"]), int(opt["--workers"]), int(opt["--els"]), log=lambda s: print(s, flush=True),
+                         busy_units=bu if yb_ == 0 else (), yb=yb_)
+            if os.path.exists(os.path.join(PROD, "STOP")): break
         sys.exit()
     if "--units" in a:
         main_units(int(opt["--worker"]), int(opt["--workers"]), int(opt["--els"]), log=lambda s: print(s, flush=True))
