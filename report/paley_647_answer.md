@@ -81,11 +81,10 @@ and calibration named); [L] literature recollection, unchecked.
        10 y_B), so the calibrated D-level prediction holds at full depth on the same-shape slice;
      - plants are 10/10 there too.
 
-3. **(C) No obstruction.** S-solutions are abundant. The D-target lies in the D-lattice of every calibrated
-   joint solution, and in every per-S-solution lattice tested at 647. The 647 deep tail matches the Gaussian
-   wherever it can be counted.
+3. **(C) Moot.** The slice contains a core (A), so neither the cross level nor the joint stage is empty.
 
-**Run status** (`python3 theory/p647_tally.py`): see §4.3; cores found 0.
+**Run status** (`python3 theory/p647_tally.py`): see §4.3. 1 core found (0.67 expected); production stopped at
+12:39 UTC.
 
 ---
 
