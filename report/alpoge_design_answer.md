@@ -299,6 +299,21 @@ K = [e ⊗ 1 | circ(f)], Kc = [e′ ⊗ 1 | circ(g)]: f, g are 4 × 4 arrays of 
   (`logs/ab/singer/c8_control/*_layout.npz`).
 - So the method rediscovers c = 8 borders from nothing, in the plain layout rather than 359's twisted one.
 
+**c = 4 and c = 6 [M]: Singer borders are plentiful.**
+- c = 6, Γ = Z₅, a = (4, 2, 0, 0): 68 templates from 10 of the 15 first-blocks (30 s).
+- c = 4, Γ = Z₃, a = (2, 2, 2, 0): 40 templates from 3 of the 4 first-blocks.
+- Samples map to the 347 layout over Z₆ (a = (0, 0, 2, 4)) and Z₄ (a = (0, 2, 2, 2)) and pass `forced_corner`
+  (`logs/ab/singer/*_layout.npz`).
+- The c = 6 monomial profile is bge3's compression type (0, 0, 5, 20), for which `report/bge3_answer.md` §4.1 found no
+  border among sampled frames. It has borders.
+- Both profiles fit the row equation Σ_k (a_k + c·s_k)² = 4v (s_k ≡ h mod 2) at every applicable open order:
+  - c = 4: 572–1,152 solutions per order;
+  - c = 6: 528–1,056 solutions at 599, 659, 719, 839, 863, 917, 947, 971.
+- So these are new border classes for c = 4, 6, beyond the published ones. A slice whose stage-1 Q-compressions are
+  monomial can now be bordered.
+- In Singer coordinates the c = 4 and c = 6 templates use a single "interval" class (`++-`, `+++--`) for every
+  sequence of K and Kc. The corner uses that class and one near-constant class.
+
 **Methods that failed the control [M].**
 - *CP-SAT* (`theory/ab_border_sat.py`: entries of C, K, Kc as Booleans, products as XNORs, every frame, linking and
   corner equation linear). It is correct: with the published solution's entries fixed it reports feasible in 0.5 s.
