@@ -193,6 +193,16 @@ Gaussian fitted to 200,000 sampled residuals of the same candidates:
   S-solutions of j = 11514 the D-residual differences of its candidates have rank 11 (one has rank 10); median 840
   candidates per S-solution. So no per-S-solution coset can exclude the target in a direction the pooled Gaussian
   cannot see. This is the condition that fails for the 495 control (§5.2).
+- **The central classes are not special** (`theory/p647_deeptail_el.py`, `logs/p647/deeptail_calib_el.log`): split
+  by energy class, the two central classes (2^29.79 candidates) give 28 hits against 24.9 expected at rank 7 and
+  4 against 4.6 at rank 8; the other classes give 16 against 18.7 and 1 against 3.4. The Gaussian bits differ by
+  less than 0.15 between the two groups.
+- **Live calibration in production** (each class's candidates are counted on the nested lag subsets after its
+  D-check, `p647_prod.deep_counts`; `p647_tally.py` sums them against the calibration Gaussian). First 2^31.34
+  candidates: rank 4: 79,256 against 79,268; rank 5: 6,544 against 6,492; rank 6: 800 against 784. Deeper hits
+  come in **clusters**: in one class all 8 rank-7 hits are also rank-8 hits, from one S-solution whose candidates
+  agree on the first 8 lags. So deep counts have far more than Poisson variance (rank 7: 40 against 71 after two
+  classes), and cores, if they come, come in clusters too.
 
 ### 2.4 Energy structure and class selection [M] (`theory/p647_restrict.py`, `theory/p647_buckets.py`)
 

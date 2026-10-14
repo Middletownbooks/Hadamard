@@ -66,7 +66,7 @@ def main(cdgs=34.8, as_json=False):
             if 'nested' in r:
                 ncand += r['cand']; nest = [a + b for a, b in zip(nest, r['nested'])]
     out['deep_tail'] = dict(candidates=ncand, candidates_log2=round(math.log2(ncand), 3) if ncand else None,
-                            rows=[dict(rank=min(q + 1, 11), hits=nest[q], expected=round(ncand * 2.0 ** -GB[q], 2)) for q in range(6, 12)])
+                            rows=[dict(rank=min(q + 1, 11), hits=nest[q], expected=round(ncand * 2.0 ** -GB[q], 2)) for q in range(3, 12)])
     # orbit-deduplicated D-candidates: per stabiliser orbit the largest record (old per-joint mode or unit mode)
     om = json.load(open(os.path.join(ROOT, "logs", "p647", "joint_yb0_orbits.json"))).get('orbit_of')
     best = {}
