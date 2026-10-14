@@ -334,11 +334,16 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
     biclique is one class. A 2 × 4 unit costs 2 + 4 sides and returns 8 copies of what one 2-sided join of one
     member returns: **3× the cost of a single join per class**.
   - Unit mode (07:37–10:40 UTC) is retired.
-- **Production since 10:40 UTC** (`p647_prod.py --classes`):
-  - one joint solution per class (its representative) and its two central energy classes;
-  - energy classes already joined for that class by any earlier run are skipped;
-  - the queue `logs/p647/prod/queue_classes.json` lists the 411 classes left (high-freedom first).
-  - Every D-hit is assembled on Z₆₄₆ and checked by the full cyclic PAF; a core is written at once to
+- **Production since 10:40 UTC**:
+  - **class mode, 10:40–12:04 UTC** (`p647_prod.py --classes`): one joint solution per class (its representative)
+    and its two central energy classes, high-freedom classes first;
+  - **multi mode, from 12:04 UTC** (`p647_prod.py --multi`):
+    - one queue over the classes of several y_B orbits, ordered by H, since a class's yield grows with H
+      (`queue_multi.json`; 1,188 classes of y_B #0, #9, #13 at the start, rebuilt as the y_B scan adds orbits);
+    - workers take classes by atomic claim files (`prod/claims/`), so a rebuilt queue never duplicates work, and a
+      restarted worker first finishes its own claims;
+  - in both modes, energy classes already joined for a class by any earlier run are skipped;
+  - every D-hit is assembled on Z₆₄₆ and checked by the full cyclic PAF, and a core is written at once to
     `logs/p647/CORE_*.json`.
 
 ### 4.2 Expected yield [E, calibrated]
@@ -375,6 +380,12 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   - Class mode started on four workers (`c*.jsonl`, `run_c*.log`).
   - 25 classes were already complete (calibration, per-joint and unit runs) and 411 were left.
 - **11:20–11:38 UTC:** the 495 control found and verified 3 H(1980) cores (§5.2). It was stopped at 11:38 UTC.
+- **11:41–11:54 UTC, y_B scan:**
+  - y_B #5: no joint solution;
+  - y_B #9: 13,392 joint solutions, 279 classes (H 78.4–78.66);
+  - y_B #13: 24,624 joint solutions, 518 classes (H median 77.8, max 78.78).
+- **11:56–12:04 UTC:** the class workers handed over to multi mode (§4.1), one by one after their current energy
+  class: H-ordered queue over y_B #0, #9, #13.
 - **From 11:38 UTC:** capped joint scan of the small 647 y_B orbits (`p647_ybscan.py`, `logs/p647/ybscan.log`):
   5, 9, 13, 10, 12, 6, 21, 11, smallest first by the size precheck (`p647_jsize.py`, `logs/p647/jsize_647.jsonl`).
 - **Tally at 11:40 UTC** (counted once per class): 47 classes touched (15 finished in class mode, 2^28.2 candidates
@@ -506,21 +517,24 @@ python3 theory/p647_perS_rank.py                                 # per-S-solutio
 ## 7. Hand-off
 
 - **Running** (started by this session, restart-safe, resume by the same command):
-  - class workers 0–3 (`theory/p647_prod.py --classes --worker W --workers 4 --els 2 --busy-units 13,14,16`):
-    - the queue `logs/p647/prod/queue_classes.json` is fixed once built;
-    - high-freedom classes come first, and the classes partly done by earlier runs come last;
-  - the 495 ×83 control with class deduplication (`theory/p647_ctrl_full.py 494 83 13 19 --classes --maxpairs
-    4000000`, `logs/p647/control/full_495_83_classes.log`);
+  - multi-mode workers 0–3: `theory/p647_prod.py --multi --worker W --els 2 >> logs/p647/prod/run_mW.log`.
+    - They claim classes from `logs/p647/prod/queue_multi.json` in H order.
+    - Rebuild the queue when the y_B scan adds orbits: `theory/p647_prod.py --build-queue --yb 0,9,13,… --els 2`.
+      The workers re-read it before every claim.
+  - the capped 647 y_B joint scan (`theory/p647_ybscan.py --ks …`, `logs/p647/ybscan.log`), on the orbits whose
+    size precheck (`theory/p647_jsize.py 646 353 17 19 jsize_647`, still running at low priority) is at most 2^27;
   - a paused (SIGSTOP) stage-1 screen of the product slices (`p647_ctrl_screen.py`, PID in the session log).
 - **On a core:** `python3 theory/p647_finish.py logs/p647/CORE_*.json`.
   - It writes `data/core_v647_b1_p647_<tag>.txt` and checks it with `nd_doubly.bordered_gs_cyclic`.
   - It then checks it with the independent `scripts/verify_h2588.py` (`data/H2588_packed.npz`, SHA-256 printed).
-  - It builds `pub/H2588/`: sequences, border, normalized matrix, verify.py.
-- **If y_B #0's central classes end without a core** (436 classes, about 2.7 expected, about 75 core-hours):
-  - run the next two energy classes of every class: about 1.6 expected for about 90 core-hours.
-    - `--els 4` (its own queue `queue_classes_K4.json`, finished records keyed by K);
-    - `pre_done` skips the two central classes already joined;
-  - then resume the joint enumeration over y_B orbits #1–#494 (`nd_joint_exhaust.py`). Cap the joint test's pair
-    lists first (`maxpairs`; 6·10⁷ needs about 7 GB) and deduplicate with `p647_classes.stabiliser_full`.
+  - It builds `pub/H2588/`: sequences, border, normalized matrix, verify.py. It was dry-run on the H(2092) core
+    (SHA-256 reproduced).
+- **Next:**
+  - add every new scanned y_B to the queue;
+  - when the queue's H falls below about 77.5, run the next two energy classes of the best classes (`--els 4`, its
+    own queue and claims) rather than lower-H classes;
+  - orbits with joint tests above 2^27 need a joint test that does not materialise the joint-level S-solutions
+    (`nd_joint_exhaust.JointTest.test` does; y_B #1 needed more than 15 GB).
 - **Any new deduplication** must use the full group (`p647_classes.group_full`: per-block reversal included). Check it
   on real data: members of one class must give identical counts.
+- **Kill only by explicit PID.** `pgrep -f` / `pkill -f` patterns can match the calling shell.
