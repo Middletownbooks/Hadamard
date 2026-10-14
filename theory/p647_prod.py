@@ -289,7 +289,7 @@ def main_classes(w, W, K, log, busy_units=()):
     X, ys = PC.load_setup(); rec, sols = PC.joint_solutions(X, ys, 0)
     reps, oi, maps = orbit_maps(X); NH = P.lag_tensor(X, oi)
     C = json.load(open(os.path.join(PC.LOG, "joint_yb0_classes.json")))
-    qp = os.path.join(PROD, "queue_classes.json")
+    qp = os.path.join(PROD, "queue_classes.json" if K == 2 else f"queue_classes_K{K}.json")
     if not os.path.exists(qp):
         done, full = class_done_els(C)
         busy = {c for u in busy_units for c in C['unit_classes'][u]}
@@ -303,11 +303,13 @@ def main_classes(w, W, K, log, busy_units=()):
     Q = json.load(open(qp)); assert Q['K'] == K
     mine = [c for i, c in enumerate(Q['order']) if i % W == w]
     sp = os.path.join(PROD, f"c{w}.jsonl"); fin = set()
+    rule = f"none|els{K}"
     if os.path.exists(sp):
         for line in open(sp):
-            try: fin.add(json.loads(line)['class'])
+            try:
+                r = json.loads(line)
+                if r.get('rule') == rule: fin.add(r['class'])
             except Exception: pass
-    rule = f"none|els{K}"
     log(json.dumps(dict(stage="start_classes", worker=w, workers=W, K=K, classes=len(mine), finished=len(fin))))
     for c in mine:
         if c in fin: continue

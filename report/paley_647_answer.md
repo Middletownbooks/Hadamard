@@ -11,9 +11,24 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line and run status
 
-*Status at 09:45 UTC 2026-10-14; this section is updated as the run proceeds.*
+*Status at 10:50 UTC 2026-10-14; this section is updated as the run proceeds.*
 
-1. **(A) No H(2588) yet.** The production run is under way (§4); no core so far, against 0.98 expected.
+**Correction made 10:30–10:50 UTC (§4.1).**
+- The stabiliser used to deduplicate joint solutions applied the reversal z → −z to all four blocks at once.
+  Reversing *one* block is also a symmetry: it keeps that block's PAF and the ×353 invariance, and it fixes every
+  y_B because −1 = 13² lies in ⟨353 mod 17⟩.
+- With it, the 20,928 joint solutions of y_B #0 form **436 classes of 48**, not 3,488 orbits of 6 [P, M].
+- Two earlier claims fall:
+  - the class-merged units (2.78×) were joining copies of one class;
+  - the 495 control's "0 cores at 7.4 expected" counted every class 8 times. It is really 0 at 0.9 expected
+    distinct cores, which is not significant.
+- The calibration (§2) and the per-joint cost (§3.1–3.2) are unaffected. Their 14 joint solutions are 14 distinct
+  classes.
+
+1. **(A) No H(2588) yet.**
+   - Production now runs one join per class (§4): 0 cores so far against 0.30 expected, counted once per class.
+   - The whole of y_B #0 holds about **2.7 expected cores** at the two central energy classes, for about 75
+     core-hours (about 19 hours on four workers).
 
 2. **(B) The cross level is calibrated, and its cost per core is inside the budget** [M speeds × E counts, the counts
    exact]:
@@ -29,23 +44,23 @@ and calibration named); [L] literature recollection, unchecked.
    - **The D-level holds to rank 9 of 11** (§2.3):
      - over all 2^30.65 candidates of the four runs: 44 hits against 44.0 expected at rank 7, 5 against 8.0 at
        rank 8, 1 against 1.15 at rank 9 (30.6 bits);
+     - the live production count, deduplicated, agrees: 29 against 29.5 at rank 7;
      - every 647 S-solution's candidates span the full D-lattice;
      - C(D|S) = 34.8 bits is used; the last ~4 bits are an extrapolation.
-   - **Cost per core** (§3, §4):
-     - 2^41.0 emitted pairs, about 15 core-hours per expected core, with energy-class selection (measured);
-     - about 6–9 core-hours with class-merged units;
-     - 2^42.6 (about 40 core-hours) without these levers.
+   - **Cost per core** (§3, §4.2), one join per symmetry class, two central energy classes:
+     - about 2^41.0 emitted pairs and 15–17 core-hours per expected core for the 89 high-freedom classes (H 79.4);
+     - about 29 core-hours for the other 347 classes;
+     - about 27 core-hours on average over y_B #0;
+     - 2^42.6 (about 40 core-hours) without the energy-class selection.
    - **Positive control** (§5):
-     - 495 ×83 is the first same-shape slice with a non-empty joint stage (y_B orbits with 2,400–6,912 joint
-       solutions);
-     - its S-level and pair-level counts reproduce the 647 calibration pattern;
-     - its full D-level gives **0 cores at 7.4 expected**, and the cause is identified: rank-deficient
-       per-S-solution D-lattices (median 24 candidates), the discrete-level failure mode;
-     - this does not occur at 647 (median 840, full rank);
-     - every smaller product slice tested is exactly empty.
-     
-     So no valid positive control exists at small orders for the 647 D-level, and the (B) claim rests on the exact
-     calibration of §2 (to rank 9).
+     - 495 ×83 is the first same-shape slice with a non-empty joint stage, and it has the same per-block reversal
+       symmetry (144 elements against 18; 0 mismatches over 1,952 old orbits);
+     - its S-level and pair-level counts reproduce the 647 calibration pattern, and plants are 10/10;
+     - counted once per class, y_B #1, #2, #9 give **0 cores against 0.88 expected** (P = 0.41): no evidence either
+       way;
+     - its per-S-solution D-lattices are rank-deficient (median 24 candidates; 647: full rank, median 840), which
+       concentrates hits on few S-solutions;
+     - the run continues over the remaining y_B with class deduplication (8× cheaper), looking for a core end to end.
 
 3. **(C) No obstruction.** S-solutions are abundant. The D-target lies in the D-lattice of every calibrated
    joint solution, and in every per-S-solution lattice tested at 647. The 647 deep tail matches the Gaussian
@@ -198,11 +213,17 @@ Gaussian fitted to 200,000 sampled residuals of the same candidates:
   4 against 4.6 at rank 8; the other classes give 16 against 18.7 and 1 against 3.4. The Gaussian bits differ by
   less than 0.15 between the two groups.
 - **Live calibration in production** (each class's candidates are counted on the nested lag subsets after its
-  D-check, `p647_prod.deep_counts`; `p647_tally.py` sums them against the calibration Gaussian). First 2^31.34
-  candidates: rank 4: 79,256 against 79,268; rank 5: 6,544 against 6,492; rank 6: 800 against 784. Deeper hits
-  come in **clusters**: in one class all 8 rank-7 hits are also rank-8 hits, from one S-solution whose candidates
-  agree on the first 8 lags. So deep counts have far more than Poisson variance (rank 7: 40 against 71 after two
-  classes), and cores, if they come, come in clusters too.
+  D-check, `p647_prod.deep_counts`; `p647_tally.py` sums them against the calibration Gaussian).
+  - In unit mode every count was a multiple of 8 (one class appeared as 8 copies, §4.1). That was mistaken at first
+    for clustering of the deep hits.
+  - Counted once per class, the first 2^30.07 distinct candidates give:
+    - rank 4: 32,765 against 32,847;
+    - rank 5: 2,592 against 2,690;
+    - rank 6: 343 against 325;
+    - **rank 7: 29 against 29.5**;
+    - rank 8: 9 against 5.4;
+    - rank 9: 0 against 0.8.
+  - In class mode no symmetry multiplies hits (the stabiliser acts freely, so none fixes a joint solution).
 
 ### 2.4 Energy structure and class selection [M] (`theory/p647_restrict.py`, `theory/p647_buckets.py`)
 
@@ -247,15 +268,18 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   measured, the yield (D-candidates) is exact for every processed joint solution, and the only Gaussian factor
   left is C(D|S) = 34.8 bits, checked against exact counts up to 22 bits (§2.3).
 - The D-check costs 2–4 s per joint solution, which is negligible.
+- The joint solutions must be distinct symmetry classes (§4.1). y_B #0 has only 89 high-freedom classes (0.92
+  expected cores); its 347 classes of the 78.x group cost about 29 core-hours per expected core (2^41.8 pairs).
 
 ### 3.3 The levers, and what they are worth [M]
 
 1. **Energy-class selection** (2.7×, §2.4): the two classes nearest the pair-weighted energy centre.
-2. **Symmetry** (6×): the stabiliser of y_B #0 in the slice's group has 18 elements on Z₃₈ (6 after dividing by M),
-   acting freely on the joint solutions: 20,928 → **3,488 orbits** (`p647_common.stabiliser`, `canonical_joint`).
-   One member per orbit suffices.
-3. **Class merging** (2.78×, §4.1): the joint solutions of y_B #0 form complete bicliques under the stage-1A
-   signature, so one join of a union of lefts against a union of rights serves every (left, right) pair.
+2. **Symmetry** (48×): the stabiliser of y_B #0 in the slice's group, *with per-block reversal* (§4.1), has 144
+   elements on Z₃₈ and acts freely on the joint solutions: 20,928 → **436 classes** (`p647_classes.py`). One join
+   per class suffices. (Without per-block reversal: 18 elements, 3,488 orbits, each class counted 8 times.)
+3. **Class merging: no gain (withdrawn).** The joint solutions of y_B #0 form complete bicliques under the stage-1A
+   signature, and one merged join serves every (left, right) pair of one (§4.1). But a 4 × 4 biclique *is* one
+   class under per-block reversal, so the merged join returns copies. The "2.78×" counted copies.
 4. List restriction by σ-multiplicity or energy (≤ 1.8×) and energy buckets (no gain over 1): not used.
 5. Kernel tuning (branch-free emission, bitset prefilter): no gain (22.5 against 22.4 ns/pair). The kernel is
    bound by the scatter's memory traffic.
@@ -264,45 +288,83 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
 
 ## 4. Production [M] (`theory/p647_prod.py`, `theory/p647_tally.py`, `logs/p647/prod/`)
 
-### 4.1 Class-merged units [P, M]
+### 4.1 Symmetry classes [P, M] (`theory/p647_classes.py`, `logs/p647/joint_yb0_classes.json`)
 
-- **Bicliques [P].** A joint solution of y_B #0 is a choice (o₀, o₁, o₂, o₃) of one y_A option per block with
-  Σ_k sig₁A(o_k) = T₁A (the stage-1A S- and D-signatures). With left ℓ = (o₀, o₁) and right r = (o₂, o₃) this reads
-  sig(ℓ) + sig(r) = T₁A. So all lefts with one signature s and all rights with T₁A − s form a **complete biclique**:
-  every (ℓ, r) in it is a joint solution [M: all 1,230 components of the 20,928 joint solutions are complete; 1,152 of
-  them 4 × 4].
-- **Merged join.** One 2+2 join of (the union of the left pair sets) against (the union of the right pair sets) finds the
-  S-solutions of every (ℓ, r) of a biclique, and nothing else, at the cost of Σ|left| + Σ|right| emitted pairs
-  (`p647_join.join4m`: packed entries with 22-bit global indices; self-test 30/30 against a brute force over every
-  (ℓ, r); on a real 2 × 4 unit (σ with multiplicity ≥ 4, the two central classes) it returns exactly the union of the 8
-  separate joins, 342,800 S-solutions, in 616 s against 1,329 s; `theory/p647_valm.py`,
-  `logs/p647/validation_join4m_unit0.json`).
-- **Units.** A 4 × 4 biclique holds only 8 orbits (a stabiliser element maps it to itself), so a 2 × 4 sub-biclique
-  already covers them. 410 sub-bicliques (384 of shape 2 × 4, 26 of 4 × 4) cover all 3,488 orbits with 2,512 emitted
-  sides instead of 6,976: **2.78× less work** (`logs/p647/prod/units.json`, high-freedom units first).
-- **D-check** per (ℓ, r) with that joint solution's own four blocks; every D-hit is assembled on Z₆₄₆ and checked by
-  the full cyclic PAF; a core is written at once to `logs/p647/CORE_*.json`.
+- **Per-block reversal [P].** x_k(z) → x_k(−z) for a single block k:
+  - keeps PAF(x_k), since PAF(h) = PAF(−h);
+  - keeps the ×353 invariance, since −1 commutes with 353;
+  - fixes every y_B. On the Z₃₄ compression it acts by z → −z, which is trivial there because −1 = 13² lies in
+    ⟨353 mod 17⟩ = ⟨13⟩.
+
+  So it maps cores to cores and joint solutions of y_B #0 to joint solutions of y_B #0, moving only block k's y_A
+  (z → −z on Z₃₈). The group of `p647_common.group_elements` (u, t, s, π) applies u to all blocks at once, so it
+  misses this.
+- **Classes [M].** The stabiliser of y_B #0 in the full group has 144 elements on Z₃₈ (18 before). That is 48
+  after dividing by ⟨353⟩, which acts trivially, and these 48 act freely on the joint solutions.
+  - The 20,928 joint solutions form **436 classes of 48**, each the union of 8 old orbits.
+  - 89 classes are in the high-freedom group (H 79.3–79.4) and 347 in the 78.3–78.5 group.
+- **Isomorphic cross levels [M].**
+  - Reversing block k of a joint solution j gives a joint solution j′ whose block-k layer lists are exactly the
+    reversed lists of j (as sets), with the other blocks identical and the same S-signatures and σ-multiplicities
+    (3/3 random checks, `logs/p647/classes_yb0.log`).
+  - In production, the members of every unit (8 or 16 joint solutions, 1 or 2 classes) gave identical D-candidate
+    counts in every energy class, and every deep-tail count was a multiple of 8.
+  - In the 495 control, 1,952 old orbits in 244 classes gave identical exact counts within every class (§5.2).
+- **The units, and why they are retired.**
+  - A joint solution of y_B #0 is a choice (o₀, o₁, o₂, o₃) of one y_A option per block, with
+    Σ_k sig₁A(o_k) = T₁A. So lefts (o₀, o₁) of one stage-1A signature and the rights completing it form complete
+    bicliques [P]: 1,230 components, 1,152 of them 4 × 4.
+  - A merged join of a union of lefts against a union of rights (`p647_join.join4m`, validated: exactly the union
+    of the separate joins on a real unit) serves the whole biclique.
+  - But per-block reversal of blocks 0 and 1 (2 and 3) permutes the lefts (rights) of a 4 × 4 biclique, so the
+    biclique is one class. A 2 × 4 unit costs 2 + 4 sides and returns 8 copies of what one 2-sided join of one
+    member returns: **3× the cost of a single join per class**.
+  - Unit mode (07:37–10:40 UTC) is retired.
+- **Production since 10:40 UTC** (`p647_prod.py --classes`):
+  - one joint solution per class (its representative) and its two central energy classes;
+  - energy classes already joined for that class by any earlier run are skipped;
+  - the queue `logs/p647/prod/queue_classes.json` lists the 411 classes left (high-freedom first).
+  - Every D-hit is assembled on Z₆₄₆ and checked by the full cyclic PAF; a core is written at once to
+    `logs/p647/CORE_*.json`.
 
 ### 4.2 Expected yield [E, calibrated]
 
-With the two central classes, a joint solution yields 2^28.2 D-candidates (H 79.4 class) or about 2^27.2 (78.x
-class), i.e. 2^−6.6 or 2^−7.6 expected cores. Over the 3,488 orbits of y_B #0: about 712 × 0.0101 + 2,776 × 0.0050 ≈
-**21 expected cores**, for about 2,512 sides × 1.1·10¹⁰ pairs ≈ 2.8·10¹³ emitted pairs (~190 core-hours). That is
-about **9 core-hours per expected core** in unit mode. y_B #0 is one of 495 y_B orbits.
+- **Per class**, with the two central energy classes:
+  - 2^28.2 D-candidates (H 79.4 group), i.e. 2^−6.6 expected cores;
+  - about 2^27.2 (78.x group), i.e. 2^−7.6.
+- **Over the 436 classes of y_B #0:** 89 × 0.0103 + 347 × 0.0051 ≈ **2.7 expected cores**, for 436 joins of 10–12
+  minutes (about 75 core-hours).
+- **Next two energy classes per class** (295 and 367 in §2.4's terms): about 0.58× the yield for 1.15× the work,
+  i.e. about 1.6 more expected cores for about 90 core-hours.
+- y_B #0 is one of 495 y_B orbits.
 
 ### 4.2a Waiting time
 
-- Cores arrive at the calibrated mean rate λ (about 0.46 per hour on three unit workers, 0.6 on four), but full-depth
-  hits are likely clustered, like the rank 7–8 hits of §2.3. If clusters have typical size c, the chance of no core
-  after expectation λ is about e^(−λ/c) rather than e^(−λ).
-- With c = 1–4, a first core is expected within about 2–9 hours of unit-mode running. The H(2092) run found its
-  core at 3.06 expected cores (probability 0.05).
+- In class mode every class is joined once, so a core would be found once. The rank-7/8 "clusters" seen in unit
+  mode were the 8 copies of one class (§2.3).
+- On four workers the 89 high-freedom classes take about 4–5 hours (0.92 expected cores) and the other 347 about
+  14–15 hours (1.8).
+- The chance of no core in y_B #0 is e^−2.7 ≈ 7% if C(D|S) = 34.8 is right. Its last ~4 bits are extrapolated
+  (§2.3).
 
 ### 4.3 Run log
 
-- 06:45–07:37 UTC: per-joint-solution mode, three workers (`w*.jsonl`): 6 joint solutions finished (j = 1999, 1109,
-  420, 675, 2483, 78), each 2.2·10¹⁰ pairs, 2^28.15–2^28.23 D-candidates, 0 D-hits; 3 more partial.
-- From 07:37 UTC: unit mode (`u*.jsonl`), workers 0–2 (worker 3's core is lent to the control search, §5).
+- **06:45–07:37 UTC, per-joint-solution mode** (`w*.jsonl`), three workers:
+  - 10 joint solutions finished, which are 10 distinct classes, each 2.2·10¹⁰ pairs, 2^28.15–2^28.34
+    D-candidates, 0 D-hits;
+  - 3 more partial.
+- **07:37–10:40 UTC, unit mode** (`u*.jsonl`), workers 0–2, with worker 3's core lent to the control search (§5):
+  - units 0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13 finished and 14, 16 partial;
+  - about 16 classes in all, each joined as 8–16 copies; 0 D-hits.
+- **10:30–10:50 UTC:** per-block reversal found (§4.1).
+  - The unit workers were retired, each right after its current energy class.
+  - Class mode started on four workers (`c*.jsonl`, `run_c*.log`).
+  - 25 classes were already complete (calibration, per-joint and unit runs) and 411 were left.
+- **Tally at 10:50 UTC** (counted once per class):
+  - 28 classes touched;
+  - 2^33.08 distinct D-candidates;
+  - **0.30 expected cores, 0 found**;
+  - 9.3 core-hours.
 
 ---
 
@@ -331,29 +393,49 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
 
 - The closest shape to 647 ×353: |M₁₃| = 4 (three classes on Z₁₃) and |M₁₉| = 3 (the same six classes on Z₁₉);
   per Z₂-layer a 4 × 7 label matrix (647: 5 × 7); y_B on Z₂₆, y_A on Z₃₈.
-- Stage 1B along Z₁₉: 102 y_B orbits. Joint test: orbits #1, #2 and #9 have 2,400, 2,400 and 6,912 joint solutions
-  (#0 and #3–#8 none); the stabiliser of y_B #1 acts with 18 elements on Z₃₈, giving 400 orbits.
+- Stage 1B along Z₁₉: 102 y_B orbits.
+- Joint test: orbits #1, #2, #9 and #10 have 2,400, 2,400, 6,912 and 5,232 joint solutions; #0 and #3–#8 have none.
+- The stabiliser of y_B #1 acts with 144 elements on Z₃₈, giving 50 classes. Without per-block reversal it has 18
+  elements and gives 400 orbits.
 - Cross level, exact, on every orbit representative (0.3–0.8 s each): the pair-level yield is **0.68 bit below**
   its Gaussian (647: 0.46–0.63) and the distinct-σ S-count 0.45 bit above it (647: 1.5–1.7). C(D|S) ≈ 22.8 bits.
-- **Result for y_B #1, #2, #9 (all 1,936 orbits of their joint solutions): 2^25.58 D-candidates, 7.4 expected
-  cores by the pooled Gaussian (C(D|S) = 22.7), 0 found** (Poisson probability 0.06%). The pipeline is not the
-  cause: 10/10 plants on real 495 joint solutions are recovered (`theory/p647_ctrl_check.py`,
-  `logs/p647/control/check_495_83.log`), and an independent candidate-by-candidate count also finds no full-depth hit.
-- **Where the Gaussian fails** (400 joint solutions, 2^23.48 candidates, nested cross lags): the exact hits follow
-  it to rank 6 (rank 3: 7,271 against 7,846; rank 5: 95 against 126; rank 6: 15 against 19.1). At rank 7 there are
-  13 hits in 2^24.3 candidates. At rank 8 (the full condition) there are 0 against 1.6 here and 7.4 over the whole run.
-  On the rank-7 hits the residual is a single integer direction t (lag 17 = t, lag 25 = −t), and t took the values
-  −2, 4, 6, never 0.
-- **Why: discreteness per S-solution** (`theory/p647_perS_rank.py`). A 495 S-solution has a median of 24
-  D-candidates. Their residual differences span the full rank-8 D-lattice for only 472 of 1,200 sampled
-  S-solutions; the rest have rank 1–7. Exact coset test: for 3,466 of 3,960 S-solutions the D-target lies outside the
-  affine sublattice their candidates span. The pooled Gaussian averages over S-solutions and cannot see this.
-  A per-S-solution Gaussian removes 0.8 bit; the rest sits in the low-rank cases where any Gaussian is crude.
-  **This is the discrete-level failure mode of the design report's §9.4, at the D-level of a small slice.**
-- **647 is on the other side of this line**: median 840 candidates per S-solution and full-rank (11) lattices for
-  599/600, with the deep tail matching to rank 9 (§2.3). So the 495 control is not a proxy for the 647 D-level, and
-  a same-shape slice small enough to run end to end is, for this reason, unlikely to be one. The 495 run continues over
-  its remaining y_B orbits (`full_495_83_all.log`), looking for any core in that slice.
+- **Result, counted once per class** (`theory/p647_ctrl_tally.py`, `logs/p647/control/classes_494_83_13_19.json`).
+  - The 495 joint solutions have the same per-block reversal symmetry (−1 lies in the order-4 subgroup mod 13):
+    the stabiliser of y_B #1 has 144 elements on Z₃₈ (18 before), and its 2,400 joint solutions form 50 classes
+    (400 old orbits).
+  - Every class's 8 old orbits gave identical exact counts: **0 mismatches over 1,952 members**.
+  - y_B #1, #2, #9: **244 classes, 2^22.59 distinct D-candidates, 0.88 expected distinct cores** (pooled Gaussian,
+    C(D|S) ≈ 22.8), **0 found** (Poisson probability 0.41).
+  - The earlier "7.4 expected, probability 0.06%" counted every class 8 times. **The full-depth count is not
+    significant.**
+- **The pipeline is validated on 495:**
+  - 10/10 plants on real 495 joint solutions are recovered (`theory/p647_ctrl_check.py`,
+    `logs/p647/control/check_495_83.log`);
+  - an independent candidate-by-candidate count also finds no full-depth hit.
+- **The deep tail** (400 random joint solutions of y_B #9, i.e. about 2.8 per class, 2^23.48 candidates, nested
+  cross lags):
+  - the exact hits follow the Gaussian to rank 6 (rank 3: 7,271 against 7,846; rank 5: 95 against 126; rank 6: 15
+    against 19.1);
+  - at rank 7 there are 13 hits in 2^24.3 candidates;
+  - at rank 8 (the full condition) 0 against 1.6, i.e. against about 0.6 distinct classes: not significant either;
+  - on the rank-7 hits the residual is a single integer direction t (lag 17 = t, lag 25 = −t), and t took the values
+    −2, 4, 6, never 0.
+- **Discreteness per S-solution** (`theory/p647_perS_rank.py`):
+  - a 495 S-solution has a median of 24 D-candidates, and their residual differences span the full rank-8 D-lattice
+    for only 472 of 1,200 sampled S-solutions; the rest have rank 1–7;
+  - exact coset test: for 3,466 of 3,960 S-solutions the D-target lies outside the affine sublattice their
+    candidates span.
+  - So 495's D-level hits are concentrated on few S-solutions, which gives a much larger variance than Poisson
+    around the pooled Gaussian. A coset of index I that contains the target is hit about I times more often, so this
+    need not lower the mean. The data do not show a lower mean.
+- **647 is on the other side of this line**: median 840 candidates per S-solution, and full-rank (11) lattices for
+  599 of 600, with the deep tail matching to rank 9 (§2.3).
+- **The control continues** (`p647_ctrl_full.py 494 83 13 19 --classes --maxpairs 4000000`,
+  `full_495_83_classes.log`):
+  - over the remaining y_B orbits, one join per class, 0.3–0.8 s each;
+  - the joint test's pair lists are capped (the all-orbit run was killed out of memory in the joint test of
+    y_B #11), and a y_B over the cap is recorded as undecided;
+  - at about 0.0036 expected distinct cores per class (0.88 over 244), about 800 classes give 3 expected.
 
 ---
 
@@ -369,13 +451,15 @@ python3 theory/p647_calib.py 4208 9902 11514 16846               # exact calibra
 python3 theory/p647_deeptail.py 4208 9902 11514 16846            # deep D-tail to rank 9 (seconds, from the saved S-solutions)
 python3 theory/p647_restrict.py 4208; python3 theory/p647_buckets.py 4208 9902   # restriction and bucket analyses
 python3 theory/p647_valm.py                                      # join4m equals the separate joins on a real unit
-python3 theory/p647_prod.py --units --worker W --workers 4 --els 2   # production, W = 0..3 (restart-safe; touch logs/p647/prod/STOP)
-python3 theory/p647_tally.py                                     # status: expected cores, live deep tail, cores found
+python3 theory/p647_classes.py --check 3                         # true symmetry classes of y_B #0 (436 of 48) + isomorphism checks
+python3 theory/p647_prod.py --classes --worker W --workers 4 --els 2   # production, W = 0..3 (restart-safe; touch logs/p647/prod/STOP)
+python3 theory/p647_tally.py                                     # status, once per class: expected cores, live deep tail, cores found
 python3 theory/p647_finish.py logs/p647/CORE_xxx.json            # a core -> data/, verify_h2588.py, pub/H2588/
 python3 scripts/verify_h2588.py data/core_v523_b1_q523_p523f_w0.txt /tmp/H2092.npz   # verifier test: SHA-256 9594b975...
 python3 theory/p647_control.py --list 700; python3 theory/p647_ctrl_screen.py 700  # product-shape slices, stage-1 screen
 python3 theory/p647_control.py 70 9 5 7; python3 theory/p647_control.py 110 9 11 5  # 71 and 111: joint stage empty
-python3 theory/p647_ctrl_full.py 494 83 13 19 --yb 1,2,9         # 495 x83 control (all orbits of three y_B)
+python3 theory/p647_ctrl_full.py 494 83 13 19 --classes --maxpairs 4000000   # 495 x83 control, one join per class
+python3 theory/p647_ctrl_tally.py                                # its class-deduplicated tally (and member-count consistency)
 python3 theory/p647_ctrl_check.py 494 83 13 19 --yb 9 --plants 10 --tail 400    # its plants and D-tail
 python3 theory/p647_perS_rank.py                                 # per-S-solution D-lattice ranks, 647 vs 495
 ```
@@ -385,16 +469,21 @@ python3 theory/p647_perS_rank.py                                 # per-S-solutio
 ## 7. Hand-off
 
 - **Running** (started by this session, restart-safe, resume by the same command):
-  - unit workers 0–2 (`theory/p647_prod.py --units --worker W --workers 4 --els 2`): 410 units (`units.json`,
-    high-freedom units first); worker 3's share waits until a fourth worker is started;
-  - the 495 ×83 all-orbit control (`theory/p647_ctrl_full.py 494 83 13 19`, `logs/p647/control/full_495_83_all.log`);
+  - class workers 0–3 (`theory/p647_prod.py --classes --worker W --workers 4 --els 2 --busy-units 13,14,16`):
+    - the queue `logs/p647/prod/queue_classes.json` is fixed once built;
+    - high-freedom classes come first, and the classes partly done by earlier runs come last;
+  - the 495 ×83 control with class deduplication (`theory/p647_ctrl_full.py 494 83 13 19 --classes --maxpairs
+    4000000`, `logs/p647/control/full_495_83_classes.log`);
   - a paused (SIGSTOP) stage-1 screen of the product slices (`p647_ctrl_screen.py`, PID in the session log).
-- **On a core:** `python3 theory/p647_finish.py logs/p647/CORE_*.json` writes `data/core_v647_b1_p647_<tag>.txt`,
-  checks it with `nd_doubly.bordered_gs_cyclic`, then with the independent `scripts/verify_h2588.py`
-  (`data/H2588_packed.npz`, SHA-256 printed), and builds `pub/H2588/` (sequences, border, normalized matrix, verify.py).
-- **If y_B #0 is exhausted without a core** (410 units, ~21 expected cores with two classes, ~190 core-hours):
-  - process the remaining energy classes of the same units (`--els 4`, then all: about +60% yield for +120% work);
-    the finished-unit record `u{w}.jsonl` must first be made per K, or the finished units are skipped;
-  - then resume the joint enumeration over y_B orbits #1–#494 (`nd_joint_exhaust.py`), after adding a cap on the
-    S-join (the #1 run died out of memory in the previous session).
-
+- **On a core:** `python3 theory/p647_finish.py logs/p647/CORE_*.json`.
+  - It writes `data/core_v647_b1_p647_<tag>.txt` and checks it with `nd_doubly.bordered_gs_cyclic`.
+  - It then checks it with the independent `scripts/verify_h2588.py` (`data/H2588_packed.npz`, SHA-256 printed).
+  - It builds `pub/H2588/`: sequences, border, normalized matrix, verify.py.
+- **If y_B #0's central classes end without a core** (436 classes, about 2.7 expected, about 75 core-hours):
+  - run the next two energy classes of every class: about 1.6 expected for about 90 core-hours.
+    - `--els 4` (its own queue `queue_classes_K4.json`, finished records keyed by K);
+    - `pre_done` skips the two central classes already joined;
+  - then resume the joint enumeration over y_B orbits #1–#494 (`nd_joint_exhaust.py`). Cap the joint test's pair
+    lists first (`maxpairs`; 6·10⁷ needs about 7 GB) and deduplicate with `p647_classes.stabiliser_full`.
+- **Any new deduplication** must use the full group (`p647_classes.group_full`: per-block reversal included). Check it
+  on real data: members of one class must give identical counts.
