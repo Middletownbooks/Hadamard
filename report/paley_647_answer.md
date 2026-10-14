@@ -336,3 +336,47 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
   599/600, with the deep tail matching to rank 9 (§2.3). So the 495 control is not a proxy for the 647 D-level, and
   a same-shape slice small enough to run end to end is, for this reason, unlikely to be one. The 495 run continues over
   its remaining y_B orbits (`full_495_83_all.log`), looking for any core in that slice.
+
+---
+
+## 6. Reproduce
+
+```
+pip install numba ortools                                        # if missing
+python3 theory/p647_join.py --selftest                           # 40/40 x3 + 30/30 against brute force; ejoin4 40/40
+python3 theory/p647_cross.py --plant 10 --seed 11                # 10/10 plants on real joint solutions (own energy class)
+python3 theory/p647_cross.py --brute 3                           # reduced plants against a 646-lag brute force
+python3 theory/p647_cross.py --brute-real 4208 5                 # real S-solutions against brute forces (needs the calibration run)
+python3 theory/p647_calib.py 4208 9902 11514 16846               # exact calibration runs (~45 min each, 4 in parallel)
+python3 theory/p647_deeptail.py 4208 9902 11514 16846            # deep D-tail to rank 9 (seconds, from the saved S-solutions)
+python3 theory/p647_restrict.py 4208; python3 theory/p647_buckets.py 4208 9902   # restriction and bucket analyses
+python3 theory/p647_valm.py                                      # join4m equals the separate joins on a real unit
+python3 theory/p647_prod.py --units --worker W --workers 4 --els 2   # production, W = 0..3 (restart-safe; touch logs/p647/prod/STOP)
+python3 theory/p647_tally.py                                     # status: expected cores, live deep tail, cores found
+python3 theory/p647_finish.py logs/p647/CORE_xxx.json            # a core -> data/, verify_h2588.py, pub/H2588/
+python3 scripts/verify_h2588.py data/core_v523_b1_q523_p523f_w0.txt /tmp/H2092.npz   # verifier test: SHA-256 9594b975...
+python3 theory/p647_control.py --list 700; python3 theory/p647_ctrl_screen.py 700  # product-shape slices, stage-1 screen
+python3 theory/p647_control.py 70 9 5 7; python3 theory/p647_control.py 110 9 11 5  # 71 and 111: joint stage empty
+python3 theory/p647_ctrl_full.py 494 83 13 19 --yb 1,2,9         # 495 x83 control (all orbits of three y_B)
+python3 theory/p647_ctrl_check.py 494 83 13 19 --yb 9 --plants 10 --tail 400    # its plants and D-tail
+python3 theory/p647_perS_rank.py                                 # per-S-solution D-lattice ranks, 647 vs 495
+```
+
+---
+
+## 7. Hand-off
+
+- **Running** (started by this session, restart-safe, resume by the same command):
+  - unit workers 0–2 (`theory/p647_prod.py --units --worker W --workers 4 --els 2`): 410 units (`units.json`,
+    high-freedom units first); worker 3's share waits until a fourth worker is started;
+  - the 495 ×83 all-orbit control (`theory/p647_ctrl_full.py 494 83 13 19`, `logs/p647/control/full_495_83_all.log`);
+  - a paused (SIGSTOP) stage-1 screen of the product slices (`p647_ctrl_screen.py`, PID in the session log).
+- **On a core:** `python3 theory/p647_finish.py logs/p647/CORE_*.json` writes `data/core_v647_b1_p647_<tag>.txt`,
+  checks it with `nd_doubly.bordered_gs_cyclic`, then with the independent `scripts/verify_h2588.py`
+  (`data/H2588_packed.npz`, SHA-256 printed), and builds `pub/H2588/` (sequences, border, normalized matrix, verify.py).
+- **If y_B #0 is exhausted without a core** (410 units, ~21 expected cores with two classes, ~190 core-hours):
+  - process the remaining energy classes of the same units (`--els 4`, then all: about +60% yield for +120% work);
+    the finished-unit record `u{w}.jsonl` must first be made per K, or the finished units are skipped;
+  - then resume the joint enumeration over y_B orbits #1–#494 (`nd_joint_exhaust.py`), after adding a cap on the
+    S-join (the #1 run died out of memory in the previous session).
+
