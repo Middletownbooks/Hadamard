@@ -21,7 +21,7 @@ import numpy as np
 from numba import njit
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import p647_common as PC
-from p647_join import join4
+from p647_join import join4, join4p
 from nd_cross import orbit_maps
 
 PW3 = 3 ** np.arange(35, dtype=np.int64)          # 647: 35 orbit reps on Z_323 (3^35 < 2^63)
@@ -242,3 +242,128 @@ if __name__ == "__main__":
     if "--plant" in a:
         n = int(a[a.index("--plant") + 1]); seed = int(a[a.index("--seed") + 1]) if "--seed" in a else 0
         run_plants(n, full="--full" in a, seed=seed, log=lambda s: print(s, flush=True))
+
+# ---------------------------------------------------------------- brute force on reduced instances
+def brute_reduced(X, blocks, rng, keep=40):
+    """plant one pair per block; keep the plant's sigma and keep-1 random other sigma per block (all their
+    preimage pairs).  Pipeline (S-join on the kept sigma, D-check) against a brute force that never uses the
+    pipeline's signatures: every kept pair -> its full sequence on Z_646 -> full cyclic PAF (FFT, 646 lags); all
+    quadruples whose PAF sum equals the plant's, by a 2+2 dictionary on an exact 646-dim key."""
+    pr, TS, TE = plant(X, blocks, rng)
+    sub = []
+    for B, (p, s) in zip(blocks, pr):
+        others = rng.choice(B.N, size=min(keep - 1, B.N - 1), replace=False)
+        idx = np.unique(np.concatenate([[s], others[others != s]]))
+        sub.append(idx)
+    # pipeline on the reduced lists
+    Ssig = [B.Ssig[idx] for B, idx in zip(blocks, sub)]
+    Ss, st = join4p(Ssig, TS, rbits=2, budget=1 << 12)
+    Ss = np.array([[sub[k][t[k]] for k in range(4)] for t in Ss], np.int64).reshape(-1, 4)
+    hits, cand = dcheck(blocks, Ss, TE)
+    pipe = set(tuple(int(v) for v in h[1:]) for h in hits)
+    # brute force from the raw sequences
+    reps, oi, maps = orbit_maps(X)
+    lists = []
+    for k, (B, idx) in enumerate(zip(blocks, sub)):
+        L = []
+        for s in idx:
+            for p in B.pairs[B.bd[s]:B.bd[s + 1]]:
+                i, j = divmod(int(p), B.n1)
+                x = np.zeros(X.m); x[X.E[0]] = B.A0[i][oi]; x[X.E[1]] = B.A1[j][oi]
+                L.append((int(p), np.rint(np.fft.ifft(np.abs(np.fft.fft(x)) ** 2).real).astype(np.int64)))
+        lists.append(L)
+    xs = assemble(X, blocks, [p for p, s in pr]); Tfull = full_paf(xs)
+    left = {}
+    for p0, v0 in lists[0]:
+        for p1, v1 in lists[1]:
+            left.setdefault((v0 + v1).tobytes(), []).append((p0, p1))
+    brute = set()
+    for p2, v2 in lists[2]:
+        for p3, v3 in lists[3]:
+            for (p0, p1) in left.get((Tfull - v2 - v3).tobytes(), []):
+                brute.add((p0, p1, p2, p3))
+    planted = tuple(p for p, s in pr)
+    return dict(kept=[len(i) for i in sub], pairs=[len(L) for L in lists], S_solutions=len(Ss), D_candidates=int(cand.sum()),
+                pipeline=len(pipe), brute=len(brute), agree=pipe == brute, plant_in=planted in pipe)
+
+def run_brute(n, seed=0, log=print):
+    X, ys = PC.load_setup(); rec, sols = PC.joint_solutions(X, ys, 0)
+    reps, oi, maps = orbit_maps(X); NH = lag_tensor(X, oi)
+    rng = np.random.default_rng(seed); ok = 0
+    for t in range(n):
+        j = int(rng.integers(len(sols)))
+        blocks = build(X, ys[0], X.J.ya_full(sols[j]['layers']), maps, NH, oi)
+        r = brute_reduced(X, blocks, rng)
+        ok += r['agree'] and r['plant_in']
+        log(json.dumps(dict(trial=t, joint_index=j, **r)))
+    log(json.dumps(dict(brute_trials=n, agree_and_plant=ok)))
+
+if __name__ == "__main__" and "--brute" in sys.argv:
+    run_brute(int(sys.argv[sys.argv.index("--brute") + 1]), log=lambda s: print(s, flush=True))
+
+def brute_real(X, blocks, S_full, rng, nsol=25, extra=40, nd=3):
+    """validation with the real target on reduced lists built around real S-solutions S_full (complete set of the
+    full lists): (1) the pipeline join on the reduced lists returns exactly the members of S_full inside them;
+    (2) an S-level brute force from scratch (sigma on Z_323, PAF by direct shifts, 2+2 dictionary) agrees;
+    (3) for nd of them the D-check agrees with the full 646-lag PAF of every candidate sequence quadruple."""
+    reps, oi, maps = orbit_maps(X)
+    pick = S_full[rng.choice(len(S_full), size=min(nsol, len(S_full)), replace=False)]
+    sub = []
+    for k, B in enumerate(blocks):
+        idx = np.unique(np.concatenate([pick[:, k], rng.choice(B.N, size=extra, replace=False)]))
+        sub.append(idx)
+    keep = [np.zeros(B.N, bool) for B in blocks]
+    for k in range(4): keep[k][sub[k]] = True
+    inside = set(tuple(int(v) for v in t) for t in S_full if all(keep[k][t[k]] for k in range(4)))
+    Ss, st = join4p([B.Ssig[i] for B, i in zip(blocks, sub)], X.TS, rbits=2, budget=1 << 14)
+    pipe = set(tuple(int(sub[k][t[k]]) for k in range(4)) for t in Ss)
+    # independent S signatures: sigma on Z_323, PAF at the lag reps by direct shifts
+    def sig_scratch(B, s):
+        v = B.sig[s].astype(np.int64)[oi]
+        return np.array([int(np.dot(v, np.roll(v, -h))) for h in X.lags], np.int64)
+    sigs = [{int(s): sig_scratch(B, s) for s in idx} for B, idx in zip(blocks, sub)]
+    left = {}
+    for s0, v0 in sigs[0].items():
+        for s1, v1 in sigs[1].items(): left.setdefault((v0 + v1).tobytes(), []).append((s0, s1))
+    brute = set()
+    for s2, v2 in sigs[2].items():
+        for s3, v3 in sigs[3].items():
+            for (s0, s1) in left.get((X.TS - v2 - v3).tobytes(), []): brute.add((s0, s1, s2, s3))
+    # D-level on a few S-solutions: every candidate, full PAF on Z_646 from the raw sequences
+    dagree = 0; dcands = 0
+    TE = 2 * (X.TS + X.TD)
+    for t in list(inside)[:nd]:
+        hits, cand = dcheck(blocks, np.array([t], np.int64), TE)
+        pipe_hits = set(tuple(int(v) for v in h[1:]) for h in hits)
+        seqs = []
+        for k, B in enumerate(blocks):
+            L = []
+            for p in B.pairs[B.bd[t[k]]:B.bd[t[k] + 1]]:
+                i, j = divmod(int(p), B.n1)
+                x = np.zeros(X.m); x[X.E[0]] = B.A0[i][oi]; x[X.E[1]] = B.A1[j][oi]
+                L.append((int(p), np.rint(np.fft.ifft(np.abs(np.fft.fft(x)) ** 2).real).astype(np.int64)))
+            seqs.append(L)
+        tgt = np.full(X.m, -4, np.int64); tgt[0] = 4 * X.m
+        lf = {}
+        for p0, v0 in seqs[0]:
+            for p1, v1 in seqs[1]: lf.setdefault((v0 + v1).tobytes(), []).append((p0, p1))
+        bh = set()
+        for p2, v2 in seqs[2]:
+            for p3, v3 in seqs[3]:
+                for (p0, p1) in lf.get((tgt - v2 - v3).tobytes(), []): bh.add((p0, p1, p2, p3))
+        dcands += int(cand.sum()); dagree += (bh == pipe_hits)
+    return dict(kept=[len(i) for i in sub], S_inside=len(inside), S_pipeline=len(pipe), S_brute=len(brute),
+                S_agree=(pipe == inside == brute), D_checked=min(nd, len(inside)), D_candidates=dcands, D_agree=dagree)
+
+if __name__ == "__main__" and "--brute-real" in sys.argv:
+    j = int(sys.argv[sys.argv.index("--brute-real") + 1]); n = int(sys.argv[sys.argv.index("--brute-real") + 2])
+    X, ys = PC.load_setup(); rec, sols = PC.joint_solutions(X, ys, 0)
+    reps, oi, maps = orbit_maps(X); NH = lag_tensor(X, oi)
+    blocks = build(X, ys[0], X.J.ya_full(sols[j]['layers']), maps, NH, oi)
+    S_full = np.load(os.path.join(PC.LOG, "calib", f"j{j}_ssols.npy"))
+    rng = np.random.default_rng(j); ok = 0
+    for t in range(n):
+        r = brute_real(X, blocks, S_full, rng)
+        ok += r['S_agree'] and r['D_agree'] == r['D_checked']
+        print(json.dumps(dict(trial=t, j=j, **r)), flush=True)
+    print(json.dumps(dict(brute_real_trials=n, all_agree=ok)), flush=True)

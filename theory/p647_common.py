@@ -32,3 +32,40 @@ def joint_solutions(X, ys, k=0, log=print):
     os.replace(tmp, path)
     log(json.dumps(dict(stage="joint_cached", k=k, joint=len(sols), secs=round(time.time() - t0, 1))))
     return rec, sols
+
+# ---------------------------------------------------------------- symmetry: stabiliser of a y_B, canonical joint solutions
+import itertools, math
+def group_elements(m=M_):
+    """(u, t, s, pi): (g x)_k(z) = s_k x_{pi(k)}(u z + t_k); u over the units of Z_m, t_k in the M-fixed elements
+    {0, m/2}, s_0 = 1 and pi(0) = 0 (block 0 carries the row 2)"""
+    units = [u for u in range(1, m) if math.gcd(u, m) == 1]
+    for u in units:
+        for t in itertools.product((0, m // 2), repeat=4):
+            for s in itertools.product((1, -1), repeat=3):
+                for pi in itertools.permutations((1, 2, 3)):
+                    yield u, t, (1,) + s, (0,) + pi
+
+def act(y, g, F):
+    """g on compressed data y (4 x F, positions mod F)"""
+    u, t, s, pi = g; y = np.asarray(y); b = np.arange(F)
+    return np.array([s[k] * y[pi[k]][(u * b + t[k]) % F] for k in range(4)])
+
+def stabiliser(yb, F=34):
+    yb = np.asarray(yb); seen = set(); out = []
+    for g in group_elements():
+        key = (g[0] % F, tuple(x % F for x in g[1]), g[2], g[3])
+        if key in seen: continue
+        seen.add(key)
+        if np.array_equal(act(yb, g, F), yb): out.append(g)
+    return out
+
+def canonical_joint(X, sols, stab, FA=38):
+    """orbit representative (lexicographically least y_A image) of every joint solution under the stabiliser;
+    returns (canonical key per solution, list of representative indices)"""
+    keys = []
+    for s_ in sols:
+        ya = np.array(X.J.ya_full(s_['layers']))
+        keys.append(min(tuple(act(ya, g, FA).ravel().tolist()) for g in stab))
+    rep = {}
+    for i, kk in enumerate(keys): rep.setdefault(kk, i)
+    return keys, sorted(rep.values())

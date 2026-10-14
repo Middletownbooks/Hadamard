@@ -175,3 +175,52 @@ if __name__ == "__main__":
     reps, oi, maps = orbit_maps(X); NH = P.lag_tensor(X, oi)
     for j in pos:
         calibrate(j, X, ys, sols, maps, NH, oi, N=int(opt["--N"]), log=lambda s: print(s, flush=True))
+
+# ---------------------------------------------------------------- energy-stratified Gaussian (per left-energy class)
+def strat_preds(X, blocks, order, N=3000, seed=3, weighted=False, min_frac=1e-4):
+    """per left-energy class EL: sample N left pairs (a, b) with e_a + e_b = EL and N right pairs (c, d) with
+    e_c + e_d = T0 - EL, exactly in proportion to the class (uniform over distinct sigma, or proportional to the
+    multiplicity if weighted); fit the lattice Gaussian to the summed signature without its energy coordinate.
+    Predicted count(EL) = (pairs or multiplicity mass of the left class) x (same, right) x 2^-bits.
+    Classes holding less than min_frac of the total left x right mass are skipped (their mass is reported)."""
+    rng = np.random.default_rng(seed)
+    T = X.TS; E0 = int(T[0]); a, b, c, d = order
+    def buckets(B):
+        e = B.Ssig[:, 0]; wgt = B.mult.astype(np.float64) if weighted else np.ones(B.N)
+        return e, wgt, np.bincount(e, weights=wgt, minlength=E0 + 1)[:E0 + 1]
+    bk = [buckets(B) for B in blocks]
+    def sample_side(i, j, Etot, n):
+        (ei, wi, mi), (ej, wj, mj) = bk[i], bk[j]
+        ea = np.arange(E0 + 1); eb = Etot - ea
+        ok = (eb >= 0) & (eb <= E0)
+        mass = np.where(ok, mi * np.where(ok, mj[np.clip(eb, 0, E0)], 0), 0)
+        if mass.sum() == 0: return None, 0.0
+        pe = rng.choice(E0 + 1, size=n, p=mass / mass.sum())
+        out = np.zeros((n, len(T)), np.int64)
+        for e in np.unique(pe):
+            k_ = int((pe == e).sum())
+            ia = np.nonzero(ei == e)[0]; ib = np.nonzero(ej == Etot - e)[0]
+            sa = rng.choice(ia, size=k_, p=wi[ia] / wi[ia].sum()); sb = rng.choice(ib, size=k_, p=wj[ib] / wj[ib].sum())
+            out[pe == e] = blocks[i].Ssig[sa] + blocks[j].Ssig[sb]
+        return out, float(mass.sum())
+    # class masses
+    tot = []
+    for EL in range(E0 + 1):
+        (ea_, wa_, ma), (eb_, wb_, mb) = bk[a], bk[b]
+        (ec_, wc_, mc), (ed_, wd_, md) = bk[c], bk[d]
+        mL = float(np.convolve(ma, mb)[EL]) if EL <= 2 * E0 else 0.0
+        mR = float(np.convolve(mc, md)[E0 - EL])
+        tot.append((EL, mL, mR))
+    allmass = sum(mL * mR for _, mL, mR in tot)
+    res = []; skipped = 0.0
+    for EL, mL, mR in tot:
+        if mL * mR == 0: continue
+        if mL * mR < min_frac * allmass: skipped += mL * mR; continue
+        Lv, _ = sample_side(a, b, EL, N); Rv, _ = sample_side(c, d, E0 - EL, N)
+        V = Lv + Rv
+        g = gauss_bits(V[:, 1:], T[1:])
+        res.append(dict(EL=EL, mass_log2=round(math.log2(mL * mR), 3), bits=g.get('bits'), rank=g.get('rank'),
+                        mahal=g.get('mahal'), pred_log2=round(math.log2(mL * mR) - g['bits'], 3) if g.get('in_lattice') and math.isfinite(g['bits']) else None))
+    pred = sum(2.0 ** r['pred_log2'] for r in res if r['pred_log2'] is not None)
+    return dict(weighted=weighted, classes=res, pred_total_log2=round(math.log2(pred), 3) if pred else None,
+                skipped_mass_frac=round(skipped / allmass, 6))

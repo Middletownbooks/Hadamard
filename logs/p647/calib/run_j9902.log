@@ -1,0 +1,3 @@
+{"stage": "pred", "j": 9902, "mult_log2": 78.4, "N": [212180, 227204, 273790, 205052], "n": [[1200, 584], [740, 1110], [936, 1110], [710, 936]], "build_secs": 38.6, "Hs": 71.197, "H": 78.395, "CSu": 53.85, "CSu_rank": 12, "CSu_mahal": 1.87, "CSp": 49.65, "CSp_rank": 12, "C": 84.44, "C_rank": 23, "C_mahal": 0.53, "pred_S_log2": 17.347, "pred_Spairs_log2": 28.745, "pred_cores_log2": -6.045, "CDgS": 34.79}
+{"stage": "exact", "j": 9902, "S_solutions": 465177, "S_log2": 18.827, "pred_S_log2": 17.347, "S_pairs_log2": 28.12, "pred_Spairs_log2": 28.745, "D_hits": 0, "cores": 0, "pred_cores_log2": -6.045}
+{"stage": "done", "j": 9902, "secs": 2654.0}

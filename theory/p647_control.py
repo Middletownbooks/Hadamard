@@ -32,7 +32,7 @@ def product_slices(vmax):
     P = [p for p in range(5, vmax) if isp(p)]
     for p in P:
         for q in P:
-            if q == p or 2 * p * q + 1 > vmax: continue
+            if q <= p or 2 * p * q + 1 > vmax: continue
             m = 2 * p * q
             for dp in [d for d in range(2, p - 1) if (p - 1) % d == 0]:
                 for dq in [d for d in range(2, q - 1) if (q - 1) % d == 0]:
@@ -54,7 +54,7 @@ def run(m, mu, qA, qB, d, maxyb=10 ** 9, maxjoint=10 ** 9, stop_at_core=False, l
         for line in open(outp):
             r = json.loads(line)
             if 'jsol' in r: done.add((r['yb'], r['jsol']))
-    tot = dict(joint=0, pred_cores=0.0, cores=0, S=0, pred_S=0.0, Spairs=0, pred_Spairs=0.0)
+    tot = dict(njoint=0, pred_cores=0.0, cores=0, S=0, pred_S=0.0, Spairs=0, pred_Spairs=0.0)
     found = None
     with open(outp, "a") as fo:
         for ib, yb in enumerate(ys[:maxyb]):
@@ -78,7 +78,7 @@ def run(m, mu, qA, qB, d, maxyb=10 ** 9, maxjoint=10 ** 9, stop_at_core=False, l
                            Spairs=r['S_pairs'], pred_cores_log2=g['pred_cores_log2'], D_hits=r['D_hits'], cores=len(cores),
                            secs=round(time.time() - t1, 2))
                 fo.write(json.dumps(out) + "\n"); fo.flush()
-                tot['joint'] += 1; tot['cores'] += len(cores); tot['S'] += r['S_solutions']; tot['Spairs'] += r['S_pairs']
+                tot['njoint'] += 1; tot['cores'] += len(cores); tot['S'] += r['S_solutions']; tot['Spairs'] += r['S_pairs']
                 for key, k2 in (('pred_cores', 'pred_cores_log2'), ('pred_S', 'pred_S_log2'), ('pred_Spairs', 'pred_Spairs_log2')):
                     if g[k2] is not None and math.isfinite(g[k2]): tot[key] += 2.0 ** g[k2]
                 if cores and found is None:
@@ -97,8 +97,59 @@ def run(m, mu, qA, qB, d, maxyb=10 ** 9, maxjoint=10 ** 9, stop_at_core=False, l
     log(json.dumps(summ))
     return summ
 
+def run_sample(m, mu, qA, qB, d, nyb=200, per_quad=3, seed=0, maxjoint=50, log=print, stop_at_core=True):
+    """positive-control search by sampling: stage-1B solutions from random alpha-quadruples (exact, not exhaustive),
+    the exact joint test of each, the exact cross level of every joint solution (up to maxjoint per y_B)"""
+    from nd_s1_sd import Problem
+    from nd_joint_exhaust import iter_stage1
+    os.makedirs(d, exist_ok=True)
+    tag = f"{m}_{mu}_{qA}_{qB}"; outp = os.path.join(d, f"sample_{tag}.jsonl")
+    X = Cross(m, mu, qA, qB); P = Problem(m, mu, qB)
+    A, Q, info = P.alpha_quads()
+    rng = np.random.default_rng(seed); order = rng.permutation(len(Q))
+    log(json.dumps(dict(stage="sample_start", m=m, mu=mu, qA=qA, qB=qB, alpha_quads=len(Q))))
+    reps, oi, maps = orbit_maps(X); NH = PX.lag_tensor(X, oi)
+    tot = dict(yb=0, joint=0, pred_cores=0.0, cores=0); found = None; cache = {}
+    with open(outp, "a") as fo:
+        for qi in order:
+            if tot['yb'] >= nyb: break
+            n = 0
+            for Y in iter_stage1(P, Q[qi], A, cache=cache):
+                if n >= per_quad or tot['yb'] >= nyb: break
+                n += 1; tot['yb'] += 1
+                t0 = time.time(); rec, sols = X.J.test(Y)
+                fo.write(json.dumps(dict(quad=int(qi), yb=Y.tolist(), joint=rec.get('joint'), S1=rec.get('S_solutions'),
+                                         secs=round(time.time() - t0, 2))) + "\n"); fo.flush()
+                for js, s_ in enumerate(sols[:maxjoint]):
+                    blocks = PX.build(X, Y, X.J.ya_full(s_['layers']), maps, NH, oi)
+                    if blocks is None: continue
+                    g = gauss_preds(X, blocks, N=20000)
+                    r, Ssols, hits, cand = PX.solve(X, blocks)
+                    cores = [xs for xs in (PX.assemble(X, blocks, h[1:]) for h in hits) if PX.is_core(xs)]
+                    tot['joint'] += 1; tot['cores'] += len(cores)
+                    if g['pred_cores_log2'] is not None and math.isfinite(g['pred_cores_log2']): tot['pred_cores'] += 2.0 ** g['pred_cores_log2']
+                    fo.write(json.dumps(dict(quad=int(qi), jsol=js, H=g['H'], Hs=g['Hs'], CSu=g['CSu'], C=g['C'],
+                                             pred_S_log2=g['pred_S_log2'], S=r['S_solutions'], pred_Spairs_log2=g['pred_Spairs_log2'],
+                                             Spairs=r['S_pairs'], pred_cores_log2=g['pred_cores_log2'], cores=len(cores))) + "\n"); fo.flush()
+                    if cores and found is None:
+                        xs = cores[0]; Hm = bordered_gs_cyclic(xs)
+                        ok = Hm is not None and np.array_equal(Hm @ Hm.T, Hm.shape[0] * np.eye(Hm.shape[0], dtype=np.int64))
+                        found = dict(v=m + 1, N=4 * (m + 1), quad=int(qi), jsol=js, hadamard=bool(ok))
+                        json.dump(dict(**found, mu=mu, qA=qA, qB=qB, yb=Y.tolist(), core=xs.tolist()), open(os.path.join(d, f"core_{tag}.json"), "w"))
+                        log(json.dumps(dict(stage="CORE", **found)))
+                        if stop_at_core: break
+                if found and stop_at_core: break
+            if found and stop_at_core: break
+    summ = dict(stage="sample_summary", m=m, mu=mu, qA=qA, qB=qB, found=found, **{k: (round(v, 3) if isinstance(v, float) else v) for k, v in tot.items()})
+    log(json.dumps(summ)); return summ
+
 if __name__ == "__main__":
     a = sys.argv[1:]
+    if "--sample" in a:
+        pos = [int(x) for x in a if x.lstrip('-').isdigit()][:4]
+        n = int(a[a.index("--sample") + 1]); seed = int(a[a.index("--seed") + 1]) if "--seed" in a else 0
+        run_sample(*[int(x) for x in a[:4]], "logs/p647/control", nyb=n, seed=seed, log=lambda s: print(s, flush=True))
+        sys.exit()
     if "--list" in a:
         for r in product_slices(int(a[a.index("--list") + 1])): print(*r)
         sys.exit()
