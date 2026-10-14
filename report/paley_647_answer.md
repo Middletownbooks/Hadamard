@@ -290,6 +290,14 @@ class), i.e. 2^−6.6 or 2^−7.6 expected cores. Over the 3,488 orbits of y_B #
 **21 expected cores**, for about 2,512 sides × 1.1·10¹⁰ pairs ≈ 2.8·10¹³ emitted pairs (~190 core-hours). That is
 about **9 core-hours per expected core** in unit mode. y_B #0 is one of 495 y_B orbits.
 
+### 4.2a Waiting time
+
+- Cores arrive at the calibrated mean rate λ (about 0.46 per hour on three unit workers, 0.6 on four), but full-depth
+  hits are likely clustered, like the rank 7–8 hits of §2.3. If clusters have typical size c, the chance of no core
+  after expectation λ is about e^(−λ/c) rather than e^(−λ).
+- With c = 1–4, a first core is expected within about 2–9 hours of unit-mode running. The H(2092) run found its
+  core at 3.06 expected cores (probability 0.05).
+
 ### 4.3 Run log
 
 - 06:45–07:37 UTC: per-joint-solution mode, three workers (`w*.jsonl`): 6 joint solutions finished (j = 1999, 1109,
