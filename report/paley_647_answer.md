@@ -52,15 +52,14 @@ and calibration named); [L] literature recollection, unchecked.
      - about 29 core-hours for the other 347 classes;
      - about 27 core-hours on average over y_B #0;
      - 2^42.6 (about 40 core-hours) without the energy-class selection.
-   - **Positive control** (§5):
-     - 495 ×83 is the first same-shape slice with a non-empty joint stage, and it has the same per-block reversal
-       symmetry (144 elements against 18; 0 mismatches over 1,952 old orbits);
-     - its S-level and pair-level counts reproduce the 647 calibration pattern, and plants are 10/10;
-     - counted once per class, y_B #1, #2, #9 give **0 cores against 0.88 expected** (P = 0.41): no evidence either
-       way;
-     - its per-S-solution D-lattices are rank-deficient (median 24 candidates; 647: full rank, median 840), which
-       concentrates hits on few S-solutions;
-     - the run continues over the remaining y_B with class deduplication (8× cheaper), looking for a core end to end.
+   - **Positive control: solved end to end** (§5.2):
+     - 495 ×83 has exactly the shape of 647 ×353 (|M₁₃| = 4, |M₁₉| = 3; 4 × 7 label matrices);
+     - the unchanged pipeline (joint test → classes → exact S-join → D-check → full PAF → bordered Goethals–Seidel)
+       found **3 cores of H(1980)** in y_B #13;
+     - each passes the independent `scripts/verify_h2588.py`, H Hᵀ = 1980·I exactly;
+     - counted once per class, the run has **3 cores against 2.39 expected** by the pooled Gaussian (559 classes), so
+       the calibrated D-level prediction holds at full depth on the same-shape slice;
+     - plants are 10/10 there too.
 
 3. **(C) No obstruction.** S-solutions are abundant. The D-target lies in the D-lattice of every calibrated
    joint solution, and in every per-S-solution lattice tested at 647. The 647 deep tail matches the Gaussian
@@ -394,7 +393,8 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
 - The closest shape to 647 ×353: |M₁₃| = 4 (three classes on Z₁₃) and |M₁₉| = 3 (the same six classes on Z₁₉);
   per Z₂-layer a 4 × 7 label matrix (647: 5 × 7); y_B on Z₂₆, y_A on Z₃₈.
 - Stage 1B along Z₁₉: 102 y_B orbits.
-- Joint test: orbits #1, #2, #9 and #10 have 2,400, 2,400, 6,912 and 5,232 joint solutions; #0 and #3–#8 have none.
+- Joint test: orbits #1, #2, #9, #10 and #13 have 2,400, 2,400, 6,912, 5,232 and 9,216 joint solutions; #0 and
+  #3–#8 have none (the others: `full_494_83_13_19.jsonl`).
 - The stabiliser of y_B #1 acts with 144 elements on Z₃₈, giving 50 classes. Without per-block reversal it has 18
   elements and gives 400 orbits.
 - Cross level, exact, on every orbit representative (0.3–0.8 s each): the pair-level yield is **0.68 bit below**
@@ -403,15 +403,29 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
   - The 495 joint solutions have the same per-block reversal symmetry (−1 lies in the order-4 subgroup mod 13):
     the stabiliser of y_B #1 has 144 elements on Z₃₈ (18 before), and its 2,400 joint solutions form 50 classes
     (400 old orbits).
-  - Every class's 8 old orbits gave identical exact counts: **0 mismatches over 1,952 members**.
-  - y_B #1, #2, #9: **244 classes, 2^22.59 distinct D-candidates, 0.88 expected distinct cores** (pooled Gaussian,
-    C(D|S) ≈ 22.8), **0 found** (Poisson probability 0.41).
-  - The earlier "7.4 expected, probability 0.06%" counted every class 8 times. **The full-depth count is not
-    significant.**
+  - Every class's 8 old orbits gave identical exact counts: **0 mismatches over 3,030 members**.
+  - y_B #1, #2, #9 (244 classes): 0 cores against 0.88 expected. The earlier "7.4 expected, probability 0.06%"
+    counted every class 8 times.
+- **Positive control: cores of H(1980)** (`logs/p647/control/core_494_83_13_19_yb13_j*_0.txt`,
+  `cores_495_verify.log`).
+  - y_B #13 (9,216 joint solutions, 192 classes; 0.76 expected) has cores in joint solutions 529, 657 and 2129:
+    one D-hit each, with full cyclic PAF sum (1976, −4, …, −4).
+  - Each core is completed by bordered Goethals–Seidel and passes the independent verifier: border of
+    `pub/H2292/border.json`, H Hᵀ = 1980·I exactly. SHA-256 of the packed rows:
+    - j = 529: `af3a29df…`;
+    - j = 657: `0ada5133…`;
+    - j = 2129: `b7d3890d…`.
+  - The core of j = 529 was re-derived by `theory/p647_ctrl_core.py`. The run that found it was restarted between
+    its record and its core file.
+  - **Over 559 classes of 7 y_B: 3 cores against 2.39 expected** (pooled Gaussian, C(D|S) ≈ 22.8 from the fits).
+    The full-depth D-level Gaussian holds on the same-shape slice.
+  - H(1980) is not a new order. The point is that the 647 pipeline and its calibration produce cores where cores
+    are expected.
 - **The pipeline is validated on 495:**
   - 10/10 plants on real 495 joint solutions are recovered (`theory/p647_ctrl_check.py`,
     `logs/p647/control/check_495_83.log`);
-  - an independent candidate-by-candidate count also finds no full-depth hit.
+  - an independent candidate-by-candidate count over a sample of y_B #9 agrees with the pipeline (no full-depth hit
+    there).
 - **The deep tail** (400 random joint solutions of y_B #9, i.e. about 2.8 per class, 2^23.48 candidates, nested
   cross lags):
   - the exact hits follow the Gaussian to rank 6 (rank 3: 7,271 against 7,846; rank 5: 95 against 126; rank 6: 15
@@ -428,14 +442,15 @@ gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
   - So 495's D-level hits are concentrated on few S-solutions, which gives a much larger variance than Poisson
     around the pooled Gaussian. A coset of index I that contains the target is hit about I times more often, so this
     need not lower the mean. The data do not show a lower mean.
-- **647 is on the other side of this line**: median 840 candidates per S-solution, and full-rank (11) lattices for
-  599 of 600, with the deep tail matching to rank 9 (§2.3).
-- **The control continues** (`p647_ctrl_full.py 494 83 13 19 --classes --maxpairs 4000000`,
+- **647 has no such discreteness**: median 840 candidates per S-solution, and full-rank (11) lattices for 599 of
+  600, with the deep tail matching to rank 9 (§2.3). Even with it, 495 meets the pooled Gaussian at full depth
+  (3 against 2.39).
+- **The control continues** (`p647_ctrl_full.py 494 83 13 19 --classes --maxpairs 4000000 --mem 5 --yb …`,
   `full_495_83_classes.log`):
-  - over the remaining y_B orbits, one join per class, 0.3–0.8 s each;
-  - the joint test's pair lists are capped (the all-orbit run was killed out of memory in the joint test of
-    y_B #11), and a y_B over the cap is recorded as undecided;
-  - at about 0.0036 expected distinct cores per class (0.88 over 244), about 800 classes give 3 expected.
+  - a size precheck (`theory/p647_jsize.py`, `logs/p647/jsize_495.jsonl`) finds 50 of the 102 y_B orbits exactly
+    empty (energy), and the 52 others are taken smallest first;
+  - each joint test runs in a child under a 5 GB address-space cap (`theory/p647_captest.py`). y_B #11 and #12
+    exceed it (the joint test materialises every joint-level S-solution) and are recorded as undecided.
 
 ---
 
