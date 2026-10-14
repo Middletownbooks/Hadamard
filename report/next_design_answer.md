@@ -1,4 +1,4 @@
-# Next design: exact status of the live slices, why the Gaussians fail on doubly-staged slices, and a new F_{p²} family
+# Next design: 647 ×353 survives the joint stage 1 (cross level ≈ 2^−5 per joint solution [E]); 647 ×183, 739 ×215 and 537 exactly empty; a new F_{p²} family
 
 Date: 2026-10-13. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_next_design.md`.
 Scripts: `theory/nd_*.py`. Logs: `logs/nd/`.
@@ -12,24 +12,27 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
 
 1. **(A) No new Hadamard matrix this session.**
 
-2. **(B) Not reached.** No route is validated end to end at ≤ 2^45 per core, and no candidate has a credible cost
-   below that.
-   - **647 ×183 looked best on Gaussians and failed the exact joint test (§5).**
-     - Both compressions are exactly non-empty [M].
-     - Given a stage-1 y_B, the level budget looked like a smaller 523: C₂ ≈ 127 bits, D_def ≈ 26, +15 … +19
-       completions per y_B [E]; a 523-style route projected to 2^41–2^44.
-     - But the exact **joint stage 1** has no solution for the 4 y_B where it could be decided [M]. Here y_A (the other
-       compression) is a nearly determined function of the labels given y_B.
-     - The same-shape smaller orders 239 and 443 are exactly empty [M], so no positive control of this shape exists.
-     - **The Gaussian estimate given y_B is invalid for doubly-staged slices** (§9.4). Next computation: the exhaustive
-       joint test over all y_B (§5.4).
-   - **Other routes, costed and out of reach [E]:**
-     - 971 ×469: ≥ 2^60, and the same doubly-staged caveat applies (§3);
-     - 947 ×49: ≥ 2^65 (§6);
+2. **(B) Not yet reached, but 647 ×353 is now the live candidate (§5).**
+   - **Joint stage 1 is non-empty [M].** Stage 1B (the Z₃₄ compression) has exactly **495 orbits** of solutions
+     under the slice's symmetry group. For the first orbit (y_B #0) there are **20,928 joint solutions (y_A, y_B)**:
+     a labelling consistent with both compressions that solves both stage-1 systems.
+   - **Cross level [E, uncalibrated]:** given a joint solution, H = 79.4 bits of freedom against C = 84.3 bits
+     (rank 23, Mahalanobis 0.48). So **log₂E ≈ −4.9 per joint solution**, about 2^9.5 expected cores from y_B #0
+     alone if the Gaussian holds. It is stable over 3 sampled joint solutions (`logs/nd/joint/cross_646_353_k0.log`).
+   - **Exact cross solver:** written (`theory/nd_cross.py`: per-layer labelling lists, S-join over the distinct σ,
+     then the full join), but **not yet validated or run**. It is the next computation (§11).
+   - **Caveat.** No same-shape positive control exists below 647 (239 and 443 are empty). The Gaussian has failed on
+     discrete levels before (§9.4), but the cross level has no further compression, so the classic failure mode does
+     not apply. Calibrate first by an exact S-level count on one joint solution (§11).
+   - **Routes out of reach [E]:**
+     - 971 ×469: ≥ 2^60. Its dual compression is non-empty (§3), so it survives the joint test.
+     - 947 ×49: ≥ 2^65 (§6).
      - 883 on Z₁₈ × F₄₉: no route (§4).
 
 3. **(C) Exact obstructions [P, M]** (§1, §2, §7).
    - **739 ×215 is exactly empty**: its stage 1 has no solution. This kills the most valuable candidate below 3000.
+   - **647 ×183 is exactly empty**: all 4 orbits of its stage 1B fail the joint test (§5).
+   - **537 is finished**: ×5, ×137 and ×17 die at lag 0, so every positive cyclic slice of 537 is empty (§7).
    - Also exactly empty:
      - 839 ×13 (Gaussian +101.7), 839 ×7, 863 ×3;
      - 947 ×21, ×47 and ×23;
@@ -64,7 +67,9 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
    - The F_q control at v = 55 (pattern model 2^11, exact 0) and the 647 joint test (implied ~2^16, exact 0) show it.
    - The 523 slice is immune: its dual compression is a sum of 18 signs per class, close to continuous, which is why its
      calibrations held.
-   - **Rule:** for such slices, decide the joint stage 1 exactly before costing anything (`theory/nd_doubly.py`).
+   - **Rule:** for such slices, decide the joint stage 1 exactly before costing anything
+     (`theory/nd_joint_exhaust.py`). It is cheap once the y_B are reduced by the symmetry group: 647 ×183 took 6 s
+     in total.
 
 6. **(D) Ranked candidates with their next computations: §8.**
 
@@ -75,6 +80,8 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
 | v | slice | structure | Gaussian [E] | exact result | how |
 |---|---|---|---|---|---|
 | **739** | **×215** | −1 on Z₉ (y symmetric on Z₁₈); index 8 on Z₄₁ (f = 5) | +61.9 whole, +11.2 stage 1 | **stage 1 empty** | §2: α-congruence mod 20 leaves 21 α-quadruples (canonical), S/D split gives 12 S-solutions, 0 completions [M] |
+| **647** | **×183** | Z₂ fixed; order 4 on Z₁₇ × order 6 on Z₁₉ (diagonal) | +24.6 whole; +15 … +19 per y_B | **empty** | stage 1B has 4 orbits (962 canonical α-quadruples, 18 raw solutions, 6 s); each fails the joint test (0 S-solutions) [M] (`nd_joint_exhaust.py 646 183 17 19`) |
+| 537 | ×5, ×137, ×17 | Z₈ × index 3 / 3 / 2 on Z₆₇ | +5.3, +4.9, +1.2 | **empty** | lag 0 [M] (`nd_lag0_screen.py`): minimum energies 7072 and 14112 > 1880; for ×17 (letters ±1, ±65, ±67) 1880 is unreachable |
 | 947 | ×21 | −1 on Z₁₁ (y symmetric on Z₂₂); order 7 on Z₄₃ (f = 7) | +28.3 whole, −8.1 stage 1 | **empty** | `nd_s1_sd.py 946 21 43`: 40 α-quadruples, 0 S-solutions [M]; planted 10/10 |
 | 947 | ×47 | Z₂₂ compression: ×5 on Z₁₁ (QR), order 7 on Z₄₃ | +2.0 | **empty** | 4 α-quadruples, 32 S-solutions, 0 completions [M] |
 | 947 | ×23 | Z₂₂ × Paley(43) | +1.7 | **empty** | [P] below |
@@ -189,11 +196,19 @@ estimator is named, and so is its calibration); [L] literature recollection, unc
 - **Doubly-staged caveat (§9.4).** The 54.5-bit trivial-character level is the *dual* compression onto Z₉₇.
   - Per block it has X(0) fixed by the rows and eight class values X_j = 2Y_j with Y_j ∈ [−5, 5] and ΣY_j = 0.
   - That is discrete, so the +36.8 may be far too high.
-- **Exact test of the dual compression.** It is a small stage-1 problem: Σ_{k,j} Y² = 80 and eight lag equations
-  (`theory/nd_971_dual.py`). The exact solver there is validated on plants.
-  - CP-SAT returns UNKNOWN even on a planted instance (120 s), and on the generic model (1200 s).
-  - The exhaustive energy-split join has about 2^40 pair steps: a numba job of hours, not run.
-  - If it is empty, 971 ×469 is dead.
+- **The joint test does not kill it [M].**
+  - All 12 stage-1 y lie in **one orbit** of the symmetry group (`nd_joint_exhaust.Sym`).
+  - Given y_B, the dual compression of each block is a transportation problem: column sums of 2 c-rows and 4 s-rows
+    with fixed row sums. It excludes almost nothing (for block 0, only top-4 sums of Y above 18), so the joint test
+    is essentially the dual compression itself.
+  - **Exhaustive dual join** (`theory/nd_971_ejoin.py`): symmetry-reduced (class shift Z₈, negations, block order),
+    energy-split numba hash join (`theory/nd_ejoin.py`), about 2^35.4 operations.
+    - Validated: self-test 30/30 against brute force; plants found at E = 32 (3/3) and at E = 48 with forced
+      partitioned passes (2/2).
+    - The run was stopped at hand-off with energy classes EL ≤ 40 done. It had found **739 solutions, all verified
+      by the full cyclic PAF on Z₉₇** (`logs/nd/dual971/`). Some are degenerate (Y₀ = Y₁ = 0).
+  - **So 971 ×469 survives the joint stage 1.** Its cost stays ≥ 2^60 [E] (cross level about 174 bits of
+    constraint), and it is not a candidate.
 
 ---
 
@@ -309,82 +324,74 @@ Neither model yields a cheap solver:
 
   1A and 1B meet only at level 0.
 
-### 5.2 Exact stage 1 [M] (`theory/nd_batch_exact.py`, `logs/nd/exact_batch.jsonl`, solutions in `logs/nd/s1sols/`)
+### 5.2 Exact joint stage 1 [M] (`theory/nd_joint_exhaust.py`, logs in `logs/nd/joint/`)
 
-| slice | Z₃₄ compression (1B, 10 orbits per block) | Z₃₈ compression (1A) |
-|---|---|---|
-| ×353 | **non-empty** (35,907 α-quadruples, ≥ 200 solutions) | undecided by α-first (too many α-quadruples); Gaussian +51.6 |
-| ×183 | **non-empty** (35,907 α-quadruples, ≥ 200 solutions) | **non-empty** (732,160 α-quadruples, ≥ 200 solutions) |
+**Method (all exact).**
+1. **Symmetry group [P].** It is generated by:
+   - multipliers u ∈ Z₆₄₆*, acting on Z₃₄ through Z₃₄*/⟨13⟩ (representatives 1, 3, 7, 9);
+   - per-block shifts by the M-fixed element 323 (17 on Z₃₄, 19 on Z₃₈);
+   - negation of row-0 blocks;
+   - permutations of row-0 blocks.
 
-So neither 647 slice has an obstruction at the compressed level.
+   Each acts on the whole joint problem, so the joint test depends only on the orbit of y_B.
+2. **Canonical stage-1B α-quadruples.** The 35,907 α-quadruples reduce to **962** canonical ones. Every stage-1B
+   solution over them is enumerated by the S/D pipeline of `nd_s1_sd.py`, then canonicalised.
+3. **Joint test per y_B orbit.**
+   - M fixes Z₂, so labels, y_B and y_A split by layer. Per block and layer, every achievable y_A layer comes from a
+     vectorised DP.
+   - Exact energy filters [P]: Σ over the 8 layers of ‖L‖² = 2(TS₀ + TD₀), plus the per-block S- and D-energy
+     bounds.
+   - Then the S-join over distinct σ (`theory/nd_ejoin.py`), and a full S+D join over the pairs whose σ occurs in
+     some S-solution.
+4. **Validation.**
+   - Random plants: 10/10 at ×183, 6/6 at 443 ×225.
+   - Plants on real y_B at real energy slack: 6/6 at ×353, 4/4 at ×183.
+   - `nd_ejoin.py --selftest`: 30/30 against brute force.
+   - It reproduces the earlier slow results (y_B #0 and #36 of ×183: 0).
 
-**The joint stage 1 is the real filter [M]** (`theory/nd_doubly.py`, `theory/nd_647_joint.py`).
-- Agreeing on the Z₂ level (per block: the row and the alternating sum, with Σ A_k² = 2588) is necessary but far from
-  sufficient. One Z₂ value, rows (0, 0, 0, 2) with |A| = (2, 30, 30, 28), is shared by 45 stage-1A and 56 stage-1B
-  solutions (`logs/nd/s1_647_joint_z2.log`), yet the aligned pairs admit **no** labelling of any block
-  (DP count 0).
-- The exact joint test, given y_B:
-  1. A DP over the 64 M-orbits per block (state: the residual y_B rows and the partial y_A sums) lists every
-     achievable y_A for that block, with its label multiplicity.
-  2. An exact 2+2 join then solves the stage-1A equations on Z₃₈.
-- For ×183 the per-block option lists have 33,489 / 10,980 / 33,489 / 10,980 entries, with multiplicities 2^35–2^36
-  each (the sum matches H₂ = 142 bits).
-- **Result: no y_A satisfies stage 1A for y_B #0 and y_B #36** (8 minutes each; further y_B in
-  `logs/nd/joint647_183_first.log`).
-- The Gaussian of §5.3 had implied about 2^16 joint solutions per y_B (2^57 option quadruples against the 40.6-bit
-  χ = 1 level). The failure has the same cause as the F_q control (§4.4): the χ = 1 level depends on a handful of
-  discrete values per block (y_A at z = 0 is fixed by y_B; each class value has a few options), so the
-  lattice-Gaussian has no meaning there.
-- **Validation of the joint and cross-level machinery [M]:** planted instances at the same shape (v = 443, ×225) are
-  recovered.
-  - The joint step returns the planted y_A in 8/8 cases.
-  - The cross-level 2+2 join returns the planted labelling in 7/7 cases where the join fits; the eighth was skipped by
-    the size cap.
-- **Same-shape smaller orders are exactly empty [M].** The only smaller orders with exactly this shape (order 4 on Z₁₇;
-  order 6 on Z_q′ with μ⁴ of order 3) are v = 239 and v = 443.
-  - 239 ×115: stage 1B is empty.
-  - 443 ×225: stage 1B has exactly 64 canonical solutions and none has a joint completion, so the slice is empty.
-  - So no positive control of this shape exists below 647.
+**Results.**
 
-### 5.3 The Gaussian view given y_B (a smaller 523), now known to be misleading [E]
+| slice | canonical α-quads | raw stage-1B solutions | y_B orbits | joint test |
+|---|---|---|---|---|
+| ×183 | 962 | 18 | **4** | **0 for all 4 (0 S-solutions each): slice exactly empty [M]** |
+| ×353 | 962 | 1098 | **495** | **y_B #0: 20,928 joint solutions** (928,080 S-solutions, 140 s); orbits #1–#494 not yet run (the run stopped on #1, probably out of memory; see §11) |
 
-Given y_B, the remainder of the core is all characters with ψ ≠ 1, which includes the stage-1A content. It is a
-cyclotomic problem over Z₃₄ = Z₂ × Z₁₇ with Z₁₉-fibres. Level budgets from `theory/nd_levels.py`
-(`logs/nd/levels_647.log`; h_D exact) on real y_B:
+The 200 ×183 solutions saved earlier fall into the same 4 orbits. The two y_B that the old code could not decide
+(too large) are the other two orbits, and both give 0.
 
-| slice, y_B | H₂ | C₂ (Mahalanobis) | S (ε = +1) | D | χ = 1 level (= 1A) | middle (ε = 1, χ = 1) | h_D | completions per y_B | D_def |
-|---|---|---|---|---|---|---|---|---|---|
-| ×183 #0 | 142.0 | 126.6 (1.3) | 72.6 | 73.8 | 40.6 | 22.8 | 27.3 | **+15.4** | **26.7** |
-| ×183 #40 | 143.7 | 127.3 (1.5) | 72.9 | 74.3 | 41.6 | 22.9 | 28.2 | +16.3 | 26.3 |
-| ×183 #160 | 145.2 | 126.4 (1.2) | 72.6 | 73.6 | 40.5 | 22.9 | 28.3 | **+18.8** | **25.4** |
-| ×353 #0 | 162.8 | 142.3 (4.7) | 80.0 | 81.5 | 63.7 | 32.5 | 31.5 | +20.5 | 30.9 |
-| ×353 #160 | 157.5 | 138.9 (4.1) | 80.0 | 77.9 | 59.4 | 32.6 | 30.0 | +18.7 | 28.9 |
-| *523, y of record* | 179.7 | 146.0 | 83.3 | 83.2 | – | 31.8 (Z₃) | 36.4 | +34.1 | 26.1 |
+### 5.3 Cross level of 647 ×353 [M lists, E counts] (`theory/nd_cross.py`)
 
-**Reading.**
-- On these Gaussians, ×183 given y_B looks like a smaller copy of 523's stage 2: 127 constraint bits against 146, an
-  S-level of 73 against 83, the same D_def ≈ 26, and Mahalanobis distances of 1.2–1.5. A 523-style route would cost
-  about 2^41–2^44.
-- **But the χ = 1 level (the stage-1A content, 40.6 bits) is discrete, not Gaussian.**
-  - Given y_B, the per-block y_A option lists have 10⁴ entries, and the exact joint join finds **no** consistent y_A
-    for 4 of 4 decided y_B (§5.2).
-  - So the estimate of +15 … +19 completions per y_B is not trustworthy; the true number may be 0 for every y_B.
-- ×353 shows the same warning more directly (target 4–4.7 standard deviations out).
+- **Structure [P].** Given a joint solution, per block and layer the labels form a 5 × 7 ±1 matrix Λ: rows indexed
+  by {0, A₁..A₄} (the Z₁₇-classes), columns by {0, B₁..B₆} (the Z₁₉-classes). Its weighted row sums are y_B and its
+  weighted column sums are y_A. So x₀₀, a and c are fixed, and the 4 × 6 cell block has fixed margins.
+- **Per-layer lists, exact.** For one joint solution the layer list sizes are (1200, 584), (740, 1110), (1860, 1110),
+  (710, 936). σ = (layer₀ + layer₁)/2 on Z₃₂₃ has about 2^17.7 distinct values per block (212,180 and 227,204 for
+  blocks 0 and 1).
+- **Remaining equations.** The S/D split of Z₆₄₆ = Z₂ × Z₃₂₃ gives
+  Σ_k PAF₃₂₃(σ_k) = (645, −2, …) and Σ_k PAF₃₂₃(δ_k) = (647, 0, …) at 20 lag classes. Of these, 12 + 12 are new
+  (cross) constraints, and ‖σ‖² + ‖δ‖² = 323 per block links the two lag-0 equations.
+- **Gaussian [E]** (3 joint solutions, N = 3000 per block):
 
-### 5.4 Exact next computation (647 ×183): the exhaustive joint stage 1
+  | quantity | bits |
+  |---|---|
+  | H | 79.3–79.4 |
+  | C (S and D together) | 84.3 |
+  | C_S | 49.8 |
+  | C_D | 49.4 |
 
-The slice is decided by the joint stage 1, and that is a finite exact computation.
-1. **Enumerate every canonical stage-1B solution:**
-   `nd_s1_sd.py 646 183 19 --max-sol 10**9 --out ...`. The cap of 200 was reached after 213 s; the full count is
-   unknown, Gaussian about 2^16 ordered.
-2. **For each y_B, run the joint test** (`nd_doubly.Doubly(646, 183, 17, 19).joint(yB)`): the y_A option lists by DP,
-   then the exact 2+2 join on the Z₃₈ stage-1A equations.
-   - Today: about 8 minutes per y_B in numpy; 2 of 6 y_B exceeded the in-memory join cap (32,400 × 33,489 lists).
-   - A numba join with the left side bucketed by a middle value removes the cap and gives about 1 minute per y_B.
-3. **If every y_B fails, 647 ×183 is exactly empty [M].**
-   - Any joint solution goes to the cross level (`Doubly.cross`), validated on planted instances. There, H(x | y_A, y_B)
-     is exact and every core is found by an exact 2+2 join or, for long lists, by an S/D split on Z₂.
-4. **Same procedure for ×353**, after its Z₃₈ compression (undecided by α-first) is enumerated by a non-α method.
+  So **log₂E = −4.9 … −5.0 per joint solution**, with the target at Mahalanobis 0.48.
+- **Reading [E].**
+  - y_B #0 alone has 20,928 joint solutions. Up to the stabiliser of y_B (multipliers acting only on Z₁₉; at most 6)
+    that is about 3,500 inequivalent ones, so about 2^7 inequivalent cores are expected if the Gaussian holds.
+  - Exact cost per joint solution: an S-join over four σ lists of about 2^17.7 (about 2^21 S-solutions expected),
+    then a cheap D-check. A core needs about 2^5 joint solutions.
+  - The S-join work after the energy split is **not yet measured**; the 2+2 bound is about 2^35. Rough cost per core:
+    about 2^40 [E], **inside the (B) budget if confirmed.**
+- **Calibration status.**
+  - No same-shape positive control exists (239 and 443 are exactly empty).
+  - The cross level has no further compression (every subgroup compression of Z₂ × Z₁₇ × Z₁₉ is already used by 1A
+    and 1B), so the discrete-level failure of §9.4 does not apply directly.
+  - The available calibration is an exact S-level count on one joint solution against 2^(H_S − C_S) (§11).
 
 ---
 
@@ -437,9 +444,18 @@ are listed here).
 | 863 | **×3** (22, +26.7) | **empty** [P, M] |
 
 **Below 750.**
-- **537:** ×5, ×137, ×17 (+5.3, +4.9, +1.2) compress to Z₈ = Z₂·Z₄, where the S/D split needs another form
-  (negacyclic D level). **Not screened.**
+- **537:** ×5, ×137 and ×17 (+5.3, +4.9, +1.2) are **empty at lag 0** [M] (`theory/nd_lag0_screen.py`,
+  `logs/nd/lag0_537.log`).
+  - ×137 is GP with s = 3 and ×5 has M_b = M on the even positions: σ is odd, so |y| ≥ 21 on 32 and 16 entries
+    respectively. That gives minimum energies 14112 and 7072, against 1880.
+  - ×17 (s = 2) has letters ±1, ±65, ±67, and 1880 is not a sum of 32 of their squares.
+  - With ×9, ×59 and ×15 dead before, **every positive cyclic slice of 537 is empty**.
 - Everything else was settled before.
+
+**Lag-0 sweep of every positive cyclic slice and every Hall factor** (`logs/nd/lag0_all_positive.jsonl`).
+- It reproduces every lag-0 death in §1 and in `report/slice_screens_20261013.md`.
+- 523 aside, the slices still alive after all exact screens are: **647 ×353** (§5), 971 ×469 (§3), 859 ×289
+  and 947 ×49.
 
 **Noncyclic groups** (§4): 883, 751 and the F₉ orders.
 
@@ -451,20 +467,20 @@ are listed here).
 
 | rank | v (order) | slice | exact status | estimate | next computation |
 |---|---|---|---|---|---|
-| 1 | **647 (2588)** | **×183** | both compressions non-empty [M] | +15 … +19 completions per y_B; 523-type route ≈ 2^41–2^44 per core [E] | §5.4: port the S/D pipeline; control at v = 239 / 443 |
-| 2 | 647 | ×353 | 1B non-empty [M]; 1A undecided | +18 … +20 per y_B, but Mahalanobis 4–4.7; D_def ≈ 29–31 | as rank 1, after ×183 |
-| 3 | 971 (3884) | ×469 | stage 1: 12 y [M] | +36.8 per y; S-level critical, ≥ 2^60 [E] | none cheap; a middle level for Z₅ would be needed |
-| 4 | 883 (3532) | Z₁₈ × F₄₉, s = 8 | stage 1 non-empty (6 y) [M] | stage 2 between +17.8 and +59 per y (models disagree; v = 55 control favours the low end) | exact-count calibration at a larger control; class-system solver |
-| 5 | 859 (3436) | ×289 | open (compressions too large for α-first) | compressions +74 / +87; whole +27.4 | CP-SAT or `q523_ymitm`-style search for both compressions, then a level budget |
-| 6 | 751 (3004) | Z₃₀ × F₂₅ (7,4), (17,8), (11,2), (19,2) | exact batch pending | stage 1 +22 … +43 | `nd_batch_exact.py` results; stage 2 per real y |
-| 7 | 739, 955 (F₉) | (37,4), (23,0); (13,0) | not screened | whole +62 … +66 | `nd_fq_split.py` + exact batch |
-| 8 | 947 (3788) | ×49 | Z₂₂ compression non-empty; Z₈₆ open | ≥ 2^65 [E] | not recommended |
-| – | 537 | ×5, ×137, ×17 | not screened (F = 8) | ≤ +5 | negacyclic S/D variant |
+| 1 | **647 (2588)** | **×353** | stage 1B: 495 orbits [M]; **joint stage 1 non-empty** (y_B #0: 20,928) [M] | cross level log₂E ≈ −4.9 per joint solution (H 79.4, C 84.3, Mahalanobis 0.48) [E, uncalibrated]; ≈ 2^40 per core if confirmed | §11: validate `nd_cross.solve_cross` on plants; measure the S-join; exact S-count calibration; then run over the joint solutions of y_B #0 |
+| 2 | 971 (3884) | ×469 | stage 1: 12 y, **one orbit** [M]; dual compression non-empty (739 verified in EL ≤ 40) [M] | +36.8 per y; cross level ≈ 174 bits; ≥ 2^60 [E] | none cheap |
+| 3 | 883 (3532) | Z₁₈ × F₄₉, s = 8 | stage 1 non-empty (6 y) [M]; dual-row screen passes | stage 2 between +17.8 and +59 per y (models disagree) | class systems = line compressions (§4.1); the coupling is an 8-sum over one set S_Φ (≈ 2^20) |
+| 4 | 859 (3436) | ×289 | open (compressions too large for α-first) | compressions +74 / +87; whole +27.4 | doubly staged (Z₁₁ and Z₁₃): `nd_joint_exhaust.py`-style joint test after a non-α stage 1B |
+| 5 | 751 (3004) | Z₃₀ × F₂₅ (7,4), (11,2), (19,2) | undecided (α lists too large) | stage 1 +22 … +42 | exact stage 1 by another method |
+| 6 | 739, 955 (F₉) | (37,4), (23,0); (13,0) | not screened | whole +62 … +66 | `nd_fq_split.py` + exact batch |
+| 7 | 947 (3788) | ×49 | Z₂₂ compression non-empty; Z₈₆ open | ≥ 2^65 [E] | not recommended |
 
 **Dead this session:**
-- cyclic: 739 ×215; 839 ×13, ×7; 863 ×3; 947 ×21, ×47, ×23; 823 ×59; 907 ×155; 933 ×37;
+- cyclic: 739 ×215; **647 ×183**; **537 ×5, ×137, ×17**; 839 ×13, ×7; 863 ×3; 947 ×21, ×47, ×23; 823 ×59;
+  907 ×155; 933 ×37;
 - F₄₉ slices of 883: (7,4), (7,20), (17,4), (7,2), (7,10), (1,3), (1,2);
-- F₂₅ slices of 751: (17,2), (17,14), (1,2).
+- F₂₅ slices of 751: (17,2), (17,14), (1,2); (17,8) has stage 2 at −15 per y (Mahalanobis 9), so it is effectively
+  dead [E].
 
 ---
 
@@ -495,6 +511,22 @@ are listed here).
 - `theory/nd_fq_sweep.py`, `nd_fq_split.py`: sweeps and splits.
 - `theory/nd_fq_control.py`: exact v = 55 control (stage 1, exhaustive stage 2, estimators, bordered GS).
 
+### 9.3a Doubly-staged and join tools (added at the end of the session)
+
+- `theory/nd_ejoin.py`: exact 4-list join, energy-split, numba open-addressing hash tables, partitioned passes,
+  growing match buffer. `--selftest`: 30/30 against brute force.
+- `theory/nd_joint_exhaust.py`: symmetry group, canonical α-quadruples, restart-safe stage-1B enumeration, and the
+  joint test (per-layer DP, energy filters, S-join, full join). It has `--plant N` and `JointTest.planted_real`.
+- `theory/nd_cross.py`: cross level given (y_A, y_B).
+  - `Cross.lists`: exact per-layer labellings, by a row-ordered DP with per-step encoding.
+  - `Cross.estimate`: lattice Gaussian of the 24 cross constraints.
+  - `solve_cross` / `planted_cross`: exact S-then-full join on orbit representatives. **Written, not yet run.**
+- `theory/nd_971_ejoin.py`: exhaustive dual compression of 971 ×469 (symmetry-reduced, restart-safe per energy
+  class), with `--plant`.
+- `theory/nd_lag0_screen.py`: exact lag-0 attainability of any compressed stage 1.
+- Older and slower: `theory/nd_doubly.py` and `nd_647_joint.py`. `Doubly.cross` is too slow for ×353 (Python dicts
+  over 24-dimensional states).
+
 ### 9.4 Calibration warnings (what this session adds)
 
 - The whole-slice Gaussian was off by a large amount again:
@@ -502,6 +534,11 @@ are listed here).
   - 883 GP s = 8 gives +147.7 whole against +94–136 from the stage split.
 - For F_q slices the joint pattern Gaussian can overcount stage 2 by more than 11 bits (v = 55).
 - For cyclic slices the same estimator is within 1–2 bits (523, 573).
+- **Doubly-staged slices.** Given one compression, the Gaussian of the other is meaningless (discrete values per
+  block). The exact joint test decides it in seconds once y_B is reduced by symmetry:
+  - 647 ×183: Gaussian about 2^16 joint solutions per y_B, exact 0;
+  - 647 ×353: exact 20,928 for y_B #0.
+- The 647 ×353 cross-level Gaussian (−4.9 per joint solution) has **no calibration yet**.
 
 ---
 
@@ -520,4 +557,51 @@ python3 theory/nd_fq.py check 7 8; python3 -c "import sys; sys.path.insert(0,'th
 python3 theory/nd_fq_sweep.py 18 7 --N 3000; python3 theory/nd_fq_split.py 18 7 "1,8"
 python3 theory/q523_ymitm.py 18 49 8 --comp 11:16,13:8,1:48 --N 20 --secs 600 --out DIR   # 883 stage-1 y's
 python3 theory/nd_fq_control.py 6 3 4 --maxy 6                   # v = 55 exact control
+python3 theory/nd_ejoin.py --selftest                            # 30/30 against brute force
+python3 theory/nd_joint_exhaust.py 646 183 17 19 --dir logs/nd/joint --workers 4   # 647 x183: 4 y_B orbits, joint 0 (6 s)
+python3 theory/nd_joint_exhaust.py 646 183 17 19 --plant 10      # random plants 10/10 (also 442 225 17 13 --plant 6)
+python3 theory/nd_joint_exhaust.py 646 353 17 19 --dir logs/nd/joint --workers 1   # 647 x353: 495 orbits; y_B #0 joint 20,928
+python3 theory/nd_cross.py 646 353 17 19 logs/nd/joint/joint_646_353_17_19.jsonl --k 0 --n 3 --N 3000   # cross Gaussian -4.9
+python3 theory/nd_971_ejoin.py --plant 3 --E 32; python3 theory/nd_971_ejoin.py --dir logs/nd/dual971 --workers 3   # restart-safe
+python3 theory/nd_lag0_screen.py 536 5 67 536 137 67 536 17 67   # 537: all three empty at lag 0
 ```
+
+---
+
+## 11. Hand-off (state at the end of this session)
+
+**Nothing is running.** Every job was stopped by PID. All runners are restart-safe:
+- `logs/nd/joint/` holds one JSONL line per α-quadruple (`enum_*`) and per y_B orbit (`joint_*`);
+- `logs/nd/dual971/` holds one line per energy class.
+
+The 523 production files (`theory/q523_*`, `logs/q523/`) were not touched.
+
+**647 ×353, in order:**
+1. **Validate the exact cross solver.** Run `nd_cross.planted_cross(X, yb, ya, seed)` on a joint solution of y_B #0.
+   - Load it as in `nd_cross.py __main__`: `X = Cross(646, 353, 17, 19)`, `ys = enumerate_yB(...)`,
+     `rec, sols = X.J.test(ys[0])`, `ya = X.J.ya_full(sols[j]['layers'])`.
+   - It must return the plant. `solve_cross` works on orbit representatives (35 per layer) to avoid the 5 GB
+     arrays that killed the first attempt.
+2. **Measure and calibrate the S-level.**
+   - Run `solve_cross(X, yb, ya, s_only=True, log=print)` on one real joint solution. Record the S-join time, the
+     work, and the exact S-solution count.
+   - Compare that count with 2^(H_S − C_S), where H_S = Σ_k log₂(distinct σ_k) (about 4 × 17.7) and C_S ≈ 49.8 from
+     `Cross.estimate`. This is the only available calibration of the cross Gaussian.
+3. **If the S-join costs at most about an hour, run the full `solve_cross` over the 20,928 joint solutions of
+   y_B #0.**
+   - Deduplicate them first under the stabiliser of y_B: multipliers u ≡ ±(M mod 34) acting on Z₁₉, at most 6.
+   - About 2^5 joint solutions per core are expected [E].
+   - Any core → `nd_doubly.bordered_gs_cyclic` → write an independent `scripts/verify_h2588.py` in the pattern of
+     `scripts/verify_h2292.py` → commit at once.
+4. **Resume the joint enumeration over orbits #1–#494** (`nd_joint_exhaust.py 646 353 17 19 --dir logs/nd/joint
+   --workers 1`).
+   - The previous run died silently on #1, probably out of memory: its S-join has more than 10⁶ matches, and the
+     buffer now grows up to 2^24.
+   - Add a cap on S-solutions or chunk the full join before rerunning. This is needed only if y_B #0 is exhausted
+     without a core.
+
+**971 ×469.** Resume the dual run only for completeness (`nd_971_ejoin.py --dir logs/nd/dual971 --workers 3`;
+EL ≤ 40 done). It cannot kill the slice: the dual compression is already non-empty.
+
+**Report.** §0, §1, §3, §5, §7, §8 and §9 reflect everything above. The level budgets given y_B (the old §5.3 table)
+were removed as superseded. The old ×183 numbers are in git history (commit ac5997d).
