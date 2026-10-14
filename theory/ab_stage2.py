@@ -504,7 +504,8 @@ class FastSolver(Solver):
         for r, L in enumerate(lists):
             cf[:, orbs[r]] = L[grids[r].ravel()]
         res = (cf, self.sig_configs(k, cf))
-        if len(self._sigcache[k]) < 400000: self._sigcache[k][a] = res
+        if len(self._sigcache[k]) > 3000: self._sigcache[k].clear()
+        self._sigcache[k][a] = res
         return res
 
     def choose_middles(self, nsample=4 * 10 ** 6, top=30, seed=2):
@@ -573,4 +574,53 @@ class FastSolver(Solver):
                       self.parent_configs(2, a2)[0][i2], self.parent_configs(3, b2)[0][j2]]
                 sig = sum(self.sig_configs(k, cf[k][None, :])[0] for k in range(4))
                 if (sig == self.TS).all(): sols.append(cf)
+        return sols, info
+
+
+class FastSolver2(FastSolver):
+    """memory-lean S-join: packed indices (parent a: 22 bits, parent b: 22 bits, config i, j: 10 bits each),
+    right side processed in chunks; configuration S-signatures cached per parent"""
+    def s_join(self, c, max_side=2.5 * 10 ** 8, chunk=4 * 10 ** 6):
+        left = self.pairs_for(0, 1, c)
+        right = self.pairs_for(2, 3, self.TM - c)
+        nl = int(sum(self.fib[0][a] * self.fib[1][b] for a, b in left))
+        nr = int(sum(self.fib[2][a] * self.fib[3][b] for a, b in right))
+        info = dict(left_parent_pairs=len(left), right_parent_pairs=len(right), left=nl, right=nr)
+        if nl == 0 or nr == 0: return [], info
+        if nl > max_side or nr > max_side: raise RuntimeError(f"side too large {info}")
+        rng = np.random.default_rng(5)
+        wv = rng.integers(1, 2 ** 62, size=len(self.lr), dtype=np.int64)
+        def pack(a, b, i, j): return (a << 42) | (b << 20) | (i << 10) | j
+        def side_iter(kA, kB, pl):
+            for (a, b) in pl:
+                cA, sA = self.parent_configs(kA, a); cB, sB = self.parent_configs(kB, b)
+                hA = sA @ wv; hB = sB @ wv
+                H = (hA[:, None] + hB[None, :]).ravel()
+                ii, jj = np.meshgrid(np.arange(len(cA), dtype=np.int64), np.arange(len(cB), dtype=np.int64), indexing='ij')
+                yield H, pack(np.int64(a), np.int64(b), ii.ravel(), jj.ravel())
+        HL = []; PL = []
+        for H, P in side_iter(0, 1, left): HL.append(H); PL.append(P)
+        HL = np.concatenate(HL); PL = np.concatenate(PL)
+        o = np.argsort(HL); HL = HL[o]; PL = PL[o]
+        tgt = np.int64(self.TS @ wv)
+        sols = []
+        bufH = []; bufP = []; nb = 0
+        def flush():
+            if not bufH: return
+            HR = tgt - np.concatenate(bufH); PR = np.concatenate(bufP)
+            lo = np.searchsorted(HL, HR, 'left'); hi = np.searchsorted(HL, HR, 'right')
+            for r in np.nonzero(hi > lo)[0]:
+                for p in range(lo[r], hi[r]):
+                    pl, pr = int(PL[p]), int(PR[r])
+                    a, b, i, j = pl >> 42, (pl >> 20) & (2 ** 22 - 1), (pl >> 10) & 1023, pl & 1023
+                    a2, b2, i2, j2 = pr >> 42, (pr >> 20) & (2 ** 22 - 1), (pr >> 10) & 1023, pr & 1023
+                    cf = [self.parent_configs(0, a)[0][i], self.parent_configs(1, b)[0][j],
+                          self.parent_configs(2, a2)[0][i2], self.parent_configs(3, b2)[0][j2]]
+                    sig = sum(self.sig_configs(k, cf[k][None, :])[0] for k in range(4))
+                    if (sig == self.TS).all(): sols.append(cf)
+            bufH.clear(); bufP.clear()
+        for H, P in side_iter(2, 3, right):
+            bufH.append(H); bufP.append(P); nb += len(H)
+            if nb >= chunk: flush(); nb = 0
+        flush()
         return sols, info

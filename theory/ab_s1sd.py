@@ -243,9 +243,10 @@ class S1SD:
         lett = all(int(Y[k, b]) in self.sl.letters[self.sl.borb[b]] for k in range(4) for b in range(self.Gp.n))
         return bool(ok and inv and lett)
 
-    def solve(self, rowquads, max_sol=10 ** 9, log=print, shuffle=0, progress=0):
+    def solve(self, rowquads, max_sol=10 ** 9, log=print, shuffle=0, progress=0, only=None):
         t0 = time.time()
         A, Q = self.alpha_quads(rowquads)
+        if only is not None: Q = [q for q in Q if q in set(only)]
         log(json.dumps(dict(stage="alpha", f0=self.f0, alphas=len(A), alpha_quads=len(Q), secs=round(time.time() - t0, 1))))
         TS0, TD0 = int(self.TS[0]), int(self.TD[0])
         cache = {}; sols = []; nS = 0
