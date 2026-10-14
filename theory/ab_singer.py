@@ -100,21 +100,34 @@ def canon_first(rep, acts, g):
     return min(tuple(sorted(row.tolist())) for row in acts[:, r])
 
 
-def first_blocks(S, P, add, auts):
-    """multisets {i0 <= i1 <= i2 <= i3} of sum(+1) sequences with sum PAF = -4, up to affine maps of Gamma"""
+def first_blocks(S, P, add, auts, chunk=1 << 15):
+    """multisets {i0 <= i1 <= i2 <= i3} of sum(+1) sequences with sum PAF = -4, up to affine maps of Gamma and column
+    signed permutations (vectorised: every match is mapped by every affine map, sorted, encoded, minimised)"""
     rep, acts = first_actions(S, add, auts)
     pos = np.nonzero(S.sum(1) == 1)[0]
     Pp = P[pos]; n = len(pos)
-    pairs = [(i, j) for i in range(n) for j in range(i, n)]
-    PS = np.array([Pp[i] + Pp[j] for i, j in pairs])
+    ii, jj = np.triu_indices(n)
+    PS = Pp[ii] + Pp[jj]
     w = np.random.default_rng(1).integers(1, 2 ** 61, size=PS.shape[1], dtype=np.int64)
     LK = hkey(PS, w); RK = hkey(-4 - PS, w)
     I, J = join(LK, RK)
+    Qd = np.stack([pos[ii[I]], pos[jj[I]], pos[ii[J]], pos[jj[J]]], 1)
+    Qd = np.sort(Qd, 1)
+    Qd = np.unique(Qd, axis=0)
+    base = len(S)
     out = set()
-    for a_, b_ in zip(I.tolist(), J.tolist()):
-        q = (int(pos[pairs[a_][0]]), int(pos[pairs[a_][1]]), int(pos[pairs[b_][0]]), int(pos[pairs[b_][1]]))
-        out.add(canon_first(rep, acts, q))
-    return sorted(out)
+    for c0 in range(0, len(Qd), chunk):
+        q = Qd[c0:c0 + chunk]
+        img = np.sort(acts[:, q], axis=2)                       # (n_acts, m, 4)
+        code = ((img[..., 0] * base + img[..., 1]) * base + img[..., 2]) * base + img[..., 3]
+        mn = code.min(0)
+        out.update(np.unique(mn).tolist())
+    res = []
+    for code in sorted(out):
+        t = []
+        for _ in range(4): t.append(code % base); code //= base
+        res.append(tuple(int(x) for x in reversed(t)))
+    return sorted(res)
 
 
 # ---------------------------------------------------------------- (B) partners and Kc frames
