@@ -325,9 +325,9 @@ fixing one point and transitive on the other nine (`logs/ab/singer/c10_*.jsonl`)
   identity: e.g. P_{q₀} R_{q₁} P_{q₀} = R_{q₁} and R_{−q₁} R_{−q₂} R_{q₁} = R_{q₂}, with P translations and R reflections
   of Q. So Cb is again Q_S ⊗ I in Singer coordinates. And Q_S ranges over the whole (single) two-sided class, so every
   placement of the zero block is covered.
-- Order 9 forces monomial compressions. Let a block-preserving automorphism of order 9 act on each core block as a
-  9-cycle or as regular Z₃ × Z₃, fixing one point p; frames require exactly one fixed point. Putting g = p in
-  z(π′h − πg) = z(h − g), or in its g + h analogue, shows that every z_k is constant on nine points of Q, so z_k is monomial.
+- Order 9 forces monomial compressions. Let a block-preserving automorphism group of order 9 act on each core block
+  as a 9-cycle or as regular Z₃ × Z₃, fixing one point p. Putting g = p in z(π′h − πg) = z(h − g), or in its g + h
+  analogue, shows that every z_k is constant on the other nine points of Q, so z_k is monomial.
 - **So no c = 10 border (any compressions) has a block-preserving automorphism group of order 9 acting regularly on
   Q∖{0} in every core block [M].** This includes every template invariant under a larger group containing such a
   subgroup, e.g. AGL(1, 9), PSL(2, 9) ≅ A₆ and PΓL(2, 9) on the ten points of PG(1, 9).
