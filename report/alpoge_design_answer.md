@@ -235,7 +235,78 @@ partner, and borders must be built together with the compression.
   order with the same c.
 - For c = 10 (the only b ≥ 3 option of 669 and 789) the first computation is a search for a flat pair: the Q-level
   solutions z on Z₁₀ or Z₂ × Z₅, against frames from H₂ ⊗ H(20) and their signed column permutations within blocks
-  (§9).
+  (§9). §3.2 does this for the compressions that carry the most symmetry.
+
+### 3.2 c = 10: the Singer-type ansatz of 359's border [P, M]
+
+(`theory/ab_singer.py`, `theory/ab_singer_layout.py`, `logs/ab/singer/`; the automorphism computations use
+`theory/ab_hadaut.py`'s graph with weighted edges.)
+
+**What the c = 8 border of 359 is [M].**
+- Untwisted (K's columns multiplied by the character ψ₆ of Q = Z₂³, Kc's by ψ₁, in the stored coordinates) its frames
+  are block-balanced and its compressions are *monomial*: z_k = s_k + a_k·δ_{q*} with a = (2, −2, 2, 4), Σ a_k² = 28 = 4b.
+- The template [[C, K], [Kcᵀ, Cb]] has an automorphism of order 7: on every core block it fixes one point and
+  cycles the other seven (a Singer cycle of GF(8), linear on Z₂³), and the 28 border rows and columns form four
+  regular orbits. Up to ±1 the template's automorphism group has order 14.
+- In these "Singer coordinates" the corner is a 4 × 4 array of 7 × 7 circulants, and K, Kc are [e ⊗ 1₇ | a 4 × 4 array of
+  circulants] with e, e′ ∈ H(4). Only three sequence classes occur: Legendre(7) `+++-+--`, the interval `++++---`, and
+  1 − 2δ.
+- The c = 4 and c = 6 templates (479, 347) have automorphism groups of order 2 (mod ±1); 347's is an H(44) that is
+  not Paley-equivalent.
+
+**Lemma 3 (monomial cores are Sym(Q)-symmetric) [P].** Let z_k = a_k·δ₀ (constants do not matter on balanced frames)
+and suppose one a_k = 0, or Q is an elementary abelian 2-group. Then for every permutation σ of Q the core array Cb (347
+layout) is fixed by σ acting on two blocks and ρσρ on the other two (ρ = negation on Q), on rows and columns alike.
+- *Proof.* A diagonal block a₀·δ₀(h − g) is a₀·I, fixed by (π, π). An off-diagonal block a_k·δ₀(±(g + h)) is a_k·ρ,
+  fixed by (π, π′) exactly when π′ = ρπρ.
+- With the zero block in position D, the nonzero off-diagonal blocks join {0, 3} to {1, 2}. So π = σ on blocks 0, 3 and
+  ρσρ on 1, 2 satisfies every block.
+- With the zero in A, rows take σ and columns ρσρ.
+- With Q = Z₂^m, ρ = 1.
+- Checked: |Aut| of the c = 10 core is 2·10!·8 (igraph), and 20 random σ fix it [M]. ∎
+
+So any group Γ of order b = c − 1 acting regularly on Q∖{0} fixes Cb. V_Q is then the regular representation of Γ,
+frames can be unions of four regular orbits, and in Singer coordinates (block J = {∞} ∪ Γ) Cb = Q_S ⊗ I_c. Here Q_S
+is a 4 × 4 integer matrix with Q_S Q_Sᵀ = 4b·I. For c = 10 the monomial profile must be a = (4, 4, 2, 0) up to order
+and signs: the only other profile, (6, 0, 0, 0), makes Cb|_V six times a signed permutation, and the corner entries
+±40/6.
+
+**Lemma 4 (Γ-invariant templates) [P].** With Γ acting regularly on four border orbits, write
+K = [e ⊗ 1 | circ(f)], Kc = [e′ ⊗ 1 | circ(g)]: f, g are 4 × 4 arrays of ±1 functions on Γ, and e_IJ = −Σf_IJ.
+- K is a frame iff every row-block (f_I0, …, f_I3) has Σ_J PAF(f_IJ) = −4 off 0, and every two row-blocks have
+  vanishing cross-correlation Σ_J [e_IJ e_I′J + PCF(f_IJ, f_I′J)(d)] for all d. The second condition is
+  Fourier-orthogonality at every character, so it is invariant under shifting either row-block.
+- The corner block C_{II′} = −(1/4c)·K_I·(Q_Sᵀ ⊗ I)·Kc_{I′}ᵀ depends only on row-block I of K and row-block I′ of Kc.
+- Hence a Γ-invariant template is a K_{4,4} biclique in the bipartite "flat corner" relation between row-blocks,
+  whose two sides are 4-cliques of the orthogonality relation. ∎
+
+**Search [M]** (`theory/ab_singer.py`):
+- (A) The first Kc row-block, up to affine maps of Γ and signed column permutations: 4,518 classes for Z₉, 680 for
+  Z₃ × Z₃.
+- (B) Its orthogonal partners by a hashed join on (PAF sums, cross-correlation), then 3-cliques give all Kc frames
+  through it.
+- (C) For each frame and each of the 24 right classes of Q_S (orthogonal, rows signed permutations of (4, 4, 2, 0); all
+  one two-sided class, which the layout realises), every K row-block with a ±1 corner against the frame, found by a
+  hashed join on the corner entries mod 8c and the PAF sums.
+- Then 4-cliques of mutually orthogonal row-blocks give K. Each frame is processed once, from its minimal row-block.
+- A hit is assembled and checked exactly. `theory/ab_singer_layout.py` maps it to the 347 layout and re-checks it with
+  `ab_assemble.forced_corner`.
+
+**Control [M]: c = 8, Γ = Z₇, a = (2, 2, 2, 4).**
+- The search finds templates from the first first-block on (2 in the first 40 of 185 first-blocks, 77 s; 8 in about
+  120 with the first version of the code).
+- Each maps to the standard 347 layout over Z₂³ with z_k = a_k·δ₀ and passes `forced_corner` exactly
+  (`logs/ab/singer/c8_control/*_layout.npz`).
+- So the method rediscovers c = 8 borders from nothing, in the plain layout rather than 359's twisted one.
+
+**Methods that failed the control [M].**
+- *CP-SAT* (`theory/ab_border_sat.py`: entries of C, K, Kc as Booleans, products as XNORs, every frame, linking and
+  corner equation linear). It is correct: with the published solution's entries fixed it reports feasible in 0.5 s.
+  But it cannot rediscover the c = 8 border even with that border's full automorphism group imposed (184 free
+  variables, 300 s, UNKNOWN). It needs about half the variables given: with 5% of the entries fixed it solves in
+  0.6 s, with 2% it times out at 120 s.
+- *Douglas–Rachford / RRR* projections between "±1 with the core fixed" and "√n·orthogonal"
+  (`theory/ab_border_dr.py`) do not complete even the c = 6 (H(44)) case.
 
 ---
 

@@ -50,18 +50,20 @@ def to_layout(N, Qs, Qmods, b):
 def finish(a, QL, X, p1, s1, p2, s2, K_S, Kc_S, C, Qmods, b, neg):
     c = b + 1; nb = 4 * b
     # point labellings: lambda_r[I][x], lambda_c[J][x] for x in 0..c-1 (0 = inf, 1 + t = t in Gamma)
-    lam_r = {0: np.arange(c)}; lam_c = {}
-    changed = True
-    while changed:
-        changed = False
-        for (I, J), t in X.items():
-            if QL[I, J] == 0: continue
-            mp = (lambda v: v) if t == 'id' else (lambda v: neg[v])
-            if I in lam_r and J not in lam_c: lam_c[J] = mp(lam_r[I]); changed = True
-            if J in lam_c and I not in lam_r:
-                inv = np.argsort(neg) if t == 'rho' else np.arange(c)
-                lam_r[I] = lam_c[J] if t == 'id' else neg[lam_c[J]]; changed = True
-    assert len(lam_r) == 4 and len(lam_c) == 4
+    lam_r = {}; lam_c = {}
+    while len(lam_r) < 4 or len(lam_c) < 4:
+        # seed one unlabelled block of a new component of the nonzero-block graph, then propagate
+        if len(lam_r) < 4: lam_r[min(set(range(4)) - set(lam_r))] = np.arange(c)
+        else: lam_c[min(set(range(4)) - set(lam_c))] = np.arange(c)
+        changed = True
+        while changed:
+            changed = False
+            for (I, J), t in X.items():
+                if QL[I, J] == 0: continue
+                if I in lam_r and J not in lam_c:
+                    lam_c[J] = lam_r[I] if t == 'id' else neg[lam_r[I]]; changed = True
+                if J in lam_c and I not in lam_r:
+                    lam_r[I] = lam_c[J] if t == 'id' else neg[lam_c[J]]; changed = True
     K_L = np.zeros_like(K_S); Kc_L = np.zeros_like(Kc_S)
     for J in range(4):
         Jl = p2[J]
