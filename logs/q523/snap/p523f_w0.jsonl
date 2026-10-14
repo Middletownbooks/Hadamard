@@ -53,3 +53,6 @@
 {"stage": "S-join", "centre": 14, "parents": [107, 135], "side_log2": [36.66, 37.08], "P": 12983, "hash_hits": 1969052, "overflow": 0, "probes_log2": 37.89, "s_solutions": 1969052, "secs": 5878.4, "worker": 0, "t": 1791909084.2}
 {"stage": "D-check", "centre": 14, "checked": 1969052, "d3_solutions": 452517069, "secs": 3620.0, "total_s": 15626540, "total_secs": 61411.1, "worker": 0, "t": 1791912704.2}
 {"stage": "prediction", "centre": 15, "fine_bits": 54.48, "mahal": 1.25, "predicted_s_solutions_log2": 20.26, "worker": 0, "t": 1791912770.7}
+{"stage": "S-join", "centre": 15, "parents": [171, 176], "side_log2": [37.28, 37.46], "P": 19889, "hash_hits": 3925832, "overflow": 0, "probes_log2": 38.37, "s_solutions": 3925832, "secs": 7660.9, "worker": 0, "t": 1791920431.6}
+{"stage": "CORE", "ok": true, "secs": 73172.2, "worker": 0, "t": 1791924465.3}
+{"stage": "done", "s_solutions": 19552372, "passed_filter": 15626540, "d3_solutions": 3534799344, "cores": 1, "pairs_log2": [38.31, 38.02, 38.06, 38.04, 38.3, 37.89, 38.37], "worker": 0, "t": 1791924465.4}

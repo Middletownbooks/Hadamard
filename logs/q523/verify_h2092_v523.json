@@ -1,0 +1,3 @@
+{"core": "core_v523_b1_q523_p523f_w0.txt", "m": 522, "N": 2092, "paf_ok": true, "paf_offzero_values": [-4], "rowsums": [2, 0, 0, 0]}
+{"hadamard": true, "N": 2092, "saved": "data/H2092_packed.npz", "sha256_of_packed_rows": "9594b975bbec1f10774ba462751dde7e946d2943050aca11f7c2896ef7d44e36", "corner": [[-1, -1, -1, -1], [-1, -1, 1, 1], [-1, 1, -1, 1], [1, -1, -1, 1]]}
+{"slice_check": "multiplier x181 (= 1 mod 18, = 7 mod 29; <7> = quartic residues mod 29)", "invariant_x181": true}
