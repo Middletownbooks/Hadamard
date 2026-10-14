@@ -11,29 +11,45 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line and run status
 
-*Status at 07:50 UTC 2026-10-14; this section is updated as the run proceeds.*
+*Status at 09:45 UTC 2026-10-14; this section is updated as the run proceeds.*
 
-1. **(A) No H(2588) yet.** The production run is under way (§4); no core has been found, against 0.18 expected so far.
+1. **(A) No H(2588) yet.** The production run is under way (§4); no core so far, against 0.98 expected.
 
 2. **(B) The cross level is calibrated, and its cost per core is inside the budget** [M speeds × E counts, the counts
    exact]:
-   - **Validated exact solver.** Joint solution → per-layer lists → distinct σ (an additive base-3 code, P1) →
-     exact S-join (a new radix-partitioned kernel) → D-check of every S-solution (the even-lag identity, P2) → full
-     PAF. Checks: 12/12 full-size plants on real joint solutions; 3/3 reduced plants and 5/5 reduced real-S-solution
-     instances against brute forces that never use the pipeline's signatures; kernel self-tests 40/40 (×3) and 30/30.
-   - **Exact counts on 4 complete joint solutions** (§2): 421,570–536,655 S-solutions each, i.e. the distinct-σ
-     Gaussian is +1.5–1.7 bits off. The pair-level yield (D-candidates, what the D-check sees) is 2^28.0–2^29.1, i.e.
-     the pair-weighted Gaussian is 0.46–0.63 bit too high. The D-level matches its Gaussian within 0.01–0.19 bit on
-     every lag subset up to 22 bits; C(D|S) = 34.8 bits is used. No core in the 4 runs (0.056 expected).
-   - **Cost per core**: 2^41.0 emitted pairs, about **15 core-hours** per expected core with energy-class selection
-     (measured on production), and about **9 core-hours** with class-merged units (§3, §4). Without the levers it is
-     2^42.6 (about 40 core-hours).
-   - **Positive control**: none found yet. Every product-shape slice tested so far is exactly empty (§5), in line with
-     the earlier finding that none exists below 647; the search continues on one core. The calibration of §2 stands
-     on its own exact counts.
+   - **Validated exact solver** (§1):
+     - joint solution → per-layer lists → distinct σ (an additive base-3 code, P1) → exact S-join (a new
+       radix-partitioned kernel) → D-check of every S-solution (the even-lag identity, P2) → full PAF;
+     - plants: 12/12 at full size on real 647 joint solutions, 10/10 on 495;
+     - against brute forces that never use the pipeline's signatures: 3/3 reduced plants and 5/5 reduced
+       real-S-solution instances.
+   - **Exact counts on 4 complete joint solutions** (§2):
+     - 421,570–536,655 S-solutions each, so the distinct-σ Gaussian is +1.5–1.7 bits off;
+     - pair-level yield (D-candidates) 2^28.0–2^29.1, so the pair-weighted Gaussian is 0.46–0.63 bit too high.
+   - **The D-level holds to rank 9 of 11** (§2.3):
+     - over all 2^30.65 candidates of the four runs: 44 hits against 44.0 expected at rank 7, 5 against 8.0 at
+       rank 8, 1 against 1.15 at rank 9 (30.6 bits);
+     - every 647 S-solution's candidates span the full D-lattice;
+     - C(D|S) = 34.8 bits is used; the last ~4 bits are an extrapolation.
+   - **Cost per core** (§3, §4):
+     - 2^41.0 emitted pairs, about 15 core-hours per expected core, with energy-class selection (measured);
+     - about 6–9 core-hours with class-merged units;
+     - 2^42.6 (about 40 core-hours) without these levers.
+   - **Positive control** (§5):
+     - 495 ×83 is the first same-shape slice with a non-empty joint stage (y_B orbits with 2,400–6,912 joint
+       solutions);
+     - its S-level and pair-level counts reproduce the 647 calibration pattern;
+     - its full D-level gives **0 cores at 7.4 expected**, and the cause is identified: rank-deficient
+       per-S-solution D-lattices (median 24 candidates), the discrete-level failure mode;
+     - this does not occur at 647 (median 840, full rank);
+     - every smaller product slice tested is exactly empty.
+     
+     So no valid positive control exists at small orders for the 647 D-level, and the (B) claim rests on the exact
+     calibration of §2 (to rank 9).
 
-3. **(C) No obstruction.** S-solutions exist in abundance and the D-target lies in the D-lattice of every calibrated
-   joint solution. The slice is not empty for any reason visible at these levels.
+3. **(C) No obstruction.** S-solutions are abundant. The D-target lies in the D-lattice of every calibrated
+   joint solution, and in every per-S-solution lattice tested at 647. The 647 deep tail matches the Gaussian
+   wherever it can be counted.
 
 **Run status** (`python3 theory/p647_tally.py`): see §4.3; cores found 0.
 
