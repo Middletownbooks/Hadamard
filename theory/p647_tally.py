@@ -3,13 +3,13 @@ r"""Status of the 647 x353 production run (logs/p647/prod/) and of the calibrati
 Per worker it sums the per-class checkpoint lines (w*_els.jsonl): joint solutions finished and in progress, emitted
 pairs, S-solutions, D-candidates (= pair-level S-solutions, prod_k mult(sigma_k) summed over S-solutions) and D-hits;
 and over everything the expected number of cores  sum D-candidates * 2^-C(D|S)  with C(D|S) given (calibrated value
-from report/paley_647_answer.md section 2; default 34.6 bits).  Cores found: logs/p647/CORE_*.json.
+from report/paley_647_answer.md section 2.3; default 34.8 bits).  Cores found: logs/p647/CORE_*.json.
 usage: python3 theory/p647_tally.py [--cdgs 34.6] [--json]"""
 import sys, os, json, glob, math
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROD = os.path.join(ROOT, "logs", "p647", "prod"); CAL = os.path.join(ROOT, "logs", "p647", "calib")
 
-def main(cdgs=34.6, as_json=False):
+def main(cdgs=34.8, as_json=False):
     out = dict(workers={}, total={})
     T = dict(joint_done=0, joint_partial=0, pairs=0, S=0, cand=0, hits=0, secs=0.0)
     for f in sorted(glob.glob(os.path.join(PROD, "w*_els.jsonl"))):
@@ -33,6 +33,42 @@ def main(cdgs=34.6, as_json=False):
                  hits=sum(d['hits'] for d in per.values()), secs=round(sum(d['secs'] for d in per.values()), 1))
         out['workers'][w] = W
         for k in T: T[k] += W[k]
+    # unit mode (class-merged sub-bicliques): per (unit, i, j) joint solution, D-candidates over the processed classes
+    U = dict(units_done=0, units_partial=0, pairs=0, S=0, cand=0, hits=0, secs=0.0)
+    per_joint = {}
+    for f in sorted(glob.glob(os.path.join(PROD, "u*_els.jsonl"))):
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            U['pairs'] += r['left'] + r['right']; U['S'] += r['S']; U['cand'] += r['cand']; U['hits'] += r['hits']; U['secs'] += r['secs']
+            for ij, c in r.get('cand_ij', {}).items():
+                e = r['joint'][ij]; per_joint[e] = per_joint.get(e, 0) + c
+    ud = set(); up = set()
+    for f in sorted(glob.glob(os.path.join(PROD, "u*.jsonl"))):
+        if f.endswith("_els.jsonl"): continue
+        for line in open(f):
+            try: ud.add(json.loads(line)['unit'])
+            except Exception: pass
+    for f in sorted(glob.glob(os.path.join(PROD, "u*_els.jsonl"))):
+        for line in open(f):
+            try: up.add(json.loads(line)['unit'])
+            except Exception: pass
+    U['units_done'] = len(ud); U['units_partial'] = len(up - ud); U['secs'] = round(U['secs'], 1)
+    out['units'] = U
+    # orbit-deduplicated D-candidates: per stabiliser orbit the largest record (old per-joint mode or unit mode)
+    om = json.load(open(os.path.join(ROOT, "logs", "p647", "joint_yb0_orbits.json"))).get('orbit_of')
+    best = {}
+    def put(e, c):
+        o = om[e] if om else e
+        best[o] = max(best.get(o, 0), c)
+    for e, c in per_joint.items(): put(e, c)
+    for f in sorted(glob.glob(os.path.join(PROD, "w*_els.jsonl"))):
+        pj = {}
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            pj[r['j']] = pj.get(r['j'], 0) + r['cand']
+        for e, c in pj.items(): put(e, c)
     # calibration runs (unrestricted, complete) count as checked joint solutions too
     C = dict(joint_done=0, S=0, cand=0, hits=0)
     cp = os.path.join(CAL, "calib.jsonl")
@@ -40,17 +76,20 @@ def main(cdgs=34.6, as_json=False):
         for line in open(cp):
             r = json.loads(line); C['joint_done'] += 1; C['S'] += r.get('S_solutions', 0); C['cand'] += r.get('S_pairs', 0); C['hits'] += r.get('D_hits', 0)
     out['calibration'] = C
-    cand = T['cand'] + C['cand']
-    out['total'] = dict(**T, core_hours=round(T['secs'] / 3600, 2), cand_all=cand,
+    if os.path.exists(cp):
+        for line in open(cp):
+            r = json.loads(line); put(r['j'], r.get('S_pairs', 0))
+    cand = sum(best.values())
+    out['total'] = dict(orbits_touched=len(best), core_hours=round((T['secs'] + U['secs']) / 3600, 2), cand_all=cand,
                         cand_log2=round(math.log2(cand), 3) if cand else None, cdgs=cdgs,
                         expected_cores=round(cand * 2.0 ** -cdgs, 3),
                         cores_found=len(glob.glob(os.path.join(ROOT, "logs", "p647", "CORE_*.json"))))
     if as_json: print(json.dumps(out))
     else:
         for w, W in out['workers'].items(): print(w, json.dumps(W))
-        print('calibration', json.dumps(C)); print('TOTAL', json.dumps(out['total']))
+        print('units', json.dumps(U)); print('calibration', json.dumps(C)); print('TOTAL', json.dumps(out['total']))
     return out
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    main(float(a[a.index("--cdgs") + 1]) if "--cdgs" in a else 34.6, "--json" in a)
+    main(float(a[a.index("--cdgs") + 1]) if "--cdgs" in a else 34.8, "--json" in a)

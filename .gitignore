@@ -121,7 +121,6 @@ logs/cyclo/stage1_cpsat_F*.json
 # 647 cross level: bulky per-class S-solution files (summaries are committed)
 logs/p647/calib/*_els.jsonl
 logs/p647/calib/*_ssols.npy
-logs/p647/prod/*_els.jsonl
 logs/p647/prod/*_ssols.npy
 logs/p647/control/enum_154_*.jsonl
 logs/p647/control/enum_110_9_11_5.jsonl

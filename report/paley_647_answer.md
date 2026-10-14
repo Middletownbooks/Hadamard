@@ -73,3 +73,116 @@ its σ-preimages, every match re-checked exactly) → x_k on Z₆₄₆ → full
   2.3·10⁷ D-candidates, 1 D-hit = the plant; j = 6526: 1,292, 575,903, 1).
 - Reduced instances against a brute force that never uses the pipeline's signatures (every kept pair → its sequence on
   Z₆₄₆ → its full 646-lag PAF by FFT; a 2+2 dictionary on the exact 646-vector): 3/3 agree (`--brute`).
+
+---
+
+## 2. Calibration of the cross level [M against E] (`theory/p647_calib.py`, `logs/p647/calib/`)
+
+Four joint solutions of y_B #0 were solved exactly and completely (every left-energy class of the S-join, every
+S-solution D-checked): two from the high-freedom class (H ≈ 79.4 bits) and two from the 78.3–78.4 class.
+
+### 2.1 Three Gaussian predictions per joint solution [E] (`gauss_preds`, N = 20,000 sampled quadruples)
+
+- **C_S^u**: S-level bits for σ drawn uniformly from the distinct σ of each block. Predicts the exact S-join count
+  2^(H_S − C_S^u), H_S = Σ_k log₂ N_k.
+- **C_S^p**: S-level bits for (L0, L1) pairs drawn uniformly (σ weighted by multiplicity). Predicts the pair-level
+  S-solutions 2^(H − C_S^p), i.e. the D-candidates Σ_{S-sol} Π_k mult(σ_k), which is what the D-check sees.
+- **C**: S and D together, pairs uniform (rank 23, Mahalanobis 0.48–0.53). Predicts 2^(H − C) cores, and
+  C(D|S) = C − C_S^p.
+
+### 2.2 Exact counts [M]
+
+| j | H class | N_k (distinct σ) | H_S | S-solutions exact | 2^(H_S − C_S^u) | error | D-candidates exact | 2^(H − C_S^p) | error | D-hits |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 4208 | 78.33 | 212k, 229k, 389k, 129k | 71.05 | 421,570 = 2^18.69 | 2^17.16 | **+1.52** | 2^28.00 | 2^28.53 | **−0.53** | 0 |
+| 9902 | 78.40 | 212k, 227k, 274k, 205k | 71.20 | 465,177 = 2^18.83 | 2^17.35 | **+1.48** | 2^28.12 | 2^28.75 | **−0.63** | 0 |
+| 11514 | 79.42 | 327k, 227k, 182k, 310k | 71.83 | 536,655 = 2^19.03 | 2^17.38 | **+1.66** | 2^29.07 | 2^29.55 | **−0.48** | 0 |
+| 16846 | 79.39 | 212k, 227k, 389k, 206k | 71.71 | 525,492 = 2^19.00 | 2^17.32 | **+1.69** | 2^29.07 | 2^29.53 | **−0.46** | 0 |
+
+- **The distinct-σ Gaussian undercounts S-solutions by 1.5–1.7 bits.** Its sampled quadruples have mean energy
+  Σ_k ‖σ_k‖² ≈ 760 against the target 645 (Mahalanobis 1.8–2.0, in the tail), and at low energy the other PAF
+  coordinates are less spread than the joint Gaussian assumes. Same sign and size as the 523 joins (+1.55–1.75).
+- **The pair-weighted Gaussian, the one that sets the core rate, is 0.46–0.63 bit too high**, at Mahalanobis 0.5:
+  under pair weighting the block energies average 160–168, so the target energy is typical.
+- **S-solutions carry 2^9.2–2^10.1 D-candidates each on average** (2^12.4 at the lowest-energy classes, 2^9.1 at
+  the centre), against a mean multiplicity product of 2^7.7 over the lists: the S-level energy equation selects
+  low-energy, high-multiplicity σ.
+
+### 2.3 The D-level [M against E] (`dtail`)
+
+Every D-candidate of every S-solution (2^28.0–2^29.1 per joint solution) was enumerated. For subsets of the 12
+cross lags, the exact fraction of candidates whose D-residual vanishes on the subset is compared with the lattice
+Gaussian fitted to 200,000 sampled residuals of the same candidates:
+
+| cross lags (Z₃₂₃) | j = 4208: exact / Gaussian bits | j = 9902 | j = 11514 | j = 16846 |
+|---|---|---|---|---|
+| 1 | 3.89 / 3.86 | 3.95 / 3.94 | 3.93 / 3.92 | 3.91 / 3.89 |
+| 1, 2 | 7.74 / 7.70 | 7.83 / 7.81 | 7.79 / 7.76 | 7.75 / 7.70 |
+| 1, 2, 3 | 11.55 / 11.50 | 11.61 / 11.60 | 11.59 / 11.53 | 11.49 / 11.44 |
+| 1, 2, 3, 4 | 15.16 / 15.11 | 15.11 / 15.08 | 15.15 / 15.07 | 15.10 / 15.02 |
+| 6, 7, 8, 9 | 14.87 / 14.74 | 14.86 / 14.78 | 14.87 / 14.75 | 14.85 / 14.75 |
+| 1, 2, 3, 4, 6, 7 | 21.91 / 21.78 (68 hits) | 21.80 / 21.75 (80) | 21.81 / 21.72 (153) | 21.85 / 21.66 (149) |
+
+- Agreement within 0.01–0.19 bit up to 22 bits, the Gaussian always slightly *under*estimating the bits (the
+  candidates hit slightly less often than it says; the excess grows to ~0.1–0.2 bit at 22 bits).
+- **The full conditional D-level: 34.49–34.68 bits** fitted directly to the candidates (rank 11, Mahalanobis
+  0.36–0.46), against C − C_S^p = 34.55–34.79 from the unconditional model. The two estimates agree within 0.15 bit.
+  The drift above (exact bits exceed the Gaussian by up to 0.19 bit at 22 bits, growing with depth) points to a
+  slightly larger value. **The costs below use C(D|S) = 34.8 bits** [E, calibrated to 22 bits; fit 34.5–34.7].
+- Expected cores of the four runs: Σ_j 2^(Y_j − 34.8) = 2^−6.8 + 2^−6.7 + 2^−5.7 + 2^−5.7 ≈ 0.056; found 0.
+
+### 2.4 Energy structure and class selection [M] (`theory/p647_restrict.py`, `theory/p647_buckets.py`)
+
+The S-join visits only left-energy classes EL ≡ c (mod 24) (P3), 18 of them per joint solution. Their exact
+yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 9902:
+
+| EL | share of yield | share of work | yield/work gain |
+|---|---|---|---|
+| 271 | 0.053 / 0.070 | 0.118 / 0.130 | 0.45 / 0.54 |
+| 295 | 0.162 / 0.191 | 0.121 / 0.119 | 1.34 / 1.60 |
+| **319** | **0.281 / 0.294** | 0.105 / 0.100 | **2.67 / 2.93** |
+| **343** | **0.276 / 0.256** | 0.101 / 0.100 | **2.73 / 2.55** |
+| 367 | 0.156 / 0.128 | 0.114 / 0.112 | 1.37 / 1.15 |
+| 391 | 0.050 / 0.037 | 0.117 / 0.106 | 0.43 / 0.35 |
+| the other 12 | 0.022 / 0.024 | 0.324 / 0.333 | < 0.12 |
+
+- The two classes nearest the pair-weighted energy centre ((ē_a + ē_b) + (645 − ē_c − ē_d))/2 (332 and 326 here)
+  hold **55% of the yield for 20% of the work: a 2.7× gain**. The rule picks {319, 343} for both runs, so it can be
+  applied to any joint solution in advance (`p647_prod.central_els`).
+- Restricting the σ-lists instead (multiplicity floors, energy caps, a score mult ≥ 2^(β(e − ē))): best 1.79×.
+  Splitting classes further into (e_a, e_c) energy buckets: no gain beyond the class choice (frontier 2.6× at 50%).
+  The yield and the work sit in the same few buckets.
+
+---
+
+## 3. Cost per core [M speeds × E counts, counts calibrated exactly] (answer to (B))
+
+### 3.1 Per joint solution
+
+| mode | emitted pairs | D-candidates | expected cores (C(D\|S) = 34.8) | time (1 core) |
+|---|---|---|---|---|
+| full join, H 79.4 class (calibration j = 11514, 16846) | 1.3·10¹¹ = 2^36.9 | 2^29.07 | 2^−5.73 | 2,930–2,990 s join, 22.5–23.3 ns/pair (4 workers) |
+| full join, H 78.3/78.4 class (j = 4208, 9902) | 1.0·10¹¹ = 2^36.5 | 2^28.0–28.1 | 2^−6.8 | 2,490–2,550 s, 24.4–25.1 ns/pair |
+| **two central classes, H 79.4 class (production, 6 joint solutions)** | **2.2·10¹⁰ = 2^34.4** | **2^28.15–28.23** | **2^−6.63** | **460–600 s join + 70–100 s lists** |
+
+### 3.2 Per expected core
+
+- Two central classes, H 79.4 class: about 99 joint solutions per expected core, i.e. **2^41.0 emitted pairs and
+  about 15 core-hours per expected core** (single-worker speed; about 20% more under a full 4-worker load).
+- Full joins: 2^42.6 pairs and about 40 core-hours per expected core (H 79.4 class); 2^43.3 for the 78.x class.
+- Both are inside the (B) budget of 2^45 operations / 100 core-hours. **This is the calibrated cost**: the speed is
+  measured, the yield (D-candidates) is exact for every processed joint solution, and the only Gaussian factor
+  left is C(D|S) = 34.8 bits, checked against exact counts up to 22 bits (§2.3).
+- The D-check costs 2–4 s per joint solution, which is negligible.
+
+### 3.3 The levers, and what they are worth [M]
+
+1. **Energy-class selection** (2.7×, §2.4): the two classes nearest the pair-weighted energy centre.
+2. **Symmetry** (6×): the stabiliser of y_B #0 in the slice's group has 18 elements on Z₃₈ (6 after dividing by M),
+   acting freely on the joint solutions: 20,928 → **3,488 orbits** (`p647_common.stabiliser`, `canonical_joint`).
+   One member per orbit suffices.
+3. **Class merging** (2.78×, §4.1): the joint solutions of y_B #0 form complete bicliques under the stage-1A
+   signature, so one join of a union of lefts against a union of rights serves every (left, right) pair.
+4. List restriction by σ-multiplicity or energy (≤ 1.8×) and energy buckets (no gain over 1): not used.
+5. Kernel tuning (branch-free emission, bitset prefilter): no gain (22.5 against 22.4 ns/pair). The kernel is
+   bound by the scatter's memory traffic.

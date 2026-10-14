@@ -768,6 +768,279 @@ def selftest_q(trials=40):
         ok += (sols == _brute(S, T) and tuple(pick) in set(sols))
     return dict(selftest_q=f"{ok}/{trials}")
 
+
+# ---------------------------------------------------------------- multi-left / multi-right join (class-merged units)
+# All lefts (A_i, B_i) of a unit complete all its rights (C_j, D_j) at stage 1A (a complete biclique of joint
+# solutions, report section 3), so one 2+2 join of (union of the left pair sets) against (union of the right pair sets)
+# finds the S-solutions of every (i, j) at the cost of sum_i |left_i| + sum_j |right_j| emitted pairs.
+# Packed entries: 20-bit fingerprint, 22-bit global indices into the concatenated lists.
+IB2 = 22
+IMASK2 = (1 << IB2) - 1
+
+@njit(cache=True)
+def _emitML(hX, rX, stX, enX, hY, csrY, EL, emaxX, emaxY, P, p0, G, rbits, xoff, yoff, pos, endp, out):
+    ok = True
+    sh = np.uint64(64 - rbits); ub = np.uint64(rbits); s44 = np.uint64(44); ib = np.uint64(IB2)
+    lo = EL - emaxY
+    if lo < 0: lo = 0
+    hi = EL if EL < emaxX else emaxX
+    for ex in range(lo, hi + 1):
+        ey = EL - ex
+        if ey < 0 or stX[ex] == enX[ex]: continue
+        base = ey * P
+        if csrY[base] == csrY[base + P]: continue
+        for x in range(stX[ex], enX[ex]):
+            s0 = p0 - rX[x]
+            if s0 < 0: s0 += P
+            kx = hX[x]; xi = np.uint64(xoff + x) << ib
+            s1 = s0 + G
+            if s1 <= P:
+                a0 = csrY[base + s0]; a1 = csrY[base + s1]; b0 = 0; b1 = 0
+            else:
+                a0 = csrY[base + s0]; a1 = csrY[base + P]; b0 = csrY[base]; b1 = csrY[base + s1 - P]
+            for t in range(a0, a1):
+                key = kx + hY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < endp[part]:
+                    out[i] = ((key << ub) >> s44) << s44 | xi | np.uint64(yoff + t); pos[part] = i + 1
+                else:
+                    ok = False
+            for t in range(b0, b1):
+                key = kx + hY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < endp[part]:
+                    out[i] = ((key << ub) >> s44) << s44 | xi | np.uint64(yoff + t); pos[part] = i + 1
+                else:
+                    ok = False
+    return ok
+
+@njit(cache=True)
+def _emitMR(hX, rX, stX, enX, hY, csrY, EL, emaxX, emaxY, P, p0, G, hT, rT, rbits, xoff, yoff, pos, endp, out):
+    ok = True
+    sh = np.uint64(64 - rbits); ub = np.uint64(rbits); s44 = np.uint64(44); ib = np.uint64(IB2)
+    lo = EL - emaxY
+    if lo < 0: lo = 0
+    hi = EL if EL < emaxX else emaxX
+    c0 = rT - p0 - G + 1
+    while c0 < 0: c0 += P
+    for ex in range(lo, hi + 1):
+        ey = EL - ex
+        if ey < 0 or stX[ex] == enX[ex]: continue
+        base = ey * P
+        if csrY[base] == csrY[base + P]: continue
+        for x in range(stX[ex], enX[ex]):
+            s0 = c0 - rX[x]
+            if s0 < 0: s0 += P
+            kx = hT - hX[x]; xi = np.uint64(xoff + x) << ib
+            s1 = s0 + G
+            if s1 <= P:
+                a0 = csrY[base + s0]; a1 = csrY[base + s1]; b0 = 0; b1 = 0
+            else:
+                a0 = csrY[base + s0]; a1 = csrY[base + P]; b0 = csrY[base]; b1 = csrY[base + s1 - P]
+            for t in range(a0, a1):
+                key = kx - hY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < endp[part]:
+                    out[i] = ((key << ub) >> s44) << s44 | xi | np.uint64(yoff + t); pos[part] = i + 1
+                else:
+                    ok = False
+            for t in range(b0, b1):
+                key = kx - hY[t]
+                part = np.int64(key >> sh); i = pos[part]
+                if i < endp[part]:
+                    out[i] = ((key << ub) >> s44) << s44 | xi | np.uint64(yoff + t); pos[part] = i + 1
+                else:
+                    ok = False
+    return ok
+
+@njit(cache=True)
+def _emitM_count(hX, rX, stX, enX, hY, csrY, EL, emaxX, emaxY, P, p0, G, right, hT, rT, rbits, cnt):
+    sh = np.uint64(64 - rbits)
+    lo = EL - emaxY
+    if lo < 0: lo = 0
+    hi = EL if EL < emaxX else emaxX
+    c0 = rT - p0 - G + 1
+    while c0 < 0: c0 += P
+    for ex in range(lo, hi + 1):
+        ey = EL - ex
+        if ey < 0 or stX[ex] == enX[ex]: continue
+        base = ey * P
+        if csrY[base] == csrY[base + P]: continue
+        for x in range(stX[ex], enX[ex]):
+            if right:
+                s0 = c0 - rX[x]; kx = hT - hX[x]
+            else:
+                s0 = p0 - rX[x]; kx = hX[x]
+            if s0 < 0: s0 += P
+            s1 = s0 + G
+            if s1 <= P:
+                a0 = csrY[base + s0]; a1 = csrY[base + s1]; b0 = 0; b1 = 0
+            else:
+                a0 = csrY[base + s0]; a1 = csrY[base + P]; b0 = csrY[base]; b1 = csrY[base + s1 - P]
+            for t in range(a0, a1):
+                key = kx - hY[t] if right else kx + hY[t]
+                cnt[np.int64(key >> sh)] += 1
+            for t in range(b0, b1):
+                key = kx - hY[t] if right else kx + hY[t]
+                cnt[np.int64(key >> sh)] += 1
+
+@njit(cache=True)
+def _join8m(Lo, stL, cntL, Ro, stR, cntR, nparts, tab, tbits, hA, hB, hC, hD, hT, hits, nh, maxhits):
+    tsize = np.int64(1) << tbits; tmask = np.uint64(tsize - 1)
+    EMPTY = np.uint64(0xFFFFFFFFFFFFFFFF); s44 = np.uint64(44); im = np.uint64(IMASK2); ib = np.uint64(IB2); one = np.uint64(1)
+    for i in range(nparts):
+        nl = cntL[i]; nr = cntR[i]
+        if nl == 0 or nr == 0: continue
+        if nl <= nr:
+            S = Lo; s0 = stL[i]; s1 = stL[i] + nl; B = Ro; b0 = stR[i]; b1 = stR[i] + nr; sl = True
+        else:
+            S = Ro; s0 = stR[i]; s1 = stR[i] + nr; B = Lo; b0 = stL[i]; b1 = stL[i] + nl; sl = False
+        for j in range(s0, s1):
+            e = S[j]; slot = (e >> s44) & tmask
+            while tab[slot] != EMPTY: slot = (slot + one) & tmask
+            tab[slot] = e
+        for j in range(b0, b1):
+            e = B[j]; fp = e >> s44; slot = fp & tmask
+            while tab[slot] != EMPTY:
+                f = tab[slot]
+                if (f >> s44) == fp:
+                    if sl:
+                        x = (f >> ib) & im; y = f & im; c = (e >> ib) & im; d = e & im
+                    else:
+                        x = (e >> ib) & im; y = e & im; c = (f >> ib) & im; d = f & im
+                    if hA[x] + hB[y] == hT - hC[c] - hD[d]:
+                        if nh < maxhits:
+                            hits[nh, 0] = np.int64(x); hits[nh, 1] = np.int64(y); hits[nh, 2] = np.int64(c); hits[nh, 3] = np.int64(d)
+                        nh += 1
+                slot = (slot + one) & tmask
+        for j in range(s0, s1):
+            e = S[j]; slot = (e >> s44) & tmask
+            while tab[slot] != EMPTY:
+                tab[slot] = EMPTY; slot = (slot + one) & tmask
+    return nh
+
+def join4m(lefts, rights, T, P=4093, rbits=8, budget=1 << 22, seed=11, els=None, done_cb=None, el_cb=None,
+           maxhits=1 << 16, stats_only=False, log=None):
+    """lefts: [(S_a, S_b)], rights: [(S_c, S_d)] signature arrays (column 0 energy).  Every (i, j, ia, ib, ic, id)
+    with S_a^i[ia] + S_b^i[ib] + S_c^j[ic] + S_d^j[id] = T, exactly; sorted; and stats."""
+    t0 = time.time()
+    T = np.asarray(T, np.int64); E = int(T[0]); L = len(T)
+    w = hash_w(L, seed); u = res_w(L, P, seed)
+    hT = np.uint64((T[1:].astype(np.uint64) * w).sum(dtype=np.uint64)); rT = int((T[1:] * u).sum() % P)
+    LA = [SL(a, E, w, u, P) for a, b in lefts]; LB = [SL(b, E, w, u, P) for a, b in lefts]
+    RC = [SL(c, E, w, u, P) for c, d in rights]; RD = [SL(d, E, w, u, P) for c, d in rights]
+    def offs(Ls): return np.concatenate([[0], np.cumsum([len(l.idx) for l in Ls])]).astype(np.int64)
+    oA, oB, oC, oD = offs(LA), offs(LB), offs(RC), offs(RD)
+    assert max(oA[-1], oB[-1], oC[-1], oD[-1]) <= IMASK2 + 1 and 1 <= rbits <= 16
+    cat = lambda Ls, f: np.concatenate([getattr(l, f) for l in Ls])
+    hA, hB, hC, hD = cat(LA, 'h'), cat(LB, 'h'), cat(RC, 'h'), cat(RD, 'h')
+    SA, SB, SC, SD = cat(LA, 'S'), cat(LB, 'S'), cat(RC, 'S'), cat(RD, 'S')
+    cL = sum(pair_counts(a, b, E, P) for a, b in zip(LA, LB))
+    cR = sum(pair_counts(c, d, E, P) for c, d in zip(RC, RD))[:, (rT - np.arange(P)) % P]
+    nparts = 1 << rbits
+    tab = np.full(1 << 15, np.uint64(0xFFFFFFFFFFFFFFFF)); tbits = 15
+    cap = int(budget * 1.25) + nparts * 64
+    Lo = np.zeros(cap, np.uint64); Ro = np.zeros(cap, np.uint64)
+    hits = np.zeros((maxhits, 4), np.int64)
+    stats = dict(P=P, rbits=rbits, budget=budget, passes=0, left=0, right=0, key_matches=0, overflow=0,
+                 lefts=len(lefts), rights=len(rights))
+    wL = 0; wR = 0
+    for EL in range(E + 1):
+        if cL[EL].sum() and cR[E - EL].sum(): wL += int(cL[EL].sum()); wR += int(cR[E - EL].sum())
+    stats['work_log2'] = round(math.log2(wL + wR), 3) if wL + wR else None
+    stats['left_total'] = wL; stats['right_total'] = wR
+    stats['per_EL_work'] = {int(EL): int(cL[EL].sum() + cR[E - EL].sum()) for EL in range(E + 1) if cL[EL].sum() and cR[E - EL].sum()}
+    if stats_only: return [], stats
+    sols = []
+    for EL in (range(E + 1) if els is None else els):
+        ER = E - EL; te = time.time()
+        rowL = cL[EL]; rowR = cR[ER]
+        if rowL.sum() == 0 or rowR.sum() == 0:
+            if el_cb: el_cb(EL, dict(left=0, right=0, key_matches=0, nsol=0, secs=0.0))
+            if done_cb: done_cb(EL, [])
+            continue
+        found = []; kmEL = 0; p = 0
+        mx = np.maximum(rowL, rowR); csum = np.concatenate([[0], np.cumsum(mx)])
+        while p < P:
+            g = int(np.searchsorted(csum, csum[p] + budget, 'right')) - 1 - p
+            g = max(1, min(g, P - p))
+            nL = int(rowL[p:p + g].sum()); nR = int(rowR[p:p + g].sum())
+            if nL == 0 or nR == 0: p += g; continue
+            need = max(nL, nR)
+            if need * 1.25 + nparts * 64 > len(Lo):
+                cap = int(need * 1.25) + nparts * 64; Lo = np.zeros(cap, np.uint64); Ro = np.zeros(cap, np.uint64)
+            def emit_all(posL, endL, posR, endR):
+                ok = True
+                for i in range(len(LA)):
+                    A, B = LA[i], LB[i]
+                    ok &= _emitML(A.h, A.r, A.st, A.en, B.h, B.csr, EL, A.emax, B.emax, P, p, g, rbits, oA[i], oB[i], posL, endL, Lo)
+                for j in range(len(RC)):
+                    C, D = RC[j], RD[j]
+                    ok &= _emitMR(C.h, C.r, C.st, C.en, D.h, D.csr, ER, C.emax, D.emax, P, p, g, hT, rT, rbits, oC[j], oD[j], posR, endR, Ro)
+                return ok
+            slL = int(nL / nparts * 1.15) + 64; slR = int(nR / nparts * 1.15) + 64
+            posL = np.arange(nparts, dtype=np.int64) * slL; endL = posL + slL; stL = posL.copy()
+            posR = np.arange(nparts, dtype=np.int64) * slR; endR = posR + slR; stR = posR.copy()
+            if not emit_all(posL, endL, posR, endR):
+                stats['overflow'] += 1
+                cntA = np.zeros(nparts, np.int64); cntB = np.zeros(nparts, np.int64)
+                for i in range(len(LA)):
+                    A, B = LA[i], LB[i]
+                    _emitM_count(A.h, A.r, A.st, A.en, B.h, B.csr, EL, A.emax, B.emax, P, p, g, False, hT, rT, rbits, cntA)
+                for j in range(len(RC)):
+                    C, D = RC[j], RD[j]
+                    _emitM_count(C.h, C.r, C.st, C.en, D.h, D.csr, ER, C.emax, D.emax, P, p, g, True, hT, rT, rbits, cntB)
+                stL = np.concatenate([[0], np.cumsum(cntA)[:-1]]).astype(np.int64); stR = np.concatenate([[0], np.cumsum(cntB)[:-1]]).astype(np.int64)
+                posL = stL.copy(); endL = stL + cntA; posR = stR.copy(); endR = stR + cntB
+                assert emit_all(posL, endL, posR, endR)
+            cntL_ = posL - stL; cntR_ = posR - stR
+            assert int(cntL_.sum()) == nL and int(cntR_.sum()) == nR
+            small = int(np.minimum(cntL_, cntR_).max())
+            if 2 * small + 2 > len(tab):
+                tbits = int(math.ceil(math.log2(2.6 * small + 4))); tab = np.full(1 << tbits, np.uint64(0xFFFFFFFFFFFFFFFF))
+            while True:
+                nh = _join8m(Lo, stL, cntL_, Ro, stR, cntR_, nparts, tab, tbits, hA, hB, hC, hD, hT, hits, 0, len(hits))
+                if nh <= len(hits): break
+                hits = np.zeros((2 * nh, 4), np.int64)
+            stats['passes'] += 1; stats['left'] += nL; stats['right'] += nR; stats['key_matches'] += int(nh); kmEL += int(nh)
+            if nh:
+                out = np.zeros((nh, 4), np.int64)
+                m = _verify4(hits, nh, SA, SB, SC, SD, T, out)
+                for q in range(m):
+                    xg, yg, cg, dg = (int(v) for v in out[q])
+                    i = int(np.searchsorted(oA, xg, 'right') - 1); i2 = int(np.searchsorted(oB, yg, 'right') - 1)
+                    j = int(np.searchsorted(oC, cg, 'right') - 1); j2 = int(np.searchsorted(oD, dg, 'right') - 1)
+                    assert i == i2 and j == j2
+                    found.append((i, j, int(LA[i].idx[xg - oA[i]]), int(LB[i].idx[yg - oB[i]]),
+                                  int(RC[j].idx[cg - oC[j]]), int(RD[j].idx[dg - oD[j]])))
+            p += g
+        sols.extend(found)
+        if el_cb: el_cb(EL, dict(left=int(rowL.sum()), right=int(rowR.sum()), key_matches=kmEL, nsol=len(set(found)),
+                                 secs=round(time.time() - te, 2)))
+        if done_cb: done_cb(EL, sorted(set(found)))
+        if log: log(json.dumps(dict(EL=EL, left=int(rowL.sum()), right=int(rowR.sum()), sols=len(sols), secs=round(time.time() - t0, 1))))
+    stats['secs'] = round(time.time() - t0, 2); stats['solutions'] = len(set(sols))
+    tot = stats['left'] + stats['right']
+    stats['ns_per_pair'] = round(1e9 * stats['secs'] / tot, 2) if tot else None
+    return sorted(set(sols)), stats
+
+def selftest_m(trials=30):
+    """random multi-left / multi-right instances against a brute force over every (left, right) combination"""
+    rng = np.random.default_rng(6); ok = 0
+    for t in range(trials):
+        L = int(rng.integers(2, 6)); nl = int(rng.integers(1, 5)); nr = int(rng.integers(1, 5))
+        mk = lambda: (lambda s_: (s_.__setitem__((slice(None), 0), rng.integers(0, 15, len(s_))), s_)[1])(rng.integers(-2, 3, (int(rng.integers(5, 80)), L)))
+        lefts = [(mk(), mk()) for _ in range(nl)]; rights = [(mk(), mk()) for _ in range(nr)]
+        i0 = int(rng.integers(nl)); j0 = int(rng.integers(nr))
+        pick = [int(rng.integers(len(lefts[i0][0]))), int(rng.integers(len(lefts[i0][1]))),
+                int(rng.integers(len(rights[j0][0]))), int(rng.integers(len(rights[j0][1])))]
+        T = lefts[i0][0][pick[0]] + lefts[i0][1][pick[1]] + rights[j0][0][pick[2]] + rights[j0][1][pick[3]]
+        P = int(rng.choice([2, 3, 7, 31, 101]))
+        sols, st = join4m(lefts, rights, T, P=P, rbits=int(rng.integers(1, 6)), budget=int(rng.choice([16, 256, 4096])), seed=t)
+        br = sorted((i, j) + tuple(s) for i in range(nl) for j in range(nr) for s in _brute([lefts[i][0], lefts[i][1], rights[j][0], rights[j][1]], T))
+        ok += (sols == br and (i0, j0, *pick) in set(sols))
+    return dict(selftest_m=f"{ok}/{trials}")
+
 if __name__ == "__main__":
     if "--selftest" in sys.argv:
-        print(json.dumps(dict(**selftest(), **selftest_p(), **selftest_q())), flush=True)
+        print(json.dumps(dict(**selftest(), **selftest_p(), **selftest_q(), **selftest_m())), flush=True)
