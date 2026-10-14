@@ -69,7 +69,7 @@ def main():
         t2 = time.time()
         nd = 0; dcand = 0; cores = 0
         for cf in sols:
-            try: ds, sizes = Sv.d_check(cf)
+            try: ds, sizes = Sv.d_check_fast(cf)
             except RuntimeError: continue
             dcand += float(np.prod([float(x) for x in sizes]))
             for d in ds:

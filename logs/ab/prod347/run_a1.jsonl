@@ -1,0 +1,7 @@
+{"stage": "setup", "tag": "a1", "R": [800, 800], "K": [4, 128], "seed": 1, "middles": 81, "common": 81, "secs": 204.1}
+{"mid": "8d159431a5a90c0d", "ci": 0, "left_parent_pairs": 147, "right_parent_pairs": 19, "left": 11323392, "right": 1638400, "S_solutions": 822, "D_candidates_log2": 43.49, "D_solutions": 0, "cores": 0, "join_secs": 5.4, "dcheck_secs": 175.4}
+{"stage": "setup", "tag": "a1", "R": [800, 800], "K": [4, 128], "seed": 1, "middles": 81, "common": 81, "secs": 256.1}
+{"mid": "753611673477cf25", "ci": 1, "left_parent_pairs": 106, "right_parent_pairs": 72, "left": 8716288, "right": 5767168, "S_solutions": 2078, "D_candidates_log2": 44.54, "D_solutions": 0, "cores": 0, "join_secs": 13.5, "dcheck_secs": 173.3}
+{"mid": "c02f9215049e9a2f", "ci": 2, "left_parent_pairs": 87, "right_parent_pairs": 103, "left": 3981312, "right": 8880128, "S_solutions": 1882, "D_candidates_log2": 44.8, "D_solutions": 0, "cores": 0, "join_secs": 6.6, "dcheck_secs": 95.6}
+{"mid": "0d2b4951b902fc5d", "ci": 3, "left_parent_pairs": 83, "right_parent_pairs": 21, "left": 7733248, "right": 1163264, "S_solutions": 431, "D_candidates_log2": 42.5, "D_solutions": 0, "cores": 0, "join_secs": 3.9, "dcheck_secs": 24.7}
+{"mid": "32bb7484fab13047", "ci": 4, "left_parent_pairs": 208, "right_parent_pairs": 88, "left": 10190848, "right": 5734400, "S_solutions": 3152, "D_candidates_log2": 46.03, "D_solutions": 0, "cores": 0, "join_secs": 7.6, "dcheck_secs": 177.7}

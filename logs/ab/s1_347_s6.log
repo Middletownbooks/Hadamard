@@ -1,0 +1,7 @@
+{"cfg": {"v": 347, "Q": [2, 3], "H1": [3], "q": 19, "s": 6, "U": [["neg", [1, 2]]]}, "f0": 3, "Gp": [2, 3, 3], "Gpp_orbits": 5, "TS": [271, -76, 38, 38, 38], "TD": [233, -114, 0, 0, 0], "row_quads": 10, "A": true}
+{"stage": "alpha", "f0": 3, "alphas": 512, "alpha_quads": 163169, "secs": 1.7}
+{"stage": "progress", "quads_done": 0, "of": 163169, "S_solutions": 0, "solutions": 0, "secs": 1.8}
+{"stage": "progress", "quads_done": 200, "of": 163169, "S_solutions": 6506, "solutions": 6, "secs": 188.9}
+{"stage": "progress", "quads_done": 400, "of": 163169, "S_solutions": 12770, "solutions": 18, "secs": 393.9}
+{"stage": "progress", "quads_done": 600, "of": 163169, "S_solutions": 19000, "solutions": 344, "secs": 579.1}
+{"stage": "progress", "quads_done": 800, "of": 163169, "S_solutions": 25530, "solutions": 355, "secs": 745.6}

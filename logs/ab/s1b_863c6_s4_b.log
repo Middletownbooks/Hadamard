@@ -1,0 +1,8 @@
+{"stage": "alpha", "f0": 3, "alphas": 177, "alpha_quads": 2072, "secs": 0.0}
+{"stage": "progress", "quads_done": 0, "of": 2072, "S_solutions": 0, "solutions": 0, "secs": 0.0}
+{"stage": "progress", "quads_done": 500, "of": 2072, "S_solutions": 48, "solutions": 0, "secs": 13.4}
+{"stage": "progress", "quads_done": 1000, "of": 2072, "S_solutions": 140, "solutions": 0, "secs": 23.8}
+{"stage": "progress", "quads_done": 1500, "of": 2072, "S_solutions": 208, "solutions": 0, "secs": 35.1}
+{"stage": "progress", "quads_done": 2000, "of": 2072, "S_solutions": 224, "solutions": 0, "secs": 47.2}
+{"stage": "done", "alpha_quads": 2072, "S_solutions": 224, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 48.9}
+{"cfg": {"v": 863, "c": 6, "q": 13, "s": 4, "U": [["neg", [1, 2]], [2, 5, 3]]}, "template": 1388, "allowed_vectors": 272, "alpha_quads": 2072, "S_solutions": 224, "stage1_solutions": 0, "all_verified": true, "complete": true, "secs": 48.9, "bordered_solutions": 0, "secs_total": 48.9}

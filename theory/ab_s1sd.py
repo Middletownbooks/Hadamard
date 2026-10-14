@@ -78,7 +78,9 @@ def ejoin4(L0, L1, L2, L3, T, max_pairs=3 * 10 ** 8, max_out=10 ** 7):
 
 
 class S1SD:
-    def __init__(self, cfg, T1=None, sl=None):
+    def __init__(self, cfg, T1=None, sl=None, zallow=None, nQ=None):
+        """zallow: optional list of allowed Q-compressions (length-c vectors, Q index = ravel of the first nQ axes);
+        each block's compression must be +-one of them (prunes alphas, S-lists and D-lists by coset sums)"""
         self.cfg = cfg
         sl = W.build(cfg) if sl is None else sl; self.sl = sl
         Gp = sl.Gp; self.Gp = Gp
@@ -109,6 +111,21 @@ class S1SD:
         self.preps, _ = lag_reps(self.Gpp, self.Upp)
         T1 = self.T1
         self.TS = np.array([(T1[b] + T1[n2 + b]) // 4 for b in range(n2)], np.int64)
+        self.zallow = None
+        if zallow is not None:
+            nQ = cfg['nQ'] if nQ is None else nQ
+            assert nQ >= 1
+            Za = np.array(zallow, np.int64); Za = np.concatenate([Za, -Za])
+            self.zallow = np.unique(Za, axis=0)
+            Qmods = Gp.mods[:nQ]; cq = int(np.prod(Qmods)); cpp = cq // 2
+            # Q'' = Q / Z_2 (axis 0): coset of b'' in G'' by its first nQ-1 coordinates
+            self.qpp = AG(Qmods[1:]).idx(self.Gpp.co[:, :nQ - 1]) if nQ > 1 else np.zeros(n2, np.int64)
+            self.cpp = cpp
+            z0 = self.zallow[:, :cpp]; z1 = self.zallow[:, cpp:]
+            self.zS = {tuple(r) for r in ((z0 + z1) // 2).tolist()}
+            self.zD = {tuple(r) for r in ((z0 - z1) // 2).tolist()}
+            self.zSD = {(tuple(((a + b) // 2).tolist()), tuple(((a - b) // 2).tolist())) for a, b in zip(z0, z1)}
+            self.qfull = AG(Qmods).idx(Gp.co[:, :nQ])
         self.TD = np.array([(T1[b] - T1[n2 + b]) // 4 for b in range(n2)], np.int64)
         assert ((T1[:n2] + T1[n2:]) % 4 == 0).all() and ((T1[:n2] - T1[n2:]) % 4 == 0).all()
 
@@ -129,6 +146,13 @@ class S1SD:
         """canonical alpha-quadruples: alpha_k up to sign (alpha at orbit of 0 = +1 if allowed), sorted"""
         f0 = self.f0; mod, rmod = 4 * f0, 2 * f0; sl = self.sl
         A = self.alphas()
+        if self.zallow is not None:
+            full = A[:, sl.borb]
+            cs = np.zeros((len(A), self.zallow.shape[1]), np.int64)
+            for q in range(self.zallow.shape[1]): cs[:, q] = full[:, self.qfull == q].sum(1)
+            zm = {tuple(r) for r in (self.zallow % (2 * f0)).tolist()}
+            keepz = np.array([tuple(r) in zm for r in (cs % (2 * f0)).tolist()])
+            A = A[keepz]
         # canonical sign: keep alpha and its negative once (if -alpha is also admissible)
         key = {tuple(a): i for i, a in enumerate(A.tolist())}
         keep = []
@@ -205,6 +229,11 @@ class S1SD:
         U = np.array(U, np.int64).reshape(-1, nr)
         sig = aS[None, :] + f0 * U
         sigma = sig[:, self.Oo]
+        if self.zallow is not None and len(U):
+            cs = np.zeros((len(U), self.cpp), np.int64)
+            for t in range(self.cpp): cs[:, t] = sigma[:, self.qpp == t].sum(1)
+            keep = np.array([tuple(r) in self.zS for r in cs.tolist()])
+            U = U[keep]; sig = sig[keep]; sigma = sigma[keep]
         Ssig = self.Gpp.paf(sigma)[:, self.preps] if len(U) else np.zeros((0, len(self.preps)), np.int64)
         return dict(alpha=alpha, aS=aS, aD=aD, pairs=pairs, U=U, Ssig=Ssig, TD0=TD0)
 
@@ -224,6 +253,14 @@ class S1SD:
         rec(0, 0)
         Wl = np.array(Wl, np.int64).reshape(-1, nr)
         delta = (B['aD'][None, :] + f0 * Wl)[:, self.Oo]
+        if self.zallow is not None and len(Wl):
+            sg = (B['aS'] + f0 * np.asarray(u))[self.Oo]
+            sS = tuple(int(sg[self.qpp == t].sum()) for t in range(self.cpp))
+            okD = {d for (a, d) in self.zSD if a == sS}
+            cs = np.zeros((len(Wl), self.cpp), np.int64)
+            for t in range(self.cpp): cs[:, t] = delta[:, self.qpp == t].sum(1)
+            keep = np.array([tuple(r) in okD for r in cs.tolist()])
+            Wl = Wl[keep]; delta = delta[keep]
         return Wl, (self.Gpp.paf(delta)[:, self.preps] if len(Wl) else np.zeros((0, len(self.preps)), np.int64))
 
     def y_of(self, B, u, w):

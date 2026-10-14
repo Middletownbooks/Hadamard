@@ -624,3 +624,51 @@ class FastSolver2(FastSolver):
             if nb >= chunk: flush(); nb = 0
         flush()
         return sols, info
+
+
+def _dcheck_fast(self, cfgs, max_list=3 * 10 ** 6):
+    """vectorised exact D-check: per block, all D-configurations as index grids; D-signature by per-orbit-pair
+    bilinear tables; 2+2 hashed join; every match re-checked exactly"""
+    no = len(self.S2.pairs); L = len(self.lr)
+    lists = []
+    for k in range(4):
+        Dv = []; AB = []
+        for o in range(no):
+            sv = tuple(self.Sv[k][o][cfgs[k][o]].tolist())
+            ab = self.blocks[k][o]['byS'][sv]
+            P0 = self.blocks[k][o]['P0']; P1 = self.blocks[k][o]['P1']
+            A_ = np.array([a for a, b in ab]); B_ = np.array([b for a, b in ab])
+            Dv.append(P0[A_].astype(np.int64) - P1[B_]); AB.append((A_, B_))
+        sizes = [len(d) for d in Dv]
+        n = int(np.prod(sizes))
+        if n > max_list: raise RuntimeError("D-list too large")
+        grids = [g.ravel() for g in np.meshgrid(*[np.arange(s_) for s_ in sizes], indexing='ij')]
+        sig = np.zeros((n, L), np.int64)
+        for o in range(no):
+            for o2 in range(o, no):
+                Tt = np.einsum('ip,pql,jq->ijl', Dv[o], self.Ct[o, o2], Dv[o2])
+                if o2 != o: Tt = Tt + np.einsum('jp,pql,iq->ijl', Dv[o2], self.Ct[o2, o], Dv[o])
+                sig += Tt[grids[o], grids[o2]]
+        lists.append((sig, grids, AB))
+    rng = np.random.default_rng(9); wv = rng.integers(1, 2 ** 62, size=L, dtype=np.int64)
+    h = [x[0] @ wv for x in lists]
+    hl = (h[0][:, None] + h[1][None, :]).ravel()
+    o_ = np.argsort(hl); hs = hl[o_]
+    hr = (np.int64(self.TD @ wv) - (h[2][:, None] + h[3][None, :])).ravel()
+    lo = np.searchsorted(hs, hr, 'left'); hi = np.searchsorted(hs, hr, 'right')
+    n1, n3 = len(h[1]), len(h[3])
+    sols = []
+    for r in np.nonzero(hi > lo)[0]:
+        c_, d_ = divmod(int(r), n3)
+        for p in o_[lo[r]:hi[r]]:
+            a_, b_ = divmod(int(p), n1)
+            S = lists[0][0][a_] + lists[1][0][b_] + lists[2][0][c_] + lists[3][0][d_]
+            if (S == self.TD).all():
+                sol = []
+                for k, idx in zip(range(4), (a_, b_, c_, d_)):
+                    grids, AB = lists[k][1], lists[k][2]
+                    sol.append([(int(AB[o][0][grids[o][idx]]), int(AB[o][1][grids[o][idx]])) for o in range(no)])
+                sols.append(sol)
+    return sols, [len(x[0]) for x in lists]
+
+Solver.d_check_fast = _dcheck_fast
