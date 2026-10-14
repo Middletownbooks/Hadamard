@@ -117,3 +117,9 @@ logs/c4_wscreen_run.log
 logs/c4_wscreen_3000_4000.jsonl
 logs/c4_qnorm_3000_4000.jsonl
 logs/cyclo/stage1_cpsat_F*.json
+
+# 647 cross level: bulky per-class S-solution files (summaries are committed)
+logs/p647/calib/*_els.jsonl
+logs/p647/calib/*_ssols.npy
+logs/p647/prod/*_els.jsonl
+logs/p647/prod/*_ssols.npy
