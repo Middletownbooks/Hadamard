@@ -82,8 +82,7 @@ def main(cdgs=34.8, as_json=False):
             putc(cof[r['j']], r['EL'], r['cand'])
             if 'nested' in r and os.path.basename(f).startswith("c"):
                 ncand += r['cand']; nest = [a + b for a, b in zip(nest, r['nested'])]
-    out['deep_tail'] = dict(candidates=ncand, candidates_log2=round(math.log2(ncand), 3) if ncand else None,
-                            rows=[dict(rank=min(q + 1, 11), hits=nest[q], expected=round(ncand * 2.0 ** -GB[q], 2)) for q in range(3, 12)])
+
     # class mode
     CM = dict(classes_done=0, classes_partial=0, S=0, cand=0, hits=0, secs=0.0)
     cd = set(); cp_ = set()
@@ -134,8 +133,18 @@ def main(cdgs=34.8, as_json=False):
                                   cand_log2=round(math.log2(ck), 3) if ck else None, hits=d['hits'],
                                   expected=round(ck * 2.0 ** -cdgs, 3), core_hours=round(d['secs'] / 3600, 2))
         cand += ck; T['secs'] += d['secs']
-    out['deep_tail'] = dict(candidates=ncand, candidates_log2=round(math.log2(ncand), 3) if ncand else None,
-                            rows=[dict(rank=min(q + 1, 11), hits=nest[q], expected=round(ncand * 2.0 ** -GB[q], 2)) for q in range(3, 12)])
+    # pooled with the calibration deep tail (report section 2.3: hits and expected of the four complete runs), the
+    # excess bits log2(expected / hits) per rank show how the D-level departs from the Gaussian with depth
+    CALT = {4: (47038, 48986.0), 5: (3693, 4012.0), 6: (450, 484.0), 7: (44, 44.0), 8: (5, 8.0), 9: (1, 1.15)}
+    rows = []
+    for q in range(3, 11):
+        rk = q + 1; e = ncand * 2.0 ** -GB[q]; h = nest[q]
+        ch, ce = CALT.get(rk, (0, 0.0))
+        H_, E_ = h + ch, e + ce
+        rows.append(dict(rank=rk, hits=h, expected=round(e, 2), pooled_hits=H_, pooled_expected=round(E_, 2),
+                         excess_bits=round(math.log2(E_ / H_), 3) if H_ else None,
+                         excess_bits_1sigma=[round(math.log2(E_ / (H_ + math.sqrt(H_))), 3), round(math.log2(E_ / max(H_ - math.sqrt(H_), 0.5)), 3)] if H_ else None))
+    out['deep_tail'] = dict(candidates=ncand, candidates_log2=round(math.log2(ncand), 3) if ncand else None, rows=rows)
     # the old dedupe (3,488 orbits of the stabiliser without per-block reversal) for comparison: it counts each class
     # once per member orbit touched, i.e. up to 8 times
     om = json.load(open(os.path.join(ROOT, "logs", "p647", "joint_yb0_orbits.json"))).get('orbit_of')

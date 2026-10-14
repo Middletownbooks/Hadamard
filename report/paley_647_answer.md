@@ -47,11 +47,13 @@ and calibration named); [L] literature recollection, unchecked.
        rank 8, 1 against 1.15 at rank 9 (30.6 bits);
      - the live production count, deduplicated, agrees: 29 against 29.5 at rank 7;
      - every 647 S-solution's candidates span the full D-lattice;
-     - C(D|S) = 34.8 bits is used; the last ~4 bits are an extrapolation.
-   - **Cost per core** (§3, §4.2), one join per symmetry class, two central energy classes:
+     - C(D|S) = 34.8 bits is used; the last ~4 bits are an extrapolation;
+     - the live deep tail drifts 0.05–0.3 bit below the Gaussian at ranks 5–8, which suggests
+       C(D|S) ≈ 35.1–35.4 (expected cores × 0.66–0.81, §2.3).
+   - **Cost per core** (§3, §4.2), one join per symmetry class, two central energy classes, at C(D|S) = 34.8:
      - about 2^41.0 emitted pairs and 15–17 core-hours per expected core for the 89 high-freedom classes (H 79.4);
      - about 29 core-hours for the other 347 classes;
-     - about 27 core-hours on average over y_B #0;
+     - about 27 core-hours on average over y_B #0, or 33–41 if C(D|S) is 35.1–35.4 (§2.3);
      - 2^42.6 (about 40 core-hours) without the energy-class selection.
    - **Positive control: solved end to end** (§5.2):
      - 495 ×83 has exactly the shape of 647 ×353 (|M₁₃| = 4, |M₁₉| = 3; 4 × 7 label matrices);
@@ -224,6 +226,18 @@ Gaussian fitted to 200,000 sampled residuals of the same candidates:
     - rank 8: 9 against 5.4;
     - rank 9: 0 against 0.8.
   - In class mode no symmetry multiplies hits (the stabiliser acts freely, so none fixes a joint solution).
+- **Drift with depth** (`p647_tally.py`, pooled with the calibration; 11:50 UTC, 2^32.7 production candidates).
+  The excess log₂(expected / hits) over the calibration Gaussian, ± 1σ (Poisson):
+
+  | rank | 4 | 5 | 6 | 7 | 8 | 9 |
+  |---|---|---|---|---|---|---|
+  | pooled hits / expected | 252,314 / 252,838 | 19,927 / 20,707 | 2,354 / 2,500 | 193 / 227 | 33 / 41.3 | 3 / 5.9 |
+  | excess bits | 0.00 | 0.055 ± 0.01 | 0.09 ± 0.03 | 0.24 ± 0.10 | 0.32 ± 0.25 | 1.0 (+1.2, −0.7) |
+
+  The deep D-level is a little harder than the Gaussian, by about 0.05–0.1 bit per added rank. Extrapolated to
+  rank 11, **C(D|S) ≈ 35.1–35.4 rather than 34.8**, i.e. expected cores × 0.66–0.81. The expected-core figures
+  below keep 34.8 as the central fit and should be read with this factor. The production run tightens it as it
+  goes: it adds about 2^28.2 candidates per class.
 
 ### 2.4 Energy structure and class selection [M] (`theory/p647_restrict.py`, `theory/p647_buckets.py`)
 
