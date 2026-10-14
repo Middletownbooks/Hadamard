@@ -326,7 +326,7 @@ Estimator: the lattice-exact Gaussian (`theory/q523_gauss.gauss_bits`), fitted p
 | H Hᵀ = 3732·I | search (float64 BLAS) | yes |
 | PAF by integer dot products; GS array; H Hᵀ = 3732·I in int64 blocks | `scripts/verify_h3732.py` (no shared code) | yes; sha256 of packed rows `8fea9ea2…a437e` |
 | same, plus the published normalized matrix equals the normalization of the built H | `pub/H3732/verify.py` (numpy only) | yes |
-| the sequences really are constant on the stated slice orbits | inline check in the commit session | yes |
+| the sequences really are constant on the stated slice orbits | the sequences really are constant on the stated slice orbits | `scripts/verify_h3732.py --slice 311 10` | yes |
 
 Bundle: `pub/H3732/sequences_Z933.txt` (header gives the slice and the generators), `pub/H3732/H3732_normalized.txt.gz`,
 `pub/H3732/verify.py`. b = 0 has no border, so there is no `border.json`. Packed matrix: `data/H3732_packed.npz`.
@@ -474,7 +474,7 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | 6 | 669, 789 | c = 10 | – | frames exist (Lemma 1) | corner-flatness search (§9.3) |
 | 7 | 917 | g | s = 10 or 13, U = 1 | passes A, B | a smarter stage 1 (22^7 letters); fibres need a split |
 | 8 | 863 | c = 6 | q = 13, s = 4, U = ⟨3⟩ on Z₁₁ | whole +37 [E] | exact bordered stage 1 |
-| 9 | 917 | c = 6 | q = 19, s = 6, −1 | whole +133 [E] | exact bordered stage 1 (L₁ = 26) |
+| 9 | 917 | c = 6 | q = 19, s = 6, −1 on Z₃ and Z₈ (347's shape with H' = Z₈) | screen A passes (29 row quadruples); whole +133 [E] | exact bordered stage 1 or screen B: 2^26 α-vectors need a streaming residue join (this run ran out of memory) |
 | – | 933 | g | s = 31 | 14,184 y's, +9.8 [E] | not needed |
 | – | 917 | g | s = 13, U = ⟨2⟩; s = 26, U = Z₇^* | −27.8, −411 [E] | dead |
 | – | 917, 955 | g | s = 13, U = −1; s = 19, U = −1 | **stage 1 empty [M]** | – |
@@ -525,7 +525,7 @@ python3 theory/ab_prod347.py --tag a1 --R 800 800 --K 4 128 --stop-on-core   # p
 python3 scripts/verify_packed_h.py logs/ab/prod347/H1388_a1_438c58a201c4084b_1.npz 1388
 python3 theory/ab_b0z3.py --q 71 --y 0 --K 200 --max-dual 300 --min-score 28 --tag ctl71       # same-shape control
 python3 theory/ab_b0z3.py --q 311 --y 0 --K 200 --min-score 30 --tag p311e_y0 --stop-on-core   # H(3732): minutes
-python3 scripts/verify_h3732.py logs/ab/b0z3/seq_p311e_y0_1_Z933.txt data/H3732_packed.npz      # independent check
+python3 scripts/verify_h3732.py pub/H3732/sequences_Z933.txt data/H3732_packed.npz --slice 311 10   # independent check
 cd pub/H3732 && python3 verify.py                     # standalone bundle check
 python3 theory/ab_b0z3_calib.py --q 71 --y 0 --K 50 --n 6 --exact                              # calibration
 python3 theory/ab_b0_stage1.py '<cfg json>' --max 3 --N 8000                                   # b = 0 stage 1 + stage 2 [E]

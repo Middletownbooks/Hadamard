@@ -1,0 +1,13 @@
+{"cfg": {"v": 917, "c": 6, "b": 5, "h": 152, "m": 912, "Q": [2, 3], "H1": [8], "q": 19, "s": 6, "f": 3, "mods": [2, 3, 8, 19], "nQ": 2, "U": [["neg", [1, 2]]]}, "tpl": 1388, "orbits": 182, "L1": 26, "A": true, "row_quads": 29}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/ab_s1_one.py", line 22, in <module>
+    res, sols = P.solve(rq, max_sol=maxsol, log=lambda s: print(s, flush=True))
+                ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/ab_s1sd.py", line 293, in solve
+    A, Q = self.alpha_quads(rowquads)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/user/Hadamard/theory/ab_s1sd.py", line 161, in alpha_quads
+    A = self.alphas(keep=keepf)
+  File "/home/user/Hadamard/theory/ab_s1sd.py", line 143, in alphas
+    vals = np.empty((len(idx), L1), np.int64)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 208. MiB for an array with shape (1048576, 26) and data type int64

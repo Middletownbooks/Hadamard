@@ -12,7 +12,9 @@ Works for any length v (e.g. the same-shape controls v = 93, 213).
         [-CR,  -D^T R, A,     B^T R],
         [-DR,   C^T R, -B^T R, A   ]]
 4. Check H H^T = 4v I exactly (int64, row blocks), save H as packed bits with its SHA-256.
-usage: python3 scripts/verify_h3732.py SEQ.txt [OUT.npz]   (default OUT: data/H<N>_packed.npz)"""
+5. Optional --slice q s: check that every sequence is constant on the sets {n : n = g mod F, n mod q in C_j}, C_j the
+   cosets of the index-s subgroup of F_q^* (F = v/q), i.e. that the core lies in the stated GP slice.
+usage: python3 scripts/verify_h3732.py SEQ.txt [OUT.npz] [--slice q s]   (default OUT: data/H<N>_packed.npz)"""
 import hashlib, json, os, sys
 import numpy as np
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +39,23 @@ def exact_hadamard(H):
     return True
 
 
-def main(path, out=None):
+def slice_check(X, q, s):
+    v = X.shape[1]; F = v // q; assert F * q == v and (q - 1) % s == 0
+    g = next(x for x in range(2, q) if all(pow(x, (q - 1) // r, q) != 1 for r in {d for d in range(2, q) if (q - 1) % d == 0 and all(d % e for e in range(2, d))}))
+    M = {pow(g, s * i, q) for i in range((q - 1) // s)}
+    cls = {}
+    for j in range(s):
+        for m in M: cls[pow(g, j, q) * m % q] = j
+    ok = True
+    for x in X:
+        for r in range(F):
+            for j in range(s):
+                vals = {int(x[n]) for n in range(v) if n % F == r and n % q in cls and cls[n % q] == j}
+                ok &= len(vals) == 1
+    return ok
+
+
+def main(path, out=None, sl=None):
     X = load(path); v = X.shape[1]; N = 4 * v
     P = sum(paf(x) for x in X)
     ok = bool(P[0] == 4 * v and (P[1:] == 0).all())
@@ -59,9 +77,13 @@ def main(path, out=None):
         out = out or os.path.join(ROOT, 'data', f'H{N}_packed.npz')
         np.savez_compressed(out, bits=bits, N=N)
         rec.update(saved=os.path.relpath(out, ROOT), sha256_of_packed_rows=hashlib.sha256(bits.tobytes()).hexdigest())
+    if sl: rec['slice_q_s'] = list(sl); rec['constant_on_slice_classes'] = slice_check(X, *sl)
     print(json.dumps(rec), flush=True)
     return had
 
 
 if __name__ == "__main__":
-    sys.exit(0 if main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None) else 1)
+    a = sys.argv[1:]; sl = None
+    if '--slice' in a:
+        i = a.index('--slice'); sl = (int(a[i + 1]), int(a[i + 2])); a = a[:i] + a[i + 3:]
+    sys.exit(0 if main(a[0], a[1] if len(a) > 1 else None, sl) else 1)

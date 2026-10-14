@@ -1,0 +1,19 @@
+{"A": true, "nsig": 412} 29
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-Hadamard/5619518d-dc42-5642-885e-9f076e5e1a30/scratchpad/sB917.py", line 7, in <module>
+    B = W.screen_B(sl, cfg, A['row_quads'], max_bits=26)
+  File "/home/user/Hadamard/theory/ab_sweep.py", line 311, in screen_B
+    Ps.append(sl.Gp.paf(A)[:, reps] % mod); Rs.append(A.sum(1))
+              ~~~~~~~~~^^^
+  File "/home/user/Hadamard/theory/ab_lib.py", line 82, in paf
+    R = np.fft.ifftn(np.abs(F) ** 2, axes=ax).real
+        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/numpy/fft/_pocketfft.py", line 1016, in ifftn
+    return _raw_fftnd(a, s, axes, ifft, norm, out=out)
+  File "/usr/local/lib/python3.13/dist-packages/numpy/fft/_pocketfft.py", line 747, in _raw_fftnd
+    a = function(a, n=s[ii], axis=axes[ii], norm=norm, out=out)
+  File "/usr/local/lib/python3.13/dist-packages/numpy/fft/_pocketfft.py", line 320, in ifft
+    output = _raw_fft(a, n, axis, False, False, norm, out=out)
+  File "/usr/local/lib/python3.13/dist-packages/numpy/fft/_pocketfft.py", line 101, in _raw_fft
+    return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 24.0 MiB for an array with shape (32768, 2, 3, 8) and data type complex128
