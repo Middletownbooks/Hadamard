@@ -11,7 +11,24 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line and run status
 
-*Status at 11:40 UTC 2026-10-14; this section is updated as the run proceeds.*
+*Status at 12:40 UTC 2026-10-14.*
+
+**(A) H(2588) is constructed and verified** [M] (§4.4, `pub/H2588/`).
+- Four ±1 sequences on cyclic Z₆₄₆, each invariant under ×353, with Σ_k PAF_k = (2584, −4, …, −4) and row sums
+  (2, 0, 0, 0): `pub/H2588/sequences_Z646.txt` = `data/core_v647_b1_p647_c2_j1508_0.txt`.
+- The bordered Goethals–Seidel array with the border of `pub/H2292/border.json` is a Hadamard matrix of order
+  2588 = 4 · 647. It is verified three times:
+  - `theory/nd_doubly.bordered_gs_cyclic` (internal);
+  - the independent `scripts/verify_h2588.py` (numpy only, no code shared with the search): direct integer PAF,
+    then H Hᵀ = 2588·I exactly in int64;
+  - the standalone `pub/H2588/verify.py`, from the published files only, which also checks the published normalized
+    matrix `H2588_normalized.txt.gz`.
+- SHA-256 of the packed rows (`data/H2588_packed.npz`):
+  `d301ed452c36b8b8493bba9883535e912546a5a4792645bcb75f38254af5a6cb`.
+- Found at 12:23 UTC by the production run:
+  - y_B #0, symmetry class 181 (representative joint solution 1508, H 79.39), left-energy class 317;
+  - the one D-candidate of 160,620,448 in that energy class to pass all 12 cross lags;
+  - found at **0.65 expected cores** (calibrated Gaussian, C(D|S) = 34.8; chance of at least one by then: 48%).
 
 **Correction made 10:30–10:50 UTC (§4.1).**
 - The stabiliser used to deduplicate joint solutions applied the reversal z → −z to all four blocks at once.
@@ -25,11 +42,11 @@ and calibration named); [L] literature recollection, unchecked.
 - The calibration (§2) and the per-joint cost (§3.1–3.2) are unaffected. Their 14 joint solutions are 14 distinct
   classes.
 
-1. **(A) No H(2588) yet.**
-   - Production now runs one join per class (§4): 0 cores so far against 0.49 expected, counted once per class
-     (47 of 436 classes touched).
-   - The whole of y_B #0 holds about **2.7 expected cores** at the two central energy classes, for about 75
-     core-hours (about 19 hours on four workers).
+1. **(A) Done: H(2588), above.**
+   - Production ran one join per symmetry class (§4); the core came after 61 classes of y_B #0 and 16.4
+     core-hours of production (plus the calibration and the earlier modes).
+   - The whole of y_B #0 holds about 2.7 expected cores at the two central energy classes. y_B #9, #13 and #10 add
+     3,509 classes.
 
 2. **(B) The cross level is calibrated, and its cost per core is inside the budget** [M speeds × E counts, the counts
    exact]:
@@ -396,6 +413,11 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   - The class-mode wall times of 10:40–12:12 (560–870 s per class) were measured under this contention.
 - **From 11:38 UTC:** capped joint scan of the small 647 y_B orbits (`p647_ybscan.py`, `logs/p647/ybscan.log`):
   5, 9, 13, 10, 12, 6, 21, 11, smallest first by the size precheck (`p647_jsize.py`, `logs/p647/jsize_647.jsonl`).
+- **12:23 UTC: the core.** Multi worker 2, y_B #0, class 181, joint solution 1508, energy class 317 (§4.4).
+  - Completed and verified by `p647_finish.py` (internal, then `scripts/verify_h2588.py`) by 12:36 UTC.
+  - `pub/H2588/` built; the standalone `verify.py` passes. Committed and pushed at once.
+- **Tally at 12:37 UTC** (counted once per class): 61 classes touched, 2^34.19 distinct D-candidates,
+  **0.65 expected cores, 1 found**, 16.4 core-hours.
 - **Tally at 11:40 UTC** (counted once per class): 47 classes touched (15 finished in class mode, 2^28.2 candidates
   each), 2^33.77 distinct D-candidates, **0.49 expected cores, 0 found**, 13.0 core-hours.
 - **Tally at 10:50 UTC** (counted once per class):
@@ -403,6 +425,44 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   - 2^33.08 distinct D-candidates;
   - **0.30 expected cores, 0 found**;
   - 9.3 core-hours.
+
+---
+
+### 4.4 The H(2588) [M] (`pub/H2588/`, `data/core_v647_b1_p647_c2_j1508_0.txt`, `logs/p647/CORE_c2_j1508_0.json`)
+
+- **Where it was found.** Production worker 2 (multi mode), 12:23 UTC.
+  - y_B #0, symmetry class 181 (H 79.39), whose representative joint solution 1508 was joined at its two central
+    left-energy classes 317 and 341.
+  - In class 317: 172,144 S-solutions with 160,620,448 D-candidates. Nested cross-lag counts 10,570,154 → 743,246 →
+    54,472 → 4,729 → 369 → 52 → 4 → 1 → 1 → 1 → 1 → 1 (lags 1, 2, 3, 4, 6, 7, 8, 9, 12, 16, 24, then all):
+    one candidate survives every cross lag, and the full cyclic PAF check accepts it.
+  - Class 341 gave 151,573 S-solutions and 145,033,567 candidates, with no hit.
+- **The core.** Four ±1 sequences A, B, C, D on cyclic Z₆₄₆ (block order of the slice re-ordered so that the
+  row-sum-2 block comes first; `pub/H2588/sequences_Z646.txt`):
+  - each is invariant under z ↦ 353z (mod 646);
+  - Σ PAF = 2584 at shift 0 and −4 at every other shift;
+  - row sums 2, 0, 0, 0.
+- **The matrix** (bordered Goethals–Seidel, b = 1). H = [[corner, S ⊗ 1ᵀ], [Tᵀ ⊗ 1, GS(A, B, C, D)]].
+  - GS is the Goethals–Seidel array of the circulants of A, B, C, D with the back identity.
+  - S, T ∈ H(4) are the border of `pub/H2292/border.json`, which fits every core whose block A has row sum +2.
+  - The corner is forced: −S Σᵀ T / 4, Σ the block row sums.
+  - `pub/H2588/border.json` records S, T and the corner.
+- **Verification**, three independent ways, all exact:
+  1. `theory/nd_doubly.bordered_gs_cyclic` (internal);
+  2. `scripts/verify_h2588.py`, written for this run and sharing no code with `theory/`: direct O(m²) integer
+     PAF, bordered GS, H Hᵀ = 2588·I in int64 row blocks;
+  3. `pub/H2588/verify.py` (standalone, numpy only, run from the published files): rebuilds H from
+     `sequences_Z646.txt` and `border.json`, checks H Hᵀ = 2588·I, and checks that the published normalized matrix
+     `H2588_normalized.txt.gz` (first row and column all +1) is Hadamard and equals the normalization of the
+     built H.
+- **SHA-256** of the packed rows of H (`data/H2588_packed.npz`, `np.packbits(H > 0, axis=1)`):
+  `d301ed452c36b8b8493bba9883535e912546a5a4792645bcb75f38254af5a6cb`.
+- **Against the calibration.** At the find, production had joined 61 of the 436 classes of y_B #0, with 2^34.19
+  distinct D-candidates in all: **0.65 expected cores** at C(D|S) = 34.8, or 0.43–0.53 at 35.1–35.4. One core
+  is consistent with both: a 48% chance at 34.8 and 35–41% at 35.1–35.4.
+- **Reproduce the core from scratch:** `python3 theory/p647_core_redo.py`. It rebuilds joint solution 1508,
+  re-runs the exact S-join for energy class 317 only, D-checks every S-solution, and compares the D-hit with the
+  recorded core.
 
 ---
 
