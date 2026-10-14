@@ -322,3 +322,53 @@ def stage2_typical(sl, Y, N=6000, seed=1, chunk=1000):
     gb = gauss_bits_at_mean(V)
     return dict(H2=round(H2, 2), C2=gb.get('bits_at_mean'), rank=gb.get('rank'),
                 stage2_log2E=round(H2 - gb['bits_at_mean'], 2) if gb.get('bits_at_mean') is not None else None)
+
+
+def _pattern_sampler(sizes, y):
+    """uniform sampler of sign vectors e (len(sizes)) with sum e_i sizes_i = y, by DP counts (any number of parts);
+    returns (count, draw(rng, c) -> c x n int8)"""
+    n = len(sizes)
+    suf = [defaultdict(int) for _ in range(n + 1)]; suf[n][0] = 1          # suf[i][t]: patterns of parts i.. with sum t
+    for i in range(n - 1, -1, -1):
+        for t, m in suf[i + 1].items():
+            suf[i][t + sizes[i]] += m; suf[i][t - sizes[i]] += m
+    total = suf[0].get(y, 0)
+    def draw(rng, c):
+        out = np.zeros((c, n), np.int8)
+        rem = np.full(c, y, np.int64)
+        for i in range(n):
+            ap = np.array([suf[i + 1].get(int(r - sizes[i]), 0) for r in rem], np.float64)
+            am = np.array([suf[i + 1].get(int(r + sizes[i]), 0) for r in rem], np.float64)
+            plus = rng.random(c) * (ap + am) < ap
+            out[:, i] = np.where(plus, 1, -1); rem = rem - out[:, i] * sizes[i]
+        return out
+    return total, draw
+
+
+def stage2_sampled(sl, Y, N=12000, seed=1, chunk=1000):
+    """as stage2 (no levels) for fibres with any number of parts: uniform fibre sampling by DP counts"""
+    rng = np.random.default_rng(seed); Y = np.asarray(Y); G = sl.G
+    samp = []; H2 = 0.0
+    for k in range(4):
+        sk = []
+        for j, bb in enumerate(sl.breps):
+            sizes = [s_ for _, s_ in sl.parts[j]]
+            cnt, draw = _pattern_sampler(sizes, int(Y[k, bb]))
+            if cnt == 0: return dict(H2=None, note="a fibre value is not realisable")
+            sk.append(draw); H2 += math.log2(cnt)
+        samp.append(sk)
+    reps, cls = lag_reps(G, sl.perms)
+    V = np.zeros((N, len(reps)), np.int64); done = 0
+    while done < N:
+        c = min(chunk, N - done)
+        acc = np.zeros((c, G.n), np.int64)
+        for k in range(4):
+            lab = np.zeros((c, sl.r), np.int8)
+            for j in range(len(sl.breps)):
+                pk_ = samp[k][j](rng, c)
+                for i, (o, s_) in enumerate(sl.parts[j]): lab[:, o] = pk_[:, i]
+            acc += G.paf(lab[:, sl.orb])
+        V[done:done + c] = acc[:, reps]; done += c
+    gb = gauss_bits(V, sl.T[reps])
+    return dict(H2=round(H2, 2), bits=gb.get('bits'), rank=gb.get('rank'), in_lattice=gb.get('in_lattice'),
+                mahal=gb.get('mahal'), stage2_log2E=round(H2 - gb['bits'], 2) if gb.get('in_lattice') else -math.inf)

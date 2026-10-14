@@ -59,6 +59,7 @@ if __name__ == "__main__":
     rng = np.random.default_rng(0)
     for i in rng.permutation(len(sols))[:mx]:
         Y = sols[i]
-        r = AGs.stage2(sl, Y, N=N)
+        try: r = AGs.stage2(sl, Y, N=N)
+        except ValueError: r = AGs.stage2_sampled(sl, Y, N=N)
         print(json.dumps(dict(y=Y.tolist(), rows=Y.sum(1).tolist(), H2=r.get('H2'), C2=float(r['bits']) if r.get('bits') is not None else None,
                               mahal=r.get('mahal'), stage2_log2E=float(r['stage2_log2E']) if r.get('stage2_log2E') is not None else None)), flush=True)
