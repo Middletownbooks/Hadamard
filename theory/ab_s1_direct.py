@@ -11,21 +11,55 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ab_sweep as W, ab_gauss as AGs, ab_s1sd as SD
 
 
-def block_vectors(sl, Emax):
+def block_vectors(sl, Emax, cap=None, nQ=0, b=0):
+    """letter vectors with weighted energy <= Emax (one of y, -y); (None, None) if an intermediate list exceeds cap.
+    nQ > 0 (b >= 3): orbits are enumerated Q-coset by Q-coset and pruned by the Q-level bound of every block:
+    |zhat(psi)|^2 <= 4b for psi != 1 implies |z(q) - z(q')| <= (2/c)(c - 1) sqrt(4b) for the coset sums; at the end
+    the exact bound |zhat(psi)|^2 <= 4b is applied (report section 1.2, Q-level)"""
     L = [np.array(sorted(l), np.int64) for l in sl.letters]; w = sl.bsz.astype(np.int64); nb = len(L)
-    minE = [int(w[j] * (L[j] ** 2).min()) for j in range(nb)]
-    rest = np.concatenate([np.cumsum(minE[::-1])[::-1][1:], [0]])           # min energy of orbits j+1..
-    cur = np.zeros((1, 0), np.int64); E = np.zeros(1, np.int64)
-    for j in range(nb):
+    if nQ:
+        Gp = sl.Gp; Qm = Gp.mods[:nQ]; c = int(np.prod(Qm))
+        wq = np.array([int(np.prod(Qm[i + 1:])) for i in range(nQ)], np.int64)
+        qofb = np.array([int((Gp.co[bb, :nQ] * wq).sum()) for bb in sl.breps])
+        order = list(np.argsort(qofb, kind='stable'))
+        last_of = {}                                   # position in order where coset q is completed
+        for pos, j in enumerate(order): last_of[qofb[j]] = pos
+        dbound = (2.0 / c) * (c - 1) * np.sqrt(4 * b) + 1e-9
+    else:
+        order = list(range(nb))
+    minE = np.array([int(w[j] * (L[j] ** 2).min()) for j in order])
+    rest = np.concatenate([np.cumsum(minE[::-1])[::-1][1:], [0]])
+    small = max(abs(int(x)) for l in L for x in l) < 128
+    dt = np.int8 if small else np.int64
+    cur = np.zeros((1, 0), dt); E = np.zeros(1, np.int64)
+    Z = np.zeros((1, c if nQ else 0), np.int64); done_q = []
+    for pos, j in enumerate(order):
         e_j = w[j] * L[j] ** 2
         En = (E[:, None] + e_j[None, :]).ravel()
-        ok = En + rest[j] <= Emax
+        ok = En + rest[pos] <= Emax
         idx = np.nonzero(ok)[0]
-        cur = np.concatenate([np.repeat(cur, len(L[j]), 0)[idx], np.tile(L[j], len(E))[idx][:, None]], 1)
-        E = En[idx]
-    # one of y, -y: first nonzero letter positive (letters are odd, so the first entry decides)
-    keep = cur[:, 0] > 0
-    return cur[keep], E[keep]
+        if pos == 0: idx = idx[L[j][idx % len(L[j])] > 0]
+        if cap is not None and len(idx) > 2 * cap: return None, None
+        rows, lets = idx // len(L[j]), L[j][idx % len(L[j])]
+        cur = np.concatenate([cur[rows], lets.astype(dt)[:, None]], 1); E = En[idx]
+        if nQ:
+            Z = Z[rows].copy(); Z[:, qofb[j]] += w[j] * lets
+            if last_of[qofb[j]] == pos:
+                q = qofb[j]
+                if done_q:
+                    D = np.abs(Z[:, done_q] - Z[:, [q]]).max(1)
+                    keep = D <= dbound
+                    cur, E, Z = cur[keep], E[keep], Z[keep]
+                done_q.append(q)
+        if cap is not None and len(cur) > cap: return None, None
+    if nQ:
+        # exact Q-level bound per block: characters of Q (real or complex) via FFT over Q
+        Zf = np.fft.fftn(Z.reshape((-1,) + tuple(Qm)), axes=tuple(range(1, nQ + 1))).reshape(len(Z), -1)
+        P = np.abs(Zf[:, 1:]) ** 2
+        keep = (P <= 4 * b + 1e-6).all(1)
+        cur, E = cur[keep], E[keep]
+    inv = np.argsort(order)
+    return cur[:, inv].astype(np.int64), E
 
 
 def ejoin4_sym(K, T, chunk=1 << 22, max_out=10 ** 7):
@@ -94,7 +128,7 @@ def main():
     w = sl.bsz.astype(np.int64)
     Emin = int(sum(w[j] * min(y * y for y in sl.letters[j]) for j in range(len(sl.breps))))
     Emax = int(T1[0]) - 3 * Emin
-    Y, E = block_vectors(sl, Emax)
+    Y, E = block_vectors(sl, Emax, nQ=cfg.get('nQ', 0), b=cfg.get('b', 0))
     full = Y[:, sl.borb]
     P = np.zeros((len(Y), len(reps)), np.int64)
     for c0 in range(0, len(Y), 1 << 16):

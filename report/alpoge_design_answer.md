@@ -473,6 +473,40 @@ State when this was written:
   on Z₁₀₉ (target 4v·δ, since Σ_q T(q, t) = −4b + 4(c − 1) = 0 off 0). With 27–36 columns, that dual level is
   as unlistable as 669's at s = 37. **Not tractable with the present pipeline.**
 
+**Small Paley-type c = 4 slices: an exactly decidable family [M]** (`theory/ab_paley_c4.py`, `logs/ab/paley_c4.jsonl`;
+the H(2292) and 359 pattern). Q = Z₂², GP index s = 2 (the Paley classes; also s = 3, 4) on a prime q ∥ h, and one
+cyclic multiplier group on a cyclic factor of H' = Z_{h/q}, keeping ≤ 16 G'-orbits.
+- Then every block fibre of stage 2 has at most 2^16 elements, and the configuration is decided completely by:
+  - screen A;
+  - exact stage 1, either by direct enumeration under the energy bound with a symmetric energy-split join
+    (`theory/ab_s1_direct.py`) or by the S/D solver;
+  - the one-shot exact stage-2 join (`theory/ab_small_exact.py`).
+- Any core is then bordered by `theory/ab_border_c4.py`. Its self-test rebuilds H(1916) from 479's core, untwisted.
+- Validation: on the v = 35, c = 6 control, direct stage 1 plus exact stage 2 give 31,104 canonical cores, the
+  brute-force count (11,943,936 = 384 · 31,104).
+- Typical-y stage-2 Gaussians [E]: 751 (q = 11, ⟨2⟩ of order 8 on Z₁₇) about −5 bits per y; 839 (q = 11, ⟨4⟩ of
+  order 9 on Z₁₉) about −11; 839 (q = 19, ⟨3⟩ of order 5 on Z₁₁) about 0.
+- Results:
+  - **c = 4 sweep over all open orders** (`logs/ab/paley_c4.jsonl`): 61 configurations with ≤ 16 G'-orbits.
+    - 48 fail screen A: **empty [M]**. That covers every configuration of 571, 599, 659, 719, 823, 859, 863, 907,
+      919 and 947.
+    - 751, q = 11, s = 2, ⟨2⟩ of order 8 on Z₁₇: **stage 1 empty [M]**, decided two independent ways:
+      - the direct method with Q-level pruning: 3,590 block vectors, 0.4 s;
+      - the S/D solver: 12,992 α-quadruples, 0 S-solutions, 2,146 s.
+    - 839, q = 19, s = 2, ⟨3⟩ of order 5 on Z₁₁: **stage 1 empty [M]** (2.6M block vectors, complete join).
+    - 751, q = 17, s = 4, ⟨3⟩ on Z₁₁: 311,296 stage-1 solutions [M] in 102 PAF-signature classes. Stage 2 is
+      about −72 bits per y [E] (mahal 5.8), so about 2^−54 cores are expected in all: **dead**.
+    - Remaining (839 at q = 11; 955; 991): PAL_C4_REST
+  - **c = 6 sweep (347's border class)** (`logs/ab/paley_c6.jsonl`): every configuration with ≤ 16 orbits (659,
+    719, 839, 863, 947, 971: 19 in all) **fails screen A, empty [M]**. 599 and 917 have none that small.
+  - Validation of the c = 6 path on the controls v = 35 and v = 47: stage 1, then the 347 border fit (8 bordered
+    y's each), then exact stage 2. No bordered y of the controls carries a core, so the c = 6 assembly step itself is
+    exercised only on the 347 positive control (§5).
+- **Speed-up that made this family cheap [P].** For b ≥ 3, every block satisfies |ẑ_k(ψ)|² ≤ 4b for ψ ≠ 1, so its
+  coset sums satisfy |z(q) − z(q′)| ≤ (2/c)(c − 1)√(4b) (≈ 5.2 for c = 4). Enumerating the letters coset by coset
+  with this prefix bound cuts the block lists by factors of 10³–10⁴. The final exact bound |ẑ(ψ)|² ≤ 4b is applied
+  at the end.
+
 **Survivors and stage-2 size [E]** (`logs/ab/rank_out.jsonl`).
 
 | v, c | slice | stage 1 [E] | stage 2 per y [E] | compare |
