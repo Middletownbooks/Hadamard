@@ -1,0 +1,9 @@
+{"stage": "setup", "y": [[1, -61, -1], [1, -1, -1], [1, -1, -1], [1, 1, 1]], "dual_list": [74870, 76984, 76984, 76154]}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/ab_933.py", line 207, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/ab_933.py", line 172, in main
+    q4 = (L[p, 0], L[p, 1], R[r, 0], R[r, 1])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MemoryError

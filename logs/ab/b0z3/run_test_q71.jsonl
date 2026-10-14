@@ -1,0 +1,65 @@
+{"stage": "setup", "q": 71, "v": 213, "f": 7, "y": [[1, -29, -1], [1, -1, -1], [1, -1, -1], [1, 1, 1]], "stage1_solutions": 1008, "dual_list": [65800, 73544, 73544, 70514], "energy_classes": [{"71": [120, 11.64], "127": [1350, 10.15], "183": [5040, 8.68], "239": [13570, 7.23], "295": [17330, 5.73], "351": [17520, 4.32], "407": [7290, 2.81], "463": [3270, 1.0], "519": [310, 0.0]}, {"71": [252, 12.18], "127": [1680, 10.74], "183": [7010, 9.32], "239": [14670, 7.91], "295": [22270, 6.54], "351": [15100, 5.17], "407": [10090, 3.91], "463": [1840, 2.58], "519": [630, 1.58], "631": [2, 0.0]}, {"71": [252, 12.18], "127": [1680, 10.74], "183": [7010, 9.32], "239": [14670, 7.91], "295": [22270, 6.54], "351": [15100, 5.17], "407": [10090, 3.91], "463": [1840, 2.58], "519": [630, 1.58], "631": [2, 0.0]}, {"79": [252, 12.18], "135": [1680, 10.74], "191": [7010, 9.32], "247": [14420, 7.91], "303": [21160, 6.54], "359": [14520, 5.17], "415": [9300, 3.91], "471": [1690, 2.58], "527": [480, 1.58], "639": [2, 0.0]}], "secs": 6.0}
+{"stage": "dual", "K": 50, "kept": [450, 452, 452, 452], "dual_solutions": 1750, "capped": false, "log2_fibre_product_max": 36.01, "log2_fibre_product_median": 34.66, "secs": 0.1}
+{"dual_id": "d22863a7cc52e0a4", "rank": 0, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.5}
+{"CORE": "test_q71_1", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": true, "order": 852}
+{"CORE": "test_q71_2", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_3", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "b5f5ee55142cc97b", "rank": 1, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 3, "secs": 4.6}
+{"CORE": "test_q71_4", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_5", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_6", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "fdba2648cfde36fd", "rank": 2, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 3, "secs": 4.4}
+{"dual_id": "8ac9e42678b33b96", "rank": 3, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.0}
+{"dual_id": "74a3f04965ec1938", "rank": 4, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.2}
+{"dual_id": "6898f094dc6d2293", "rank": 5, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 5.1}
+{"dual_id": "cb2aa09dc0c06c1b", "rank": 6, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 5.0}
+{"CORE": "test_q71_7", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_8", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_9", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "deb75cb33abd709b", "rank": 7, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 3, "secs": 4.2}
+{"CORE": "test_q71_10", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_11", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_12", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_13", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_14", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_15", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "a370b39c86c7faf3", "rank": 8, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 6, "secs": 4.8}
+{"CORE": "test_q71_16", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_17", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_18", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "2cbac1c7e15205b5", "rank": 9, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 3, "secs": 4.2}
+{"CORE": "test_q71_19", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_20", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_21", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_22", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_23", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_24", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "dc457d210bb79dfc", "rank": 10, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 6, "secs": 4.4}
+{"dual_id": "7c22aca417a3a8c7", "rank": 11, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.8}
+{"CORE": "test_q71_25", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_26", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_27", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_28", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_29", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_30", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "721647961f94b3f3", "rank": 12, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 6, "secs": 4.6}
+{"dual_id": "fe0711e0e138ff20", "rank": 13, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.0}
+{"CORE": "test_q71_31", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_32", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_33", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "ebac72b870940f71", "rank": 14, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 3, "secs": 4.0}
+{"dual_id": "e8d9db1d8f33e4f1", "rank": 15, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.4}
+{"CORE": "test_q71_34", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_35", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_36", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_37", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_38", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_39", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "1eec599e34ebf579", "rank": 16, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 6, "secs": 5.2}
+{"dual_id": "88831cd1c15d6dc8", "rank": 17, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.5}
+{"dual_id": "013f11012378f887", "rank": 18, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 0, "secs": 4.7}
+{"CORE": "test_q71_40", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_41", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"CORE": "test_q71_42", "verified_paf_G": true, "verified_paf_Zv": true, "hadamard": null, "order": 852}
+{"dual_id": "3775975e6aa4afa7", "rank": 19, "fibres": [3192, 4653, 1, 4653], "log2_fibre_product": 36.01, "cross_pairs": 14857029, "cores": 3, "secs": 4.2}
+{"stage": "end", "processed": 20, "cores": 42, "secs": 95.9}
