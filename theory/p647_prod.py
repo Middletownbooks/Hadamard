@@ -141,6 +141,16 @@ def main(w, W, rule, queue, log, K=0, kernel="p"):
 
 # ---------------------------------------------------------------- unit mode: class-merged sub-bicliques (join4m)
 from p647_join import join4m
+from p647_deeptail import nested_counts
+
+def deep_counts(X, bl, S, TE, cross):
+    """exact D-candidates hitting the nested cross-lag subsets (live deep-tail calibration, report section 2.3)"""
+    cnt = np.zeros(len(cross), np.int64); smp = np.zeros((1, len(TE)), np.int64)
+    B = bl
+    nested_counts(np.ascontiguousarray(S), B[0].pairs, B[0].bd, B[0].n1, B[1].pairs, B[1].bd, B[1].n1, B[2].pairs, B[2].bd,
+                  B[2].n1, B[3].pairs, B[3].bd, B[3].n1, B[0].P0, B[0].P1, B[1].P0, B[1].P1, B[2].P0, B[2].P1, B[3].P0,
+                  B[3].P1, TE, cross, cnt, smp, 1 << 62, 0)
+    return cnt
 
 def block_for(X, yb, sol, k, maps, NH, cache):
     """the Block of block k for the y_A option of joint solution sol (cached by (k, option))"""
@@ -177,6 +187,7 @@ def run_unit(X, yb, sols, u, uid, w, K, maps, NH, log, E0=645):
     live = sorted(st0['per_EL_work'])
     els = sorted(sorted(live, key=lambda e: abs(e - centre))[:K]) if K > 0 else live
     TE = 2 * (X.TS + X.TD)
+    cross = np.array([t for t, h in enumerate(X.lags) if h % 17 and h % 19], np.int64)
     info = {}; cores = []
     fo = open(elp, "a")
     def el_cb(EL, d): info[EL] = d
@@ -184,10 +195,11 @@ def run_unit(X, yb, sols, u, uid, w, K, maps, NH, log, E0=645):
         d = info.get(EL, {})
         per = {}
         for (i, j, s0, s1, s2, s3) in found: per.setdefault((i, j), []).append((s0, s1, s2, s3))
-        cand = {}; hits = {}
+        cand = {}; hits = {}; nested = np.zeros(len(cross), np.int64)
         for (i, j), S in per.items():
             h, c = P.dcheck(bl[(i, j)], np.array(S, np.int64), TE)
             cand[f"{i},{j}"] = int(c.sum()); hits[f"{i},{j}"] = int(len(h))
+            nested += deep_counts(X, bl[(i, j)], np.array(S, np.int64), TE, cross)
             for hh in h:
                 xs = P.assemble(X, bl[(i, j)], hh[1:])
                 if P.is_core(xs):
@@ -198,7 +210,8 @@ def run_unit(X, yb, sols, u, uid, w, K, maps, NH, log, E0=645):
                     cores.append(path); log(json.dumps(dict(stage="CORE", worker=w, unit=uid, j=e, EL=EL, path=path)))
         fo.write(json.dumps(dict(unit=uid, EL=EL, left=d.get('left', 0), right=d.get('right', 0), S=len(found),
                                  cand=int(sum(cand.values())), hits=int(sum(hits.values())), secs=d.get('secs', 0.0),
-                                 joint={f"{i},{j}": JJ[i][j] for i in range(nl) for j in range(nr)}, cand_ij=cand)) + "\n"); fo.flush()
+                                 joint={f"{i},{j}": JJ[i][j] for i in range(nl) for j in range(nr)}, cand_ij=cand,
+                                 nested=nested.tolist())) + "\n"); fo.flush()
         if os.path.exists(os.path.join(PROD, "STOP")): raise KeyboardInterrupt("STOP file")
     try:
         join4m(lefts, rights, X.TS, els=[e for e in els if e not in done], el_cb=el_cb, done_cb=done_cb)

@@ -55,6 +55,18 @@ def main(cdgs=34.8, as_json=False):
             except Exception: pass
     U['units_done'] = len(ud); U['units_partial'] = len(up - ud); U['secs'] = round(U['secs'], 1)
     out['units'] = U
+    # live deep-tail calibration: exact D-candidates hitting nested cross-lag subsets vs the Gaussian of the
+    # calibration fit (report section 2.3; bits per nested subset of the 12 cross lags, ranks 1..11)
+    GB = [3.9, 7.74, 11.51, 15.07, 18.68, 21.73, 25.19, 27.65, 30.45, 32.9, 34.63, 34.63]
+    nest = [0] * 12; ncand = 0
+    for f in sorted(glob.glob(os.path.join(PROD, "u*_els.jsonl"))):
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            if 'nested' in r:
+                ncand += r['cand']; nest = [a + b for a, b in zip(nest, r['nested'])]
+    out['deep_tail'] = dict(candidates=ncand, candidates_log2=round(math.log2(ncand), 3) if ncand else None,
+                            rows=[dict(rank=min(q + 1, 11), hits=nest[q], expected=round(ncand * 2.0 ** -GB[q], 2)) for q in range(6, 12)])
     # orbit-deduplicated D-candidates: per stabiliser orbit the largest record (old per-joint mode or unit mode)
     om = json.load(open(os.path.join(ROOT, "logs", "p647", "joint_yb0_orbits.json"))).get('orbit_of')
     best = {}
@@ -87,7 +99,8 @@ def main(cdgs=34.8, as_json=False):
     if as_json: print(json.dumps(out))
     else:
         for w, W in out['workers'].items(): print(w, json.dumps(W))
-        print('units', json.dumps(U)); print('calibration', json.dumps(C)); print('TOTAL', json.dumps(out['total']))
+        print('units', json.dumps(U)); print('calibration', json.dumps(C)); print('deep_tail', json.dumps(out['deep_tail']))
+        print('TOTAL', json.dumps(out['total']))
     return out
 
 if __name__ == "__main__":

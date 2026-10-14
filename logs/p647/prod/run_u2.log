@@ -1,3 +1,5 @@
 {"stage": "start_units", "worker": 2, "workers": 4, "K": 2, "units": 102, "finished": 0}
 {"stage": "unit_done", "worker": 2, "unit": 2, "shape": [2, 4], "orbits": 8, "H": 79.43, "els": [313, 337], "centre": 320.0, "work_all": 373128988928, "work": 70967490600, "work_log2": 36.046, "S": 3224072, "cand": 2550799968, "cand_log2": 31.248, "hits": 0, "cores": 0, "build_secs": 72.0, "join_secs": 2237.3, "wall_secs": 2457.4}
 {"stage": "unit_done", "worker": 2, "unit": 6, "shape": [2, 4], "orbits": 8, "H": 79.42, "els": [319, 343], "centre": 323.0, "work_all": 374037381876, "work": 63528991272, "work_log2": 35.887, "S": 2560816, "cand": 2504711760, "cand_log2": 31.222, "hits": 0, "cores": 0, "build_secs": 34.1, "join_secs": 2539.8, "wall_secs": 2720.7}
+{"stage": "unit_done", "worker": 2, "unit": 10, "shape": [2, 4], "orbits": 8, "H": 79.42, "els": [319, 343], "centre": 329.0, "work_all": 438295724604, "work": 74131949432, "work_log2": 36.109, "S": 2651104, "cand": 2601179288, "cand_log2": 31.277, "hits": 0, "cores": 0, "build_secs": 21.1, "join_secs": 2214.4, "wall_secs": 2378.4}
+{"stage": "start_units", "worker": 2, "workers": 4, "K": 2, "units": 102, "finished": 3}

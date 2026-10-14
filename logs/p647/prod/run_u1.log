@@ -1,3 +1,4 @@
 {"stage": "start_units", "worker": 1, "workers": 4, "K": 2, "units": 103, "finished": 0}
 {"stage": "unit_done", "worker": 1, "unit": 1, "shape": [2, 4], "orbits": 8, "H": 79.43, "els": [313, 337], "centre": 323.0, "work_all": 375385489800, "work": 65640695184, "work_log2": 35.934, "S": 2563864, "cand": 2499344240, "cand_log2": 31.219, "hits": 0, "cores": 0, "build_secs": 73.7, "join_secs": 1919.0, "wall_secs": 2123.6}
 {"stage": "unit_done", "worker": 1, "unit": 5, "shape": [4, 4], "orbits": 16, "H": 79.42, "els": [313, 337], "centre": 317.0, "work_all": 489134133384, "work": 93118583256, "work_log2": 36.438, "S": 4672752, "cand": 4944623344, "cand_log2": 32.203, "hits": 0, "cores": 0, "build_secs": 50.2, "join_secs": 3203.7, "wall_secs": 3482.8}
+{"stage": "start_units", "worker": 1, "workers": 4, "K": 2, "units": 103, "finished": 2}
