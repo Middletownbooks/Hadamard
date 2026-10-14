@@ -1,0 +1,11 @@
+{"v": 659, "c": 4, "Q": [2, 2], "H1": [4], "q": 41, "s": 10, "U": [], "error": "MemoryError()"}
+{"v": 659, "c": 4, "Q": [2, 2], "H1": [2, 2], "q": 41, "s": 4, "f": 10, "U": [], "orbits": 80, "Gp_orbits": 16, "whole_log2E": -92.67, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 3.9}
+{"v": 659, "c": 4, "Q": [2, 2], "H1": [2, 2], "q": 41, "s": 8, "f": 5, "U": [], "orbits": 144, "Gp_orbits": 16, "whole_log2E": 142.16, "stage1_log2Ny": 129.49, "stage1_bits": 102.23, "stage1_mahal": 2.21, "stage1_log2E": 27.26, "stage2_H2": [385.12, 384.8, 385.09], "stage2_C2": [274.12, 274.08, 274.19], "stage2_log2E": [111.0, 110.72, 110.9], "secs": 76.2}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 3, "f": 36, "U": [], "orbits": 24, "Gp_orbits": 6, "whole_log2E": -2.88, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 2.5}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 4, "f": 27, "U": [], "orbits": 30, "Gp_orbits": 6, "whole_log2E": 20.72, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 2.2}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 6, "f": 18, "U": [], "orbits": 42, "Gp_orbits": 6, "whole_log2E": 15.94, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 2.3}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 9, "f": 12, "U": [], "orbits": 60, "Gp_orbits": 6, "whole_log2E": 28.54, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 2.8}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 12, "f": 9, "U": [], "orbits": 78, "Gp_orbits": 6, "whole_log2E": 100.87, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 2.5}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 18, "f": 6, "U": [], "orbits": 114, "Gp_orbits": 6, "whole_log2E": 69.04, "stage1_log2Ny": null, "stage1_bits": null, "stage1_mahal": null, "stage1_log2E": -Infinity, "secs": 3.0}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 27, "U": [], "error": "ValueError('too many parts')"}
+{"v": 659, "c": 6, "Q": [3, 2], "H1": [], "q": 109, "s": 36, "U": [[0, 2, 2]], "error": "ValueError('too many parts')"}
