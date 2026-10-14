@@ -11,7 +11,7 @@ A class's full D-candidate yield is about 2^(H - 50.3) (calibration, report sect
 y_B orbits for production.
 Output: one line per y_B in logs/p647/ybscan.jsonl.
 The joint test runs in a child under an address-space cap (--mem GB, theory/p647_captest.py).
-usage: python3 theory/p647_ybscan.py [--from K] [--to K] [--maxpairs N] [--mem GB]"""
+usage: python3 theory/p647_ybscan.py [--from K] [--to K] [--ks k1,k2,...] [--maxpairs N] [--mem GB]"""
 import sys, os, json, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -19,8 +19,9 @@ import p647_common as PC
 import p647_classes as PCL
 from p647_captest import capped_test
 
-def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print, mem_gb=6.0):
+def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print, mem_gb=6.0, ks=None):
     X, ys = PC.load_setup(); k1 = len(ys) - 1 if k1 is None else k1
+    ks = list(range(k0, k1 + 1)) if ks is None else ks
     outp = os.path.join(PC.LOG, "ybscan.jsonl")
     done = set(); attempted = {}
     if os.path.exists(outp):
@@ -31,7 +32,7 @@ def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print, mem_gb=6.0):
             if 'attempt' in r: attempted[r['k']] = attempted.get(r['k'], 0) + 1
     log(json.dumps(dict(stage="start", yB_orbits=len(ys), range=[k0, k1], done=len(done), maxpairs=maxpairs)))
     with open(outp, "a") as fo:
-        for k in range(k0, k1 + 1):
+        for k in ks:
             if k in done: continue
             if attempted.get(k, 0) >= 2:                      # killed twice inside the test: give up
                 fo.write(json.dumps(dict(k=k, joint=None, note="run killed inside the joint test (memory); undecided")) + "\n")
@@ -62,4 +63,5 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     g = lambda f, d: int(a[a.index(f) + 1]) if f in a else d
     main(g("--from", 1), g("--to", None), g("--maxpairs", 4 * 10 ** 6), log=lambda s: print(s, flush=True),
-         mem_gb=float(a[a.index("--mem") + 1]) if "--mem" in a else 6.0)
+         mem_gb=float(a[a.index("--mem") + 1]) if "--mem" in a else 6.0,
+         ks=[int(x) for x in a[a.index("--ks") + 1].split(",")] if "--ks" in a else None)

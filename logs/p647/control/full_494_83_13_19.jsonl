@@ -3331,3 +3331,5 @@
 {"yb": 38, "jsol": 1032, "H": 49.388, "Hs": 45.402, "CSu": 35.86, "CSp": 33.75, "C": 56.37, "CDgS": 22.62, "pred_S_log2": 9.542, "S": 1097, "pred_Spairs_log2": 15.638, "Spairs": 33359, "pred_cores_log2": -6.982, "D_hits": 0, "cores": 0, "secs": 1.42}
 {"yb": 38, "jsol": 1036, "H": 49.388, "Hs": 45.402, "CSu": null, "CSp": null, "C": null, "CDgS": null, "pred_S_log2": null, "S": 1095, "pred_Spairs_log2": null, "Spairs": 32199, "pred_cores_log2": null, "D_hits": 0, "cores": 0, "secs": 0.59}
 {"yb": 96, "attempt": 1}
+{"yb": 96, "joint_total": null, "orbits": 0, "secs": 179.51, "note": "joint test memory (cap 5.0 GB address space)", "pairs_needed": null}
+{"yb": 19, "attempt": 1}
