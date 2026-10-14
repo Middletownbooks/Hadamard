@@ -61,7 +61,7 @@ def main(core_json, tag=None, log=print):
     with gzip.open(os.path.join(pub, "H2588_normalized.txt.gz"), "wt") as f:
         for row in Hn: f.write("".join("+" if v > 0 else "-" for v in row) + "\n")
     src = open(os.path.join(ROOT, "pub", "H2092", "verify.py")).read()
-    src = src.replace("H(2092)", "H(2588)").replace("sequences_Z522.txt", "sequences_Z646.txt").replace("H2092_normalized", "H2588_normalized")
+    src = src.replace("2092", "2588").replace("Z522", "Z646")
     open(os.path.join(pub, "verify.py"), "w").write(src)
     log(json.dumps(dict(stage="pub_bundle", dir=os.path.relpath(pub, ROOT), files=sorted(os.listdir(pub)),
                         sha256_of_packed_rows=res['sha256_of_packed_rows'])))

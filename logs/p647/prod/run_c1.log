@@ -1,1 +1,2 @@
 {"stage": "start_classes", "worker": 1, "workers": 4, "K": 2, "classes": 103, "finished": 0}
+{"stage": "class_done", "worker": 1, "j": 3580, "rule": "none|els2", "els": [319, 343], "centre": 323.0, "kept": [326946, 150899, 273790, 309771], "N": [326946, 150899, 273790, 309771], "work_all": 134141213287, "work": 22472756264, "work_log2": 34.387, "S": 314713, "cand": 309508032, "cand_log2": 28.205, "hits": 0, "cores": 0, "join_secs": 467.8, "wall_secs": 561.2, "class": 377, "pre_done": []}

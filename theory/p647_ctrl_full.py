@@ -12,7 +12,7 @@ The Gaussian predictions are computed for every 10th joint solution (--gauss-eve
 (theory/p647_classes.py; the old stabiliser misses it, so its orbits come in groups of copies, 8 for 495 x83); the
 class maps go to logs/p647/control/classes_<tag>.json.  --maxpairs caps the joint test's pair lists per block (a y_B
 over the cap is recorded as undecided); an 'attempt' line before each joint test makes a run killed inside one
-(memory) skip that y_B on restart, recorded as undecided.
+(memory) retry that y_B once on restart and then skip it, recorded as undecided.
 usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N] [--gauss-every K] [--classes] [--maxpairs N]"""
 import sys, os, json, math, time
 import numpy as np
@@ -30,13 +30,13 @@ def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gaus
     X = Cross(m, mu, qA, qB); FA, FB = X.D.FA, X.D.FB
     ys = enumerate_yB(m, mu, qA, qB, os.path.join(d, f"enum_{tag}.jsonl"), 1, log=lambda s: None)
     reps, oi, maps = orbit_maps(X); NH = PX.lag_tensor(X, oi)
-    done = set(); ncores = 0; attempted = set()
+    done = set(); ncores = 0; attempted = {}
     if os.path.exists(outp):
         for line in open(outp):
             r = json.loads(line)
             if 'jsol' in r: done.add((r['yb'], r['jsol'])); ncores += r.get('cores', 0)
             if 'joint_total' in r: done.add((r['yb'], 'test'))
-            if 'attempt' in r: attempted.add(r['yb'])
+            if 'attempt' in r: attempted[r['yb']] = attempted.get(r['yb'], 0) + 1
     cpath = os.path.join(d, f"classes_{tag}.json")
     cmaps = json.load(open(cpath)) if os.path.exists(cpath) else {}
     log(json.dumps(dict(stage="start", m=m, mu=mu, qA=qA, qB=qB, yB_orbits=len(ys), done=len(done), cores_so_far=ncores)))
@@ -45,7 +45,7 @@ def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gaus
     with open(outp, "a") as fo:
         for ib in order:
             yb = ys[ib]
-            if ib in attempted and (ib, 'test') not in done:
+            if attempted.get(ib, 0) >= 2 and (ib, 'test') not in done:     # killed twice inside the test: give up
                 fo.write(json.dumps(dict(yb=ib, joint_total=None, note="run killed inside the joint test (memory); undecided")) + "\n")
                 fo.flush(); done.add((ib, 'test')); continue
             if (ib, 'test') not in done:
