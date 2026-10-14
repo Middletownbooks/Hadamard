@@ -22,7 +22,8 @@ Class mode (--classes, from 10:40 UTC): one joint solution per true symmetry cla
 logs/p647/joint_yb0_classes.json), the K central classes, skipping energy classes any earlier run already joined for
 that symmetry class; queue logs/p647/prod/queue_classes.json; checkpoints c{w}_els.jsonl (with the live deep-tail
 counts) and c{w}.jsonl.
-usage: python3 theory/p647_prod.py --build-queue --yb 0,9,13 --els 2      (H-ordered queue over several y_B orbits)
+usage: python3 theory/p647_prod.py --build-queue --yb 0,9,13 --els 2 [--hmin H]   (H-ordered queue over several y_B
+       orbits; K = 2 -> queue_multi.json + claims/, other K -> queue_multi_K{K}.json + claims_K{K}/)
        python3 theory/p647_prod.py --multi --worker W --els 2              (claims from that queue; restart-safe)
        python3 theory/p647_prod.py --classes --worker W --workers N --els 2 [--busy-units 13,14,16] [--yb 0,9,13]
        (--yb: the y_B orbits whose classes are taken in turn, each with its own queue queue_classes_yb{k}.json and
@@ -347,7 +348,12 @@ def main_classes(w, W, K, log, busy_units=(), yb=0):
 # ---------------------------------------------------------------- multi mode: one H-ordered queue over several y_B orbits
 CLAIMS = os.path.join(PROD, "claims")
 
-def build_multi_queue(ybs, K, log=print):
+def multi_paths(K):
+    """queue file and claims directory of multi mode at K energy classes (K = 2 keeps the original names)"""
+    return (os.path.join(PROD, "queue_multi.json" if K == 2 else f"queue_multi_K{K}.json"),
+            CLAIMS if K == 2 else os.path.join(PROD, f"claims_K{K}"))
+
+def build_multi_queue(ybs, K, log=print, hmin=None):
     """queue_multi.json: every class of the given y_B orbits not yet complete at K energy classes, ordered by the H of
     its representative (higher H, higher yield: report section 4.2), as [yb, class] pairs; may be rebuilt at any time
     (workers re-read it before every claim; claims and finished records make rebuilds safe)"""
@@ -357,19 +363,20 @@ def build_multi_queue(ybs, K, log=print):
         done, full = class_done_els(C, yb)
         for c in range(len(C['reps'])):
             if c in full or len(done.get(c, ())) >= K: continue
+            if hmin is not None and C['H'][c] < hmin: continue
             ent.append((-C['H'][c], yb, c))
     ent.sort()
-    qp = os.path.join(PROD, "queue_multi.json")
+    qp = multi_paths(K)[0]
     json.dump(dict(K=K, yb=list(ybs), order=[[yb, c] for _, yb, c in ent], built=time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())),
               open(qp + ".tmp", "w"))
     os.replace(qp + ".tmp", qp)
     log(json.dumps(dict(stage="queue_multi", K=K, yb=list(ybs), classes=len(ent),
                         H_top=[round(-h, 2) for h, _, _ in ent[:3]], H_bottom=[round(-h, 2) for h, _, _ in ent[-3:]])))
 
-def _claim(yb, c, w):
-    os.makedirs(CLAIMS, exist_ok=True)
+def _claim(yb, c, w, cdir=CLAIMS):
+    os.makedirs(cdir, exist_ok=True)
     try:
-        fd = os.open(os.path.join(CLAIMS, f"yb{yb}_c{c}"), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        fd = os.open(os.path.join(cdir, f"yb{yb}_c{c}"), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
     except FileExistsError:
         return False
     os.write(fd, str(w).encode()); os.close(fd); return True
@@ -397,24 +404,25 @@ def main_multi(w, K, log):
                     if r.get('rule') == rule: fin.add((r['yb'], r['class']))
                 except Exception: pass
         return fin
+    qpath, cdir = multi_paths(K)
     log(json.dumps(dict(stage="start_multi", worker=w, K=K)))
     while True:
         if os.path.exists(os.path.join(PROD, "STOP")): log(json.dumps(dict(stage="stopped", worker=w))); return
         fin = finished()
         mine = []
-        if os.path.isdir(CLAIMS):
-            for fn in os.listdir(CLAIMS):
+        if os.path.isdir(cdir):
+            for fn in os.listdir(cdir):
                 try:
-                    if open(os.path.join(CLAIMS, fn)).read().strip() == str(w):
+                    if open(os.path.join(cdir, fn)).read().strip() == str(w):
                         yb, c = fn[2:].split("_c"); mine.append((int(yb), int(c)))
                 except Exception: pass
         todo = [e for e in mine if e not in fin]
         if not todo:
-            Q = json.load(open(os.path.join(PROD, "queue_multi.json"))); assert Q['K'] == K
+            Q = json.load(open(qpath)); assert Q['K'] == K
             nxt = None
             for yb, c in Q['order']:
-                if (yb, c) in fin or os.path.exists(os.path.join(CLAIMS, f"yb{yb}_c{c}")): continue
-                if _claim(yb, c, w): nxt = (yb, c); break
+                if (yb, c) in fin or os.path.exists(os.path.join(cdir, f"yb{yb}_c{c}")): continue
+                if _claim(yb, c, w, cdir): nxt = (yb, c); break
             if nxt is None: log(json.dumps(dict(stage="queue_empty", worker=w))); return
             todo = [nxt]
         yb, c = todo[0]
@@ -436,13 +444,14 @@ def main_multi(w, K, log):
 if __name__ == "__main__":
     a = sys.argv[1:]
     opt = {"--worker": "0", "--workers": "1", "--rule": "none", "--queue": os.path.join(PROD, "queue.json"), "--els": "0", "--kernel": "p",
-           "--busy-units": "", "--yb": "0"}
+           "--busy-units": "", "--yb": "0", "--hmin": ""}
     i = 0
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: i += 1
     if "--build-queue" in a:
-        build_multi_queue([int(x) for x in opt["--yb"].split(",")], int(opt["--els"]), log=lambda s: print(s, flush=True))
+        build_multi_queue([int(x) for x in opt["--yb"].split(",")], int(opt["--els"]), log=lambda s: print(s, flush=True),
+                          hmin=float(opt["--hmin"]) if opt.get("--hmin") else None)
         sys.exit()
     if "--multi" in a:
         main_multi(int(opt["--worker"]), int(opt["--els"]), log=lambda s: print(s, flush=True))
