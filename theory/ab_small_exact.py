@@ -15,12 +15,12 @@ import ab_sweep as W, ab_gauss as AGs, ab_s1sd as SD
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def block_fibre(sl, yk, cap):
-    """all x on G (rows) in the slice with compression y_k; None if larger than cap"""
+def block_labels(sl, yk, cap):
+    """all orbit-label vectors (n x r, int8) of the slice with compression y_k; None if more than cap"""
     pats = []; tot = 1
     for j, bb in enumerate(sl.breps):
         P, sizes = AGs.fibre_patterns(sl, j, int(yk[bb]))
-        if len(P) == 0: return np.zeros((0, sl.G.n), np.int8)
+        if len(P) == 0: return np.zeros((0, sl.r), np.int8)
         pats.append(P); tot *= len(P)
         if tot > cap: return None
     idx = np.array(list(itertools.product(*[range(len(P)) for P in pats])), np.int64).reshape(-1, len(pats))
@@ -28,23 +28,41 @@ def block_fibre(sl, yk, cap):
     for j, P in enumerate(pats):
         sel = P[idx[:, j]]
         for i, (o, s_) in enumerate(sl.parts[j]): lab[:, o] = sel[:, i]
-    return lab[:, sl.orb]
+    return lab
+
+
+def block_fibre(sl, yk, cap):
+    lab = block_labels(sl, yk, cap)
+    return None if lab is None else lab[:, sl.orb]
+
+
+_CACHE = {}
+
+
+def block_data(sl, yk, reps, gw, cap):
+    """cached per block vector y_k: (orbit labels, PAF-hash of every fibre element)"""
+    key = np.asarray(yk, np.int64).tobytes()
+    if key in _CACHE: return _CACHE[key]
+    lab = block_labels(sl, yk, cap)
+    if lab is None: res = (None, None)
+    else:
+        h = np.zeros(len(lab), np.int64)
+        for c0 in range(0, len(lab), 4096):
+            h[c0:c0 + 4096] = sl.G.paf(lab[c0:c0 + 4096][:, sl.orb].astype(np.int64))[:, reps] @ gw
+        res = (lab, h)
+    if len(_CACHE) > 20000: _CACHE.clear()
+    _CACHE[key] = res
+    return res
 
 
 def solve_y(sl, Y, reps, gw, cap=1 << 16):
-    Xs = []
+    labs = []; h = []
     for k in range(4):
-        X = block_fibre(sl, Y[k], cap)
-        if X is None: return None, [None] * 4
-        if len(X) == 0: return [], [0] * 4
-        Xs.append(X)
-    m = [len(x) for x in Xs]
-    h = []
-    for X in Xs:
-        H_ = np.zeros(len(X), np.int64)
-        for c0 in range(0, len(X), 4096):
-            H_[c0:c0 + 4096] = sl.G.paf(X[c0:c0 + 4096].astype(np.int64))[:, reps] @ gw
-        h.append(H_)
+        lab, hk = block_data(sl, Y[k], reps, gw, cap)
+        if lab is None: return None, [None] * 4
+        if len(lab) == 0: return [], [0] * 4
+        labs.append(lab); h.append(hk)
+    m = [len(x) for x in labs]
     # pairing with the smallest join cost: the smaller pair side is sorted, the larger streamed
     best = None
     for (a, b), (c, d) in (((0, 1), (2, 3)), ((0, 2), (1, 3)), ((0, 3), (1, 2))):
@@ -64,7 +82,7 @@ def solve_y(sl, Y, reps, gw, cap=1 << 16):
             for p in o[lo[r]:hi[r]]:
                 ia, ib = divmod(int(p), m[b])
                 sel = {a: ia, b: ib, c: ic, d: id_}
-                Xc = np.array([Xs[k][sel[k]] for k in range(4)], np.int64)
+                Xc = np.array([labs[k][sel[k]][sl.orb] for k in range(4)], np.int64)
                 if (sl.G.paf(Xc).sum(0) == sl.T).all(): hits.append(Xc)
     return hits, m
 
