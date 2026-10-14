@@ -447,6 +447,32 @@ bordered batches `theory/ab_cbatch.py` → `logs/ab/c4_batch.jsonl`, `logs/ab/c6
   ranking's positive stage-1 Gaussians for s = 10 and 14 (+2.3 and +18.0) were wrong: one more instance of
   "whole-slice estimates decide nothing".
 
+**Exact batches [M]** (`theory/ab_cbatch.py`: screen A, then exact stage 1, restricted for c = 6 and c = 8 to the
+border class of the 347 and 359 templates; configurations with ≤ 26 G'-orbits; 1,200 s and a 4–4.5 GB cap each).
+State when this was written:
+
+| batch | configurations | empty (A fails) | stage 1 empty in the border class | survivors | memory or time cap | > 26 orbits |
+|---|---|---|---|---|---|---|
+| c = 4 (571, 599, 643, 659) | 47 | 14 | – | 1 (599, q = 149, s = 74, f = 2: 1,500 y's, a 300-orbit slice) | 3 | 29 |
+| c = 6 (599, 659) | 66 | 14 | 5 | 4 (659, see below) | 18 | 25 |
+| c = 8 (599, 719, 751, 823, 839, 863, 919, 991) | 81 | 10 | – | 0 | 29 | 42 |
+
+**659, c = 6 (h = 109 prime, G' = Q = Z₂ × Z₃).** Exact stage 1 in 347's border class
+(`logs/ab/small/s1_659c6_*.json`):
+
+| index s on Z₁₀₉ (f) | U | stage-1 y's | in the border class | stage 2 per y [E] (`ab_gauss.stage2_sampled`) |
+|---|---|---|---|---|
+| 27 (4) | 1 | 216 | 16 | H₂ 582, C₂ 522, **+60** (mahal 0.1) |
+| 27 (4) | −1 on Z₃ | 8 | 8 | H₂ 388, C₂ 566, −178 |
+| 36 (3) | 1 | 108 | 8 | H₂ 793, C₂ 523, **+270** (mahal 0.1) |
+| 36 (3) | −1 on Z₃ | 4 | 4 | H₂ 529, C₂ 398, +130 (mahal 8.4: far tail, unreliable) |
+
+- These are the first b ≥ 3 configurations of an open order with exactly verified, bordered stage-1 solutions and a
+  positive stage 2.
+- Their stage 2, though, is 3–4 times the 347 control's (C₂ 118). Compressing along Q gives a b = 0-type dual level
+  on Z₁₀₉ (target 4v·δ, since Σ_q T(q, t) = −4b + 4(c − 1) = 0 off 0). With 27–36 columns, that dual level is
+  as unlistable as 669's at s = 37. **Not tractable with the present pipeline.**
+
 **Survivors and stage-2 size [E]** (`logs/ab/rank_out.jsonl`).
 
 | v, c | slice | stage 1 [E] | stage 2 per y [E] | compare |
@@ -474,7 +500,8 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | 2 | 917 | g | Z₇ × Z₁₃₁, s = 26, U = ⟨2⟩ | 38,380 y's, +52 per y [E] | a two-step dual through the degree-13 subfield (§9.2) |
 | 3 | 955 | g | Z₅ × Z₁₉₁, s = 38, U = −1 | 274 y's, +113 per y [E] | as above, with the degree-19 subfield |
 | 4 | 669 | g | Z₃ × Z₂₂₃, s = 37 | 131,006 y's, +30.8 per y [E] | no subfield; a norm-equation approach, or c = 10 b ≥ 3 |
-| 5 | 659 | u/v/w, c = 4 | q = 41, s = 8 | passes A, B; stage 1 +55 [E]; C₂ ≈ 285 | exact stage 1 (c = 4 batch), then the level decomposition |
+| 5 | 659 | u/v/w, c = 4 | q = 41, s = 8 | passes A, B; stage 1 +55 [E]; C₂ ≈ 285 | exact stage 1 ran out of memory (4 GB); then the level decomposition |
+| 5′ | 659 | u/v/w, c = 6 | h = 109, s = 27 or 36 | **bordered stage-1 y's exist [M]**; stage 2 +60 to +270 [E], C₂ 400–520 | a two-level dual on Z₁₀₉ (27 = 3³, 36 = 2²·3², so the period field has subfields) |
 | 6 | 669, 789 | c = 10 | – | frames exist (Lemma 1) | corner-flatness search (§9.3) |
 | 7 | 917 | g | s = 10 or 13, U = 1 | passes A, B | a smarter stage 1 (22^7 letters); fibres need a split |
 | 8 | 863 | c = 6 | q = 13, s = 4, U = ⟨3⟩ on Z₁₁ | whole +37 [E] | exact bordered stage 1 |

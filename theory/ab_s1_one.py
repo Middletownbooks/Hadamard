@@ -30,7 +30,7 @@ if A.get('A'):
             ok = bool(BF.fits(z, tpl))
         if ok:
             nfit += 1
-            if len(ex) < 50: ex.append(Yb.tolist())
+            if len(ex) < (10 ** 7 if "--all" in a else 50): ex.append(Yb.tolist())
     rec.update(result=res, bordered=nfit, secs=round(time.time() - t0, 1))
     print(json.dumps({k: v for k, v in rec.items()}), flush=True)
     if out: json.dump(dict(rec, examples=ex), open(out, 'w'))
