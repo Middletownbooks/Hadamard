@@ -11,11 +11,31 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line and run status
 
-*Status: in progress (this section is updated as results arrive).*
+*Status at 07:50 UTC 2026-10-14; this section is updated as the run proceeds.*
 
-- **(A)** No H(2588) yet.
-- **(B)** Calibration runs on 4 joint solutions of y_B #0 are under way (§2).
-- **(C)** No obstruction found; every check so far is consistent with a non-empty cross level.
+1. **(A) No H(2588) yet.** The production run is under way (§4); no core has been found, against 0.18 expected so far.
+
+2. **(B) The cross level is calibrated, and its cost per core is inside the budget** [M speeds × E counts, the counts
+   exact]:
+   - **Validated exact solver.** Joint solution → per-layer lists → distinct σ (an additive base-3 code, P1) →
+     exact S-join (a new radix-partitioned kernel) → D-check of every S-solution (the even-lag identity, P2) → full
+     PAF. Checks: 12/12 full-size plants on real joint solutions; 3/3 reduced plants and 5/5 reduced real-S-solution
+     instances against brute forces that never use the pipeline's signatures; kernel self-tests 40/40 (×3) and 30/30.
+   - **Exact counts on 4 complete joint solutions** (§2): 421,570–536,655 S-solutions each, i.e. the distinct-σ
+     Gaussian is +1.5–1.7 bits off. The pair-level yield (D-candidates, what the D-check sees) is 2^28.0–2^29.1, i.e.
+     the pair-weighted Gaussian is 0.46–0.63 bit too high. The D-level matches its Gaussian within 0.01–0.19 bit on
+     every lag subset up to 22 bits; C(D|S) = 34.8 bits is used. No core in the 4 runs (0.056 expected).
+   - **Cost per core**: 2^41.0 emitted pairs, about **15 core-hours** per expected core with energy-class selection
+     (measured on production), and about **9 core-hours** with class-merged units (§3, §4). Without the levers it is
+     2^42.6 (about 40 core-hours).
+   - **Positive control**: none found yet. Every product-shape slice tested so far is exactly empty (§5), in line with
+     the earlier finding that none exists below 647; the search continues on one core. The calibration of §2 stands
+     on its own exact counts.
+
+3. **(C) No obstruction.** S-solutions exist in abundance and the D-target lies in the D-lattice of every calibrated
+   joint solution. The slice is not empty for any reason visible at these levels.
+
+**Run status** (`python3 theory/p647_tally.py`): see §4.3; cores found 0.
 
 ---
 
@@ -67,12 +87,20 @@ With a₀, a₁ the two layers at the 35 orbit representatives of Z₃₂₃, σ
 Lists → distinct σ (P1) → S-join → D-check of every S-solution (P2; a compiled 2+2 on 64-bit hashes over the product of
 its σ-preimages, every match re-checked exactly) → x_k on Z₆₄₆ → full cyclic PAF check.
 
-**Validation.**
-- Plants on real joint solutions (one random pair per block; targets = its own S and even-lag sums; the join run on
-  the plant's left-energy class): 2/2 so far, S-level and full level (j = 9902: 8,252 S-solutions in the class,
-  2.3·10⁷ D-candidates, 1 D-hit = the plant; j = 6526: 1,292, 575,903, 1).
-- Reduced instances against a brute force that never uses the pipeline's signatures (every kept pair → its sequence on
-  Z₆₄₆ → its full 646-lag PAF by FFT; a 2+2 dictionary on the exact 646-vector): 3/3 agree (`--brute`).
+**Validation [M].**
+- **Plants on real joint solutions** (`--plant`): one random (L0, L1) pair per block of a random joint solution of
+  y_B #0; targets = the plant's own S-sums and even-lag sums; the S-join is run on the plant's own left-energy class
+  (2.6·10⁸–1.6·10¹⁰ emitted pairs each). **12/12 recovered**, at the S-level and as the unique D-hit
+  (`logs/p647/plants_el10.log`: 10/10, joint solutions 2800, 3095, 5761, 12389, 5800, 692, …; and 2/2 earlier).
+- **Reduced plants against a brute force** (`--brute`): every kept pair → its sequence on Z₆₄₆ → its full 646-lag PAF
+  by FFT; all quadruples with the plant's PAF sum by a 2+2 dictionary on the exact vector: 3/3 agree.
+- **Real S-solutions against a brute force** (`--brute-real 4208 5`, `logs/p647/brute_real_j4208.log`): reduced lists
+  around 25 real S-solutions plus 40 random σ per block; the pipeline join (real target) returns exactly the members
+  of the complete S-solution set inside the lists, and so does an S-level brute force whose PAFs are computed from
+  scratch (direct shifts on Z₃₂₃); for 3 of them per trial the D-check agrees with a full 646-lag brute force over all
+  1.4k–3.2k candidates: **5/5**.
+- Kernels: `p647_join.py --selftest` 40/40 (16-byte), 40/40 (packed), 40/40 (optimised), 30/30 (multi-left/right),
+  `nd_ejoin.ejoin4` 40/40, all against a brute force; five kernel settings return identical hit sets on a real class.
 
 ---
 
@@ -186,3 +214,39 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
 4. List restriction by σ-multiplicity or energy (≤ 1.8×) and energy buckets (no gain over 1): not used.
 5. Kernel tuning (branch-free emission, bitset prefilter): no gain (22.5 against 22.4 ns/pair). The kernel is
    bound by the scatter's memory traffic.
+
+---
+
+## 4. Production [M] (`theory/p647_prod.py`, `theory/p647_tally.py`, `logs/p647/prod/`)
+
+### 4.1 Class-merged units [P, M]
+
+- **Bicliques [P].** A joint solution of y_B #0 is a choice (o₀, o₁, o₂, o₃) of one y_A option per block with
+  Σ_k sig₁A(o_k) = T₁A (the stage-1A S- and D-signatures). With left ℓ = (o₀, o₁) and right r = (o₂, o₃) this reads
+  sig(ℓ) + sig(r) = T₁A. So all lefts with one signature s and all rights with T₁A − s form a **complete biclique**:
+  every (ℓ, r) in it is a joint solution [M: all 1,230 components of the 20,928 joint solutions are complete; 1,152 of
+  them 4 × 4].
+- **Merged join.** One 2+2 join of (the union of the left pair sets) against (the union of the right pair sets) finds the
+  S-solutions of every (ℓ, r) of a biclique, and nothing else, at the cost of Σ|left| + Σ|right| emitted pairs
+  (`p647_join.join4m`: packed entries with 22-bit global indices; self-test 30/30 against a brute force over every
+  (ℓ, r); on a real 2 × 4 unit (σ with multiplicity ≥ 4, the two central classes) it returns exactly the union of the 8
+  separate joins, 342,800 S-solutions, in 616 s against 1,329 s; `theory/p647_valm.py`,
+  `logs/p647/validation_join4m_unit0.json`).
+- **Units.** A 4 × 4 biclique holds only 8 orbits (a stabiliser element maps it to itself), so a 2 × 4 sub-biclique
+  already covers them. 410 sub-bicliques (384 of shape 2 × 4, 26 of 4 × 4) cover all 3,488 orbits with 2,512 emitted
+  sides instead of 6,976: **2.78× less work** (`logs/p647/prod/units.json`, high-freedom units first).
+- **D-check** per (ℓ, r) with that joint solution's own four blocks; every D-hit is assembled on Z₆₄₆ and checked by
+  the full cyclic PAF; a core is written at once to `logs/p647/CORE_*.json`.
+
+### 4.2 Expected yield [E, calibrated]
+
+With the two central classes, a joint solution yields 2^28.2 D-candidates (H 79.4 class) or about 2^27.2 (78.x
+class), i.e. 2^−6.6 or 2^−7.6 expected cores. Over the 3,488 orbits of y_B #0: about 712 × 0.0101 + 2,776 × 0.0050 ≈
+**21 expected cores**, for about 2,512 sides × 1.1·10¹⁰ pairs ≈ 2.8·10¹³ emitted pairs (~190 core-hours). That is
+about **9 core-hours per expected core** in unit mode. y_B #0 is one of 495 y_B orbits.
+
+### 4.3 Run log
+
+- 06:45–07:37 UTC: per-joint-solution mode, three workers (`w*.jsonl`): 6 joint solutions finished (j = 1999, 1109,
+  420, 675, 2483, 78), each 2.2·10¹⁰ pairs, 2^28.15–2^28.23 D-candidates, 0 D-hits; 3 more partial.
+- From 07:37 UTC: unit mode (`u*.jsonl`), workers 0–2 (worker 3's core is lent to the control search, §5).
