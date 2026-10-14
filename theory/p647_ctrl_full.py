@@ -12,8 +12,11 @@ The Gaussian predictions are computed for every 10th joint solution (--gauss-eve
 (theory/p647_classes.py; the old stabiliser misses it, so its orbits come in groups of copies, 8 for 495 x83); the
 class maps go to logs/p647/control/classes_<tag>.json.  --maxpairs caps the joint test's pair lists per block (a y_B
 over the cap is recorded as undecided); an 'attempt' line before each joint test makes a run killed inside one
-(memory) retry that y_B once on restart and then skip it, recorded as undecided.
-usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N] [--gauss-every K] [--classes] [--maxpairs N]"""
+(memory) retry that y_B once on restart and then skip it, recorded as undecided.  The joint test itself runs in a
+child under an address-space cap (--mem GB, theory/p647_captest.py), so a y_B too big for memory is recorded as
+undecided instead of killing the run.
+usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N] [--gauss-every K] [--classes] [--maxpairs N]
+       [--mem GB]"""
 import sys, os, json, math, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -23,8 +26,10 @@ from nd_doubly import bordered_gs_cyclic
 import p647_common as PC
 import p647_cross as PX
 from p647_calib import gauss_preds
+from p647_captest import capped_test
 
-def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gauss_every=10, full_stab=False, maxpairs=6 * 10 ** 7):
+def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gauss_every=10, full_stab=False, maxpairs=6 * 10 ** 7,
+         mem_gb=6.0):
     d = os.path.join(PC.LOG, "control"); os.makedirs(d, exist_ok=True)
     tag = f"{m}_{mu}_{qA}_{qB}"; outp = os.path.join(d, f"full_{tag}.jsonl")
     X = Cross(m, mu, qA, qB); FA, FB = X.D.FA, X.D.FB
@@ -50,7 +55,7 @@ def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gaus
                 fo.flush(); done.add((ib, 'test')); continue
             if (ib, 'test') not in done:
                 fo.write(json.dumps(dict(yb=ib, attempt=1)) + "\n"); fo.flush()
-            t0 = time.time(); rec, sols = X.J.test(yb, maxsol=10 ** 7, maxpairs=maxpairs)
+            t0 = time.time(); status, rec, sols = capped_test(X, yb, maxsol=10 ** 7, maxpairs=maxpairs, mem_gb=mem_gb)
             if not sols:
                 if (ib, 'test') not in done:
                     extra = {} if rec.get('joint', 0) == 0 else dict(joint_total=None, note=rec.get('note'), pairs_needed=rec.get('pairs_needed'))
@@ -114,4 +119,6 @@ if __name__ == "__main__":
     mc = int(a[a.index("--max-cores") + 1]) if "--max-cores" in a else 10 ** 9
     ge = int(a[a.index("--gauss-every") + 1]) if "--gauss-every" in a else 10
     mp = int(a[a.index("--maxpairs") + 1]) if "--maxpairs" in a else 6 * 10 ** 7
-    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True), gauss_every=ge, full_stab="--classes" in a, maxpairs=mp)
+    mg = float(a[a.index("--mem") + 1]) if "--mem" in a else 6.0
+    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True), gauss_every=ge, full_stab="--classes" in a, maxpairs=mp,
+         mem_gb=mg)

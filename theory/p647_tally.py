@@ -118,6 +118,24 @@ def main(cdgs=34.8, as_json=False):
     best = {}
     for e, c in per_joint.items(): best[om[e]] = max(best.get(om[e], 0), c)
     old = sum(best.values())
+    # forecast for y_B #0 at the class mode's K energy classes: per H group (>= 79 / < 79) the mean D-candidates of
+    # the classes finished in class mode, times the classes of that group not yet finished there
+    Hc = CJ['H']; fin_c = set(); grp = {True: [], False: []}
+    for f in sorted(glob.glob(os.path.join(PROD, "c*.jsonl"))):
+        if f.endswith("_els.jsonl"): continue
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            fin_c.add(r['class'])
+            if not r.get('pre_done'): grp[Hc[r['class']] >= 79.0].append(r['cand'])
+    left = {g: sum(1 for c in range(CJ['classes']) if (Hc[c] >= 79.0) == g and c not in fin_c and per_class.get(c, 0) == 0)
+            for g in (True, False)}
+    fc = {}
+    for g, name in ((True, 'H79'), (False, 'H78')):
+        mean = sum(grp[g]) / len(grp[g]) if grp[g] else None
+        fc[name] = dict(finished_in_class_mode=len(grp[g]), mean_cand_log2=round(math.log2(mean), 3) if mean else None,
+                        untouched_classes=left[g], expected_remaining=round(left[g] * mean * 2.0 ** -cdgs, 3) if mean else None)
+    out['forecast_yb0'] = fc
     D = out.get('class_mode', {})
     secs = T['secs'] + U['secs'] + D.get('secs', 0.0)
     out['total'] = dict(classes_touched=len(per_class), classes=CJ['classes'], core_hours=round(secs / 3600, 2), cand_classes=cand,
@@ -129,7 +147,7 @@ def main(cdgs=34.8, as_json=False):
     else:
         for w, W in out['workers'].items(): print(w, json.dumps(W))
         print('units', json.dumps(U)); print('class_mode', json.dumps(out['class_mode'])); print('calibration', json.dumps(C))
-        print('deep_tail', json.dumps(out['deep_tail']))
+        print('deep_tail', json.dumps(out['deep_tail'])); print('forecast_yb0', json.dumps(out['forecast_yb0']))
         print('TOTAL', json.dumps(out['total']))
     return out
 

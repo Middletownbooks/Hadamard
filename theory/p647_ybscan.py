@@ -10,14 +10,16 @@ inside the test twice (an 'attempt' line is written first; one retry), is record
 A class's full D-candidate yield is about 2^(H - 50.3) (calibration, report section 2.2), so the H histogram ranks the
 y_B orbits for production.
 Output: one line per y_B in logs/p647/ybscan.jsonl.
-usage: python3 theory/p647_ybscan.py [--from K] [--to K] [--maxpairs N]"""
+The joint test runs in a child under an address-space cap (--mem GB, theory/p647_captest.py).
+usage: python3 theory/p647_ybscan.py [--from K] [--to K] [--maxpairs N] [--mem GB]"""
 import sys, os, json, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import p647_common as PC
 import p647_classes as PCL
+from p647_captest import capped_test
 
-def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print):
+def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print, mem_gb=6.0):
     X, ys = PC.load_setup(); k1 = len(ys) - 1 if k1 is None else k1
     outp = os.path.join(PC.LOG, "ybscan.jsonl")
     done = set(); attempted = {}
@@ -36,7 +38,7 @@ def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print):
                 fo.flush(); continue
             fo.write(json.dumps(dict(k=k, attempt=1)) + "\n"); fo.flush()
             t0 = time.time()
-            rec, sols = X.J.test(ys[k], maxsol=10 ** 7, maxpairs=maxpairs)
+            status, rec, sols = capped_test(X, ys[k], maxsol=10 ** 7, maxpairs=maxpairs, mem_gb=mem_gb)
             out = dict(k=k, joint=rec.get('joint'), S_solutions=rec.get('S_solutions'), pairs=rec.get('pairs'),
                        layer_options=rec.get('layer_options'), note=rec.get('note'), pairs_needed=rec.get('pairs_needed'),
                        secs=round(time.time() - t0, 1))
@@ -59,4 +61,5 @@ def main(k0=1, k1=None, maxpairs=4 * 10 ** 6, log=print):
 if __name__ == "__main__":
     a = sys.argv[1:]
     g = lambda f, d: int(a[a.index(f) + 1]) if f in a else d
-    main(g("--from", 1), g("--to", None), g("--maxpairs", 4 * 10 ** 6), log=lambda s: print(s, flush=True))
+    main(g("--from", 1), g("--to", None), g("--maxpairs", 4 * 10 ** 6), log=lambda s: print(s, flush=True),
+         mem_gb=float(a[a.index("--mem") + 1]) if "--mem" in a else 6.0)
