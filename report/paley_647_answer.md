@@ -11,7 +11,7 @@ and calibration named); [L] literature recollection, unchecked.
 
 ## 0. Bottom line and run status
 
-*Status at 12:40 UTC 2026-10-14.*
+*Final status at 12:45 UTC 2026-10-14: H(2588) found and verified; production stopped (§4.3).*
 
 **(A) H(2588) is constructed and verified** [M] (§4.4, `pub/H2588/`).
 - Four ±1 sequences on cyclic Z₆₄₆, each invariant under ×353, with Σ_k PAF_k = (2584, −4, …, −4) and row sums
@@ -243,18 +243,19 @@ Gaussian fitted to 200,000 sampled residuals of the same candidates:
     - rank 8: 9 against 5.4;
     - rank 9: 0 against 0.8.
   - In class mode no symmetry multiplies hits (the stabiliser acts freely, so none fixes a joint solution).
-- **Drift with depth** (`p647_tally.py`, pooled with the calibration; 11:50 UTC, 2^32.7 production candidates).
-  The excess log₂(expected / hits) over the calibration Gaussian, ± 1σ (Poisson):
+- **Drift with depth** (`p647_tally.py`, final at 12:45 UTC: 2^33.51 production candidates pooled with the
+  calibration). The excess log₂(expected / hits) over the calibration Gaussian, ± 1σ (Poisson):
 
-  | rank | 4 | 5 | 6 | 7 | 8 | 9 |
-  |---|---|---|---|---|---|---|
-  | pooled hits / expected | 252,314 / 252,838 | 19,927 / 20,707 | 2,354 / 2,500 | 193 / 227 | 33 / 41.3 | 3 / 5.9 |
-  | excess bits | 0.00 | 0.055 ± 0.01 | 0.09 ± 0.03 | 0.24 ± 0.10 | 0.32 ± 0.25 | 1.0 (+1.2, −0.7) |
+  | rank | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 (all) |
+  |---|---|---|---|---|---|---|---|---|
+  | pooled hits / expected | 405,091 / 404,415 | 31,878 / 33,121 | 3,760 / 3,999 | 314 / 363 | 50 / 66.1 | 5 / 9.5 | 2 / 1.53 | 1 / 0.46 |
+  | excess bits | 0.00 | 0.055 ± 0.008 | 0.09 ± 0.02 | 0.21 ± 0.08 | 0.40 ± 0.2 | 0.9 (+0.9, −0.5) | −0.4 | −1.1 |
 
-  The deep D-level is a little harder than the Gaussian, by about 0.05–0.1 bit per added rank. Extrapolated to
-  rank 11, **C(D|S) ≈ 35.1–35.4 rather than 34.8**, i.e. expected cores × 0.66–0.81. The expected-core figures
-  below keep 34.8 as the central fit and should be read with this factor. The production run tightens it as it
-  goes: it adds about 2^28.2 candidates per class.
+  - At ranks 5–9 the deep D-level is a little harder than the Gaussian, by about 0.05–0.1 bit per added rank.
+    Extrapolated to rank 11, C(D|S) ≈ 35.1–35.4 rather than 34.8, i.e. expected cores × 0.66–0.81.
+  - Ranks 10 and 11, with 2 and 1 hits (the last being the H(2588) core), sit on the other side.
+  - So C(D|S) = 34.8 + (0 to 0.6) bit is what the data allow. The expected-core figures keep 34.8 as the central
+    fit.
 
 ### 2.4 Energy structure and class selection [M] (`theory/p647_restrict.py`, `theory/p647_buckets.py`)
 
@@ -376,12 +377,9 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
 
 ### 4.2a Waiting time
 
-- In class mode every class is joined once, so a core would be found once. The rank-7/8 "clusters" seen in unit
-  mode were the 8 copies of one class (§2.3).
-- On four workers the 89 high-freedom classes take about 4–5 hours (0.92 expected cores) and the other 347 about
-  14–15 hours (1.8).
-- The chance of no core in y_B #0 is e^−2.7 ≈ 7% if C(D|S) = 34.8 is right. Its last ~4 bits are extrapolated
-  (§2.3).
+- In class mode every class is joined once, so a core is found once. The rank-7/8 "clusters" seen in unit mode
+  were the 8 copies of one class (§2.3).
+- The core came after 62 classes and 0.67 expected cores: about 48% probability at C(D|S) = 34.8.
 
 ### 4.3 Run log
 
@@ -418,6 +416,13 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   - `pub/H2588/` built; the standalone `verify.py` passes. Committed and pushed at once.
 - **Tally at 12:37 UTC** (counted once per class): 61 classes touched, 2^34.19 distinct D-candidates,
   **0.65 expected cores, 1 found**, 16.4 core-hours.
+- **12:39 UTC: production stopped** (`logs/p647/prod/STOP`; each worker finished its current energy class,
+  12:39–12:43). The y_B scan and the size precheck were stopped by PID; both are restart-safe.
+  - Final tally: 62 classes touched, 2^34.23 distinct D-candidates, 0.67 expected cores, 1 found, 16.8 core-hours.
+  - Classes 244, 274, 271 and 230 of y_B #0 are claimed with one energy class done. A restarted worker finishes its
+    own claims first.
+- **12:43 UTC:** `theory/p647_core_redo.py` re-derived the core from scratch: joint solution 1508, energy class 317,
+  172,144 S-solutions, 160,620,448 D-candidates, 1 D-hit, identical to the recorded core (307 s).
 - **Tally at 11:40 UTC** (counted once per class): 47 classes touched (15 finished in class mode, 2^28.2 candidates
   each), 2^33.77 distinct D-candidates, **0.49 expected cores, 0 found**, 13.0 core-hours.
 - **Tally at 10:50 UTC** (counted once per class):
@@ -571,6 +576,9 @@ python3 theory/p647_classes.py --check 3                         # true symmetry
 python3 theory/p647_prod.py --classes --worker W --workers 4 --els 2   # production, W = 0..3 (restart-safe; touch logs/p647/prod/STOP)
 python3 theory/p647_tally.py                                     # status, once per class: expected cores, live deep tail, cores found
 python3 theory/p647_finish.py logs/p647/CORE_xxx.json            # a core -> data/, verify_h2588.py, pub/H2588/
+python3 theory/p647_core_redo.py                                 # re-derive the H(2588) core from scratch (~5 min)
+(cd pub/H2588 && python3 verify.py)                              # standalone check of the published H(2588)
+python3 scripts/verify_h2588.py data/core_v647_b1_p647_c2_j1508_0.txt /tmp/H.npz   # SHA-256 d301ed45...
 python3 scripts/verify_h2588.py data/core_v523_b1_q523_p523f_w0.txt /tmp/H2092.npz   # verifier test: SHA-256 9594b975...
 python3 theory/p647_control.py --list 700; python3 theory/p647_ctrl_screen.py 700  # product-shape slices, stage-1 screen
 python3 theory/p647_control.py 70 9 5 7; python3 theory/p647_control.py 110 9 11 5  # 71 and 111: joint stage empty
@@ -584,25 +592,19 @@ python3 theory/p647_perS_rank.py                                 # per-S-solutio
 
 ## 7. Hand-off
 
-- **Running** (started by this session, restart-safe, resume by the same command):
-  - multi-mode workers 0–3: `theory/p647_prod.py --multi --worker W --els 2 >> logs/p647/prod/run_mW.log`.
-    - They claim classes from `logs/p647/prod/queue_multi.json` in H order.
-    - Rebuild the queue when the y_B scan adds orbits: `theory/p647_prod.py --build-queue --yb 0,9,13,… --els 2`.
-      The workers re-read it before every claim.
-  - the capped 647 y_B joint scan (`theory/p647_ybscan.py --ks …`, `logs/p647/ybscan.log`), on the orbits whose
-    size precheck (`theory/p647_jsize.py 646 353 17 19 jsize_647`, still running at low priority) is at most 2^27;
-  - a paused (SIGSTOP) stage-1 screen of the product slices (`p647_ctrl_screen.py`, PID in the session log).
-- **On a core:** `python3 theory/p647_finish.py logs/p647/CORE_*.json`.
-  - It writes `data/core_v647_b1_p647_<tag>.txt` and checks it with `nd_doubly.bordered_gs_cyclic`.
-  - It then checks it with the independent `scripts/verify_h2588.py` (`data/H2588_packed.npz`, SHA-256 printed).
-  - It builds `pub/H2588/`: sequences, border, normalized matrix, verify.py. It was dry-run on the H(2092) core
-    (SHA-256 reproduced).
-- **Next:**
-  - add every new scanned y_B to the queue;
-  - when the queue's H falls below about 77.5, run the next two energy classes of the best classes (`--els 4`, its
-    own queue and claims) rather than lower-H classes;
-  - orbits with joint tests above 2^27 need a joint test that does not materialise the joint-level S-solutions
-    (`nd_joint_exhaust.JointTest.test` does; y_B #1 needed more than 15 GB).
+- **Result:** H(2588) in `pub/H2588/` (sequences, border, normalized matrix, standalone `verify.py`), with
+  `data/core_v647_b1_p647_c2_j1508_0.txt` and `data/H2588_packed.npz` (SHA-256 `d301ed45…af5a6cb`).
+- **Nothing is running.** Production was stopped after the core (12:39 UTC). To resume it (more cores, or more
+  deep-tail calibration):
+  - `rm logs/p647/prod/STOP`;
+  - `python3 theory/p647_prod.py --multi --worker W --els 2 >> logs/p647/prod/run_mW.log`, W = 0..3;
+  - the queue `logs/p647/prod/queue_multi.json` holds the 3,896 classes of y_B #0, #9, #13 and #10, by H. Rebuild
+    it with `--build-queue --yb … --els 2` after scanning more y_B orbits (`theory/p647_ybscan.py --ks …`, smallest
+    first by `theory/p647_jsize.py`).
+- **On a further core:** `python3 theory/p647_finish.py logs/p647/CORE_*.json --tag <tag>`. It writes
+  `data/H2588_packed.npz` and `pub/H2588/` at fixed paths, so keep the first ones elsewhere before running it.
+- **Orbits with joint tests above 2^27** need a joint test that does not materialise the joint-level S-solutions
+  (`nd_joint_exhaust.JointTest.test` does; y_B #1 needed more than 15 GB).
 - **Any new deduplication** must use the full group (`p647_classes.group_full`: per-block reversal included). Check it
   on real data: members of one class must give identical counts.
 - **Kill only by explicit PID.** `pgrep -f` / `pkill -f` patterns can match the calling shell.

@@ -1,3 +1,4 @@
 {"stage": "start_multi", "worker": 0, "K": 2}
 {"stage": "class_done", "worker": 0, "j": 1272, "rule": "none|els2", "els": [317, 341], "centre": 325.0, "kept": [212180, 229184, 274204, 309771], "N": [212180, 229184, 274204, 309771], "work_all": 128568744258, "work": 22921740910, "work_log2": 34.416, "S": 332428, "cand": 311548099, "cand_log2": 28.215, "hits": 0, "cores": 0, "join_secs": 681.1, "wall_secs": 842.1, "class": 152, "yb": 0, "H": 79.39, "pre_done": []}
 {"stage": "class_done", "worker": 0, "j": 1492, "rule": "none|els2", "els": [317, 341], "centre": 325.0, "kept": [212180, 229184, 274204, 309771], "N": [212180, 229184, 274204, 309771], "work_all": 128568744258, "work": 22921740910, "work_log2": 34.416, "S": 323583, "cand": 305614039, "cand_log2": 28.187, "hits": 0, "cores": 0, "join_secs": 559.4, "wall_secs": 655.2, "class": 179, "yb": 0, "H": 79.39, "pre_done": [319]}
+{"stage": "stopped", "worker": 0, "yb": 0, "cls": 244}
