@@ -44,6 +44,15 @@ and calibration named); [L] literature recollection, unchecked.
    - **Every even c with a known H(2c)**: a frame exists, inside H₂ ⊗ H(2c) (§3.1) [P].
    - What remains for c ≥ 10 is not the frame but the forced corner. The corner is ±1 exactly when the compressed
      core, restricted to the block-balanced space, has a flat matrix in the two frames (§3.1).
+   - **c = 10 (669, 789) [P, M] (§3.2).**
+     - 359's c = 8 border is "Singer-type": monomial compressions and an order-7 automorphism.
+     - With one constant compression block the c = 10 core is fixed by all of Sym(Z₁₀), so the same ansatz exists with a
+       group of order 9.
+     - An exact search (Z₉ and Z₃ × Z₃, all 5,198 first-blocks, 811,680 frame × Q corner joins) finds **no c = 10
+       template**.
+     - The same search finds c = 4, 6, 8 templates in seconds. That gives new border classes for c = 4 and c = 6, fitting
+       every applicable open order.
+     - c = 10 borders with smaller or no symmetry remain open.
 5. **(C) Exact obstructions [M]** (§7). Among them:
    - b = 0:
      - these GP slices are empty: 537, 669 and 789 at every s ≤ 6; 933 at s = 2, 5; 917 (q = 131) at s = 2, 5, and at
@@ -298,6 +307,40 @@ K = [e ⊗ 1 | circ(f)], Kc = [e′ ⊗ 1 | circ(g)]: f, g are 4 × 4 arrays of 
 - Each maps to the standard 347 layout over Z₂³ with z_k = a_k·δ₀ and passes `forced_corner` exactly
   (`logs/ab/singer/c8_control/*_layout.npz`).
 - So the method rediscovers c = 8 borders from nothing, in the plain layout rather than 359's twisted one.
+
+**c = 10 [M]: no Singer-type border.**
+Profile a = (4, 4, 2, 0); Γ = Z₉ and Γ = Z₃ × Z₃, the two groups of order 9. Both acting regularly on Q∖{0} means
+fixing one point and transitive on the other nine (`logs/ab/singer/c10_*.jsonl`).
+
+| Γ | first-blocks | Kc frames processed | (frame, Q) corner joins | templates |
+|---|---|---|---|---|
+| Z₉ | 4,518 (all) | 28,942 | 694,608 | **0** |
+| Z₃ × Z₃ | 680 (all) | 4,878 | 117,072 | **0** |
+
+- Frames exist in abundance, and what fails is always the corner:
+  - Z₉: 78,084 frame instances through the first-blocks, with 1,134 to 4,626 orthogonal partners per first-block
+    (249 first-blocks have no frame);
+  - Z₃ × Z₃: 14,915 frame instances, with 1,944 to 3,690 partners per first-block.
+- Spike positions do not matter. With z_k = s_k + a_k·δ_{q_k}, every cycle of the nonzero-block graph composes to the
+  identity: e.g. P_{q₀} R_{q₁} P_{q₀} = R_{q₁} and R_{−q₁} R_{−q₂} R_{q₁} = R_{q₂}, with P translations and R reflections
+  of Q. So Cb is again Q_S ⊗ I in Singer coordinates. And Q_S ranges over the whole (single) two-sided class, so every
+  placement of the zero block is covered.
+- Order 9 forces monomial compressions. Let a block-preserving automorphism of order 9 act on each core block as a
+  9-cycle or as regular Z₃ × Z₃, fixing one point p; frames require exactly one fixed point. Putting g = p in
+  z(π′h − πg) = z(h − g), or in its g + h analogue, shows that every z_k is constant on nine points of Q, so z_k is monomial.
+- **So no c = 10 border (any compressions) has a block-preserving automorphism group of order 9 acting regularly on
+  Q∖{0} in every core block [M].** This includes every template invariant under a larger group containing such a
+  subgroup, e.g. AGL(1, 9), PSL(2, 9) ≅ A₆ and PΓL(2, 9) on the ten points of PG(1, 9).
+- Trend: Singer borders are plentiful at c = 4 and 6, rare at c = 8 (two in the first 40 of 185 first-blocks), and
+  absent at c = 10.
+- The cyclic orders 3, 5, 7 are primes, and 7 = 2³ − 1 carries a Singer difference set. Order 9 is neither prime nor of the
+  form 2^m − 1, and the c = 8 templates are built from Legendre(7) and an interval (above).
+
+What is left open for c = 10:
+- smaller symmetry groups, e.g. Z₃ acting as three 3-cycles: 12 orbits of size 3, so frames are 12-cliques and the
+  method above does not scale;
+- non-monomial compressions (h = 1: the SDS profiles (5,4,2,2) and (4,4,4,1), i.e. H(76) completions; even h: integer
+  u with Σ_k |û_k(ψ)|² = 9), which have no symmetry beyond the multipliers and translation by 5 of Z₁₀.
 
 **c = 4 and c = 6 [M]: Singer borders are plentiful.**
 - c = 6, Γ = Z₅, a = (4, 2, 0, 0): 68 templates from 10 of the 15 first-blocks (30 s).
@@ -647,7 +690,7 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | 4 | 669 | g | Z₃ × Z₂₂₃, s = 37 | 131,006 y's, +30.8 per y [E] | no subfield; a norm-equation approach, or c = 10 b ≥ 3 |
 | 5 | 659 | u/v/w, c = 4 | q = 41, s = 8 | passes A, B; stage 1 +55 [E]; C₂ ≈ 285 | exact stage 1 ran out of memory (4 GB); then the level decomposition |
 | 5′ | 659 | u/v/w, c = 6 | h = 109, s = 27 or 36 | **bordered stage-1 y's exist [M]**; stage 2 +60 to +270 [E], C₂ 400–520 | a two-level dual on Z₁₀₉ (27 = 3³, 36 = 2²·3², so the period field has subfields) |
-| 6 | 669, 789 | c = 10 | – | frames exist (Lemma 1) | corner-flatness search (§9.3) |
+| 6 | 669, 789 | c = 10 | – | frames exist (Lemma 1); **no border with an order-9 symmetry [M]** (§3.2) | borders with smaller symmetry or non-monomial compressions (§9.3) |
 | 7 | 917 | g | s = 10 or 13, U = 1 | passes A, B | a smarter stage 1 (22^7 letters); fibres need a split |
 | 8 | 863 | c = 6 | q = 13, s = 4, U = ⟨3⟩ on Z₁₁ | whole +37 [E] | exact bordered stage 1 |
 | 9 | 917 | c = 6 | q = 19, s = 6, −1 on Z₃ and Z₈ (347's shape with H' = Z₈) | screen A passes (29 row quadruples); whole +133 [E] | exact bordered stage 1 or screen B: 2^26 α-vectors need a streaming residue join (this run ran out of memory) |
@@ -683,17 +726,22 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
    - Then the split T_j − T_{j'} meets the imaginary part.
    - First computation: the exact list of 13-column sub-level vectors per block under the spectral bound, and the
      Gaussian of the two dual sub-levels, calibrated on the same shape at v = 7·q for small q ≡ 1 (mod 26).
-3. **c = 10 corner flatness (669, 789).**
-   - Enumerate the Q-level solutions z on Z₁₀ and Z₂ × Z₅ for h = 66 and 78 (screen A's DP lists them).
-   - For each z, search frames K, Kc from H₂ ⊗ H(20) (Lemma 1), with block-internal signed column permutations, for a
-     flat corner. Lemma 2 reduces this to ±1-ness of K = −C·Kc·Cb/(4b).
-   - A hit gives a c = 10 template, and §3's transfer then gives both orders.
-   - [P] Structural constraint for c = 10: √(4b) = 6 is an integer, so Cb|_V = 6·O with O a rational orthogonal map.
-     O cannot act as a signed permutation of coordinates, since the corner entries would then be ±40/6. The
-     template must make O "flat" between the two frames: they must be mutually unbiased.
-   - Equivalently, at h = 1 a template is an H(76) containing the 40 × 76 partial matrix [Kcᵀ | GS(z)],
-     z ∈ {±1}^{Z₁₀} with Σ_k PAF = 4 off 0. That is a completion problem for a partial Hadamard matrix; 76 = 2(37 + 1)
-     also suggests looking inside Paley II H(76).
+3. **c = 10 borders (669, 789).** Done (§3.2): no border with a block-preserving order-9 symmetry, whatever the
+   compressions. What is left:
+   - [P] Structural constraint: √(4b) = 6 is an integer, so Cb|_V = 6·O with O a rational orthogonal map. A template
+     is a pair of ±1 frames that are *mutually unbiased* after O: |cos| = 1/6 between all 36 × 36 pairs (§3.2's MUB
+     form, here with one basis rotated by O).
+   - Smaller symmetry. Z₃ acting as three 3-cycles plus a fixed point is compatible with frames (trace 0): 12 regular
+     orbits of size 3. Its frames are 12-cliques, so §3.2's row-block method needs a different way to enumerate them
+     (e.g. per-character Fourier blocks: V = V₁ ⊕ V_ω ⊕ V_ω̄, each of dimension 12).
+   - Non-monomial compressions. At h = 1 a template is an H(76) containing the 40 × 76 partial matrix [Kcᵀ | GS(z)]
+     (z an SDS of profile (5,4,2,2) or (4,4,4,1)); at even h, u is integral with Σ_k |û_k(ψ)|² = 9. Douglas–Rachford
+     and CP-SAT both failed the c = 6 and c = 8 controls (§3.2), so a new method is needed.
+   - If a border is found, its row equations are solvable at both orders: for the monomial profile, 192 solutions at
+     669 and 120 at 789 (e.g. row sums (0, 16, 22, 44) and (0, 2, 4, 56)). The core search is then a c = 10 slice;
+     669 with p = 11 has n′ = 60 (`report/unattempted_2000_3000.md`), far beyond the annealing wall.
+   - Side computation running: c = 12 (b = 11 prime, profile (6, 2, 2, 0), Γ = Z₁₁; 75,573 first-blocks). c = 12 is an
+     option at 599, 659, 719, 839, 863, 947, 971 (not 669, 789).
 4. **659, c = 4.** Finish exact stage 1 (`logs/ab/c4_batch.jsonl`). Then compute the level decomposition (H_S, C_S,
    h_D, C(D|S)) with `theory/ab_levels.py` on its y's, and cost the hierarchical solver.
 
@@ -725,4 +773,9 @@ python3 theory/ab_paley_c4.py [--c 6] --max-orbits 16          # the Paley-type 
 python3 theory/ab_border_c4.py                                # c = 4 border builder self-test (H(1916) from 479's core)
 python3 scripts/make_bundle_bge3.py CORE.npy MODS NQ LAYOUT.json K.npy KC.npy C.npy OUTDIR   # b >= 3 bundle writer
 python3 theory/ab_border10.py --c 6 --published               # corner-flatness search formulation, validated on 347
+python3 theory/ab_singer.py --c 8 --group cyc --a 2,2,2,4 --max-first 40   # Singer borders, c = 8 control (seconds)
+python3 theory/ab_singer.py --c 6 --group cyc --a 4,2,0,0                  # c = 6 (68 templates), likewise --c 4 --a 2,2,2,0
+python3 theory/ab_singer.py --c 10 --group cyc --a 4,4,2,0 --part i/3      # c = 10, Z9: all 4,518 first-blocks, no template
+python3 theory/ab_singer.py --c 10 --group z3z3 --a 4,4,2,0                # c = 10, Z3 x Z3: all 680 first-blocks, no template
+python3 theory/ab_singer_layout.py logs/ab/singer/template_c6_cyc_a4200_f0_1.npz --Q 6   # map to the 347 layout, check
 ```
