@@ -8,7 +8,12 @@ D-check, full PAF check).  Next to every exact count the Gaussian predictions of
 verified (theory/nd_doubly.bordered_gs_cyclic, then scripts/verify_h2588.py, which works for any such core).
 Restart-safe: one JSON line per processed joint solution in logs/p647/control/full_<tag>.jsonl.
 The Gaussian predictions are computed for every 10th joint solution (--gauss-every); the exact counts for all.
-usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N] [--gauss-every K]"""
+--classes (from 2026-10-14 10:50): dedupe by the full stabiliser of y_B, per-block reversal included
+(theory/p647_classes.py; the old stabiliser misses it, so its orbits come in groups of copies, 8 for 495 x83); the
+class maps go to logs/p647/control/classes_<tag>.json.  --maxpairs caps the joint test's pair lists per block (a y_B
+over the cap is recorded as undecided); an 'attempt' line before each joint test makes a run killed inside one
+(memory) skip that y_B on restart, recorded as undecided.
+usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N] [--gauss-every K] [--classes] [--maxpairs N]"""
 import sys, os, json, math, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -19,31 +24,48 @@ import p647_common as PC
 import p647_cross as PX
 from p647_calib import gauss_preds
 
-def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gauss_every=10):
+def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gauss_every=10, full_stab=False, maxpairs=6 * 10 ** 7):
     d = os.path.join(PC.LOG, "control"); os.makedirs(d, exist_ok=True)
     tag = f"{m}_{mu}_{qA}_{qB}"; outp = os.path.join(d, f"full_{tag}.jsonl")
     X = Cross(m, mu, qA, qB); FA, FB = X.D.FA, X.D.FB
     ys = enumerate_yB(m, mu, qA, qB, os.path.join(d, f"enum_{tag}.jsonl"), 1, log=lambda s: None)
     reps, oi, maps = orbit_maps(X); NH = PX.lag_tensor(X, oi)
-    done = set(); ncores = 0
+    done = set(); ncores = 0; attempted = set()
     if os.path.exists(outp):
         for line in open(outp):
             r = json.loads(line)
             if 'jsol' in r: done.add((r['yb'], r['jsol'])); ncores += r.get('cores', 0)
             if 'joint_total' in r: done.add((r['yb'], 'test'))
+            if 'attempt' in r: attempted.add(r['yb'])
+    cpath = os.path.join(d, f"classes_{tag}.json")
+    cmaps = json.load(open(cpath)) if os.path.exists(cpath) else {}
     log(json.dumps(dict(stage="start", m=m, mu=mu, qA=qA, qB=qB, yB_orbits=len(ys), done=len(done), cores_so_far=ncores)))
     order = range(len(ys)) if yb_list is None else yb_list
     T = dict(joint=0, S=0, pred_S=0.0, Spairs=0, pred_Spairs=0.0, pred_cores=0.0, pred_cores_cal=0.0, cores=0)
     with open(outp, "a") as fo:
         for ib in order:
             yb = ys[ib]
-            t0 = time.time(); rec, sols = X.J.test(yb, maxsol=10 ** 7)
+            if ib in attempted and (ib, 'test') not in done:
+                fo.write(json.dumps(dict(yb=ib, joint_total=None, note="run killed inside the joint test (memory); undecided")) + "\n")
+                fo.flush(); done.add((ib, 'test')); continue
+            if (ib, 'test') not in done:
+                fo.write(json.dumps(dict(yb=ib, attempt=1)) + "\n"); fo.flush()
+            t0 = time.time(); rec, sols = X.J.test(yb, maxsol=10 ** 7, maxpairs=maxpairs)
             if not sols:
                 if (ib, 'test') not in done:
-                    fo.write(json.dumps(dict(yb=ib, joint_total=0, orbits=0, secs=round(time.time() - t0, 2))) + "\n"); fo.flush()
+                    extra = {} if rec.get('joint', 0) == 0 else dict(joint_total=None, note=rec.get('note'), pairs_needed=rec.get('pairs_needed'))
+                    fo.write(json.dumps(dict(dict(yb=ib, joint_total=0, orbits=0, secs=round(time.time() - t0, 2)), **extra)) + "\n"); fo.flush()
                 continue
-            stab = PC.stabiliser_on(yb, m, FB, FA)
-            keys, rep_idx = PC.canonical_joint(X, sols, stab, FA)
+            if full_stab:
+                import p647_classes as PCL
+                stab = PCL.stabiliser_full(yb, FB, FA, m)
+                cls, rep_idx = PCL.classes(X, sols, stab, FA)
+                if str(ib) not in cmaps:
+                    cmaps[str(ib)] = dict(class_of=cls, reps=rep_idx, stabiliser=len(stab))
+                    json.dump(cmaps, open(cpath + ".tmp", "w")); os.replace(cpath + ".tmp", cpath)
+            else:
+                stab = PC.stabiliser_on(yb, m, FB, FA)
+                keys, rep_idx = PC.canonical_joint(X, sols, stab, FA)
             if (ib, 'test') not in done:
                 fo.write(json.dumps(dict(yb=ib, joint_total=len(sols), stabiliser=len(stab), orbits=len(rep_idx),
                                          secs=round(time.time() - t0, 2))) + "\n"); fo.flush()
@@ -91,4 +113,5 @@ if __name__ == "__main__":
     ybl = [int(x) for x in a[a.index("--yb") + 1].split(",")] if "--yb" in a else None
     mc = int(a[a.index("--max-cores") + 1]) if "--max-cores" in a else 10 ** 9
     ge = int(a[a.index("--gauss-every") + 1]) if "--gauss-every" in a else 10
-    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True), gauss_every=ge)
+    mp = int(a[a.index("--maxpairs") + 1]) if "--maxpairs" in a else 6 * 10 ** 7
+    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True), gauss_every=ge, full_stab="--classes" in a, maxpairs=mp)

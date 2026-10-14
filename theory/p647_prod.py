@@ -14,10 +14,16 @@ y_B #0 under its stabiliser, best predicted first) at positions i = w (mod W).  
 A worker never adopts another worker's checkpoints.  Stop: touch logs/p647/prod/STOP (checked between classes).
 Class selection (--els K): only the K left-energy classes nearest the pair-weighted energy centre are joined
 (section 3 of the report: K = 2 keeps about 55% of the D-candidates for 20% of the work).
-Unit mode (--units): the class-merged sub-bicliques of logs/p647/prod/units.json (all lefts of a unit complete all its
-rights at stage 1A, so one join4m covers every (left, right) joint solution; 410 units cover the 3,488 orbits with
-2.78x fewer emitted sides than one join per orbit); checkpoints u{w}_els.jsonl and u{w}.jsonl.
-usage: python3 theory/p647_prod.py --worker W --workers N [--els K] [--kernel p|q] [--rule none|score:t:beta] [--queue FILE]
+Unit mode (--units, retired 10:40 UTC 2026-10-14): the class-merged sub-bicliques of logs/p647/prod/units.json (one
+join4m covers every (left, right) joint solution of a unit).  The joint solutions of a unit turned out to be images of
+each other under per-block reversal, a symmetry missing from the old stabiliser (theory/p647_classes.py), so a unit
+holds 1 (or 2) true classes and its 6-8 emitted sides buy what one 2-sided join of one member buys.
+Class mode (--classes, from 10:40 UTC): one joint solution per true symmetry class (436 classes for y_B #0,
+logs/p647/joint_yb0_classes.json), the K central classes, skipping energy classes any earlier run already joined for
+that symmetry class; queue logs/p647/prod/queue_classes.json; checkpoints c{w}_els.jsonl (with the live deep-tail
+counts) and c{w}.jsonl.
+usage: python3 theory/p647_prod.py --classes --worker W --workers N --els 2 [--busy-units 13,14,16]
+       python3 theory/p647_prod.py --worker W --workers N [--els K] [--kernel p|q] [--rule none|score:t:beta] [--queue FILE]
        python3 theory/p647_prod.py --units --worker W --workers N --els 2"""
 import sys, os, json, math, time
 import numpy as np
@@ -54,9 +60,9 @@ def central_els(blocks, Ssig, order, K, E0=645):
     pick = sorted(live, key=lambda e: abs(e - centre))[:K]
     return sorted(int(e) for e in pick), round(centre, 1)
 
-def run_one(X, yb, sol, j, w, rule, maps, NH, oi, log, K=0, kernel="p"):
-    elp = os.path.join(PROD, f"w{w}_els.jsonl")
-    done = {}
+def run_one(X, yb, sol, j, w, rule, maps, NH, oi, log, K=0, kernel="p", prefix="w", pre_done=(), nested=False):
+    elp = os.path.join(PROD, f"{prefix}{w}_els.jsonl")
+    done = {EL: None for EL in pre_done}
     if os.path.exists(elp):
         for line in open(elp):
             try:
@@ -90,13 +96,17 @@ def run_one(X, yb, sol, j, w, rule, maps, NH, oi, log, K=0, kernel="p"):
             xs = P.assemble(X, blocks, h[1:])
             ok = P.is_core(xs)
             if ok:
-                path = os.path.join(PC.LOG, f"CORE_w{w}_j{j}_{len(found_cores)}.json")
+                path = os.path.join(PC.LOG, f"CORE_{prefix}{w}_j{j}_{len(found_cores)}.json")
                 json.dump(dict(j=j, EL=EL, yb=[list(map(int, y)) for y in yb], ya=X.J.ya_full(sol['layers']),
                                pairs=[int(v) for v in h[1:]], core=xs.tolist()), open(path, "w"))
                 found_cores.append(path)
                 log(json.dumps(dict(stage="CORE", worker=w, j=j, EL=EL, path=path)))
-        fo.write(json.dumps(dict(j=j, rule=rule, EL=EL, left=d.get('left', 0), right=d.get('right', 0), S=len(sols),
-                                 cand=int(cand.sum()), hits=int(len(hits)), secs=d.get('secs', 0.0))) + "\n"); fo.flush()
+        rec_ = dict(j=j, rule=rule, EL=EL, left=d.get('left', 0), right=d.get('right', 0), S=len(sols),
+                    cand=int(cand.sum()), hits=int(len(hits)), secs=d.get('secs', 0.0))
+        if nested:
+            cross = np.array([t for t, h in enumerate(X.lags) if h % 17 and h % 19], np.int64)
+            rec_['nested'] = (deep_counts(X, blocks, S, TE, cross) if sols else np.zeros(len(cross), np.int64)).tolist()
+        fo.write(json.dumps(rec_) + "\n"); fo.flush()
         if os.path.exists(os.path.join(PROD, "STOP")): raise KeyboardInterrupt("STOP file")
     try:
         jf(Ssig, X.TS, order=st0['order'], els=todo, el_cb=el_cb, done_cb=done_cb)
@@ -248,13 +258,84 @@ def main_units(w, W, K, log, units_path=None):
         with open(sp, "a") as f: f.write(json.dumps(r) + "\n")
         log(json.dumps(dict(stage="unit_done", worker=w, **r)))
 
+# ---------------------------------------------------------------- class mode: one joint solution per true symmetry class
+import glob as _glob
+
+def class_done_els(C):
+    """left-energy classes already joined per symmetry class (theory/p647_classes.py), from the unit-mode, the old
+    per-joint-mode and the class-mode checkpoints; and the classes done completely by the calibration runs"""
+    cof = C['class_of']; done = {}; full = set()
+    for f in _glob.glob(os.path.join(PROD, "u*_els.jsonl")):
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            for c in {cof[e] for e in r['joint'].values()}: done.setdefault(c, set()).add(r['EL'])
+    for f in _glob.glob(os.path.join(PROD, "w*_els.jsonl")) + _glob.glob(os.path.join(PROD, "c*_els.jsonl")):
+        for line in open(f):
+            try: r = json.loads(line)
+            except Exception: continue
+            if r.get('rule', 'none').split("|")[0] == 'none': done.setdefault(cof[r['j']], set()).add(r['EL'])
+    cp = os.path.join(PC.LOG, "calib", "calib.jsonl")
+    if os.path.exists(cp):
+        for line in open(cp): full.add(cof[json.loads(line)['j']])
+    return done, full
+
+def main_classes(w, W, K, log, busy_units=()):
+    """worker w of W over the true symmetry classes of y_B #0 (436; report section 4.1): for each class one joint
+    solution (its representative), the K central left-energy classes, skipping those any earlier run already joined
+    for that class.  Queue logs/p647/prod/queue_classes.json is built once (untouched classes by predicted yield, then
+    the classes already partly done or in progress elsewhere); checkpoints c{w}_els.jsonl, c{w}.jsonl."""
+    os.makedirs(PROD, exist_ok=True)
+    X, ys = PC.load_setup(); rec, sols = PC.joint_solutions(X, ys, 0)
+    reps, oi, maps = orbit_maps(X); NH = P.lag_tensor(X, oi)
+    C = json.load(open(os.path.join(PC.LOG, "joint_yb0_classes.json")))
+    qp = os.path.join(PROD, "queue_classes.json")
+    if not os.path.exists(qp):
+        done, full = class_done_els(C)
+        busy = {c for u in busy_units for c in C['unit_classes'][u]}
+        todo = [c for c in range(C['classes']) if c not in full and len(done.get(c, ())) < K]
+        fresh = sorted((c for c in todo if not done.get(c) and c not in busy), key=lambda c: (-C['H'][c], c))
+        late = sorted((c for c in todo if done.get(c) or c in busy), key=lambda c: (-C['H'][c], c))
+        tmp = qp + f".tmp{w}"
+        json.dump(dict(K=K, order=fresh + late, fresh=len(fresh), late=len(late), busy_units=list(busy_units),
+                       built=time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())), open(tmp, "w"))
+        os.replace(tmp, qp)
+    Q = json.load(open(qp)); assert Q['K'] == K
+    mine = [c for i, c in enumerate(Q['order']) if i % W == w]
+    sp = os.path.join(PROD, f"c{w}.jsonl"); fin = set()
+    if os.path.exists(sp):
+        for line in open(sp):
+            try: fin.add(json.loads(line)['class'])
+            except Exception: pass
+    rule = f"none|els{K}"
+    log(json.dumps(dict(stage="start_classes", worker=w, workers=W, K=K, classes=len(mine), finished=len(fin))))
+    for c in mine:
+        if c in fin: continue
+        if os.path.exists(os.path.join(PROD, "STOP")): log(json.dumps(dict(stage="stopped", worker=w))); return
+        done, full = class_done_els(C)
+        if c in full: continue
+        j = C['reps'][c]
+        try:
+            r = run_one(X, ys[0], sols[j], j, w, rule, maps, NH, oi, log, K=K, prefix="c",
+                        pre_done=sorted(done.get(c, ())), nested=True)
+        except KeyboardInterrupt:
+            log(json.dumps(dict(stage="stopped", worker=w, cls=c))); return
+        r = dict(r, **{'class': c, 'pre_done': sorted(done.get(c, ()))})
+        with open(sp, "a") as f: f.write(json.dumps(r) + "\n")
+        log(json.dumps(dict(stage="class_done", worker=w, **r)))
+
 if __name__ == "__main__":
     a = sys.argv[1:]
-    opt = {"--worker": "0", "--workers": "1", "--rule": "none", "--queue": os.path.join(PROD, "queue.json"), "--els": "0", "--kernel": "p"}
+    opt = {"--worker": "0", "--workers": "1", "--rule": "none", "--queue": os.path.join(PROD, "queue.json"), "--els": "0", "--kernel": "p",
+           "--busy-units": ""}
     i = 0
     while i < len(a):
         if a[i] in opt: opt[a[i]] = a[i + 1]; i += 2
         else: i += 1
+    if "--classes" in a:
+        bu = [int(x) for x in opt["--busy-units"].split(",")] if opt.get("--busy-units") else []
+        main_classes(int(opt["--worker"]), int(opt["--workers"]), int(opt["--els"]), log=lambda s: print(s, flush=True), busy_units=bu)
+        sys.exit()
     if "--units" in a:
         main_units(int(opt["--worker"]), int(opt["--workers"]), int(opt["--els"]), log=lambda s: print(s, flush=True))
         sys.exit()
