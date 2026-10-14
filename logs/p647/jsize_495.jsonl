@@ -1,0 +1,102 @@
+{"k": 0, "status": "ok", "secs": 0.23, "layer_options": [[2916, 11200], [3360, 3276], [3480, 8400], [8700, 11600]], "energy_slack": -192, "empty": "energy"}
+{"k": 1, "status": "ok", "secs": 0.33, "layer_options": [[3360, 10920], [8190, 11600], [8400, 11600], [6400, 11600]], "energy_slack": 0, "pairs": [3600, 300, 1200, 400], "sigma_distinct": [2310, 126, 576, 141], "join_log2": 18.51}
+{"k": 2, "status": "ok", "secs": 0.42, "layer_options": [[3480, 10920], [8190, 11600], [8400, 11600], [11600, 6400]], "energy_slack": 0, "pairs": [3600, 300, 1200, 400], "sigma_distinct": [2310, 126, 576, 141], "join_log2": 18.51}
+{"k": 3, "status": "ok", "secs": 0.21, "layer_options": [[3276, 11600], [3276, 8700], [3480, 8400], [5940, 8190]], "energy_slack": -96, "empty": "energy"}
+{"k": 4, "status": "ok", "secs": 0.32, "layer_options": [[3480, 10920], [7290, 11200], [8400, 10920], [11200, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 5, "status": "ok", "secs": 0.28, "layer_options": [[3480, 10920], [4800, 10920], [8190, 11600], [11200, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 6, "status": "ok", "secs": 0.3, "layer_options": [[10920, 2916], [580, 11600], [8400, 10920], [11200, 11600]], "energy_slack": -192, "empty": "energy"}
+{"k": 7, "status": "ok", "secs": 0.28, "layer_options": [[11200, 3360], [580, 11600], [7290, 8190], [8700, 10920]], "energy_slack": -192, "empty": "energy"}
+{"k": 8, "status": "ok", "secs": 0.22, "layer_options": [[11200, 3360], [3480, 8190], [3480, 8700], [7290, 8190]], "energy_slack": -288, "empty": "energy"}
+{"k": 9, "status": "ok", "secs": 0.28, "layer_options": [[3360, 10920], [546, 8700], [3360, 8700], [8400, 8400]], "energy_slack": 0, "pairs": [3600, 900, 3600, 3600], "sigma_distinct": [2310, 600, 2316, 2041], "join_log2": 22.54}
+{"k": 10, "status": "ok", "secs": 0.31, "layer_options": [[3276, 11600], [580, 8190], [3360, 3360], [8400, 11600]], "energy_slack": 96, "pairs": [7200, 2700, 10800, 15600], "sigma_distinct": [2970, 1470, 3801, 4506], "join_log2": 24.36}
+{"k": 11, "status": "ok", "secs": 1.21, "layer_options": [[3276, 11600], [580, 8190], [8700, 11200], [11600, 6400]], "energy_slack": 288, "pairs": [34920, 4500, 105000, 112800], "sigma_distinct": [9330, 1890, 16806, 16531], "join_log2": 28.14}
+{"k": 12, "status": "ok", "secs": 0.45, "layer_options": [[3480, 10920], [3480, 3276], [2916, 3276], [8400, 11200]], "energy_slack": 96, "pairs": [18000, 7200, 4500, 15600], "sigma_distinct": [6450, 2100, 2461, 4506], "join_log2": 24.55}
+{"k": 13, "status": "ok", "secs": 0.31, "layer_options": [[3360, 10920], [546, 8700], [3360, 8700], [8400, 8400]], "energy_slack": 0, "pairs": [3600, 900, 3600, 3600], "sigma_distinct": [2310, 600, 2316, 2041], "join_log2": 22.54}
+{"k": 14, "status": "ok", "secs": 0.95, "layer_options": [[11200, 3360], [8700, 8700], [8400, 11200], [10920, 9720]], "energy_slack": 192, "pairs": [34800, 64800, 60000, 64800], "sigma_distinct": [9015, 14631, 11886, 14631], "join_log2": 28.19}
+{"k": 15, "status": "ok", "secs": 0.95, "layer_options": [[11200, 3360], [8700, 11600], [8400, 8700], [9720, 10920]], "energy_slack": 192, "pairs": [34800, 60000, 64800, 64800], "sigma_distinct": [9015, 11886, 14631, 14631], "join_log2": 28.26}
+{"k": 16, "status": "ok", "secs": 1.41, "layer_options": [[11200, 3360], [8400, 11200], [10920, 9720], [11600, 11600]], "energy_slack": 288, "pairs": [47400, 105000, 93600, 112800], "sigma_distinct": [10815, 16806, 18551, 16531], "join_log2": 28.86}
+{"k": 17, "status": "ok", "secs": 0.81, "layer_options": [[10920, 2916], [3480, 8700], [8400, 8400], [11600, 11200]], "energy_slack": 192, "pairs": [23400, 32400, 64800, 47200], "sigma_distinct": [8175, 8946, 14631, 9171], "join_log2": 27.63}
+{"k": 18, "status": "ok", "secs": 0.6, "layer_options": [[11200, 3360], [580, 3480], [8190, 8190], [11600, 11200]], "energy_slack": 192, "pairs": [34800, 2400, 20925, 47200], "sigma_distinct": [9015, 846, 7531, 9171], "join_log2": 26.19}
+{"k": 19, "status": "ok", "secs": 0.34, "layer_options": [[3276, 11600], [580, 3480], [3360, 8190], [8400, 11200]], "energy_slack": 96, "pairs": [7200, 2400, 9000, 15600], "sigma_distinct": [2970, 846, 3360, 4506], "join_log2": 24.07}
+{"k": 20, "status": "ok", "secs": 0.36, "layer_options": [[3276, 11600], [580, 3480], [3360, 8190], [8400, 11600]], "energy_slack": 96, "pairs": [7200, 2400, 9000, 15600], "sigma_distinct": [2970, 846, 3360, 4506], "join_log2": 24.07}
+{"k": 21, "status": "ok", "secs": 0.98, "layer_options": [[3276, 11600], [546, 11200], [8190, 10920], [8400, 11200]], "energy_slack": 288, "pairs": [34920, 6000, 63000, 105000], "sigma_distinct": [9330, 2520, 14766, 16806], "join_log2": 28.02}
+{"k": 22, "status": "ok", "secs": 0.89, "layer_options": [[3276, 11600], [486, 11600], [7290, 10920], [8400, 11200]], "energy_slack": 288, "pairs": [34920, 6000, 63000, 105000], "sigma_distinct": [9330, 2520, 14766, 16806], "join_log2": 28.02}
+{"k": 23, "status": "ok", "secs": 0.35, "layer_options": [[3276, 11600], [8190, 9720], [8400, 10920], [11200, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 24, "status": "ok", "secs": 0.33, "layer_options": [[3360, 10920], [8700, 11200], [8190, 11600], [7920, 10920]], "energy_slack": -96, "empty": "energy"}
+{"k": 25, "status": "ok", "secs": 0.19, "layer_options": [[11200, 3480], [580, 8190], [2916, 8700], [3360, 8190]], "energy_slack": -384, "empty": "energy"}
+{"k": 26, "status": "ok", "secs": 0.23, "layer_options": [[11600, 3360], [546, 8700], [3360, 8190], [3276, 8700]], "energy_slack": -192, "empty": "energy"}
+{"k": 27, "status": "ok", "secs": 1.23, "layer_options": [[11200, 3360], [8190, 9720], [8400, 11200], [8700, 11200]], "energy_slack": 288, "pairs": [47400, 63000, 105000, 105000], "sigma_distinct": [10815, 14766, 16806, 16806], "join_log2": 28.72}
+{"k": 28, "status": "ok", "secs": 1.18, "layer_options": [[11200, 3360], [8400, 11200], [8190, 10920], [8400, 11200]], "energy_slack": 288, "pairs": [47400, 105000, 63000, 105000], "sigma_distinct": [10815, 16806, 14766, 16806], "join_log2": 28.68}
+{"k": 29, "status": "ok", "secs": 0.44, "layer_options": [[10920, 3276], [3360, 8400], [3480, 8400], [8400, 11200]], "energy_slack": 96, "pairs": [10800, 18000, 18000, 15600], "sigma_distinct": [4515, 6546, 6546, 4506], "join_log2": 25.82}
+{"k": 30, "status": "ok", "secs": 0.41, "layer_options": [[10920, 3276], [3360, 8700], [3360, 8400], [8400, 11200]], "energy_slack": 96, "pairs": [10800, 18000, 18000, 15600], "sigma_distinct": [4515, 6546, 6546, 4506], "join_log2": 25.82}
+{"k": 31, "status": "ok", "secs": 0.79, "layer_options": [[11200, 3480], [3276, 7290], [3276, 8190], [8400, 11200]], "energy_slack": 288, "pairs": [47400, 20340, 20340, 105000], "sigma_distinct": [10815, 8046, 8046, 16806], "join_log2": 27.73}
+{"k": 32, "status": "ok", "secs": 0.75, "layer_options": [[11200, 3480], [3276, 7290], [3276, 7290], [8700, 11200]], "energy_slack": 288, "pairs": [47400, 20340, 20340, 105000], "sigma_distinct": [10815, 8046, 8046, 16806], "join_log2": 27.73}
+{"k": 33, "status": "ok", "secs": 1.11, "layer_options": [[11200, 3480], [8190, 9720], [8400, 11200], [8400, 11200]], "energy_slack": 288, "pairs": [47400, 63000, 105000, 105000], "sigma_distinct": [10815, 14766, 16806, 16806], "join_log2": 28.72}
+{"k": 34, "status": "ok", "secs": 1.16, "layer_options": [[11200, 3480], [5940, 10920], [8700, 11200], [8400, 11200]], "energy_slack": 288, "pairs": [47400, 63000, 105000, 105000], "sigma_distinct": [10815, 14766, 16806, 16806], "join_log2": 28.72}
+{"k": 35, "status": "ok", "secs": 1.19, "layer_options": [[11200, 3480], [8400, 11600], [5940, 10920], [8400, 11200]], "energy_slack": 288, "pairs": [47400, 105000, 63000, 105000], "sigma_distinct": [10815, 16806, 14766, 16806], "join_log2": 28.68}
+{"k": 36, "status": "ok", "secs": 0.45, "layer_options": [[2916, 8190], [3276, 8700], [8700, 11600], [8400, 8400]], "energy_slack": 96, "pairs": [4950, 10800, 15600, 25200], "sigma_distinct": [2646, 3360, 4506, 7861], "join_log2": 25.4}
+{"k": 37, "status": "ok", "secs": 0.93, "layer_options": [[3360, 8400], [8700, 11600], [10920, 10920], [11200, 11200]], "energy_slack": 192, "pairs": [32400, 60000, 64800, 47200], "sigma_distinct": [8946, 11886, 14631, 9171], "join_log2": 27.84}
+{"k": 38, "status": "ok", "secs": 0.43, "layer_options": [[11600, 546], [8400, 9720], [8700, 8700], [8400, 11200]], "energy_slack": 0, "pairs": [300, 3600, 3600, 1200], "sigma_distinct": [300, 1956, 2041, 576], "join_log2": 20.75}
+{"k": 39, "status": "ok", "secs": 0.3, "layer_options": [[3480, 8400], [8700, 11200], [8190, 6400], [8190, 10920]], "energy_slack": -96, "empty": "energy"}
+{"k": 40, "status": "ok", "secs": 0.26, "layer_options": [[8700, 11200], [8400, 11600], [7290, 10920], [4800, 10920]], "energy_slack": -96, "empty": "energy"}
+{"k": 41, "status": "ok", "secs": 0.45, "layer_options": [[8400, 11600], [8190, 9720], [7290, 11200], [8400, 11200]], "energy_slack": 96, "pairs": [15600, 10800, 5400, 15600], "sigma_distinct": [4506, 4086, 1956, 4506], "join_log2": 24.7}
+{"k": 42, "status": "ok", "secs": 0.18, "layer_options": [[3480, 8400], [546, 8700], [3480, 3276], [8400, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 43, "status": "ok", "secs": 0.22, "layer_options": [[3276, 8190], [560, 8190], [546, 8700], [8700, 11200]], "energy_slack": 0, "pairs": [450, 300, 900, 1200], "sigma_distinct": [336, 300, 600, 576], "join_log2": 18.77}
+{"k": 44, "status": "ok", "secs": 0.97, "layer_options": [[8700, 11200], [8400, 8400], [8400, 11200], [10920, 9720]], "energy_slack": 192, "pairs": [60000, 64800, 60000, 64800], "sigma_distinct": [11886, 14631, 11886, 14631], "join_log2": 28.37}
+{"k": 45, "status": "ok", "secs": 0.44, "layer_options": [[8400, 11200], [3276, 3480], [3276, 8400], [9720, 10920]], "energy_slack": 96, "pairs": [15600, 7200, 10800, 25200], "sigma_distinct": [4506, 2100, 3360, 7861], "join_log2": 25.1}
+{"k": 46, "status": "ok", "secs": 0.3, "layer_options": [[11600, 546], [8700, 10920], [7290, 11600], [11600, 7920]], "energy_slack": -480, "empty": "energy"}
+{"k": 47, "status": "ok", "secs": 0.22, "layer_options": [[8700, 3276], [3276, 8400], [3276, 3360], [8700, 10920]], "energy_slack": -672, "empty": "energy"}
+{"k": 48, "status": "ok", "secs": 0.3, "layer_options": [[8190, 3480], [8190, 11200], [8400, 10920], [9720, 11200]], "energy_slack": -480, "empty": "energy"}
+{"k": 49, "status": "ok", "secs": 0.26, "layer_options": [[8190, 9720], [3276, 3276], [3480, 8700], [8400, 10920]], "energy_slack": -768, "empty": "energy"}
+{"k": 50, "status": "ok", "secs": 0.3, "layer_options": [[8190, 9720], [3360, 8400], [8700, 10920], [8400, 8700]], "energy_slack": -768, "empty": "energy"}
+{"k": 51, "status": "ok", "secs": 0.31, "layer_options": [[8400, 11200], [580, 11600], [8190, 11200], [10920, 9720]], "energy_slack": -576, "empty": "energy"}
+{"k": 52, "status": "ok", "secs": 0.31, "layer_options": [[8400, 11200], [3360, 8400], [8190, 11600], [8190, 8190]], "energy_slack": -672, "empty": "energy"}
+{"k": 53, "status": "ok", "secs": 0.3, "layer_options": [[5940, 10920], [580, 11600], [8190, 11600], [10920, 9720]], "energy_slack": -672, "empty": "energy"}
+{"k": 54, "status": "ok", "secs": 0.25, "layer_options": [[5940, 10920], [3276, 8700], [3480, 8700], [10920, 9720]], "energy_slack": -768, "empty": "energy"}
+{"k": 55, "status": "ok", "secs": 0.34, "layer_options": [[11600, 546], [8190, 11600], [8400, 10920], [11600, 6400]], "energy_slack": -480, "empty": "energy"}
+{"k": 56, "status": "ok", "secs": 0.3, "layer_options": [[11600, 546], [8190, 11600], [8400, 10920], [6400, 11600]], "energy_slack": -480, "empty": "energy"}
+{"k": 57, "status": "ok", "secs": 0.24, "layer_options": [[8190, 3480], [3360, 8190], [3276, 8700], [7920, 10920]], "energy_slack": -768, "empty": "energy"}
+{"k": 58, "status": "ok", "secs": 0.25, "layer_options": [[8400, 3276], [3276, 3360], [3480, 8400], [8190, 11600]], "energy_slack": -672, "empty": "energy"}
+{"k": 59, "status": "ok", "secs": 0.23, "layer_options": [[8700, 3276], [3276, 3360], [3360, 8400], [8700, 10920]], "energy_slack": -768, "empty": "energy"}
+{"k": 60, "status": "ok", "secs": 1.14, "layer_options": [[2916, 8190], [8190, 8190], [8700, 11600], [11200, 11200]], "energy_slack": 288, "pairs": [20340, 42525, 102780, 109520], "sigma_distinct": [8046, 12931, 16806, 16511], "join_log2": 28.51}
+{"k": 61, "status": "ok", "secs": 0.3, "layer_options": [[8400, 11200], [3360, 8700], [8190, 8190], [8700, 8400]], "energy_slack": -96, "empty": "energy"}
+{"k": 62, "status": "ok", "secs": 0.6, "layer_options": [[8190, 3360], [3276, 8190], [8700, 11200], [8190, 7290]], "energy_slack": 192, "pairs": [21600, 14850, 57780, 20925], "sigma_distinct": [5580, 6366, 11826, 7531], "join_log2": 26.89}
+{"k": 63, "status": "ok", "secs": 0.81, "layer_options": [[8190, 3360], [8190, 10920], [8700, 11200], [11200, 11200]], "energy_slack": 192, "pairs": [21600, 38700, 60000, 47200], "sigma_distinct": [5580, 10626, 11886, 9171], "join_log2": 27.33}
+{"k": 64, "status": "ok", "secs": 0.22, "layer_options": [[8190, 3360], [560, 8190], [546, 11600], [8400, 11600]], "energy_slack": 0, "pairs": [900, 300, 300, 1200], "sigma_distinct": [600, 300, 300, 576], "join_log2": 18.43}
+{"k": 65, "status": "ok", "secs": 0.25, "layer_options": [[8700, 3276], [3480, 3276], [3276, 8400], [8400, 11200]], "energy_slack": 0, "pairs": [1800, 1800, 1800, 1200], "sigma_distinct": [780, 780, 780, 576], "join_log2": 20.01}
+{"k": 66, "status": "ok", "secs": 0.51, "layer_options": [[7290, 3360], [8700, 11200], [8400, 11600], [10920, 9720]], "energy_slack": 96, "pairs": [9000, 15600, 15600, 25200], "sigma_distinct": [3360, 4506, 4506, 7861], "join_log2": 25.59}
+{"k": 67, "status": "ok", "secs": 0.27, "layer_options": [[8190, 3480], [560, 8190], [3480, 8190], [8400, 11200]], "energy_slack": 0, "pairs": [900, 300, 900, 1200], "sigma_distinct": [600, 300, 600, 576], "join_log2": 19.0}
+{"k": 68, "status": "ok", "secs": 0.23, "layer_options": [[7290, 8190], [546, 8700], [3276, 8700], [8400, 11600]], "energy_slack": -96, "empty": "energy"}
+{"k": 69, "status": "ok", "secs": 0.23, "layer_options": [[8700, 8400], [546, 11600], [456, 8190], [8400, 11600]], "energy_slack": -192, "empty": "energy"}
+{"k": 70, "status": "ok", "secs": 0.19, "layer_options": [[8400, 8400], [546, 8700], [3360, 8700], [3276, 8700]], "energy_slack": -288, "empty": "energy"}
+{"k": 71, "status": "ok", "secs": 0.23, "layer_options": [[8400, 8700], [580, 8190], [3276, 8400], [8190, 9720]], "energy_slack": -192, "empty": "energy"}
+{"k": 72, "status": "ok", "secs": 0.23, "layer_options": [[8190, 8190], [546, 11200], [3480, 7290], [3360, 8190]], "energy_slack": 0, "pairs": [225, 300, 900, 900], "sigma_distinct": [121, 300, 600, 600], "join_log2": 18.6}
+{"k": 73, "status": "ok", "secs": 0.24, "layer_options": [[8190, 8190], [546, 11200], [3360, 8190], [3480, 7290]], "energy_slack": 0, "pairs": [225, 300, 900, 900], "sigma_distinct": [121, 300, 600, 600], "join_log2": 18.6}
+{"k": 74, "status": "ok", "secs": 0.19, "layer_options": [[8700, 8700], [456, 10920], [2916, 8700], [3480, 7290]], "energy_slack": -96, "empty": "energy"}
+{"k": 75, "status": "ok", "secs": 0.25, "layer_options": [[8700, 8700], [456, 10920], [3276, 8400], [3360, 8190]], "energy_slack": -96, "empty": "energy"}
+{"k": 76, "status": "ok", "secs": 0.78, "layer_options": [[8190, 8190], [546, 11200], [8190, 8190], [8400, 8400]], "energy_slack": 288, "pairs": [42525, 6000, 42525, 86700], "sigma_distinct": [12931, 2520, 12931, 18111], "join_log2": 27.99}
+{"k": 77, "status": "ok", "secs": 0.39, "layer_options": [[8700, 8700], [2916, 3276], [3360, 8190], [8700, 8400]], "energy_slack": 96, "pairs": [25200, 4500, 9000, 25200], "sigma_distinct": [7861, 2461, 3360, 7861], "join_log2": 25.45}
+{"k": 78, "status": "ok", "secs": 0.24, "layer_options": [[8400, 8400], [3276, 8190], [3480, 8400], [8400, 11600]], "energy_slack": -96, "empty": "energy"}
+{"k": 79, "status": "ok", "secs": 0.25, "layer_options": [[8190, 8190], [3360, 8700], [3360, 8700], [8400, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 80, "status": "ok", "secs": 0.25, "layer_options": [[8190, 8190], [3480, 8400], [3480, 8400], [8400, 11600]], "energy_slack": -96, "empty": "energy"}
+{"k": 81, "status": "ok", "secs": 0.24, "layer_options": [[8400, 8700], [3360, 8700], [3480, 8400], [8190, 9720]], "energy_slack": -192, "empty": "energy"}
+{"k": 82, "status": "ok", "secs": 0.23, "layer_options": [[8400, 8700], [3360, 8700], [3276, 8190], [8400, 11200]], "energy_slack": -192, "empty": "energy"}
+{"k": 83, "status": "ok", "secs": 0.22, "layer_options": [[546, 8400], [3480, 8700], [3276, 8190], [11200, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 84, "status": "ok", "secs": 0.29, "layer_options": [[486, 8700], [580, 11200], [8190, 10920], [11600, 11200]], "energy_slack": 0, "pairs": [900, 400, 900, 400], "sigma_distinct": [600, 400, 516, 141], "join_log2": 18.25}
+{"k": 85, "status": "ok", "secs": 0.22, "layer_options": [[8700, 8400], [3480, 8190], [3360, 8700], [8400, 8400]], "energy_slack": -192, "empty": "energy"}
+{"k": 86, "status": "ok", "secs": 0.78, "layer_options": [[8190, 8190], [8400, 11200], [8190, 11600], [8400, 8400]], "energy_slack": 192, "pairs": [20925, 60000, 31500, 64800], "sigma_distinct": [7531, 11886, 7776, 14631], "join_log2": 27.6}
+{"k": 87, "status": "ok", "secs": 0.28, "layer_options": [[8190, 7290], [580, 10920], [546, 8700], [8400, 11600]], "energy_slack": -96, "empty": "energy"}
+{"k": 88, "status": "ok", "secs": 0.31, "layer_options": [[8190, 7290], [3276, 3480], [3480, 8190], [8400, 11600]], "energy_slack": 0, "pairs": [225, 1800, 900, 1200], "sigma_distinct": [121, 780, 600, 576], "join_log2": 18.75}
+{"k": 89, "status": "ok", "secs": 0.24, "layer_options": [[8400, 8700], [3360, 3276], [3360, 8190], [8190, 10920]], "energy_slack": -192, "empty": "energy"}
+{"k": 90, "status": "ok", "secs": 0.32, "layer_options": [[8400, 8700], [3276, 3360], [3360, 8190], [8700, 11600]], "energy_slack": -96, "empty": "energy"}
+{"k": 91, "status": "ok", "secs": 0.25, "layer_options": [[8400, 8700], [3276, 3480], [3360, 8190], [8400, 11200]], "energy_slack": -96, "empty": "energy"}
+{"k": 92, "status": "ok", "secs": 0.26, "layer_options": [[8190, 8190], [560, 11600], [5940, 11600], [8400, 10920]], "energy_slack": -480, "empty": "energy"}
+{"k": 93, "status": "ok", "secs": 0.29, "layer_options": [[8190, 8190], [560, 11600], [8400, 10920], [7290, 11200]], "energy_slack": -480, "empty": "energy"}
+{"k": 94, "status": "ok", "secs": 0.26, "layer_options": [[8190, 8190], [560, 11600], [5940, 11600], [8400, 10920]], "energy_slack": -480, "empty": "energy"}
+{"k": 95, "status": "ok", "secs": 0.27, "layer_options": [[8190, 8190], [560, 11600], [5940, 11600], [8400, 10920]], "energy_slack": -480, "empty": "energy"}
+{"k": 96, "status": "ok", "secs": 0.38, "layer_options": [[8190, 8190], [3360, 3360], [8190, 7290], [11200, 11200]], "energy_slack": 96, "pairs": [3825, 9540, 3825, 7600], "sigma_distinct": [1861, 3770, 1861, 2241], "join_log2": 23.42}
+{"k": 97, "status": "ok", "secs": 0.62, "layer_options": [[8190, 8190], [8400, 8400], [9720, 10920], [6400, 11600]], "energy_slack": 96, "pairs": [3825, 24120, 25200, 7600], "sigma_distinct": [1861, 7771, 7861, 2241], "join_log2": 24.94}
+{"k": 98, "status": "ok", "secs": 0.76, "layer_options": [[8190, 8190], [11200, 11200], [6400, 11600], [9720, 10920]], "energy_slack": 192, "pairs": [20925, 45220, 45220, 62160], "sigma_distinct": [7531, 9081, 9081, 14611], "join_log2": 27.58}
+{"k": 99, "status": "ok", "secs": 0.37, "layer_options": [[8700, 8700], [3276, 2916], [7290, 8190], [11200, 11200]], "energy_slack": 96, "pairs": [24120, 4500, 3825, 7600], "sigma_distinct": [7771, 2461, 1861, 2241], "join_log2": 24.47}
+{"k": 100, "status": "ok", "secs": 0.23, "layer_options": [[8190, 8190], [486, 11600], [3360, 8190], [3360, 8190]], "energy_slack": 0, "pairs": [225, 300, 900, 900], "sigma_distinct": [121, 300, 600, 600], "join_log2": 18.6}
+{"k": 101, "status": "ok", "secs": 0.25, "layer_options": [[8190, 8190], [546, 11200], [3360, 8190], [3480, 7290]], "energy_slack": 0, "pairs": [225, 300, 900, 900], "sigma_distinct": [121, 300, 600, 600], "join_log2": 18.6}

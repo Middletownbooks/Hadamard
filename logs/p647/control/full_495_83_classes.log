@@ -9,3 +9,35 @@
 {"stage": "yb", "yb": 9, "joint": 6912, "stabiliser": 144, "orbits": 144}
 {"stage": "yb", "yb": 10, "joint": 5232, "stabiliser": 144, "orbits": 109}
 {"stage": "start", "m": 494, "mu": 83, "qA": 13, "qB": 19, "yB_orbits": 102, "done": 2835, "cores_so_far": 0}
+{"stage": "yb", "yb": 1, "joint": 2400, "stabiliser": 144, "orbits": 50}
+{"stage": "yb", "yb": 2, "joint": 2400, "stabiliser": 144, "orbits": 50}
+{"stage": "yb", "yb": 9, "joint": 6912, "stabiliser": 144, "orbits": 144}
+{"stage": "yb", "yb": 10, "joint": 5232, "stabiliser": 144, "orbits": 109}
+{"stage": "yb", "yb": 13, "joint": 9216, "stabiliser": 144, "orbits": 192}
+{"stage": "progress", "joint": 25, "S": 26969, "pred_S": 1744.986, "Spairs": 704905, "pred_Spairs": 105362.99, "pred_cores": 0.015, "pred_cores_cal": 0.008, "cores": 0}
+{"stage": "progress", "joint": 50, "S": 50923, "pred_S": 3763.576, "Spairs": 1430405, "pred_Spairs": 247071.69, "pred_cores": 0.033, "pred_cores_cal": 0.019, "cores": 0}
+{"stage": "start", "m": 494, "mu": 83, "qA": 13, "qB": 19, "yB_orbits": 102, "done": 2906, "cores_so_far": 1}
+{"stage": "yb", "yb": 13, "joint": 9216, "stabiliser": 144, "orbits": 192}
+{"stage": "CORE", "v": 495, "N": 1980, "yb": 13, "jsol": 657, "hadamard_internal": true, "path": "/home/user/Hadamard/logs/p647/control/core_494_83_13_19_yb13_j657_0.json"}
+{"stage": "progress", "joint": 25, "S": 22374, "pred_S": 1104.95, "Spairs": 745168, "pred_Spairs": 89241.337, "pred_cores": 0.011, "pred_cores_cal": 0.007, "cores": 1}
+{"stage": "progress", "joint": 50, "S": 45607, "pred_S": 2984.206, "Spairs": 1460802, "pred_Spairs": 228931.122, "pred_cores": 0.027, "pred_cores_cal": 0.017, "cores": 1}
+{"stage": "progress", "joint": 75, "S": 67103, "pred_S": 4169.163, "Spairs": 2214426, "pred_Spairs": 321633.061, "pred_cores": 0.039, "pred_cores_cal": 0.025, "cores": 1}
+{"stage": "progress", "joint": 100, "S": 93581, "pred_S": 6600.461, "Spairs": 2940272, "pred_Spairs": 472983.654, "pred_cores": 0.059, "pred_cores_cal": 0.036, "cores": 1}
+{"stage": "CORE", "v": 495, "N": 1980, "yb": 13, "jsol": 2129, "hadamard_internal": true, "path": "/home/user/Hadamard/logs/p647/control/core_494_83_13_19_yb13_j2129_0.json"}
+{"stage": "yb", "yb": 84, "joint": 288, "stabiliser": 144, "orbits": 6}
+{"stage": "progress", "joint": 125, "S": 118934, "pred_S": 8141.26, "Spairs": 3665467, "pred_Spairs": 575642.793, "pred_cores": 0.072, "pred_cores_cal": 0.044, "cores": 2}
+{"stage": "yb", "yb": 88, "joint": 984, "stabiliser": 144, "orbits": 21}
+{"stage": "progress", "joint": 150, "S": 141115, "pred_S": 9776.878, "Spairs": 4826783, "pred_Spairs": 762371.817, "pred_cores": 0.103, "pred_cores_cal": 0.065, "cores": 2}
+{"stage": "yb", "yb": 43, "joint": 768, "stabiliser": 144, "orbits": 16}
+{"stage": "yb", "yb": 65, "joint": 6336, "stabiliser": 144, "orbits": 132}
+{"stage": "progress", "joint": 175, "S": 167954, "pred_S": 10970.799, "Spairs": 5961765, "pred_Spairs": 887521.73, "pred_cores": 0.122, "pred_cores_cal": 0.077, "cores": 2}
+{"stage": "progress", "joint": 200, "S": 185545, "pred_S": 12147.822, "Spairs": 6819098, "pred_Spairs": 1024628.311, "pred_cores": 0.149, "pred_cores_cal": 0.097, "cores": 2}
+{"stage": "progress", "joint": 225, "S": 202887, "pred_S": 13044.471, "Spairs": 7666578, "pred_Spairs": 1113862.682, "pred_cores": 0.167, "pred_cores_cal": 0.11, "cores": 2}
+{"stage": "progress", "joint": 250, "S": 220307, "pred_S": 14230.927, "Spairs": 8513477, "pred_Spairs": 1257319.985, "pred_cores": 0.194, "pred_cores_cal": 0.13, "cores": 2}
+{"stage": "progress", "joint": 275, "S": 238365, "pred_S": 15111.359, "Spairs": 9366386, "pred_Spairs": 1355031.93, "pred_cores": 0.211, "pred_cores_cal": 0.144, "cores": 2}
+{"stage": "yb", "yb": 38, "joint": 4848, "stabiliser": 144, "orbits": 101}
+{"stage": "progress", "joint": 300, "S": 256895, "pred_S": 16430.493, "Spairs": 10208261, "pred_Spairs": 1496379.072, "pred_cores": 0.238, "pred_cores_cal": 0.164, "cores": 2}
+{"stage": "progress", "joint": 325, "S": 280951, "pred_S": 17746.372, "Spairs": 10928978, "pred_Spairs": 1581578.401, "pred_cores": 0.25, "pred_cores_cal": 0.171, "cores": 2}
+{"stage": "progress", "joint": 350, "S": 305113, "pred_S": 19941.979, "Spairs": 11669411, "pred_Spairs": 1731303.969, "pred_cores": 0.272, "pred_cores_cal": 0.185, "cores": 2}
+{"stage": "progress", "joint": 375, "S": 326836, "pred_S": 20763.889, "Spairs": 12383944, "pred_Spairs": 1800560.381, "pred_cores": 0.285, "pred_cores_cal": 0.195, "cores": 2}
+{"stage": "progress", "joint": 400, "S": 351356, "pred_S": 22981.842, "Spairs": 13130954, "pred_Spairs": 1949050.496, "pred_cores": 0.307, "pred_cores_cal": 0.208, "cores": 2}
