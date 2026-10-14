@@ -56,8 +56,9 @@ and calibration named); [L] literature recollection, unchecked.
      - 599, c = 6, q = 11, s = 2, H' = Z₉, with five multiplier groups (§7): empty;
      - **the small Paley-type family** (index 2, 3 or 4 on a prime q ∥ h plus one multiplier group on the
        cofactor, ≤ 16 G'-orbits), decided exactly (§7):
-       - at c = 4, 58 of the 61 configurations decided so far are empty (48 at the Q-level, 751 at q = 11 and 839 at
-         q = 19 with empty stage 1), and 751 at q = 17, s = 4 is dead in stage 2 [E];
+       - at c = 4, 51 of the 61 configurations are decided empty (48 at the Q-level; 751 at q = 11 and 839 at q = 19
+         with empty stage 1; 839 at q = 11 with ⟨4⟩, empty after exact stage 2 on all 40,960 y's), and 751 at q = 17,
+         s = 4 is dead in stage 2 [E];
        - at c = 6 all 19 are empty (347's border class).
 6. **(D)** The ranked table is §8.
    - The other composite orders reach b = 0 GP slices whose stage 2 is Gaussian-positive, but whose fibres are too
@@ -502,7 +503,12 @@ cyclic multiplier group on a cyclic factor of H' = Z_{h/q}, keeping ≤ 16 G'-or
     - 839, q = 19, s = 2, ⟨3⟩ of order 5 on Z₁₁: **stage 1 empty [M]** (2.6M block vectors, complete join).
     - 751, q = 17, s = 4, ⟨3⟩ on Z₁₁: 311,296 stage-1 solutions [M] in 102 PAF-signature classes. Stage 2 is
       about −72 bits per y [E] (mahal 5.8), so about 2^−54 cores are expected in all: **dead**.
-    - Remaining (839 at q = 11; 955; 991): PAL_C4_REST
+    - 839, q = 11, s = 2, ⟨4⟩ of order 9 on Z₁₉: 40,960 stage-1 solutions [M] (12 PAF-signature classes). Exact
+      stage 2 on every one: **0 cores, the slice is empty [M]** (2,340 s). The Gaussian had predicted −21 bits per y,
+      about 0.02 cores in all.
+    - 839, q = 11, s = 2, ⟨8⟩ of order 6 on Z₁₉ (16 orbits): undecided. The block lists exceed 6·10⁷ vectors even
+      with Q-level pruning.
+    - Remaining (955; 991): PAL_C4_REST
   - **c = 4 with 17–24 G'-orbits** (`logs/ab/paley_c4_o24.jsonl`): 20 configurations (739, 751, 823, 839, 863, 955).
     10 fail screen A (**empty [M]**); 10 exceed the direct stage-1 cap (6·10⁷ block vectors) and are undecided.
   - **c = 6 sweep (347's border class)** (`logs/ab/paley_c6.jsonl`): every configuration with ≤ 16 orbits (659,
@@ -559,6 +565,7 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | – | 659, 719, 751, 823, 839, 863 | c = 4, 6 | 144 configurations failing screen A (§7) | **empty [M]** | – |
 | – | 751 | c = 4 | Paley q = 11, ⟨2⟩ (order 8) on Z₁₇ | **stage 1 empty [M]** (two independent exact methods) | – |
 | – | 839 | c = 4 | Paley q = 19, ⟨3⟩ (order 5) on Z₁₁ | **stage 1 empty [M]** | – |
+| – | 839 | c = 4 | Paley q = 11, ⟨4⟩ (order 9) on Z₁₉ | 40,960 y's, **stage 2 empty on all [M]** | – |
 | – | 751 | c = 4 | q = 17, s = 4, ⟨3⟩ on Z₁₁ | 311,296 y's [M]; stage 2 −72 bits per y [E] | dead |
 | – | all open v | c = 4, 6 | Paley-type, ≤ 16 orbits: 48 + 19 configurations | **empty [M]** (screen A) | – |
 
