@@ -158,6 +158,25 @@ Gaussian fitted to 200,000 sampled residuals of the same candidates:
   The drift above (exact bits exceed the Gaussian by up to 0.19 bit at 22 bits, growing with depth) points to a
   slightly larger value. **The costs below use C(D|S) = 34.8 bits** [E, calibrated to 22 bits; fit 34.5–34.7].
 - Expected cores of the four runs: Σ_j 2^(Y_j − 34.8) = 2^−6.8 + 2^−6.7 + 2^−5.7 + 2^−5.7 ≈ 0.056; found 0.
+- **The deep tail, to rank 9 of 11** (`theory/p647_deeptail.py`, `logs/p647/deeptail_calib.log`): all 2^30.65
+  D-candidates of the four complete calibration runs, exact hits on nested subsets of the cross lags against the
+  Gaussian fitted to 300,000 of the same residuals:
+
+  | lags (rank) | exact hits | Gaussian expected | exact / Gaussian bits |
+  |---|---|---|---|
+  | 1, 2, 3, 4 (4) | 47,038 | 48,986 | 15.13 / 15.07 |
+  | + 6 (5) | 3,693 | 4,012 | 18.80 / 18.68 |
+  | + 7 (6) | 450 | 484 | 21.84 / 21.73 |
+  | + 8 (7) | **44** | **44.0** | 25.19 / 25.19 |
+  | + 9 (8) | **5** | **8.0** | 28.33 / 27.65 |
+  | + 12 (9) | **1** | **1.15** | 30.65 / 30.45 |
+  | + 16 (10), + 24 (11 = all) | 0, 0 | 0.21, 0.06 | — / 32.90, 34.63 |
+
+  **The Gaussian holds to 30.6 bits (rank 9 of 11).** Only the last two dimensions, about 4 bits, are extrapolated.
+- **Every S-solution's candidates span the full D-lattice** (`theory/p647_perS_rank.py`): for 599 of 600 sampled
+  S-solutions of j = 11514 the D-residual differences of its candidates have rank 11 (one has rank 10); median 840
+  candidates per S-solution. So no per-S-solution coset can exclude the target in a direction the pooled Gaussian
+  cannot see. This is the condition that fails for the 495 control (§5.2).
 
 ### 2.4 Energy structure and class selection [M] (`theory/p647_restrict.py`, `theory/p647_buckets.py`)
 
@@ -250,3 +269,54 @@ about **9 core-hours per expected core** in unit mode. y_B #0 is one of 495 y_B 
 - 06:45–07:37 UTC: per-joint-solution mode, three workers (`w*.jsonl`): 6 joint solutions finished (j = 1999, 1109,
   420, 675, 2483, 78), each 2.2·10¹⁰ pairs, 2^28.15–2^28.23 D-candidates, 0 D-hits; 3 more partial.
 - From 07:37 UTC: unit mode (`u*.jsonl`), workers 0–2 (worker 3's core is lent to the control search, §5).
+
+---
+
+## 5. Same-shape positive controls [M] (`theory/p647_control.py`, `theory/p647_ctrl_screen.py`, `theory/p647_ctrl_full.py`)
+
+**Shape.** G = Z₂ × Z_p × Z_q (m = 2pq, v = 2pq + 1, v need not be prime), M = ⟨μ⟩ = M_p × M_q with proper nontrivial
+cyclotomic subgroups on both primes and gcd(|M_p|, |M_q|) = 1 (so M is a product and fixes Z₂), exactly as 647 ×353
+(|M₁₇| = 4, |M₁₉| = 3). The earlier "controls" 239 ×115 and 443 ×225 were *not* of this shape: there
+gcd(|M_p|, |M_q|) = 2 and ⟨μ⟩ is diagonal.
+
+### 5.1 Exact screens
+
+| v | p, q | \|M_p\|, \|M_q\| | μ | result [M] |
+|---|---|---|---|---|
+| 71 | 5, 7 | 2, 3 | 9 | stage 1 alive both ways; **joint stage empty** (2 y_B orbits along Z₇; 10,316 along Z₅; 0 joint solutions both ways) |
+| 111 | 5, 11 | 2, 5 | 9 | stage 1 alive; **joint stage empty** (1 orbit along Z₁₁; 1,503 along Z₅; 0 both ways) |
+| 155 | 7, 11 | 2, 5 / 3, 5 | 27 / 9 | **empty** (stage 1 along Z₁₁) |
+| 155 | 7, 11 | 3, 2 | 65 | stage 1 alive both ways; stage 1B along Z₁₁ very large (not finished) |
+| 183 | 7, 13 | 3, 4 | 109 | **empty** (stage 1 along both primes; 73 canonical α-quadruples, 0 solutions) |
+| 191, 231, 239, 267 | various | | 9, 9, 81, 9, 55 | **empty** (one compression has no stage-1 solution) |
+| 131, 183, 191, 239, 267 | | | 9, 55, 25, 49, 67, 83, 37 | undecided: one compression alive, the other too large for the α-enumeration |
+| **495** | **13, 19** | **4, 3** | **83** | **stage 1 alive; joint stage non-empty** (§5.2) |
+| 443 | 13, 17 | 3, 4 | 55 | stage 1 alive along both primes; joint stage not yet run |
+
+### 5.2 The 495 ×83 control (v = 495 = 5·9·11, order 1980)
+
+- The closest shape to 647 ×353: |M₁₃| = 4 (three classes on Z₁₃) and |M₁₉| = 3 (the same six classes on Z₁₉);
+  per Z₂-layer a 4 × 7 label matrix (647: 5 × 7); y_B on Z₂₆, y_A on Z₃₈.
+- Stage 1B along Z₁₉: 102 y_B orbits. Joint test: orbits #1, #2 and #9 have 2,400, 2,400 and 6,912 joint solutions
+  (#0 and #3–#8 none); the stabiliser of y_B #1 acts with 18 elements on Z₃₈, giving 400 orbits.
+- Cross level, exact, on every orbit representative (0.3–0.8 s each): the pair-level yield is **0.68 bit below**
+  its Gaussian (647: 0.46–0.63) and the distinct-σ S-count 0.45 bit above it (647: 1.5–1.7). C(D|S) ≈ 22.8 bits.
+- **Result for y_B #1, #2, #9 (all 1,936 orbits of their joint solutions): 2^25.58 D-candidates, 7.4 expected
+  cores by the pooled Gaussian (C(D|S) = 22.7), 0 found** (Poisson probability 0.06%). The pipeline is not the
+  cause: 10/10 plants on real 495 joint solutions are recovered (`theory/p647_ctrl_check.py`,
+  `logs/p647/control/check_495_83.log`), and an independent candidate-by-candidate count also finds no full-depth hit.
+- **Where the Gaussian fails** (400 joint solutions, 2^23.48 candidates, nested cross lags): the exact hits follow
+  it to rank 6 (rank 3: 7,271 against 7,846; rank 5: 95 against 126; rank 6: 15 against 19.1). At rank 7 there are
+  13 hits in 2^24.3 candidates. At rank 8 (the full condition) there are 0 against 1.6 here and 7.4 over the whole run.
+  On the rank-7 hits the residual is a single integer direction t (lag 17 = t, lag 25 = −t), and t took the values
+  −2, 4, 6, never 0.
+- **Why: discreteness per S-solution** (`theory/p647_perS_rank.py`). A 495 S-solution has a median of 24
+  D-candidates. Their residual differences span the full rank-8 D-lattice for only 472 of 1,200 sampled
+  S-solutions; the rest have rank 1–7. Exact coset test: for 3,466 of 3,960 S-solutions the D-target lies outside the
+  affine sublattice their candidates span. The pooled Gaussian averages over S-solutions and cannot see this.
+  A per-S-solution Gaussian removes 0.8 bit; the rest sits in the low-rank cases where any Gaussian is crude.
+  **This is the discrete-level failure mode of the design report's §9.4, at the D-level of a small slice.**
+- **647 is on the other side of this line**: median 840 candidates per S-solution and full-rank (11) lattices for
+  599/600, with the deep tail matching to rank 9 (§2.3). So the 495 control is not a proxy for the 647 D-level, and
+  a same-shape slice small enough to run end to end is, for this reason, unlikely to be one. The 495 run continues over
+  its remaining y_B orbits (`full_495_83_all.log`), looking for any core in that slice.

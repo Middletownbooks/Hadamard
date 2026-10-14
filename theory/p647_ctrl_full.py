@@ -7,7 +7,8 @@ D-check, full PAF check).  Next to every exact count the Gaussian predictions of
 (N = 4000): predicted S-solutions, D-candidates and cores.  Every core is completed by bordered Goethals-Seidel and
 verified (theory/nd_doubly.bordered_gs_cyclic, then scripts/verify_h2588.py, which works for any such core).
 Restart-safe: one JSON line per processed joint solution in logs/p647/control/full_<tag>.jsonl.
-usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N]"""
+The Gaussian predictions are computed for every 10th joint solution (--gauss-every); the exact counts for all.
+usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N] [--gauss-every K]"""
 import sys, os, json, math, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -18,7 +19,7 @@ import p647_common as PC
 import p647_cross as PX
 from p647_calib import gauss_preds
 
-def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000):
+def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000, gauss_every=10):
     d = os.path.join(PC.LOG, "control"); os.makedirs(d, exist_ok=True)
     tag = f"{m}_{mu}_{qA}_{qB}"; outp = os.path.join(d, f"full_{tag}.jsonl")
     X = Cross(m, mu, qA, qB); FA, FB = X.D.FA, X.D.FB
@@ -52,8 +53,11 @@ def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000):
                 blocks = PX.build(X, yb, X.J.ya_full(sols[js]['layers']), maps, NH, oi)
                 if blocks is None: continue
                 t1 = time.time()
-                g = gauss_preds(X, blocks, N=N)
-                r, Ssols, hits, cand = PX.solve(X, blocks)
+                nproc = sum(1 for k_ in done if isinstance(k_[1], int)) + T['joint']
+                g = gauss_preds(X, blocks, N=N) if nproc % gauss_every == 0 else dict(
+                    H=round(sum(math.log2(B.n0 * B.n1) for B in blocks), 3), Hs=round(sum(math.log2(B.N) for B in blocks), 3),
+                    CSu=None, CSp=None, C=None, CDgS=None, pred_S_log2=None, pred_Spairs_log2=None, pred_cores_log2=None)
+                r, Ssols, hits, cand = PX.solve(X, blocks, P=61)
                 cores = []
                 for h in hits:
                     xs = PX.assemble(X, blocks, h[1:])
@@ -64,7 +68,7 @@ def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000):
                            secs=round(time.time() - t1, 2))
                 fo.write(json.dumps(out) + "\n"); fo.flush()
                 T['joint'] += 1; T['S'] += r['S_solutions']; T['Spairs'] += r['S_pairs']; T['cores'] += len(cores)
-                for key, k2 in (('pred_S', 'pred_S_log2'), ('pred_Spairs', 'pred_Spairs_log2'), ('pred_cores', 'pred_cores_log2')):
+                for key, k2 in (('pred_S', 'pred_S_log2'), ('pred_Spairs', 'pred_Spairs_log2'), ('pred_cores', 'pred_cores_log2')) if g['C'] is not None else ():
                     if g[k2] is not None and math.isfinite(g[k2]): T[key] += 2.0 ** g[k2]
                 if g['CDgS'] is not None and math.isfinite(g['CDgS']): T['pred_cores_cal'] += r['S_pairs'] * 2.0 ** -g['CDgS']
                 for n_, xs in enumerate(cores):
@@ -86,4 +90,5 @@ if __name__ == "__main__":
     pos = [int(x) for x in a[:4]]
     ybl = [int(x) for x in a[a.index("--yb") + 1].split(",")] if "--yb" in a else None
     mc = int(a[a.index("--max-cores") + 1]) if "--max-cores" in a else 10 ** 9
-    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True))
+    ge = int(a[a.index("--gauss-every") + 1]) if "--gauss-every" in a else 10
+    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True), gauss_every=ge)

@@ -1,0 +1,17 @@
+{"j": 4208, "candidates_log2": 27.996, "nested_hits": [18097552, 1249211, 89461, 7318, 565, 68, 10, 2, 1, 0, 0, 0], "secs": 8.9}
+{"j": 9902, "candidates_log2": 28.12, "nested_hits": [18880067, 1280311, 93530, 8237, 654, 80, 6, 0, 0, 0, 0, 0], "secs": 7.1}
+{"j": 11514, "candidates_log2": 29.066, "nested_hits": [36892665, 2537522, 182477, 15446, 1233, 153, 12, 2, 0, 0, 0, 0], "secs": 13.3}
+{"j": 16846, "candidates_log2": 29.07, "nested_hits": [37515875, 2624359, 196076, 16037, 1241, 149, 16, 1, 0, 0, 0, 0], "secs": 13.0}
+{"r": 1, "lag": 1, "rank": 1, "hits": 111386159, "exact_bits": 3.92, "gauss_bits": 3.9, "expected": 112870139.73}
+{"r": 2, "lag": 2, "rank": 2, "hits": 7691403, "exact_bits": 7.78, "gauss_bits": 7.74, "expected": 7881772.21}
+{"r": 3, "lag": 3, "rank": 3, "hits": 561544, "exact_bits": 11.55, "gauss_bits": 11.51, "expected": 577751.12}
+{"r": 4, "lag": 4, "rank": 4, "hits": 47038, "exact_bits": 15.13, "gauss_bits": 15.07, "expected": 48986.23}
+{"r": 5, "lag": 6, "rank": 5, "hits": 3693, "exact_bits": 18.8, "gauss_bits": 18.68, "expected": 4011.95}
+{"r": 6, "lag": 7, "rank": 6, "hits": 450, "exact_bits": 21.84, "gauss_bits": 21.73, "expected": 484.41}
+{"r": 7, "lag": 8, "rank": 7, "hits": 44, "exact_bits": 25.19, "gauss_bits": 25.19, "expected": 44.02}
+{"r": 8, "lag": 9, "rank": 8, "hits": 5, "exact_bits": 28.33, "gauss_bits": 27.65, "expected": 8.0}
+{"r": 9, "lag": 12, "rank": 9, "hits": 1, "exact_bits": 30.65, "gauss_bits": 30.45, "expected": 1.15}
+{"r": 10, "lag": 16, "rank": 10, "hits": 0, "exact_bits": null, "gauss_bits": 32.9, "expected": 0.21}
+{"r": 11, "lag": 24, "rank": 11, "hits": 0, "exact_bits": null, "gauss_bits": 34.63, "expected": 0.06}
+{"r": 12, "lag": 29, "rank": 11, "hits": 0, "exact_bits": null, "gauss_bits": 34.63, "expected": 0.06}
+{"stage": "summary", "joint_solutions": [4208, 9902, 11514, 16846], "candidates_log2": 30.65, "rows": [{"r": 1, "lag": 1, "rank": 1, "hits": 111386159, "exact_bits": 3.92, "gauss_bits": 3.9, "expected": 112870139.73}, {"r": 2, "lag": 2, "rank": 2, "hits": 7691403, "exact_bits": 7.78, "gauss_bits": 7.74, "expected": 7881772.21}, {"r": 3, "lag": 3, "rank": 3, "hits": 561544, "exact_bits": 11.55, "gauss_bits": 11.51, "expected": 577751.12}, {"r": 4, "lag": 4, "rank": 4, "hits": 47038, "exact_bits": 15.13, "gauss_bits": 15.07, "expected": 48986.23}, {"r": 5, "lag": 6, "rank": 5, "hits": 3693, "exact_bits": 18.8, "gauss_bits": 18.68, "expected": 4011.95}, {"r": 6, "lag": 7, "rank": 6, "hits": 450, "exact_bits": 21.84, "gauss_bits": 21.73, "expected": 484.41}, {"r": 7, "lag": 8, "rank": 7, "hits": 44, "exact_bits": 25.19, "gauss_bits": 25.19, "expected": 44.02}, {"r": 8, "lag": 9, "rank": 8, "hits": 5, "exact_bits": 28.33, "gauss_bits": 27.65, "expected": 8.0}, {"r": 9, "lag": 12, "rank": 9, "hits": 1, "exact_bits": 30.65, "gauss_bits": 30.45, "expected": 1.15}, {"r": 10, "lag": 16, "rank": 10, "hits": 0, "exact_bits": null, "gauss_bits": 32.9, "expected": 0.21}, {"r": 11, "lag": 24, "rank": 11, "hits": 0, "exact_bits": null, "gauss_bits": 34.63, "expected": 0.06}, {"r": 12, "lag": 29, "rank": 11, "hits": 0, "exact_bits": null, "gauss_bits": 34.63, "expected": 0.06}]}
