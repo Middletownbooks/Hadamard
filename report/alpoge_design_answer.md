@@ -326,7 +326,7 @@ Estimator: the lattice-exact Gaussian (`theory/q523_gauss.gauss_bits`), fitted p
 | H Hᵀ = 3732·I | search (float64 BLAS) | yes |
 | PAF by integer dot products; GS array; H Hᵀ = 3732·I in int64 blocks | `scripts/verify_h3732.py` (no shared code) | yes; sha256 of packed rows `8fea9ea2…a437e` |
 | same, plus the published normalized matrix equals the normalization of the built H | `pub/H3732/verify.py` (numpy only) | yes |
-| the sequences really are constant on the stated slice orbits | the sequences really are constant on the stated slice orbits | `scripts/verify_h3732.py --slice 311 10` | yes |
+| the sequences really are constant on the stated slice orbits | `scripts/verify_h3732.py --slice 311 10` | yes |
 
 Bundle: `pub/H3732/sequences_Z933.txt` (header gives the slice and the generators), `pub/H3732/H3732_normalized.txt.gz`,
 `pub/H3732/verify.py`. b = 0 has no border, so there is no `border.json`. Packed matrix: `data/H3732_packed.npz`.
