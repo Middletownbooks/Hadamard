@@ -1,0 +1,13 @@
+{"stage": "alpha", "alpha_quads": 1505, "canonical": 73, "unit_reps": [1, 3, 7], "shifts": [0, 13], "row2": 85, "row0_classes": 43}
+{"stage": "enum", "todo": 73, "done": 0}
+{"stage": "enum_done", "canonical_quads": 73, "quads_logged": 73, "raw_solutions": 520, "yB_orbits": 102, "secs": 1.8}
+{"stage": "yB", "m": 494, "mu": 83, "qA": 13, "qB": 19, "orbits": 102}
+{"stage": "yb_done", "yb": 0, "joint": 0, "njoint": 0, "pred_cores": 0.0, "cores": 0, "S": 0, "pred_S": 0.0, "Spairs": 0, "pred_Spairs": 0.0}
+{"stage": "yb_done", "yb": 1, "joint": 2400, "njoint": 20, "pred_cores": 0.07, "cores": 0, "S": 12796, "pred_S": 9371.24, "Spairs": 342628, "pred_Spairs": 532965.09}
+{"stage": "yb_done", "yb": 2, "joint": 2400, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}
+{"stage": "yb_done", "yb": 3, "joint": 0, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}
+{"stage": "yb_done", "yb": 4, "joint": 0, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}
+{"stage": "yb_done", "yb": 5, "joint": 0, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}
+{"stage": "yb_done", "yb": 6, "joint": 0, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}
+{"stage": "yb_done", "yb": 7, "joint": 0, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}
+{"stage": "yb_done", "yb": 8, "joint": 0, "njoint": 40, "pred_cores": 0.19, "cores": 0, "S": 27178, "pred_S": 19182.31, "Spairs": 851178, "pred_Spairs": 1303619.39}

@@ -1,0 +1,89 @@
+r"""Full positive-control run on a same-shape product slice (first: 495 x83, m = 494 = 2.13.19) [M, with E alongside].
+
+Same pipeline as 647 x353, unchanged: every y_B orbit (theory/nd_joint_exhaust.enumerate_yB, restart-safe), the exact
+joint test of each, the joint solutions reduced to orbits of the stabiliser of their y_B (theory/p647_common), and for
+every orbit representative the exact cross level (theory/p647_cross: lists, distinct sigma, S-join p647_join.join4p,
+D-check, full PAF check).  Next to every exact count the Gaussian predictions of theory/p647_calib.gauss_preds
+(N = 4000): predicted S-solutions, D-candidates and cores.  Every core is completed by bordered Goethals-Seidel and
+verified (theory/nd_doubly.bordered_gs_cyclic, then scripts/verify_h2588.py, which works for any such core).
+Restart-safe: one JSON line per processed joint solution in logs/p647/control/full_<tag>.jsonl.
+usage: python3 theory/p647_ctrl_full.py m mu qA qB [--yb i,j,...] [--max-cores N]"""
+import sys, os, json, math, time
+import numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from nd_cross import Cross, orbit_maps
+from nd_joint_exhaust import enumerate_yB
+from nd_doubly import bordered_gs_cyclic
+import p647_common as PC
+import p647_cross as PX
+from p647_calib import gauss_preds
+
+def main(m, mu, qA, qB, yb_list=None, max_cores=10 ** 9, log=print, N=4000):
+    d = os.path.join(PC.LOG, "control"); os.makedirs(d, exist_ok=True)
+    tag = f"{m}_{mu}_{qA}_{qB}"; outp = os.path.join(d, f"full_{tag}.jsonl")
+    X = Cross(m, mu, qA, qB); FA, FB = X.D.FA, X.D.FB
+    ys = enumerate_yB(m, mu, qA, qB, os.path.join(d, f"enum_{tag}.jsonl"), 1, log=lambda s: None)
+    reps, oi, maps = orbit_maps(X); NH = PX.lag_tensor(X, oi)
+    done = set(); ncores = 0
+    if os.path.exists(outp):
+        for line in open(outp):
+            r = json.loads(line)
+            if 'jsol' in r: done.add((r['yb'], r['jsol'])); ncores += r.get('cores', 0)
+            if 'joint_total' in r: done.add((r['yb'], 'test'))
+    log(json.dumps(dict(stage="start", m=m, mu=mu, qA=qA, qB=qB, yB_orbits=len(ys), done=len(done), cores_so_far=ncores)))
+    order = range(len(ys)) if yb_list is None else yb_list
+    T = dict(joint=0, S=0, pred_S=0.0, Spairs=0, pred_Spairs=0.0, pred_cores=0.0, pred_cores_cal=0.0, cores=0)
+    with open(outp, "a") as fo:
+        for ib in order:
+            yb = ys[ib]
+            t0 = time.time(); rec, sols = X.J.test(yb, maxsol=10 ** 7)
+            if not sols:
+                if (ib, 'test') not in done:
+                    fo.write(json.dumps(dict(yb=ib, joint_total=0, orbits=0, secs=round(time.time() - t0, 2))) + "\n"); fo.flush()
+                continue
+            stab = PC.stabiliser_on(yb, m, FB, FA)
+            keys, rep_idx = PC.canonical_joint(X, sols, stab, FA)
+            if (ib, 'test') not in done:
+                fo.write(json.dumps(dict(yb=ib, joint_total=len(sols), stabiliser=len(stab), orbits=len(rep_idx),
+                                         secs=round(time.time() - t0, 2))) + "\n"); fo.flush()
+            log(json.dumps(dict(stage="yb", yb=ib, joint=len(sols), stabiliser=len(stab), orbits=len(rep_idx))))
+            for js in rep_idx:
+                if (ib, js) in done: continue
+                blocks = PX.build(X, yb, X.J.ya_full(sols[js]['layers']), maps, NH, oi)
+                if blocks is None: continue
+                t1 = time.time()
+                g = gauss_preds(X, blocks, N=N)
+                r, Ssols, hits, cand = PX.solve(X, blocks)
+                cores = []
+                for h in hits:
+                    xs = PX.assemble(X, blocks, h[1:])
+                    if PX.is_core(xs): cores.append(xs)
+                out = dict(yb=ib, jsol=int(js), H=g['H'], Hs=g['Hs'], CSu=g['CSu'], CSp=g['CSp'], C=g['C'], CDgS=g['CDgS'],
+                           pred_S_log2=g['pred_S_log2'], S=r['S_solutions'], pred_Spairs_log2=g['pred_Spairs_log2'],
+                           Spairs=r['S_pairs'], pred_cores_log2=g['pred_cores_log2'], D_hits=r['D_hits'], cores=len(cores),
+                           secs=round(time.time() - t1, 2))
+                fo.write(json.dumps(out) + "\n"); fo.flush()
+                T['joint'] += 1; T['S'] += r['S_solutions']; T['Spairs'] += r['S_pairs']; T['cores'] += len(cores)
+                for key, k2 in (('pred_S', 'pred_S_log2'), ('pred_Spairs', 'pred_Spairs_log2'), ('pred_cores', 'pred_cores_log2')):
+                    if g[k2] is not None and math.isfinite(g[k2]): T[key] += 2.0 ** g[k2]
+                if g['CDgS'] is not None and math.isfinite(g['CDgS']): T['pred_cores_cal'] += r['S_pairs'] * 2.0 ** -g['CDgS']
+                for n_, xs in enumerate(cores):
+                    ncores += 1
+                    Hm = bordered_gs_cyclic(xs)
+                    ok = Hm is not None and np.array_equal(Hm @ Hm.T, Hm.shape[0] * np.eye(Hm.shape[0], dtype=np.int64))
+                    path = os.path.join(d, f"core_{tag}_yb{ib}_j{js}_{n_}.json")
+                    json.dump(dict(m=m, mu=mu, qA=qA, qB=qB, yb_index=ib, jsol=int(js), yb=[list(map(int, y)) for y in yb],
+                                   hadamard_internal=bool(ok), core=xs.tolist()), open(path, "w"))
+                    log(json.dumps(dict(stage="CORE", v=m + 1, N=4 * (m + 1), yb=ib, jsol=int(js), hadamard_internal=bool(ok), path=path)))
+                if T['joint'] % 25 == 0:
+                    log(json.dumps(dict(stage="progress", **{k: (round(v, 3) if isinstance(v, float) else v) for k, v in T.items()})))
+                if ncores >= max_cores: break
+            if ncores >= max_cores: break
+    log(json.dumps(dict(stage="summary", **{k: (round(v, 3) if isinstance(v, float) else v) for k, v in T.items()}, cores_total=ncores)))
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    pos = [int(x) for x in a[:4]]
+    ybl = [int(x) for x in a[a.index("--yb") + 1].split(",")] if "--yb" in a else None
+    mc = int(a[a.index("--max-cores") + 1]) if "--max-cores" in a else 10 ** 9
+    main(*pos, yb_list=ybl, max_cores=mc, log=lambda s: print(s, flush=True))

@@ -50,9 +50,9 @@ def act(y, g, F):
     u, t, s, pi = g; y = np.asarray(y); b = np.arange(F)
     return np.array([s[k] * y[pi[k]][(u * b + t[k]) % F] for k in range(4)])
 
-def stabiliser(yb, F=34):
+def stabiliser(yb, F=34, m=M_):
     yb = np.asarray(yb); seen = set(); out = []
-    for g in group_elements():
+    for g in group_elements(m):
         key = (g[0] % F, tuple(x % F for x in g[1]), g[2], g[3])
         if key in seen: continue
         seen.add(key)
@@ -69,3 +69,13 @@ def canonical_joint(X, sols, stab, FA=38):
     rep = {}
     for i, kk in enumerate(keys): rep.setdefault(kk, i)
     return keys, sorted(rep.values())
+
+def stabiliser_on(yb, m, FB, FA):
+    """stabiliser of y_B (on Z_FB) as distinct actions on Z_FA (any doubly-staged slice with m = 2 qA qB)"""
+    st = stabiliser(yb, FB, m)
+    keys = {(g[0] % FB, tuple(x % FB for x in g[1]), g[2], g[3]) for g in st}
+    acts = {}
+    for g in group_elements(m):
+        if (g[0] % FB, tuple(x % FB for x in g[1]), g[2], g[3]) in keys:
+            acts.setdefault((g[0] % FA, tuple(x % FA for x in g[1]), g[2], g[3]), g)
+    return list(acts.values())
