@@ -386,6 +386,14 @@ yield (D-candidates) against their exact work (emitted pairs), j = 4208 / j = 99
   - y_B #13: 24,624 joint solutions, 518 classes (H median 77.8, max 78.78).
 - **11:56–12:04 UTC:** the class workers handed over to multi mode (§4.1), one by one after their current energy
   class: H-ordered queue over y_B #0, #9, #13.
+- **12:10 UTC:** y_B #10 has 130,176 joint solutions in 2,712 classes (H 76.5–77.97). The queue was rebuilt over
+  y_B #0, #9, #13, #10: 3,896 classes.
+- **12:12 UTC, CPU share fixed.** The kernel schedules by session autogroups (`sched_autogroup_enabled = 1`): every
+  session gets an equal CPU share, and nice acts only inside a session.
+  - From about 10:40 UTC the helper runs (495 control, then size precheck and y_B scan), each in its own session,
+    took one third to one half of the machine; the four production workers got about 1.6 cores.
+  - Setting the helpers' autogroup nice to 19 (`echo 19 > /proc/<pid>/autogroup`) gives production about 3.9 cores.
+  - The class-mode wall times of 10:40–12:12 (560–870 s per class) were measured under this contention.
 - **From 11:38 UTC:** capped joint scan of the small 647 y_B orbits (`p647_ybscan.py`, `logs/p647/ybscan.log`):
   5, 9, 13, 10, 12, 6, 21, 11, smallest first by the size precheck (`p647_jsize.py`, `logs/p647/jsize_647.jsonl`).
 - **Tally at 11:40 UTC** (counted once per class): 47 classes touched (15 finished in class mode, 2^28.2 candidates
@@ -538,3 +546,5 @@ python3 theory/p647_perS_rank.py                                 # per-S-solutio
 - **Any new deduplication** must use the full group (`p647_classes.group_full`: per-block reversal included). Check it
   on real data: members of one class must give identical counts.
 - **Kill only by explicit PID.** `pgrep -f` / `pkill -f` patterns can match the calling shell.
+- **CPU share:** start helper jobs with their autogroup at nice 19 (`echo 19 > /proc/<pid>/autogroup`). Plain nice
+  does not lower a separate session's share under autogroup scheduling.
