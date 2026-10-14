@@ -454,12 +454,12 @@ bordered batches `theory/ab_cbatch.py` → `logs/ab/c4_batch.jsonl`, `logs/ab/c6
 
 **Exact batches [M]** (`theory/ab_cbatch.py`: screen A, then exact stage 1, restricted for c = 6 and c = 8 to the
 border class of the 347 and 359 templates; configurations with ≤ 26 G'-orbits; 1,200 s and a 4–4.5 GB cap each).
-State when this was written:
+State at 19:00 UTC (the c = 4 and c = 6 batches were still running):
 
 | batch | configurations | empty (A fails) | stage 1 empty in the border class | survivors | memory or time cap | > 26 orbits |
 |---|---|---|---|---|---|---|
-| c = 4 (571, 599, 643, 659) | 47 | 14 | – | 1 (599, q = 149, s = 74, f = 2: 1,500 y's, a 300-orbit slice) | 3 | 29 |
-| c = 6 (599, 659) | 66 | 14 | 5 | 4 (659, see below) | 18 | 25 |
+| c = 4 (571, 599, 643, 659, 719, 739) | 64 | 21 | – | 2, both f = 2 slices of about 300–360 orbits: 599 (q = 149, s = 74: 1,500 y's) and 719 (q = 179, s = 89: 1,800 y's) | 10 | 31 |
+| c = 6 (599, 659, 719) | 125 | 29 | 10 | 5 (659, see below) | 37 | 44 |
 | c = 8 (599, 719, 751, 823, 839, 863, 919, 991) | 81 | 10 | – | 0 | 29 | 42 |
 
 **659, c = 6 (h = 109 prime, G' = Q = Z₂ × Z₃).** Exact stage 1 in 347's border class
@@ -471,6 +471,7 @@ State when this was written:
 | 27 (4) | −1 on Z₃ | 8 | 8 | H₂ 388, C₂ 566, −178 |
 | 36 (3) | 1 | 108 | 8 | H₂ 793, C₂ 523, **+270** (mahal 0.1) |
 | 36 (3) | −1 on Z₃ | 4 | 4 | H₂ 529, C₂ 398, +130 (mahal 8.4: far tail, unreliable) |
+| 54 (2) | −1 on Z₃ | 58 | 58 | not estimated (a 220-orbit slice) |
 
 - These are the first b ≥ 3 configurations of an open order with exactly verified, bordered stage-1 solutions and a
   positive stage 2.
