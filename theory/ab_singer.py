@@ -232,6 +232,75 @@ def admissible(ctx, Kc, Q, c, U=None, nkey=12):
     return np.stack([ctx.pi[I[ok]], ctx.pj[I[ok]], ctx.pi[J[ok]], ctx.pj[J[ok]]], 1)
 
 
+try:
+    import numba as _nb
+
+    @_nb.njit(cache=True)
+    def _pair_keys(TA, TB, hP, w, m, shift, neg):
+        """key[i*n + j] = hP[i*n + j] + sum_k r_k w_k, r_k = (+-(TA[i,k] + TB[j,k]) + shift) mod m"""
+        n = TA.shape[0]; K = TA.shape[1]
+        out = np.empty(n * n, np.uint64)
+        for i in range(n):
+            for j in range(n):
+                acc = np.uint64(hP[i * n + j])
+                for k in range(K):
+                    v = TA[i, k] + TB[j, k]
+                    if neg: v = -v
+                    v = (v + shift) % m
+                    if v < 0: v += m
+                    acc += np.uint64(v) * np.uint64(w[k])
+                out[i * n + j] = acc
+        return out
+
+    @_nb.njit(cache=True)
+    def _hash_join(LK, RK, bits):
+        size = 1 << bits; mask = np.uint64(size - 1)
+        head = -np.ones(size, np.int64); nxt = -np.ones(RK.shape[0], np.int64)
+        for j in range(RK.shape[0]):
+            hsh = (RK[j] * np.uint64(0x9E3779B97F4A7C15)) >> np.uint64(64 - bits)
+            nxt[j] = head[hsh]; head[hsh] = j
+        cnt = 0
+        for i in range(LK.shape[0]):
+            hsh = (LK[i] * np.uint64(0x9E3779B97F4A7C15)) >> np.uint64(64 - bits)
+            j = head[hsh]
+            while j >= 0:
+                if RK[j] == LK[i]: cnt += 1
+                j = nxt[j]
+        I = np.empty(cnt, np.int64); J = np.empty(cnt, np.int64); t = 0
+        for i in range(LK.shape[0]):
+            hsh = (LK[i] * np.uint64(0x9E3779B97F4A7C15)) >> np.uint64(64 - bits)
+            j = head[hsh]
+            while j >= 0:
+                if RK[j] == LK[i]:
+                    I[t] = i; J[t] = j; t += 1
+                j = nxt[j]
+        return I, J
+    HAVE_NUMBA = True
+except Exception:
+    HAVE_NUMBA = False
+
+
+def admissible_fast(ctx, Kc, Q, c, U=None, nkey=12):
+    """same result as admissible(), with the key computation and the join compiled (numba)"""
+    if not HAVE_NUMBA: return admissible(ctx, Kc, Q, c, U, nkey)
+    if U is None: U = frame_tables(ctx, Kc)
+    m = 8 * c
+    T = np.einsum('aj,afk->jfk', Q, U)
+    sel = np.arange(nkey)
+    if not hasattr(ctx, 'wu'):
+        ctx.wu = ctx.w[32:32 + 32].astype(np.uint64)
+        ctx.hPLu = ctx.hPL.astype(np.uint64); ctx.hPRu = ctx.hPR.astype(np.uint64)
+    T0, T1, T2, T3 = (np.ascontiguousarray(T[J][:, sel]) for J in range(4))
+    LK = _pair_keys(T0, T1, ctx.hPLu, ctx.wu, m, 0, False)
+    RK = _pair_keys(T2, T3, ctx.hPRu, ctx.wu, m, 4 * c, True)
+    bits = max(10, int(np.ceil(np.log2(len(RK)))) + 1)
+    I, J = _hash_join(LK, RK, bits)
+    if len(I) == 0: return np.zeros((0, 4), np.int64)
+    tot = T[0][ctx.pi[I]] + T[1][ctx.pj[I]] + T[2][ctx.pi[J]] + T[3][ctx.pj[J]]
+    ok = (np.abs(tot) == 4 * c).all(1) & ((ctx.PP[I] + ctx.PP[J]) == -4).all(1)
+    return np.stack([ctx.pi[I[ok]], ctx.pj[I[ok]], ctx.pi[J[ok]], ctx.pj[J[ok]]], 1)
+
+
 def k_frames(ctx, F, limit=10):
     """4 mutually orthogonal admissible row-blocks (up to shift/negation classes)"""
     cls = {}
@@ -359,7 +428,7 @@ def main():
             U = frame_tables(ctx, fr)
             for qi, Q in enumerate(Qall):
                 if not corner_parity_ok(fr, Q): continue
-                F = admissible(ctx, fr, Q, c, U)
+                F = admissible_fast(ctx, fr, Q, c, U)
                 if len(F) < 4: continue
                 kf, nk = k_frames(ctx, F, limit=2)
                 for kb in kf:
