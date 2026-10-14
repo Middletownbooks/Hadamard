@@ -1,0 +1,43 @@
+{"stage": "setup", "c": 8, "b": 7, "group": "cyc", "a": [2, 2, 2, 4], "sequences": 70, "Q_reps": 16, "first_blocks": 185, "secs": 19.6}
+{"stage": "Q", "left_classes": 16}
+{"stage": "first", "first": [0, 1, 5, 6], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 22, "templates": [{"Q": 10, "admissible": 56, "saved": "logs/ab/singer_test2/template_c8_cyc_a2224_f0_1.npz"}], "secs": 1.7}
+{"stage": "first", "first": [0, 1, 5, 16], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 22, "templates": [], "secs": 1.4}
+{"stage": "first", "first": [0, 1, 5, 19], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 21, "templates": [], "secs": 1.4}
+{"stage": "first", "first": [0, 1, 5, 20], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 21, "templates": [], "secs": 1.4}
+{"stage": "first", "first": [0, 1, 5, 40], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 20, "templates": [], "secs": 1.4}
+{"stage": "first", "first": [0, 1, 5, 46], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 20, "templates": [{"Q": 2, "admissible": 56, "saved": "logs/ab/singer_test2/template_c8_cyc_a2224_f5_2.npz"}], "secs": 1.4}
+{"stage": "first", "first": [0, 1, 5, 48], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 22, "templates": [], "secs": 1.6}
+{"stage": "first", "first": [0, 1, 6, 9], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 6, 17], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 14, "templates": [], "secs": 1.1}
+{"stage": "first", "first": [0, 1, 6, 26], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 17, "templates": [], "secs": 1.2}
+{"stage": "first", "first": [0, 1, 6, 39], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 18, "templates": [], "secs": 1.3}
+{"stage": "first", "first": [0, 1, 6, 42], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 15, "templates": [], "secs": 1.0}
+{"stage": "first", "first": [0, 1, 6, 58], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 17, "templates": [], "secs": 1.3}
+{"stage": "first", "first": [0, 1, 9, 16], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 12, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 9, 20], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 10, "templates": [], "secs": 0.7}
+{"stage": "first", "first": [0, 1, 9, 40], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 11, "templates": [], "secs": 0.8}
+{"stage": "first", "first": [0, 1, 9, 46], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 9, 48], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 11, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 16, 17], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 12, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 16, 26], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 16, 39], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 11, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 16, 42], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 16, 58], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 17, 19], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 9, "templates": [], "secs": 0.7}
+{"stage": "first", "first": [0, 1, 17, 40], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 11, "templates": [], "secs": 0.8}
+{"stage": "first", "first": [0, 1, 17, 46], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 6, "templates": [], "secs": 0.5}
+{"stage": "first", "first": [0, 1, 17, 48], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 9, "templates": [], "secs": 0.6}
+{"stage": "first", "first": [0, 1, 19, 26], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 14, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 19, 39], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 14, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 19, 42], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 15, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 19, 58], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 1.0}
+{"stage": "first", "first": [0, 1, 26, 40], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 12, "templates": [], "secs": 0.9}
+{"stage": "first", "first": [0, 1, 26, 46], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 11, "templates": [], "secs": 0.8}
+{"stage": "first", "first": [0, 1, 26, 48], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 12, "templates": [], "secs": 0.8}
+{"stage": "first", "first": [0, 1, 39, 40], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 12, "templates": [], "secs": 1.0}
+{"stage": "first", "first": [0, 1, 39, 46], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 8, "templates": [], "secs": 0.7}
+{"stage": "first", "first": [0, 1, 39, 48], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 13, "templates": [], "secs": 1.2}
+{"stage": "first", "first": [0, 1, 40, 42], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 10, "templates": [], "secs": 0.7}
+{"stage": "first", "first": [0, 1, 40, 58], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 9, "templates": [], "secs": 0.6}
+{"stage": "first", "first": [0, 1, 42, 46], "partners": 1050, "partner_classes": 75, "frames": 22, "frames_processed": 5, "templates": [], "secs": 0.3}
+{"stage": "end", "frames": 544, "templates": 2, "secs": 77.4}
