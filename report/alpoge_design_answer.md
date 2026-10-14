@@ -53,7 +53,12 @@ and calibration named); [L] literature recollection, unchecked.
      - every GP slice of 571 at c = 4 (q = 71, s = 2, 5, 7, 10, 14) dies at the Q-level;
      - 863, c = 4, s = 6, U = −1: exact stage 1 is empty (31,188 α-quadruples);
      - 863, c = 6, q = 13, s = 4, H' = Z₁₁, U = ⟨−1 on Z₃ × Z₁₁, ×3 on Z₁₁⟩, in 347's border class: empty;
-     - 599, c = 6, q = 11, s = 2, H' = Z₉, with five multiplier groups (§7): empty.
+     - 599, c = 6, q = 11, s = 2, H' = Z₉, with five multiplier groups (§7): empty;
+     - **the small Paley-type family** (index 2, 3 or 4 on a prime q ∥ h plus one multiplier group on the
+       cofactor, ≤ 16 G'-orbits), decided exactly (§7):
+       - at c = 4, 58 of the 61 configurations decided so far are empty (48 at the Q-level, 751 at q = 11 and 839 at
+         q = 19 with empty stage 1), and 751 at q = 17, s = 4 is dead in stage 2 [E];
+       - at c = 6 all 19 are empty (347's border class).
 6. **(D)** The ranked table is §8.
    - The other composite orders reach b = 0 GP slices whose stage 2 is Gaussian-positive, but whose fibres are too
      large for the 933 pipeline. They need one more level (§6):
@@ -549,6 +554,10 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | – | 863 | c = 6 | 347-shape, 347 border class | **stage 1 empty [M]** | – |
 | – | 599 | c = 6 | q = 11, s = 2, the five U's above | **stage 1 empty [M]** | the remaining 599 c = 6 configurations |
 | – | 659, 719, 751, 823, 839, 863 | c = 4, 6 | 144 configurations failing screen A (§7) | **empty [M]** | – |
+| – | 751 | c = 4 | Paley q = 11, ⟨2⟩ (order 8) on Z₁₇ | **stage 1 empty [M]** (two independent exact methods) | – |
+| – | 839 | c = 4 | Paley q = 19, ⟨3⟩ (order 5) on Z₁₁ | **stage 1 empty [M]** | – |
+| – | 751 | c = 4 | q = 17, s = 4, ⟨3⟩ on Z₁₁ | 311,296 y's [M]; stage 2 −72 bits per y [E] | dead |
+| – | all open v | c = 4, 6 | Paley-type, ≤ 16 orbits: 48 + 19 configurations | **empty [M]** (screen A) | – |
 
 ---
 
@@ -569,6 +578,12 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
    - For each z, search frames K, Kc from H₂ ⊗ H(20) (Lemma 1), with block-internal signed column permutations, for a
      flat corner. Lemma 2 reduces this to ±1-ness of K = −C·Kc·Cb/(4b).
    - A hit gives a c = 10 template, and §3's transfer then gives both orders.
+   - [P] Structural constraint for c = 10: √(4b) = 6 is an integer, so Cb|_V = 6·O with O a rational orthogonal map.
+     O cannot act as a signed permutation of coordinates, since the corner entries would then be ±40/6. The
+     template must make O "flat" between the two frames: they must be mutually unbiased.
+   - Equivalently, at h = 1 a template is an H(76) containing the 40 × 76 partial matrix [Kcᵀ | GS(z)],
+     z ∈ {±1}^{Z₁₀} with Σ_k PAF = 4 off 0. That is a completion problem for a partial Hadamard matrix; 76 = 2(37 + 1)
+     also suggests looking inside Paley II H(76).
 4. **659, c = 4.** Finish exact stage 1 (`logs/ab/c4_batch.jsonl`). Then compute the level decomposition (H_S, C_S,
    h_D, C(D|S)) with `theory/ab_levels.py` on its y's, and cost the hierarchical solver.
 
@@ -594,4 +609,10 @@ python3 scripts/verify_h3732.py pub/H3732/sequences_Z933.txt data/H3732_packed.n
 cd pub/H3732 && python3 verify.py                     # standalone bundle check
 python3 theory/ab_b0z3_calib.py --q 71 --y 0 --K 50 --n 6 --exact                              # calibration
 python3 theory/ab_b0_stage1.py '<cfg json>' --max 3 --N 8000                                   # b = 0 stage 1 + stage 2 [E]
+python3 theory/ab_s1_direct.py '<cfg json>' --out FILE        # exact stage 1, direct (energy + Q-level pruning)
+python3 theory/ab_small_exact.py '<cfg json>' FILE --tag T    # exact stage 2 for small fibres (one 2+2 join per y)
+python3 theory/ab_paley_c4.py [--c 6] --max-orbits 16          # the Paley-type family, decided exactly, all open v
+python3 theory/ab_border_c4.py                                # c = 4 border builder self-test (H(1916) from 479's core)
+python3 scripts/make_bundle_bge3.py CORE.npy MODS NQ LAYOUT.json K.npy KC.npy C.npy OUTDIR   # b >= 3 bundle writer
+python3 theory/ab_border10.py --c 6 --published               # corner-flatness search formulation, validated on 347
 ```

@@ -45,17 +45,27 @@ def solve_y(sl, Y, reps, gw, cap=1 << 16):
         for c0 in range(0, len(X), 4096):
             H_[c0:c0 + 4096] = sl.G.paf(X[c0:c0 + 4096].astype(np.int64))[:, reps] @ gw
         h.append(H_)
+    # pairing with the smallest join cost: the smaller pair side is sorted, the larger streamed
+    best = None
+    for (a, b), (c, d) in (((0, 1), (2, 3)), ((0, 2), (1, 3)), ((0, 3), (1, 2))):
+        L_, R_ = m[a] * m[b], m[c] * m[d]
+        if L_ > R_: (a, b), (c, d), L_, R_ = (c, d), (a, b), R_, L_
+        if best is None or (L_, L_ + R_) < (best[0], best[0] + best[1]): best = (L_, R_, (a, b), (c, d))
+    _, _, (a, b), (c, d) = best
     tw = np.int64(sl.T[reps] @ gw)
-    HL = (h[0][:, None] + h[1][None, :]).ravel(); o = np.argsort(HL); HLs = HL[o]
-    HR = (tw - (h[2][:, None] + h[3][None, :])).ravel()
-    lo = np.searchsorted(HLs, HR, 'left'); hi = np.searchsorted(HLs, HR, 'right')
+    HL = (h[a][:, None] + h[b][None, :]).ravel(); o = np.argsort(HL); HLs = HL[o]
     hits = []
-    for r in np.nonzero(hi > lo)[0]:
-        c_, d_ = divmod(int(r), m[3])
-        for p in o[lo[r]:hi[r]]:
-            a_, b_ = divmod(int(p), m[1])
-            Xc = np.array([Xs[0][a_], Xs[1][b_], Xs[2][c_], Xs[3][d_]], np.int64)
-            if (sl.G.paf(Xc).sum(0) == sl.T).all(): hits.append(Xc)
+    step = max(1, (1 << 22) // m[d])
+    for i0 in range(0, m[c], step):
+        HR = (tw - (h[c][i0:i0 + step][:, None] + h[d][None, :])).ravel()
+        lo = np.searchsorted(HLs, HR, 'left'); hi = np.searchsorted(HLs, HR, 'right')
+        for r in np.nonzero(hi > lo)[0]:
+            ic, id_ = divmod(int(r), m[d]); ic += i0
+            for p in o[lo[r]:hi[r]]:
+                ia, ib = divmod(int(p), m[b])
+                sel = {a: ia, b: ib, c: ic, d: id_}
+                Xc = np.array([Xs[k][sel[k]] for k in range(4)], np.int64)
+                if (sl.G.paf(Xc).sum(0) == sl.T).all(): hits.append(Xc)
     return hits, m
 
 
