@@ -1,0 +1,3 @@
+{"seed": 0, "layer_options": [[2, 6], [6, 1], [2, 4], [4, 2]], "energy_slack": 2640, "pairs": [4, 2, 2, 4], "sigma_distinct": [4, 2, 2, 4], "S_solutions": 16, "S_join_log2": 3.0, "full_lists": [2, 2, 2, 2], "joint": 16, "secs": 0.48, "planted_found": true}
+{"seed": 1, "layer_options": [[3, 1], [2, 4], [3, 4], [6, 6]], "energy_slack": 3168, "pairs": [3, 6, 6, 12], "sigma_distinct": [3, 4, 4, 7], "S_solutions": 24, "S_join_log2": 3.81, "full_lists": [3, 6, 6, 2], "joint": 24, "secs": 0.01, "planted_found": true}
+{"seed": 2, "layer_options": [[2, 2], [3, 2], [4, 6], [4, 3]], "energy_slack": 3696, "pairs": [4, 4, 14, 8], "sigma_distinct": [3, 4, 10, 8], "S_solutions": 16, "S_join_log2": 3.58, "full_lists": [2, 4, 4, 4], "joint": 32, "secs": 0.04, "planted_found": true}
