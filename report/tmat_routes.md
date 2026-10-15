@@ -207,3 +207,22 @@ All other combinations fail row sums or have no g-fixed label for position 0.
 - The order-3 row twist leaves the orbit count unchanged.
 - **669 stays at about 156 bits.** That is about 94 bits beyond the solved T(103) and out of reach of this method on
   this hardware or on Kaggle.
+
+## 9. 3000–4000: T(131, k = 5) gives H(3668) (2026-10-15)
+
+The same route reaches **v = 917 = 7·131**. Full record: `report/b0_917_answer.md`.
+- **The ansatz.** K is the order-5 subgroup {1, 53, 58, 61, 89} of F₁₃₁^*: 27 orbits, 2⁸¹ labellings.
+- **Row sums [P].** The §7 condition is met by (9, 5, 5, 0), and only by it; k = 13 and k = 65 are infeasible.
+- **Estimate [E].** log₂E = 30.0 (16.7 per symmetry class).
+- **Search [M].** `scripts/tmat_kt.py 131 5` found T(131) on the second random support, 23 s on one core. A second seed
+  found another on the eighth support (118 s).
+- **Census [M].** Exact complete joins over 40 random supports gave 0.70 solutions per support against 0.5 predicted.
+- **Same-shape ladder [M].** T(41), T(61) and T(101) at k = 5, with exact totals at t = 41 and 61 (the estimator
+  0.5–0.9 bits low); each built H(28t).
+- **Construction [M].** Cooper–Wallis with the order-7 Williamson quadruple (as for H(2884)) gives four ±1 circulants
+  of length 917 with Σ PAF = 3668·δ.
+- **Verification [M].** The independent `scripts/verify_h3668.py` checks H Hᵀ = 3668·I in integer arithmetic. The
+  bundle is `pub/H3668/`.
+- **Other composite open orders 3000–4000 [P].**
+  - 955 (= 5·191), 537 and 789 have no row-sum-feasible odd k.
+  - 669 is unchanged (k = 3, about 157 bits).
