@@ -314,6 +314,25 @@ def admissible_fast(ctx, Kc, Q, c, U=None, nkey=12):
     return np.stack([ctx.pi[I[ok]], ctx.pj[I[ok]], ctx.pi[J[ok]], ctx.pj[J[ok]]], 1)
 
 
+def partners_fast(ctx, h):
+    """same result as partners(), keys and join compiled (numba); exact values hashed mod 2^31 (|values| < 2^30)"""
+    if not HAVE_NUMBA: return partners(ctx, h)
+    M = [pcf_matrix(h[J], ctx.add) for J in range(4)]; eh = -h.sum(1)
+    S, sm = ctx.S, ctx.sums
+    A = [np.ascontiguousarray(S @ M[J].T + (eh[J] * -sm)[:, None]) for J in range(4)]
+    if not hasattr(ctx, 'wu'):
+        ctx.wu = ctx.w[32:32 + 32].astype(np.uint64)
+        ctx.hPLu = ctx.hPL.astype(np.uint64); ctx.hPRu = ctx.hPR.astype(np.uint64)
+    LK = _pair_keys(A[0], A[1], ctx.hPLu, ctx.wu, 1 << 31, 0, False)
+    RK = _pair_keys(A[2], A[3], ctx.hPRu, ctx.wu, 1 << 31, 0, True)
+    bits = max(10, int(np.ceil(np.log2(len(RK)))) + 1)
+    I, J = _hash_join(LK, RK, bits)
+    G = np.stack([ctx.pi[I], ctx.pj[I], ctx.pi[J], ctx.pj[J]], 1)
+    if len(G) == 0: return G
+    ok = ((ctx.P[G].sum(1) == -4).all(1)) & (cross(ctx, h, G) == 0).all(1)
+    return G[ok]
+
+
 def k_frames(ctx, F, limit=10):
     """4 mutually orthogonal admissible row-blocks (up to shift/negation classes)"""
     cls = {}
@@ -430,7 +449,7 @@ def main():
         if fi % nparts != part or tuple(first) in done: continue
         t1 = time.time()
         h = ctx.S[list(first)]
-        G = partners(ctx, h)
+        G = partners_fast(ctx, h)
         frs, npc = frames_from(ctx, h, G)
         rec = dict(stage='first', first=list(first), partners=int(len(G)), partner_classes=int(npc), frames=len(frs))
         found = []; nskip = 0
