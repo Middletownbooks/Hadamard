@@ -241,7 +241,7 @@ Scripts: `tmat_primev.py`, `tmat_twist3_open.py`, `tmat_reflection_check.py`, `t
 - **537, 789 and 955 are closed exactly [P].** No T(179), T(263) or T(191) has a nontrivial multiplier symmetry,
   twisted or not.
 - **The cheapest surviving slices** are 919 (T(919) with a 3-cycle twist, d = 27, n = 91.1) and 883 (T(883),
-  k = 21, n ≈ 110). Each costs about 2^65–2^69 operations, against about 2^27 for T(131). Next is 669 (T(223, k = 3),
+  k = 21, n ≈ 110). Each costs about 2^67–2^69 operations, against about 2^27 for T(131). Next is 669 (T(223, k = 3),
   n = 156.8).
 - For prime v a T(v) slice is the b = 0 slice of the same symmetry with the product condition added (§2). The b = 0
   slice therefore has at least as many solutions.
@@ -268,7 +268,7 @@ Cooper–Wallis turns T(t) and Williamson-type matrices of order w into H(4tw).
 
 This extends §2's remark on −1 ∈ K to every twist.
 
-Let t > 3 be prime and T a T-matrix of order t with T_{π(i)}(−x) = ε_i·T_i(x) for an involution (π, ε) of B₄.
+Let t be an odd prime and T a T-matrix of order t with T_{π(i)}(−x) = ε_i·T_i(x) for an involution (π, ε) of B₄.
 1. **Parity.**
    - If π fixes row i, then PAF_i(c) ≡ [c/2 ∈ supp T_i] (mod 2). The map x ↦ −x − c pairs equal terms of PAF_i(c),
      and its one fixed point x = −c/2 contributes ±T_i(c/2)².
@@ -279,7 +279,7 @@ Let t > 3 be prime and T a T-matrix of order t with T_{π(i)}(−x) = ε_i·T_i(
    fixed rows are ±δ₀ and 0, and T_j(x) = ε·T_i(−x).
 3. **Weighing sequence.** The pairs {x, −x} split between rows i and j. So W = T_i lives on a half-system, has weight
    (t − 1)/2 and PAF(W) = ((t − 1)/2)·δ: W is a circulant weighing sequence. In particular (t − 1)/2 = s².
-4. **Self-conjugacy, for t ≡ 3 (mod 4).**
+4. **Self-conjugacy, for t ≡ 3 (mod 4), t > 3.**
    - s is odd and 3 | s (otherwise 3 | 2s² + 1 = t). So t ≡ 1 (mod 3) and (3/t) = −(t/3) = −1.
    - Hence −1 ∈ ⟨3⟩ mod t, and complex conjugation fixes every prime of Z[ζ_t] above 3.
    - From W(ζ)·W(ζ⁻¹) = s², each such prime divides W(ζ) exactly v₃(s) times, so 3 | W(ζ).
@@ -346,7 +346,12 @@ permutation [P].**
 **919/d = 27 (3-cycle)** belongs to the family t = (4/3)d² − 2d + 1, with row sums ((d/3)·(1, 1, 1), ±(d − 1)).
 - **Control [M]:** the per-support exact join of `tmat_twist3_census.py`, run over all 64 supports at (19, d = 3),
   reproduces §8's brute-force count of 4,968.
-- Importance-sampled exact counts at 127/d = 9 and 271/d = 15 (same family) are running.
+- That is the only exact check of the 3-cycle Gaussian: 2^12.28 exact against 2^11.5 estimated, 0.8 bits low.
+- Larger members of the family (271/d = 15, 547/d = 21) and the cousin 127/d = 9 (row sums ((d/3)·(1, 1, 1), d + 1),
+  as 19/d = 3) were not counted. The per-support join needs Σ_s C(m′, s)·6^{s−1} ≈ 7^{m′}/6 list entries
+  (10^11 at 127/d = 9, 10^14 at 271/d = 15). An importance-sampled attempt at 127/d = 9 was stopped after 13 min
+  without finishing 10 supports.
+- **So 919/d = 27 carries only that calibration.** A few bits either way do not change §10.5.
 
 ### 10.5 Cost [E]
 
@@ -357,9 +362,10 @@ permutation [P].**
 - **919/d = 27 (3-cycle).**
   - The P/R split of `tmat_kt.py` needs the rows in fixed pairs; the 3-cycle mixes three rows. So only a 2-list split
     per support is available: the 3-row block (6^s labels) against the fourth row (2^{34−s} signs).
-  - At the best support size (s ≈ 10–12): about 2^−40 solutions per support, at about 2^25 operations each.
-  - Total: about 2^65.
-- **Comparison.** Both are about 2^38–2^42 beyond T(131), which took one support of about 2^27 pair operations
+  - At the best support size (s ≈ 11): about 2^−38.7 labelled solutions per support, i.e. 2^−42.3 after the 12
+    symmetries the lists remove. Each support costs about 2^26 operations.
+  - Total: about 2^68, or 2^67 with the 0.8-bit correction.
+- **Comparison.** Both are about 2^40–2^42 beyond T(131), which took one support of about 2^27 pair operations
   (23 s). 669 stays at about 2^79 (§7).
 
 ### 10.6 Findable T-matrices miss the open list [E]
