@@ -207,6 +207,8 @@ All other combinations fail row sums or have no g-fixed label for position 0.
 - The order-3 row twist leaves the orbit count unchanged.
 - **669 stays at about 156 bits.** That is about 94 bits beyond the solved T(103) and out of reach of this method on
   this hardware or on Kaggle.
+- **Superseded for −1 ∈ U by §10 [P].** Every slice above with even d is exactly empty by the reflection lemma of §10.
+  There the twisted Gaussian is unreliable: it predicts 2^0.9–2^4.4 solutions on small cases whose exact count is 0.
 
 ## 9. 3000–4000: T(131, k = 5) gives H(3668) (2026-10-15)
 
@@ -226,3 +228,175 @@ The same route reaches **v = 917 = 7·131**. Full record: `report/b0_917_answer.
 - **Other composite open orders 3000–4000 [P].**
   - 955 (= 5·191), 537 and 789 have no row-sum-feasible odd k.
   - 669 is unchanged (k = 3, about 157 bits).
+
+## 10. Every open order below 4000, screened for a new T-matrix route (2026-10-15) [P, M, E]
+
+The question: after T(103) → H(2060) and T(131) → H(3668), can a new T-matrix reach any other open v?
+
+Scripts: `tmat_primev.py`, `tmat_twist3_open.py`, `tmat_reflection_check.py`, `tmat_twist_d2_cal.py`,
+`tmat_census_2k2.py`, `tmat_twist3_census.py` and `tmat_menu.py`. Logs are in `logs/tmat/`.
+
+**Bottom line.**
+- **No open order below 4000 has a T-matrix route within reach.**
+- **537, 789 and 955 are closed exactly [P].** No T(179), T(263) or T(191) has a nontrivial multiplier symmetry,
+  twisted or not.
+- **The cheapest surviving slices** are 919 (T(919) with a 3-cycle twist, d = 27, n = 91.1) and 883 (T(883),
+  k = 21, n ≈ 110). Each costs about 2^65–2^69 operations, against about 2^27 for T(131). Next is 669 (T(223, k = 3),
+  n = 156.8).
+- For prime v a T(v) slice is the b = 0 slice of the same symmetry with the product condition added (§2). The b = 0
+  slice therefore has at least as many solutions.
+- **The findable T-matrices miss the open list.** Every T(t) now within reach (n ≤ 81, primes 100–420) gives
+  Cooper–Wallis orders that are not open below 4000, so they matter only above 4000.
+
+### 10.1 What a T-route needs
+
+Cooper–Wallis turns T(t) and Williamson-type matrices of order w into H(4tw).
+- **Composite open v:** 537 = 3·179, 669 = 3·223, 789 = 3·263 and 955 = 5·191 (917 and 933 are built). Since 3 and 5
+  are Williamson orders, these need T(179), T(223), T(263) and T(191).
+  - The other split needs Williamson-type matrices of order 179–263. That is not screened here.
+- **Prime open v:** only w = 1, i.e. T(v) itself.
+- All of these t are ≡ 3 (mod 4).
+
+**The symmetric ansätze are exhaustive [P].**
+- For prime t, a symmetry with a fixed point is, after a common shift, x ↦ ux combined with a signed row permutation
+  g (`tmat_twist.py`). Here U = ⟨u⟩ is cyclic of order d and g^d = 1.
+- **d odd:** g has order 1 (the K-invariant ansatz, k = d) or 3. A 3-cycle needs 3 | d and fixes one row. Its row
+  sums are s₁ = s₂ = s₃ = (d/3)·a and s₄ = ±1 + d·b, with 3s₁² + s₄² = t.
+- **d even:** −1 ∈ U, and the lemma below settles it.
+
+### 10.2 Reflection lemma [P]
+
+This extends §2's remark on −1 ∈ K to every twist.
+
+Let t > 3 be prime and T a T-matrix of order t with T_{π(i)}(−x) = ε_i·T_i(x) for an involution (π, ε) of B₄.
+1. **Parity.**
+   - If π fixes row i, then PAF_i(c) ≡ [c/2 ∈ supp T_i] (mod 2). The map x ↦ −x − c pairs equal terms of PAF_i(c),
+     and its one fixed point x = −c/2 contributes ±T_i(c/2)².
+   - If π swaps rows i and j, then PAF_i = PAF_j.
+   - So Σ_i PAF_i(c) ≡ [c/2 lies in a π-fixed row] (mod 2). For this to vanish at every c ≠ 0, the π-fixed rows must
+     carry no nonzero position.
+2. **Shape.** Position 0 is fixed by x ↦ −x, so it lies in a π-fixed row. Hence π is a transposition (i j), the two
+   fixed rows are ±δ₀ and 0, and T_j(x) = ε·T_i(−x).
+3. **Weighing sequence.** The pairs {x, −x} split between rows i and j. So W = T_i lives on a half-system, has weight
+   (t − 1)/2 and PAF(W) = ((t − 1)/2)·δ: W is a circulant weighing sequence. In particular (t − 1)/2 = s².
+4. **Self-conjugacy, for t ≡ 3 (mod 4).**
+   - s is odd and 3 | s (otherwise 3 | 2s² + 1 = t). So t ≡ 1 (mod 3) and (3/t) = −(t/3) = −1.
+   - Hence −1 ∈ ⟨3⟩ mod t, and complex conjugation fixes every prime of Z[ζ_t] above 3.
+   - From W(ζ)·W(ζ⁻¹) = s², each such prime divides W(ζ) exactly v₃(s) times, so 3 | W(ζ).
+   - Then all coefficients of W are congruent mod 3. That is impossible for a sequence with both zero and nonzero
+     entries.
+
+**So for prime t ≡ 3 (mod 4), t > 3, no T-matrix of order t is invariant under x ↦ −x, even up to a signed row
+permutation [P].**
+- This covers every even d, twisted or not, at every t in this section.
+- §8's even-d rows become exact zeros.
+- For t ≡ 1 (mod 4), steps 1–3 still force t = 2s² + 1 and a half-system CW(t, s²). For each such prime with
+  1 < s < 40 (t ≤ 2593), some prime factor of s is self-conjugate mod t, so the class is empty there too [M].
+
+**Checks [M]** (`logs/tmat/reflection_check.jsonl`):
+- **Orders 3, 5, 7.** All T-matrices (192, 3,840 and 37,632) were tested against the 76 elements of order ≤ 2 in
+  B₄.
+  - At t = 3 all 192 are reflection-invariant, with row weights (0, 1, 1, 1) as step 2 predicts.
+  - At t = 5 and 7 none are.
+- **Four symmetric rows:** 0 solutions at t = 11 and 13 (all 8^{(t+1)/2} labellings).
+- **Half-system CW(19, 9):** 0 of 2^18. 19 = 2·3² + 1 is the first case that step 3 leaves open.
+- **The twisted Gaussian fails here.**
+  - At t = 7 and 11 it predicts 2^3.2–2^4.4 solutions for the transposition classes, where the exact count is 0
+    (`logs/tmat/twist_d2_calibration_final.txt`).
+  - It gives 2^0.9 and 2^1.4 at (19, d = 6), where §8's own brute force (`twist_validate_final.txt`) counts 0.
+  - It misses the joint parity condition of step 1.
+
+### 10.3 Per-order results
+
+- n = 3m − log₂E constraint bits [E].
+- Obstructions marked [P] are exact: row sums, or the lemma.
+- For scale: T(131, k = 5) has n = 51.0 and T(103, k = 3) has n = 62.9.
+
+| v | route | surviving symmetric slices (orbits) | n (bits) |
+|---|---|---|---|
+| 537 | T(179) | none: d = 89 leaves 3 orbits, 3 ∤ 178, even d by the lemma [P] | – |
+| 789 | T(263) | none: d = 131 leaves 3 orbits, 3 ∤ 262, even d by the lemma [P] | – |
+| 955 | T(191) | none: k = 5, 19, 95 fail row sums (§7), 3 ∤ 190, even d by the lemma [P] | – |
+| 669 | T(223) | k = 3 (75); 3-cycle d = 3 (75) | 156.8; 156.5 |
+| 919 | T(919) | **3-cycle d = 27 (35; row sums (9, 9, 9, ±26))**; 3-cycle d = 9 (103); k = 9 (103); k = 3 (307) | **91.1**; 268.6; 269.1; 803.3 |
+| 883 | T(883) | **k = 21 (43; row sums (±1, ±21, ±21, 0), 883 = 2·21² + 1)**; k = 7 (127); k = 3 (295) | **111.9**; 330.0; 767.6 |
+| 739 | T(739) | 3-cycle d = 9 (83; untwisted k = 9 fails row sums); k = 3 (247) | 209.7; 626.6 |
+| 659 | T(659) | k = 7 (95) | 236.6 |
+| 571 | T(571) | k = 5 (115); k = 3 (191) | 280.5; 466.4 |
+| 991 | T(991) | k = 9 (111); k = 5 (199); k = 3 (331) | 293.1; 525.8; 875.3 |
+| 751 | T(751) | k = 5 (151); k = 3 (251) | 383.6; 638.2 |
+| 971 | T(971) | k = 5 (195) | 513.8 |
+| 643, 823, 859, 907 | T(v) | k = 3 only | 534.3, 708.5, 743.8, 791.4 |
+| 599, 719, 839, 863, 947 | T(v) | none [P] | – |
+
+- 3-cycle twists with d = 3 pass row sums at the prime v. They have the same 190–330 orbits as k = 3 and were not
+  estimated.
+- With no symmetry at all, T(179), T(191) and T(263) cost 362, 391 and 569 bits [E]
+  (`logs/tmat/asym_k1_179_191_263.jsonl`).
+
+### 10.4 Calibration of the two cheapest slices [M]
+
+**883/k = 21** belongs to the family t = 2k² + 1, with row sums (1, k, k, 0) and 2k + 1 orbits.
+- **t = 19, k = 3:** the exhaustive count is 24,192 labelled solutions (2^14.56, as in §8's brute force), against
+  log₂E = 13.1.
+- **t = 163, k = 9:** complete joins on 3,000 random balanced supports found 1,060 solutions, each checked. That is
+  0.353 per support against 0.077 predicted, so the estimate is 2.2 bits low (`logs/tmat/census_2k2.jsonl`).
+- **So read 883/k = 21 as n ≈ 110.**
+
+**919/d = 27 (3-cycle)** belongs to the family t = (4/3)d² − 2d + 1, with row sums ((d/3)·(1, 1, 1), ±(d − 1)).
+- **Control [M]:** the per-support exact join of `tmat_twist3_census.py`, run over all 64 supports at (19, d = 3),
+  reproduces §8's brute-force count of 4,968.
+- Importance-sampled exact counts at 127/d = 9 and 271/d = 15 (same family) are running.
+
+### 10.5 Cost [E]
+
+- **883/k = 21 (the k-tree applies).**
+  - About 2^−28 solutions per balanced support after the correction.
+  - One complete join on lists of 2^20–2^21 costs about 2^41.
+  - Total: about 2^69.
+- **919/d = 27 (3-cycle).**
+  - The P/R split of `tmat_kt.py` needs the rows in fixed pairs; the 3-cycle mixes three rows. So only a 2-list split
+    per support is available: the 3-row block (6^s labels) against the fourth row (2^{34−s} signs).
+  - At the best support size (s ≈ 10–12): about 2^−40 solutions per support, at about 2^25 operations each.
+  - Total: about 2^65.
+- **Comparison.** Both are about 2^38–2^42 beyond T(131), which took one support of about 2^27 pair operations
+  (23 s). 669 stays at about 2^79 (§7).
+
+### 10.6 Findable T-matrices miss the open list [E]
+
+Menu of primes 100–420, odd k, 5–60 orbits (`logs/tmat/menu_100_420.jsonl`). Row-sum-feasible slices with n ≤ 81:
+
+| t/k | orbits | n (bits) | v = t·w < 1000 (w odd ≥ 3) |
+|---|---|---|---|
+| 113/7 | 17 | 31.4 | 339, 565, 791 |
+| 101/5 | 21 | 37.6 | 303, 505, 707, 909 |
+| 163/9 | 19 | 37.7 | 489, 815 (1,060 T(163) found in §10.4) |
+| 181/9 | 21 | 42.5 | 543, 905 |
+| 131/5 | 27 | 51.0 | 393, 655, 917 (built, §9) |
+| 313/13 | 25 | 55.2 | 939 |
+| 197/7 | 29 | 59.3 | 591, 985 |
+| 151/5 | 31 | 60.2 | 453, 755 |
+| 103/3 | 35 | 62.9 | 309, 515 (2060), 721 (built, §1), 927 |
+| 211/7 | 31 | 64.1 | 633 |
+| 109/3 | 37 | 67.3 | 327, 545, 763, 981 |
+| 181/5 | 37 | 74.4 | as 181/9 |
+| 307/9 | 35 | 77.4 | 921 |
+| 127/3 | 43 | 80.7 | 381, 635, 889 |
+
+- None of these v is open.
+- These T-matrices matter only for open orders above 4000 that have a factor t from this table and a Williamson-type
+  cofactor.
+
+**Reproduce:**
+
+```
+python3 scripts/tmat_primev.py 571,599,643,659,719,739,751,823,839,859,863,883,907,919,947,971,991
+python3 scripts/tmat_primev.py --asym 179,191,263
+python3 scripts/tmat_twist.py screen 263
+python3 scripts/tmat_twist3_open.py 571,643,739,751,823,859,883,907,919,991,223
+python3 scripts/tmat_reflection_check.py
+python3 scripts/tmat_twist_d2_cal.py 7,11
+python3 scripts/tmat_census_2k2.py 3000
+python3 scripts/tmat_twist3_census.py 19 3 all
+python3 scripts/tmat_menu.py 0/4 100 420     # parts 0/4 .. 3/4
+```

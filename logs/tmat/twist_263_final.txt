@@ -1,0 +1,9 @@
+{"t": 263, "d": 2, "g": [[1, -1], [1, -1], [1, -1], [1, -1]], "orbits": 132, "classes": 131, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 263, "d": 2, "g": [[1, -1], [1, -1], [1, -1], [1, 1]], "orbits": 132, "classes": 131, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 263, "d": 2, "g": [[1, -1], [1, -1], [1, 1], [1, 1]], "orbits": 132, "classes": 131, "fix0": 4, "feasible": false, "why": "row sums"}
+{"t": 263, "d": 2, "g": [[1, -1], [1, -1], [2, 1]], "orbits": 132, "classes": 131, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}
+{"t": 263, "d": 2, "g": [[1, -1], [1, 1], [1, 1], [1, 1]], "orbits": 132, "classes": 131, "fix0": 6, "feasible": false, "why": "row sums"}
+{"t": 263, "d": 2, "g": [[1, -1], [1, 1], [2, 1]], "orbits": 132, "classes": 131, "fix0": 2, "feasible": false, "why": "row sums"}
+{"t": 263, "d": 2, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 132, "classes": 131, "fix0": 8, "feasible": false, "why": "row sums"}
+{"t": 263, "d": 2, "g": [[1, 1], [1, 1], [2, 1]], "orbits": 132, "classes": 131, "fix0": 4, "feasible": true, "log2E": -239.5, "n_bits": 634.5, "per_class": -251.6}
+{"t": 263, "d": 2, "g": [[2, 1], [2, 1]], "orbits": 132, "classes": 131, "fix0": 0, "feasible": false, "why": "no g-fixed label for position 0"}

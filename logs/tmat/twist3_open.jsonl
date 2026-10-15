@@ -1,0 +1,33 @@
+{"t": 571, "d": 3, "g": "3-cycle", "orbits": 191, "classes": 95, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 571, "d": 15, "g": "3-cycle", "orbits": 39, "classes": 19, "feasible": false, "why": "row sums"}
+{"t": 571, "d": 57, "g": "3-cycle", "orbits": 11, "classes": 5, "feasible": false, "why": "row sums"}
+{"t": 643, "d": 3, "g": "3-cycle", "orbits": 215, "classes": 107, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 739, "d": 3, "g": "3-cycle", "orbits": 247, "classes": 123, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 739, "d": 9, "g": "3-cycle", "orbits": 83, "classes": 41, "fix0": 2, "feasible": true, "log2E": 37.3, "n_bits": 209.7, "per_class": 27.4}
+{"t": 739, "d": 123, "g": "3-cycle", "orbits": 7, "classes": 3, "feasible": false, "why": "row sums"}
+{"t": 751, "d": 3, "g": "3-cycle", "orbits": 251, "classes": 125, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 751, "d": 15, "g": "3-cycle", "orbits": 51, "classes": 25, "feasible": false, "why": "row sums"}
+{"t": 751, "d": 75, "g": "3-cycle", "orbits": 11, "classes": 5, "feasible": false, "why": "row sums"}
+{"t": 823, "d": 3, "g": "3-cycle", "orbits": 275, "classes": 137, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 859, "d": 3, "g": "3-cycle", "orbits": 287, "classes": 143, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 859, "d": 33, "g": "3-cycle", "orbits": 27, "classes": 13, "feasible": false, "why": "row sums"}
+{"t": 859, "d": 39, "g": "3-cycle", "orbits": 23, "classes": 11, "feasible": false, "why": "row sums"}
+{"t": 883, "d": 3, "g": "3-cycle", "orbits": 295, "classes": 147, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 883, "d": 9, "g": "3-cycle", "orbits": 99, "classes": 49, "feasible": false, "why": "row sums"}
+{"t": 883, "d": 21, "g": "3-cycle", "orbits": 43, "classes": 21, "feasible": false, "why": "row sums"}
+{"t": 883, "d": 63, "g": "3-cycle", "orbits": 15, "classes": 7, "feasible": false, "why": "row sums"}
+{"t": 883, "d": 147, "g": "3-cycle", "orbits": 7, "classes": 3, "feasible": false, "why": "row sums"}
+{"t": 907, "d": 3, "g": "3-cycle", "orbits": 303, "classes": 151, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 919, "d": 3, "g": "3-cycle", "orbits": 307, "classes": 153, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 919, "d": 9, "g": "3-cycle", "orbits": 103, "classes": 51, "fix0": 2, "feasible": true, "log2E": 38.4, "n_bits": 268.6, "per_class": 28.1}
+{"t": 919, "d": 27, "g": "3-cycle", "orbits": 35, "classes": 17, "fix0": 2, "feasible": true, "log2E": 11.9, "n_bits": 91.1, "per_class": 3.2}
+{"t": 919, "d": 51, "g": "3-cycle", "orbits": 19, "classes": 9, "feasible": false, "why": "row sums"}
+{"t": 919, "d": 153, "g": "3-cycle", "orbits": 7, "classes": 3, "feasible": false, "why": "row sums"}
+{"t": 991, "d": 3, "g": "3-cycle", "orbits": 331, "classes": 165, "feasible": true, "why": "row sums ok; not estimated (orbits > 150)"}
+{"t": 991, "d": 9, "g": "3-cycle", "orbits": 111, "classes": 55, "feasible": false, "why": "row sums"}
+{"t": 991, "d": 15, "g": "3-cycle", "orbits": 67, "classes": 33, "feasible": false, "why": "row sums"}
+{"t": 991, "d": 33, "g": "3-cycle", "orbits": 31, "classes": 15, "feasible": false, "why": "row sums"}
+{"t": 991, "d": 45, "g": "3-cycle", "orbits": 23, "classes": 11, "feasible": false, "why": "row sums"}
+{"t": 991, "d": 99, "g": "3-cycle", "orbits": 11, "classes": 5, "feasible": false, "why": "row sums"}
+{"t": 991, "d": 165, "g": "3-cycle", "orbits": 7, "classes": 3, "feasible": false, "why": "row sums"}
+{"t": 223, "d": 3, "g": "3-cycle", "orbits": 75, "classes": 37, "fix0": 2, "feasible": true, "log2E": 66.5, "n_bits": 156.5, "per_class": 56.7}
