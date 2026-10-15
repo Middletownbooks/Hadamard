@@ -132,3 +132,7 @@
 {"stage": "first", "first": [1, 18, 110, 524], "partners": 2156, "partner_classes": 98, "frames": 4, "frames_processed": 3, "templates": [], "secs": 17.2}
 {"stage": "first", "first": [1, 18, 110, 605], "partners": 2002, "partner_classes": 91, "frames": 5, "frames_processed": 5, "templates": [], "secs": 24.9}
 {"stage": "first", "first": [1, 18, 110, 754], "partners": 2156, "partner_classes": 98, "frames": 4, "frames_processed": 3, "templates": [], "secs": 14.5}
+{"stage": "setup", "c": 12, "b": 11, "group": "cyc", "a": [6, 2, 2, 0], "sequences": 924, "Q_reps": 24, "first_blocks": 75573, "secs": 282.4}
+{"stage": "Q", "left_classes": 24}
+{"stage": "first", "first": [1, 18, 114, 275], "partners": 2156, "partner_classes": 98, "frames": 4, "frames_processed": 4, "templates": [], "secs": 13.5}
+{"stage": "first", "first": [1, 18, 114, 558], "partners": 2156, "partner_classes": 98, "frames": 4, "frames_processed": 4, "templates": [], "secs": 13.3}

@@ -333,6 +333,10 @@ fixing one point and transitive on the other nine (`logs/ab/singer/c10_*.jsonl`)
   subgroup, e.g. AGL(1, 9), PSL(2, 9) ≅ A₆ and PΓL(2, 9) on the ten points of PG(1, 9).
 - Trend: Singer borders are plentiful at c = 4 and 6, rare at c = 8 (two in the first 40 of 185 first-blocks), and
   absent at c = 10.
+- c = 12 probe (b = 11 prime, profile (6, 2, 2, 0), Γ = Z₁₁): no template in the first 250 of 75,573 first-blocks
+  (517 frames × 24 Q). c = 4, 6, 8 all produced templates within their first few first-blocks. The probe stopped
+  when the container was reclaimed and was not resumed (about 30 core-hours for the rest; restart-safe:
+  `logs/ab/singer/c12_cyc_a6220_p*of4.jsonl`).
 - The cyclic orders 3, 5, 7 are primes, and 7 = 2³ − 1 carries a Singer difference set. Order 9 is neither prime nor of the
   form 2^m − 1, and the c = 8 templates are built from Legendre(7) and an interval (above).
 
@@ -740,8 +744,9 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
    - If a border is found, its row equations are solvable at both orders: for the monomial profile, 192 solutions at
      669 and 120 at 789 (e.g. row sums (0, 16, 22, 44) and (0, 2, 4, 56)). The core search is then a c = 10 slice;
      669 with p = 11 has n′ = 60 (`report/unattempted_2000_3000.md`), far beyond the annealing wall.
-   - Side computation running: c = 12 (b = 11 prime, profile (6, 2, 2, 0), Γ = Z₁₁; 75,573 first-blocks). c = 12 is an
-     option at 599, 659, 719, 839, 863, 947, 971 (not 669, 789).
+   - c = 12 (an option at 599, 659, 719, 839, 863, 947, 971; not 669, 789): the Singer probe found nothing in the
+     first 250 of 75,573 first-blocks (§3.2). Resuming it (four parts, about 30 core-hours) needs a session that
+     stays active, or a machine of its own.
 4. **659, c = 4.** Finish exact stage 1 (`logs/ab/c4_batch.jsonl`). Then compute the level decomposition (H_S, C_S,
    h_D, C(D|S)) with `theory/ab_levels.py` on its y's, and cost the hierarchical solver.
 
