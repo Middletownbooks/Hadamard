@@ -15,7 +15,9 @@ T-matrices of order t are equivalently a b = 0 GS core of order t with the produ
 row sums (0, +-5, +-5, +-9)) is row-sum feasible and has log2 E = 30.0 (scripts/tmat_estimate.py 131 5); the support
 split + k-tree join (scripts/tmat_kt.py 131 5) finds one in seconds.
 
-usage: python3 theory/b917_cw.py [--T logs/b917/T131_k5.npy | --search SEED] [--out logs/b917/seq_H3668_Z917.txt]"""
+usage: python3 theory/b917_cw.py [--T logs/b917/T131_k5.npy | --search SEED] [--out FILE]
+(default FILE: logs/b917/seq_H3668_Z917.txt, or logs/b917/seq_H3668_Z917_search<SEED>.txt with --search; --search
+also saves its T-matrices as logs/b917/T131_k5_search<SEED>.npy)"""
 import sys, os, json, itertools, subprocess, hashlib
 import numpy as np
 
@@ -84,9 +86,13 @@ def main():
     a = sys.argv[1:]
     opt = lambda n, d=None: a[a.index(n) + 1] if n in a else d
     if '--search' in a:
-        T = search_T(int(opt('--search')))
+        sd = int(opt('--search'))
+        T = search_T(sd)
+        np.save(os.path.join(ROOT, f'logs/b917/T131_k5_search{sd}.npy'), T)
+        default_out = f'logs/b917/seq_H3668_Z917_search{sd}.txt'
     else:
         T = np.load(os.path.join(ROOT, opt('--T', 'logs/b917/T131_k5.npy'))).astype(np.int64)
+        default_out = 'logs/b917/seq_H3668_Z917.txt'
     check_T(T)
     W = williamson(W_)
     X = cooper_wallis(T, W)
@@ -95,7 +101,7 @@ def main():
     Xc = to_cyclic(X)
     Pc = sum(paf_fft(x) for x in Xc)
     ok_c = bool(Pc[0] == 4 * T_ * W_ and (Pc[1:] == 0).all())
-    out = os.path.join(ROOT, opt('--out', 'logs/b917/seq_H3668_Z917.txt'))
+    out = os.path.join(ROOT, opt('--out', default_out))
     rs = Xc.sum(1).tolist()
     with open(out, 'w') as fh:
         fh.write("# Four +-1 circulant sequences of length 917 (cyclic Z_917), b = 0 Goethals-Seidel core of H(3668)\n")
