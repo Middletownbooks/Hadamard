@@ -25,7 +25,9 @@ _TPL = {}
 def singer_templates(c):
     if c not in _TPL:
         out = []
-        for f in sorted(glob.glob(os.path.join(ROOT, f'logs/ab/singer/template_c{c}_cyc_*.npz'))):
+        fs = sorted(glob.glob(os.path.join(ROOT, f'logs/ab/singer/template_c{c}_cyc_*.npz')))
+        fs += sorted(glob.glob(os.path.join(ROOT, f'logs/ab/singer/c{c}_control/template_c{c}_cyc_*.npz')))
+        for f in fs:
             if f.endswith('_layout.npz'): continue
             d = np.load(f)
             out.append((os.path.relpath(f, ROOT), d['N'].astype(np.int64), d['Q'].astype(np.int64)))
