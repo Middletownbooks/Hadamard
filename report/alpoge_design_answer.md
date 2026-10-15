@@ -1,6 +1,6 @@
 # Alpöge-style builders (b = 0 and b ≥ 3) with the staged method
 
-Date: 2026-10-14. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_alpoge_design.md`.
+Date: 2026-10-14 (section 11: 2026-10-15). Branch `claude/focused-planck-j1645f`. Answers `report/prompt_alpoge_design.md`.
 Scripts: `theory/ab_*.py`. Logs: `logs/ab/`. Bundle: `pub/H3732/`.
 
 **Tags.** [M] exact computation (script named); [P] proved here (proof in the text); [E] Gaussian estimate (estimator
@@ -81,6 +81,13 @@ and calibration named); [L] literature recollection, unchecked.
      - 955 at s = 38 with −1: +113 bits per y;
      - 669 at s = 37: +30.8 bits per y, over 131,006 y's.
    - The best b ≥ 3 survivor is 659 at c = 4 (q = 41, s = 8), where stage 2 has C₂ ≈ 285 bits (§7).
+7. **Path 1 of the two-path plan (§11, 2026-10-15): 917 at c = 6 in 347's shape is infeasible [E].** Its stage-2
+   D-deficit is 70.4 bits (347: 16.2; 523: 26.1), i.e. about 2^70 S-solutions per core. A survey of the b ≥ 3 slices
+   finds none of an open order with D_def ≲ 20 and a non-empty stage 1; the nearest is 599 at c = 6 (s = 2, −1 on
+   Z₉: D_def 21.5, about 2^43 per core, stage 1 not yet enumerable). Exact on the way [M]: the monomial c = 6 pipeline
+   end to end (v = 47 control: 5,184 cores, each an H(188)); 863 at c = 6, q = 13, s = 2 is empty in the monomial
+   class (1,024 bordered y's, exact stage 2 on all). Recommendation: the remaining budget belongs to Path 2
+   (917 at b = 0, `report/prompt_917_b0_design.md`).
 
 ---
 
@@ -697,7 +704,10 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | 6 | 669, 789 | c = 10 | – | frames exist (Lemma 1); **no border with an order-9 symmetry [M]** (§3.2) | borders with smaller symmetry or non-monomial compressions (§9.3) |
 | 7 | 917 | g | s = 10 or 13, U = 1 | passes A, B | a smarter stage 1 (22^7 letters); fibres need a split |
 | 8 | 863 | c = 6 | q = 13, s = 4, U = ⟨3⟩ on Z₁₁ | whole +37 [E] | exact bordered stage 1 |
-| 9 | 917 | c = 6 | q = 19, s = 6, −1 on Z₃ and Z₈ (347's shape with H' = Z₈) | screen A passes (29 row quadruples); whole +133 [E] | exact bordered stage 1 or screen B: 2^26 α-vectors need a streaming residue join (this run ran out of memory) |
+| 9 | 599 | c = 6 | q = 11, s = 2, H' = Z₉, −1 on Z₉ | stage 1 +48 [E]; stage 2 −2.2 per y, D_def 21.5 [E] (§11) | an enumerator for stage 1 at 30 G'-orbits, then a 523-sized stage 2 (about 2^43 per core) |
+| – | 917 | c = 6 | q = 19, s = 6, −1 on Z₃ and Z₈ (347's shape with H' = Z₈) | +73.6 per y but **D_def 70.4 [E]**: infeasible (§11) | – |
+| – | 863 | c = 6 | q = 13, s = 2, −1 on Q's Z₃, ×3 on Z₁₁, monomial class | 1,024 bordered y's, **stage 2 empty on all [M]** (§11) | – |
+| – | 599 | c = 6 | q = 11, s = 2, ⟨2⟩ on Z₉, monomial class | **stage 1 empty [M]** (§11) | – |
 | – | 933 | g | s = 31 | 14,184 y's, +9.8 [E] | not needed |
 | – | 917 | g | s = 13, U = ⟨2⟩; s = 26, U = Z₇^* | −27.8, −411 [E] | dead |
 | – | 917, 955 | g | s = 13, U = −1; s = 19, U = −1 | **stage 1 empty [M]** | – |
@@ -783,4 +793,116 @@ python3 theory/ab_singer.py --c 6 --group cyc --a 4,2,0,0                  # c =
 python3 theory/ab_singer.py --c 10 --group cyc --a 4,4,2,0 --part i/3      # c = 10, Z9: all 4,518 first-blocks, no template
 python3 theory/ab_singer.py --c 10 --group z3z3 --a 4,4,2,0                # c = 10, Z3 x Z3: all 680 first-blocks, no template
 python3 theory/ab_singer_layout.py logs/ab/singer/template_c6_cyc_a4200_f0_1.npz --Q 6   # map to the 347 layout, check
+python3 theory/ab_typical_levels.py '<cfg json>' --N 5000     # typical-y level budget: H2, C2, C_S, h_D, D_def (section 11)
+python3 theory/ab_levels_batch.py OUT.jsonl --vs 863 --cs 4   # the same for every configuration of the given orders
+python3 theory/ab_mono6_s2.py '<cfg json>' OUT.jsonl          # monomial c = 6 end to end (v = 47 control: 5,184 H(188))
+python3 theory/ab_mono6_sweep.py OUT.jsonl YDIR --L1max 20    # all small c = 6 slices of the open orders, monomial class
+python3 theory/ab_qaut_run.py OUT.jsonl --vs 47,71 --cs 4,8   # Q-automorphism slices, exact, small orders
 ```
+
+---
+
+## 11. Path 1 of the two-path plan (2026-10-15): b ≥ 3 at c = 6 and c = 4, costed
+
+The plan chose two paths to an open-order example within about 150 core-hours: Path 2, 917 at b = 0 (s = 26), handed
+to a fresh session (`report/prompt_917_b0_design.md`); and Path 1, here: 917 at c = 6 in 347's shape (q = 19, s = 6,
+H' = Z₈, −1 on Z₃ × Z₈), with both c = 6 border classes (347's and the new monomial one). **Costing shows Path 1 is not
+feasible, and no b ≥ 3 configuration of an open order is within the budget with the S/D + middle-level machinery
+[E].** The exact results found on the way are listed in §11.3.
+
+### 11.1 The cost of the 347 pipeline at 917 [E]
+
+- Tool: `theory/ab_typical_levels.py`. A typical y is drawn with the stage-1 lag-0 energy and the row equation exact
+  (letters from the energy-tilted law per G'-orbit; quadruples accepted when both hold). Every lattice Gaussian is
+  read at the sample mean, as in `ab_gauss.stage2_typical`, so y need not solve stage 1. Levels are the characters
+  trivial on a subgroup of G'; the S/D freedom h_D is exact (`ab_levels.sd_freedom`).
+- Cost model (`report/paley_523_answer.md` §3): a core needs about 2^{D_def} S-solutions, D_def = C(D|S) − h_D; each
+  S-solution costs 2^{F+1−n} pair visits in the S-join (F = C_S − C_M, sides of 2^n) plus a D-check of about
+  2^{h_D/2}. Calibrations: 347 D_def 16.2 (28 minutes, §5); 523 D_def 26.1 (about 2^44 pair visits per core).
+- **917, c = 6, q = 19, s = 6, H' = Z₈, −1 on Z₃ × Z₈** (182 orbits, 26 G'-orbits): H₂ 425.0, C₂ 351.4 (rank 77),
+  **+73.6 bits per y**; C_S 197.2, C(D|S) 154.2, h_D 83.8, so **D_def = 70.4**. About 2^70 S-solutions per core:
+  **infeasible**. The other splits are worse (along {0, 4} ⊂ Z₈: the level bits are 136 against 351).
+  `logs/ab/p1/levels_917c6_q19s6.json`.
+- The same order's other indices:
+  - s = 2 (f = 9): H₂ 97, C₂ 88.7, +8.3 per y, D_def 13.8, but stage 1 −48.7 [E] (2^125.7 candidate quadruples
+    against 174.4 bits) and whole −80.6 [E];
+  - s = 3: **stage 1 empty [P]**: every letter of the f = 6 fibre has |y| ≥ 5, so Σ_k Σ_g y_k(g)² ≥ 4·48·25 = 4800 >
+    T₁(0) = 3288;
+  - ×3 on Z₈ added: whole −36.5 [E].
+
+### 11.2 Survey of the b ≥ 3 slices with a feasible-looking budget [E]
+
+(`theory/ab_levels_batch.py`, `logs/ab/p1/`.) The best of each order, with every number from the typical-y budget
+except "whole" (`ab_gauss.whole`) and "stage 1" (`ab_gauss.stage1`):
+
+| v, c | slice | orbits / G'-orbits | whole | stage 1 | per y | C₂ | D_def | status |
+|---|---|---|---|---|---|---|---|---|
+| 917, 6 | q = 19, s = 6, H' = Z₈, −1 | 182 / 26 | +133 | – | +73.6 | 351 | 70.4 | infeasible |
+| 599, 6 | q = 11, s = 2, H' = Z₉, −1 on Z₉ | 90 / 30 | +28.8 | +48.1 | −2.2 | 108 | **21.5** | best budget; stage 1 not enumerable |
+| 599, 6 | q = 11, s = 2, H' = Z₉ or Z₃², other U | 108 / 36 | +26 to +29 | +88 | −6.5 to −13.8 | 135–137 | 30–32 | – |
+| 863, 6 | q = 13, s = 4, H' = Z₁₁, ⟨3⟩ | 90 / 18 | +37.3 | – | −8.5 | 173 | 44.1 | – |
+| 863, 4 | q = 43, s = 6, H' = Z₅, −1 | 84 / 12 | +38.8 | −2.35 | +50.8 | 152.5 | 24.05 | **stage 1 empty [M]** (§7) |
+| 839, 4 | q = 19, s = 6, H' = Z₁₁, ⟨3⟩ | 84 / 12 | +34.9 | – | +11.9 | 173 | 42.3 | – |
+| 823, 4 | q = 41, s = 8, H' = Z₅, −1 | 108 / 12 | +76.5 | – | +72.6 | 214.5 | 33.8 | – |
+| 991, 4 | q = 19, s = 6, H' = Z₁₃, ⟨5⟩ | 112 / 16 | +48.5 | – | +34.9 | 222.7 | 47.5 | – |
+| 659, 4 | q = 41, s = 8, H' = Z₄, −1 | 108 / 12 | −0.2 | +19.5 | +81.9 | 206 | 29.5 | – |
+| 571, 4 | q = 71, s = 10, H' = Z₂ | 88 / 8 | +97.7 | +2.3 | +84.6 | 168.6 | 18.4 | **screen A fails [M]** |
+| 599, 8 | q = 37, s = 4, H' = Z₂ | 80 / 16 | +29.0 | −34.5 | +47.8 | 115.3 | 14.7 | **screen A fails [M]** |
+
+- Same-shape controls for the 863 c = 4 shape (−1 on Z₅, s = 6): 383 (q = 19, f = 3) +59.7 per y, D_def 19.9,
+  stage 1 +38.6; 623 (q = 31, f = 5) +53.5, D_def 22.1. D_def grows with f.
+- **The feasible region (D_def ≲ 20 with a non-empty stage 1) contains no open order.** The nearest:
+  - 599, c = 6, s = 2, −1 on Z₉: about 2^19.3 S-solutions per y and 0.22 expected cores per y, at about 2^21 pair
+    visits per S-solution with one middle level (F = 43.3, sides of 2^23 per middle value): **about 2^43 per core
+    [E]**, a 523-sized effort, and its stage 1 (30 G'-orbits, 2^30 α-vectors per block) has no enumerator yet;
+  - 863, c = 4, D_def 24: stage 1 is empty [M].
+- The D-check is the other floor: with h_D ≈ 42 it costs about 2^21 per S-solution, so 2^{24} S-solutions cost
+  2^45. Biasing the S-join toward S-solutions with many S = 0 cells (large h_D) lowers it, since the cost per core
+  is about 2^{C(D|S) − h_D/2}.
+
+### 11.3 Exact results [M]
+
+- **Monomial c = 6 pipeline end to end** (`theory/ab_mono6_s2.py`): exact stage 1 restricted to monomial
+  Q-compressions, a Singer border for every solution (`theory/ab_mono_border.py`), exact stage 2 per bordered y
+  (`ab_small_exact.solve_y`), assembly in the 347 layout and H Hᵀ = 4v·I.
+  - Control, v = 47 (q = 7, s = 2): from one bordered y, **5,184 cores, each completed to an H(188)**
+    (`logs/ab/mono6/ctrl_v47_q7_s2.jsonl`, two saved in `logs/ab/mono6/cores/`).
+  - **863, c = 6, q = 13, s = 2, H' = Z₁₁, U = ⟨−1 on Q's Z₃, ×3 on Z₁₁⟩: 1,024 stage-1 solutions, all
+    monomial-bordered; exact stage 2 on every one: 0 cores. The slice is empty in the monomial class**
+    (`logs/ab/mono6/s2_863_q13_s2_neg1_u3.jsonl`, 1,479 s). Its whole-slice Gaussian is −70.5, and the Gaussian of
+    three of its y's already had the target outside the lattice.
+  - 599, c = 6, q = 11, s = 2, H' = Z₉, U = ⟨2⟩ (order 6): 231,363 α-quadruples, 0 S-solutions: **empty in the
+    monomial class**; with §7 (347's class), empty in both border classes. Its stage-1 solutions would have been
+    stage-1 solutions of the −1-on-Z₉ slice above, whose stage 1 is therefore still open.
+  - The monomial probe of every c = 6 configuration with ≤ 40 G'-orbits is in `logs/ab/mono6/mono6_*.jsonl`
+    (screen A fails for most; the rest are listed there with their caps).
+- **Stage 2 of an index-2 slice with q ≡ 3 (mod 4) is a PAF problem on G' plus a linear system [P]** (checked
+  numerically at q = 11 to 10^{−14}). Write x(g', 0) = α, x(g', QR) = p, x(g', NQR) = n, σ = p + n, u = p − n,
+  a = α − σ/2. From the cyclotomic numbers of order 2 ((0,0) = (1,0) = (1,1) = (q − 3)/4, (0,1) = (q + 1)/4):
+  - PAF(d', QR) − PAF(d', NQR) = CC(a, u)(d') − CC(a, u)(−d'), linear in u;
+  - PAF(d', QR) + PAF(d', NQR) = CC(α, σ)(d') + CC(σ, α)(d') + ((q − 2)/2)·PAF(σ)(d') − ½·PAF(u)(d').
+  So, given y (hence α, σ and the support of u), stage 2 asks for ±2-valued u_k on the free points with
+  Σ_k PAF_{G'}(u_k) prescribed and Σ_k CC_odd(a_k, u_k) = 0.
+- **Q-automorphism slices** (`theory/ab_qaut.py`, `theory/ab_qaut_run.py`): the slice group may also act on Q by
+  the order-3 automorphism of Z₂² (c = 4) or the Singer cycle of Z₂³ (c = 8). The compressions are then monomial
+  with spikes at 0, and every signed arrangement of that kind is bordered by the Singer templates (32 of 32 at
+  c = 4; 64 of 64 at c = 8, with the c = 8 templates of `logs/ab/singer/c8_control/`). But:
+  - whole-slice Gaussians at the open orders are −11 to −40 (c = 4, small slices) and −100 to −2,000 (c = 8)
+    (`logs/ab/qaut/whole_*.jsonl`);
+  - at small orders (47, 71, 83, 107) these slices have bordered stage-1 solutions but no cores
+    (`logs/ab/qaut/ctrl_small_orders.jsonl`); the runner itself finds 207,360 cores from 40 y's of the v = 47,
+    c = 6 control;
+  - at the single-stage open ones tried (599 c = 4 s = 4, 719 c = 8 s = 8, 919 c = 4 s = 12) stage 1 is empty.
+
+### 11.4 Conclusion and recommendation
+
+- Path 1 cannot produce an open-order example within the budget: its own configuration needs about 2^70
+  S-solutions per core, and the survey finds no b ≥ 3 configuration of an open order with D_def ≲ 20 and a non-empty
+  stage 1.
+- The monomial c = 6 class is useful for exact decisions of small slices (the pipeline is validated end to end), but
+  the small slices it reaches have whole-slice estimates around −70 bits.
+- **The remaining budget belongs to Path 2** (917 at b = 0, s = 26: C₂ 225, +52 bits per y over 38,380 y's; the
+  smallest C₂ of any positive slice of an open order). Its fallback 955 (s = 38) has the same structure.
+- If b ≥ 3 is pursued again, the two concrete items are: an enumerator for 599's stage 1 at 30 G'-orbits (for
+  example the S/D split with the per-block spectral bounds applied during the S-list recursion), then a 523-sized
+  stage-2 run (about 2^43 per core [E]); and a compiled D-check.
