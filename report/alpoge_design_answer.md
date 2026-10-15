@@ -82,8 +82,8 @@ and calibration named); [L] literature recollection, unchecked.
      - 669 at s = 37: +30.8 bits per y, over 131,006 y's.
    - The best b ≥ 3 survivor is 659 at c = 4 (q = 41, s = 8), where stage 2 has C₂ ≈ 285 bits (§7).
 7. **Path 1 of the two-path plan (§11, 2026-10-15): 917 at c = 6 in 347's shape is infeasible [E].** Its stage-2
-   D-deficit is 70.4 bits (347: 16.2; 523: 26.1), i.e. about 2^70 S-solutions per core. A survey of the b ≥ 3 slices
-   finds none of an open order with D_def ≲ 20 and a non-empty stage 1; the nearest is 599 at c = 6 (s = 2, −1 on
+   D-deficit is 70.4 bits (347: 16.2; 523: 26.1), i.e. about 2^70 S-solutions per core. The b ≥ 3 slices costed so
+   far include none of an open order with D_def ≲ 20 and a non-empty stage 1; the nearest is 599 at c = 6 (s = 2, −1 on
    Z₉: D_def 21.5, about 2^43 per core, stage 1 not yet enumerable). Exact on the way [M]: the monomial c = 6 pipeline
    end to end (v = 47 control: 5,184 cores, each an H(188)); 863 at c = 6, q = 13, s = 2 is empty in the monomial
    class (1,024 bordered y's, exact stage 2 on all). Recommendation: the remaining budget belongs to Path 2
@@ -808,7 +808,8 @@ The plan chose two paths to an open-order example within about 150 core-hours: P
 to a fresh session (`report/prompt_917_b0_design.md`); and Path 1, here: 917 at c = 6 in 347's shape (q = 19, s = 6,
 H' = Z₈, −1 on Z₃ × Z₈), with both c = 6 border classes (347's and the new monomial one). **Costing shows Path 1 is not
 feasible, and no b ≥ 3 configuration of an open order is within the budget with the S/D + middle-level machinery
-[E].** The exact results found on the way are listed in §11.3.
+[E]** among the configurations costed so far (§11.2 lists them; the batch log `logs/ab/p1/levels_batch*.jsonl`
+says which configurations of which orders were reached). The exact results found on the way are listed in §11.3.
 
 ### 11.1 The cost of the 347 pipeline at 917 [E]
 
@@ -851,7 +852,7 @@ except "whole" (`ab_gauss.whole`) and "stage 1" (`ab_gauss.stage1`):
 
 - Same-shape controls for the 863 c = 4 shape (−1 on Z₅, s = 6): 383 (q = 19, f = 3) +59.7 per y, D_def 19.9,
   stage 1 +38.6; 623 (q = 31, f = 5) +53.5, D_def 22.1. D_def grows with f.
-- **The feasible region (D_def ≲ 20 with a non-empty stage 1) contains no open order.** The nearest:
+- **No configuration costed so far has D_def ≲ 20 together with a non-empty stage 1.** The nearest:
   - 599, c = 6, s = 2, −1 on Z₉: about 2^19.3 S-solutions per y and 0.22 expected cores per y, at about 2^21 pair
     visits per S-solution with one middle level (F = 43.3, sides of 2^23 per middle value): **about 2^43 per core
     [E]**, a 523-sized effort, and its stage 1 (30 G'-orbits, 2^30 α-vectors per block) has no enumerator yet;
@@ -897,8 +898,8 @@ except "whole" (`ab_gauss.whole`) and "stage 1" (`ab_gauss.stage1`):
 ### 11.4 Conclusion and recommendation
 
 - Path 1 cannot produce an open-order example within the budget: its own configuration needs about 2^70
-  S-solutions per core, and the survey finds no b ≥ 3 configuration of an open order with D_def ≲ 20 and a non-empty
-  stage 1.
+  S-solutions per core, and the survey so far finds no b ≥ 3 configuration of an open order with D_def ≲ 20 and a
+  non-empty stage 1.
 - The monomial c = 6 class is useful for exact decisions of small slices (the pipeline is validated end to end), but
   the small slices it reaches have whole-slice estimates around −70 bits.
 - **The remaining budget belongs to Path 2** (917 at b = 0, s = 26: C₂ 225, +52 bits per y over 38,380 y's; the
