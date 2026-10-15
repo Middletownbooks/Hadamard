@@ -33,11 +33,16 @@ def _sig(V, SH):
 
 
 class Cond:
-    def __init__(self, cfg):
-        self.cfg = cfg; sl = W.build(cfg); self.sl = sl
+    def __init__(self, cfg, sl=None, Qmods=None, qc=None):
+        """split G (default): Q = the first nQ axes of G'.  Non-split: pass the Slice sl, the quotient Qmods and the
+        coset index qc of every element of G' (a homomorphism G' -> Q with kernel H')"""
+        self.cfg = cfg; sl = W.build(cfg) if sl is None else sl; self.sl = sl
         Gp = sl.Gp; nQ = cfg['nQ']; self.b = cfg['b']; self.v = cfg['v']
-        self.Q = AG(Gp.mods[:nQ]); self.c = self.Q.n
-        self.qc = self.Q.idx(Gp.co[:, :nQ])
+        if qc is None:
+            self.Q = AG(Gp.mods[:nQ]); self.qc = self.Q.idx(Gp.co[:, :nQ])
+        else:
+            self.Q = AG(tuple(Qmods)); self.qc = np.asarray(qc, np.int64)
+        self.c = self.Q.n
         L1 = len(sl.breps); self.L1 = L1
         self.oq = np.zeros(L1, np.int64)
         for j in range(L1):
@@ -47,7 +52,7 @@ class Cond:
         self.w = sl.bsz.astype(np.int64)
         self.lets = [np.array(sorted(L), np.int64) for L in sl.letters]
         self.cos = [np.nonzero(self.oq == q)[0] for q in range(self.c)]
-        Up = [Gp.act(u) for u in sl.Sp]
+        Up = sl.permsp if getattr(sl, 'permsp', None) is not None else [Gp.act(u) for u in sl.Sp]
         self.reps, _ = lag_reps(Gp, Up)
         self.reps = np.array(self.reps, np.int64)
         self.SH = np.array([Gp.idx(Gp.co + Gp.co[r]) for r in self.reps], np.int64)
@@ -163,34 +168,50 @@ class Cond:
 
 
 class BlockSampler:
-    def __init__(self, C, z):
-        self.C = C; z = np.asarray(z, np.int64); Emax = C.T0
+    """uniform block vectors with Q-compression z and energy E: per coset a forward DP over its orbits on
+    (partial sum, partial energy), sampled backwards; cosets combined by an energy DP"""
+    def __init__(self, C, z, Emax=None):
+        self.C = C; z = np.asarray(z, np.int64); Emax = C.T0 if Emax is None else Emax
         self.cos = []
         for q in range(C.c):
-            orbs = C.cos[q]
-            combos = np.array(list(itertools.product(*[C.lets[j].tolist() for j in orbs])), np.int64)
-            s = combos @ C.w[orbs]; e = (combos * combos) @ C.w[orbs]
-            m = s == z[q]
-            d = defaultdict(list)
-            for i in np.nonzero(m)[0]: d[int(e[i])].append(i)
-            self.cos.append((orbs, combos, {k: np.array(v) for k, v in d.items()}))
+            orbs = list(C.cos[q])
+            tabs = [{(0, 0): 1}]
+            for o in orbs:
+                w = int(C.w[o]); nd = defaultdict(int)
+                for (sm, e), m in tabs[-1].items():
+                    for y in C.lets[o].tolist():
+                        e2 = e + w * y * y
+                        if e2 <= Emax: nd[(sm + w * y, e2)] += m
+                tabs.append(dict(nd))
+            byE = defaultdict(int)
+            for (sm, e), m in tabs[-1].items():
+                if sm == int(z[q]): byE[e] += m
+            self.cos.append((orbs, tabs, dict(byE)))
         self.cnt = [None] * (C.c + 1); self.cnt[C.c] = {0: 1}
         for q in range(C.c - 1, -1, -1):
             nd = defaultdict(int)
             for E, cc in self.cnt[q + 1].items():
-                for e, ix in self.cos[q][2].items():
-                    if E + e <= Emax: nd[E + e] += cc * len(ix)
+                for e, m in self.cos[q][2].items():
+                    if E + e <= Emax: nd[E + e] += cc * m
             self.cnt[q] = dict(nd)
         self.N = self.cnt[0]
+        self.z = z
 
     def draw(self, E, rng):
         C = self.C; out = np.zeros(C.L1, np.int64); R = E
         for q in range(C.c):
-            orbs, combos, d = self.cos[q]
-            es = [e for e in d if (R - e) in self.cnt[q + 1]]
-            w = np.array([len(d[e]) * self.cnt[q + 1][R - e] for e in es], float)
+            orbs, tabs, byE = self.cos[q]
+            es = [e for e in byE if (R - e) in self.cnt[q + 1]]
+            w = np.array([byE[e] * self.cnt[q + 1][R - e] for e in es], float)
             e = es[rng.choice(len(es), p=w / w.sum())]
-            ix = d[e]; out[orbs] = combos[ix[rng.integers(len(ix))]]; R -= e
+            sm = int(self.z[q]); ee = e
+            for i in range(len(orbs) - 1, -1, -1):
+                o = orbs[i]; wo = int(C.w[o]); ys = C.lets[o].tolist()
+                ws = np.array([tabs[i].get((sm - wo * y, ee - wo * y * y), 0) for y in ys], float)
+                y = ys[rng.choice(len(ys), p=ws / ws.sum())]
+                out[o] = y; sm -= wo * y; ee -= wo * y * y
+            assert sm == 0 and ee == 0
+            R -= e
         return out
 
 
@@ -214,3 +235,93 @@ if __name__ == "__main__":
                        **{'class': ci}, shapes=[list(u) for u in us], zmin=list(zm), rows=[int(x) for x in Z.sum(1)], **r)
             if fo: fo.write(json.dumps(rec) + "\n"); fo.flush()
     print(json.dumps(dict(stage="done", zquads=nq, sum_log2E=round(math.log2(tot), 2) if tot else None, secs=round(time.time() - t0, 1))), flush=True)
+
+
+# ---------------------------------------------------------------- S/D budget of stage 1 (generic)
+def sd_structure(C):
+    """pairs (j0, j1) of G'-orbits over the same G''-orbit (axis 0 of G' is Z_2, U trivial on it); their weight;
+    the Q''-coset (Q = Z_2 x Q'') of each pair"""
+    sl = C.sl; Gp = sl.Gp; n2 = Gp.n // 2
+    pair = {}
+    for j, bb in enumerate(sl.breps):
+        bb = int(bb); e = bb // n2; h = bb % n2
+        o = int(sl.borb[h]); o1 = int(sl.borb[h + n2])
+        key = min(o, o1) if False else o
+        pair.setdefault(key, [None, None])
+    cells = []
+    seen = set()
+    for j in range(len(sl.breps)):
+        bb = int(sl.breps[j])
+        if bb // n2 != 0: continue
+        j1 = int(sl.borb[bb + n2])
+        cells.append((j, j1, int(C.w[j]), int(C.oq[j])))
+    return cells
+
+
+def hD_block(C, cells, v, z, E):
+    """log2 #block vectors with the same sigma (= (y(0,.) + y(1,.))/2 per cell), Q-compression z, energy E"""
+    lets = C.lets
+    nq2 = C.c // 2
+    per_t = defaultdict(list)
+    for (j0, j1, w, q) in cells: per_t[q].append((j0, j1, w))
+    total = {0: 1}
+    for q0 in sorted(per_t):
+        st = {(0, 0): 1}
+        for (j0, j1, w) in per_t[q0]:
+            s2 = int(v[j0]) + int(v[j1])
+            opts = [(a, b) for a in lets[j0].tolist() for b in lets[j1].tolist() if a + b == s2]
+            nd = defaultdict(int)
+            for (S0, Ee), m in st.items():
+                for (a, b) in opts: nd[(S0 + w * a, Ee + w * (a * a + b * b))] += m
+            st = nd
+        per = defaultdict(int)
+        for (S0, Ee), m in st.items():
+            if S0 == int(z[q0]): per[Ee] += m
+        nt = defaultdict(int)
+        for E1, m1 in total.items():
+            for E2, m2 in per.items(): nt[E1 + E2] += m1 * m2
+        total = nt
+    c_ = total.get(int(E), 0)
+    return math.log2(c_) if c_ else float('nan')
+
+
+def budget_sd(C, Z, N=3000, seed=1, nh=120):
+    """stage-1 budget with the S/D split on axis 0: full and S-level Gaussian bits, exact h_D, D_def, S-solutions"""
+    rng = np.random.default_rng(seed)
+    samp = [BlockSampler(C, Z[k]) for k in range(4)]
+    if any(not s.N for s in samp): return dict(H1=None)
+    Ns = [s.N for s in samp]; T0 = C.T0
+    P01 = defaultdict(list)
+    for e0, c0 in Ns[0].items():
+        for e1, c1 in Ns[1].items():
+            if e0 + e1 <= T0: P01[e0 + e1].append((e0, e1, c0 * c1))
+    splits = []; wts = []
+    for e2, c2 in Ns[2].items():
+        for e3, c3 in Ns[3].items():
+            for (e0, e1, c01) in P01.get(T0 - e2 - e3, []):
+                splits.append((e0, e1, e2, e3)); wts.append(c01 * c2 * c3)
+    tot = sum(wts)
+    if not tot: return dict(H1=None)
+    H1 = math.log2(tot); p = np.array([x / tot for x in wts], float)
+    pick = rng.choice(len(splits), size=N, p=p)
+    Y = np.zeros((N, 4, C.L1), np.int64)
+    for i, si in enumerate(pick):
+        for k in range(4): Y[i, k] = samp[k].draw(splits[si][k], rng)
+    Gp = C.sl.Gp; n2 = Gp.n // 2
+    Pfull = Gp.paf(Y.reshape(4 * N, C.L1)[:, C.sl.borb]).reshape(N, 4, -1).sum(1)
+    T1 = C.sl.T1
+    full = Pfull[:, C.reps]; Sv = Pfull[:, :n2] + Pfull[:, n2:]
+    TS = T1[:n2] + T1[n2:]
+    gf = gauss_bits(full, C.T1sig); gs = gauss_bits(Sv, TS)
+    cells = sd_structure(C)
+    hs = [sum(hD_block(C, cells, Y[i, k], Z[k], splits[pick[i]][k]) for k in range(4)) for i in range(min(nh, N))]
+    hD = float(np.nanmean(hs))
+    out = dict(H1=round(H1, 2), C=gf.get('bits'), rank=gf.get('rank'), C_S=gs.get('bits'), rank_S=gs.get('rank'),
+               h_D=round(hD, 2))
+    if gf.get('in_lattice') and gs.get('in_lattice'):
+        out['log2E'] = round(H1 - gf['bits'], 2)
+        out['D_def'] = round(gf['bits'] - gs['bits'] - hD, 2)
+        out['H_S'] = round(H1 - hD, 2)
+        out['log2_S_sols'] = round(H1 - hD - gs['bits'], 2)
+        out['cost_per_y_plain'] = round(max(out['D_def'], 0) + gs['bits'] - (H1 - hD) / 2, 2)
+    return out
