@@ -808,8 +808,11 @@ The plan chose two paths to an open-order example within about 150 core-hours: P
 to a fresh session (`report/prompt_917_b0_design.md`); and Path 1, here: 917 at c = 6 in 347's shape (q = 19, s = 6,
 H' = Z₈, −1 on Z₃ × Z₈), with both c = 6 border classes (347's and the new monomial one). **Costing shows Path 1 is not
 feasible, and no b ≥ 3 configuration of an open order is within the budget with the S/D + middle-level machinery
-[E]** among the configurations costed so far (§11.2 lists them; the batch log `logs/ab/p1/levels_batch*.jsonl`
-says which configurations of which orders were reached). The exact results found on the way are listed in §11.3.
+[E]** among the configurations costed so far. Coverage: the batch (`logs/ab/p1/batch/`) went through every c = 4, 6, 8
+configuration of 571, 599, 643 and 659 and 26 of 719's (143 configurations: 60 whole-slice below −30, 55 with more
+than 130 stage-2 orbits, 8 empty by energy, 17 costed), when the session's workers were stopped by a restart; the
+c = 4 doubly-type candidates of 823, 839, 863 and 991 and the 917 variants were costed separately. The exact results
+found on the way are listed in §11.3.
 
 ### 11.1 The cost of the 347 pipeline at 917 [E]
 
@@ -849,6 +852,8 @@ except "whole" (`ab_gauss.whole`) and "stage 1" (`ab_gauss.stage1`):
 | 659, 4 | q = 41, s = 8, H' = Z₄, −1 | 108 / 12 | −0.2 | +19.5 | +81.9 | 206 | 29.5 | – |
 | 571, 4 | q = 71, s = 10, H' = Z₂ | 88 / 8 | +97.7 | +2.3 | +84.6 | 168.6 | 18.4 | **screen A fails [M]** |
 | 599, 8 | q = 37, s = 4, H' = Z₂ | 80 / 16 | +29.0 | −34.5 | +47.8 | 115.3 | 14.7 | **screen A fails [M]** |
+| 719, 6 | q = 17, s = 2, H' = Z₇, ⟨2⟩ (order 3) | 54 / 18 | −12.4 | +27.4 | −13.1 | 75.1 | 16.7 | dead [E] |
+| 719, 6 | q = 7, s = 2, H' = Z₁₇, ⟨2⟩ (order 8) | 54 / 18 | −13.4 | – | −23.5 | 74.5 | 23.0 | dead [E] |
 
 - Same-shape controls for the 863 c = 4 shape (−1 on Z₅, s = 6): 383 (q = 19, f = 3) +59.7 per y, D_def 19.9,
   stage 1 +38.6; 623 (q = 31, f = 5) +53.5, D_def 22.1. D_def grows with f.
@@ -877,6 +882,11 @@ except "whole" (`ab_gauss.whole`) and "stage 1" (`ab_gauss.stage1`):
     stage-1 solutions of the −1-on-Z₉ slice above, whose stage 1 is therefore still open.
   - The monomial probe of every c = 6 configuration with ≤ 40 G'-orbits is in `logs/ab/mono6/mono6_*.jsonl`
     (screen A fails for most; the rest are listed there with their caps).
+  - The end-to-end sweep (`theory/ab_mono6_sweep.py`, `logs/ab/mono6/sweep/`, smallest configurations first) finds
+    monomial-bordered stage-1 solutions only in the large-index single-stage slices (h prime, G' = Q): 659 at
+    s = 36, 54; 839 at s = 46, 69 (2,052 y's at s = 69); 947 at s = 52, 78. Their stage 2 has s + 1 ≥ 37 fibre parts
+    per G'-orbit (C₂ of several hundred bits, like §7's 659 rows) and is out of reach; every smaller configuration
+    reached is empty (screen A or stage 1).
 - **Stage 2 of an index-2 slice with q ≡ 3 (mod 4) is a PAF problem on G' plus a linear system [P]** (checked
   numerically at q = 11 to 10^{−14}). Write x(g', 0) = α, x(g', QR) = p, x(g', NQR) = n, σ = p + n, u = p − n,
   a = α − σ/2. From the cyclotomic numbers of order 2 ((0,0) = (1,0) = (1,1) = (q − 3)/4, (0,1) = (q + 1)/4):
