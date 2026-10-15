@@ -1,0 +1,8 @@
+{"stage": "stage1", "tag": "v47_q7_s2_99c1dc75", "alpha_quads": 21, "S_solutions": 42, "stage1_solutions": 42, "all_verified": true, "complete": true, "secs": 0.4}
+{"CORE": "v47_q7_s2_99c1dc75_31561075d0a6d80e_1", "core_ok": true, "hadamard": true, "order": 188, "template": "logs/ab/singer/template_c6_cyc_a4200_f0_1.npz"}
+{"CORE": "v47_q7_s2_99c1dc75_31561075d0a6d80e_2", "core_ok": true, "hadamard": true, "order": 188, "template": "logs/ab/singer/template_c6_cyc_a4200_f0_1.npz"}
+{"CORE": "v47_q7_s2_99c1dc75_31561075d0a6d80e_3", "core_ok": true, "hadamard": true, "order": 188, "template": "logs/ab/singer/template_c6_cyc_a4200_f0_1.npz"}
+{"CORE": "v47_q7_s2_99c1dc75_31561075d0a6d80e_4", "core_ok": true, "hadamard": true, "order": 188, "template": "logs/ab/singer/template_c6_cyc_a4200_f0_1.npz"}
+{"CORE": "v47_q7_s2_99c1dc75_31561075d0a6d80e_5", "core_ok": true, "hadamard": true, "order": 188, "template": "logs/ab/singer/template_c6_cyc_a4200_f0_1.npz"}
+{"i": 0, "yhash": "31561075d0a6d80e", "bordered": true, "z": [[-1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1], [1, -1, -1, -1, -1, -1], [-5, -1, -1, -1, -1, -1]], "fibres": [64, 64, 64, 32], "cores": 5184, "s2_secs": 0.85}
+{"stage": "end", "tag": "v47_q7_s2_99c1dc75", "solutions": 42, "cores": 5184, "secs": 52.9}
