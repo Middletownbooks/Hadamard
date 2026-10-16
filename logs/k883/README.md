@@ -59,3 +59,13 @@
   - Spreading the n′ budget uniformly instead gives up to about 0.017.
   - Run 2's 345 empty buckets are consistent with the lower value (about 0.6 expected). At about 13 s per bucket, a
     first core is expected within roughly 0.6–6 hours of run time.
+
+**Run 3 result:** 248 buckets at 15.8 s each, 0 candidates (`log_inst2_rho045_L2e24.3.jsonl`). Runs 2 and 3 together:
+593 buckets, about 1–3 expected at the calibrated rate.
+
+## Run 4 (same pools, k = 7)
+
+- **Why.** Per-bucket time is dominated by sorting the pools (O(L log L) per bucket), not by stage-1 pair counts.
+- **Change.** With 7 key classes instead of 8, each bucket holds about 144× more matched pair-pairs. The rest then
+  has one more class, worth about 2^−4.1. So expect about 8× more hits per bucket, for a modestly longer bucket.
+- **Setup.** Run 3's pools are reused through hard links; preparation is recomputed for k = 7. KT_K=7, KT_OUT=runs/inst3.
