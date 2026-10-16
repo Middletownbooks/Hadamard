@@ -29,3 +29,16 @@
   is shortened from 40 minutes because at rho = 0.45 the raw output is about 6x larger, and pool assembly
   (concatenate + unique) would otherwise peak near the memory limit. Eight minutes on 4 cores gives about
   2^25 distinct blocks per row sum.
+
+**Run 2 result:** 345 buckets at 12.8 s each, 0 candidates (`log_inst1_rho045.jsonl`). Pools were 2^24.05 to 2^24.44.
+- The pipeline's own estimate assumes 3.42 bits per class (calibrated at 487). At 883 the measured value is about
+  3.97, so the realistic expectation is about 2^{36.4 − 43.7} ≈ 0.006 per bucket, about 2 over the run.
+- **Same-shape control [M]:** v = 127, d = 3 has the same 43 orbits and 21 classes (n = 80.7, so it is much easier).
+  The same pipeline found 1.46 M verified cores in its first bucket. The mechanics are correct; rate calibration at
+  883's difficulty needs the 883 run itself.
+
+## Run 3 (rho = 0.45, pools 2^25.3)
+
+- Pool size enters hits per bucket as L⁴, while bucket time grows about as L, so the pools were enlarged:
+  KT_LMAX=41300000, KT_GEN_MINUTES=16, KT_INSTANCE=2.
+- Expected: about 16–20× more hits per bucket for about 2× the bucket time.
