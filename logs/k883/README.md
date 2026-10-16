@@ -25,4 +25,7 @@
 - n′(0.45) = 77.4 Gaussian (pools of 50,000). Partial joins give 3.97 / 7.92 / 11.89 bits measured against
   3.95 / 7.89 / 11.83, so n′ ≈ 77.8 (`nprime_rho0.45.log`).
 - With L = 2^25 the pools hold about 2^{100 − 77.8} ≈ 2^22 solutions, against 2^9 in run 1.
-- Production: the same pipeline with KT_RHO=0.45, KT_INSTANCE=1, KT_LMAX=33554432, KT_GEN_MINUTES=40.
+- Production: the same pipeline with KT_RHO=0.45, KT_INSTANCE=1, KT_LMAX=33554432, KT_GEN_MINUTES=8. Generation
+  is shortened from 40 minutes because at rho = 0.45 the raw output is about 6x larger, and pool assembly
+  (concatenate + unique) would otherwise peak near the memory limit. Eight minutes on 4 cores gives about
+  2^25 distinct blocks per row sum.
