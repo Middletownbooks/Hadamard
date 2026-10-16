@@ -16,7 +16,7 @@ blocks.
 
 **Open v** (H(4v) unknown):
 - below 3000: 537, 571, 599, 643, 659, 669, 719, 739;
-- 3000–4000: 751, 789, 823, 839, 859, 863, 883, 907, 947, 955, 971, 991.
+- 3000–4000: 751, 789, 823, 839, 859, 863, 907, 947, 955, 971, 991.
 
 **Already built here, not on the list:**
 
@@ -25,7 +25,8 @@ blocks.
 | 523, 573, 647 | H(2092), H(2292), H(2588) | b = 1 |
 | 721, 917 | H(2884), H(3668) | Cooper–Wallis |
 | 933 | H(3732) | b = 0 |
-| 919 | H(3676) | b = 0 with a 3-cycle twist, the newest (§1.1) |
+| 919 | H(3676) | b = 0 with a 3-cycle twist (§1.1) |
+| 883 | H(3532) | b = 0, untwisted d = 21 multiplier slice, flat-pool k-tree, the newest (`report/b0_883_answer.md`) |
 
 Deliverables, in order of value:
 - **(A)** A verified H(4v) for an open v.
@@ -68,9 +69,9 @@ Deliverables, in order of value:
      B = C = D = 0.
    - No coincidence like 919's is needed.
 2. **Involutions other than −1 exist.**
-   - G has order m = v − 1. For the 16 prime open v, v ≡ 3 (mod 4), so m = 2h with h odd and G ≅ Z₂ × (abelian group
+   - G has order m = v − 1. For the 15 prime open v, v ≡ 3 (mod 4), so m = 2h with h odd and G ≅ Z₂ × (abelian group
      of order h). Aut(G) = Aut(H_h).
-   - (Z/h)* has an involution u ≠ −1 exactly when h has two distinct prime factors. That holds for 13 of the 16:
+   - (Z/h)* has an involution u ≠ −1 exactly when h has two distinct prime factors. That holds for 12 of the 15:
      every one except 719 (h = 359), 839 (h = 419) and 863 (h = 431).
    - **Lemma H** (`report/theory_arm_2000_3000.md`, "Order-2 twists are what would decouple"): with a block swap
      B ↔ C under u, P = (B + C)/2 and R = (B − C)/2 have complementary supports. Given the support, A, D, P, R are four
@@ -163,8 +164,8 @@ Deliverables, in order of value:
      - Prove any obstruction you find.
    - Report a table of estimate against exact count for each twist type.
 2. **Stage B: screen every open v.**
-   - Groups: G = Z_{v−1} for all twenty v, plus the noncyclic abelian groups of order v − 1 (v − 1 with square
-     factors: 537, 669, 739, 751, 789, 883, 955, 991).
+   - Groups: G = Z_{v−1} for all nineteen v, plus the noncyclic abelian groups of order v − 1 (v − 1 with square
+     factors: 537, 669, 739, 751, 789, 955, 991).
    - Twists: cyclic U = ⟨u⟩ ≤ Aut(G) up to conjugacy, keeping slices with about 15–150 orbits per block. Every g with
      g^d = 1 that fixes A.
    - Combine u with odd-order untwisted multipliers when they commute.
@@ -185,8 +186,7 @@ Deliverables, in order of value:
      the expected B-samples per hit are at most about 2^32–2^34.
    - **Combinations:** a twist commuting with a Paley or doubly-staged slice (`theory/paley_*`, `theory/nd_doubly.py`,
      `theory/nd_joint_exhaust.py`) adds structure to stage 1 and stage 2. Consider it where the untwisted staged
-     slice was alive but too expensive. Examples: 971 ×469, 859 ×289, 947 ×49 (`report/next_design_answer.md` §7);
-     883's F₄₉ s = 8 stage 2 (D_def ≈ 69).
+     slice was alive but too expensive. Examples: 971 ×469, 859 ×289, 947 ×49 (`report/next_design_answer.md` §7).
    - **Small slices (r ≤ about 34 orbits):** decide them exactly with `theory/slicesolve.py`. This is cheap and gives
      certificates.
 4. **Stage D: positive control, then production.**
@@ -205,12 +205,14 @@ Deliverables, in order of value:
   - The method that found new b = 0 cores at 487: `kaggle/kt_join_kaggle.py`, `report/REPORT.md` §4–5. Its per-bucket
     estimate uses 3.42 bits per remaining class, calibrated at 487.
   - Recalibrate it at any new shape: at 883 the measured value is 3.97 bits, and the realistic rate is about 1/64 of
-    the logged `exp_hits` (`logs/k883/README.md`).
+    the logged `exp_hits` (`logs/k883/README.md`). The 883 run confirmed this: its first core arrived at a logged
+    cumulative `exp_hits` of 2,011, as 32 tuples (1/63).
+  - Solutions arrive in clusters: with reversal-closed pools, each core appears as 2⁴ tuples (x ↦ −x on each block
+    keeps every PAF), times 2 when two blocks share a pool. Count expected clusters, not tuples.
 - **Do not duplicate active runs.**
-  - 883, b = 0, d = 21: flat-pool k-tree in production (`logs/k883/`).
+  - 883 is built (H(3532), `report/b0_883_answer.md`). Drop it from the screen.
   - 599: b = 5, c = 6 Paley(11) lead and its neighbours (`report/b599_answer.md`).
-  - Twisted b = 1 slices of 883 and 599 are fair game. Their untwisted b = 1 doubly-staged slices are exactly empty
-    (598) or costed (882).
+  - Twisted b = 1 slices of 599 are fair game. Its untwisted b = 1 doubly-staged slice is exactly empty (598).
 - **T-matrix and b = 0 routes are mapped.** See `report/tmat_routes.md` §10 and `report/b0_919_answer.md` §4.
 - **Compute:** 4 cores, about 15 GB RAM, no GPU.
   - OOM kills are silent: set `ulimit -v` or `RLIMIT_AS` for heavy Python.
