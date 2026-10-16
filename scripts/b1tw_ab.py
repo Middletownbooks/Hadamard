@@ -169,14 +169,18 @@ def letters(ns):
     return sorted(S)
 
 
+MAXF_ALLLAGS = 64
+
+
 def quotient_screen(sl, gens, maxvec=300_000, energy_only_fallback=True):
     """exact test on G/H, H = <gens> (must be u-stable).  Returns (verdict, test) with verdict True/False/None."""
     G = sl.G; lab, creps, K = cosets(G, gens); Fn = len(creps); n = sl.n
+    allf = Fn <= MAXF_ALLLAGS                  # all-lags test only on small quotients (cost ~ vectors x Fn^2)
     # u acts on cosets
     ucos = np.array([lab[sl.u[creps[b]]] for b in range(Fn)])
     assert all(lab[sl.u[x]] == ucos[lab[x]] for x in range(n)), "H not u-stable"
     # coset addition table and negation
-    addc = np.array([[lab[G.idx(G.coords[creps[a]] + G.coords[creps[b]])] for b in range(Fn)] for a in range(Fn)])
+    addc = np.array([[lab[G.idx(G.coords[creps[a]] + G.coords[creps[b]])] for b in range(Fn)] for a in range(Fn)]) if allf else None
     tgt = np.full(Fn, -4 * K, np.int64); tgt[lab[0]] += 4 * n + 4
     vpow = {"id": 1, "BC": 2, "BCD": 3}[sl.tw]
     contrib = {}; E_tables = {}
@@ -201,7 +205,7 @@ def quotient_screen(sl, gens, maxvec=300_000, energy_only_fallback=True):
         E_tables[g] = (mult, [(len(cells[c]), Ls[j]) for j, c in enumerate(cids)])
         tot = 1
         for x in Ls: tot *= len(x)
-        if tot > maxvec: contrib = None; continue
+        if tot > maxvec or not allf: contrib = None; continue
         if contrib is None: continue
         Y = np.zeros((tot, Fn), np.int64)
         grid = np.array(list(itertools.product(*Ls)), np.int64)

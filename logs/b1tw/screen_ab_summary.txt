@@ -1,0 +1,8 @@
+# noncyclic twisted b = 1 screen (scripts/b1tw_ab_screen.py), 6-150 orbits
+v | G | slices (id/BC/BCD) | killed | killed at Z2 or Z2^2 | alive log2E>0 | cheapest alive twisted (aut, d, tw, orbits, classes, log2E, n)
+537 | E2.3+C67 | 40/27/26 | 88 | 57 | 2 twisted, 1 untwisted | ([[[0, 0, 1], [0, 1, 0], [1, 0, 0]], 30], 6, 'BC', 94, 71, 14.8, 341.8)
+669 | E2.2+C167 | 5/3/1 | 9 | 9 | 0 twisted, 0 untwisted | -
+739 | C2+E3.2+C41 | 64/63/12 | 99 | 57 | 15 twisted, 9 untwisted | ([1, [[0, 1], [2, 0]], 4], 20, 'BC', 46, 29, 7.5, 156.4)
+789 | E2.2+C197 | 18/14/6 | 35 | 35 | 1 twisted, 1 untwisted | ([[[0, 1], [1, 1]], 36], 21, 'BCD', 58, 29, 8.7, 154.7)
+955 | C2+E3.2+C53 | 33/31/8 | 60 | 45 | 4 twisted, 5 untwisted | ([1, [[0, 1], [1, 1]], 23], 8, 'BC', 134, 81, 72.0, 445.3)
+991 | C2+E3.2+C5+C11 | 54/53/12 | 66 | 0 | 6 twisted, 6 untwisted | ([1, [[0, 1], [1, 1]], 2, 10], 8, 'BC', 144, 79, 106.4, 449.8)
