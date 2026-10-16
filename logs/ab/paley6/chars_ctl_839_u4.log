@@ -1,0 +1,11 @@
+syntax ok
+{"stage": "character", "psi": 1, "vectors": 173, "solutions": 77672, "secs": 1.4}
+{"stage": "character", "psi": 2, "vectors": 173, "solutions": 77672, "secs": 2.2}
+{"stage": "character", "psi": 3, "vectors": 173, "solutions": 77672, "secs": 2.9}
+{"stage": "compat", "density": {"1": 0.01391, "2": 0.01391, "3": 0.01391}, "secs": 2.9}
+{"stage": "progress", "psi0_done": 0, "of": 56168, "stage1_solutions": 0, "secs": 3.0}
+{"stage": "progress", "psi0_done": 20000, "of": 56168, "stage1_solutions": 20480, "secs": 306.1}
+{"stage": "progress", "psi0_done": 40000, "of": 56168, "stage1_solutions": 40960, "secs": 742.9}
+{"stage": "done", "stage1_solutions": 40960, "all_verified": true, "secs": 1239.9}
+
+[exited with code 0]

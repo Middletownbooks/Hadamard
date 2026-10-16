@@ -1,0 +1,4 @@
+{"stage": "setup", "n_o": 4, "weights": [1, 4, 4, 4], "Tpsi": [[3964, 0, 0, 0], [3660, -304, -304, -304], [3660, -304, -304, -304], [3660, -304, -304, -304]], "row_quads": [[14, 22, 28, 50], [18, 18, 20, 54], [26, 26, 26, 44]], "secs": 0.6}
+{"stage": "character", "psi": 0, "vectors": 4111, "solutions": 6, "secs": 3.5}
+{"stage": "character", "psi": 1, "vectors": 1297, "solutions": 0, "secs": 3.6}
+{"stage": "done", "stage1_solutions": 0, "all_verified": true, "secs": 3.6}
