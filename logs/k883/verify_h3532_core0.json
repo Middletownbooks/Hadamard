@@ -1,0 +1,30 @@
+{
+ "v": 883,
+ "paf0": 3532,
+ "paf_off_zero": [
+  0
+ ],
+ "row_sums": [
+  43,
+  41,
+  1,
+  1
+ ],
+ "u": 729,
+ "order_of_u": 21,
+ "invariant_under_u": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "order": 3532,
+ "entries": [
+  -1,
+  1
+ ],
+ "hadamard": true,
+ "sha256_packed_rows": "5d131c4fc91ad40c2e7b98a37554825cb2c65c0ba67e5cb94231841d4546790c",
+ "saved": "data/H3532_packed.npz",
+ "ok": true
+}
