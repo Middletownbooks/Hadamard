@@ -1,0 +1,38 @@
+{"stage": "config", "config": {"v": 883, "d": 21, "profile": [43, 41, 1, 1], "rho": 0.45, "k": 9, "Lmax": 33554432, "gen_minutes": 8.0, "walk": 300000, "mem_budget_bytes": 3000000000.0, "INSTANCE": 1, "NINST": 1, "max_hours": 60.0, "nbuckets": 100000, "OUT": "/tmp/claude-0/-home-user-Hadamard/5619518d-dc42-5642-885e-9f076e5e1a30/scratchpad/k883/runs/inst1", "RESUME_FROM": null, "GEN_DIR": "/tmp/claude-0/-home-user-Hadamard/5619518d-dc42-5642-885e-9f076e5e1a30/scratchpad/k883/runs/gen1", "seed": 0}, "t": 0.0}
+{"stage": "gen_start", "workers": 4, "minutes": 8.0, "t": 0.0}
+{"stage": "pool", "rowsum": 41, "size": 18554188, "log2": 24.15, "t": 583.0}
+{"stage": "pool", "rowsum": 43, "size": 17372162, "log2": 24.05, "t": 660.9}
+{"stage": "pool", "rowsum": 1, "size": 22683825, "log2": 24.44, "t": 783.4}
+{"stage": "prep", "rowsum": 41, "t": 970.2}
+{"stage": "prep", "rowsum": 43, "t": 1140.0}
+{"stage": "prep", "rowsum": 1, "t": 1364.2}
+{"stage": "ready", "buckets": 100000, "done_before": 0, "t": 1382.0}
+{"stage": "bucket", "b": 0, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 1025039, "CD": 1527680, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.43732, "exp_cum": 0.4373, "t": 1396.5}
+{"stage": "bucket", "b": 1, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 6], "AB": 1025039, "CD": 1527680, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.43732, "exp_cum": 0.8746, "t": 1409.2}
+{"stage": "bucket", "b": 2, "tau": [2, 2, 2, 2, -2, 2, 2, 2, 2], "AB": 1001181, "CD": 1504994, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42243, "exp_cum": 1.2971, "t": 1422.0}
+{"stage": "bucket", "b": 3, "tau": [2, 2, 2, 2, 2, 2, 6, 2, 2], "AB": 995994, "CD": 1503986, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.41898, "exp_cum": 1.7161, "t": 1434.8}
+{"stage": "bucket", "b": 4, "tau": [2, 2, 2, 2, 6, 2, 2, 2, 2], "AB": 1001384, "CD": 1508558, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42246, "exp_cum": 2.1385, "t": 1447.3}
+{"stage": "bucket", "b": 5, "tau": [2, 2, 2, 2, 2, -2, 2, 2, 2], "AB": 998048, "CD": 1508070, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42136, "exp_cum": 2.5599, "t": 1459.5}
+{"stage": "bucket", "b": 6, "tau": [2, 2, 2, 2, 2, 6, 2, 2, 2], "AB": 1001845, "CD": 1503020, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42099, "exp_cum": 2.9809, "t": 1471.7}
+{"stage": "bucket", "b": 7, "tau": [2, 2, -2, 2, 2, 2, 2, 2, 2], "AB": 999745, "CD": 1509496, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42165, "exp_cum": 3.4025, "t": 1484.1}
+{"stage": "bucket", "b": 8, "tau": [2, 2, 2, 2, 2, 2, 2, 2, -2], "AB": 1025039, "CD": 1527680, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.43732, "exp_cum": 3.8398, "t": 1495.3}
+{"stage": "bucket", "b": 9, "tau": [6, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 1002808, "CD": 1501124, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42149, "exp_cum": 4.2613, "t": 1509.1}
+{"stage": "bucket", "b": 10, "tau": [2, 2, 2, -2, 2, 2, 2, 2, 2], "AB": 999221, "CD": 1498634, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.41925, "exp_cum": 4.6806, "t": 1521.7}
+{"stage": "bucket", "b": 11, "tau": [-2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 1003753, "CD": 1502534, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42169, "exp_cum": 5.1023, "t": 1534.9}
+{"stage": "bucket", "b": 12, "tau": [2, 2, 2, 2, 2, 2, 2, 6, 2], "AB": 1004929, "CD": 1499024, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42096, "exp_cum": 5.5232, "t": 1548.4}
+{"stage": "bucket", "b": 13, "tau": [2, 2, 2, 2, 2, 2, 2, -2, 2], "AB": 993191, "CD": 1503674, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.41743, "exp_cum": 5.9406, "t": 1562.1}
+{"stage": "bucket", "b": 14, "tau": [2, 2, 6, 2, 2, 2, 2, 2, 2], "AB": 1001768, "CD": 1500658, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42076, "exp_cum": 6.3614, "t": 1574.8}
+{"stage": "bucket", "b": 15, "tau": [2, 2, 2, 6, 2, 2, 2, 2, 2], "AB": 1000218, "CD": 1495402, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.4184, "exp_cum": 6.7798, "t": 1588.1}
+{"stage": "bucket", "b": 16, "tau": [2, 2, 2, 2, 2, 2, -2, 2, 2], "AB": 1004895, "CD": 1500952, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42201, "exp_cum": 7.2018, "t": 1601.7}
+{"stage": "bucket", "b": 17, "tau": [2, -2, 2, 2, 2, 2, 2, 2, 2], "AB": 998843, "CD": 1503282, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42052, "exp_cum": 7.6223, "t": 1614.7}
+{"stage": "bucket", "b": 18, "tau": [2, 6, 2, 2, 2, 2, 2, 2, 2], "AB": 998292, "CD": 1503018, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.41955, "exp_cum": 8.0419, "t": 1627.7}
+{"stage": "bucket", "b": 19, "tau": [2, 2, 2, 2, -2, 2, 2, 2, 6], "AB": 1001181, "CD": 1504994, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42243, "exp_cum": 8.4643, "t": 1640.6}
+{"stage": "bucket", "b": 20, "tau": [2, 2, 2, 2, 2, 2, 6, 2, 6], "AB": 995994, "CD": 1503986, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.41898, "exp_cum": 8.8833, "t": 1653.6}
+{"stage": "bucket", "b": 21, "tau": [2, 2, 2, 2, 6, 2, 2, 2, 6], "AB": 1001384, "CD": 1508558, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42246, "exp_cum": 9.3057, "t": 1665.9}
+{"stage": "bucket", "b": 22, "tau": [2, 2, 2, 2, 2, -2, 2, 2, 6], "AB": 998048, "CD": 1508070, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42136, "exp_cum": 9.7271, "t": 1679.2}
+{"stage": "bucket", "b": 23, "tau": [2, 2, 2, 2, 2, 6, 2, 2, 6], "AB": 1001845, "CD": 1503020, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42099, "exp_cum": 10.1481, "t": 1692.6}
+{"stage": "bucket", "b": 24, "tau": [2, 2, 2, 2, -2, 2, 6, 2, 2], "AB": 977251, "CD": 1482448, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.40501, "exp_cum": 10.5531, "t": 1704.7}
+{"stage": "bucket", "b": 25, "tau": [2, 2, -2, 2, 2, 2, 2, 2, 6], "AB": 999745, "CD": 1509496, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42165, "exp_cum": 10.9748, "t": 1717.3}
+{"stage": "bucket", "b": 26, "tau": [6, 2, 2, 2, 2, 2, 2, 2, 6], "AB": 1002808, "CD": 1501124, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42149, "exp_cum": 11.3962, "t": 1730.1}
+{"stage": "bucket", "b": 27, "tau": [2, 2, 2, -2, 2, 2, 2, 2, 6], "AB": 999221, "CD": 1498634, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.41925, "exp_cum": 11.8155, "t": 1742.7}
+{"stage": "bucket", "b": 28, "tau": [-2, 2, 2, 2, 2, 2, 2, 2, 6], "AB": 1003753, "CD": 1502534, "passes": 1, "cand": 0, "solutions": 0, "total": 0, "exp_hits": 0.42169, "exp_cum": 12.2372, "t": 1755.2}
