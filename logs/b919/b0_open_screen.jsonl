@@ -30,6 +30,8 @@
 {"t": 991, "d": 45, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 23, "classes": 11, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
 {"t": 991, "d": 45, "g": [[1, 1], [3, 1]], "orbits": 23, "classes": 11, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
 {"t": 991, "d": 55, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 599, "d": 13, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 47, "classes": 23, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 599, "d": 23, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
 {"t": 859, "d": 11, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 79, "classes": 39, "fix0": 16, "example_rowsums": [-43, 23, 23, 23], "feasible": true, "log2E": 111.6, "n_bits": 204.4, "per_class": 96.7, "twist": "id"}
 {"t": 859, "d": 13, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 67, "classes": 33, "fix0": 16, "example_rowsums": [-25, 1, 1, 53], "feasible": true, "log2E": 94.6, "n_bits": 173.4, "per_class": 80.0, "twist": "id"}
 {"t": 859, "d": 33, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}

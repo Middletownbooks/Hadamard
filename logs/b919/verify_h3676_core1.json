@@ -1,0 +1,27 @@
+{
+ "v": 919,
+ "paf0": 3676,
+ "paf_off_zero": [
+  0
+ ],
+ "row_sums": [
+  1,
+  35,
+  35,
+  35
+ ],
+ "order_of_u": 51,
+ "A_invariant_under_u": true,
+ "B_invariant_under_u3": true,
+ "C_is_B_of_u^-1_x": true,
+ "D_is_B_of_u^-2_x": true,
+ "order": 3676,
+ "entries": [
+  -1,
+  1
+ ],
+ "hadamard": true,
+ "sha256_packed_rows": "24824d1bcc64c8cba02df5c208c978cc08adf6fbccf9c00857048da484d81d3f",
+ "saved": "(scratch copy, not committed; same check as core 0)",
+ "ok": true
+}
