@@ -42,3 +42,20 @@
 - Pool size enters hits per bucket as L⁴, while bucket time grows about as L, so the pools were enlarged:
   KT_LMAX=41300000, KT_GEN_MINUTES=16, KT_INSTANCE=2.
 - Expected: about 16–20× more hits per bucket for about 2× the bucket time.
+
+**Run 3 pools.** The flat set saturates at rho = 0.45 too. 16 minutes gave 20.1 M blocks for row sum 43, against
+17.4 M in 8 minutes, so the pools stay near 2^24.3.
+
+**Rate calibration (2026-10-16 16:10 UTC) [M/E].**
+- **Partial joins on k = 1–12 classes** (`nprime_rho0.45_partialjoin_k12.log`, pools of 4,096).
+  - Up to k = 10 the measured bits track the Gaussian: 39.83 measured against 39.32, about +0.05 bits per class.
+  - At k = 11 there are 4 matches against 27 predicted. At k = 12 there are 2 against 1.9.
+  - Matches from small pools are strongly clustered, so k = 11 is noisy. n′ ≈ 78 stands.
+- **Per-bucket rate.**
+  - The pipeline's constant is 3.42 bits per remaining class. At 487 that sat about 0.17 bits above the measured
+    per-class value, and the constant reproduced the observed hits there.
+  - With the same offset at 883 (3.97 + 0.17), a bucket with both.sum ≈ 2^36.4 yields about 2^{36.4 − 45.5} ≈ 0.002
+    expected cores.
+  - Spreading the n′ budget uniformly instead gives up to about 0.017.
+  - Run 2's 345 empty buckets are consistent with the lower value (about 0.6 expected). At about 13 s per bucket, a
+    first core is expected within roughly 0.6–6 hours of run time.
