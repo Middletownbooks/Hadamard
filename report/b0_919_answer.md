@@ -114,7 +114,7 @@ Feasible slices, cheapest first:
 | **919** | **51** | **3-cycle** | 19 | 9 | (1, 35, 35, 35) | 24.4 | **49.6** (built) |
 | 919 | 27 | 3-cycle | 35 | 17 | (−53, −17, −17, −17) | 46.9 | 91.1 |
 | 571 | 15 | 3-cycle | 39 | 19 | (31, 21, 21, 21) | 59.4 | 94.6 (the known lopsided lead) |
-| 883 | 21 | none | 43 | 21 | (−41, 1, 1, 43) | 60.1 | 111.9 |
+| 883 | 21 | none | 43 | 21 | (−41, 1, 1, 43) | 60.1 | 111.9 (built: H(3532), `report/b0_883_answer.md`) |
 | 919 | 17 | none | 55 | 27 | (1, 35, 35, 35) | 76.5 | 143.5 |
 | 859 | 13 | none | 67 | 33 | (−25, 1, 1, 53) | 94.6 | 173.4 |
 | 991 | 15 | 3-cycle | 67 | 33 | (61, −9, −9, −9) | 89.6 | 176.4 |
@@ -132,7 +132,8 @@ Feasible slices, cheapest first:
 **Notes.**
 - Untwisted b = 0 costs equal the T-form costs of `report/tmat_routes.md` §10, as §2 there predicts. Examples:
   883/21 gives 111.9 in both, and 919/9 gives 269.1 in both.
-- **883/21 (n = 111.9) is the next b = 0 candidate.** It is untwisted, so the flat-pool k-tree of
+- **883/21 (n = 111.9) is the next b = 0 candidate.** Update: built by this route, H(3532)
+  (`report/b0_883_answer.md`). It is untwisted, so the flat-pool k-tree of
   `report/REPORT.md` §4–5 applies directly, with four independent lists.
   - That method found two new cores at v = 487 with n = 130 (`report/v487_new_solutions.md`).
   - The flat restriction gained 1.7–1.9 bits per class at 283 and 487. That would put 883/21 near n′ ≈ 75 [E,

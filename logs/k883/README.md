@@ -69,3 +69,22 @@
 - **Change.** With 7 key classes instead of 8, each bucket holds about 144× more matched pair-pairs. The rest then
   has one more class, worth about 2^−4.1. So expect about 8× more hits per bucket, for a modestly longer bucket.
 - **Setup.** Run 3's pools are reused through hard links; preparation is recomputed for k = 7. KT_K=7, KT_OUT=runs/inst3.
+
+**Run 4 result: H(3532) [M].**
+- Bucket 232 (t = 4,761 s; τ = (2, 2, 2, 6, 6, 2, −2)) gave 32 candidates, all verified solutions. They are one core up
+  to reversing any block (x ↦ −x) and swapping C and D (32 = 2⁴ · 2). The worker was stopped at bucket 252.
+- Logs and data:
+  - log `log_run4_rho045_k7.jsonl`;
+  - tuples `data/k883_solutions_v883_run4.jsonl`;
+  - core `data/core_v883_b0_d21_0.txt`;
+  - exact verification `verify_h3532_core0.json` (integer PAF, U-invariance, H Hᵀ = 3532·I) and
+    `verify_all32_paf.json`;
+  - bundle `pub/H3532/` (`pub_verify_h3532.txt`);
+  - write-up `report/b0_883_answer.md`.
+- **The zeros before it were clustering, not a broken rate.**
+  - The pools are about 90% reversal-closed (`diag/reversal_closure.log`), so a core shows up as a cluster of about
+    21–32 tuples in one bucket.
+  - The pipeline's estimate counts tuples. At the measured 3.97 bits per class it gave about 25 tuples before the hit
+    across runs 1–4, about 1.2 cores.
+- Partial joins on the production pools to 13 classes (`diag/pjoin_883_8192.log`, script `scripts/k883_pjoin.py`)
+  hold 3.92–4.0 bits per class with no drift.
