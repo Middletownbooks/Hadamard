@@ -1,0 +1,29 @@
+{"stage": "setup", "v": 919, "d": 51, "u": 8, "orbitsA": 18, "orbitsB": 54, "classes": 9, "sA": 1, "sB": 35, "zeroA": [[1, 0]], "zeroB": [[1, 2]], "seed": 22, "secs": 0.0}
+{"stage": "A-table", "size": 48620, "log2": 15.57, "secs": 17.4}
+{"stage": "fast-path", "Q_shape": [55, 495], "secs": 19.4}
+{"stage": "progress", "B_tested": 32768, "log2_B": 15.0, "solutions": 0, "secs": 19.8}
+{"stage": "progress", "B_tested": 1671168, "log2_B": 20.67, "solutions": 0, "secs": 33.5}
+{"stage": "progress", "B_tested": 3309568, "log2_B": 21.66, "solutions": 0, "secs": 47.6}
+{"stage": "progress", "B_tested": 4947968, "log2_B": 22.24, "solutions": 0, "secs": 61.2}
+{"stage": "progress", "B_tested": 6586368, "log2_B": 22.65, "solutions": 0, "secs": 75.6}
+{"stage": "progress", "B_tested": 8224768, "log2_B": 22.97, "solutions": 0, "secs": 89.4}
+{"stage": "progress", "B_tested": 9863168, "log2_B": 23.23, "solutions": 0, "secs": 104.6}
+{"stage": "progress", "B_tested": 11501568, "log2_B": 23.46, "solutions": 0, "secs": 118.3}
+{"stage": "progress", "B_tested": 13139968, "log2_B": 23.65, "solutions": 0, "secs": 131.5}
+{"stage": "progress", "B_tested": 14778368, "log2_B": 23.82, "solutions": 0, "secs": 145.9}
+{"stage": "progress", "B_tested": 16416768, "log2_B": 23.97, "solutions": 0, "secs": 159.4}
+{"stage": "progress", "B_tested": 18055168, "log2_B": 24.11, "solutions": 0, "secs": 173.8}
+{"stage": "progress", "B_tested": 19693568, "log2_B": 24.23, "solutions": 0, "secs": 185.5}
+{"stage": "progress", "B_tested": 21331968, "log2_B": 24.35, "solutions": 0, "secs": 196.7}
+{"stage": "progress", "B_tested": 22970368, "log2_B": 24.45, "solutions": 0, "secs": 208.2}
+{"stage": "progress", "B_tested": 24608768, "log2_B": 24.55, "solutions": 0, "secs": 220.4}
+{"stage": "progress", "B_tested": 26247168, "log2_B": 24.65, "solutions": 0, "secs": 231.9}
+{"stage": "progress", "B_tested": 27885568, "log2_B": 24.73, "solutions": 0, "secs": 243.7}
+{"stage": "progress", "B_tested": 29523968, "log2_B": 24.82, "solutions": 0, "secs": 255.0}
+{"stage": "progress", "B_tested": 31162368, "log2_B": 24.89, "solutions": 0, "secs": 265.3}
+{"stage": "progress", "B_tested": 32800768, "log2_B": 24.97, "solutions": 0, "secs": 274.8}
+{"stage": "progress", "B_tested": 34439168, "log2_B": 25.04, "solutions": 0, "secs": 283.8}
+{"stage": "progress", "B_tested": 36077568, "log2_B": 25.1, "solutions": 0, "secs": 293.1}
+{"stage": "progress", "B_tested": 37715968, "log2_B": 25.17, "solutions": 0, "secs": 302.9}
+{"stage": "progress", "B_tested": 39354368, "log2_B": 25.23, "solutions": 0, "secs": 312.0}
+{"stage": "progress", "B_tested": 40992768, "log2_B": 25.29, "solutions": 0, "secs": 321.0}

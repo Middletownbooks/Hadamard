@@ -1,0 +1,27 @@
+{
+ "v": 919,
+ "paf0": 3676,
+ "paf_off_zero": [
+  0
+ ],
+ "row_sums": [
+  1,
+  35,
+  35,
+  35
+ ],
+ "order_of_u": 51,
+ "A_invariant_under_u": true,
+ "B_invariant_under_u3": true,
+ "C_is_B_of_u^-1_x": true,
+ "D_is_B_of_u^-2_x": true,
+ "order": 3676,
+ "entries": [
+  -1,
+  1
+ ],
+ "hadamard": true,
+ "sha256_packed_rows": "cfed1db980e75b703e982469364cf41d74944dce5ef1e879f3099ebbdb27bc34",
+ "saved": "data/H3676_packed.npz",
+ "ok": true
+}
