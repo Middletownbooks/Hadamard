@@ -278,3 +278,13 @@
 {"stage": "bucket", "b": 240, "tau": [2, 2, -2, 2, 6, 6, 2], "AB": 14880608, "CD": 21715912, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.50072, "exp_cum": 2078.5656, "t": 4890.0}
 {"stage": "bucket", "b": 241, "tau": [-2, 2, -2, 2, 2, -2, 2], "AB": 14678586, "CD": 21564400, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.3256, "exp_cum": 2086.8912, "t": 4905.8}
 {"stage": "bucket", "b": 242, "tau": [2, -2, 2, 2, 2, 6, 6], "AB": 14859317, "CD": 21762406, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.50698, "exp_cum": 2095.3982, "t": 4922.7}
+{"stage": "bucket", "b": 243, "tau": [2, -2, 2, 2, -2, 2, 6], "AB": 14836199, "CD": 21790542, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.50336, "exp_cum": 2103.9015, "t": 4938.4}
+{"stage": "bucket", "b": 244, "tau": [2, 2, 2, -2, 6, 6, 2], "AB": 14916677, "CD": 21650442, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.49223, "exp_cum": 2112.3938, "t": 4954.1}
+{"stage": "bucket", "b": 245, "tau": [-2, 2, 2, -2, 2, -2, 2], "AB": 14699088, "CD": 21480272, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.30479, "exp_cum": 2120.6986, "t": 4969.8}
+{"stage": "bucket", "b": 246, "tau": [6, 6, -2, 2, 2, 2, 2], "AB": 14884785, "CD": 21689624, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.49007, "exp_cum": 2129.1886, "t": 4986.6}
+{"stage": "bucket", "b": 247, "tau": [2, 6, 2, 6, 6, 2, 2], "AB": 14726918, "CD": 21438462, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.30605, "exp_cum": 2137.4947, "t": 5003.0}
+{"stage": "bucket", "b": 248, "tau": [-2, 2, -2, 2, 6, 2, 2], "AB": 14849326, "CD": 21760388, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.49731, "exp_cum": 2145.992, "t": 5019.2}
+{"stage": "bucket", "b": 249, "tau": [2, 2, -2, 2, 6, -2, 2], "AB": 14841598, "CD": 21794064, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.51076, "exp_cum": 2154.5028, "t": 5035.9}
+{"stage": "bucket", "b": 250, "tau": [6, 6, 2, -2, 2, 2, 2], "AB": 14920070, "CD": 21620364, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.48509, "exp_cum": 2162.9878, "t": 5051.8}
+{"stage": "bucket", "b": 251, "tau": [-2, -2, 2, 2, 2, 2, 6], "AB": 14823452, "CD": 21831224, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.50912, "exp_cum": 2171.497, "t": 5067.5}
+{"stage": "bucket", "b": 252, "tau": [2, -2, 2, 2, 2, -2, 6], "AB": 14815377, "CD": 21812574, "passes": 1, "cand": 0, "solutions": 0, "total": 32, "exp_hits": 8.49835, "exp_cum": 2179.9953, "t": 5083.4}
