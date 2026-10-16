@@ -1,0 +1,39 @@
+# cyclic twisted b = 1 screen of the open orders (scripts/b1tw_screen.py, G = Z_{v-1}, 8-150 orbits)
+slices by twist: {'id': 229, 'BC': 205, 'BCD': 117} | alive after exact quotient screens: {'id': 51, 'BC': 76, 'BCD': 14} | alive with log2E > 0: {'id': 30, 'BC': 34, 'BCD': 5}
+kills: {'quotient F<=6': 72, 'quotient F>6': 109, 'Z2 quotient (F=2)': 229}
+
+v | twisted slices | killed at F=2 | alive (log2E>0) | cheapest alive twisted: (u, d, tw, orbits, classes, log2E, n)
+537 | 36 | 29 | 6 | (97, 6, 'BC', 96, 59, 75.3, 285.9)
+571 | 45 | 0 | 13 | (103, 12, 'BC', 66, 37, 42.5, 198.2)
+599 | 26 | 18 | 2 | (321, 6, 'BC', 120, 71, 69.3, 384.7)
+643 | 3 | 3 | 0 | -
+659 | 14 | 12 | 0 | -
+669 | 2 | 2 | 0 | -
+739 | 32 | 10 | 4 | (215, 10, 'BC', 90, 49, 56.9, 267.5)
+751 | 9 | 2 | 0 | -
+789 | 9 | 9 | 0 | -
+823 | 9 | 7 | 2 | (41, 8, 'BC', 106, 71, 44.7, 361.8)
+839 | 2 | 2 | 0 | -
+859 | 40 | 0 | 2 | (289, 15, 'BCD', 90, 45, 23.5, 288.2)
+863 | 2 | 2 | 0 | -
+907 | 20 | 17 | 2 | (283, 10, 'BC', 96, 63, 35.5, 327.8)
+947 | 4 | 0 | 1 | (21, 14, 'BC', 84, 47, 27.2, 276.2)
+955 | 20 | 12 | 0 | -
+971 | 17 | 7 | 6 | (469, 12, 'BC', 86, 53, 43.1, 282.8)
+991 | 32 | 0 | 1 | (71, 10, 'BC', 150, 79, 24.3, 527.6)
+
+cheapest 8 alive twisted slices overall (log2E > 0), by n:
+  571 u 103 d 12 BC orbits 66 classes 37 log2E 42.5 n 198.2
+  571 u 83 d 12 BC orbits 70 classes 37 log2E 37.1 n 211.6
+  571 u 107 d 12 BC orbits 64 classes 43 log2E 5.0 n 231.8
+  571 u 61 d 9 BCD orbits 90 classes 45 log2E 29.2 n 259.9
+  739 u 215 d 10 BC orbits 90 classes 49 log2E 56.9 n 267.5
+  739 u 127 d 10 BC orbits 90 classes 49 log2E 53.1 n 272.8
+  947 u 21 d 14 BC orbits 84 classes 47 log2E 27.2 n 276.2
+  971 u 469 d 12 BC orbits 86 classes 53 log2E 43.1 n 282.8
+cheapest 5 alive untwisted (reference; my screens are weaker than the repo exact compressions):
+  599 u 3 d 33 orbits 30 classes 15 log2E 1.7 n 94.0
+  537 u 9 d 11 orbits 56 classes 28 log2E 62.9 n 143.8
+  571 u 103 d 12 orbits 66 classes 37 log2E 44.1 n 196.5
+  571 u 107 d 12 orbits 64 classes 43 log2E 2.2 n 230.4
+  571 u 83 d 12 orbits 70 classes 37 log2E 22.0 n 234.7

@@ -160,13 +160,12 @@ def quotient_screen(sl, K, maxvec=2_000_000):
         for s2 in (2, -2):
             sel = {g: contrib[g][1][contrib[g][0] == (s2 if g == g2 else 0)] for g in gs}
             if any(len(x) == 0 for x in sel.values()): continue
-            # join: last group against the sum of the others
-            acc = np.unique(sel[gs[0]], axis=0)
+            # join on linear 64-bit keys (a collision can only keep a slice alive, never kill one)
+            acc = np.unique(sel[gs[0]] @ W)
             for g in gs[1:-1]:
-                b = np.unique(sel[g], axis=0)
-                acc = np.unique((acc[:, None, :] + b[None, :, :]).reshape(-1, F), axis=0)
-                if len(acc) > 5_000_000: return None
-            last = np.unique(sel[gs[-1]], axis=0)
-            k1 = set((acc @ W).tolist()); k2 = ((tgt - last) @ W).tolist()
-            if any(k in k1 for k in k2): return True
+                b = np.unique(sel[g] @ W)
+                if len(acc) * len(b) > 50_000_000: return None
+                acc = np.unique((acc[:, None] + b[None, :]).ravel())
+            k2 = np.unique((tgt - sel[gs[-1]]) @ W)
+            if np.isin(k2, acc).any(): return True
     return False
