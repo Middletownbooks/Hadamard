@@ -226,3 +226,8 @@ Steps:
   reversal-canonical k = 9 run (2 tuples: A <-> B), verified by `scripts/verify_b0_core.py` (PAF, U-invariance,
   H H^T = 1244 I) and inequivalent to Alpoge's 311 (PAF-multiset class key). Block rho 0.298 / 0.314 / 0.317 / 0.257.
   Model: one core per ~1,200 buckets; first hit at 1,118 (+ the k = 10 run's ~0.2 cores). Join continues for a rate.
+- 2026-10-17 15:45 UTC, rung 2 (223) production started (`logs/k223/run_prod223.sh`, GW=4): rho = 0.32 chunks of 10 min
+  x 4 workers give ~147k / 33k new orbits (row sums 11 / 23) each; target 3.6M row-sum-11 orbits (~5-6 h with
+  saturation), then reversal-canonical closure slots (~2^25 / 2^27 x 3, B = C = D shared) and the disk join (k = 12).
+  Model: ~2.7 h of join per core after generation (alternatives: 2.5M orbits -> 3.2 h + 6.2 h; 1.7M -> 2 h + 16 h).
+  The 311 join is paused at bucket 1,123 (resume: `logs/k311/runners/run_prod_rev.sh 9`).
