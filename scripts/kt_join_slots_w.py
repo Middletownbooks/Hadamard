@@ -7,7 +7,8 @@ scripts/build_slot_pools.py: slot A = one block per multiplier orbit (canonical 
 samples of the rotation closures.  Every solution has a simultaneous rotation with A canonical [P], so nothing is
 lost, and each hit is a distinct core up to that rotation.
 Restart-safe: prep arrays cached under OUT/cache, finished buckets (log) skipped.
-usage: python3 scripts/kt_join_slots_w.py V D a,b,c,d POOLS_DIR OUT [--k 8] [--mem 3e9] [--bits 3.1] [--hours 100]"""
+usage: python3 scripts/kt_join_slots_w.py V D a,b,c,d POOLS_DIR OUT [--k 8] [--mem 3e9] [--bits 3.1] [--hours 100]
+                                      [--only-tau t1,..,tk]   (planted tests: one bucket)"""
 import os, sys, json, time, glob, heapq
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -79,7 +80,10 @@ def main():
             z = json.loads(l)
             if z.get('stage') == 'bucket': done.add(z['b'])
         except Exception: pass
-    log(stage='ready', buckets=len(buckets), done_before=len(done))
+    if '--only-tau' in a:                        # planted tests: process exactly one bucket (tau = PAF_A + PAF_B on the chunk classes)
+        t_only = [int(x) for x in a[a.index('--only-tau') + 1].split(',')]
+        opts = [[(t_only[q], 0.0)] for q in range(k)]; buckets = [tuple(0 for _ in range(k))]; done = set()
+    log(stage='ready', buckets=len(buckets), done_before=len(done), chunk_classes=[int(c) for c in chunk])
     solf = open(os.path.join(OUT, f'solutions_v{v}.txt'), 'a'); nsol = 0; exp_cum = 0.0; T = 300
     A, B, Cc, Dd = D['A'], D['B'], D['C'], D['D']
     for b, ix in enumerate(buckets):

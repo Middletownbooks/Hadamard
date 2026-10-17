@@ -141,4 +141,8 @@ Steps:
   `scripts/build_slot_pools_w.py`, `scripts/kt_join_slots_w.py`. Smoke test at 223 (d = 3, 75 orbits, rho = 0.36,
   profile (17, 17, 17, 5)): blocks flat and canonical, join runs end to end. Before any 223 production: a planted test
   (put Alpöge's 223 blocks, `data/core_v223_b0.txt`, profile (23, 11, 11, 11), into the pools and process its bucket).
+- 2026-10-17, planted test of the two-word join [M]: Alpöge's 223 core (natural coordinates via
+  `forensics/near_structure.load_all`, slots (23, 11, 11, 11)) placed in small rho = 0.36 pools; processing only its
+  bucket (`scripts/kt_join_slots_w.py --only-tau -2,6,-6,2,-6,-2,6,6`) returns it as a verified solution
+  (`logs/k223/planted_core_*`). Note: that bucket was not among the first 352 in best-first order on these pools.
 
