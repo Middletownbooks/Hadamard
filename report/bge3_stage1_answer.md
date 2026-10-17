@@ -325,7 +325,51 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
 
 ## 8. Obstructions and the remaining b ≥ 3 frontier
 
-EIGHT_PLACEHOLDER
+### 8.1 Exact obstructions found here
+
+- **719, c = 6, q = 17, s = 2, H' = Z7, −1 on Q's Z3: no core [M]** (§5), by two exact methods (per type
+  quadruple and aggregated per compression quadruple). This was the only skipped configuration with a stage-2 budget
+  near 2^48 and a stage 1 that is not negligible.
+- **739, c = 4, q = 23, s = 2, H' of order 8, U = 1: no stage-1 solution [P]** (§4.1): the energy forces five large
+  letters, the Q-level forces an even number in every coset.
+- **919, c = 8, s = 3 (U = 1 and −1 on Z3): no stage-1 solution [P]**: every letter of the f = 6 fibre is at least 5
+  in absolute value, and 4·Σ_j w_j·min y² exceeds T1(0) (`logs/s1z/budget_skipped.jsonl`, `energy_ok: false`).
+- Configurations with no compression quadruple meeting the Q-level and lag-0 equations: stage 1 empty [M] (§3).
+- Calibration rungs, exact (§2): stage 1 empty for c = 6, H' = Z3 at v = 203, 239 (−1 on H') and v = 239, 311 (−1 on
+  Q's Z3); c = 8, H' = Z3 (−1) at v = 175, 271, 319, 463; c = 6, H' = Z5 at v = 335, 395 (−1 on H') and v = 395 (−1
+  on Q's Z3 and H'); c = 4, H' = Z4 at v = 211; c = 6 at v = 131 (−1 on H' = Z3).
+
+### 8.2 What the exact screens can and cannot do
+
+- The type-level and aggregated screens decide a configuration without any stage-1 solution when the blocks'
+  compressed distributions are small: sparse letter sets (s = 2 with large f, as at 719) and few G'-orbits per coset.
+- For the 599 c = 6 slices (letters ±1, ±9, ±11) every multiset survives the Z11 and Z2 × Z11 levels; the
+  Z3 × Z11 level needs a product of three coset-group sets (1.4·10^9 states per block for U = ×4 on Z9) and the full
+  Q × Z11 level six, and the per-type screen faces about 2·10^10 type quadruples (counted for the Z3² variant with
+  −1 on Q's Z3 and H'). These are undecided here.
+
+### 8.3 The remaining b ≥ 3 frontier
+
+1. **Rich but expensive, inside the 112 (§6).** The best is 599, c = 6, q = 11, s = 2, H' = Z9, U = ×4 (order 3) on
+   Z9: stage 1 2^+30.8 per symmetry class [E], at least 17 bordered multisets, stage 2 2^49.9–2^52.6 per core
+   over six typical y's [E], and about 2^17 cores per symmetry class expected [E]. It needs (a) a stage-1 sampler (the
+   α-list sampler and CP-SAT both failed on the similar 719 slice), (b) the joint Z3 × Z11 and Q × Z11 screens on the
+   sampled y's (cheap per y, unlike per compression quadruple), and (c) a stage-2 solver with a nested middle level
+   (`report/b599_answer.md` §5) to bring 2^50 toward 2^45. The Z3² variants are 6–10 bits dearer.
+2. **Configurations outside the batch generators.** `theory/ab_cbatch.py` enumerated split G with one cyclic
+   multiplier group on one axis of H' (and, for c = 6, −1 on Q's Z3, alone or with H'). Not covered: products of
+   multiplier groups on several axes, multipliers acting diagonally across axes (479's ×13), Q-automorphism slices
+   beyond `theory/ab_qaut.py`, and the other abelian types of H' at 739 (only H' = Z8 was in the skipped list; the
+   proof of §4.1 covers every H' of order 8 with U = 1).
+3. **More than 60 G'-orbits.** The largest skipped configurations (643 with 128 orbits, 839 with 64, 719 with 102)
+   are already decided by their stage-2 budgets (2^100 and up [E]); configurations with more orbits at the other open
+   orders were never listed.
+4. **c ≥ 10.** For 669 and 789 (c = 10 only) and the c = 12 options of 599, 659, 719, 839, 863, 947, 971, frames exist
+   (`report/alpoge_design_answer.md` §3.1) but no frame pair with a flat forced corner is known; the Singer ansatz
+   with an order-9 symmetry is exhausted at c = 10, and the c = 12 probe covered 250 of 75,573 first blocks.
+5. **Non-split H and noncyclic Q** (359's Q = Z2³ with H = 2Z8 × Z11, and its real-character row twist): the staged
+   systems and the screens here assume G' = Q × H'; the non-split case needs the coset map of `theory/b599_cond.py`
+   (which supports it for the Q-level) carried through the type screens.
 
 ---
 
