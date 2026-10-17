@@ -102,10 +102,11 @@ def expand_ranges(lo, cnt):
     return rep, np.arange(tot) - np.repeat(np.cumsum(cnt) - cnt, cnt) + np.repeat(np.asarray(lo, np.int64), cnt)
 
 
-def sig_solve(P, T, chunk=1 << 22):
+def sig_solve(P, T, chunk=1 << 22, maxL=1 << 24):
     """multiset quads of PAF signatures summing to T.  Returns (Pu, inv, Q): the distinct signatures sorted by energy
     (column 0), the signature index of every vector, and the quads i <= j <= k <= l (exactly verified).  In index
-    order E_i + E_j <= T0 / 2, so the light pairs (i, j) are tabulated by hash and the pairs (k, l), k >= j, streamed."""
+    order E_i + E_j <= T0 / 2, so the light pairs (i, j) are tabulated by hash and the pairs (k, l), k >= j, of the
+    complementary energy streamed; the light pairs are processed in energy bands of at most maxL pairs."""
     P = np.asarray(P, np.int64); T = np.asarray(T, np.int64)
     if len(P) == 0: return P, np.zeros(0, np.int64), np.zeros((0, 4), np.int64)
     Pu, inv = np.unique(P, axis=0, return_inverse=True); inv = np.asarray(inv).ravel()
@@ -113,30 +114,43 @@ def sig_solve(P, T, chunk=1 << 22):
     nu = len(Pu); E = Pu[:, 0]; T0 = int(T[0]); ar = np.arange(nu)
     Wv = np.random.default_rng(7).integers(1, 2 ** 61, Pu.shape[1]).astype(np.int64)
     h = Pu @ Wv; th = np.int64(T @ Wv)
-    jmax = np.searchsorted(E, (T0 - 2 * E) // 2, 'right')
-    LI, LJ = expand_ranges(ar, np.maximum(jmax - ar, 0))
-    if len(LI) == 0: return Pu, inv, np.zeros((0, 4), np.int64)
-    LI = LI.astype(np.int32); LJ = LJ.astype(np.int32)
-    hL = h[LI] + h[LJ]; oL = np.argsort(hL, kind='stable'); hLs = hL[oL]; del hL
-    EL = E[LI] + E[LJ]; eLmin, eLmax = int(EL.min()), int(EL.max()); del EL
-    lo = np.maximum(ar, np.searchsorted(E, T0 - eLmax - E, 'left'))
-    hi = np.searchsorted(E, T0 - eLmin - E, 'right'); cnt = np.maximum(hi - lo, 0)
-    out = []; k0 = 0; cum = np.cumsum(cnt)
-    while k0 < nu:
-        base = int(cum[k0 - 1]) if k0 else 0
-        k1 = max(k0 + 1, int(np.searchsorted(cum, base + chunk, 'right')))
-        rep, LL = expand_ranges(lo[k0:k1], cnt[k0:k1]); KK = rep + k0
-        if len(KK):
-            need = th - (h[KK] + h[LL])
-            a = np.searchsorted(hLs, need, 'left'); b = np.searchsorted(hLs, need, 'right'); m = b > a
-            if m.any():
-                KK, LL, a, b = KK[m], LL[m], a[m], b[m]
-                rep2, p = expand_ranges(a, b - a); li = oL[p]
-                I, J, K, L = LI[li].astype(np.int64), LJ[li].astype(np.int64), KK[rep2], LL[rep2]
-                ok = J <= K; I, J, K, L = I[ok], J[ok], K[ok], L[ok]
-                ok = ((Pu[I] + Pu[J] + Pu[K] + Pu[L]) == T).all(1)
-                out.append(np.stack([I[ok], J[ok], K[ok], L[ok]], 1))
-        k0 = k1
+    jmax = np.searchsorted(E, (T0 - 2 * E) // 2, 'right')                    # 2 (E_i + E_j) <= T0
+    def nleft(e):                                                               # light pairs with E_i + E_j < e
+        return int(np.maximum(np.minimum(jmax, np.searchsorted(E, e - E, 'left')) - ar, 0).sum())
+    if nleft(T0 // 2 + 1) == 0: return Pu, inv, np.zeros((0, 4), np.int64)
+    cuts = [0]
+    while cuts[-1] <= T0 // 2:
+        lo_e, hi_e = cuts[-1] + 1, T0 // 2 + 1; base = nleft(cuts[-1])
+        if nleft(hi_e) - base <= maxL: cuts.append(hi_e); break
+        while lo_e < hi_e:                                                      # largest band end with <= maxL pairs
+            mid = (lo_e + hi_e + 1) // 2
+            if nleft(mid) - base <= maxL: lo_e = mid
+            else: hi_e = mid - 1
+        cuts.append(max(lo_e, cuts[-1] + 1))
+    out = []
+    for e_lo, e_hi in zip(cuts[:-1], cuts[1:]):
+        a0 = np.maximum(ar, np.searchsorted(E, e_lo - E, 'left')); a1 = np.minimum(jmax, np.searchsorted(E, e_hi - E, 'left'))
+        LI, LJ = expand_ranges(a0, np.maximum(a1 - a0, 0))                     # owner index = i
+        if len(LJ) == 0: continue
+        LI = LI.astype(np.int32); LJ = LJ.astype(np.int32)
+        hL = h[LI] + h[LJ]; oL = np.argsort(hL, kind='stable'); hLs = hL[oL]; del hL
+        lo = np.maximum(ar, np.searchsorted(E, T0 - e_hi - E, 'right'))        # E_k + E_l in (T0 - e_hi, T0 - e_lo]
+        hi = np.searchsorted(E, T0 - e_lo - E, 'right'); cnt = np.maximum(hi - lo, 0); cum = np.cumsum(cnt); k0 = 0
+        while k0 < nu:
+            base = int(cum[k0 - 1]) if k0 else 0
+            k1 = max(k0 + 1, int(np.searchsorted(cum, base + chunk, 'right')))
+            rep, LL = expand_ranges(lo[k0:k1], cnt[k0:k1]); KK = rep + k0
+            if len(KK):
+                need = th - (h[KK] + h[LL])
+                a = np.searchsorted(hLs, need, 'left'); b = np.searchsorted(hLs, need, 'right'); m = b > a
+                if m.any():
+                    KK, LL, a, b = KK[m], LL[m], a[m], b[m]
+                    rep2, p = expand_ranges(a, b - a); li = oL[p]
+                    I, J, K, L = LI[li].astype(np.int64), LJ[li].astype(np.int64), KK[rep2], LL[rep2]
+                    ok = J <= K; I, J, K, L = I[ok], J[ok], K[ok], L[ok]
+                    ok = ((Pu[I] + Pu[J] + Pu[K] + Pu[L]) == T).all(1)
+                    out.append(np.stack([I[ok], J[ok], K[ok], L[ok]], 1))
+            k0 = k1
     Q = np.concatenate(out) if out else np.zeros((0, 4), np.int64)
     return Pu, inv, Q
 
@@ -153,9 +167,15 @@ def nvec_quads(Q, fib):
 
 def main():
     a = sys.argv[1:]
-    cfg = SD.cfg_from_json(open(a[0]).read()); OUT = a[1]
+    cfg = SD.cfg_from_json(open(a[0]).read())
+    solve(cfg, W.build(cfg), a[1], a)
+
+
+def solve(cfg, sl, OUT, a, rq=None):
+    """the whole pipeline on a staged slice sl (or any object with its attributes); a = option list; rq = admissible
+    row quadruples (default: theory/ab_s1sd.row_quads_of)"""
     maxB = int(float(a[a.index('--maxB') + 1])) if '--maxB' in a else 40_000_000
-    sl = W.build(cfg); t0 = time.time()
+    t0 = time.time()
     plant = int(a[a.index('--plant') + 1]) if '--plant' in a else None
     if plant is not None:                       # planted control: a random slice quadruple with its own target
         rng = np.random.default_rng(plant)
@@ -165,7 +185,7 @@ def main():
                 row = [int(rng.choice([v for v in sl.letters[j] if abs(v) == min(abs(x) for x in sl.letters[j])])) for j in range(len(sl.breps))]
                 for j in rng.choice(len(sl.breps), size=int(rng.integers(1, 3)), replace=False):
                     big = [v for v in sl.letters[j] if abs(v) > min(abs(x) for x in sl.letters[j])]
-                    row[j] = int(rng.choice(big))
+                    if big: row[j] = int(rng.choice(big))
                 Yo.append(row)
             Yo = np.array(Yo)
             full = Yo[:, np.asarray(sl.borb)]
@@ -177,7 +197,7 @@ def main():
     st = structure(cfg, sl); no = st['no']
     st['cols'] = [columns(st['lets'][o]) for o in range(no)]
     if plant is None:
-        rq, A = SD.row_quads_of(cfg, sl)
+        if rq is None: rq, A = SD.row_quads_of(cfg, sl)
         rows = sorted({abs(r) for q in rq for r in q}); zh = {pi: [-2, 0, 2] for pi in (1, 2, 3)}
     else:
         rq = [tuple(sorted(int(x) for x in full.sum(1)))]; rows = sorted(set(rq[0]))
@@ -288,7 +308,7 @@ def main():
 
         def canon(Y):
             """block order, and the sign of zero-row-sum blocks (letters are odd, so y_0 != 0), normalized"""
-            rs = (Y.astype(np.int64) * wj).sum(2)
+            rs = (Y.astype(np.int32) * wj.astype(np.int32)).sum(2)
             Y = np.where(((rs == 0) & (Y[:, :, 0] < 0))[:, :, None], -Y, Y)
             Yv = np.ascontiguousarray(Y).view(np.dtype((np.void, Y.shape[2]))).reshape(len(Y), 4)
             return np.take_along_axis(Y, np.argsort(Yv, axis=1)[:, :, None], axis=1)
@@ -327,17 +347,23 @@ def main():
                 hR = (th - (B[u[r0]][1][:, None] + B[u[r1]][1][None, :])).ravel(); pairs_done += len(hR)
                 lo = np.searchsorted(hLs, hR, 'left'); hi = np.searchsorted(hLs, hR, 'right')
                 m = np.nonzero(hi > lo)[0]
-                if len(m):
-                    rep, pos = expand_ranges(lo[m], hi[m] - lo[m])
-                    i2, i3 = np.divmod(m[rep], sz[r1]); i0, i1 = np.divmod(oL[pos], n1)
-                    picks = [(u[l0], i0), (u[l1], i1), (u[r0], i2), (u[r1], i3)]
-                    tot = sum(np.concatenate([Pc[pi][B[g][0][pi][ii]] for pi in (1, 2, 3)], 1) for g, ii in picks)
-                    ok = (tot == Ttar).all(1)
-                    if ok.any():
-                        Y = np.stack([B[g][2][ii[ok]] for g, ii in picks], 1)
-                        Y = np.unique(canon(Y).reshape(-1, RB), axis=0).reshape(-1, 4, L1)
+                if len(m):                                       # matches expanded in chunks of <= 2^19
+                    cnt = hi[m] - lo[m]; cs = np.cumsum(cnt); parts = []; s0 = 0
+                    while s0 < len(m):
+                        s1 = max(s0 + 1, int(np.searchsorted(cs, (int(cs[s0 - 1]) if s0 else 0) + (1 << 19), 'right')))
+                        rep, pos = expand_ranges(lo[m[s0:s1]], cnt[s0:s1])
+                        i2, i3 = np.divmod(m[s0:s1][rep], sz[r1]); i0, i1 = np.divmod(oL[pos], n1)
+                        picks = [(u[l0], i0), (u[l1], i1), (u[r0], i2), (u[r1], i3)]
+                        tot = sum(np.concatenate([Pc[pi][B[g][0][pi][ii]] for pi in (1, 2, 3)], 1) for g, ii in picks)
+                        ok = (tot == Ttar).all(1)
+                        if ok.any():
+                            Yc = np.ascontiguousarray(canon(np.stack([B[g][2][ii[ok]] for g, ii in picks], 1)).reshape(-1, RB))
+                            parts.append(np.unique(Yc.view(np.dtype((np.void, RB))).ravel()))
+                        s0 = s1
+                    if parts:                                    # canonical rows are unique within a quad
+                        Y = np.unique(np.concatenate(parts)).view(np.int8).reshape(-1, 4, L1)
                         nbad += int((~verify(Y)).sum())
-                        fo.write(np.ascontiguousarray(Y, np.int8).tobytes()); nfound += len(Y)
+                        fo.write(Y.tobytes()); nfound += len(Y)
             if si % 200 == 199 or si == len(Q0) - 1:
                 fo.flush(); json.dump(dict(next_quad=si + 1, rows=nfound, unverified=nbad), open(ck, 'w'))
         fo.close()

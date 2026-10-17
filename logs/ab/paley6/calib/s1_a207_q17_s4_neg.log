@@ -1,0 +1,8 @@
+{"stage": "setup", "n_o": 2, "weights": [1, 2], "Tpsi": [[828, 0], [556, -272], [556, -272], [556, -272]], "row_quads": [[2, 2, 6, 28]], "secs": 0.1}
+{"stage": "character", "psi": 1, "vectors": 29, "signatures": 15, "signature_quads": 8, "solutions": 112, "secs": 0.1}
+{"stage": "character", "psi": 2, "vectors": 29, "signatures": 15, "signature_quads": 8, "solutions": 112, "secs": 0.1}
+{"stage": "character", "psi": 3, "vectors": 29, "signatures": 15, "signature_quads": 8, "solutions": 112, "secs": 0.1}
+{"stage": "character", "psi": 0, "vectors": 33, "signatures": 28, "signature_quads": 20, "solutions": 40, "secs": 0.1}
+{"stage": "kept", "vectors": [22, 22, 22, 22], "secs": 0.2}
+{"stage": "blocks", "psi0_vectors": 22, "signatures_with_blocks": 5, "column_valid_blocks": 56, "secs": 0.5}
+{"stage": "done", "stage1_solutions": 0, "all_verified": true, "secs": 0.5}

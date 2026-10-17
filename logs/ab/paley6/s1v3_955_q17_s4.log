@@ -1,0 +1,22 @@
+{"stage": "setup", "n_o": 4, "weights": [1, 6, 1, 6], "Tpsi": [[3820, 0, 0, 0], [3548, -272, -272, -272], [3548, -272, -272, -272], [3548, -272, -272, -272]], "row_quads": [[0, 2, 30, 54], [0, 30, 34, 42], [2, 2, 26, 56], [2, 10, 40, 46], [2, 14, 16, 58], [2, 14, 22, 56], [2, 16, 38, 46], [2, 18, 24, 54], [2, 26, 32, 46], [6, 6, 38, 48], [6, 16, 42, 42], [6, 18, 18, 56], [6, 18, 34, 48], [6, 24, 38, 42], [8, 10, 34, 50], [8, 14, 14, 58], [8, 14, 38, 46], [8, 22, 34, 46], [8, 34, 34, 38], [10, 10, 16, 58], [10, 10, 22, 56], [10, 14, 32, 50], [10, 26, 38, 40], [14, 22, 32, 46], [14, 32, 34, 38], [16, 18, 18, 54], [16, 26, 38, 38], [16, 30, 30, 42], [18, 24, 34, 42], [22, 32, 34, 34], [24, 30, 30, 38], [26, 26, 32, 38]], "secs": 2.5}
+{"stage": "character", "psi": 1, "vectors": 14793, "signatures": 3611, "signature_quads": 2437, "solutions": 655840, "secs": 3.1}
+{"stage": "character", "psi": 2, "vectors": 14793, "signatures": 3611, "signature_quads": 2437, "solutions": 655840, "secs": 3.7}
+{"stage": "character", "psi": 3, "vectors": 14793, "signatures": 3611, "signature_quads": 2437, "solutions": 655840, "secs": 4.2}
+{"stage": "character", "psi": 0, "vectors": 122746, "signatures": 53198, "signature_quads": 402487, "solutions": "not counted (> 2e5 signature quads)", "secs": 232.1}
+{"stage": "kept", "vectors": [13268, 1783, 1783, 1783], "secs": 232.1}
+{"stage": "blocks-progress", "done": 0, "of": 13268, "blocks": 0, "secs": 232.4}
+{"stage": "blocks-progress", "done": 2000, "of": 13268, "blocks": 35461, "secs": 233.1}
+{"stage": "blocks-progress", "done": 4000, "of": 13268, "blocks": 107655, "secs": 234.0}
+{"stage": "blocks-progress", "done": 6000, "of": 13268, "blocks": 210593, "secs": 235.0}
+{"stage": "blocks-progress", "done": 8000, "of": 13268, "blocks": 330907, "secs": 235.8}
+{"stage": "blocks-progress", "done": 10000, "of": 13268, "blocks": 469245, "secs": 236.7}
+{"stage": "blocks-progress", "done": 12000, "of": 13268, "blocks": 627978, "secs": 237.6}
+{"stage": "blocks", "psi0_vectors": 13268, "signatures_with_blocks": 1523, "column_valid_blocks": 725018, "secs": 238.8}
+{"stage": "progress", "psi0_quads_done": 0, "of": 402487, "stage1_solutions": 0, "pairs": 0, "secs": 238.8}
+{"stage": "progress", "psi0_quads_done": 48905, "of": 402487, "stage1_solutions": 0, "pairs": 952357280, "secs": 298.9}
+{"stage": "progress", "psi0_quads_done": 147709, "of": 402487, "stage1_solutions": 0, "pairs": 2079737456, "secs": 358.9}
+{"stage": "progress", "psi0_quads_done": 181953, "of": 402487, "stage1_solutions": 0, "pairs": 2862373552, "secs": 419.2}
+{"stage": "progress", "psi0_quads_done": 253884, "of": 402487, "stage1_solutions": 0, "pairs": 3728193072, "secs": 479.2}
+{"stage": "progress", "psi0_quads_done": 305519, "of": 402487, "stage1_solutions": 0, "pairs": 4672130496, "secs": 539.3}
+{"stage": "progress", "psi0_quads_done": 379854, "of": 402487, "stage1_solutions": 0, "pairs": 5682630112, "secs": 599.3}
+{"stage": "done", "stage1_solutions": 0, "all_verified": true, "secs": 633.1}

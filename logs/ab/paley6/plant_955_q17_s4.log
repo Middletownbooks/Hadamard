@@ -1,0 +1,19 @@
+{"stage": "setup", "n_o": 4, "weights": [1, 6, 1, 6], "Tpsi": [[4376, 3580, -160, 376], [3624, 3004, 176, 552], [3752, 2412, -368, -88], [4888, 3020, -384, -40]], "row_quads": [[2, 38, 98, 130]], "secs": 0.1}
+{"stage": "character", "psi": 1, "vectors": 26240, "signatures": 6148, "signature_quads": 2214, "solutions": 705024, "secs": 0.8}
+{"stage": "planted-character", "psi": 1, "vectors_found": true, "signature_quad_found": true, "secs": 0.8}
+{"stage": "character", "psi": 2, "vectors": 37832, "signatures": 8863, "signature_quads": 42120, "solutions": 14390784, "secs": 2.6}
+{"stage": "planted-character", "psi": 2, "vectors_found": true, "signature_quad_found": true, "secs": 2.6}
+{"stage": "character", "psi": 3, "vectors": 56092, "signatures": 13128, "signature_quads": 73280, "solutions": 23183360, "secs": 7.8}
+{"stage": "planted-character", "psi": 3, "vectors_found": true, "signature_quad_found": true, "secs": 7.8}
+{"stage": "character", "psi": 0, "vectors": 22670, "signatures": 9529, "signature_quads": 15162, "solutions": 269760, "secs": 9.8}
+{"stage": "planted-character", "psi": 0, "vectors_found": true, "signature_quad_found": true, "secs": 9.8}
+{"stage": "kept", "vectors": [1156, 1144, 5440, 9308], "secs": 9.8}
+{"stage": "blocks-progress", "done": 0, "of": 1156, "blocks": 0, "secs": 10.0}
+{"stage": "blocks", "psi0_vectors": 1156, "signatures_with_blocks": 478, "column_valid_blocks": 371968, "secs": 13.8}
+{"stage": "progress", "psi0_quads_done": 0, "of": 15162, "stage1_solutions": 0, "pairs": 0, "secs": 13.8}
+{"stage": "progress", "psi0_quads_done": 2764, "of": 15162, "stage1_solutions": 0, "pairs": 1022399488, "secs": 73.8}
+{"stage": "progress", "psi0_quads_done": 6197, "of": 15162, "stage1_solutions": 0, "pairs": 2138272320, "secs": 133.9}
+{"stage": "progress", "psi0_quads_done": 9106, "of": 15162, "stage1_solutions": 4096, "pairs": 3170591488, "secs": 193.9}
+{"stage": "progress", "psi0_quads_done": 12979, "of": 15162, "stage1_solutions": 4096, "pairs": 4258090368, "secs": 253.9}
+{"stage": "done", "stage1_solutions": 8192, "all_verified": true, "planted_found": true, "planted_characters": {"1": {"vectors_found": true, "signature_quad_found": true}, "2": {"vectors_found": true, "signature_quad_found": true}, "3": {"vectors_found": true, "signature_quad_found": true}, "0": {"vectors_found": true, "signature_quad_found": true}}, "secs": 299.3}
+exit=0

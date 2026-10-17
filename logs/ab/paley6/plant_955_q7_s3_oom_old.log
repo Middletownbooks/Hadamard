@@ -1,0 +1,27 @@
+{"stage": "setup", "n_o": 4, "weights": [1, 16, 1, 16], "Tpsi": [[2468, 2188, -136, 56], [1476, 1308, 104, 232], [1956, 1692, -168, -120], [3220, 2748, -648, -536]], "row_quads": [[2, 26, 100, 166]], "secs": 0.1}
+{"stage": "character", "psi": 1, "vectors": 1924, "signatures": 478, "signature_quads": 28, "solutions": 7168, "secs": 0.1}
+{"stage": "planted-character", "psi": 1, "vectors_found": true, "signature_quad_found": true, "secs": 0.1}
+{"stage": "character", "psi": 2, "vectors": 2488, "signatures": 578, "signature_quads": 72, "solutions": 18432, "secs": 0.1}
+{"stage": "planted-character", "psi": 2, "vectors_found": true, "signature_quad_found": true, "secs": 0.1}
+{"stage": "character", "psi": 3, "vectors": 3652, "signatures": 907, "signature_quads": 155, "solutions": 39680, "secs": 0.1}
+{"stage": "planted-character", "psi": 3, "vectors_found": true, "signature_quad_found": true, "secs": 0.1}
+{"stage": "character", "psi": 0, "vectors": 1494, "signatures": 741, "signature_quads": 66, "solutions": 1056, "secs": 0.1}
+{"stage": "planted-character", "psi": 0, "vectors_found": true, "signature_quad_found": true, "secs": 0.1}
+{"stage": "kept", "vectors": [180, 164, 284, 524], "secs": 0.2}
+{"stage": "blocks-progress", "done": 0, "of": 180, "blocks": 0, "secs": 0.2}
+{"stage": "blocks", "psi0_vectors": 180, "signatures_with_blocks": 90, "column_valid_blocks": 625832, "secs": 0.6}
+{"stage": "progress", "psi0_quads_done": 0, "of": 66, "stage1_solutions": 0, "pairs": 0, "secs": 0.6}
+{"stage": "progress", "psi0_quads_done": 1, "of": 66, "stage1_solutions": 995328, "pairs": 33720000, "secs": 127.5}
+{"stage": "progress", "psi0_quads_done": 3, "of": 66, "stage1_solutions": 2625536, "pairs": 100183296, "secs": 333.2}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/ab_s1_chars.py", line 355, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/ab_s1_chars.py", line 338, in main
+    Y = np.unique(canon(Y).reshape(-1, RB), axis=0).reshape(-1, 4, L1)
+                  ~~~~~^^^
+  File "/home/user/Hadamard/theory/ab_s1_chars.py", line 291, in canon
+    rs = (Y.astype(np.int64) * wj).sum(2)
+          ~~~~~~~~^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.24 GiB for an array with shape (2609152, 4, 16) and data type int64
+exit=1

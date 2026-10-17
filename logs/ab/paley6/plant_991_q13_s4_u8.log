@@ -1,0 +1,15 @@
+{"stage": "setup", "n_o": 4, "weights": [1, 6, 6, 6], "Tpsi": [[2676, 456, 672, 1084], [2084, 584, 576, 828], [2308, 456, 512, 908], [3076, -8, 432, 860]], "row_quads": [[6, 26, 80, 94]], "secs": 0.1}
+{"stage": "character", "psi": 1, "vectors": 5386, "signatures": 2693, "signature_quads": 847, "solutions": 13552, "secs": 0.2}
+{"stage": "planted-character", "psi": 1, "vectors_found": true, "signature_quad_found": true, "secs": 0.2}
+{"stage": "character", "psi": 2, "vectors": 6470, "signatures": 3235, "signature_quads": 1074, "solutions": 17184, "secs": 0.4}
+{"stage": "planted-character", "psi": 2, "vectors_found": true, "signature_quad_found": true, "secs": 0.4}
+{"stage": "character", "psi": 3, "vectors": 10426, "signatures": 5213, "signature_quads": 3557, "solutions": 56912, "secs": 0.9}
+{"stage": "planted-character", "psi": 3, "vectors_found": true, "signature_quad_found": true, "secs": 0.9}
+{"stage": "character", "psi": 0, "vectors": 4034, "signatures": 4034, "signature_quads": 1722, "solutions": 1722, "secs": 1.1}
+{"stage": "planted-character", "psi": 0, "vectors_found": true, "signature_quad_found": true, "secs": 1.1}
+{"stage": "kept", "vectors": [670, 930, 1090, 2082], "secs": 1.2}
+{"stage": "blocks-progress", "done": 0, "of": 670, "blocks": 0, "secs": 1.3}
+{"stage": "blocks", "psi0_vectors": 670, "signatures_with_blocks": 669, "column_valid_blocks": 172952, "secs": 4.1}
+{"stage": "progress", "psi0_quads_done": 0, "of": 1722, "stage1_solutions": 0, "pairs": 0, "secs": 4.1}
+{"stage": "done", "stage1_solutions": 256, "all_verified": true, "planted_found": true, "planted_characters": {"1": {"vectors_found": true, "signature_quad_found": true}, "2": {"vectors_found": true, "signature_quad_found": true}, "3": {"vectors_found": true, "signature_quad_found": true}, "0": {"vectors_found": true, "signature_quad_found": true}}, "secs": 11.9}
+exit=0
