@@ -1,0 +1,12 @@
+{"stage": "config", "v": 311, "d": 5, "profile": [21, 21, 19, 1], "k": 10, "field_bits": 6, "mem": 2000000000.0, "pools": {"A": 27056553, "B": 27056553, "C": 22436684, "D": 12868410}, "log2_tuples": 97.42, "t": 0.0}
+{"stage": "prep", "slot": "A", "size": 27056553, "max_abs_paf": 23, "t": 439.2}
+{"stage": "prep", "slot": "B", "size": 27056553, "max_abs_paf": 23, "t": 927.5}
+{"stage": "prep", "slot": "C", "size": 22436684, "max_abs_paf": 23, "t": 1335.9}
+{"stage": "prep", "slot": "D", "size": 12868410, "max_abs_paf": 23, "t": 1565.7}
+{"stage": "ready", "buckets": 1, "done_before": 0, "chunk_classes": [12, 0, 19, 20, 9, 28, 27, 22, 6, 26], "t": 1714.0}
+{"stage": "SOLUTION", "b": 0, "t": 1724.6}
+{"stage": "SOLUTION", "b": 0, "t": 1724.6}
+{"stage": "SOLUTION", "b": 0, "t": 1724.6}
+{"stage": "SOLUTION", "b": 0, "t": 1724.6}
+{"stage": "bucket", "b": 0, "tau": [2, -10, 2, 2, 2, -10, 6, 6, 10, 2], "AB": 4638577, "CD": 1956092, "passes": 1, "cand": 4, "solutions": 4, "total": 4, "t": 1724.6}
+{"stage": "end", "solutions": 4, "t": 1724.6}

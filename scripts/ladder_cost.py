@@ -13,8 +13,9 @@ over the Gaussian.  Both come from the energy shell (each block's PAF vector on 
   n = n_ind - k curves: 0.08 bits per rest class (default rest_drift).
 p and the global per-class bits come from the pools' PAF spread: pair-sum std s = sqrt(2) sigma, lattice step 4:
 p = log2(sqrt(2 pi) s / 4); b_G = n'_Gauss / n_ind.  Bucket time: t = c_L (2^l_A + 2^l_C) + c_P (pairs_AB + pairs_CD)
-seconds (calibrated on the 311 production join), buckets per core = m / E_top (m = tuples a core leaves in a bucket,
-2 when slots A and B have equal row sums), with the top-bucket rate held for the first ~10^4 buckets (the shares of
+seconds (calibrated on the 311 production join), buckets per core = m / E_top (m = tuples a core leaves in a bucket:
+reversing one block keeps its PAF, so closure pools hold each core as a cluster of 2^4 x (2 if A, B or C, D have equal
+row sums) = 32 tuples; reversal-canonical pools (build_slot_pools*.py --revcanon) leave m = 2 or 1), with the top-bucket rate held for the first ~10^4 buckets (the shares of
 scripts/bucket_rank.py fall by about 2x over them).
 usage: python3 scripts/ladder_cost.py RUNGS.json      (a list of dicts: name, n_ind, nprime_gauss, sigma, l (4 log2
        pool sizes), m, optional p, rest_drift, k (else best k), t_cal [c_L, c_P])"""

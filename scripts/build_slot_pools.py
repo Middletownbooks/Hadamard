@@ -7,7 +7,10 @@ from several probe/generation directories are merged (np.unique), so longer gene
 With --closure (no symmetry breaking): every slot is its row sum's rotation closure, the whole closure when it has at
 most L blocks, else a uniform sample of L.  Each core then sits in the pools in all e rotations (landing in different
 buckets), which multiplies hits per bucket by about e for about 1.4x the bucket time: better for a first hit.
-usage: python3 scripts/build_slot_pools.py V D a,b,c,d OUTDIR L LA DIR1 [DIR2 ...] [--closure]"""
+With --revcanon: keep one block of each reversal pair {x, x(-i)} (the least of w and its rotation by e/2).  Reversing
+one block keeps its PAF, so in closure pools every core sits in its bucket as a cluster of 2^4 (x A<->B) identical-key
+tuples; reversal-canonical slots keep one tuple of each cluster (per A<->B) at half the pool size [P].
+usage: python3 scripts/build_slot_pools.py V D a,b,c,d OUTDIR L LA DIR1 [DIR2 ...] [--closure] [--revcanon]"""
 import os, sys, json
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -21,7 +24,7 @@ def full_closure(reps, e):
 
 
 def main():
-    a = sys.argv[1:]; clos = '--closure' in a; a = [x for x in a if x != '--closure']
+    a = sys.argv[1:]; clos = '--closure' in a; rc = '--revcanon' in a; a = [x for x in a if x not in ('--closure', '--revcanon')]
     v, d = int(a[0]), int(a[1]); prof = [int(x) for x in a[2].split(',')]; out = a[3]; L = int(a[4]); LA = int(a[5]); dirs = a[6:]
     e = (v - 1) // d; os.makedirs(out, exist_ok=True); rng = np.random.default_rng(2024)
     reps = {}
@@ -36,9 +39,10 @@ def main():
             x = reps[s] if len(reps[s]) <= LA else np.sort(reps[s][rng.choice(len(reps[s]), LA, replace=False)])
         else:
             x = closure_sample(reps[s], e, L, rng)
+        if rc: x = x[x <= rotate(x, e // 2, e)]
         np.save(os.path.join(out, f'slot_{slot}.npy'), x)
         info[slot] = dict(rowsum=s, size=len(x), log2=round(float(np.log2(max(len(x), 1))), 2), orbits_available=len(reps[s]))
-    json.dump(dict(v=v, d=d, profile=prof, slots=info, sources=dirs, closure=clos), open(os.path.join(out, 'slots.json'), 'w'), indent=1)
+    json.dump(dict(v=v, d=d, profile=prof, slots=info, sources=dirs, closure=clos, revcanon=rc), open(os.path.join(out, 'slots.json'), 'w'), indent=1)
     print(json.dumps(info))
 
 

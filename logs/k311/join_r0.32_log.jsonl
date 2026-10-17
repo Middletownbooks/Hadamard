@@ -1,0 +1,6 @@
+{"stage": "config", "v": 311, "d": 5, "profile": [21, 21, 19, 1], "k": 8, "mem": 3000000000.0, "bits_per_class": 2.75, "pools": {"A": 27056552, "B": 27056552, "C": 22436684, "D": 12868410}, "log2_tuples": 97.42, "t": 0.0}
+{"stage": "prep", "slot": "A", "t": 183.8}
+{"stage": "prep", "slot": "B", "t": 351.6}
+{"stage": "prep", "slot": "C", "t": 492.7}
+{"stage": "prep", "slot": "D", "t": 613.1}
+{"stage": "ready", "buckets": 200000, "done_before": 0, "t": 628.3}

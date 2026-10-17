@@ -196,3 +196,14 @@ Steps:
 - `scripts/kt_join_disk.py`: presorted memmapped pools, keys computed in the merge kernels, 5-bit fields to k = 12;
   reproduces kt_join_slots' bucket counts exactly and recovers the planted 311 core at k = 10 and k = 12.
 - 311 production: 640 buckets, 0 hits by 11:05 UTC (model: about 2 cores expected; P(0) ~ 0.1). Running on.
+- 2026-10-17, rung 1 diagnosis after 842 empty k = 10 buckets (about 2.5x the expected work for one core at m = 2):
+  - Production-scale planted test (`logs/k311/planted_prodscale_disk_k10.log`): Alpoge's four blocks added to copies
+    of the production slots (only the two row-sum-21 blocks were missing: his row-sum-19 and row-sum-1 blocks, rho
+    0.306 / 0.315, were already in our pools, direct evidence of coverage), his bucket processed by
+    `scripts/kt_join_disk.py --only-tau`: 4 verified solutions (C and D each with its reversal). The join works at scale.
+  - The miss was the multiplicity: reversing one block keeps its PAF, and closure pools contain every block's reversal,
+    so each core sits in a bucket as a cluster of 2^4 x 2 (A <-> B) = 32 tuples (as at 883). Cores per top bucket:
+    2^-7.2 / 32 = 2^-12.2, i.e. about 4,700 buckets (~10 h) per core; the 842 empty buckets are consistent.
+  - Fix: reversal-canonical slots (`--revcanon`, one block per reversal pair; pools halve, pairs drop 4x, cores per bucket
+    unchanged). Cost model: k = 9 best, about 2.5 h per core. Production restarted on `slots_r0.32_rev`, k = 9
+    (`logs/k311/runners/run_prod_rev.sh`). The k = 10 run's 842 buckets: `logs/k311/join_r0.32_k10_log.jsonl`.

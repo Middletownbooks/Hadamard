@@ -9,7 +9,8 @@ rho-flat set is rho-flat: rotations keep F and the row sum, forensics in scripts
 from several probe/generation directories are merged (np.unique), so longer generation only adds orbits.
 With --closure: every slot is the whole rotation closure of its row sum when that has at most L blocks (else a
 sample of L), as scripts/build_slot_pools.py --closure; slots with equal row sums share one pool (symlinks).
-usage: python3 scripts/build_slot_pools_w.py V D a,b,c,d OUTDIR L LA DIR1 [DIR2 ...] [--closure]"""
+With --revcanon: one block of each reversal pair (as scripts/build_slot_pools.py --revcanon).
+usage: python3 scripts/build_slot_pools_w.py V D a,b,c,d OUTDIR L LA DIR1 [DIR2 ...] [--closure] [--revcanon]"""
 import os, sys, json
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +31,7 @@ def full_closure_w(reps, e):
 
 
 def main():
-    a = sys.argv[1:]; clos = '--closure' in a; a = [x for x in a if x != '--closure']
+    a = sys.argv[1:]; clos = '--closure' in a; rc = '--revcanon' in a; a = [x for x in a if x not in ('--closure', '--revcanon')]
     v, d = int(a[0]), int(a[1]); prof = [int(x) for x in a[2].split(',')]; out = a[3]; L = int(a[4]); LA = int(a[5]); dirs = a[6:]
     e = (v - 1) // d; os.makedirs(out, exist_ok=True); rng = np.random.default_rng(2024)
     reps = {}
@@ -50,9 +51,14 @@ def main():
             x = reps[s] if len(reps[s]) <= LA else reps[s][np.sort(rng.choice(len(reps[s]), LA, replace=False))]
         else:
             x = closure_sample_w(reps[s], e, L, rng)
+        if rc:
+            r_ = FW.rotate_w(np.ascontiguousarray(x), e // 2, e); keep = np.zeros(len(x), bool); eq = np.ones(len(x), bool)
+            for q in range(x.shape[1] - 1, -1, -1):                 # lexicographic x <= rev(x), most significant word last
+                keep |= eq & (x[:, q] < r_[:, q]); eq &= x[:, q] == r_[:, q]
+            x = x[keep | eq]
         np.save(os.path.join(out, f'slot_{slot}.npy'), x)
         info[slot] = dict(rowsum=s, size=len(x), log2=round(float(np.log2(max(len(x), 1))), 2), orbits_available=len(reps[s]))
-    json.dump(dict(v=v, d=d, profile=prof, slots=info, sources=dirs, closure=clos), open(os.path.join(out, 'slots.json'), 'w'), indent=1)
+    json.dump(dict(v=v, d=d, profile=prof, slots=info, sources=dirs, closure=clos, revcanon=rc), open(os.path.join(out, 'slots.json'), 'w'), indent=1)
     print(json.dumps(info))
 
 

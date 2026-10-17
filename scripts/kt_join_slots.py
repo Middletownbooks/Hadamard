@@ -100,6 +100,14 @@ def main():
             z = json.loads(l)
             if z.get('stage') == 'bucket': done.add(z['b'])
         except Exception: pass
+    if '--skip-log' in a:                         # skip tau-buckets already searched by another run (same chunk classes)
+        skip = set()
+        for l in open(a[a.index('--skip-log') + 1]):
+            try:
+                z = json.loads(l)
+                if z.get('stage') == 'bucket': skip.add(tuple(z['tau']))
+            except Exception: pass
+        done |= {b for b, ix in enumerate(buckets) if tuple(int(opts[q][ix[q]][0]) for q in range(k)) in skip}
     if '--only-tau' in a:                        # planted tests: process exactly one bucket (tau = PAF_A + PAF_B on the chunk classes)
         t_only = [int(x) for x in a[a.index('--only-tau') + 1].split(',')]
         opts = [[(t_only[q], 0.0)] for q in range(k)]; buckets = [tuple(0 for _ in range(k))]; done = set()
