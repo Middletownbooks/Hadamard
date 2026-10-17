@@ -2,7 +2,7 @@
 # restart-safe 311 production: generation chunks -> slot pools -> slot k-tree join (resumes from its log)
 # usage: run_prod.sh RHO NCHUNKS L LA K BITS
 cd /home/user/Hadamard
-SP=/tmp/claude-0/-home-user-Hadamard/5619518d-dc42-5642-885e-9f076e5e1a30/scratchpad/k311
+SP=${SP:-/tmp/k311}   # scratch dir for pools and caches (large, not in git); set SP to override
 RHO=$1; N=$2; L=$3; LA=$4; K=$5; BITS=$6
 $SP/run_gen.sh $RHO $N
 SLOTS=$SP/slots_r${RHO}
