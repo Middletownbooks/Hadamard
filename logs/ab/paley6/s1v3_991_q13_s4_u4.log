@@ -1,0 +1,71 @@
+{"stage": "setup", "n_o": 3, "weights": [1, 9, 9], "Tpsi": [[3964, 0], [3756, -208], [3756, -208], [3756, -208]], "row_quads": [[2, 26, 28, 50], [26, 26, 26, 44]], "secs": 1.0}
+{"stage": "character", "psi": 1, "vectors": 211, "signatures": 46, "signature_quads": 370, "solutions": 128304, "secs": 1.0}
+{"stage": "character", "psi": 2, "vectors": 211, "signatures": 46, "signature_quads": 370, "solutions": 128304, "secs": 1.0}
+{"stage": "character", "psi": 3, "vectors": 211, "signatures": 46, "signature_quads": 370, "solutions": 128304, "secs": 1.0}
+{"stage": "character", "psi": 0, "vectors": 371, "signatures": 138, "signature_quads": 2726, "solutions": 110586, "secs": 1.0}
+{"stage": "kept", "vectors": [357, 211, 211, 211], "secs": 1.0}
+{"stage": "blocks-progress", "done": 0, "of": 357, "blocks": 0, "secs": 1.2}
+{"stage": "blocks", "psi0_vectors": 357, "signatures_with_blocks": 97, "column_valid_blocks": 27202, "secs": 1.8}
+{"stage": "progress", "psi0_quads_done": 0, "of": 2726, "stage1_solutions": 0, "pairs": 0, "secs": 1.8}
+{"stage": "progress", "psi0_quads_done": 43, "of": 2726, "stage1_solutions": 1268736, "pairs": 3971296, "secs": 83.6}
+{"stage": "progress", "psi0_quads_done": 143, "of": 2726, "stage1_solutions": 2374656, "pairs": 11228000, "secs": 158.2}
+{"stage": "progress", "psi0_quads_done": 180, "of": 2726, "stage1_solutions": 3443712, "pairs": 13995872, "secs": 223.6}
+{"stage": "progress", "psi0_quads_done": 213, "of": 2726, "stage1_solutions": 4451328, "pairs": 15854976, "secs": 284.1}
+{"stage": "progress", "psi0_quads_done": 224, "of": 2726, "stage1_solutions": 5630976, "pairs": 16132736, "secs": 351.7}
+{"stage": "progress", "psi0_quads_done": 294, "of": 2726, "stage1_solutions": 6728704, "pairs": 18278400, "secs": 422.8}
+{"stage": "progress", "psi0_quads_done": 302, "of": 2726, "stage1_solutions": 7810048, "pairs": 18934848, "secs": 492.6}
+{"stage": "progress", "psi0_quads_done": 335, "of": 2726, "stage1_solutions": 9284608, "pairs": 21356320, "secs": 581.3}
+{"stage": "progress", "psi0_quads_done": 414, "of": 2726, "stage1_solutions": 10427392, "pairs": 26521872, "secs": 645.3}
+{"stage": "progress", "psi0_quads_done": 473, "of": 2726, "stage1_solutions": 11416576, "pairs": 27919632, "secs": 706.8}
+{"stage": "progress", "psi0_quads_done": 491, "of": 2726, "stage1_solutions": 13047808, "pairs": 28845168, "secs": 806.0}
+{"stage": "progress", "psi0_quads_done": 525, "of": 2726, "stage1_solutions": 14669824, "pairs": 30553936, "secs": 897.7}
+{"stage": "progress", "psi0_quads_done": 548, "of": 2726, "stage1_solutions": 16046080, "pairs": 33412208, "secs": 974.4}
+{"stage": "progress", "psi0_quads_done": 701, "of": 2726, "stage1_solutions": 17311744, "pairs": 39527296, "secs": 1040.1}
+{"stage": "progress", "psi0_quads_done": 734, "of": 2726, "stage1_solutions": 18442240, "pairs": 42035968, "secs": 1105.2}
+{"stage": "progress", "psi0_quads_done": 877, "of": 2726, "stage1_solutions": 19621888, "pairs": 46016832, "secs": 1173.0}
+{"stage": "progress", "psi0_quads_done": 886, "of": 2726, "stage1_solutions": 20801536, "pairs": 46317184, "secs": 1235.7}
+{"stage": "progress", "psi0_quads_done": 921, "of": 2726, "stage1_solutions": 22472704, "pairs": 48268352, "secs": 1321.7}
+{"stage": "progress", "psi0_quads_done": 927, "of": 2726, "stage1_solutions": 24143872, "pairs": 48909056, "secs": 1410.3}
+{"stage": "progress", "psi0_quads_done": 953, "of": 2726, "stage1_solutions": 25257984, "pairs": 50876288, "secs": 1470.7}
+{"stage": "progress", "psi0_quads_done": 1048, "of": 2726, "stage1_solutions": 27254784, "pairs": 52639168, "secs": 1578.8}
+{"stage": "progress", "psi0_quads_done": 1084, "of": 2726, "stage1_solutions": 28557312, "pairs": 55267616, "secs": 1653.4}
+{"stage": "progress", "psi0_quads_done": 1123, "of": 2726, "stage1_solutions": 30105600, "pairs": 58928904, "secs": 1767.0}
+{"stage": "progress", "psi0_quads_done": 1127, "of": 2726, "stage1_solutions": 31449088, "pairs": 59446600, "secs": 1842.0}
+{"stage": "progress", "psi0_quads_done": 1132, "of": 2726, "stage1_solutions": 33415168, "pairs": 60002632, "secs": 1949.8}
+{"stage": "progress", "psi0_quads_done": 1141, "of": 2726, "stage1_solutions": 34623488, "pairs": 61132456, "secs": 2016.6}
+{"stage": "progress", "psi0_quads_done": 1151, "of": 2726, "stage1_solutions": 35704832, "pairs": 61660456, "secs": 2077.5}
+{"stage": "progress", "psi0_quads_done": 1157, "of": 2726, "stage1_solutions": 36930944, "pairs": 62918728, "secs": 2143.6}
+{"stage": "progress", "psi0_quads_done": 1159, "of": 2726, "stage1_solutions": 38110592, "pairs": 63224392, "secs": 2211.4}
+{"stage": "progress", "psi0_quads_done": 1169, "of": 2726, "stage1_solutions": 39384448, "pairs": 63667384, "secs": 2283.3}
+{"stage": "progress", "psi0_quads_done": 1178, "of": 2726, "stage1_solutions": 40281472, "pairs": 66925768, "secs": 2351.0}
+{"stage": "progress", "psi0_quads_done": 1181, "of": 2726, "stage1_solutions": 41330048, "pairs": 67760072, "secs": 2471.2}
+{"stage": "progress", "psi0_quads_done": 1195, "of": 2726, "stage1_solutions": 42116480, "pairs": 68754056, "secs": 2558.5}
+{"stage": "progress", "psi0_quads_done": 1207, "of": 2726, "stage1_solutions": 43268480, "pairs": 69660272, "secs": 2648.2}
+{"stage": "progress", "psi0_quads_done": 1210, "of": 2726, "stage1_solutions": 44325248, "pairs": 70605584, "secs": 2744.0}
+{"stage": "progress", "psi0_quads_done": 1221, "of": 2726, "stage1_solutions": 45271424, "pairs": 71778288, "secs": 2850.3}
+{"stage": "progress", "psi0_quads_done": 1222, "of": 2726, "stage1_solutions": 46385536, "pairs": 72354096, "secs": 2981.1}
+{"stage": "progress", "psi0_quads_done": 1230, "of": 2726, "stage1_solutions": 47479168, "pairs": 74555856, "secs": 3062.0}
+{"stage": "progress", "psi0_quads_done": 1273, "of": 2726, "stage1_solutions": 48757120, "pairs": 77065904, "secs": 3127.7}
+{"stage": "progress", "psi0_quads_done": 1285, "of": 2726, "stage1_solutions": 51067264, "pairs": 77644208, "secs": 3254.4}
+{"stage": "progress", "psi0_quads_done": 1287, "of": 2726, "stage1_solutions": 52738432, "pairs": 77776304, "secs": 3385.9}
+{"stage": "progress", "psi0_quads_done": 1311, "of": 2726, "stage1_solutions": 53721472, "pairs": 78718384, "secs": 3465.8}
+{"stage": "progress", "psi0_quads_done": 1324, "of": 2726, "stage1_solutions": 54827392, "pairs": 79687120, "secs": 3530.0}
+{"stage": "progress", "psi0_quads_done": 1335, "of": 2726, "stage1_solutions": 56535424, "pairs": 80972864, "secs": 3621.1}
+{"stage": "progress", "psi0_quads_done": 1365, "of": 2726, "stage1_solutions": 58698112, "pairs": 83220064, "secs": 3731.2}
+{"stage": "progress", "psi0_quads_done": 1367, "of": 2726, "stage1_solutions": 60156288, "pairs": 84222048, "secs": 3799.0}
+{"stage": "progress", "psi0_quads_done": 1372, "of": 2726, "stage1_solutions": 61680000, "pairs": 85147168, "secs": 3875.3}
+{"stage": "setup", "n_o": 3, "weights": [1, 9, 9], "Tpsi": [[3964, 0], [3756, -208], [3756, -208], [3756, -208]], "row_quads": [[2, 26, 28, 50], [26, 26, 26, 44]], "secs": 1.0}
+{"stage": "character", "psi": 1, "vectors": 211, "signatures": 46, "signature_quads": 370, "solutions": 128304, "secs": 1.0}
+{"stage": "character", "psi": 2, "vectors": 211, "signatures": 46, "signature_quads": 370, "solutions": 128304, "secs": 1.0}
+{"stage": "character", "psi": 3, "vectors": 211, "signatures": 46, "signature_quads": 370, "solutions": 128304, "secs": 1.1}
+{"stage": "character", "psi": 0, "vectors": 371, "signatures": 138, "signature_quads": 2726, "solutions": 110586, "secs": 1.1}
+{"stage": "kept", "vectors": [357, 211, 211, 211], "secs": 1.1}
+{"stage": "blocks-progress", "done": 0, "of": 357, "blocks": 0, "secs": 1.2}
+{"stage": "blocks", "psi0_vectors": 357, "signatures_with_blocks": 97, "column_valid_blocks": 27202, "secs": 1.3}
+{"stage": "progress", "psi0_quads_done": 1400, "of": 2726, "stage1_solutions": 62675328, "pairs": 0, "secs": 1.3}
+{"stage": "progress", "psi0_quads_done": 1727, "of": 2726, "stage1_solutions": 73091968, "pairs": 13644176, "secs": 61.9}
+{"stage": "progress", "psi0_quads_done": 1903, "of": 2726, "stage1_solutions": 84990848, "pairs": 26264192, "secs": 124.5}
+{"stage": "progress", "psi0_quads_done": 2185, "of": 2726, "stage1_solutions": 93021056, "pairs": 32005648, "secs": 187.7}
+{"stage": "progress", "psi0_quads_done": 2240, "of": 2726, "stage1_solutions": 100443008, "pairs": 35318480, "secs": 249.2}
+{"stage": "progress", "psi0_quads_done": 2519, "of": 2726, "stage1_solutions": 113661312, "pairs": 48804592, "secs": 309.7}
+{"stage": "done", "stage1_solutions": 119858496, "all_verified": true, "secs": 336.5}

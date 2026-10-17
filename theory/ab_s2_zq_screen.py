@@ -41,15 +41,18 @@ def run(sl, YB, OUT, psis, keep_alive=None):
     Tq = {}
     for p in psis:
         tt = np.zeros(Z['q'], np.int64); np.add.at(tt, sl.zco, np.array(CHARS[p])[qg] * np.asarray(sl.T)); Tq[p] = tt[Z['lreps']][:nl - 1]
-    # per (psi, orbit, letter): the signed contribution set of the fibre patterns to xbar at the K-orbit reps
-    csid = {}; lut = {p: -np.ones((L1, 256), np.int16) for p in psis}
+    # per (psi, orbit, letter): the signed contribution set of the fibre patterns to xbar at the K-orbit reps;
+    # ids are ranks of the set contents (all four characters), so types and cache keys depend on the cfg only
+    cont = {}
     for j in range(L1):
         os_ = [o for o, _ in sl.parts[j]]
         for y in sl.letters[j]:
             C = AGs.fibre_patterns(sl, j, int(y))[0].astype(np.int64) @ Z['Mo'][os_][:, kr]
-            for p in psis:
-                key = tuple(sorted(map(tuple, (CHARS[p][qj[j]] * C).tolist())))
-                lut[p][j, y % 256] = csid.setdefault(key, len(csid))
+            for p in range(4): cont[(p, j, int(y))] = tuple(sorted(map(tuple, (CHARS[p][qj[j]] * C).tolist())))
+    csid = {k: i for i, k in enumerate(sorted(set(cont.values())))}
+    lut = {p: -np.ones((L1, 256), np.int16) for p in psis}
+    for (p, j, y), k in cont.items():
+        if p in psis: lut[p][j, y % 256] = csid[k]
     cvec = {i: np.array(k, np.int64) for k, i in csid.items()}
     n_all = os.path.getsize(YB) // RB; tid = {}
 
@@ -109,23 +112,26 @@ def run(sl, YB, OUT, psis, keep_alive=None):
         pos = np.minimum(np.searchsorted(A[0], need), len(A[0]) - 1); hit = A[0][pos] == need
         return float((A[1][pos[hit]] * B[1][hit]).sum()), 'exact convolution'
 
-    done = {}
+    ckey = lambda p, tq: (p, tuple(sorted(types[i] for i in tq)))                   # content key of a type quad
+    done = {}                                                                       # restart-safe cache, by content
     if os.path.exists(OUT):
         for l in open(OUT):
             z = json.loads(l)
-            if 'key' in z: done[(z['psi'], z['key'])] = z
-    fo = open(OUT, 'a'); t_last = 0.0; nq = 0
+            if 'types_content' in z: done[(z['psi'], tuple(sorted(tuple(t) for t in z['types_content'])))] = z
+    fo = open(OUT, 'a'); t_last = 0.0; nq = 0; cnt_of = {}; per_psi = {}
     for p in psis:
+        dead_y = 0
         for key, ny in sorted(quads[p].items(), key=lambda kv: -kv[1]):
             nq += 1
-            if (p, key) in done: continue
-            tq = [(key >> s) & 0x7FFF for s in (45, 30, 15, 0)]
-            ex, by = count(tq, Tq[p])
-            rec = dict(psi=p, key=key, types=tq, y=ny, min_P0=[dist(i)[2] for i in tq], count=ex,
-                       log2_count=round(math.log2(ex), 3) if ex > 0 else None, by=by)
-            fo.write(json.dumps(rec) + "\n"); fo.flush(); done[(p, key)] = rec
+            tq = [(key >> s) & 0x7FFF for s in (45, 30, 15, 0)]; ck = ckey(p, tq)
+            if ck not in done:
+                ex, by = count(tq, Tq[p])
+                rec = dict(psi=p, types_content=[list(t) for t in ck[1]], min_P0=[dist(i)[2] for i in tq], count=ex,
+                           log2_count=round(math.log2(ex), 3) if ex > 0 else None, by=by, y_first_run=ny)
+                fo.write(json.dumps(rec) + "\n"); fo.flush(); done[ck] = rec
+            cnt_of[(p, key)] = done[ck]['count']; dead_y += ny if done[ck]['count'] == 0 else 0
             if time.time() - t_last > 60: log(stage='progress', quads_done=nq, of=sum(len(quads[q]) for q in psis)); t_last = time.time()
-    per_psi = {p: dict(y_dead=sum(r['y'] for (q, k), r in done.items() if q == p and r['count'] == 0)) for p in psis}
+        per_psi[p] = dict(y_dead=dead_y, type_quadruples=len(quads[p]))
     # pass 2: the y's alive under every character
     alive = 0; fk = open(keep_alive, 'wb') if keep_alive else None
     for s0 in range(0, n_all, 1 << 20):
@@ -133,12 +139,12 @@ def run(sl, YB, OUT, psis, keep_alive=None):
         ok = np.ones(len(Y), bool)
         for p in psis:
             ks = quad_keys(Y, p); u, inv = np.unique(ks, return_inverse=True)
-            ok &= np.array([done[(p, k_)]['count'] > 0 for k_ in u.tolist()], bool)[inv.ravel()]
+            ok &= np.array([cnt_of[(p, k_)] > 0 for k_ in u.tolist()], bool)[inv.ravel()]
         alive += int(ok.sum())
         if fk is not None and ok.any(): fk.write(np.ascontiguousarray(Y[ok]).tobytes())
     if fk is not None: fk.close()
     log(stage='done', y_total=n_all, per_psi=per_psi, y_alive_all=alive, y_dead=n_all - alive)
-    return dict(per_psi=per_psi, alive=alive, done=done)
+    return dict(per_psi=per_psi, alive=alive, done={k: v for k, v in done.items() if k[0] in psis})
 
 
 if __name__ == "__main__":

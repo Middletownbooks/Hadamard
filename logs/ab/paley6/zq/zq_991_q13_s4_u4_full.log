@@ -1,0 +1,9 @@
+{"stage": "types", "y_total": 119858496, "block_types": 811, "type_quadruples": {"0": 1056, "1": 36248, "2": 36248, "3": 36248}, "secs": 959.4}
+{"stage": "progress", "quads_done": 1, "of": 109800, "secs": 959.5}
+{"stage": "progress", "quads_done": 12013, "of": 109800, "secs": 1019.5}
+{"stage": "progress", "quads_done": 32558, "of": 109800, "secs": 1079.5}
+{"stage": "progress", "quads_done": 48892, "of": 109800, "secs": 1139.5}
+{"stage": "progress", "quads_done": 69773, "of": 109800, "secs": 1199.5}
+{"stage": "progress", "quads_done": 85838, "of": 109800, "secs": 1259.6}
+{"stage": "progress", "quads_done": 108568, "of": 109800, "secs": 1319.6}
+{"stage": "done", "y_total": 119858496, "per_psi": {"0": {"y_dead": 66689344, "type_quadruples": 1056}, "1": {"y_dead": 22587200, "type_quadruples": 36248}, "2": {"y_dead": 22587200, "type_quadruples": 36248}, "3": {"y_dead": 22587200, "type_quadruples": 36248}}, "y_alive_all": 47614976, "y_dead": 72243520, "secs": 2305.2}

@@ -23,6 +23,7 @@ Writes the solutions to OUT as raw int8 rows (4 x L1 orbit values each, canonica
 usage: python3 theory/ab_s1_chars.py CFG.json OUT.jsonl [--plant SEED] [--maxB N] [--probe]
   --plant SEED: planted control (a random realistic quadruple with its own target; reports, per character, whether
                 its vectors and signature quad were found, and whether the quadruple itself was recovered)
+  --plant-quad-only: with --plant, join only the planted psi_0 signature quad (rich planted targets)
   --probe:      stop after the character systems; estimate the block count from 64 sampled psi_0 vectors
   --maxB N:     give up (undecided) when the block lists exceed N entries (default 4e7)"""
 import sys, os, json, time, math, itertools
@@ -208,7 +209,7 @@ def solve(cfg, sl, OUT, a, rq=None):
                              for k in range(4)], np.int64) for pi in range(4)}
     log = lambda **k: print(json.dumps(dict(k, secs=round(time.time() - t0, 1))), flush=True)
     log(stage='setup', n_o=no, weights=st['wo'].tolist(), Tpsi=[t.tolist() for t in st['Tpsi']], row_quads=rq)
-    V, SG, plant_rep = {}, {}, {}
+    V, SG, plant_rep, plant_sq = {}, {}, {}, {}
     for pi in (1, 2, 3, 0):                                      # nontrivial characters first: any empty system decides
         ws = rows if pi == 0 else zh[pi]                        # psi_0: non-negative row sums fix the block signs
         Z = block_vectors(st, pi, ws); P = pafs(st, Z)
@@ -223,6 +224,7 @@ def solve(cfg, sl, OUT, a, rq=None):
             sq = tuple(sorted(int(inv[i]) for i in idx)) if None not in idx else None
             plant_rep[pi] = dict(vectors_found=None not in idx,
                                  signature_quad_found=sq is not None and bool((np.sort(Q, 1) == np.array(sq)).all(1).any()))
+            plant_sq[pi] = sq
             log(stage='planted-character', psi=pi, **plant_rep[pi])
         if not len(Q): break
     nfound, nbad, planted_found = 0, 0, False
@@ -270,6 +272,8 @@ def solve(cfg, sl, OUT, a, rq=None):
             return (A1, A2, A3) if len(A1) else None
 
         Pu0, inv0, Q0 = SG[0]
+        if plant is not None and '--plant-quad-only' in a:                      # join only the planted psi_0 quad
+            Q0 = Q0[(np.sort(Q0, 1) == np.array(plant_sq[0])).all(1)]
         if '--probe' in a:
             smp = np.random.default_rng(3).choice(len(V[0]), size=min(64, len(V[0])), replace=False); tb = time.time()
             sz = []
@@ -313,11 +317,21 @@ def solve(cfg, sl, OUT, a, rq=None):
             Yv = np.ascontiguousarray(Y).view(np.dtype((np.void, Y.shape[2]))).reshape(len(Y), 4)
             return np.take_along_axis(Y, np.argsort(Yv, axis=1)[:, :, None], axis=1)
 
-        def verify(Y, chunk=20000):
-            ok = np.ones(len(Y), bool); borb = np.asarray(sl.borb); T1 = np.asarray(sl.T1, np.int64)
+        # the exact check sum_k PAF_{G'}(y_k) = T1, at the lag-class representatives of G' under U and -1 (PAF of a
+        # U-invariant y is constant on those classes), in orbit coordinates: PAF(c) = y^T A_c y with
+        # A_c[i, j] = #{x in orbit i : x + c in orbit j}; float64 products of integers below 2^53 are exact
+        borbG = np.asarray(sl.borb); lr1, _ = AGs.lag_reps(sl.Gp, [sl.Gp.act(u) for u in sl.Sp]); Amat = []
+        for c in lr1:
+            xc = sl.Gp.add(np.arange(sl.Gp.n), np.full(sl.Gp.n, c))
+            A_ = np.zeros((L1, L1)); np.add.at(A_, (borbG, borbG[xc]), 1.0); Amat.append(A_)
+        T1r = np.asarray(sl.T1, np.int64)[lr1]; Acat = np.concatenate(Amat, 1); nlr = len(Amat)
+
+        def verify(Y, chunk=1 << 16):
+            ok = np.ones(len(Y), bool)
             for s0 in range(0, len(Y), chunk):
-                full = Y[s0:s0 + chunk][:, :, borb].astype(np.int64)
-                ok[s0:s0 + chunk] = (sl.Gp.paf(full).sum(1) == T1[None, :]).all(1)
+                Yf = Y[s0:s0 + chunk].reshape(-1, L1).astype(np.float64); n_ = len(Yf) // 4
+                P = np.einsum('mlj,mj->ml', (Yf @ Acat).reshape(-1, nlr, L1), Yf).reshape(n_, 4, nlr).sum(1)
+                ok[s0:s0 + chunk] = (np.rint(P).astype(np.int64) == T1r[None, :]).all(1)
             return ok
 
         # OUT holds the solutions as raw int8 rows (4 x L1 letters each, canonical); OUT.ckpt the resume point

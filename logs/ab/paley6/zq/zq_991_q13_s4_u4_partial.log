@@ -1,0 +1,5 @@
+{"stage": "types", "y_total": 53131648, "block_types": 699, "type_quadruples": {"0": 468, "1": 16862, "2": 16862, "3": 16862}, "secs": 354.6}
+{"stage": "progress", "quads_done": 1, "of": 51054, "secs": 354.7}
+{"stage": "progress", "quads_done": 15800, "of": 51054, "secs": 414.7}
+{"stage": "progress", "quads_done": 35523, "of": 51054, "secs": 474.7}
+{"stage": "done", "y_total": 53131648, "per_psi": {"0": {"y_dead": 28945792}, "1": {"y_dead": 10225536}, "2": {"y_dead": 10225536}, "3": {"y_dead": 10225536}}, "y_alive_all": 21654528, "y_dead": 31477120, "secs": 893.2}
