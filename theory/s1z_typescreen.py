@@ -9,7 +9,8 @@ order; a zero count at any level kills the type quadruple, hence every stage-1 s
 If every type quadruple of every multiset dies, the configuration has no core [M].
 Output JSONL: one line per multiset (type quadruples, deaths per level, survivors), the survivors themselves in
 OUT.survivors.jsonl (canonical letters per orbit for each block, and the counts per level).
-usage: python3 theory/s1z_typescreen.py CFG.json OUT.jsonl [--levels '[[],[0],[1],[0,1]]'] [--max-tq 2000000]"""
+usage: python3 theory/s1z_typescreen.py CFG.json OUT.jsonl [--levels '[[],[0],[1],[0,1]]'] [--max-tq 2000000] [--part i/W]
+(restart-safe: multisets already in OUT are skipped; with --part, OUT and the survivors file get a .pI suffix)"""
 import sys, os, json, math, itertools, time
 from collections import defaultdict
 import numpy as np
@@ -54,6 +55,16 @@ def main():
     nQ = cfg['nQ']
     levels = json.loads(opt('--levels', json.dumps([[]] + [[i] for i in range(nQ)] + [list(range(nQ))])))
     max_tq = int(opt('--max-tq', '2000000'))
+    part, nW = (int(x) for x in opt('--part', '0/1').split('/'))
+    base = outp
+    if nW > 1: outp = outp.replace('.jsonl', f'.p{part}.jsonl')
+    import glob
+    done = set()
+    for f in {base, outp} | set(glob.glob(base.replace('.jsonl', '.p*.jsonl'))):
+        if os.path.exists(f) and not f.endswith('.survivors.jsonl'):
+            for l in open(f):
+                r = json.loads(l)
+                if r.get('stage') == 'ms': done.add(r['i'])
     t0 = time.time()
     Z = ZOrb(cfg)
     Cz = Z.compressions(); cls, idx = Z.classes(Cz); qd = Z.class_quads(cls)
@@ -80,11 +91,12 @@ def main():
                 for j, y in d.items(): yb[j] = y
             byE[E].append(yb)
         return byE
-    fo = open(outp, 'w'); fs = open(outp.replace('.jsonl', '') + '.survivors.jsonl', 'w')
-    head = dict(stage='setup', multisets=len(qd), levels=levels, L1=Z.L1, T0=Z.T0, secs=round(time.time() - t0, 1))
+    fo = open(outp, 'a'); fs = open(outp.replace('.jsonl', '') + '.survivors.jsonl', 'a')
+    head = dict(stage='setup', multisets=len(qd), levels=levels, L1=Z.L1, T0=Z.T0, part=f'{part}/{nW}', secs=round(time.time() - t0, 1))
     print(json.dumps(head), flush=True); fo.write(json.dumps(head) + "\n")
     tot_tq = 0; tot_surv = 0
     for mi, q in enumerate(qd):
+        if mi % nW != part or mi in done: continue
         zq = [cls[i]['rep'] for i in q['m']]
         B = [block_types(z) for z in zq]
         dead = [0] * len(levels); surv = 0; ntq = 0
