@@ -226,7 +226,9 @@ the compressions was not completed, so this stays [E]. The per-character Z19 scr
 
 ### 4.4 The 599 lead
 
-Stage 1 is 2^18.5 ordered solutions, 2^−6.0 per symmetry class [E] (85 multisets, importance sample of 40). This is
+Stage 1 is 2^18.5 ordered solutions, 2^−6.0 per symmetry class [E], over all 85 multisets
+(`logs/s1z/zscreen_599lead_all.jsonl`; the importance sample of 40 in `logs/s1z/zscreen_skipped.jsonl` gives the same
+2^18.51, because the Gaussian of the 16 remaining lag classes costs 94.4–96.0 bits in every multiset). This is
 `report/b599_answer.md`'s 2^4.9, which was a sum of one estimate per symmetry class of compression quadruples. Its
 symmetric families (order-3 elements over all quadruples; order 3 and the 15-dimensional involutions over the bordered
 classes) are empty [M] (b599 §4). The per-character Z11 screens leave all 85 multisets alive [M] (`logs/s1z/agg/char_screens.jsonl`).
