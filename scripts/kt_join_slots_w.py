@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.join(HERE, '..', 'kaggle'))
 import kt_join_kaggle as KJ
 sys.path.insert(0, HERE)
 import flatw as FW
+from kt_join_slots import keyof6
 
 
 def main():
@@ -52,9 +53,14 @@ def main():
         log(stage='prep', slot=s)
     D = {s: dict(ch=np.load(cp(f'ch_{s}'), mmap_mode='r').view(np.ndarray), c=np.load(cp(f'c_{s}')),
                  h=np.load(cp(f'h_{s}'), mmap_mode='r').view(np.ndarray)) for s in 'ABCD'}
-    KE = min(k, 8)
-    own = lambda ch: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.zeros(KE, np.int64), 1)
-    partner = lambda ch, tau: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1)
+    if k <= 8:
+        KE = k
+        own = lambda ch: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.zeros(KE, np.int64), 1)
+        partner = lambda ch, tau: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1)
+    else:                                        # 6-bit packed key (scripts/kt_join_slots.py keyof6), up to 10 classes
+        KE = min(k, 10); r4 = v % 4
+        own = lambda ch: keyof6(np.ascontiguousarray(ch[:, :KE]), np.zeros(KE, np.int64), 1, r4)
+        partner = lambda ch, tau: keyof6(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1, r4)
     sB = own(D['B']['ch']); oB = np.argsort(sB, kind='stable'); sB = sB[oB]
     sD = own(D['D']['ch']); oD = np.argsort(sD, kind='stable'); sD = sD[oD]
     ns = 2_000_000
