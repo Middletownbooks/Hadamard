@@ -31,8 +31,9 @@ calibration named).
      count is 0 was estimated at ≤ 2^−4 solutions per symmetry class** (5 of 5; seven more rungs have no
      compression quadruple at all). Per multiset the estimate is unreliable (347: 12 of 27 multisets exactly empty
      although estimated at 2^2–2^8 each).
-   - Estimating from K multisets drawn in proportion to their exact lag-0 weight is within ±0.4 bit of the
-     all-multiset estimate at K = 40 (5–95%) on every rung but one with a heavy tail.
+   - Estimating from K multisets drawn in proportion to their exact lag-0 weight: at K = 40 the 5–95% range is within
+     ±0.4 bit of the all-multiset estimate on 15 of 20 rungs and within ±0.6 on 17; on three exactly empty rungs a
+     few multisets carry the weight and the subsample can miss them (down to −7.5 bits; up at most +1.4).
    - Symmetric solutions are a small share where solutions are plentiful: 4.9% of 347's (all blocks fixed by a
      nontrivial affine map), 0% at v = 203 and v = 127.
    - **Margin:** a configuration counts as rich when its estimate is at least 2^+4 per symmetry class, as dead [E]
@@ -150,8 +151,13 @@ v = 239, 311 with −1 on Q's Z3; c = 8 at v = 271, 319, 463). Ten rungs were to
   the Gaussian is meaningless; the production screen counts those exactly instead (any block list below 30,000).
 - **Number of multisets.** Drawing K multisets with probability ∝ (ordered quadruples × exact lag-0 count) and scaling
   the mean Gaussian probability by the exact lag-0 total: the 5–95% range of log2(K-estimate / all-multiset estimate)
-  over 2,000 draws is within ±0.4 bit at K = 40 on every rung except v = 395 (−1 on Z5), where a few multisets carry
-  all the weight (−7.5 … +1.3). The production screen uses all multisets when there are at most 60, else K = 40.
+  over 2,000 draws is within ±0.4 bit at K = 40 on 15 of the 20 rungs with multisets and within ±0.6 on 17. The three
+  exceptions are exactly empty rungs whose weight sits in a few multisets: v = 335 (−1 on H' = Z5; −1.8 … +1.3),
+  v = 175 (c = 8; −3.1 … +1.4) and v = 395 (−1 on H' = Z5; −7.5 … +1.3). The subsample misses such multisets more
+  often than it overweights them, so the error is mostly downward; at K = 20 the upper end stays below +1.9 bits. The
+  production screen uses all multisets when there are at most 60, else K = 40 (the first 49 configurations) or K = 24
+  (`logs/s1z/calib/calib_summary.json`, `K_bootstrap_vs_all`). The one importance-sampled verdict near the margin,
+  the 599 lead, was rerun over all 85 multisets (§4.4).
 - **Symmetric solutions** (every block fixed by an affine map g ↦ φ(g) + t of G' that moves some U-orbit): 4.9% of
   347's 7,550,976 ordered solutions; 0% at v = 203 and v = 127. The scarce-regime excess of
   `report/b599_answer.md` §3 (93% symmetric, Gaussian 1.3–5.5 bits low) did not recur in these rungs.
@@ -365,6 +371,11 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
 - **719, c = 6, q = 17, s = 2, H' = Z7, −1 on Q's Z3: no core [M]** (§5), by two exact methods (per type
   quadruple and aggregated per compression quadruple). This was the only skipped configuration with a stage-2 budget
   near 2^48 and a stage 1 that is not negligible.
+- **719, c = 6, q = 17, s = 2, H' = Z7, U = 1: 85 of the 89 compression multisets have no lift [M]** (aggregated
+  screen, 8 at Z17 and 77 at Z2 × Z17; `logs/s1z/agg/agg_719_c6_q17_s2_H7_U[].jsonl`). The other four pass Z17,
+  Z2 × Z17 and Z3 × Z17, and the joint Q × Z17 level (a product of 2.4·10^10 states) or the per-type screen (about
+  600,000 type quadruples) was not run: the slice is already dead in stage 1 (2^−9.8 per symmetry class [E]) and costs
+  2^60.7 per core.
 - **739, c = 4, q = 23, s = 2, H' of order 8, U = 1: no stage-1 solution [P]** (§4.1): the energy forces five large
   letters, the Q-level forces an even number in every coset.
 - **919, c = 8, s = 3 (U = 1 and −1 on Z3): no stage-1 solution [P]**: every letter of the f = 6 fibre is at least 5
@@ -412,7 +423,8 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
 
 ```
 python3 theory/s1z_budget_batch.py logs/s1z/budget_skipped.jsonl --part 0/2          # stage-2 budgets (two workers)
-python3 theory/s1z_screen.py logs/s1z/zscreen_skipped.jsonl --part 0/3                # z-screen (three workers)
+python3 theory/s1z_screen.py logs/s1z/zscreen_skipped.jsonl --steal --N 1500 --K 24    # z-screen (one per core; the first
+                                                                                      # 49 rows were run with --N 3000 --K 40)
 python3 theory/s1z_table.py --md TABLE.md                                             # §3
 python3 theory/s1z_calib.py logs/ab/cfg_347_s6.json OUT.jsonl --N 2000 --exact        # 347 calibration (1 min)
 python3 theory/s1z_calib_batch.py                                                     # the 26 rungs (logs/s1z/calib/rungs.json)

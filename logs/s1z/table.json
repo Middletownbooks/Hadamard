@@ -1352,10 +1352,16 @@
   "orbits": 384,
   "log2_sym": 44.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 627.573,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 627.573,
+  "S1_sym": 583.4,
   "budget": {
    "H2": 334.0,
    "C2": 639.71,
@@ -1366,6 +1372,7 @@
    "log2_cost_per_core": 445.46,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 276.7,
   "verdict": "stage 2 over budget [E] (2^445 per core)"
  },
  {
@@ -1518,10 +1525,16 @@
   "orbits": 384,
   "log2_sym": 43.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 545.137,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 545.137,
+  "S1_sym": 502.0,
   "budget": {
    "H2": 334.0,
    "C2": 734.85,
@@ -1532,6 +1545,7 @@
    "log2_cost_per_core": 540.6,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 100.1,
   "verdict": "stage 2 over budget [E] (2^541 per core)"
  },
  {

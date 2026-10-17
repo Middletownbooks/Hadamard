@@ -1,2 +1,3 @@
 {"cfgkey": [643, 4, 5, 2, [4, 4, 2], []], "error": "OverflowError('int too large to convert to float')", "secs": 3.1}
 {"cfgkey": [643, 4, 5, 2, [16, 2], []], "error": "OverflowError('int too large to convert to float')", "secs": 2.9}
+{"cfgkey": [643, 4, 5, 2, [2, 2, 2, 2, 2], []], "L1": 128, "rest_lags": 124, "letters": [-5, -3, -1, 1, 3, 5], "rows": 39, "compressions": 117, "classes": 20, "multisets": 22, "ordered_zquads": 329728, "log2_N0_total": 1065.426, "mode": "all", "evaluated": 22, "exact_multisets": 0, "exact_zero": 0, "log2_stage1_total": 380.262, "secs": 334.8}
