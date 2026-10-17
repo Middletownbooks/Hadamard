@@ -173,6 +173,7 @@ def main():
     log(stage='ready', buckets=len(buckets), done_before=len(done), chunk_classes=[int(c) for c in chunk])
     solf = open(os.path.join(OUT, f'solutions_v{v}.txt'), 'a'); nsol = 0; T = 300; NCH = 256
     A, B, C, Dd = D['A'], D['B'], D['C'], D['D']
+    BUF = {}
     dummyK = np.zeros(1, np.uint64); dummyI = np.zeros(1, np.int64); m0 = np.zeros(2 * T + 1, np.bool_)
     for b, ix in enumerate(buckets):
         if b in done: continue
@@ -196,7 +197,10 @@ def main():
             for X, Y, tt, mk, sg in ((A, B, tau, mA, 1), (C, Dd, -tau, mC, -1)):
                 _, cnt = stage(X['ch'], X['c'], X['h'], Y['ch'], Y['c'], Y['h'], tt, r4, w, off, T, mk, 1, np.zeros(NCH + 1, np.int64), dummyK, dummyI, dummyI, G, sg, NCH)
                 offs = np.zeros(NCH + 1, np.int64); offs[1:] = np.cumsum(cnt)
-                K = np.empty(offs[-1], np.uint64); I = np.empty(offs[-1], np.int64); J = np.empty(offs[-1], np.int64)
+                n_ = int(offs[-1]); bk = BUF.get(sg)
+                if bk is None or len(bk[0]) < n_:
+                    m_ = int(1.25 * n_) + 1; bk = BUF[sg] = (np.empty(m_, np.uint64), np.empty(m_, np.int64), np.empty(m_, np.int64))
+                K, I, J = bk[0][:n_], bk[1][:n_], bk[2][:n_]          # reused across buckets (no page faults)
                 stage(X['ch'], X['c'], X['h'], Y['ch'], Y['c'], Y['h'], tt, r4, w, off, T, mk, 2, offs, K, I, J, G, sg, NCH)
                 out.append((K, I, J))
             (KA, IA, JA), (KC, IC, JC) = out
