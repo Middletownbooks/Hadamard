@@ -19,6 +19,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, '..', 'kaggle'))
 import kt_join_kaggle as KJ
 sys.path.insert(0, HERE)
+from pmatch import pmatch                          # exact radix-partitioned key match (faster than the byte bloom)
+sys.path.insert(0, HERE)
 import flatw as FW
 
 
@@ -198,7 +200,7 @@ def main():
                 stage(X['ch'], X['c'], X['h'], Y['ch'], Y['c'], Y['h'], tt, r4, w, off, T, mk, 2, offs, K, I, J, G, sg, NCH)
                 out.append((K, I, J))
             (KA, IA, JA), (KC, IC, JC) = out
-            ia, ic = KJ.bloom_match(KA, KC, 30); ncand += len(ia)
+            ia, ic = pmatch(KA, KC, 10); ncand += len(ia)
             for q, qc in zip(ia, ic):
                 bits = np.array([raw['A'][A['idx'][IA[q]]], raw['B'][B['idx'][JA[q]]], raw['C'][C['idx'][IC[qc]]], raw['D'][Dd['idx'][JC[qc]]]], np.uint64)
                 X4 = R.expand(FW.unpack_w(bits.reshape(4, -1), R.r))

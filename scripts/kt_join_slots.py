@@ -18,6 +18,8 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, '..', 'kaggle'))
 import kt_join_kaggle as KJ
+sys.path.insert(0, HERE)
+from pmatch import pmatch                          # exact radix-partitioned key match (faster than the byte bloom)
 import numba as nb
 
 
@@ -146,7 +148,7 @@ def main():
             for t in pl: mA[t + T] = True; mC[T - t] = True
             KA, IA, JA = KJ.stage1(nA, oA, A['c'], A['h'], sB, oB, B['c'], B['h'], 1, G, 64, mA, T)
             KC, IC, JC = KJ.stage1(nC, oC, Cc['c'], Cc['h'], sD, oD, Dd['c'], Dd['h'], -1, G, 64, mC, T)
-            ia, ic = KJ.bloom_match(KA, KC, 30); ncand += len(ia); npairs = [len(KA), len(KC)]
+            ia, ic = pmatch(KA, KC, 10); ncand += len(ia); npairs = [len(KA), len(KC)]
             for q, qc in zip(ia, ic):
                 bits = [pools['A'][IA[q]], pools['B'][JA[q]], pools['C'][IC[qc]], pools['D'][JC[qc]]]
                 Y = np.array([[1 if (int(bb) >> qq) & 1 else -1 for qq in range(R.r)] for bb in bits]); X = R.expand(Y)

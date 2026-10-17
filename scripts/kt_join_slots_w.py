@@ -15,6 +15,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, '..', 'kaggle'))
 import kt_join_kaggle as KJ
 sys.path.insert(0, HERE)
+from pmatch import pmatch                          # exact radix-partitioned key match (faster than the byte bloom)
+sys.path.insert(0, HERE)
 import flatw as FW
 from kt_join_slots import keyof6
 
@@ -129,7 +131,7 @@ def main():
             for t in pl: mA[t + T] = True; mC[T - t] = True
             KA, IA, JA = KJ.stage1(nA, oA, A['c'], A['h'], sB, oB, B['c'], B['h'], 1, G, 64, mA, T)
             KC, IC, JC = KJ.stage1(nC, oC, Cc['c'], Cc['h'], sD, oD, Dd['c'], Dd['h'], -1, G, 64, mC, T)
-            ia, ic = KJ.bloom_match(KA, KC, 30); ncand += len(ia)
+            ia, ic = pmatch(KA, KC, 10); ncand += len(ia)
             for q, qc in zip(ia, ic):
                 bits = np.array([pools['A'][IA[q]], pools['B'][JA[q]], pools['C'][IC[qc]], pools['D'][JC[qc]]], np.uint64)
                 Y = FW.unpack_w(bits, R.r); X = R.expand(Y)
