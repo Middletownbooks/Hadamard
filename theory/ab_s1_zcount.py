@@ -19,8 +19,9 @@ Method:
   3. the remaining stage-1 equations (G'-lag classes with a nonzero H'-part) by the lattice Gaussian
      (theory/q523_gauss.gauss_bits) of uniform samples of y given (z_k, E_k);
   log2 E(stage 1 | z-quad) = log2 N - bits; the slice total is the sum over z-quadruples.
-Calibration: --calibrate runs the exhaustive stage 1 (theory/ab_s1sd.py) on the same configuration and compares.
-usage: python3 theory/ab_s1_zcount.py CFG.json [--N 2000] [--max-quads 200] [--calibrate] [--out FILE]"""
+Calibration: --calibrate K picks K random z-quadruples and counts their stage-1 solutions exactly (every block
+completion enumerated, then a hashed 2+2 join on the full PAF vectors), against the estimate.
+usage: python3 theory/ab_s1_zcount.py CFG.json [--N 2000] [--max-quads 200] [--calibrate K] [--out FILE]"""
 import sys, os, json, math, time, itertools
 from collections import defaultdict
 import numpy as np
@@ -179,6 +180,46 @@ class ZCount:
                         y[j] = yv; rz = [a - yv * int(b) for a, b in zip(rz, pj)]; re_ -= int(self.bsz[j]) * yv * yv; break
         return y
 
+    def enumerate_block(self, z, cap=1 << 22):
+        """all y (per orbit) with compression z (any energy), by depth-first search on the suffix tables"""
+        zcs = [tuple(int(z[q]) for q in C) for C in self.comps]
+        tabs = [self._suffix(i, zc) for i, zc in enumerate(zcs)]
+        per = []
+        for i, (C, orbs) in enumerate(zip(self.comps, self.corbs)):
+            suf = tabs[i][0]; out = []
+            def dfs(t, rz, re_, cur):
+                if t == len(orbs):
+                    out.append(list(cur)); return
+                j = orbs[t]; pj = self.prof[j, C]
+                for yv in self.letters[j]:
+                    z2 = tuple(a - int(yv) * int(b) for a, b in zip(rz, pj))
+                    # any energy: the suffix table must reach z2 with some energy
+                    if any(zz == z2 for (zz, e) in suf[t + 1]):
+                        cur.append(int(yv)); dfs(t + 1, z2, 0, cur); cur.pop()
+            dfs(0, zcs[i], 0, [])
+            per.append((orbs, out))
+            if np.prod([float(len(o)) for _, o in per]) > cap: raise RuntimeError('block enumeration cap')
+        Ys = [np.zeros(self.L1, np.int64)]
+        for orbs, opts in per:
+            new = []
+            for y in Ys:
+                for o in opts:
+                    y2 = y.copy(); y2[orbs] = o; new.append(y2)
+            Ys = new
+        return np.array(Ys)
+
+    def exact_count(self, zq):
+        """exact number of y-quadruples with these compressions solving stage 1 (all lag classes; 2+2 join)"""
+        lists = []
+        for z in zq:
+            Yb = self.enumerate_block(np.array(z))
+            P = self.Gp.paf(Yb[:, self.borb])[:, self.reps]
+            lists.append(P.astype(np.int64))
+        T = self.T1[self.reps]
+        assert self.reps[0] == 0                                  # coordinate 0 = lag 0 = block energy (ejoin4 splits on it)
+        sols = SD.ejoin4(lists[0], lists[1], lists[2], lists[3], T, max_pairs=4 * 10 ** 8)
+        return len(sols), [len(l) for l in lists]
+
     def estimate(self, zq, Z, N=2000, seed=1):
         """log2 of the expected number of y-quadruples with these compressions solving stage 1"""
         n = self.exact_q_count(zq, Z)
@@ -230,10 +271,15 @@ def main():
         log(stage='zquad', i=i, **r)
     log(stage='total_sampled_quads', n=min(mq, len(Q4)), log2_sum=round(math.log2(tot), 2) if tot > 0 else None,
         scaled_to_all=round(math.log2(tot * len(Q4) / min(mq, len(Q4))), 2) if tot > 0 and Q4 else None)
-    if '--calibrate' in a:
-        P = SD.S1SD(cfg); rq, A = SD.row_quads_of(cfg)
-        res, sols = P.solve(rq, max_sol=10 ** 7, log=lambda s: None)
-        log(stage='exact', **{k: v for k, v in res.items() if k != 'stage'})
+    if '--calibrate' in a:                       # random z-quadruples: exact count (2+2 join) against the estimate
+        ncal = int(a[a.index('--calibrate') + 1]) if len(a) > a.index('--calibrate') + 1 and a[a.index('--calibrate') + 1].isdigit() else 20
+        rng = np.random.default_rng(7)
+        for i in rng.choice(len(Q4), size=min(ncal, len(Q4)), replace=False):
+            zq = Q4[int(i)]
+            try: ex, sizes = Zc.exact_count(zq)
+            except RuntimeError as e: log(stage='calib', i=int(i), skipped=str(e)); continue
+            r = Zc.estimate(zq, Z, N=N, seed=int(i) + 1)
+            log(stage='calib', i=int(i), exact=ex, log2_exact=round(math.log2(ex), 2) if ex else None, block_lists=sizes, **r)
     if '--out' in a: json.dump(dict(cfg=a[0], quads=recs), open(a[a.index('--out') + 1], 'w'))
 
 

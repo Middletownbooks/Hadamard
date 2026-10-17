@@ -131,4 +131,9 @@ Steps:
   z-quadruple (S1SD with zallow = that quadruple's vectors, or `theory/ab_s1_sample.py`) on small configurations
   (the c = 6 controls v = 35, 47; the c = 4 calibration slices in `logs/ab/paley6/calib/`), and random rather than
   first-found z-quadruples in the total.
+- 2026-10-17, item 2 calibration [M vs E] (`theory/ab_s1_zcount.py --calibrate 12`, `logs/s1z/zcount_347_calib.log`):
+  on 347's slice, 12 random z-quadruples counted exactly (every block completion enumerated, energy-split ejoin4):
+  7 have 0 solutions where the Gaussian predicts 2^4.6-2^5.3 (exact obstructions it cannot see); 5 have 2^5.2-2^10.7
+  where it predicts 2^5.3-2^7.9 (0-3 bits low). Averaged over the 12 the slice total is about 2.3 bits low. Use the
+  totals to screen configurations (rich versus poor stage 1, to within a few bits); never trust a single z.
 

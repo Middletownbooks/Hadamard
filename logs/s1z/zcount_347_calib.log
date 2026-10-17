@@ -1,0 +1,15 @@
+{"stage": "blocks", "L1": 10, "c": 6, "components": [1, 2, 1, 2], "rest_lags": 6, "compressions": 222, "dev_bound": 16.67, "TQ": [248, 228, 228, 228, 228, 228], "secs": 2.8}
+{"stage": "zquads", "ordered": 34560, "secs": 2.9}
+{"stage": "total_sampled_quads", "n": 0, "log2_sum": null, "scaled_to_all": null, "secs": 2.9}
+{"stage": "calib", "i": 1919, "exact": 0, "log2_exact": null, "block_lists": [261121, 186624, 258741, 110889], "log2N": 35.42, "bits": 30.12, "rank": 5, "log2E": 5.3, "secs": 14.5}
+{"stage": "calib", "i": 10373, "exact": 0, "log2_exact": null, "block_lists": [186624, 72927, 72927, 261121], "log2N": 33.23, "bits": 28.59, "rank": 5, "log2E": 4.64, "secs": 22.5}
+{"stage": "calib", "i": 28806, "exact": 0, "log2_exact": null, "block_lists": [47961, 111909, 326592, 110889], "log2N": 33.32, "bits": 28.67, "rank": 5, "log2E": 4.65, "secs": 31.5}
+{"stage": "calib", "i": 31000, "exact": 0, "log2_exact": null, "block_lists": [110889, 47961, 326592, 111909], "log2N": 33.32, "bits": 28.53, "rank": 5, "log2E": 4.79, "secs": 39.9}
+{"stage": "calib", "i": 23639, "exact": 1716, "log2_exact": 10.74, "block_lists": [261121, 261121, 111909, 149212], "log2N": 34.91, "bits": 27.04, "rank": 5, "log2E": 7.87, "secs": 50.2}
+{"stage": "calib", "i": 30190, "exact": 600, "log2_exact": 9.23, "block_lists": [397047, 110889, 226884, 186624], "log2N": 35.31, "bits": 28.59, "rank": 5, "log2E": 6.72, "secs": 61.1}
+{"stage": "calib", "i": 26803, "exact": 312, "log2_exact": 8.29, "block_lists": [261121, 110889, 220752, 386316], "log2N": 36.23, "bits": 30.19, "rank": 5, "log2E": 6.04, "secs": 73.3}
+{"stage": "calib", "i": 21597, "exact": 0, "log2_exact": null, "block_lists": [63948, 603729, 186624, 258741], "log2N": 35.31, "bits": 30.3, "rank": 5, "log2E": 5.01, "secs": 86.5}
+{"stage": "calib", "i": 7782, "exact": 0, "log2_exact": null, "block_lists": [186624, 47961, 111909, 258741], "log2N": 33.23, "bits": 28.4, "rank": 5, "log2E": 4.83, "secs": 93.8}
+{"stage": "calib", "i": 19981, "exact": 312, "log2_exact": 8.29, "block_lists": [386316, 261121, 110889, 220752], "log2N": 36.23, "bits": 30.19, "rank": 5, "log2E": 6.04, "secs": 108.7}
+{"stage": "calib", "i": 32645, "exact": 36, "log2_exact": 5.17, "block_lists": [72927, 110889, 220752, 571536], "log2N": 35.44, "bits": 30.17, "rank": 5, "log2E": 5.27, "secs": 123.3}
+{"stage": "calib", "i": 9851, "exact": 0, "log2_exact": null, "block_lists": [186624, 72927, 72927, 261121], "log2N": 33.23, "bits": 28.59, "rank": 5, "log2E": 4.64, "secs": 131.7}
