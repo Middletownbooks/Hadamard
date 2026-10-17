@@ -1,0 +1,24 @@
+{"stage": "config", "v": 223, "d": 3, "profile": [23, 11, 11, 11], "k": 12, "field_bits": 5, "mem": 6000000000.0, "pools": {"A": 24561266, "B": 104153113, "C": 104153113, "D": 104153113}, "log2_tuples": 104.45, "t": 0.0}
+{"stage": "prep", "slot": "A", "size": 24561266, "max_abs_paf": 19, "t": 190.0}
+{"stage": "prep", "slot": "B", "size": 104153113, "max_abs_paf": 21, "t": 1024.3}
+{"stage": "prep", "slot": "C", "size": 104153113, "max_abs_paf": 21, "t": 1767.2}
+{"stage": "ready", "buckets": 200000, "done_before": 0, "chunk_classes": [24, 27, 12, 22, 18, 0, 32, 9, 19, 20, 33, 26], "t": 1849.6}
+{"stage": "bucket", "b": 0, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 77542604, "CD": 273327142, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 1906.3}
+{"stage": "bucket", "b": 1, "tau": [2, 2, 2, 2, 2, 2, 2, -2, 2, 2, 2, 2], "AB": 74792025, "CD": 262653342, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 1954.1}
+{"stage": "bucket", "b": 2, "tau": [2, 2, 2, 2, 2, -2, 2, 2, 2, 2, 2, 2], "AB": 74790602, "CD": 262582994, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2001.5}
+{"stage": "bucket", "b": 3, "tau": [2, 2, 2, -2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 74693170, "CD": 262860378, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2054.1}
+{"stage": "bucket", "b": 4, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2, -2, 2, 2], "AB": 74669709, "CD": 263142524, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2099.1}
+{"stage": "bucket", "b": 5, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -2], "AB": 74662262, "CD": 263125908, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2144.9}
+{"stage": "bucket", "b": 6, "tau": [-2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 74657339, "CD": 263064494, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2194.7}
+{"stage": "bucket", "b": 7, "tau": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -2, 2], "AB": 74659048, "CD": 263150108, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2242.5}
+{"stage": "bucket", "b": 8, "tau": [2, -2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 74734537, "CD": 262830074, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2283.5}
+{"stage": "bucket", "b": 9, "tau": [2, 2, 2, 2, 2, 2, -2, 2, 2, 2, 2, 2], "AB": 74726058, "CD": 262826892, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2326.1}
+{"stage": "bucket", "b": 10, "tau": [2, 2, 2, 2, 2, 2, 2, 2, -2, 2, 2, 2], "AB": 74829473, "CD": 262457304, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2366.9}
+{"stage": "bucket", "b": 11, "tau": [2, 2, -2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "AB": 74663678, "CD": 263076422, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2409.4}
+{"stage": "bucket", "b": 12, "tau": [2, 2, 2, 2, -2, 2, 2, 2, 2, 2, 2, 2], "AB": 74683525, "CD": 263095146, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2448.9}
+{"stage": "bucket", "b": 13, "tau": [2, 2, 2, 2, 2, -2, 2, -2, 2, 2, 2, 2], "AB": 71195019, "CD": 249248108, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2495.4}
+{"stage": "bucket", "b": 14, "tau": [2, 2, 2, -2, 2, 2, 2, -2, 2, 2, 2, 2], "AB": 71151710, "CD": 249438480, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2550.3}
+{"stage": "bucket", "b": 15, "tau": [2, 2, 2, -2, 2, -2, 2, 2, 2, 2, 2, 2], "AB": 71137521, "CD": 249504286, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2580.4}
+{"stage": "bucket", "b": 16, "tau": [2, 2, 2, 2, 2, 2, 2, -2, 2, -2, 2, 2], "AB": 71111225, "CD": 249770374, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2612.5}
+{"stage": "bucket", "b": 17, "tau": [2, 2, 2, 2, 2, 2, 2, -2, 2, 2, 2, -2], "AB": 71117434, "CD": 249645138, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2648.6}
+{"stage": "bucket", "b": 18, "tau": [2, 2, 2, 2, 2, -2, 2, 2, 2, -2, 2, 2], "AB": 71075042, "CD": 249734420, "passes": 2, "cand": 0, "solutions": 0, "total": 0, "t": 2690.9}

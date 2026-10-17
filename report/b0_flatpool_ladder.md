@@ -128,7 +128,13 @@ and at production scale at 311. `kt_join_disk.py` reproduces `kt_join_slots.py`'
   (2^24.8 / 2^27 / 2^27 / 2^27, with B = C = D one shared pool) and the disk join at k = 12. Model: about 2.7 h per
   core after about 4 h of generation.
 
-Results: (pending).
+**Production (2026-10-17, from 22:35 UTC):**
+- Generation stopped after 26 chunks: 2,814,949 / 663,818 orbits (row sums 11 / 23); three container reclaims cost
+  about 1.5 h.
+- Reversal-canonical slots: A = 2^24.55, B = C = D = 2^26.63 (one shared pool).
+- Disk join at k = 12: about 46 s per bucket (77M AB × 273M CD pairs, 2 passes).
+- Model: about 600 buckets (about 7.7 h) per core.
+- Results: (running; log `logs/k223/join_r0.32_k12_log.jsonl`).
 
 ## 5. Rung 3: v = 491, d = 7, profile (29, 27, 15, 13) — stopped [E]
 
