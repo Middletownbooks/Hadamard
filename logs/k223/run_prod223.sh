@@ -2,10 +2,10 @@
 # restart-safe 223 production (rung 2): rho = 0.32 generation in 10-minute chunks (4 workers) until the row-sum-11
 # orbits reach TARGET (default 3.6M orbits = 2^28 blocks after closure), then reversal-canonical closure slots (A = row sum 23, whole
 # closure; B = C = D = the row-sum-11 closure, ~2^27 blocks, shared files), then the disk join (k = 12).
-# usage: run_prod223.sh [TARGET_ORBITS] [MAXCHUNKS]      scratch: SP (default /tmp/k223)
+# usage: run_prod223.sh [TARGET_ORBITS] [MAXCHUNKS]      scratch: SP (default /tmp/k223); env GW (workers, 4), NICE (0)
 cd /home/user/Hadamard
 export NUMPY_MADVISE_HUGEPAGE=0
-SP=${SP:-/tmp/k223}; TARGET=${1:-3600000}; MAXC=${2:-60}; RHO=0.32
+SP=${SP:-/tmp/k223}; TARGET=${1:-3600000}; MAXC=${2:-400}; RHO=0.32
 mkdir -p $SP logs/k223
 count() { python3 - "$SP" <<'PY'
 import sys, glob, numpy as np
@@ -20,7 +20,7 @@ for c in $(seq 1 $MAXC); do
   if [ ! -f $out/orbits_23.npy ]; then
     n=$(count); echo "chunk $c: union rs11 orbits $n" >> logs/k223/gen_prod_r${RHO}.log
     [ "$n" -ge "$TARGET" ] && break
-    python3 scripts/flat_gen_w.py 223 3 $RHO 10 4 $out --seed $((100 + c)) --rows 23,11 > logs/k223/gen_prod_r${RHO}_c$c.log 2>&1
+    nice -n ${NICE:-0} python3 scripts/flat_gen_w.py 223 3 $RHO 10 ${GW:-4} $out --seed $((100 + c)) --rows 23,11 > logs/k223/gen_prod_r${RHO}_c$c.log 2>&1
   fi
 done
 SL=$SP/slots_r${RHO}
