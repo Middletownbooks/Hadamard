@@ -9,3 +9,7 @@
 {"stage": "partial_join", "k": 7, "matches": 76350271, "bits_measured": 21.81, "bits_gaussian": 21.66, "t": 45.1}
 {"stage": "partial_join", "k": 8, "matches": 8683199, "bits_measured": 24.95, "bits_gaussian": 24.75, "t": 51.0}
 {"stage": "partial_join", "k": 9, "matches": 993322, "bits_measured": 28.08, "bits_gaussian": 27.84, "t": 56.5}
+{"stage": "partial_join", "k": 10, "matches": 112020, "bits_measured": 31.23, "bits_gaussian": 30.93, "t": 62.7}
+{"stage": "partial_join", "k": 11, "matches": 12602, "bits_measured": 34.38, "bits_gaussian": 34.03, "t": 68.4}
+{"stage": "partial_join", "k": 12, "matches": 1429, "bits_measured": 37.52, "bits_gaussian": 37.11, "t": 74.1}
+{"stage": "nprime", "n_prime_gauss": 103.48, "excess_per_class": 0.034, "n_prime": 104.63, "per_class": 3.077, "t": 74.1}

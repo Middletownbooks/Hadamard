@@ -119,13 +119,15 @@ Results: (pending).
 
 | ρ | flat set per row sum [M] | n′ Gaussian | n′ sphere | distinct cores in the whole flat set |
 |---|---|---|---|---|
+| 0.32 | 2^27.7–2^27.9 | 103.48 | 106.8 | 2^−4.8 |
 | 0.34 | 2^30.5–2^30.7 | 106.35 | 109.7 | ~11 |
 | 0.36 | 2^33.0–2^33.3 | 109.01 | 112.3 | ~2,400 |
 
 - Pools of 2^27 (about 4 GB per slot of prep on disk; the session has about 30 GB) hold 2^−1.7 solution tuples at
   ρ = 0.34.
 - The whole flat set needs about 1,500 h and 2^46.4 operations per core.
-- Alpöge's 491 blocks have ρ = 0.355, 0.338, 0.356, 0.311, just above the existence edge (about 0.34).
+- Alpöge's 491 blocks have ρ = 0.355, 0.338, 0.356, 0.311, just above the existence edge (about 0.33–0.34; the whole
+  ρ ≤ 0.32 set holds about 2^−4.8 cores).
 
 ## 6. 859/13 (open): estimate and decision — no-go
 
