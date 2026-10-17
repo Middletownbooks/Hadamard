@@ -160,6 +160,29 @@ are too large for recaptures, so their flat-set sizes are extrapolated [E]).
     the slice.
 - 859/11 (n = 204.4), 739/9 (209.7) and 659/7 (236.6) are larger still. They are not pursued.
 
-## 7. Rung 4: v = 283 (measurement only)
+## 7. Rung 4: v = 283, d = 3, profile (19, 19, 19, 7) — measurement
 
-(pending: ρ = 0.30 capture–recapture with long generations.)
+- **n′ [M]:** 118.33 Gaussian at ρ ≤ 0.30, with +0.031 bits per class at k = 12 (`logs/k283/nprime_r0.30_m10.log`;
+  the old value was 118.1). About 122.8 with the sphere excess (n_ind = 46).
+- **Flat-set size, universal curve [E].** Across every slice measured here, log₂(flat set per row sum)/r is nearly a
+  function of ρ alone:
+
+  | ρ | 0.30 | 0.31 | 0.32 | 0.34 | 0.36 |
+  |---|---|---|---|---|---|
+  | log₂ N / r (mean, range) | 0.337 (0.316–0.349) | 0.360 | 0.382 (0.365–0.392) | 0.426 (0.410–0.433) | 0.464 (0.451–0.469) |
+
+  - Data: 311, 223, 491, 859 by capture–recapture, 487 by Wang–Landau.
+  - The low ends belong to unbalanced row sums (223's 23, 859's 53).
+  - At 283 (r = 95), ρ ≤ 0.30 gives 2^32.0–2^33.2 blocks per row sum. The old rough "~2^33" agrees.
+- **Capture–recapture at 283, ρ = 0.30:** 10-minute single-core samples (about 1,000 orbits each) give 0 recaptures,
+  as expected for 2^26+ orbits. A converging count needs about 36k orbits per sample (about 2 h on 4 cores).
+  (pending)
+- **Existence:** a core occupies 94 rotations × 2³ block reversals × 6 slot assignments ≈ 2^12.1 tuples. The whole
+  ρ ≤ 0.30 flat set then holds 2^(4·32.6 − 122.8 − 12.1) ≈ 2^−4.5 cores (up to about 2 at the curve's upper end).
+  Alpöge's 283 blocks have ρ = 0.291, 0.299, 0.287, 0.290.
+- **Plain k-tree cost** (`logs/ladder/cost_inputs_283.json`): the whole flat set in reversal-canonical pools and a key
+  wider than 64 bits (k = 13) cost about 2^56–2^57 operations per core over 2^32–2^33 blocks per slot. Pools of
+  2^28 hold 2^−10.8 tuples.
+- **Conclusion [E]:** a plain flat-pool k-tree is not a plausible route to Alpöge's 283. Either the ρ ≤ 0.30 flat set
+  is 2^35 or more per row sum (+2.5 bits over every other slice's curve), or his join was substantially better than a
+  plain 4-list k-tree: structure, symmetry, or a different search over the flat set.
