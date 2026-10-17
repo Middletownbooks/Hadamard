@@ -27,7 +27,7 @@ SL=$SP/slots_r${RHO}
 if [ ! -f $SL/slot_D.npy ]; then
   python3 scripts/build_slot_pools_w.py 223 3 23,11,11,11 $SL 536870912 0 $SP/prod_c* --closure --revcanon > logs/k223/slots_r${RHO}.log 2>&1   # B = C = D share one pool (symlinks)
 fi
-python3 scripts/kt_join_disk.py 223 3 23,11,11,11 $SL $SP/join_r${RHO}_k12 --k 12 --mem 3e9 --hours 200 >> logs/k223/join_r${RHO}_k12.out 2>&1
+python3 scripts/kt_join_disk.py 223 3 23,11,11,11 $SL $SP/join_r${RHO}_k12 --k 12 --mem 6e9 --hours 200 >> logs/k223/join_r${RHO}_k12.out 2>&1
 cp $SP/join_r${RHO}_k12/log.jsonl logs/k223/join_r${RHO}_k12_log.jsonl
 cp $SP/join_r${RHO}_k12/solutions_v223.txt logs/k223/ 2>/dev/null
 echo DONE > logs/k223/prod_r${RHO}.done
