@@ -17,7 +17,7 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
   - The pools are the whole reachable ρ ≤ 0.32 flat set.
   - A production-scale planted test recovers Alpöge's core.
   - The measured and modelled rate is one core per about 1,200 k = 9 buckets, about 2 hours of join per core on 4 cores.
-  - Production result: see §3.
+  - Production result: **a new, inequivalent 311 core** after about 1,100 k = 9 buckets (§3), at the predicted rate.
 - **New quantitative understanding [E, checked against measurements]:**
   1. **Energy-shell drift.** Flat blocks sit on a PAF-energy sphere. This makes the true n′ about
      **n′_Gauss + 0.1 · n_ind**: 0.098 bits per independent class, from an exact sphere model with no free parameter
@@ -95,7 +95,22 @@ and at production scale at 311. `kt_join_disk.py` reproduces `kt_join_slots.py`'
 | run A: closure pools, k = 10 | 842 buckets, 0 hits (cluster of 32: one core per about 4,700 buckets expected; consistent) |
 | run B: reversal-canonical pools (2^23.69 / 2^23.69 / 2^23.42 / 2^22.62), k = 9 | 74M AB and 33M CD pairs per bucket, 6.5 s with pmatch (18.6 s before); model one core per about 1,200 buckets (about 2 h) |
 
-Results of run B: (pending).
+**Result of run B [M]: a new 311 core**, `data/core_v311_b0_d5_0.txt`.
+- Found at bucket 1,118 (τ = (6, −2, 2, 2, 2, 2, −2, 2, −2)) after about 2.3 h of k = 9 join. The model predicts one
+  core per about 1,200 buckets. In total 1,118 k = 9 buckets plus 842 k = 10 closure buckets (worth about 0.2 cores)
+  were searched.
+- The bucket held 2 tuples, the core and its A ↔ B swap: the cluster multiplicity m = 2 of reversal-canonical pools.
+- Verified by `scripts/verify_b0_core.py`, which shares no code with the search (`logs/k311/verify_core_v311_0.json`):
+  - integer PAF sum 1244·δ;
+  - invariant under u = 6 (order 5);
+  - Goethals–Seidel H Hᵀ = 1244·I exactly.
+- **Inequivalent to Alpöge's 311 core** under shifts, negation and reversal of single blocks, block permutations and a
+  common multiplier: different PAF-multiset class key [P, M].
+- Block ρ = 0.298, 0.314, 0.317, 0.257 (row sums 21, 21, 19, 1). It is deeper than Alpöge's (0.306–0.325) and well
+  inside the flat set, as the existence count (about 10 cores at ρ ≤ 0.32) allows.
+- Measured rate: one core in 1,118 + about 170 (k = 10 equivalent) buckets, against the model's about 1,200. The
+  per-bucket model of §2 (sphere drift, in-bucket inflation, m = 2) is consistent with the first hit; with one event
+  the calibration is good to about a factor of 3.
 
 ## 4. Rung 2: v = 223, d = 3, profile (23, 11, 11, 11)
 

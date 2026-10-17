@@ -222,3 +222,7 @@ Steps:
   `NUMPY_MADVISE_HUGEPAGE=0` now set in the runners). Stage 1 and pmatch now write into reusable buffers
   (`stage1_into`, `pmatch._buf`): kernel time 0%, k = 9 buckets stable at ~13 s (py-spy: pmatch 47%, stage 1 45%).
   Model rate: ~1,200 buckets (~4 h) per core.
+- 2026-10-17 15:27 UTC, **rung 1 result [M]: a new 311 core** (`data/core_v311_b0_d5_0.txt`) at bucket 1,118 of the
+  reversal-canonical k = 9 run (2 tuples: A <-> B), verified by `scripts/verify_b0_core.py` (PAF, U-invariance,
+  H H^T = 1244 I) and inequivalent to Alpoge's 311 (PAF-multiset class key). Block rho 0.298 / 0.314 / 0.317 / 0.257.
+  Model: one core per ~1,200 buckets; first hit at 1,118 (+ the k = 10 run's ~0.2 cores). Join continues for a rate.
