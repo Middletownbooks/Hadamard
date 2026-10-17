@@ -6,12 +6,30 @@ scripts/build_slot_pools.py: slot A = one block per multiplier orbit (canonical 
 samples of the rotation closures.  Every solution has a simultaneous rotation with A canonical [P], so nothing is
 lost, and each hit is a distinct core up to that rotation.
 Restart-safe: prep arrays cached under OUT/cache, finished buckets (log) skipped.
-usage: python3 scripts/kt_join_slots.py V D a,b,c,d POOLS_DIR OUT [--k 8] [--mem 3e9] [--bits 3.1] [--hours 100]"""
+Keys: up to 8 chunk classes at 8 bits each (the kaggle key), or up to 10 at 6 bits (--k 9 or 10): every chunk-class
+value tau_q + sgn PAF_q is = v (mod 4) [both PAF and tau = PAF_A + PAF_B have fixed residues], so (val - v % 4) / 4
+fits in 6 bits for |val| <= 125, i.e. for flat blocks (|PAF| <= sqrt(F0)) at any rho used here.
+usage: python3 scripts/kt_join_slots.py V D a,b,c,d POOLS_DIR OUT [--k 8] [--mem 3e9] [--bits 3.1] [--hours 100]
+                                    [--only-tau t1,..,tk]   (planted tests: one bucket)"""
 import os, sys, json, time, glob, heapq
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, '..', 'kaggle'))
 import kt_join_kaggle as KJ
+import numba as nb
+
+
+@nb.njit(parallel=True, cache=True)
+def keyof6(ch, tau, sgn, r4):
+    """packed key of (tau + sgn ch) on the K <= 10 chunk classes, 6 bits per class after removing the residue mod 4"""
+    N = ch.shape[0]; K = ch.shape[1]; out = np.empty(N, np.uint64)
+    for n in nb.prange(N):
+        w = np.uint64(0)
+        for i in range(K):
+            val = (np.int64(tau[i]) + sgn * np.int64(ch[n, i]) - r4) // 4 + 32
+            w |= np.uint64(val & 63) << np.uint64(6 * i)
+        out[n] = w
+    return out
 
 
 def main():
@@ -45,9 +63,14 @@ def main():
         log(stage='prep', slot=s)
     D = {s: dict(ch=np.load(cp(f'ch_{s}'), mmap_mode='r').view(np.ndarray), c=np.load(cp(f'c_{s}')),
                  h=np.load(cp(f'h_{s}'), mmap_mode='r').view(np.ndarray)) for s in 'ABCD'}
-    KE = min(k, 8)
-    own = lambda ch: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.zeros(KE, np.int64), 1)
-    partner = lambda ch, tau: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1)
+    if k <= 8:
+        KE = k
+        own = lambda ch: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.zeros(KE, np.int64), 1)
+        partner = lambda ch, tau: KJ.keyof_nb(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1)
+    else:
+        KE = min(k, 10); r4 = v % 4
+        own = lambda ch: keyof6(np.ascontiguousarray(ch[:, :KE]), np.zeros(KE, np.int64), 1, r4)
+        partner = lambda ch, tau: keyof6(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1, r4)
     sB = own(D['B']['ch']); oB = np.argsort(sB, kind='stable'); sB = sB[oB]
     sD = own(D['D']['ch']); oD = np.argsort(sD, kind='stable'); sD = sD[oD]
     ns = 2_000_000
@@ -73,7 +96,10 @@ def main():
             z = json.loads(l)
             if z.get('stage') == 'bucket': done.add(z['b'])
         except Exception: pass
-    log(stage='ready', buckets=len(buckets), done_before=len(done))
+    if '--only-tau' in a:                        # planted tests: process exactly one bucket (tau = PAF_A + PAF_B on the chunk classes)
+        t_only = [int(x) for x in a[a.index('--only-tau') + 1].split(',')]
+        opts = [[(t_only[q], 0.0)] for q in range(k)]; buckets = [tuple(0 for _ in range(k))]; done = set()
+    log(stage='ready', buckets=len(buckets), done_before=len(done), chunk_classes=[int(c) for c in chunk], key_classes=KE)
     solf = open(os.path.join(OUT, f'solutions_v{v}.txt'), 'a'); nsol = 0; exp_cum = 0.0; T = 300
     A, B, Cc, Dd = D['A'], D['B'], D['C'], D['D']
     for b, ix in enumerate(buckets):

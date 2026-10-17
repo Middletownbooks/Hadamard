@@ -146,3 +146,20 @@ Steps:
   bucket (`scripts/kt_join_slots_w.py --only-tau -2,6,-6,2,-6,-2,6,6`) returns it as a verified solution
   (`logs/k223/planted_core_*`). Note: that bucket was not among the first 352 in best-first order on these pools.
 
+- 2026-10-17 (new session, ladder prompt `report/prompt_b0_flatpool_ladder.md`), rung 1 restart:
+  - The pools were lost with the container; regenerated (4 x 10 min x 4 cores, seeds 101-104; this machine does about
+    1.8x the walks of the last one). Union of the 4 chunks: 207,555 / 361,882 / 436,396 orbits for row sums 1 / 19 / 21
+    (2^23.62 / 2^24.42 / 2^24.69 blocks), above the capture-recapture estimates (203k / 350k / 422k from chunks 3,4):
+    the pools are essentially the whole (reachable) rho <= 0.32 flat set [M].
+  - Alpoge's 311 blocks have rho = 0.3245, 0.306, 0.3245, 0.3154: his two row-sum-21 blocks lie just above the 0.32
+    cut, so his core is NOT in these pools (any hit is a new core) [M].
+  - Slots: full rotation closures in all four slots (`build_slot_pools.py --closure`; no symmetry breaking, each core
+    present in 62 rotations x 2 (A<->B)), 2^97.42 tuples. Gaussian n' = 81.26; partial joins +0.02-0.03 bits per class.
+  - k = 8 join OOM-killed in bucket 0: with these pools a k = 8 bucket holds about 2^31 AB pairs. New 6-bit packed key
+    (`kt_join_slots.py`, k = 9-10: values are = v mod 4, so (val - v%4)/4 fits 6 bits); planted test (Alpoge's blocks
+    added to 2^21 test slots, `--only-tau`) recovers the core with k = 10. Production restarted at k = 10.
+  - New `scripts/bucket_rank.py`: Gaussian per-bucket expected tuples E(tau) and the rank of a known core's tuples in
+    the best-first order. At 311 the Gaussian rest-correction is ~0 (chunk classes nearly independent of the rest), so
+    the current separable score is the expected-count order. Model at k = 10: E = 2^-2.2 tuples in bucket 0, 0.18% of
+    all 2^16.2 solution tuples in the first 1,000 buckets. Alpoge's tuples rank >= 462k at k = 10 (>= 30k at k = 8):
+    his u = PAF_A + PAF_B has 8 of 31 classes at |u| = 10 (about 3.6 expected), a heavier tail than the model.
