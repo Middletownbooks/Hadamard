@@ -9,10 +9,12 @@ For a stage-1 solution y, xbar_k(a, .) is a sum over the G'-orbits j in half a o
 patterns of the letter y_kj, weighted by |j|); so each half of each block has an exact DP distribution over
 K-invariant vectors (states at the K-orbit representatives), depending only on the multiset of its orbits'
 contribution sets (the half's type), and the block's joint states are pairs of half states with lag-0 energy within
-the budget.  Per distinct quadruple of block types: the exact number of lifts by a 2+2 convolution of the PAF
-signatures on Z_2 x Z_q (all lag classes but one, which the fixed row sum of y determines), products of exact counts
-summed in float64 (zero/non-zero exact).  Cached by content (restart-safe).
-usage: python3 theory/ab_s2_z2zq_screen.py CFG.json YBIN OUT.jsonl R --keep-alive ALIVE.ybin
+the budget.  Per distinct quadruple of block types: the number of lifts by a 2+2 convolution of the PAF signatures on
+Z_2 x Z_q (all lag classes but one, which the fixed row sum of y determines), joined by a 64-bit linear hash of the
+signatures: a zero count is exact (every true solution matches its hash), a positive one is the hashed count.
+Cached by content (restart-safe).
+usage: python3 theory/ab_s2_z2zq_screen.py CFG.json YBIN OUT.jsonl R [--shard i/n] --keep-alive ALIVE.ybin
+       (with --shard: only the type quadruples i mod n, cached in OUT.s<i>; the run without --shard reuses them)
        (R = 1, 2 or 3: the element r = (b, a) of Q with index 2 a + b, as in the Q-character order)"""
 import sys, os, json, time, math
 from collections import Counter
@@ -25,10 +27,13 @@ def main():
     a = sys.argv[1:]
     cfg = SD.cfg_from_json(open(a[0]).read()); YB, OUT, r = a[1], a[2], int(a[3])
     keep = a[a.index('--keep-alive') + 1] if '--keep-alive' in a else None
-    run(W.build(cfg), YB, OUT, r, keep)
+    shard = tuple(int(x) for x in a[a.index('--shard') + 1].split('/')) if '--shard' in a else None
+    run(W.build(cfg), YB, OUT, r, keep, shard)
 
 
-def run(sl, YB, OUT, r, keep=None):
+def run(sl, YB, OUT, r, keep=None, shard=None):
+    """shard = (i, n): compute only the type quadruples with index = i mod n (cache file OUT.s<i>), no pass 2;
+    without shard: reuse every cache file OUT, OUT.s*, compute what is missing, then pass 2"""
     L1 = len(sl.breps); RB = 4 * L1; t0 = time.time()
     log = lambda **k: print(json.dumps(dict(k, secs=round(time.time() - t0, 1))), flush=True)
     assert tuple(sl.Gp.mods[:2]) == (2, 2) and r in (1, 2, 3)
@@ -90,7 +95,13 @@ def run(sl, YB, OUT, r, keep=None):
     def block_min(i):
         t = types[i]; h0 = half_dist(t[:len(j0)]); h1 = half_dist(t[len(j0):]); return int(h0[2][0] + h1[2][0])
 
-    def block_sigs(i, budget):
+    gmin = None; Wh = np.random.default_rng(29).integers(1, 2 ** 62, d).astype(np.int64); bsig = {}
+
+    def block_sigs(i):
+        """all joint states of type i with lag-0 energy <= T0 - 3 gmin: signatures sorted by energy (first
+        coordinate), multiplicities, 64-bit linear hashes"""
+        if i in bsig: return bsig[i]
+        budget = T0 - 3 * gmin
         t = types[i]; A0, c0, e0 = half_dist(t[:len(j0)]); A1, c1, e1 = half_dist(t[len(j0):])
         n0 = np.searchsorted(e0, budget - e1[0], 'right')
         ia, ib = [], []
@@ -102,37 +113,61 @@ def run(sl, YB, OUT, r, keep=None):
         P1 = np.stack([(X0 * np.roll(X1, -t_, 1)).sum(1) + (X1 * np.roll(X0, -t_, 1)).sum(1) for t_ in lreps], 1)
         P = np.concatenate([P0, P1], 1)[:, :-1]
         u, inv = np.unique(P, axis=0, return_inverse=True); c = np.zeros(len(u)); np.add.at(c, inv.ravel(), c0[ia] * c1[ib])
+        o = np.argsort(u[:, 0], kind='stable'); u, c = u[o], c[o]
+        bsig[i] = (u[:, 0].copy(), c, u @ Wh); return bsig[i]                 # energies, multiplicities, hashes
+
+    hT = np.int64(Tt @ Wh)
+
+    def pairs(x, y, lo, hi):
+        """hashes and multiplicities of the pairs (one state of x, one of y) with energy in [lo, hi), aggregated"""
+        a0 = np.searchsorted(y[0], lo - x[0], 'left'); a1 = np.searchsorted(y[0], hi - x[0], 'left')
+        cnt = np.maximum(a1 - a0, 0)
+        if cnt.sum() == 0: return np.zeros(0, np.int64), np.zeros(0)
+        rep = np.repeat(np.arange(len(cnt)), cnt); idx = np.arange(int(cnt.sum())) - np.repeat(np.cumsum(cnt) - cnt, cnt) + np.repeat(a0, cnt)
+        u, inv = np.unique(x[2][rep] + y[2][idx], return_inverse=True); c = np.zeros(len(u)); np.add.at(c, inv.ravel(), x[1][rep] * y[1][idx])
         return u, c
 
-    dt = np.dtype([('f%d' % i_, np.int64) for i_ in range(d)])
-    sv = lambda R: np.ascontiguousarray(R, np.int64).view(dt).ravel()
+    def npairs(x, y, e):
+        """number of pairs with energy < e"""
+        return int(np.maximum(np.searchsorted(y[0], e - x[0], 'left'), 0).sum())
 
-    def conv(x, y, chunk=1 << 22):
-        us, cs = [], []; step = max(1, chunk // max(1, len(y[0])))
-        for s0 in range(0, len(x[0]), step):
-            R = (x[0][s0:s0 + step][:, None, :] + y[0][None, :, :]).reshape(-1, d); v = (x[1][s0:s0 + step][:, None] * y[1][None, :]).ravel()
-            u, inv = np.unique(sv(R), return_inverse=True); c = np.zeros(len(u)); np.add.at(c, inv.ravel(), v); us.append(u); cs.append(c)
-        u, inv = np.unique(np.concatenate(us), return_inverse=True); c = np.zeros(len(u)); np.add.at(c, inv.ravel(), np.concatenate(cs))
-        return u, c
-
-    def count(tq):
+    def count(tq, maxpairs=1 << 23):
+        """0 exactly when no 4-tuple of states meets the target (a true solution always matches its hash); a positive
+        value is the hashed count (equal to the exact count unless a 64-bit collision occurred).  Energy-banded join:
+        the pair (0, 1) carries energy e in a band, the pair (2, 3) energy T0 - e."""
         mins = [block_min(i) for i in tq]
         if sum(mins) > T0: return 0.0, 'lag-0 energy'
-        D = [block_sigs(i, T0 - (sum(mins) - mins[k])) for k, i in enumerate(tq)]
-        if any(len(x[0]) == 0 for x in D): return 0.0, 'lag-0 energy'
-        A_ = conv(D[0], D[1]); B_ = conv(D[2], D[3])
-        q_ = sv(Tt[None, :] - B_[0].view(np.int64).reshape(-1, d))
-        pos = np.minimum(np.searchsorted(A_[0], q_), len(A_[0]) - 1); hit = A_[0][pos] == q_
-        return float((A_[1][pos[hit]] * B_[1][hit]).sum()), 'exact convolution'
+        D = []
+        for k, i in enumerate(tq):
+            e, c, h = block_sigs(i); m = np.searchsorted(e, T0 - (sum(mins) - mins[k]), 'right')
+            if m == 0: return 0.0, 'lag-0 energy'
+            D.append((e[:m], c[:m], h[:m]))
+        lo_all, hi_all = mins[0] + mins[1], T0 - mins[2] - mins[3] + 1
+        tot = 0.0; e0 = lo_all
+        while e0 < hi_all:
+            e1 = hi_all; base = npairs(D[0], D[1], e0)
+            while npairs(D[0], D[1], e1) - base > maxpairs and e1 > e0 + 1: e1 = (e0 + e1 + 1) // 2
+            A_ = pairs(D[0], D[1], e0, e1)
+            if len(A_[0]):
+                B_ = pairs(D[2], D[3], T0 - e1 + 1, T0 - e0 + 1)
+                if len(B_[0]):
+                    q_ = hT - B_[0]; pos = np.minimum(np.searchsorted(A_[0], q_), len(A_[0]) - 1); hit = A_[0][pos] == q_
+                    tot += float((A_[1][pos[hit]] * B_[1][hit]).sum())
+            e0 = e1
+        return tot, 'hashed convolution'
 
-    done = {}
-    if os.path.exists(OUT):
-        for l in open(OUT):
-            z = json.loads(l)
+    gmin = min(block_min(i) for i in types)
+    done = {}; import glob
+    for fn in [OUT] + sorted(glob.glob(OUT + '.s*')):
+        if not os.path.exists(fn): continue
+        for l in open(fn):
+            try: z = json.loads(l)
+            except Exception: continue
             if z.get('r') == r and 'types_content' in z: done[tuple(sorted(tuple(t) for t in z['types_content']))] = z
-    fo = open(OUT, 'a'); t_last = 0.0; cnt_of = {}; dead_y = 0
+    fo = open(OUT if shard is None else OUT + '.s%d' % shard[0], 'a'); t_last = 0.0; cnt_of = {}; dead_y = 0
     for qi, (key, ny) in enumerate(sorted(quads.items(), key=lambda kv: -kv[1])):
         tq = [(key >> s) & 0x7FFF for s in (45, 30, 15, 0)]; ck = tuple(sorted(types[i] for i in tq))
+        if shard is not None and qi % shard[1] != shard[0]: continue
         if ck not in done:
             ex, by = count(tq)
             rec = dict(r=r, types_content=[list(t) for t in ck], count=ex, log2_count=round(math.log2(ex), 3) if ex > 0 else None,
@@ -140,6 +175,8 @@ def run(sl, YB, OUT, r, keep=None):
             fo.write(json.dumps(rec) + "\n"); fo.flush(); done[ck] = rec
         cnt_of[key] = done[ck]['count']; dead_y += ny if done[ck]['count'] == 0 else 0
         if time.time() - t_last > 60: log(stage='progress', quads_done=qi + 1, of=len(quads), y_dead_so_far=dead_y); t_last = time.time()
+    if shard is not None:
+        log(stage='shard-done', r=r, shard=list(shard)); return dict(done=done)
     alive = 0; fk = open(keep, 'wb') if keep else None
     for s0 in range(0, n_all, 1 << 20):
         Y = np.fromfile(YB, np.int8, count=min(1 << 20, n_all - s0) * RB, offset=s0 * RB).reshape(-1, 4, L1)
