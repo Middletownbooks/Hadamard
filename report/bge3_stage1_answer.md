@@ -11,10 +11,14 @@ calibration named).
 ## 0. Bottom line
 
 1. **No H(4v) was built.** No configuration among the 117 skipped entries has a stage 1 that is rich per symmetry class
-   together with a stage 2 under the budget, and the one configuration that came close is proved to have no core.
+   together with a stage 2 under the 2^47 budget, and the one configuration that came close is proved to have no core.
+   So the prompt's sampling and stage-2 steps had no input (§7).
 
-2. **The 117 skipped entries are 112 distinct configurations.** Five 599 c = 6 entries of
-   `logs/ab/c6_bordered.jsonl` appear twice (once under the older key without c). All 112 are in the table of §3.
+2. **The 117 skipped entries are 112 distinct configurations, 107 slices.** Five 599 c = 6 entries of
+   `logs/ab/c6_bordered.jsonl` appear twice (once under the older key without c); five pairs of the 112 are one slice
+   each (one U given by two generator lists, or a swap of equal axes of H'). Verdicts of the 112 (§3): stage 1 empty
+   [M] 3 (all three also [P]); stage 1 empty [E] 1 (a mod-3 lattice obstruction); stage 1 at most
+   2^−4 per symmetry class [E] 19; no core [M] 1; stage 2 over 2^47 per core [E] 88, among them all 85 rich ones; open 0.
 
 3. **Calibration of the z-conditioned count (§2) [M vs E].**
    - The count is now taken over **all** compression quadruples, grouped into multisets of symmetry classes with exact
@@ -22,11 +26,11 @@ calibration named).
      lag 0) is cross-checked against two independent exact counters and the old canonical counts of the v = 35, 47
      controls.
    - **Totals must be read per symmetry class.** Every ordered stage-1 solution comes with an orbit of block orders,
-     signs, U-fixed translations, reversals and automorphisms of order 2^13.6 (347's slice) to 2^31 (c = 8).
+     signs, U-fixed translations, reversals and automorphisms of order 2^13.6 (347's slice) to 2^46 (643 with U = 1).
      "Rich" in ordered terms can mean less than one solution up to symmetry: the 599 lead's 2^18.5 ordered solutions
      are 2^−6.0 per class (this is `report/b599_answer.md`'s "≪ 1 distinct solution"), the 719 lead's 2^27.3 are
      2^−2.1 per class.
-   - Against exact totals on 347's slice (all 27 multisets) and 26 same-shape rungs: where solutions exist the
+   - Against exact totals on 347's slice (all 27 multisets) and 27 same-shape rungs: where solutions exist the
      estimate is within ±3.6 bits (347: 1.9 low; v = 203: 3.6 low; v = 127: 2.7 high). **Every rung whose exact
      count is 0 was estimated at ≤ 2^−4 solutions per symmetry class** (5 of 5; seven more rungs have no
      compression quadruple at all). Per multiset the estimate is unreliable (347: 12 of 27 multisets exactly empty
@@ -59,12 +63,19 @@ calibration named).
    (`theory/s1z_typescreen.py`, validated on the published 347 core, on planted lifts against an independent exact
    count, and on the v = 47 control, whose Q × Z7 count at its core's y is exactly the 5,184 cores found there earlier).
 
-6. **The rich configurations are all over budget [E] (§6).** The cheapest rich one is 599 c = 6 with U = ×4 on Z9
-   (s = 2): stage 1 2^+30.8 per symmetry class, stage 2 −12.3 bits per y, 2^51.5 per core. The Z3² variants (the
-   "Z3²-a" slice of `report/b599_answer.md`) cost 2^56.5–2^62, everything else 2^60 and up (c = 8 and the 643 slices
-   2^108–2^420).
+6. **The rich configurations are all over budget [E] (§6).** The cheapest rich one is 599, c = 6, q = 11, s = 2 with
+   U = ×4 on Z9: stage 1 2^+30.8 per symmetry class, stage 2 2^49.9–2^52.6 per core over six typical y's, 2^+15 to
+   2^+19 expected cores per class. Within the 599 c = 6, s = 2 family stage-1 richness and the stage-2 deficit rise
+   together and step over the window "rich and under 2^47" (from −1 on Z9, 2^−6.0 per class at 2^43.5 per core, to ×4
+   on Z9, 2^+30.8 at 2^51.5). The other rich 599 s = 2 slices with U ≠ 1 cost 2^56.5–2^62, 719 q = 7 with ×4 on Z17
+   2^71.5, everything else that is rich 2^84 and up (c = 8 and s ≥ 3 2^116 and up, the 643 c = 4 slices 2^167 and up).
 
-7. **Frontier (§8).** Beyond these 112: (i) rich-but-expensive 599 c = 6 slices (2^51.5–2^62 per core) need a
+7. **Exact stage-2 screens elsewhere [M].** 719, c = 6, q = 17, s = 2 with U = 1 (stage 1 2^−9.8 per class [E], 2^60.7
+   per core): 85 of its 89 compression multisets have no lift at Z17 or Z2 × Z17; the other 4 pass Z17, Z2 × Z17 and
+   Z3 × Z17. The cheapest rich slice (×4 on Z9) passes Z11 and Z2 × Z11 in all 85 multisets; the joint levels do not
+   fit in memory for its letters (§8.2).
+
+8. **Frontier (§8).** Beyond these 112: (i) rich-but-expensive 599 c = 6 slices (2^49.9–2^62 per core) need a
    multi-level stage-2 solver and the joint compression screens, which do not yet fit in memory for their letters;
    (ii) configurations with more than 60 G'-orbits within the open orders' other subgroups; (iii) c ≥ 10, where no
    border with a flat corner is known (669, 789); (iv) non-split H and noncyclic Q as in 359.
@@ -80,7 +91,7 @@ G' = Q × H'), slice group S = U × M, stage 1 the Z_q compression y on G' with
 | tool | what it does |
 |---|---|
 | `theory/s1z_lib.py` | `ZOrb`: rows (every achievable row sum in some quadruple with Σ r² = 4v; no truncation), compressions with the Parseval and per-character bounds and their exact energy distributions, classes under the per-block symmetries, class multisets with Σ PAF_Q = T_Q by a 2+2 join and their exact lag-0 counts, Gaussian of the remaining lags (finite-sample log-det correction), direct exact counts; `SDCount`: exact counts by the S/D split; `log2_symmetry`: order of the symmetry group of the stage-1 solution set |
-| `theory/s1z_screen.py` | the production z-screen (replaces the never-run `theory/ab_s1_zscreen.py`, whose rows came from screen A's list truncated at 40 quadruples and empty when screen A gives up) |
+| `theory/s1z_screen.py` | the production z-screen (replaces the never-run `theory/ab_s1_zscreen.py`, whose rows came from screen A's list truncated at 40 quadruples and empty when screen A gives up); restart-safe, `--steal` shares one queue between workers |
 | `theory/s1z_calib.py`, `s1z_calib_batch.py`, `s1z_calib_report.py` | calibration against exact counts, rungs, summary |
 | `theory/s1z_budget_batch.py` | typical-y stage-2 budget of the 112 configurations, no stage-2 orbit cap |
 | `theory/s1z_border.py` | which multisets carry the 347 template border or a monomial/Singer border |
@@ -88,6 +99,7 @@ G' = Q × H'), slice group S = U × M, stage 1 the Z_q compression y on G' with
 | `theory/s1z_zqscreen.py`, `s1z_char_batch.py` | the same aggregated over all types of a compression quadruple (cheap levels; per Q-character) |
 | `theory/s1z_cpsat.py` | CP-SAT stage-1 sampler for a prescribed compression quadruple |
 | `theory/s1z_table.py` | the table of §3 |
+| `theory/s1z_validate.py` | the validations of §1, §2.1 and §5.3 (logs in `logs/s1z/validate/`) |
 
 **Symmetries [P].** The stage-1 solution set is closed under, per block, y ↦ −y, y ↦ y(· − t) for t ∈ G' fixed by
 U, y ↦ y(−·); under permutations of the blocks; and under the automorphisms of G' that preserve H' and commute with
@@ -131,8 +143,10 @@ summary `logs/s1z/calib/calib_summary.json` by `theory/s1z_calib_report.py`.)
 | c = 4, H' = Z4, q = 13 | 211 | 16 | 8 | 1 | 31.2 | 0 (outside the lattice) | **0** | – | – |
 
 Seven more rungs have no compression quadruple at all (stage 1 empty [M]: c = 6 at v = 203, 239 with −1 on H' = Z3;
-v = 239, 311 with −1 on Q's Z3; c = 8 at v = 271, 319, 463). Ten rungs were too rich for the exact counters
-(estimates 2^13–2^75 ordered, 2^+1.6 to 2^+45 per class); they enter only the K-subsampling test below.
+v = 239, 311 with −1 on Q's Z3; c = 8 at v = 271, 319, 463). Eleven rungs were too rich for the exact counters
+(estimates 2^13–2^75 ordered, 2^−13.5 to 2^+45 per class), and the twelfth, v = 335 with −1 on Q's Z3 and H' = Z5,
+was counted exactly in 11 of its 25 multisets, all empty (estimate 2^−26 per class); they enter only the
+K-subsampling test below.
 
 - **Where solutions exist the estimate is within ±3.6 bits, in both directions.** The sign is not stable (347 and
   v = 203 low, v = 127 high), so no correction is applied.
@@ -172,11 +186,163 @@ A configuration is called **rich [E]** when the z-conditioned estimate is at lea
 
 ## 3. The 112 configurations
 
-TABLE_PLACEHOLDER
+`theory/s1z_table.py` (`logs/s1z/table.json`): one row per distinct configuration, sorted by v, c, q, s and L1.
+
+**Verdicts of the 112** (first that applies):
+
+| verdict | configurations |
+|---|---|
+| stage 1 empty [M] (no compression quadruple; all three also [P]: 739 by the parity argument of §4.1, the two 919 s = 3 slices by the energy, §8.1) | 3 |
+| no core [M] (exact stage-2 compression screens, §5) | 1 |
+| stage 1 at most 2^−4 per symmetry class [E] | 19 |
+| stage 1 empty [E] (target outside the lattice in every multiset, §4.3) | 1 |
+| stage 2 over 2^47 per core [E] | 88 |
+| open | 0 |
+
+Among the 88 over budget, 85 are rich (at least 2^+4 per symmetry class) and 3 are in the
+undecided band (the 719 q = 7 pair with −1 on Q's Z3 and on Z17 at 2^+3.9 per class, 2^70 per core, and 839 c = 8,
+s = 2, ×5 on Z8 at 2^+3.1, 2^142); the band's fourth member, the 719 lead, has no core [M]. A symmetric-block search
+for these small totals would decide stage 1 only, and stage 2 is out of reach for all three, so none was run.
+
+**Columns.**
+- v, c; q, s (f): the order, c = b + 1, the staging prime, the index s of M in F_q^* and f = (q − 1)/s.
+- H' and U: H' as a product of cyclic groups; U by its generators ("Q's Z3" is the Z3 of Q = Z2 × Z3; an axis of H'
+  is named by its order, with its number when H' has equal factors).
+- L1: number of G'-orbits.
+- stage 1: log2 of the estimated number of ordered stage-1 solutions, then per symmetry class [E] (§1, §2.4): over all
+  compression multisets when there are at most 60 (84 configurations), else an importance sample of 24 or 40 multisets
+  (25 configurations; in-sample relative standard error 0.8%–3.3%). "empty [M]": no compression quadruple
+  meets the Q-level and lag-0 equations; "−∞ [E]": the target is outside the lattice in every multiset.
+- stage 2 per y, D_def, cost per core [E]: the typical-y budget of §4.
+- cores per class [E]: stage 1 per class + stage 2 per y − log2 s.
+- exact stage-2 screens [M]: compression multisets with no lift at some level of §5.3 (aggregated screens, or the per-type
+  screen for the 719 lead), else the per-character Z_q screens.
+
+**Duplicates.** Five pairs are one slice each: two generator lists of the same U (719, q = 7, s = 2 and 3: −1 on Q's
+Z3 with −1 on Z17, and −1 on Q's Z3 × Z17 with −1 on Z17), and a swap of the two equal axes of H' (599 with
+H' = Z3², s = 2 and 5; 643 with H' = Z4 × Z4 × Z2). The 719 pairs give identical rows (same group, same seeds); the
+axis-swap pairs differ by estimator noise only: stage 1 by at most 0.6 bit, the typical-y cost (one random
+typical y each) by 3.9–9.9 bits, more for the larger budgets (§6). So the 112 configurations are 107
+slices.
+
+| v, c | q, s (f) | H' | U | L1 | stage 1: log2 ordered; per sym. class | stage 2 per y, D_def, cost/core [E] | cores per class [E] | exact stage-2 screens | verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| 599, 6 | 11, 2 (5) | 9 | −1 on Q's Z3, Z9 | 28 | -24.9; -40.1 | 4.7, 17.2, 2^34.3 | -36 | per character: 0/37 dead | stage 1 < 2^-4 per symmetry class [E] |
+| 599, 6 | 11, 2 (5) | 3×3 | −1 on Q's Z3, Z3(axis 1), Z3(axis 2) | 28 | -24.9; -39.5 | 4.7, 17.2, 2^34.3 | -36 | per character: 0/37 dead | stage 1 < 2^-4 per symmetry class [E] |
+| 599, 6 | 11, 2 (5) | 9 | −1 on Z9 | 30 | 18.5; -6.0 | -2.2, 21.5, 2^43.5 | -9 | per character: 0/85 dead | stage 1 < 2^-4 per symmetry class [E] |
+| 599, 6 | 11, 2 (5) | 9 | ×4 on Z9 | 30 | 61.1; +30.8 | -12.3, 25.8, 2^51.5 | +18 | 0/85 multisets dead; 85 pass Z11, Z2×Z11 (Z3×Z11 too large) | stage 2 over budget [E] (2^52 per core) |
+| 599, 6 | 11, 2 (5) | 9 | −1 on Q's Z3 | 36 | 85.7; +54.8 | -13.8, 31.9, 2^62.0 | +40 | – | stage 2 over budget [E] (2^62 per core) |
+| 599, 6 | 11, 2 (5) | 3×3 | −1 on Z3(axis 1) | 36 | 59.8; +29.5 | -11.9, 30.8, 2^60.4 | +17 | – | stage 2 over budget [E] (2^60 per core) |
+| 599, 6 | 11, 2 (5) | 3×3 | −1 on Z3(axis 2) | 36 | 59.8; +29.5 | -6.5, 30.2, 2^56.5 | +22 | – | stage 2 over budget [E] (2^56 per core) |
+| 599, 6 | 11, 2 (5) | 3×3 | −1 on Q's Z3 | 36 | 85.6; +55.4 | -13.1, 31.2, 2^61.3 | +41 | – | stage 2 over budget [E] (2^61 per core) |
+| 599, 6 | 11, 2 (5) | 9 | 1 | 54 | 116.1; +77.9 | -9.4, 44.8, 2^84.4 | +68 | – | stage 2 over budget [E] (2^84 per core) |
+| 599, 6 | 11, 2 (5) | 3×3 | 1 | 54 | 116.1; +78.5 | -9.0, 44.5, 2^84.0 | +68 | – | stage 2 over budget [E] (2^84 per core) |
+| 599, 6 | 11, 5 (2) | 9 | −1 on Q's Z3, Z9 | 28 | 103.9; +88.8 | -279.4, 181.5, 2^419.8 | -193 | – | stage 2 over budget [E] (2^420 per core) |
+| 599, 6 | 11, 5 (2) | 3×3 | −1 on Q's Z3, Z3(axis 1), Z3(axis 2) | 28 | 104.0; +89.4 | -279.2, 181.3, 2^419.5 | -192 | – | stage 2 over budget [E] (2^420 per core) |
+| 599, 6 | 11, 5 (2) | 9 | −1 on Z9 | 30 | 151.5; +127.0 | -83.3, 123.7, 2^234.4 | +41 | – | stage 2 over budget [E] (2^234 per core) |
+| 599, 6 | 11, 5 (2) | 9 | ×4 on Z9 | 30 | 175.2; +144.9 | -10.9, 97.6, 2^159.2 | +132 | – | stage 2 over budget [E] (2^159 per core) |
+| 599, 6 | 11, 5 (2) | 9 | −1 on Q's Z3 | 36 | 244.9; +214.1 | -22.2, 119.7, 2^200.6 | +190 | – | stage 2 over budget [E] (2^201 per core) |
+| 599, 6 | 11, 5 (2) | 3×3 | −1 on Z3(axis 1) | 36 | 217.8; +187.5 | -24.0, 121.3, 2^202.1 | +161 | – | stage 2 over budget [E] (2^202 per core) |
+| 599, 6 | 11, 5 (2) | 3×3 | −1 on Z3(axis 2) | 36 | 217.8; +187.6 | -12.8, 118.1, 2^195.0 | +172 | – | stage 2 over budget [E] (2^195 per core) |
+| 599, 6 | 11, 5 (2) | 3×3 | −1 on Q's Z3 | 36 | 244.9; +214.6 | -22.3, 119.6, 2^200.7 | +190 | – | stage 2 over budget [E] (2^201 per core) |
+| 599, 6 | 11, 5 (2) | 9 | 1 | 54 | 365.4; +327.2 | 31.3, 156.2, 2^240.8 | +356 | – | stage 2 over budget [E] (2^241 per core) |
+| 599, 6 | 11, 5 (2) | 3×3 | 1 | 54 | 365.4; +327.8 | 31.4, 156.2, 2^240.7 | +357 | – | stage 2 over budget [E] (2^241 per core) |
+| 643, 4 | 5, 2 (2) | 32 | ×3 on Z32 | 36 | 88.0; +60.8 | -134.1, 79.1, 2^166.9 | -74 | – | stage 2 over budget [E] (2^167 per core) |
+| 643, 4 | 5, 2 (2) | 32 | ×5 on Z32 | 40 | 24.7; -6.4 | -128.8, 82.1, 2^164.6 | -136 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 643, 4 | 5, 2 (2) | 32 | ×7 on Z32 | 52 | 200.5; +172.4 | -175.9, 109.0, 2^229.7 | -4 | – | stage 2 over budget [E] (2^230 per core) |
+| 643, 4 | 5, 2 (2) | 16×2 | ×3 on Z16 | 56 | 202.6; +171.5 | -207.8, 126.4, 2^263.5 | -37 | – | stage 2 over budget [E] (2^264 per core) |
+| 643, 4 | 5, 2 (2) | 32 | ×9 on Z32 | 64 | 263.1; +226.9 | -159.3, 108.6, 2^221.1 | +67 | – | stage 2 over budget [E] (2^221 per core) |
+| 643, 4 | 5, 2 (2) | 16×2 | ×5 on Z16 | 64 | 236.0; +200.8 | -203.4, 132.5, 2^265.1 | -4 | – | stage 2 over budget [E] (2^265 per core) |
+| 643, 4 | 5, 2 (2) | 32 | ×15 on Z32 | 68 | 263.2; +234.0 | -234.3, 146.7, 2^306.6 | -1 | – | stage 2 over budget [E] (2^307 per core) |
+| 643, 4 | 5, 2 (2) | 32 | −1 on Z32 | 68 | 181.6; +155.5 | -330.4, 179.5, 2^403.4 | -176 | – | stage 2 over budget [E] (2^403 per core) |
+| 643, 4 | 5, 2 (2) | 16×2 | ×7 on Z16 | 72 | 275.7; +243.5 | -261.1, 162.1, 2^336.6 | -19 | – | stage 2 over budget [E] (2^337 per core) |
+| 643, 4 | 5, 2 (2) | 16×2 | −1 on Z16 | 72 | 195.5; +166.4 | -357.1, 202.3, 2^433.6 | -192 | – | stage 2 over budget [E] (2^434 per core) |
+| 643, 4 | 5, 2 (2) | 8×4 | ×3 on Z8 | 80 | 361.0; +324.9 | -223.1, 150.4, 2^306.9 | +101 | – | stage 2 over budget [E] (2^307 per core) |
+| 643, 4 | 5, 2 (2) | 8×4 | −1 on Z8 | 80 | 322.4; +286.3 | -269.4, 171.1, 2^353.9 | +16 | – | stage 2 over budget [E] (2^354 per core) |
+| 643, 4 | 5, 2 (2) | 8×2×2 | ×3 on Z8 | 80 | 294.3; +259.2 | -307.2, 186.8, 2^391.0 | -49 | – | stage 2 over budget [E] (2^391 per core) |
+| 643, 4 | 5, 2 (2) | 8×2×2 | −1 on Z8 | 80 | 217.0; +184.9 | -395.0, 224.7, 2^479.5 | -211 | – | stage 2 over budget [E] (2^480 per core) |
+| 643, 4 | 5, 2 (2) | 32 | ×17 on Z32 | 96 | 489.6; +448.4 | -195.8, 151.8, 2^297.5 | +252 | – | stage 2 over budget [E] (2^298 per core) |
+| 643, 4 | 5, 2 (2) | 16×2 | ×9 on Z16 | 96 | 466.7; +426.5 | -224.4, 166.2, 2^327.6 | +201 | – | stage 2 over budget [E] (2^328 per core) |
+| 643, 4 | 5, 2 (2) | 8×4 | ×5 on Z8 | 96 | 466.5; +426.3 | -220.2, 162.5, 2^323.4 | +205 | – | stage 2 over budget [E] (2^323 per core) |
+| 643, 4 | 5, 2 (2) | 8×4 | −1 on Z4 | 96 | 448.4; +408.2 | -241.2, 169.1, 2^341.7 | +166 | – | stage 2 over budget [E] (2^342 per core) |
+| 643, 4 | 5, 2 (2) | 8×2×2 | ×5 on Z8 | 96 | 421.4; +382.2 | -277.1, 186.3, 2^380.3 | +104 | – | stage 2 over budget [E] (2^380 per core) |
+| 643, 4 | 5, 2 (2) | 4×4×2 | −1 on Z4(axis 1) | 96 | 385.6; +346.5 | -307.5, 200.2, 2^410.2 | +38 | – | stage 2 over budget [E] (2^410 per core) |
+| 643, 4 | 5, 2 (2) | 4×4×2 | −1 on Z4(axis 2) | 96 | 385.1; +345.9 | -315.3, 206.5, 2^420.1 | +30 | – | stage 2 over budget [E] (2^420 per core) |
+| 643, 4 | 5, 2 (2) | 4×2×2×2 | −1 on Z4 | 96 | 259.3; +224.1 | -456.8, 262.4, 2^559.5 | -234 | – | stage 2 over budget [E] (2^560 per core) |
+| 643, 4 | 5, 2 (2) | 32 | 1 | 128 | 689.3; +643.1 | -227.6, 189.2, 2^367.3 | +415 | – | stage 2 over budget [E] (2^367 per core) |
+| 643, 4 | 5, 2 (2) | 16×2 | 1 | 128 | 668.8; +623.6 | -252.4, 201.0, 2^392.2 | +370 | – | stage 2 over budget [E] (2^392 per core) |
+| 643, 4 | 5, 2 (2) | 8×4 | 1 | 128 | 668.8; +623.6 | -253.1, 200.9, 2^392.9 | +370 | – | stage 2 over budget [E] (2^393 per core) |
+| 643, 4 | 5, 2 (2) | 8×2×2 | 1 | 128 | 627.6; +583.4 | -302.4, 220.8, 2^442.2 | +280 | – | stage 2 over budget [E] (2^442 per core) |
+| 643, 4 | 5, 2 (2) | 4×4×2 | 1 | 128 | 627.6; +583.4 | -305.7, 224.0, 2^445.5 | +277 | – | stage 2 over budget [E] (2^445 per core) |
+| 643, 4 | 5, 2 (2) | 4×2×2×2 | 1 | 128 | 545.1; +502.0 | -400.9, 260.0, 2^540.6 | +100 | – | stage 2 over budget [E] (2^541 per core) |
+| 643, 4 | 5, 2 (2) | 2×2×2×2×2 | 1 | 128 | 380.3; +341.1 | -595.1, 338.6, 2^734.9 | -255 | – | stage 2 over budget [E] (2^735 per core) |
+| 719, 6 | 7, 2 (3) | 17 | ×4 on Z17 | 30 | 50.3; +25.4 | -37.0, 35.1, 2^71.5 | -13 | – | stage 2 over budget [E] (2^72 per core) |
+| 719, 6 | 7, 2 (3) | 17 | −1 on Q's Z3; −1 on Z17 | 36 | 19.4; +3.9 | -26.9, 36.5, 2^70.3 | -24 | – | stage 2 over budget [E] (2^70 per core) |
+| 719, 6 | 7, 2 (3) | 17 | −1 on Q's Z3, Z17; −1 on Z17 | 36 | 19.4; +3.9 | -26.9, 36.5, 2^70.3 | -24 | – | stage 2 over budget [E] (2^70 per core) |
+| 719, 6 | 7, 2 (3) | 17 | −1 on Q's Z3, Z17 | 52 | 37.7; +21.2 | -29.1, 48.2, 2^94.9 | -9 | – | stage 2 over budget [E] (2^95 per core) |
+| 719, 6 | 7, 2 (3) | 17 | −1 on Z17 | 54 | 127.4; +101.5 | -50.9, 57.5, 2^116.4 | +50 | – | stage 2 over budget [E] (2^116 per core) |
+| 719, 6 | 7, 2 (3) | 17 | −1 on Q's Z3 | 68 | 264.9; +228.9 | -78.8, 83.5, 2^162.8 | +149 | – | stage 2 over budget [E] (2^163 per core) |
+| 719, 6 | 7, 2 (3) | 17 | 1 | 102 | 388.3; +345.0 | -100.9, 118.7, 2^231.2 | +243 | – | stage 2 over budget [E] (2^231 per core) |
+| 719, 6 | 7, 3 (2) | 17 | ×4 on Z17 | 30 | 109.9; +85.0 | -108.8, 88.6, 2^177.3 | -25 | – | stage 2 over budget [E] (2^177 per core) |
+| 719, 6 | 7, 3 (2) | 17 | −1 on Q's Z3; −1 on Z17 | 36 | 94.0; +78.4 | -276.5, 157.2, 2^359.8 | -200 | – | stage 2 over budget [E] (2^360 per core) |
+| 719, 6 | 7, 3 (2) | 17 | −1 on Q's Z3, Z17; −1 on Z17 | 36 | 94.0; +78.4 | -276.5, 157.2, 2^359.8 | -200 | – | stage 2 over budget [E] (2^360 per core) |
+| 719, 6 | 7, 3 (2) | 17 | −1 on Q's Z3, Z17 | 52 | 151.8; +135.2 | -386.7, 222.3, 2^507.2 | -253 | – | stage 2 over budget [E] (2^507 per core) |
+| 719, 6 | 7, 3 (2) | 17 | −1 on Z17 | 54 | 245.6; +219.6 | -176.7, 153.6, 2^302.6 | +41 | – | stage 2 over budget [E] (2^303 per core) |
+| 719, 6 | 7, 3 (2) | 17 | −1 on Q's Z3 | 68 | 407.5; +371.6 | -121.4, 156.5, 2^276.7 | +249 | – | stage 2 over budget [E] (2^277 per core) |
+| 719, 6 | 7, 3 (2) | 17 | 1 | 102 | 613.7; +570.4 | -134.2, 212.8, 2^370.6 | +435 | – | stage 2 over budget [E] (2^371 per core) |
+| 719, 6 | 17, 2 (8) | 7 | −1 on Q's Z3 | 28 | 27.3; -2.1 | -8.6, 20.6, 2^48.1 | -12 | 39/39 multisets dead (all 242,977 type quadruples; §5) | no core [M] (exact stage-2 compression screens) |
+| 719, 6 | 17, 2 (8) | 7 | 1 | 42 | 26.9; -9.8 | -0.5, 28.6, 2^60.7 | -11 | 85/89 multisets dead; 4 pass Z17, Z2×Z17, Z3×Z17 (Q×Z17 too large) | stage 1 < 2^-4 per symmetry class [E] |
+| 719, 6 | 17, 4 (4) | 7 | −1 on Q's Z3 | 28 | 103.2; +73.8 | -16.6, 71.0, 2^126.0 | +55 | – | stage 2 over budget [E] (2^126 per core) |
+| 719, 6 | 17, 4 (4) | 7 | 1 | 42 | 149.0; +112.3 | 16.1, 92.1, 2^148.9 | +126 | – | stage 2 over budget [E] (2^149 per core) |
+| 719, 6 | 17, 8 (2) | 7 | 1 | 42 | 313.0; +276.2 | 135.9, 174.3, 2^253.9 | +409 | – | stage 2 over budget [E] (2^254 per core) |
+| 739, 4 | 23, 2 (11) | 8 | 1 | 32 | empty [M] | 17.3, 15.2, 2^29.5 | – | – | stage 1 empty [M] |
+| 739, 4 | 23, 11 (2) | 8 | 1 | 32 | 256.0; +219.8 | 66.7, 223.7, 2^367.6 | +283 | – | stage 2 over budget [E] (2^368 per core) |
+| 823, 8 | 17, 2 (8) | 3×2 | −1 on Z3 | 32 | -57.2; -89.2 | -85.7, 61.0, 2^131.4 | -176 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 823, 8 | 17, 2 (8) | 3×2 | 1 | 48 | 3.0; -39.3 | -38.6, 48.9, 2^108.1 | -79 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 823, 8 | 17, 4 (4) | 3×2 | −1 on Z3 | 32 | 7.7; -24.3 | -229.0, 170.3, 2^353.5 | -255 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 823, 8 | 17, 4 (4) | 3×2 | 1 | 48 | 134.0; +91.7 | -91.1, 153.2, 2^279.7 | -1 | – | stage 2 over budget [E] (2^280 per core) |
+| 823, 8 | 17, 8 (2) | 3×2 | −1 on Z3 | 32 | 129.2; +97.2 | -410.6, 350.4, 2^706.0 | -316 | – | stage 2 over budget [E] (2^706 per core) |
+| 823, 8 | 17, 8 (2) | 3×2 | 1 | 48 | 321.4; +279.1 | -78.0, 303.8, 2^522.9 | +198 | – | stage 2 over budget [E] (2^523 per core) |
+| 839, 8 | 13, 2 (6) | 8 | ×3 on Z8 | 40 | -6.6; -42.6 | -99.0, 69.0, 2^153.6 | -143 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 2 (6) | 8 | −1 on Z8 | 40 | -53.9; -86.8 | -132.5, 79.7, 2^186.8 | -220 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 2 (6) | 8 | ×5 on Z8 | 48 | 43.0; +3.1 | -75.5, 66.6, 2^142.0 | -74 | – | stage 2 over budget [E] (2^142 per core) |
+| 839, 8 | 13, 2 (6) | 4×2 | −1 on Z4 | 48 | -51.6; -87.6 | -157.6, 96.8, 2^223.9 | -246 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 2 (6) | 8 | 1 | 64 | 72.1; +27.1 | -56.3, 70.1, 2^147.3 | -30 | – | stage 2 over budget [E] (2^147 per core) |
+| 839, 8 | 13, 2 (6) | 4×2 | 1 | 64 | 23.6; -20.3 | -98.3, 85.3, 2^189.3 | -120 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 2 (6) | 2×2×2 | 1 | 64 | -73.1; -113.1 | -188.2, 121.9, 2^279.2 | -302 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 3 (4) | 8 | ×3 on Z8 | 40 | 6.5; -29.5 | -163.0, 132.1, 2^265.9 | -194 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 3 (4) | 8 | −1 on Z8 | 40 | -39.0; -72.0 | -235.6, 161.3, 2^338.6 | -309 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 3 (4) | 8 | ×5 on Z8 | 48 | 31.7; -8.3 | -121.0, 127.3, 2^244.1 | -131 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 3 (4) | 4×2 | −1 on Z4 | 48 | -64.7; -100.6 | -278.9, 194.7, 2^402.5 | -381 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 3 (4) | 8 | 1 | 64 | 121.2; +76.2 | -111.2, 147.4, 2^275.9 | -37 | – | stage 2 over budget [E] (2^276 per core) |
+| 839, 8 | 13, 3 (4) | 4×2 | 1 | 64 | 72.9; +28.9 | -194.9, 182.7, 2^359.5 | -168 | – | stage 2 over budget [E] (2^360 per core) |
+| 839, 8 | 13, 3 (4) | 2×2×2 | 1 | 64 | -23.8; -63.8 | -363.4, 255.0, 2^528.0 | -429 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 839, 8 | 13, 4 (3) | 8 | ×3 on Z8 | 40 | 106.7; +70.8 | 20.3, 85.9, 2^132.6 | +89 | – | stage 2 over budget [E] (2^133 per core) |
+| 839, 8 | 13, 4 (3) | 8 | −1 on Z8 | 40 | 60.0; +27.0 | 38.1, 77.4, 2^116.1 | +63 | – | stage 2 over budget [E] (2^116 per core) |
+| 839, 8 | 13, 4 (3) | 8 | ×5 on Z8 | 48 | 179.4; +139.4 | 16.2, 106.1, 2^168.0 | +154 | – | stage 2 over budget [E] (2^168 per core) |
+| 839, 8 | 13, 4 (3) | 4×2 | −1 on Z4 | 48 | 82.9; +46.9 | 45.3, 94.0, 2^139.2 | +90 | – | stage 2 over budget [E] (2^139 per core) |
+| 839, 8 | 13, 4 (3) | 8 | 1 | 64 | 271.7; +226.7 | 26.3, 142.5, 2^221.0 | +251 | – | stage 2 over budget [E] (2^221 per core) |
+| 839, 8 | 13, 4 (3) | 4×2 | 1 | 64 | 223.4; +179.4 | 40.4, 135.3, 2^206.8 | +218 | – | stage 2 over budget [E] (2^207 per core) |
+| 839, 8 | 13, 4 (3) | 2×2×2 | 1 | 64 | 126.9; +86.9 | 68.7, 121.2, 2^178.6 | +154 | – | stage 2 over budget [E] (2^179 per core) |
+| 839, 8 | 13, 6 (2) | 8 | ×3 on Z8 | 40 | 197.2; +161.2 | -271.4, 277.1, 2^528.3 | -113 | – | stage 2 over budget [E] (2^528 per core) |
+| 839, 8 | 13, 6 (2) | 8 | −1 on Z8 | 40 | 150.6; +117.6 | -432.7, 344.1, 2^688.7 | -318 | – | stage 2 over budget [E] (2^689 per core) |
+| 839, 8 | 13, 6 (2) | 8 | ×5 on Z8 | 48 | 285.6; +245.7 | -164.1, 265.3, 2^471.7 | +79 | – | stage 2 over budget [E] (2^472 per core) |
+| 839, 8 | 13, 6 (2) | 4×2 | −1 on Z4 | 48 | 189.4; +153.4 | -498.8, 410.2, 2^809.1 | -348 | – | stage 2 over budget [E] (2^809 per core) |
+| 839, 8 | 13, 6 (2) | 8 | 1 | 64 | 419.3; +374.4 | -97.5, 295.9, 2^509.1 | +274 | – | stage 2 over budget [E] (2^509 per core) |
+| 839, 8 | 13, 6 (2) | 4×2 | 1 | 64 | 371.1; +327.1 | -281.0, 375.2, 2^692.6 | +44 | – | stage 2 over budget [E] (2^693 per core) |
+| 839, 8 | 13, 6 (2) | 2×2×2 | 1 | 64 | 274.6; +234.6 | -647.0, 532.0, 2^1058.7 | -415 | – | stage 2 over budget [E] (2^1059 per core) |
+| 919, 8 | 19, 2 (9) | 3×2 | −1 on Z3 | 32 | −∞ [E] | 6.8, 19.2, 2^38.7 | – | per character: 0/15 dead | stage 1 empty [E] (target outside the lattice of every multiset) |
+| 919, 8 | 19, 2 (9) | 3×2 | 1 | 48 | -13.4; -55.8 | 9.6, 30.3, 2^59.9 | -47 | – | stage 1 < 2^-4 per symmetry class [E] |
+| 919, 8 | 19, 3 (6) | 3×2 | −1 on Z3 | 32 | empty [M] | – | – | – | stage 1 empty [M] |
+| 919, 8 | 19, 3 (6) | 3×2 | 1 | 48 | empty [M] | – | – | – | stage 1 empty [M] |
+| 919, 8 | 19, 6 (3) | 3×2 | −1 on Z3 | 32 | 60.5; +28.5 | 86.3, 89.7, 2^124.1 | +112 | – | stage 2 over budget [E] (2^124 per core) |
+| 919, 8 | 19, 6 (3) | 3×2 | 1 | 48 | 219.3; +176.9 | 110.0, 144.8, 2^207.0 | +284 | – | stage 2 over budget [E] (2^207 per core) |
+| 919, 8 | 19, 9 (2) | 3×2 | −1 on Z3 | 32 | 132.5; +100.6 | -465.6, 405.3, 2^806.9 | -368 | – | stage 2 over budget [E] (2^807 per core) |
+| 919, 8 | 19, 9 (2) | 3×2 | 1 | 48 | 329.8; +287.5 | -75.9, 341.9, 2^590.3 | +208 | – | stage 2 over budget [E] (2^590 per core) |
 
 ---
 
-## 4. The six configurations with a stage-2 budget under 2^48.1
+## 4. The six configurations with a stage-2 budget of at most 2^48.1
 
 Costs by `theory/s1z_budget_batch.py` (`logs/s1z/budget_skipped.jsonl`): the typical-y level budget of
 `theory/ab_typical_levels.py` with no stage-2 orbit cap, and the model 2^{D_def + C_S − H_S/2} calibrated at 347 and 523
@@ -345,8 +511,8 @@ per y − log2 s (§5.4).
 - **Cores are expected in the 599 rich slices** (+15 to +41 per symmetry class [E]); what is missing is a stage-2 solver
   3 to 6 bits cheaper than the model (§8.3). The 719 slice with ×4 on Z17 is the opposite case: a rich stage 1 but a stage
   2 of −37 bits per y, 2^−13 cores per class.
-- **Everything else that is rich costs 2^84 or more**: 599 with U = 1 (2^84), c = 8 (839, 823, 919: 2^116 and up), the
-  s ≥ 3 slices (2^116 and up) and the 643 c = 4 slices (2^167 and up).
+- **Everything else that is rich costs 2^84 or more**: 599 with U = 1 (2^84), the other 719 slices (2^95 and up),
+  c = 8 (839, 823, 919: 2^116 and up), the s ≥ 3 slices (2^116 and up) and the 643 c = 4 slices (2^167 and up).
 
 ---
 
@@ -361,8 +527,8 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
   CP-SAT with the compression fixed finds nothing in 800 s. A sampler for these sparse letter sets would
   enumerate the ten large entries first (their positions are pinned down by the coset sums) and then solve for the
   ±1 part.
-- For the rich-but-expensive slices of §6 the exact screens at the cheap levels leave every multiset alive, so a
-  stage-2 campaign there would first need the joint levels (§8) and a stage-1 sampler.
+- For the cheapest rich-but-expensive slice of §6 (×4 on Z9) the exact screens at the cheap levels leave all 85
+  multisets alive, so a stage-2 campaign there would first need the joint levels (§8) and a stage-1 sampler.
 
 ---
 
@@ -410,7 +576,7 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
    beyond `theory/ab_qaut.py`, and the other abelian types of H' at 739 (only H' = Z8 was in the skipped list; the
    proof of §4.1 covers every H' of order 8 with U = 1).
 3. **More than 60 G'-orbits.** The largest skipped configurations (643 with 128 orbits, 839 with 64, 719 with 102)
-   are already decided by their stage-2 budgets (2^100 and up [E]); configurations with more orbits at the other open
+   are already decided by their stage-2 budgets (2^147 and up [E]); configurations with more orbits at the other open
    orders were never listed.
 4. **c ≥ 10.** For 669 and 789 (c = 10 only) and the c = 12 options of 599, 659, 719, 839, 863, 947, 971, frames exist
    (`report/alpoge_design_answer.md` §3.1) but no frame pair with a flat forced corner is known; the Singer ansatz
@@ -429,7 +595,7 @@ python3 theory/s1z_screen.py logs/s1z/zscreen_skipped.jsonl --steal --N 1500 --K
                                                                                       # 49 rows were run with --N 3000 --K 40)
 python3 theory/s1z_table.py --md TABLE.md                                             # §3
 python3 theory/s1z_calib.py logs/ab/cfg_347_s6.json OUT.jsonl --N 2000 --exact        # 347 calibration (1 min)
-python3 theory/s1z_calib_batch.py                                                     # the 26 rungs (logs/s1z/calib/rungs.json)
+python3 theory/s1z_calib_batch.py                                                     # the 27 rungs (logs/s1z/calib/rungs.json)
 python3 theory/s1z_calib_report.py                                                    # §2 summary, K-bootstrap
 python3 theory/s1z_border.py logs/s1z/c719/cfg_719_q17_s2_negQ3.json OUT.jsonl        # bordered multisets
 python3 theory/s1z_typescreen.py logs/s1z/c719/cfg_719_q17_s2_negQ3.json OUT.jsonl --part i/4   # §5.3 (about 1 h on 4 cores)
