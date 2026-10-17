@@ -67,7 +67,7 @@ def screen(cfg, N=3000, K=40, nall=60, exact_max=30000, seed=1, log=None):
             r = Z.estimate(zq, N=N, seed=seed + t); lp = lg(r.get('bits'))
             ests.append(dict(i=t, log2E=r.get('log2E'), rank=r.get('rank'), mahal=r.get('mahal')))
         vals.append((t, lp))
-        if log: log(dict(stage='ms', i=t, m=list(q['m']), **ests[-1], secs=round(time.time() - t0, 1)))
+        if log: log(dict(stage='ms', m=list(q['m']), **ests[-1], secs=round(time.time() - t0, 1)))
     def lsum(xs):
         xs = [x for x in xs if x > -math.inf]
         if not xs: return -math.inf
