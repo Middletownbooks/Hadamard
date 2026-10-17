@@ -134,3 +134,5 @@ logs/ab/paley6/*.ybin.ckpt
 logs/ab/paley6/zq/*.ybin
 logs/ab/paley6/zq/zq_991_q13_s4_u4.jsonl
 logs/ab/paley6/zq/z2_991_q13_s4_u4.jsonl
+logs/ab/paley6/zq/*.jsonl.s*
+logs/ab/paley6/zq/qzq*_991_q13_s4_u4.jsonl
