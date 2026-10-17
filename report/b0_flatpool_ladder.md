@@ -16,7 +16,7 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
 - **Rung 1 (311): the method works at scale; the rate is slow [M/E].**
   - The pools are the whole reachable ρ ≤ 0.32 flat set.
   - A production-scale planted test recovers Alpöge's core.
-  - The measured and modelled rate is one core per about 1,200 k = 9 buckets, about 5 hours of join per core on 4 cores.
+  - The measured and modelled rate is one core per about 1,200 k = 9 buckets, about 2 hours of join per core on 4 cores.
   - Production result: see §3.
 - **New quantitative understanding [E, checked against measurements]:**
   1. **Energy-shell drift.** Flat blocks sit on a PAF-energy sphere. This makes the true n′ about
@@ -41,6 +41,7 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
 | Partner-key order independent of τ [P] | A and C sorted once, not per bucket: 18 s → 6 s per bucket at 311 | same |
 | Disk-capable join | presorted memory-mapped pools, keys computed in the merge, shared files for equal pools | `kt_join_disk.py` |
 | Skip histogram merge when one pass fits | one third less pair work | `kt_join_slots.py` (fast mode) |
+| Radix-partitioned exact key match instead of the 1 GB byte bloom | 311 k = 9 bucket 18.6 s → 6.5 s (the bloom was ~61% of a bucket, by py-spy) | `scripts/pmatch.py` |
 
 Validation: planted cores recovered by every join variant at 311 (k = 10, 12) and 223 (two-word masks, shared slots),
 and at production scale at 311. `kt_join_disk.py` reproduces `kt_join_slots.py`'s bucket counts exactly.
@@ -92,7 +93,7 @@ and at production scale at 311. `kt_join_disk.py` reproduces `kt_join_slots.py`'
 | n′ | 81.26 Gaussian; partial joins +0.03 per class at k = 8–10; sphere 84.2 |
 | solution tuples in the closure pools | 2^13.2, i.e. about 10 distinct cores [E] |
 | run A: closure pools, k = 10 | 842 buckets, 0 hits (cluster of 32: one core per about 4,700 buckets expected; consistent) |
-| run B: reversal-canonical pools (2^23.69 / 2^23.69 / 2^23.42 / 2^22.62), k = 9 | 74M AB and 33M CD pairs per bucket, 15–20 s; model one core per about 1,200 buckets (about 5 h) |
+| run B: reversal-canonical pools (2^23.69 / 2^23.69 / 2^23.42 / 2^22.62), k = 9 | 74M AB and 33M CD pairs per bucket, 6.5 s with pmatch (18.6 s before); model one core per about 1,200 buckets (about 2 h) |
 
 Results of run B: (pending).
 

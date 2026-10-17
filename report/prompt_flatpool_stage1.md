@@ -207,3 +207,13 @@ Steps:
   - Fix: reversal-canonical slots (`--revcanon`, one block per reversal pair; pools halve, pairs drop 4x, cores per bucket
     unchanged). Cost model: k = 9 best, about 2.5 h per core. Production restarted on `slots_r0.32_rev`, k = 9
     (`logs/k311/runners/run_prod_rev.sh`). The k = 10 run's 842 buckets: `logs/k311/join_r0.32_k10_log.jsonl`.
+- 2026-10-17 ~13:30 UTC, join speed: py-spy on the running 311 join showed `bloom_match` (1 GB byte bloom, three
+  random-access passes, zeroed per call) at ~61% of a bucket. `scripts/pmatch.py` (exact radix-partitioned match,
+  1024 partitions, self-tested against bloom_match) replaces it in all slot joins: k = 9 buckets 18.6 s -> 6.5 s.
+  Also: fast mode (skip the histogram merge when one pass fits), presort of A and C. 311 production (reversal-canonical,
+  k = 9) now ~1,200 buckets per core by the model, ~2 h per core.
+- 859/13 measured: n'_G = 112.5 / 115.1 / 117.4 / 119.4 at rho 0.34 / 0.36 / 0.38 / 0.40; flat sets 2^28.7 / 2^31.1
+  (row sum 1) at 0.34 / 0.36. Existence edge ~0.37; plain k-tree ~2^53 operations per core even on whole flat sets:
+  no-go (`report/b0_flatpool_ladder.md` section 6).
+- Caution: high-yield generation (859 at rho 0.38, 10 min) grew to 8-10 GB and was OOM-killed twice (not the join);
+  keep generation minutes short at high rho.
