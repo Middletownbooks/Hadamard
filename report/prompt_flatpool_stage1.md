@@ -72,15 +72,22 @@ Why: at the open orders every b ≥ 3 configuration with ≤ 26 G'-orbits that o
 (`report/alpoge_gap_analysis.md` §4, `report/alpoge_design_answer.md` §11). The best costed lead is 599 at c = 6
 (q = 11, s = 2, H' = Z₉, −1 on Z₉; 30 G'-orbits; stage 2 about 2^43 per core, D_def 21.5).
 
-Existing machinery: `theory/ab_sweep.py` (slice build), `theory/ab_s1sd.py` (exact stage 1: α-quadruples →
-S-join → D-join), `theory/ab_s1_chars.py` (stage 1 by the character decomposition over Q = Z₂², c = 4 only),
-`theory/ab_stage2.py` and `theory/ab_prod347.py` (stage 2, validated on 347), `theory/ab_typical_levels.py`
-(stage-2 budget per y), `scripts/cyclo_stage1_cpsat.py` (CP-SAT stage 1; found a 523 y in 323 s).
+Existing machinery (check `git log` before writing new files: several of these already do part of the job):
+- `theory/ab_s1_cpsat.py`: CP-SAT stage 1 for these slices (orbit variables, pair products, implied block-sum and
+  Q-character constraints, symmetry breaking); `--decide` and `--enumerate N` (every solution verified exactly).
+- `theory/ab_s1_sample.py`: random stage-1 solutions for a prescribed Q-compression quadruple (random α-triples
+  completed by a hash lookup of the fourth, then the exact S/D joins); used for the monomial c = 6 pipeline.
+- `theory/ab_sweep.py` (slice build), `theory/ab_s1sd.py` (exact stage 1), `theory/ab_s1_chars.py` (c = 4 only),
+  `theory/ab_stage2.py` and `theory/ab_prod347.py` (stage 2, validated on 347), `theory/ab_typical_levels.py` and
+  `ab_gauss.stage2_typical(sl, Y)` (stage-2 Gaussian at a given y), `theory/ab_borderfit.py` (border fit of a y),
+  `scripts/cyclo_stage1_cpsat.py` (CP-SAT stage 1 for cyclic GP slices; a 523 y in 323 s).
+- 599 c = 6 configuration (the lead): `{"v":599,"c":6,"b":5,"h":99,"m":594,"Q":[2,3],"H1":[9],"q":11,"s":2,"f":5,
+  "mods":[2,3,9,11],"nQ":2,"U":[[2,2,8]]}` (30 G'-orbits; `logs/ab/p1/batch/levels_batch_p*.jsonl`).
 
 Steps:
-1. A sampler of stage-1 solutions y (not an enumerator): CP-SAT per row quadruple and α-congruence class, or a
-   randomised hashed join that keeps only a sample of each list; validate it on 347's slice (its published y must be
-   reachable; compare the sampled y distribution with the exact stage 1 there).
+1. Sample stage-1 solutions y with the two tools above (CP-SAT with random objectives for diversity; or
+   `ab_s1_sample.py` per border-class compression quadruple); validate on 347's slice (the published y must satisfy
+   the model up to the model's symmetry breaking: positive first letter per block, non-decreasing block energies).
 2. Rank sampled y by the stage-2 Gaussian yield (`ab_typical_levels` evaluated at the actual y), as the 419 gadgets
    were ranked; calibrate the ranking on 347 (exact stage 2 per y is affordable there).
 3. Apply to 599 c = 6, then to the unexamined configurations with the best whole-slice budgets.
@@ -101,4 +108,6 @@ Steps:
   - Choice of rho: distinct cores in the slot pools = |A| L^3 2^(-n'), |A| growing with generation time; rho = 0.36
     beats 0.40 by about 2^5 at equal time. The production join on 64-bit masks covers r <= 64 orbits only (311 has
     63); rungs 2-4 (r = 71, 75, 95) need two-word masks.
+- 2026-10-17: caution for the next session: `theory/ab_s1_cpsat.py` and `theory/ab_s1_sample.py` already existed;
+  a draft of mine briefly overwrote the first and was reverted from git (`git checkout`). Check for existing files.
 
