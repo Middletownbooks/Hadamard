@@ -175,8 +175,10 @@ are too large for recaptures, so their flat-set sizes are extrapolated [E]).
   - The low ends belong to unbalanced row sums (223's 23, 859's 53).
   - At 283 (r = 95), ρ ≤ 0.30 gives 2^32.0–2^33.2 blocks per row sum. The old rough "~2^33" agrees.
 - **Capture–recapture at 283, ρ = 0.30:** 10-minute single-core samples (about 1,000 orbits each) give 0 recaptures,
-  as expected for 2^26+ orbits. A converging count needs about 36k orbits per sample (about 2 h on 4 cores).
-  (pending)
+  as expected for 2^26+ orbits. Two 60-minute samples (5,801 / 5,933 orbits at row sum 19; 3,841 / 3,750 at row
+  sum 7; `logs/k283/capture_r0.30_m60.txt`) also give 0 recaptures, so N ≥ n₁n₂/3 at about 95%: at least 2^30.0 /
+  2^28.9 blocks [M, lower bound], consistent with the curve. A converging count needs about 36k orbits per sample
+  (about 2 h on 4 cores); it is not run while the 311 join holds the machine.
 - **Existence:** a core occupies 94 rotations × 2³ block reversals × 6 slot assignments ≈ 2^12.1 tuples. The whole
   ρ ≤ 0.30 flat set then holds 2^(4·32.6 − 122.8 − 12.1) ≈ 2^−4.5 cores (up to about 2 at the curve's upper end).
   Alpöge's 283 blocks have ρ = 0.291, 0.299, 0.287, 0.290.
