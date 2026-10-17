@@ -108,7 +108,7 @@ class AggScreen:
                     keys.append(np.unique(np.stack([E, H], 1), axis=0))
                 return
             g = G[gi]
-            CH = max(1, 1_000_000 // max(1, len(g)))
+            CH = max(1, 150_000 // max(1, len(g)))
             for c0 in range(0, len(accE), CH):
                 e = (accE[c0:c0 + CH][:, None] + g[None, :, 0]).ravel()
                 X = (accX[c0:c0 + CH][:, None, :] + g[None, :, 1:]).reshape(-1, nr)
@@ -188,7 +188,7 @@ def run_config(cfg, outp, levels, max_states=3 * 10 ** 7, part=0, nW=1):
     if os.path.exists(outp):
         for l in open(outp):
             r = json.loads(l)
-            if r.get('stage') == 'ms': done.add(r['i'])
+            if r.get('stage') == 'ms' and 'error' not in r: done.add(r['i'])
     t0 = time.time()
     Z = ZOrb(cfg)
     Cz = Z.compressions(); cls, idx = Z.classes(Cz); qd = Z.class_quads(cls)

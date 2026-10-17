@@ -31,8 +31,9 @@ calibration named).
      count is 0 was estimated at ≤ 2^−4 solutions per symmetry class** (5 of 5; seven more rungs have no
      compression quadruple at all). Per multiset the estimate is unreliable (347: 12 of 27 multisets exactly empty
      although estimated at 2^2–2^8 each).
-   - Estimating from K multisets drawn in proportion to their exact lag-0 weight is within ±0.4 bit of the
-     all-multiset estimate at K = 40 (5–95%) on every rung but one with a heavy tail.
+   - Estimating from K multisets drawn in proportion to their exact lag-0 weight: at K = 40 the 5–95% range is within
+     ±0.4 bit of the all-multiset estimate on 15 of 20 rungs and within ±0.6 on 17; on three exactly empty rungs a
+     few multisets carry the weight and the subsample can miss them (down to −7.5 bits; up at most +1.4).
    - Symmetric solutions are a small share where solutions are plentiful: 4.9% of 347's (all blocks fixed by a
      nontrivial affine map), 0% at v = 203 and v = 127.
    - **Margin:** a configuration counts as rich when its estimate is at least 2^+4 per symmetry class, as dead [E]
@@ -150,8 +151,13 @@ v = 239, 311 with −1 on Q's Z3; c = 8 at v = 271, 319, 463). Ten rungs were to
   the Gaussian is meaningless; the production screen counts those exactly instead (any block list below 30,000).
 - **Number of multisets.** Drawing K multisets with probability ∝ (ordered quadruples × exact lag-0 count) and scaling
   the mean Gaussian probability by the exact lag-0 total: the 5–95% range of log2(K-estimate / all-multiset estimate)
-  over 2,000 draws is within ±0.4 bit at K = 40 on every rung except v = 395 (−1 on Z5), where a few multisets carry
-  all the weight (−7.5 … +1.3). The production screen uses all multisets when there are at most 60, else K = 40.
+  over 2,000 draws is within ±0.4 bit at K = 40 on 15 of the 20 rungs with multisets and within ±0.6 on 17. The three
+  exceptions are exactly empty rungs whose weight sits in a few multisets: v = 335 (−1 on H' = Z5; −1.8 … +1.3),
+  v = 175 (c = 8; −3.1 … +1.4) and v = 395 (−1 on H' = Z5; −7.5 … +1.3). The subsample misses such multisets more
+  often than it overweights them, so the error is mostly downward; at K = 20 the upper end stays below +1.9 bits. The
+  production screen uses all multisets when there are at most 60, else K = 40 (the first 49 configurations) or K = 24
+  (`logs/s1z/calib/calib_summary.json`, `K_bootstrap_vs_all`). The one importance-sampled verdict near the margin,
+  the 599 lead, was rerun over all 85 multisets (§4.4).
 - **Symmetric solutions** (every block fixed by an affine map g ↦ φ(g) + t of G' that moves some U-orbit): 4.9% of
   347's 7,550,976 ordered solutions; 0% at v = 203 and v = 127. The scarce-regime excess of
   `report/b599_answer.md` §3 (93% symmetric, Gaussian 1.3–5.5 bits low) did not recur in these rungs.
@@ -208,7 +214,7 @@ agree [M].
 Both have 37 compression multisets (296 compressions); the Gaussian of the 24 remaining lag classes leaves
 2^−24.9 ordered solutions, 2^−40 per symmetry class [E] — 36 bits under the margin of §2.4. (U acts on Q, so
 `theory/b599_symgen.py` does not apply; the per-character Z11 screens leave all 37 multisets alive [M],
-`logs/s1z/agg/char_screens.jsonl`.) AGG_NEG12
+`logs/s1z/agg/char_screens.jsonl`.) The joint compression screens were not run here: 36 bits below the calibrated band, stage 1 is decided [E].
 
 ### 4.3 919, c = 8, q = 19, s = 2, −1 on Z3 (the order is built)
 
@@ -220,10 +226,12 @@ the compressions was not completed, so this stays [E]. The per-character Z19 scr
 
 ### 4.4 The 599 lead
 
-Stage 1 is 2^18.5 ordered solutions, 2^−6.0 per symmetry class [E] (85 multisets, importance sample of 40). This is
+Stage 1 is 2^18.5 ordered solutions, 2^−6.0 per symmetry class [E], over all 85 multisets
+(`logs/s1z/zscreen_599lead_all.jsonl`; the importance sample of 40 in `logs/s1z/zscreen_skipped.jsonl` gives the same
+2^18.51, because the Gaussian of the 16 remaining lag classes costs 94.4–96.0 bits in every multiset). This is
 `report/b599_answer.md`'s 2^4.9, which was a sum of one estimate per symmetry class of compression quadruples. Its
 symmetric families (order-3 elements over all quadruples; order 3 and the 15-dimensional involutions over the bordered
-classes) are empty [M] (b599 §4). AGG_LEAD
+classes) are empty [M] (b599 §4). The per-character Z11 screens leave all 85 multisets alive [M] (`logs/s1z/agg/char_screens.jsonl`).
 
 ---
 
@@ -303,7 +311,42 @@ show there is none.
 
 ## 6. Rich but over budget [E]
 
-SIX_PLACEHOLDER
+"Rich" is an estimated stage 1 of at least 2^+4 solutions per symmetry class (§2.4). Costs are the model
+2^{D_def + C_S − H_S/2} at a typical y (`logs/s1z/budget_skipped.jsonl`); for the two cheapest rich slices, six
+typical y's each (`logs/s1z/budget_seeds_599rich.log`). Expected cores per symmetry class = stage 1 per class + stage 2
+per y − log2 s (§5.4).
+
+| configuration | G'-orbits | stage 1: ordered; per class | stage 2 per y | D_def | cost per core | cores per class | exact screens [M] |
+|---|---|---|---|---|---|---|---|
+| 599, c = 6, q = 11, s = 2, H' = Z9, ×4 on Z9 | 30 | 2^61.1; 2^+30.8 | −10.4 to −14.4 | 24.3–27.5 | **2^49.9–2^52.6** (six y's) | +15 to +19 | all 85 multisets pass Z11 and Z2 × Z11; Z3 × Z11 does not fit in memory |
+| 599, c = 6, q = 11, s = 2, H' = Z3², −1 on one Z3 (two keys, isomorphic) | 36 | 2^59.8; 2^+29.5 | −6.5 to −12.5 | 29.7–30.9 | 2^56.5–2^61.2 (six y's) | +16 to +22 | – |
+| 599, c = 6, q = 11, s = 2, H' = Z3², −1 on Q's Z3 | 36 | 2^85.6; 2^+55.4 | −13.1 | 31.2 | 2^61.3 | +41 | – |
+| 599, c = 6, q = 11, s = 2, H' = Z9, −1 on Q's Z3 | 36 | 2^85.7; 2^+54.8 | −13.8 | 31.9 | 2^62.0 | +40 | – |
+| 719, c = 6, q = 7, s = 2, H' = Z17, ×4 on Z17 | 30 | 2^50.3; 2^+25.4 | −37.0 | 35.1 | 2^71.5 | −13 | – |
+| 599, c = 6, q = 11, s = 2, H' = Z3², U = 1 | 54 | 2^116.1; 2^+78.5 | −9.0 | 44.5 | 2^84.0 | +68 | – |
+
+- **Every rich configuration costs more than 2^47 per core.** The cheapest, 599 with ×4 on Z9, is 2.9 to 5.6 bits over
+  at the six typical y's. The spread of the cost over typical y's is 2.7 bits there and 4.7 bits for the Z3² slice; the
+  two isomorphic Z3² keys of the skipped list (one typical y each: 2^56.5 and 2^60.4) differ by 3.9 bits, inside that
+  spread.
+- **Within the 599 c = 6, s = 2 family, stage-1 richness and the stage-2 deficit rise together**, and no member falls
+  in the window "rich and under 2^47":
+
+  | U (and H') | G'-orbits | stage 1 per class | D_def | cost per core |
+  |---|---|---|---|---|
+  | −1 on Q's Z3 and on H' (Z9 or Z3²) | 28 | 2^−40 | 17.2 | 2^34.3 |
+  | −1 on Z9 (the lead) | 30 | 2^−6.0 | 21.5 | 2^43.5 |
+  | ×4 on Z9 | 30 | 2^+30.8 | 24.3–27.5 | 2^49.9–2^52.6 |
+  | −1 on one Z3 of Z3² | 36 | 2^+29.5 | 29.7–30.9 | 2^56.5–2^61.2 |
+  | −1 on Q's Z3 (Z9 or Z3²) | 36 | 2^+55 | 31.2–31.9 | 2^61.3–2^62.0 |
+  | 1 | 54 | 2^+78.5 | 44.5 | 2^84 |
+
+  The step from −1 on Z9 to ×4 on Z9 (same 30 orbits) gains 37 bits of stage 1 per class and costs 8 bits of stage 2.
+- **Cores are expected in the 599 rich slices** (+15 to +41 per symmetry class [E]); what is missing is a stage-2 solver
+  3 to 6 bits cheaper than the model (§8.3). The 719 slice with ×4 on Z17 is the opposite case: a rich stage 1 but a stage
+  2 of −37 bits per y, 2^−13 cores per class.
+- **Everything else that is rich costs 2^84 or more**: 599 with U = 1 (2^84), c = 8 (839, 823, 919: 2^116 and up), the
+  s ≥ 3 slices (2^116 and up) and the 643 c = 4 slices (2^167 and up).
 
 ---
 
@@ -330,6 +373,11 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
 - **719, c = 6, q = 17, s = 2, H' = Z7, −1 on Q's Z3: no core [M]** (§5), by two exact methods (per type
   quadruple and aggregated per compression quadruple). This was the only skipped configuration with a stage-2 budget
   near 2^48 and a stage 1 that is not negligible.
+- **719, c = 6, q = 17, s = 2, H' = Z7, U = 1: 85 of the 89 compression multisets have no lift [M]** (aggregated
+  screen, 8 at Z17 and 77 at Z2 × Z17; `logs/s1z/agg/agg_719_c6_q17_s2_H7_U[].jsonl`). The other four pass Z17,
+  Z2 × Z17 and Z3 × Z17, and the joint Q × Z17 level (a product of 2.4·10^10 states) or the per-type screen (about
+  600,000 type quadruples) was not run: the slice is already dead in stage 1 (2^−9.8 per symmetry class [E]) and costs
+  2^60.7 per core.
 - **739, c = 4, q = 23, s = 2, H' of order 8, U = 1: no stage-1 solution [P]** (§4.1): the energy forces five large
   letters, the Q-level forces an even number in every coset.
 - **919, c = 8, s = 3 (U = 1 and −1 on Z3): no stage-1 solution [P]**: every letter of the f = 6 fibre is at least 5
@@ -377,7 +425,8 @@ exactly, rank by stage-2 yield) has no input: no configuration is both rich (≥
 
 ```
 python3 theory/s1z_budget_batch.py logs/s1z/budget_skipped.jsonl --part 0/2          # stage-2 budgets (two workers)
-python3 theory/s1z_screen.py logs/s1z/zscreen_skipped.jsonl --part 0/3                # z-screen (three workers)
+python3 theory/s1z_screen.py logs/s1z/zscreen_skipped.jsonl --steal --N 1500 --K 24    # z-screen (one per core; the first
+                                                                                      # 49 rows were run with --N 3000 --K 40)
 python3 theory/s1z_table.py --md TABLE.md                                             # §3
 python3 theory/s1z_calib.py logs/ab/cfg_347_s6.json OUT.jsonl --N 2000 --exact        # 347 calibration (1 min)
 python3 theory/s1z_calib_batch.py                                                     # the 26 rungs (logs/s1z/calib/rungs.json)

@@ -15,6 +15,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -22,7 +26,9 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 46.17,
-  "zscreen": {},
+  "zscreen": {
+   "error": "OverflowError('int too large to convert to float')"
+  },
   "S1": null,
   "S1_sym": null,
   "budget": {
@@ -59,6 +65,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -72,9 +82,17 @@
   "L1": 68,
   "orbits": 204,
   "log2_sym": 29.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 536.615,
+   "log2_stage1_total": 263.202,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 263.202,
+  "S1_sym": 234.0,
   "budget": {
    "H2": 173.0,
    "C2": 407.35,
@@ -85,6 +103,7 @@
    "log2_cost_per_core": 306.6,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -1.3,
   "verdict": "stage 2 over budget [E] (2^307 per core)"
  },
  {
@@ -109,6 +128,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -159,6 +182,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -172,9 +199,17 @@
   "L1": 68,
   "orbits": 204,
   "log2_sym": 26.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 536.615,
+   "log2_stage1_total": 181.645,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 181.645,
+  "S1_sym": 155.5,
   "budget": {
    "H2": 173.0,
    "C2": 503.45,
@@ -185,6 +220,7 @@
    "log2_cost_per_core": 403.45,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -176.0,
   "verdict": "stage 2 over budget [E] (2^403 per core)"
  },
  {
@@ -209,6 +245,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -222,9 +262,17 @@
   "L1": 52,
   "orbits": 156,
   "log2_sym": 28.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 400.675,
+   "log2_stage1_total": 200.538,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 200.538,
+  "S1_sym": 172.4,
   "budget": {
    "H2": 125.0,
    "C2": 300.91,
@@ -235,6 +283,7 @@
    "log2_cost_per_core": 229.66,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -4.5,
   "verdict": "stage 2 over budget [E] (2^230 per core)"
  },
  {
@@ -259,6 +308,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -272,9 +325,17 @@
   "L1": 64,
   "orbits": 192,
   "log2_sym": 36.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 518.818,
+   "log2_stage1_total": 263.108,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 263.108,
+  "S1_sym": 226.9,
   "budget": {
    "H2": 146.0,
    "C2": 305.35,
@@ -285,6 +346,7 @@
    "log2_cost_per_core": 221.1,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 66.6,
   "verdict": "stage 2 over budget [E] (2^221 per core)"
  },
  {
@@ -309,6 +371,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -368,6 +434,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    32
   ],
@@ -381,9 +451,17 @@
   "L1": 40,
   "orbits": 120,
   "log2_sym": 31.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 301.922,
+   "log2_stage1_total": 24.736,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 24.736,
+  "S1_sym": -6.4,
   "budget": {
    "H2": 82.0,
    "C2": 210.85,
@@ -394,7 +472,8 @@
    "log2_cost_per_core": 164.6,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^165 per core)"
+  "log2_cores_per_sym": -136.3,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -413,6 +492,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    16,
    2
@@ -421,7 +504,9 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 45.17,
-  "zscreen": {},
+  "zscreen": {
+   "error": "OverflowError('int too large to convert to float')"
+  },
   "S1": null,
   "S1_sym": null,
   "budget": {
@@ -459,6 +544,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    16,
    2
@@ -473,9 +562,17 @@
   "L1": 72,
   "orbits": 216,
   "log2_sym": 32.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 574.378,
+   "log2_stage1_total": 275.696,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 275.696,
+  "S1_sym": 243.5,
   "budget": {
    "H2": 178.0,
    "C2": 439.1,
@@ -486,6 +583,7 @@
    "log2_cost_per_core": 336.6,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -18.6,
   "verdict": "stage 2 over budget [E] (2^337 per core)"
  },
  {
@@ -511,6 +609,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    16,
    2
@@ -563,6 +665,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    16,
    2
@@ -615,6 +721,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    16,
    2
@@ -629,9 +739,17 @@
   "L1": 56,
   "orbits": 168,
   "log2_sym": 31.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 440.233,
+   "log2_stage1_total": 202.638,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 202.638,
+  "S1_sym": 171.5,
   "budget": {
    "H2": 132.0,
    "C2": 339.79,
@@ -642,6 +760,7 @@
    "log2_cost_per_core": 263.54,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -37.3,
   "verdict": "stage 2 over budget [E] (2^264 per core)"
  },
  {
@@ -667,6 +786,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    16,
    2
@@ -713,6 +836,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    4
@@ -721,7 +848,9 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 45.17,
-  "zscreen": {},
+  "zscreen": {
+   "error": "OverflowError('int too large to convert to float')"
+  },
   "S1": null,
   "S1_sym": null,
   "budget": {
@@ -759,6 +888,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    4
@@ -811,6 +944,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    4
@@ -863,6 +1000,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    4
@@ -915,6 +1056,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    4
@@ -962,6 +1107,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    2,
@@ -971,7 +1120,9 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 44.17,
-  "zscreen": {},
+  "zscreen": {
+   "error": "OverflowError('int too large to convert to float')"
+  },
   "S1": null,
   "S1_sym": null,
   "budget": {
@@ -1010,6 +1161,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    2,
@@ -1025,9 +1180,17 @@
   "L1": 80,
   "orbits": 240,
   "log2_sym": 35.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 649.03,
+   "log2_stage1_total": 294.324,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 294.324,
+  "S1_sym": 259.2,
   "budget": {
    "H2": 200.0,
    "C2": 507.23,
@@ -1038,6 +1201,7 @@
    "log2_cost_per_core": 390.98,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -49.1,
   "verdict": "stage 2 over budget [E] (2^391 per core)"
  },
  {
@@ -1064,6 +1228,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    2,
@@ -1118,6 +1286,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8,
    2,
@@ -1166,6 +1338,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    4,
    4,
@@ -1175,9 +1351,17 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 44.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 627.573,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 627.573,
+  "S1_sym": 583.4,
   "budget": {
    "H2": 334.0,
    "C2": 639.71,
@@ -1188,6 +1372,7 @@
    "log2_cost_per_core": 445.46,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 276.7,
   "verdict": "stage 2 over budget [E] (2^445 per core)"
  },
  {
@@ -1214,6 +1399,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    4,
    4,
@@ -1268,6 +1457,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    4,
    4,
@@ -1317,6 +1510,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    4,
    2,
@@ -1327,9 +1524,17 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 43.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 545.137,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 545.137,
+  "S1_sym": 502.0,
   "budget": {
    "H2": 334.0,
    "C2": 734.85,
@@ -1340,6 +1545,7 @@
    "log2_cost_per_core": 540.6,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 100.1,
   "verdict": "stage 2 over budget [E] (2^541 per core)"
  },
  {
@@ -1367,6 +1573,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    4,
    2,
@@ -1418,6 +1628,10 @@
   "q": 5,
   "s": 2,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    2,
    2,
@@ -1429,7 +1643,9 @@
   "L1": 128,
   "orbits": 384,
   "log2_sym": 39.17,
-  "zscreen": {},
+  "zscreen": {
+   "error": "OverflowError('int too large to convert to float')"
+  },
   "S1": null,
   "S1_sym": null,
   "budget": {
@@ -1460,6 +1676,10 @@
   "q": 23,
   "s": 2,
   "f": 11,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -1484,6 +1704,10 @@
    "log2_cost_per_core": 29.47,
    "energy_ok": true
   },
+  "char_screens": {
+   "multisets": 0,
+   "dead": 0
+  },
   "verdict": "stage 1 empty [M]"
  },
  {
@@ -1502,6 +1726,10 @@
   "q": 23,
   "s": 11,
   "f": 2,
+  "Q": [
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -1549,6 +1777,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1593,6 +1825,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1628,6 +1864,10 @@
    "energy_ok": true
   },
   "log2_cores_per_sym": -9.2,
+  "char_screens": {
+   "multisets": 85,
+   "dead": 0
+  },
   "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
@@ -1652,6 +1892,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1687,6 +1931,32 @@
    "energy_ok": true
   },
   "log2_cores_per_sym": 17.5,
+  "exact_stage2": {
+   "multisets": 85,
+   "done": 85,
+   "dead": 0,
+   "alive": 0,
+   "errors": 85,
+   "dead_at": {},
+   "passed": 2,
+   "levels": [
+    [],
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "char_screens": {
+   "multisets": 85,
+   "dead": 0
+  },
   "verdict": "stage 2 over budget [E] (2^52 per core)"
  },
  {
@@ -1712,6 +1982,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1774,6 +2048,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1811,6 +2089,10 @@
    "energy_ok": true
   },
   "log2_cores_per_sym": -36.4,
+  "char_screens": {
+   "multisets": 37,
+   "dead": 0
+  },
   "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
@@ -1829,6 +2111,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1836,9 +2122,17 @@
   "L1": 54,
   "orbits": 324,
   "log2_sym": 38.189,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 512.981,
+   "log2_stage1_total": 365.38,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 365.38,
+  "S1_sym": 327.2,
   "budget": {
    "H2": 665.25,
    "C2": 633.94,
@@ -1849,6 +2143,7 @@
    "log2_cost_per_core": 240.82,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 356.2,
   "verdict": "stage 2 over budget [E] (2^241 per core)"
  },
  {
@@ -1873,6 +2168,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1932,6 +2231,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -1992,6 +2295,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -2054,6 +2361,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    9
   ],
@@ -2110,6 +2421,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2118,9 +2433,17 @@
   "L1": 54,
   "orbits": 162,
   "log2_sym": 37.605,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 263.907,
+   "log2_stage1_total": 116.072,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 116.072,
+  "S1_sym": 78.5,
   "budget": {
    "H2": 194.0,
    "C2": 202.96,
@@ -2131,6 +2454,7 @@
    "log2_cost_per_core": 83.96,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 68.5,
   "verdict": "stage 2 over budget [E] (2^84 per core)"
  },
  {
@@ -2156,6 +2480,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2217,6 +2545,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2279,6 +2611,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2344,6 +2680,10 @@
   "q": 11,
   "s": 2,
   "f": 5,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2383,12 +2723,9 @@
    "energy_ok": true
   },
   "log2_cores_per_sym": -35.8,
-  "exact_stage2": {
+  "char_screens": {
    "multisets": 37,
-   "done": 11,
-   "dead": 0,
-   "alive": 11,
-   "errors": 0
+   "dead": 0
   },
   "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
@@ -2409,6 +2746,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2417,9 +2758,17 @@
   "L1": 54,
   "orbits": 324,
   "log2_sym": 37.605,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 512.981,
+   "log2_stage1_total": 365.444,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 365.444,
+  "S1_sym": 327.8,
   "budget": {
    "H2": 665.25,
    "C2": 633.82,
@@ -2430,6 +2779,7 @@
    "log2_cost_per_core": 240.7,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 356.9,
   "verdict": "stage 2 over budget [E] (2^241 per core)"
  },
  {
@@ -2455,6 +2805,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2516,6 +2870,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2578,6 +2936,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2593,9 +2955,17 @@
   "L1": 36,
   "orbits": 216,
   "log2_sym": 30.265,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 345.497,
+   "log2_stage1_total": 244.911,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 244.911,
+  "S1_sym": 214.6,
   "budget": {
    "H2": 434.07,
    "C2": 456.36,
@@ -2606,6 +2976,7 @@
    "log2_cost_per_core": 200.69,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 190.0,
   "verdict": "stage 2 over budget [E] (2^201 per core)"
  },
  {
@@ -2634,6 +3005,10 @@
   "q": 11,
   "s": 5,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    3,
    3
@@ -2691,6 +3066,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -2735,6 +3114,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -2785,6 +3168,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -2845,6 +3232,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -2898,6 +3289,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -2913,9 +3308,17 @@
   "L1": 52,
   "orbits": 156,
   "log2_sym": 16.585,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 333.799,
+   "log2_stage1_total": 37.741,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 37.741,
+  "S1_sym": 21.2,
   "budget": {
    "H2": 166.0,
    "C2": 195.13,
@@ -2926,6 +3329,7 @@
    "log2_cost_per_core": 94.88,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -9.0,
   "verdict": "stage 2 over budget [E] (2^95 per core)"
  },
  {
@@ -2956,6 +3360,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3028,6 +3436,10 @@
   "q": 7,
   "s": 2,
   "f": 3,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3048,9 +3460,17 @@
   "L1": 36,
   "orbits": 108,
   "log2_sym": 15.585,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 218.402,
+   "log2_stage1_total": 19.443,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 19.443,
+  "S1_sym": 3.9,
   "budget": {
    "H2": 107.0,
    "C2": 133.85,
@@ -3061,6 +3481,7 @@
    "log2_cost_per_core": 70.35,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -24.0,
   "verdict": "stage 2 over budget [E] (2^70 per core)"
  },
  {
@@ -3079,6 +3500,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3123,6 +3548,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3136,9 +3565,17 @@
   "L1": 54,
   "orbits": 216,
   "log2_sym": 25.925,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 437.998,
+   "log2_stage1_total": 245.555,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 245.555,
+  "S1_sym": 219.6,
   "budget": {
    "H2": 301.14,
    "C2": 477.82,
@@ -3149,6 +3586,7 @@
    "log2_cost_per_core": 302.62,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 41.4,
   "verdict": "stage 2 over budget [E] (2^303 per core)"
  },
  {
@@ -3173,6 +3611,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3233,6 +3675,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3286,6 +3732,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3301,9 +3751,17 @@
   "L1": 52,
   "orbits": 208,
   "log2_sym": 16.585,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 447.824,
+   "log2_stage1_total": 151.803,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 151.803,
+  "S1_sym": 135.2,
   "budget": {
    "H2": 290.05,
    "C2": 676.77,
@@ -3314,6 +3772,7 @@
    "log2_cost_per_core": 507.25,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -253.1,
   "verdict": "stage 2 over budget [E] (2^507 per core)"
  },
  {
@@ -3344,6 +3803,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3363,9 +3826,17 @@
   "L1": 36,
   "orbits": 144,
   "log2_sym": 15.585,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 294.699,
+   "log2_stage1_total": 93.972,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 93.972,
+  "S1_sym": 78.4,
   "budget": {
    "H2": 199.71,
    "C2": 476.21,
@@ -3376,6 +3847,7 @@
    "log2_cost_per_core": 359.75,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -199.7,
   "verdict": "stage 2 over budget [E] (2^360 per core)"
  },
  {
@@ -3407,6 +3879,10 @@
   "q": 7,
   "s": 3,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    17
   ],
@@ -3467,6 +3943,10 @@
   "q": 17,
   "s": 2,
   "f": 8,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    7
   ],
@@ -3474,9 +3954,17 @@
   "L1": 42,
   "orbits": 126,
   "log2_sym": 36.739,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 89,
+   "ordered_zquads": 7333632,
+   "log2_N0_total": 144.5,
+   "log2_stage1_total": 26.943,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 26.943,
+  "S1_sym": -9.8,
   "budget": {
    "H2": 158.0,
    "C2": 158.49,
@@ -3487,7 +3975,33 @@
    "log2_cost_per_core": 60.74,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^61 per core)"
+  "log2_cores_per_sym": -11.3,
+  "exact_stage2": {
+   "multisets": 89,
+   "done": 89,
+   "dead": 85,
+   "alive": 0,
+   "errors": 4,
+   "dead_at": {
+    "[]": 8,
+    "[0]": 77
+   },
+   "passed": 3,
+   "levels": [
+    [],
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -3512,6 +4026,10 @@
   "q": 17,
   "s": 2,
   "f": 8,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    7
   ],
@@ -3548,13 +4066,17 @@
    "energy_ok": true
   },
   "log2_cores_per_sym": -11.7,
+  "char_screens": {
+   "multisets": 39,
+   "dead": 6
+  },
   "exact_stage2": {
    "multisets": 39,
    "done": 39,
    "dead": 39,
    "alive": 0,
    "errors": 0,
-   "note": "per-type screen, all 242,977 type quadruples"
+   "note": "all 242,977 type quadruples; \u00a75"
   },
   "verdict": "no core [M] (exact stage-2 compression screens)"
  },
@@ -3574,6 +4096,10 @@
   "q": 17,
   "s": 4,
   "f": 4,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    7
   ],
@@ -3581,9 +4107,17 @@
   "L1": 42,
   "orbits": 210,
   "log2_sym": 36.739,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 264.792,
+   "log2_stage1_total": 149.007,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 149.007,
+  "S1_sym": 112.3,
   "budget": {
    "H2": 409.71,
    "C2": 393.56,
@@ -3594,6 +4128,7 @@
    "log2_cost_per_core": 148.88,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 126.4,
   "verdict": "stage 2 over budget [E] (2^149 per core)"
  },
  {
@@ -3619,6 +4154,10 @@
   "q": 17,
   "s": 4,
   "f": 4,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    7
   ],
@@ -3673,6 +4212,10 @@
   "q": 17,
   "s": 8,
   "f": 2,
+  "Q": [
+   2,
+   3
+  ],
   "H1": [
    7
   ],
@@ -3680,9 +4223,17 @@
   "L1": 42,
   "orbits": 378,
   "log2_sym": 36.739,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 428.822,
+   "log2_stage1_total": 312.976,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 312.976,
+  "S1_sym": 276.2,
   "budget": {
    "H2": 974.92,
    "C2": 839.0,
@@ -3693,6 +4244,7 @@
    "log2_cost_per_core": 253.88,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 409.2,
   "verdict": "stage 2 over budget [E] (2^254 per core)"
  },
  {
@@ -3712,6 +4264,11 @@
   "q": 17,
   "s": 2,
   "f": 8,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -3720,9 +4277,17 @@
   "L1": 48,
   "orbits": 144,
   "log2_sym": 42.317,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 32,
+   "ordered_zquads": 32243712,
+   "log2_N0_total": 154.019,
+   "log2_stage1_total": 2.989,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 2.989,
+  "S1_sym": -39.3,
   "budget": {
    "H2": 182.0,
    "C2": 220.64,
@@ -3733,7 +4298,8 @@
    "log2_cost_per_core": 108.14,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^108 per core)"
+  "log2_cores_per_sym": -79.0,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -3758,6 +4324,11 @@
   "q": 17,
   "s": 2,
   "f": 8,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -3813,6 +4384,11 @@
   "q": 17,
   "s": 4,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -3821,9 +4397,17 @@
   "L1": 48,
   "orbits": 240,
   "log2_sym": 42.317,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 72,
+   "ordered_zquads": 65011712,
+   "log2_N0_total": 285.969,
+   "log2_stage1_total": 133.985,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 133.985,
+  "S1_sym": 91.7,
   "budget": {
    "H2": 469.4,
    "C2": 560.46,
@@ -3834,6 +4418,7 @@
    "log2_cost_per_core": 279.67,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -1.4,
   "verdict": "stage 2 over budget [E] (2^280 per core)"
  },
  {
@@ -3859,6 +4444,11 @@
   "q": 17,
   "s": 4,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -3914,6 +4504,11 @@
   "q": 17,
   "s": 8,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -3922,9 +4517,17 @@
   "L1": 48,
   "orbits": 432,
   "log2_sym": 42.317,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 72,
+   "ordered_zquads": 65011712,
+   "log2_N0_total": 473.525,
+   "log2_stage1_total": 321.403,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 321.403,
+  "S1_sym": 279.1,
   "budget": {
    "H2": 1112.44,
    "C2": 1190.47,
@@ -3935,6 +4538,7 @@
    "log2_cost_per_core": 522.93,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 198.1,
   "verdict": "stage 2 over budget [E] (2^523 per core)"
  },
  {
@@ -3960,6 +4564,11 @@
   "q": 17,
   "s": 8,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -4014,6 +4623,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4021,9 +4635,17 @@
   "L1": 64,
   "orbits": 192,
   "log2_sym": 44.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 274.867,
+   "log2_stage1_total": 72.056,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 72.056,
+  "S1_sym": 27.1,
   "budget": {
    "H2": 236.0,
    "C2": 292.27,
@@ -4034,6 +4656,7 @@
    "log2_cost_per_core": 147.27,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -30.2,
   "verdict": "stage 2 over budget [E] (2^147 per core)"
  },
  {
@@ -4058,6 +4681,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4071,9 +4699,17 @@
   "L1": 40,
   "orbits": 120,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 139.012,
+   "log2_stage1_total": -6.58,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -6.58,
+  "S1_sym": -42.6,
   "budget": {
    "H2": 142.0,
    "C2": 241.05,
@@ -4084,7 +4720,8 @@
    "log2_cost_per_core": 153.55,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^154 per core)"
+  "log2_cores_per_sym": -142.6,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4108,6 +4745,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4121,9 +4763,17 @@
   "L1": 48,
   "orbits": 144,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 190.331,
+   "log2_stage1_total": 43.042,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 43.042,
+  "S1_sym": 3.1,
   "budget": {
    "H2": 170.0,
    "C2": 245.52,
@@ -4134,6 +4784,7 @@
    "log2_cost_per_core": 142.02,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -73.5,
   "verdict": "stage 2 over budget [E] (2^142 per core)"
  },
  {
@@ -4158,6 +4809,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4171,9 +4827,17 @@
   "L1": 40,
   "orbits": 120,
   "log2_sym": 32.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 139.012,
+   "log2_stage1_total": -53.865,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -53.865,
+  "S1_sym": -86.8,
   "budget": {
    "H2": 142.0,
    "C2": 274.52,
@@ -4184,7 +4848,8 @@
    "log2_cost_per_core": 186.77,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^187 per core)"
+  "log2_cores_per_sym": -220.4,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4202,6 +4867,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4209,9 +4879,17 @@
   "L1": 64,
   "orbits": 256,
   "log2_sym": 44.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 324.049,
+   "log2_stage1_total": 121.177,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 121.177,
+  "S1_sym": 76.2,
   "budget": {
    "H2": 405.75,
    "C2": 516.96,
@@ -4222,6 +4900,7 @@
    "log2_cost_per_core": 275.85,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -36.6,
   "verdict": "stage 2 over budget [E] (2^276 per core)"
  },
  {
@@ -4246,6 +4925,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4259,9 +4943,17 @@
   "L1": 40,
   "orbits": 160,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 157.203,
+   "log2_stage1_total": 6.455,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 6.455,
+  "S1_sym": -29.5,
   "budget": {
    "H2": 253.59,
    "C2": 416.58,
@@ -4272,7 +4964,8 @@
    "log2_cost_per_core": 265.95,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^266 per core)"
+  "log2_cores_per_sym": -194.1,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4296,6 +4989,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4309,9 +5007,17 @@
   "L1": 48,
   "orbits": 192,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 215.259,
+   "log2_stage1_total": 31.683,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 31.683,
+  "S1_sym": -8.3,
   "budget": {
    "H2": 304.31,
    "C2": 425.35,
@@ -4322,7 +5028,8 @@
    "log2_cost_per_core": 244.1,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^244 per core)"
+  "log2_cores_per_sym": -130.9,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4346,6 +5053,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4359,9 +5071,17 @@
   "L1": 40,
   "orbits": 160,
   "log2_sym": 32.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 157.203,
+   "log2_stage1_total": -39.003,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -39.003,
+  "S1_sym": -72.0,
   "budget": {
    "H2": 253.59,
    "C2": 489.18,
@@ -4372,7 +5092,8 @@
    "log2_cost_per_core": 338.55,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^339 per core)"
+  "log2_cores_per_sym": -309.2,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4390,6 +5111,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4434,6 +5160,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4447,9 +5178,17 @@
   "L1": 40,
   "orbits": 200,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 255.597,
+   "log2_stage1_total": 106.744,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 106.744,
+  "S1_sym": 70.8,
   "budget": {
    "H2": 375.67,
    "C2": 355.39,
@@ -4460,6 +5199,7 @@
    "log2_cost_per_core": 132.59,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 89.0,
   "verdict": "stage 2 over budget [E] (2^133 per core)"
  },
  {
@@ -4484,6 +5224,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4497,9 +5242,17 @@
   "L1": 48,
   "orbits": 240,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 333.447,
+   "log2_stage1_total": 179.364,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 179.364,
+  "S1_sym": 139.4,
   "budget": {
    "H2": 453.12,
    "C2": 436.91,
@@ -4510,6 +5263,7 @@
    "log2_cost_per_core": 167.96,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 153.6,
   "verdict": "stage 2 over budget [E] (2^168 per core)"
  },
  {
@@ -4534,6 +5288,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4547,9 +5306,17 @@
   "L1": 40,
   "orbits": 200,
   "log2_sym": 32.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 255.597,
+   "log2_stage1_total": 60.01,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 60.01,
+  "S1_sym": 27.0,
   "budget": {
    "H2": 379.67,
    "C2": 341.53,
@@ -4560,6 +5327,7 @@
    "log2_cost_per_core": 116.08,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 63.2,
   "verdict": "stage 2 over budget [E] (2^116 per core)"
  },
  {
@@ -4578,6 +5346,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4622,6 +5395,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4635,9 +5413,17 @@
   "L1": 40,
   "orbits": 280,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 346.358,
+   "log2_stage1_total": 197.214,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 197.214,
+  "S1_sym": 161.2,
   "budget": {
    "H2": 632.8,
    "C2": 904.2,
@@ -4648,6 +5434,7 @@
    "log2_cost_per_core": 528.31,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -112.7,
   "verdict": "stage 2 over budget [E] (2^528 per core)"
  },
  {
@@ -4672,6 +5459,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4685,9 +5477,17 @@
   "L1": 48,
   "orbits": 336,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 442.661,
+   "log2_stage1_total": 285.634,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 285.634,
+  "S1_sym": 245.7,
   "budget": {
    "H2": 758.96,
    "C2": 923.01,
@@ -4698,6 +5498,7 @@
    "log2_cost_per_core": 471.74,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 79.0,
   "verdict": "stage 2 over budget [E] (2^472 per core)"
  },
  {
@@ -4722,6 +5523,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    8
   ],
@@ -4735,9 +5541,17 @@
   "L1": 40,
   "orbits": 280,
   "log2_sym": 32.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 346.358,
+   "log2_stage1_total": 150.556,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 150.556,
+  "S1_sym": 117.6,
   "budget": {
    "H2": 631.17,
    "C2": 1063.85,
@@ -4748,6 +5562,7 @@
    "log2_cost_per_core": 688.7,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -317.7,
   "verdict": "stage 2 over budget [E] (2^689 per core)"
  },
  {
@@ -4767,6 +5582,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -4775,9 +5595,17 @@
   "L1": 64,
   "orbits": 192,
   "log2_sym": 43.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 274.867,
+   "log2_stage1_total": 23.643,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 23.643,
+  "S1_sym": -20.3,
   "budget": {
    "H2": 236.0,
    "C2": 334.3,
@@ -4788,7 +5616,8 @@
    "log2_cost_per_core": 189.3,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^189 per core)"
+  "log2_cores_per_sym": -119.6,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4813,6 +5642,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -4827,9 +5661,17 @@
   "L1": 48,
   "orbits": 144,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 190.331,
+   "log2_stage1_total": -51.591,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -51.591,
+  "S1_sym": -87.6,
   "budget": {
    "H2": 172.0,
    "C2": 329.62,
@@ -4840,7 +5682,8 @@
    "log2_cost_per_core": 223.87,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^224 per core)"
+  "log2_cores_per_sym": -246.2,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4859,6 +5702,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -4867,9 +5715,17 @@
   "L1": 64,
   "orbits": 256,
   "log2_sym": 43.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 324.049,
+   "log2_stage1_total": 72.857,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 72.857,
+  "S1_sym": 28.9,
   "budget": {
    "H2": 405.75,
    "C2": 600.61,
@@ -4880,6 +5736,7 @@
    "log2_cost_per_core": 359.5,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -167.6,
   "verdict": "stage 2 over budget [E] (2^360 per core)"
  },
  {
@@ -4905,6 +5762,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -4919,9 +5781,17 @@
   "L1": 48,
   "orbits": 192,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 215.259,
+   "log2_stage1_total": -64.655,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -64.655,
+  "S1_sym": -100.6,
   "budget": {
    "H2": 304.31,
    "C2": 583.23,
@@ -4932,7 +5802,8 @@
    "log2_cost_per_core": 402.54,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^403 per core)"
+  "log2_cores_per_sym": -381.1,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -4951,6 +5822,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -4997,6 +5873,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -5011,9 +5892,17 @@
   "L1": 48,
   "orbits": 240,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 333.447,
+   "log2_stage1_total": 82.851,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 82.851,
+  "S1_sym": 46.9,
   "budget": {
    "H2": 454.63,
    "C2": 409.3,
@@ -5024,6 +5913,7 @@
    "log2_cost_per_core": 139.24,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 90.2,
   "verdict": "stage 2 over budget [E] (2^139 per core)"
  },
  {
@@ -5043,6 +5933,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -5089,6 +5984,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    4,
    2
@@ -5136,6 +6036,11 @@
   "q": 13,
   "s": 2,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    2,
    2,
@@ -5145,9 +6050,17 @@
   "L1": 64,
   "orbits": 192,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 274.867,
+   "log2_stage1_total": -73.129,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -73.129,
+  "S1_sym": -113.1,
   "budget": {
    "H2": 236.0,
    "C2": 424.23,
@@ -5158,7 +6071,8 @@
    "log2_cost_per_core": 279.23,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^279 per core)"
+  "log2_cores_per_sym": -302.3,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -5178,6 +6092,11 @@
   "q": 13,
   "s": 3,
   "f": 4,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    2,
    2,
@@ -5187,9 +6106,17 @@
   "L1": 64,
   "orbits": 256,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 324.049,
+   "log2_stage1_total": -23.784,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -23.784,
+  "S1_sym": -63.8,
   "budget": {
    "H2": 405.75,
    "C2": 769.15,
@@ -5200,7 +6127,8 @@
    "log2_cost_per_core": 528.04,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^528 per core)"
+  "log2_cores_per_sym": -428.7,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -5220,6 +6148,11 @@
   "q": 13,
   "s": 4,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    2,
    2,
@@ -5262,6 +6195,11 @@
   "q": 13,
   "s": 6,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    2,
    2,
@@ -5303,6 +6241,11 @@
   "q": 19,
   "s": 2,
   "f": 9,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5311,9 +6254,17 @@
   "L1": 48,
   "orbits": 144,
   "log2_sym": 42.317,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 15,
+   "ordered_zquads": 23592960,
+   "log2_N0_total": 141.894,
+   "log2_stage1_total": -13.44,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -13.44,
+  "S1_sym": -55.8,
   "budget": {
    "H2": 182.0,
    "C2": 172.36,
@@ -5324,7 +6275,8 @@
    "log2_cost_per_core": 59.86,
    "energy_ok": true
   },
-  "verdict": "stage 2 over budget [E] (2^60 per core)"
+  "log2_cores_per_sym": -47.1,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
  },
  {
   "key": [
@@ -5349,6 +6301,11 @@
   "q": 19,
   "s": 2,
   "f": 9,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5384,6 +6341,10 @@
    "log2_cost_per_core": 38.67,
    "energy_ok": true
   },
+  "char_screens": {
+   "multisets": 15,
+   "dead": 0
+  },
   "verdict": "stage 1 empty [E] (target outside the lattice of every multiset)"
  },
  {
@@ -5403,6 +6364,11 @@
   "q": 19,
   "s": 3,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5411,7 +6377,11 @@
   "L1": 48,
   "orbits": 192,
   "log2_sym": 42.317,
-  "zscreen": {},
+  "zscreen": {
+   "multisets": 0,
+   "ordered_zquads": 0,
+   "stage1_empty": true
+  },
   "S1": null,
   "S1_sym": null,
   "budget": {
@@ -5442,6 +6412,11 @@
   "q": 19,
   "s": 3,
   "f": 6,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5485,6 +6460,11 @@
   "q": 19,
   "s": 6,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5493,9 +6473,17 @@
   "L1": 48,
   "orbits": 336,
   "log2_sym": 42.317,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 40,
+   "ordered_zquads": 46137344,
+   "log2_N0_total": 375.051,
+   "log2_stage1_total": 219.264,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 219.264,
+  "S1_sym": 176.9,
   "budget": {
    "H2": 791.89,
    "C2": 681.89,
@@ -5506,6 +6494,7 @@
    "log2_cost_per_core": 206.98,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 284.4,
   "verdict": "stage 2 over budget [E] (2^207 per core)"
  },
  {
@@ -5531,6 +6520,11 @@
   "q": 19,
   "s": 6,
   "f": 3,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5586,6 +6580,11 @@
   "q": 19,
   "s": 9,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
@@ -5632,6 +6631,11 @@
   "q": 19,
   "s": 9,
   "f": 2,
+  "Q": [
+   2,
+   2,
+   2
+  ],
   "H1": [
    3,
    2
