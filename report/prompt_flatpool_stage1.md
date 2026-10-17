@@ -181,3 +181,18 @@ Steps:
   flat set 2^29.0 (row sum 11) and 2^27.4 (row sum 23), lower estimates, i.e. 16-25x larger than at 311 at the same rho.
   n'(0.32) = 87.8 Gaussian, 89.4 with the partial-join excess at k = 10 (+0.044 per class). Alpoge's 223 blocks:
   rho 0.3013 (x3, row sum 11) and 0.3215 (row sum 23).
+- 2026-10-17, sphere model of the drift [E] (`scripts/sphere_drift.py`): treat each block's PAF vector as uniform on a
+  sphere (fixed energy F); the density at 0 of the sum of four such points, projected on j coordinates, against the
+  Gaussian: excess 0.23 / 0.35 / 0.49 bits at j = 8 / 10 / 12 for n = 30 (311 measured: 0.23 / 0.35 / 0.54), no free
+  parameter. Over all n coordinates the excess is 0.098 bits per coordinate (1.94 at n = 20, 2.92 at 30, 3.51 at 36,
+  4.50 at 46), so **true n' ~ n'_Gauss + 0.1 n_ind**: 311 (rho 0.32) 84.2, 223 (0.32) 91.3, 491 (0.34) 109.7. This is
+  the old 487 offset (+0.17 per remaining class) and makes every ladder estimate about 3 bits harder.
+- `scripts/ladder_cost.py` (cost model, calibrated on the 311 in-bucket measurements: p = 2.36, rest bits 2.79, rest
+  drift 0.08 per class): 311 k = 10: E_top = 2^-7.2, about 300 buckets (0.7 h) per core; 223 rho 0.32: pools in RAM
+  (2^25) about 21 h per core, 2^24.8 / 2^27 x 3 (disk join) about 3 h; 491 rho 0.34: 2^27 pools hold 2^-1.7 solution
+  tuples, the whole flat set (2^30.6 per slot, ~180 GB) about 1,500 h and 2^46.4 operations per core: stop.
+- Measurements (1 core, 2 x 10 min, contended; `logs/k223`, `logs/k491`): 223 rho 0.31 flat set 2^27.9 / 2^26.1
+  (row sums 11 / 23), n'_G 86.7; 491 rho 0.34 flat set 2^30.5-30.7 per row sum, n'_G 106.35 (+0.037 per class at k = 12).
+- `scripts/kt_join_disk.py`: presorted memmapped pools, keys computed in the merge kernels, 5-bit fields to k = 12;
+  reproduces kt_join_slots' bucket counts exactly and recovers the planted 311 core at k = 10 and k = 12.
+- 311 production: 640 buckets, 0 hits by 11:05 UTC (model: about 2 cores expected; P(0) ~ 0.1). Running on.

@@ -1,0 +1,15 @@
+{"stage": "pools", "v": 223, "d": 3, "profile": [23, 11, 11, 11], "orbits": {"11": 38456, "23": 8324}, "log2_closure": {"11": 21.44, "23": 19.23}, "rho_max": {"11": 0.3077, "23": 0.3092}, "rho_median": {"11": 0.3013, "23": 0.3092}, "t": 2.2}
+{"stage": "nprime_gauss", "n_prime": 86.73, "per_class": 2.409, "log2_closed_tuples": 83.55, "log2_solutions_in_closed_pools": -3.18, "t": 2.4}
+{"stage": "partial_join", "k": 1, "matches": 49636181713237, "bits_measured": 2.5, "bits_gaussian": 2.46, "t": 7.2}
+{"stage": "partial_join", "k": 2, "matches": 8827425881646, "bits_measured": 4.99, "bits_gaussian": 4.92, "t": 9.8}
+{"stage": "partial_join", "k": 3, "matches": 1582672598653, "bits_measured": 7.47, "bits_gaussian": 7.38, "t": 13.4}
+{"stage": "partial_join", "k": 4, "matches": 283986372180, "bits_measured": 9.95, "bits_gaussian": 9.85, "t": 16.4}
+{"stage": "partial_join", "k": 5, "matches": 50659416234, "bits_measured": 12.44, "bits_gaussian": 12.31, "t": 20.1}
+{"stage": "partial_join", "k": 6, "matches": 8891316454, "bits_measured": 14.95, "bits_gaussian": 14.77, "t": 25.5}
+{"stage": "partial_join", "k": 7, "matches": 1551768782, "bits_measured": 17.47, "bits_gaussian": 17.23, "t": 31.1}
+{"stage": "partial_join", "k": 8, "matches": 272556840, "bits_measured": 19.98, "bits_gaussian": 19.69, "t": 37.2}
+{"stage": "partial_join", "k": 9, "matches": 47502546, "bits_measured": 22.5, "bits_gaussian": 22.14, "t": 43.6}
+{"stage": "partial_join", "k": 10, "matches": 8188266, "bits_measured": 25.03, "bits_gaussian": 24.6, "t": 50.2}
+{"stage": "partial_join", "k": 11, "matches": 1432578, "bits_measured": 27.55, "bits_gaussian": 27.06, "t": 56.5}
+{"stage": "partial_join", "k": 12, "matches": 250515, "bits_measured": 30.07, "bits_gaussian": 29.52, "t": 63.1}
+{"stage": "nprime", "n_prime_gauss": 86.73, "excess_per_class": 0.045, "n_prime": 88.36, "per_class": 2.455, "t": 63.1}
