@@ -63,6 +63,10 @@ def main():
         partner = lambda ch, tau: keyof6(np.ascontiguousarray(ch[:, :KE]), np.asarray(tau, np.int64)[:KE], -1, r4)
     sB = own(D['B']['ch']); oB = np.argsort(sB, kind='stable'); sB = sB[oB]
     sD = own(D['D']['ch']); oD = np.argsort(sD, kind='stable'); sD = sD[oD]
+    presort = k > 8                               # 6-bit key: every field of tau - ch is in range, so the partner-key order
+    if presort:                                   # does not depend on tau: sort A and C once, not once per bucket
+        oA0 = np.argsort(partner(D['A']['ch'], np.zeros(k, np.int64)), kind='stable'); chA0 = np.ascontiguousarray(D['A']['ch'][oA0])
+        oC0 = np.argsort(partner(D['C']['ch'], np.zeros(k, np.int64)), kind='stable'); chC0 = np.ascontiguousarray(D['C']['ch'][oC0])
     ns = 2_000_000
     def pairdist(s1, s2):
         i = rng_pd.integers(0, len(pools[s1]), ns); j = rng_pd.integers(0, len(pools[s2]), ns)
@@ -96,8 +100,12 @@ def main():
         if b in done: continue
         if time.time() - T0 > hours * 3600: log(stage='time_limit'); break
         tau = np.array([opts[q][ix[q]][0] for q in range(k)], np.int64)
-        nA = partner(A['ch'], tau); oA = np.argsort(nA); nA = nA[oA]
-        nC = partner(Cc['ch'], -tau); oC = np.argsort(nC); nC = nC[oC]
+        if presort:
+            nA = partner(chA0, tau); oA = oA0; nC = partner(chC0, -tau); oC = oC0
+            assert np.all(nA[1:] >= nA[:-1]) and np.all(nC[1:] >= nC[:-1]), 'partner keys not monotone in tau'
+        else:
+            nA = partner(A['ch'], tau); oA = np.argsort(nA); nA = nA[oA]
+            nC = partner(Cc['ch'], -tau); oC = np.argsort(nC); nC = nC[oC]
         hAB = KJ.merge_thist(nA, oA, A['c'], sB, oB, B['c'], 64, T); hCD = KJ.merge_thist(nC, oC, Cc['c'], sD, oD, Dd['c'], 64, T)
         both = hAB * hCD[::-1]; exp_b = float(both.sum() * 2.0 ** (-bpc * (R.L - 1 - KE - 1)))
         budget = mem / 24; passes = []; cur = []; load = 0
