@@ -2,6 +2,7 @@
 # restart-safe 311 production on reversal-canonical closure slots (one block per reversal pair: each core is one
 # A<->B pair of tuples per bucket instead of a cluster of 32), slot join k = 9 (resumes from its log)
 cd /home/user/Hadamard
+export NUMPY_MADVISE_HUGEPAGE=0     # no THP madvise: fresh multi-GB arrays stalled in compaction
 SP=${SP:-/tmp/k311}; K=${1:-9}
 SL=$SP/slots_r0.32_rev
 if [ ! -f $SL/slot_D.npy ]; then

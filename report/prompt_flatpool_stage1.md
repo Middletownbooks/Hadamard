@@ -217,3 +217,8 @@ Steps:
   no-go (`report/b0_flatpool_ladder.md` section 6).
 - Caution: high-yield generation (859 at rho 0.38, 10 min) grew to 8-10 GB and was OOM-killed twice (not the join);
   keep generation minutes short at high rho.
+- 2026-10-17 ~14:00 UTC, bucket times grew within a run (6.5 s -> 25-38 s): 42% kernel time from page faults on ~4.5 GB
+  of fresh per-bucket allocations (numba stage-1 and match buffers; numpy's THP madvise made fresh arrays 3x slower,
+  `NUMPY_MADVISE_HUGEPAGE=0` now set in the runners). Stage 1 and pmatch now write into reusable buffers
+  (`stage1_into`, `pmatch._buf`): kernel time 0%, k = 9 buckets stable at ~13 s (py-spy: pmatch 47%, stage 1 45%).
+  Model rate: ~1,200 buckets (~4 h) per core.

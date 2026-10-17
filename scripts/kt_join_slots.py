@@ -24,6 +24,55 @@ import numba as nb
 
 
 @nb.njit(parallel=True, cache=True)
+def stage1_into(sX, oX, cX, hX, sY, oY, cY, hY, sign, G, nchunk, mask, T, K, I, J):
+    """kaggle/kt_join_kaggle.py stage1 writing into caller-owned buffers (reused across buckets: no page faults);
+    returns the number of pairs, or -n if the buffers are too small (the caller grows them and retries)"""
+    NY = sY.shape[0]; b0 = KJ._bounds(sX, nchunk); cnt = np.zeros(nchunk, np.int64); off = np.zeros(nchunk + 1, np.int64)
+    for pas in range(2):
+        if pas == 1:
+            for b in range(nchunk): off[b + 1] = off[b] + cnt[b]
+            if off[nchunk] > K.shape[0]: return -off[nchunk]
+        for b in nb.prange(nchunk):
+            lo = b0[b]; hi = b0[b + 1]
+            if lo >= hi: continue
+            n = off[b]; c = 0; j = np.searchsorted(sY, sX[lo]); i = lo
+            while i < hi and j < NY:
+                a = sX[i]; bb = sY[j]
+                if a < bb: i += 1
+                elif a > bb: j += 1
+                else:
+                    j2 = j
+                    while j2 < NY and sY[j2] == a: j2 += 1
+                    i2 = i
+                    while i2 < hi and sX[i2] == a: i2 += 1
+                    for ii in range(i, i2):
+                        xi = oX[ii]; cx = cX[xi]
+                        for jj in range(j, j2):
+                            yj = oY[jj]; t = cx + cY[yj]
+                            if mask[t + T]:
+                                if pas == 0: c += 1
+                                else:
+                                    kk = hX[xi] + hY[yj] + np.uint64(np.int64(t)) * G
+                                    if sign < 0: kk = np.uint64(0) - kk
+                                    K[n] = kk; I[n] = xi; J[n] = yj; n += 1
+                    i = i2; j = j2
+            if pas == 0: cnt[b] = c
+    return off[nchunk]
+
+
+BUFS = {}
+
+
+def stage1_buf(side, *args):
+    """stage1 into reusable per-side buffers, grown by 25% when a bucket needs more"""
+    while True:
+        K, I, J = BUFS.get(side, (np.empty(0, np.uint64), np.empty(0, np.int64), np.empty(0, np.int64)))
+        n = stage1_into(*args, K, I, J)
+        if n >= 0: return K[:n], I[:n], J[:n]
+        m = int(1.25 * -n) + 1; BUFS[side] = (np.empty(m, np.uint64), np.empty(m, np.int64), np.empty(m, np.int64))
+
+
+@nb.njit(parallel=True, cache=True)
 def keyof6(ch, tau, sgn, r4):
     """packed key of (tau + sgn ch) on the K <= 10 chunk classes, 6 bits per class after removing the residue mod 4"""
     N = ch.shape[0]; K = ch.shape[1]; out = np.empty(N, np.uint64)
@@ -146,8 +195,8 @@ def main():
         for pl in passes:
             mA = np.zeros(2 * T + 1, np.bool_); mC = np.zeros(2 * T + 1, np.bool_)
             for t in pl: mA[t + T] = True; mC[T - t] = True
-            KA, IA, JA = KJ.stage1(nA, oA, A['c'], A['h'], sB, oB, B['c'], B['h'], 1, G, 64, mA, T)
-            KC, IC, JC = KJ.stage1(nC, oC, Cc['c'], Cc['h'], sD, oD, Dd['c'], Dd['h'], -1, G, 64, mC, T)
+            KA, IA, JA = stage1_buf('AB', nA, oA, A['c'], A['h'], sB, oB, B['c'], B['h'], 1, G, 64, mA, T)
+            KC, IC, JC = stage1_buf('CD', nC, oC, Cc['c'], Cc['h'], sD, oD, Dd['c'], Dd['h'], -1, G, 64, mC, T)
             ia, ic = pmatch(KA, KC, 10); ncand += len(ia); npairs = [len(KA), len(KC)]
             for q, qc in zip(ia, ic):
                 bits = [pools['A'][IA[q]], pools['B'][JA[q]], pools['C'][IC[qc]], pools['D'][JC[qc]]]

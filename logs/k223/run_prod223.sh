@@ -4,6 +4,7 @@
 # closure; B = C = D = the row-sum-11 closure, ~2^27 blocks, shared files), then the disk join (k = 12).
 # usage: run_prod223.sh [TARGET_ORBITS] [MAXCHUNKS]      scratch: SP (default /tmp/k223)
 cd /home/user/Hadamard
+export NUMPY_MADVISE_HUGEPAGE=0
 SP=${SP:-/tmp/k223}; TARGET=${1:-3600000}; MAXC=${2:-60}; RHO=0.32
 mkdir -p $SP logs/k223
 count() { python3 - "$SP" <<'PY'

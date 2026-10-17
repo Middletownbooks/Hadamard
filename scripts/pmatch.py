@@ -8,7 +8,7 @@ import numpy as np, numba as nb
 
 
 @nb.njit(parallel=True, cache=True)
-def _scatter(K, bits, nch):
+def _scatter_into(K, bits, nch, outK, outI):
     N = K.shape[0]; P = 1 << bits; sh = np.uint64(64 - bits)
     b0 = np.linspace(0, N, nch + 1).astype(np.int64); H = np.zeros((nch, P), np.int64)
     for c in nb.prange(nch):
@@ -22,7 +22,6 @@ def _scatter(K, bits, nch):
     for p in range(P):
         o = start[p]
         for c in range(nch): pos[c, p] = o; o += H[c, p]
-    outK = np.empty(N, np.uint64); outI = np.empty(N, np.int64)
     for c in nb.prange(nch):
         loc = pos[c].copy()
         for i in range(b0[c], b0[c + 1]):
@@ -56,8 +55,21 @@ def _join(AK, AI, As, CK, CI, Cs):
     return ia, ic
 
 
+_BUF = {}
+
+
+def _buf(name, n, dt):
+    """reusable scratch arrays (fresh multi-GB allocations cost page faults on every bucket)"""
+    b = _BUF.get(name)
+    if b is None or len(b) < n: b = _BUF[name] = np.empty(max(n, int(1.25 * n)), dt)
+    return b[:n]
+
+
 def pmatch(KA, KC, bits=12):
-    AK, AI, As = _scatter(KA, bits, 256); CK, CI, Cs = _scatter(KC, bits, 256)
+    AK, AI = _buf('AK', len(KA), np.uint64), _buf('AI', len(KA), np.int64)
+    AK, AI, As = _scatter_into(KA, bits, 256, AK, AI)
+    CK, CI = _buf('CK', len(KC), np.uint64), _buf('CI', len(KC), np.int64)
+    CK, CI, Cs = _scatter_into(KC, bits, 256, CK, CI)
     return _join(AK, AI, As, CK, CI, Cs)
 
 
