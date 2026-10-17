@@ -8,7 +8,7 @@ with low coverage, equal closure samples in all four slots give more tuples per 
 rho-flat set is rho-flat: rotations keep F and the row sum, forensics in scripts/flat_probe.py).  Representatives
 from several probe/generation directories are merged (np.unique), so longer generation only adds orbits.
 With --closure: every slot is the whole rotation closure of its row sum when that has at most L blocks (else a
-sample of L), as scripts/build_slot_pools.py --closure.
+sample of L), as scripts/build_slot_pools.py --closure; slots with equal row sums share one pool (symlinks).
 usage: python3 scripts/build_slot_pools_w.py V D a,b,c,d OUTDIR L LA DIR1 [DIR2 ...] [--closure]"""
 import os, sys, json
 import numpy as np
@@ -37,8 +37,13 @@ def main():
     for s in set(prof):
         parts = [np.load(os.path.join(dd, f'orbits_{s}.npy')) for dd in dirs if os.path.exists(os.path.join(dd, f'orbits_{s}.npy'))]
         reps[s] = FW.unique_w(np.concatenate([p.reshape(len(p), -1) for p in parts])) if parts else np.zeros((0, 1), np.uint64)
-    info = {}
+    info = {}; first = {}
     for slot, s in zip('ABCD', prof):
+        if clos and s in first:                  # closure mode: equal row sums share one pool (a symlink; the disk join
+            dst = os.path.join(out, f'slot_{slot}.npy')   # then shares the prep of equal pools in equal key order)
+            if os.path.lexists(dst): os.remove(dst)
+            os.symlink(f'slot_{first[s]}.npy', dst); info[slot] = dict(info[first[s]], same_as=first[s]); continue
+        first.setdefault(s, slot)
         if clos and len(reps[s]) * e <= L:
             x = full_closure_w(reps[s], e)
         elif slot == 'A' and LA > 0 and not clos:
