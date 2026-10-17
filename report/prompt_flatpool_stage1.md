@@ -121,4 +121,14 @@ Steps:
   - So at rho = 0.32 pools of 2^24 per slot are essentially the whole flat set. Solution tuples in pools ≈
     2^(95.5 - 82) ≈ 2^13 (each core appears in several rotated copies, which land in different buckets). rho = 0.36
     with pools of 2^25 gives a similar count at twice the pool size; 0.32 was kept.
+- 2026-10-17, item 2: `theory/ab_s1_zcount.py` (new): stage-1 count conditioned on the Q-compressions for any
+  configuration of `theory/ab_sweep.py` with nQ >= 1 (generalises `theory/b599_flevels.py`): exact per-block counts by
+  DP over Q-coset components, compressions within the Parseval bound around each admissible row-sum mean,
+  z-quadruples by a 2+2 join on (PAF_Q, |z|^2), exact y-quadruple count per z-quad (Q-level and lag 0), lattice
+  Gaussian of the remaining lags from uniform samples given (z_k, E_k). Smoke test on 347's slice
+  (`logs/s1z/zcount_347_smoke.log`): 222 compressions per block, 34,560 ordered z-quadruples, log2 N = 32.4 and
+  about +2.3 bits per z-quad after the 6 remaining lags. NOT yet calibrated: next step is an exact count per
+  z-quadruple (S1SD with zallow = that quadruple's vectors, or `theory/ab_s1_sample.py`) on small configurations
+  (the c = 6 controls v = 35, 47; the c = 4 calibration slices in `logs/ab/paley6/calib/`), and random rather than
+  first-found z-quadruples in the total.
 
