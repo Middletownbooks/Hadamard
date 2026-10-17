@@ -26,8 +26,24 @@ def closure_sample_w(reps, e, n, rng):
     return FW.unique_w(out)
 
 
-def full_closure_w(reps, e):
-    return FW.unique_w(np.concatenate([FW.rotate_w(np.ascontiguousarray(reps), s, e) for s in range(e)]))
+def lexle(x, y):
+    """row-wise x <= y for (N, W) masks, most significant word last"""
+    keep = np.zeros(len(x), bool); eq = np.ones(len(x), bool)
+    for q in range(x.shape[1] - 1, -1, -1):
+        keep |= eq & (x[:, q] < y[:, q]); eq &= x[:, q] == y[:, q]
+    return keep | eq
+
+
+def full_closure_w(reps, e, revcanon=False):
+    """all rotations of the canonical orbit representatives, streamed into one array (distinct orbits give distinct
+    blocks except for periodic orbits, which are rare: no global unique, so memory stays ~ the output); with revcanon
+    only the lesser of each reversal pair (rotations s and s + e/2) is kept"""
+    reps = np.ascontiguousarray(reps); parts = []
+    for s in range(e):
+        x = FW.rotate_w(reps, s, e)
+        if revcanon: x = x[lexle(x, FW.rotate_w(reps, (s + e // 2) % e, e))]
+        parts.append(x)
+    return np.concatenate(parts)
 
 
 def main():
@@ -40,22 +56,19 @@ def main():
         reps[s] = FW.unique_w(np.concatenate([p.reshape(len(p), -1) for p in parts])) if parts else np.zeros((0, 1), np.uint64)
     info = {}; first = {}
     for slot, s in zip('ABCD', prof):
+        done_rc = False
         if clos and s in first:                  # closure mode: equal row sums share one pool (a symlink; the disk join
             dst = os.path.join(out, f'slot_{slot}.npy')   # then shares the prep of equal pools in equal key order)
             if os.path.lexists(dst): os.remove(dst)
             os.symlink(f'slot_{first[s]}.npy', dst); info[slot] = dict(info[first[s]], same_as=first[s]); continue
         first.setdefault(s, slot)
         if clos and len(reps[s]) * e <= L:
-            x = full_closure_w(reps[s], e)
+            x = full_closure_w(reps[s], e, rc); done_rc = rc
         elif slot == 'A' and LA > 0 and not clos:
             x = reps[s] if len(reps[s]) <= LA else reps[s][np.sort(rng.choice(len(reps[s]), LA, replace=False))]
         else:
             x = closure_sample_w(reps[s], e, L, rng)
-        if rc:
-            r_ = FW.rotate_w(np.ascontiguousarray(x), e // 2, e); keep = np.zeros(len(x), bool); eq = np.ones(len(x), bool)
-            for q in range(x.shape[1] - 1, -1, -1):                 # lexicographic x <= rev(x), most significant word last
-                keep |= eq & (x[:, q] < r_[:, q]); eq &= x[:, q] == r_[:, q]
-            x = x[keep | eq]
+        if rc and not done_rc: x = x[lexle(x, FW.rotate_w(np.ascontiguousarray(x), e // 2, e))]
         np.save(os.path.join(out, f'slot_{slot}.npy'), x)
         info[slot] = dict(rowsum=s, size=len(x), log2=round(float(np.log2(max(len(x), 1))), 2), orbits_available=len(reps[s]))
     json.dump(dict(v=v, d=d, profile=prof, slots=info, sources=dirs, closure=clos, revcanon=rc), open(os.path.join(out, 'slots.json'), 'w'), indent=1)

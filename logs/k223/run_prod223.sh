@@ -1,10 +1,10 @@
 #!/bin/bash
 # restart-safe 223 production (rung 2): rho = 0.32 generation in 10-minute chunks (4 workers) until the row-sum-11
-# orbits reach TARGET (default 1.8M orbits = 2^27 blocks after closure), then closure slots (A = row sum 23, whole
-# closure; B = C = D = one 2^27 sample of the row-sum-11 closure, shared files), then the disk join (k = 12).
+# orbits reach TARGET (default 3.6M orbits = 2^28 blocks after closure), then reversal-canonical closure slots (A = row sum 23, whole
+# closure; B = C = D = the row-sum-11 closure, ~2^27 blocks, shared files), then the disk join (k = 12).
 # usage: run_prod223.sh [TARGET_ORBITS] [MAXCHUNKS]      scratch: SP (default /tmp/k223)
 cd /home/user/Hadamard
-SP=${SP:-/tmp/k223}; TARGET=${1:-1800000}; MAXC=${2:-30}; RHO=0.32
+SP=${SP:-/tmp/k223}; TARGET=${1:-3600000}; MAXC=${2:-60}; RHO=0.32
 mkdir -p $SP logs/k223
 count() { python3 - "$SP" <<'PY'
 import sys, glob, numpy as np
@@ -24,7 +24,7 @@ for c in $(seq 1 $MAXC); do
 done
 SL=$SP/slots_r${RHO}
 if [ ! -f $SL/slot_D.npy ]; then
-  python3 scripts/build_slot_pools_w.py 223 3 23,11,11,11 $SL 268435456 0 $SP/prod_c* --closure > logs/k223/slots_r${RHO}.log 2>&1   # B = C = D share one pool (symlinks)
+  python3 scripts/build_slot_pools_w.py 223 3 23,11,11,11 $SL 536870912 0 $SP/prod_c* --closure --revcanon > logs/k223/slots_r${RHO}.log 2>&1   # B = C = D share one pool (symlinks)
 fi
 python3 scripts/kt_join_disk.py 223 3 23,11,11,11 $SL $SP/join_r${RHO}_k12 --k 12 --mem 3e9 --hours 200 >> logs/k223/join_r${RHO}_k12.out 2>&1
 cp $SP/join_r${RHO}_k12/log.jsonl logs/k223/join_r${RHO}_k12_log.jsonl
