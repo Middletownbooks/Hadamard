@@ -1,0 +1,11 @@
+{"stage": "bucket", "tau": [2, 2, 6, 2, -2, 6, 2, 2, -6, 2], "frac": 0.0625, "AB_pairs": 1818966, "CD_pairs": 817716, "AB_pairs_full": 29103456, "CD_pairs_full": 13083456, "t": 132.6}
+{"stage": "pjoin", "j": 2, "matches": 28067089328, "bits_measured": 5.73, "bits_gaussian": 5.7, "t": 134.2}
+{"stage": "pjoin", "j": 4, "matches": 524015932, "bits_measured": 11.47, "bits_gaussian": 11.39, "t": 134.4}
+{"stage": "pjoin", "j": 6, "matches": 9682232, "bits_measured": 17.23, "bits_gaussian": 17.08, "t": 134.7}
+{"stage": "pjoin", "j": 8, "matches": 175756, "bits_measured": 23.01, "bits_gaussian": 22.75, "t": 135.1}
+{"stage": "pjoin", "j": 10, "matches": 3240, "bits_measured": 28.77, "bits_gaussian": 28.41, "t": 135.6}
+{"stage": "pjoin", "j": 12, "matches": 48, "bits_measured": 34.85, "bits_gaussian": 34.03, "t": 136.0}
+{"stage": "pjoin", "j": 14, "matches": 0, "bits_measured": null, "bits_gaussian": 39.62, "t": 136.6}
+{"stage": "pjoin", "j": 16, "matches": 0, "bits_measured": null, "bits_gaussian": 45.15, "t": 137.6}
+{"stage": "pjoin", "j": 18, "matches": 0, "bits_measured": null, "bits_gaussian": 50.56, "t": 138.2}
+{"stage": "full", "classes": 20, "bits_gaussian": 55.54, "per_class": 2.777, "log2E_bucket_gauss": -7.11, "t": 138.2}

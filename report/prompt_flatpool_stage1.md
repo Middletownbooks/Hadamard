@@ -146,7 +146,7 @@ Steps:
   bucket (`scripts/kt_join_slots_w.py --only-tau -2,6,-6,2,-6,-2,6,6`) returns it as a verified solution
   (`logs/k223/planted_core_*`). Note: that bucket was not among the first 352 in best-first order on these pools.
 
-- 2026-10-17 (new session, ladder prompt `report/prompt_b0_flatpool_ladder.md`), rung 1 restart:
+- 2026-10-17 (new session, ladder prompt `report/prompt_p1_flatpools.md`), rung 1 restart:
   - The pools were lost with the container; regenerated (4 x 10 min x 4 cores, seeds 101-104; this machine does about
     1.8x the walks of the last one). Union of the 4 chunks: 207,555 / 361,882 / 436,396 orbits for row sums 1 / 19 / 21
     (2^23.62 / 2^24.42 / 2^24.69 blocks), above the capture-recapture estimates (203k / 350k / 422k from chunks 3,4):
@@ -163,3 +163,21 @@ Steps:
     the current separable score is the expected-count order. Model at k = 10: E = 2^-2.2 tuples in bucket 0, 0.18% of
     all 2^16.2 solution tuples in the first 1,000 buckets. Alpoge's tuples rank >= 462k at k = 10 (>= 30k at k = 8):
     his u = PAF_A + PAF_B has 8 of 31 classes at |u| = 10 (about 3.6 expected), a heavier tail than the model.
+- 2026-10-17, rung 1 per-bucket rate measured inside buckets (`scripts/bucket_pjoin.py`, logs
+  `logs/k311/bucket_pjoin_*_k10.log`) [M/E]: enumerate one bucket's AB and CD pairs (A, C subsampled) and count
+  pair-pairs also matching on j rest classes.
+  - Bucket 0 (tau all 2, |tau|^2 = 40): 2^25.8 AB x 2^24.6 CD pairs; in-bucket Gaussian 55.88 bits for the 20
+    independent rest classes (2.79 per class, against 2.68 from the global conditional Gaussian of
+    `bucket_rank.py`); measured bits exceed it by 0.08 / 0.24 / 0.54 / 1.5 at j = 4 / 8 / 12 / 14, growing about as j^2
+    (energy-shell coupling of deep pools; at 883, rho 0.45, there was no drift). Extrapolated: about 57.4 bits, i.e.
+    E(bucket 0) ~ 2^-7 tuples (the pipeline's 2.75-bit constant says 2^-4.7, the global Gaussian 2^-2.2).
+  - Mechanism (sphere model): a_ch + b_ch = tau small forces |a_ch|^2 ~ |tau|^2/4 + k sigma^2/2 < k sigma^2, so the
+    rest classes of each block carry ~24% more variance than their marginal: ~0.15 bits per rest class.
+  - Energy tilt: buckets with |tau|^2 = 136 / 232 / 392 have rest bits 55.54 / 55.19 / 54.54 (Gaussian in-bucket) but
+    2^1.9 / 2^3.9 / 2^8.4 fewer pairs, so E = 2^-7.1 / 2^-8.7 / 2^-11.6 against 2^-5.5: the separable best-first
+    score already orders buckets by expected tuples; the correction is about +0.004 bits per unit |tau|^2, negligible.
+  - So at 311 a core is expected about once per 250 top buckets (18 s each): ~75 min per core.
+- 2026-10-17, rung 2 (223) first measurements [M/E] (`logs/k223/`): rho = 0.32, 2 x 10 min x 1 core: capture-recapture
+  flat set 2^29.0 (row sum 11) and 2^27.4 (row sum 23), lower estimates, i.e. 16-25x larger than at 311 at the same rho.
+  n'(0.32) = 87.8 Gaussian, 89.4 with the partial-join excess at k = 10 (+0.044 per class). Alpoge's 223 blocks:
+  rho 0.3013 (x3, row sum 11) and 0.3215 (row sum 23).
