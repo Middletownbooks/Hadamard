@@ -416,3 +416,136 @@ def logdet_bias_bits(d, N):
         return 0.0
     s = sum(digamma((N - i) / 2.0) for i in range(1, d + 1)) + d * log(2.0 / (N - 1))
     return float(-0.5 * s / log(2.0))
+
+
+class SDCount:
+    """exact stage-1 count for a prescribed ordered compression quadruple by the S/D split on axis 0 of G' (= Z_2, U
+    trivial on it) [P, M]:  sigma = (y(0, .) + y(1, .))/2, delta = (y(0, .) - y(1, .))/2 on G'' satisfy
+    sum_k PAF_{G''}(sigma_k) = T_S, sum_k PAF_{G''}(delta_k) = T_D (theory/ab_s1sd.py), and the compressions split as
+    zs = (z(0, .) + z(1, .))/2, zd = (z(0, .) - z(1, .))/2 on Q'' = Q / Z_2.  Every block's sigma-list (energy-capped,
+    compression zs) is enumerated; S-solutions by the energy-split 2+2 join; per S-solution the delta-lists
+    (compatible with sigma and zd) and the D-join; every solution is re-checked on G'."""
+    def __init__(self, Z):
+        self.Z = Z; Gp = Z.Gp; assert Gp.mods[0] == 2
+        self.n2 = Gp.n // 2; n2 = self.n2
+        self.Gpp = AG(Gp.mods[1:])
+        Spp = sorted({tuple(u[1:]) for u in Z.sl.Sp})
+        self.Upp = [self.Gpp.act(u) for u in Spp]
+        Oo = -np.ones(n2, np.int64); reps = []
+        for b in range(n2):
+            if Oo[b] >= 0: continue
+            for P in self.Upp: Oo[P[b]] = len(reps)
+            reps.append(b)
+        self.Oo = Oo; self.oreps = reps; self.ow = np.bincount(Oo)
+        self.j0 = [int(Z.borb[b]) for b in reps]; self.j1 = [int(Z.borb[n2 + b]) for b in reps]
+        nQ = Z.cfg['nQ']
+        self.Qpp = AG(Gp.mods[1:nQ]); cpp = self.Qpp.n; self.cpp = cpp
+        qpp = self.Qpp.idx(self.Gpp.co[:, :nQ - 1]) if nQ > 1 else np.zeros(n2, np.int64)
+        self.pro = np.zeros((len(reps), cpp), np.int64); np.add.at(self.pro, (Oo, qpp), 1)
+        self.preps, _ = lag_reps(self.Gpp, self.Upp)
+        T1 = Z.T1
+        self.TS = np.array([(T1[b] + T1[n2 + b]) // 4 for b in range(n2)], np.int64)
+        self.TD = np.array([(T1[b] - T1[n2 + b]) // 4 for b in range(n2)], np.int64)
+        # per G''-orbit: sigma -> list of delta
+        self.sd = []
+        for o in range(len(reps)):
+            m = defaultdict(set)
+            for a in Z.letters[self.j0[o]]:
+                for b in Z.letters[self.j1[o]]:
+                    if (a + b) % 2 == 0: m[(a + b) // 2].add((a - b) // 2)
+            self.sd.append({s: sorted(d) for s, d in m.items()})
+
+    def _vectors(self, opts, target, Ecap):
+        """all vectors (per G''-orbit value from opts[o]) with compression `target` on Q'' and energy <= Ecap"""
+        nr = len(self.oreps); w = self.ow; pro = self.pro
+        order = list(range(nr))
+        minrest = np.zeros(nr + 1, np.int64)
+        for t in range(nr - 1, -1, -1): minrest[t] = minrest[t + 1] + w[order[t]] * min(x * x for x in opts[order[t]])
+        # remaining achievable compression ranges for pruning
+        lo = np.zeros((nr + 1, self.cpp), np.int64); hi = np.zeros((nr + 1, self.cpp), np.int64)
+        for t in range(nr - 1, -1, -1):
+            o = order[t]; mn = min(opts[o]); mx = max(opts[o])
+            lo[t] = lo[t + 1] + pro[o] * mn; hi[t] = hi[t + 1] + pro[o] * mx
+        out = []; cur = [0] * nr; tgt = np.asarray(target, np.int64)
+        def rec(t, acc, e):
+            if t == nr:
+                if (acc == tgt).all(): out.append(list(cur))
+                return
+            o = order[t]
+            for x in opts[o]:
+                e2 = e + int(w[o]) * x * x
+                if e2 + minrest[t + 1] > Ecap: continue
+                a2 = acc + pro[o] * x
+                rem = tgt - a2
+                if (rem < lo[t + 1]).any() or (rem > hi[t + 1]).any(): continue
+                cur[o] = x; rec(t + 1, a2, e2)
+        rec(0, np.zeros(self.cpp, np.int64), 0)
+        return np.array(out, np.int64).reshape(-1, nr)
+
+    def count(self, zq, max_pairs=4 * 10 ** 8, keep=False):
+        from ab_s1sd import ejoin4
+        Z = self.Z; cq = Z.c; cpp = self.cpp
+        zq = [np.asarray(z, np.int64) for z in zq]
+        zs = []; zd = []
+        for z in zq:
+            z0 = z[:cpp]; z1 = z[cpp:]                      # Q index = e * |Q''| + q''
+            if ((z0 + z1) % 2).any(): return 0, []
+            zs.append((z0 + z1) // 2); zd.append((z0 - z1) // 2)
+        TS0 = int(self.TS[0]); TD0 = int(self.TD[0])
+        sopts = [sorted(self.sd[o]) for o in range(len(self.oreps))]
+        Sl = [self._vectors(sopts, zs[k], TS0) for k in range(4)]
+        if min(len(s) for s in Sl) == 0: return 0, []
+        P = [self.Gpp.paf(S[:, self.Oo])[:, self.preps].astype(np.int64) for S in Sl]
+        Ssol = ejoin4(P[0], P[1], P[2], P[3], self.TS[self.preps], max_pairs=max_pairs)
+        total = 0; sols = []
+        dcache = {}
+        for (a, b, c_, d) in Ssol:
+            sig = [Sl[0][a], Sl[1][b], Sl[2][c_], Sl[3][d]]
+            Dl = []; DP = []
+            for k in range(4):
+                key = (k, tuple(sig[k].tolist()))
+                if key not in dcache:
+                    dopts = [self.sd[o][int(sig[k][o])] for o in range(len(self.oreps))]
+                    Dv = self._vectors(dopts, zd[k], TD0)
+                    dcache[key] = (Dv, self.Gpp.paf(Dv[:, self.Oo])[:, self.preps].astype(np.int64) if len(Dv) else None)
+                Dl.append(dcache[key][0]); DP.append(dcache[key][1])
+            if min(len(x) for x in Dl) == 0: continue
+            Dsol = ejoin4(DP[0], DP[1], DP[2], DP[3], self.TD[self.preps], max_pairs=max_pairs)
+            for (e, f, g, h) in Dsol:
+                dl = [Dl[0][e], Dl[1][f], Dl[2][g], Dl[3][h]]
+                Y = np.zeros((4, Z.Gp.n), np.int64)
+                for k in range(4):
+                    s_ = sig[k][self.Oo]; d_ = dl[k][self.Oo]
+                    Y[k, :self.n2] = s_ + d_; Y[k, self.n2:] = s_ - d_
+                assert (Z.Gp.paf(Y).sum(0) == Z.T1).all()
+                total += 1
+                if keep: sols.append(Y)
+        return total, sols
+
+
+def log2_symmetry(cfg, sl=None):
+    """log2 of the order of the symmetry group acting on ordered stage-1 solutions (generic orbit size) [P]:
+    per block, translations by the U-fixed points of G', the sign, and the reversal g -> -g when it is not already a
+    multiplier of the slice; the 24 block orders; the per-axis unit scalars of G' modulo <U, -1> and, for Q = Z_2^r,
+    GL(r, 2) on Q (they preserve H', commute with U and keep T1).  Also returns s (the multipliers of Z_q outside M,
+    which fix y and permute its lifts)."""
+    import ab_sweep as W_
+    sl = W_.build(cfg) if sl is None else sl
+    Gp = sl.Gp; mods = Gp.mods
+    Up = [Gp.act(u) for u in sl.Sp]
+    nfix = sum(1 for g in range(Gp.n) if all(P[g] == g for P in Up))
+    neg = tuple((m - 1) % m if m > 1 else 0 for m in mods)
+    Sred = {tuple(int(a) % m if m > 1 else 0 for a, m in zip(u, mods)) for u in sl.Sp}
+    rev_trivial = neg in Sred
+    # <U, -1> as per-axis scalars
+    grp = set(Sred) | {tuple((a * b) % m if m > 1 else 0 for a, b, m in zip(u, neg, mods)) for u in Sred}
+    units = 1
+    for m in mods: units *= sum(1 for x in range(1, m) if math.gcd(x, m) == 1) if m > 1 else 1
+    gl = 1
+    nQ = cfg['nQ']
+    if all(m == 2 for m in mods[:nQ]):
+        r = nQ; gl = 1
+        for i in range(r): gl *= (2 ** r - 2 ** i)
+    per_block = nfix * 2 * (1 if rev_trivial else 2)
+    lg = 4 * math.log2(per_block) + math.log2(24) + math.log2(units / len(grp)) + math.log2(gl)
+    return dict(log2_sym=round(lg, 3), fix=nfix, reversal=not rev_trivial, global_auts=units // len(grp) * gl, s=cfg['s'])
