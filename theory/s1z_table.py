@@ -94,7 +94,8 @@ def main():
         r = dict(key=cfgkey(cfg), v=cfg['v'], c=cfg['c'], q=cfg['q'], s=cfg['s'], f=cfg['f'], Q=cfg['Q'], H1=cfg['H1'], U=cfg['U'],
                  L1=cfg['L1'], orbits=cfg['orbits'], log2_sym=sy['log2_sym'])
         r['zscreen'] = {k: z.get(k) for k in ('multisets', 'ordered_zquads', 'log2_N0_total', 'log2_stage1_total', 'mode',
-                                               'stage1_empty', 'exact_multisets', 'exact_zero', 'error', 'timeout') if k in z}
+                                               'evaluated', 'rel_se', 'stage1_empty', 'exact_multisets', 'exact_zero',
+                                               'error', 'timeout') if k in z}
         S1 = z.get('log2_stage1_total')
         r['S1'] = S1; r['S1_sym'] = round(S1 - sy['log2_sym'], 1) if S1 is not None else None
         r['budget'] = {k: b.get(k) for k in ('H2', 'C2', 'stage2_log2E', 'D_def', 'C_S', 'h_D', 'log2_cost_per_core', 'energy_ok') if k in b}

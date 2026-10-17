@@ -27,10 +27,17 @@
   "orbits": 384,
   "log2_sym": 46.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 689.299,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 689.299,
+  "S1_sym": 643.1,
   "budget": {
    "H2": 334.0,
    "C2": 561.56,
@@ -41,6 +48,7 @@
    "log2_cost_per_core": 367.31,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 414.6,
   "verdict": "stage 2 over budget [E] (2^367 per core)"
  },
  {
@@ -88,6 +96,7 @@
    "log2_N0_total": 536.615,
    "log2_stage1_total": 263.202,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -145,9 +154,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 41.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 489.594,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 489.594,
+  "S1_sym": 448.4,
   "budget": {
    "H2": 241.0,
    "C2": 436.75,
@@ -158,6 +176,7 @@
    "log2_cost_per_core": 297.5,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 251.7,
   "verdict": "stage 2 over budget [E] (2^298 per core)"
  },
  {
@@ -205,6 +224,7 @@
    "log2_N0_total": 536.615,
    "log2_stage1_total": 181.645,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -268,6 +288,7 @@
    "log2_N0_total": 400.675,
    "log2_stage1_total": 200.538,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -331,6 +352,7 @@
    "log2_N0_total": 518.818,
    "log2_stage1_total": 263.108,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -394,6 +416,7 @@
    "log2_N0_total": 260.952,
    "log2_stage1_total": 87.952,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -457,6 +480,7 @@
    "log2_N0_total": 301.922,
    "log2_stage1_total": 24.736,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -505,10 +529,17 @@
   "orbits": 384,
   "log2_sym": 45.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 668.775,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 668.775,
+  "S1_sym": 623.6,
   "budget": {
    "H2": 334.0,
    "C2": 586.44,
@@ -519,6 +550,7 @@
    "log2_cost_per_core": 392.19,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 370.2,
   "verdict": "stage 2 over budget [E] (2^392 per core)"
  },
  {
@@ -568,6 +600,7 @@
    "log2_N0_total": 574.378,
    "log2_stage1_total": 275.696,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -627,9 +660,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 40.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 466.705,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 466.705,
+  "S1_sym": 426.5,
   "budget": {
    "H2": 243.0,
    "C2": 467.37,
@@ -640,6 +682,7 @@
    "log2_cost_per_core": 327.62,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 201.2,
   "verdict": "stage 2 over budget [E] (2^328 per core)"
  },
  {
@@ -683,9 +726,18 @@
   "L1": 72,
   "orbits": 216,
   "log2_sym": 29.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 574.378,
+   "log2_stage1_total": 195.545,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 195.545,
+  "S1_sym": 166.4,
   "budget": {
    "H2": 179.0,
    "C2": 536.15,
@@ -696,6 +748,7 @@
    "log2_cost_per_core": 433.65,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -191.8,
   "verdict": "stage 2 over budget [E] (2^434 per core)"
  },
  {
@@ -745,6 +798,7 @@
    "log2_N0_total": 440.233,
    "log2_stage1_total": 202.638,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -804,9 +858,18 @@
   "L1": 64,
   "orbits": 192,
   "log2_sym": 35.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 518.818,
+   "log2_stage1_total": 235.952,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 235.952,
+  "S1_sym": 200.8,
   "budget": {
    "H2": 145.0,
    "C2": 348.38,
@@ -817,6 +880,7 @@
    "log2_cost_per_core": 265.13,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -3.6,
   "verdict": "stage 2 over budget [E] (2^265 per core)"
  },
  {
@@ -849,10 +913,17 @@
   "orbits": 384,
   "log2_sym": 45.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 668.784,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 668.784,
+  "S1_sym": 623.6,
   "budget": {
    "H2": 334.0,
    "C2": 587.13,
@@ -863,6 +934,7 @@
    "log2_cost_per_core": 392.88,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 369.5,
   "verdict": "stage 2 over budget [E] (2^393 per core)"
  },
  {
@@ -906,9 +978,18 @@
   "L1": 80,
   "orbits": 240,
   "log2_sym": 36.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 649.03,
+   "log2_stage1_total": 361.025,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 361.025,
+  "S1_sym": 324.9,
   "budget": {
    "H2": 200.0,
    "C2": 423.14,
@@ -919,6 +1000,7 @@
    "log2_cost_per_core": 306.89,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 100.7,
   "verdict": "stage 2 over budget [E] (2^307 per core)"
  },
  {
@@ -962,9 +1044,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 40.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 466.466,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 466.466,
+  "S1_sym": 426.3,
   "budget": {
    "H2": 242.0,
    "C2": 462.16,
@@ -975,6 +1066,7 @@
    "log2_cost_per_core": 323.41,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 205.1,
   "verdict": "stage 2 over budget [E] (2^323 per core)"
  },
  {
@@ -1018,9 +1110,18 @@
   "L1": 80,
   "orbits": 240,
   "log2_sym": 36.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 649.03,
+   "log2_stage1_total": 322.432,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 322.432,
+  "S1_sym": 286.3,
   "budget": {
    "H2": 198.0,
    "C2": 467.39,
@@ -1031,6 +1132,7 @@
    "log2_cost_per_core": 353.89,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 15.9,
   "verdict": "stage 2 over budget [E] (2^354 per core)"
  },
  {
@@ -1074,9 +1176,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 40.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 448.372,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 448.372,
+  "S1_sym": 408.2,
   "budget": {
    "H2": 241.0,
    "C2": 482.24,
@@ -1087,6 +1198,7 @@
    "log2_cost_per_core": 341.74,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 166.0,
   "verdict": "stage 2 over budget [E] (2^342 per core)"
  },
  {
@@ -1121,10 +1233,17 @@
   "orbits": 384,
   "log2_sym": 44.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 627.579,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 627.579,
+  "S1_sym": 583.4,
   "budget": {
    "H2": 334.0,
    "C2": 636.43,
@@ -1135,6 +1254,7 @@
    "log2_cost_per_core": 442.18,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 280.0,
   "verdict": "stage 2 over budget [E] (2^442 per core)"
  },
  {
@@ -1186,6 +1306,7 @@
    "log2_N0_total": 649.03,
    "log2_stage1_total": 294.324,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -1247,9 +1368,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 39.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 421.407,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 421.407,
+  "S1_sym": 382.2,
   "budget": {
    "H2": 242.0,
    "C2": 519.06,
@@ -1260,6 +1390,7 @@
    "log2_cost_per_core": 380.31,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 104.2,
   "verdict": "stage 2 over budget [E] (2^380 per core)"
  },
  {
@@ -1305,9 +1436,18 @@
   "L1": 80,
   "orbits": 240,
   "log2_sym": 32.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 649.03,
+   "log2_stage1_total": 217.047,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 217.047,
+  "S1_sym": 184.9,
   "budget": {
    "H2": 198.0,
    "C2": 593.04,
@@ -1318,6 +1458,7 @@
    "log2_cost_per_core": 479.54,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -211.2,
   "verdict": "stage 2 over budget [E] (2^480 per core)"
  },
  {
@@ -1357,6 +1498,7 @@
    "log2_N0_total": 1065.426,
    "log2_stage1_total": 627.573,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -1418,9 +1560,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 39.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 385.621,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 385.621,
+  "S1_sym": 346.5,
   "budget": {
    "H2": 248.0,
    "C2": 555.46,
@@ -1431,6 +1582,7 @@
    "log2_cost_per_core": 410.21,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 38.0,
   "verdict": "stage 2 over budget [E] (2^410 per core)"
  },
  {
@@ -1476,9 +1628,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 39.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 385.056,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 385.056,
+  "S1_sym": 345.9,
   "budget": {
    "H2": 246.0,
    "C2": 561.32,
@@ -1489,6 +1650,7 @@
    "log2_cost_per_core": 420.07,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 29.6,
   "verdict": "stage 2 over budget [E] (2^420 per core)"
  },
  {
@@ -1530,6 +1692,7 @@
    "log2_N0_total": 1065.426,
    "log2_stage1_total": 545.137,
    "mode": "all",
+   "evaluated": 22,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -1593,9 +1756,18 @@
   "L1": 96,
   "orbits": 288,
   "log2_sym": 35.17,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 794.239,
+   "log2_stage1_total": 259.28,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 259.28,
+  "S1_sym": 224.1,
   "budget": {
    "H2": 248.0,
    "C2": 704.8,
@@ -1606,6 +1778,7 @@
    "log2_cost_per_core": 559.55,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -233.7,
   "verdict": "stage 2 over budget [E] (2^560 per core)"
  },
  {
@@ -1644,10 +1817,17 @@
   "orbits": 384,
   "log2_sym": 39.17,
   "zscreen": {
-   "error": "OverflowError('int too large to convert to float')"
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 1065.426,
+   "log2_stage1_total": 380.262,
+   "mode": "all",
+   "evaluated": 22,
+   "exact_multisets": 0,
+   "exact_zero": 0
   },
-  "S1": null,
-  "S1_sym": null,
+  "S1": 380.262,
+  "S1_sym": 341.1,
   "budget": {
    "H2": 334.0,
    "C2": 929.12,
@@ -1658,6 +1838,7 @@
    "log2_cost_per_core": 734.87,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -255.0,
   "verdict": "stage 2 over budget [E] (2^735 per core)"
  },
  {
@@ -1743,6 +1924,7 @@
    "log2_N0_total": 358.693,
    "log2_stage1_total": 255.976,
    "mode": "all",
+   "evaluated": 21,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -1788,9 +1970,19 @@
   "L1": 54,
   "orbits": 162,
   "log2_sym": 38.189,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 263.907,
+   "log2_stage1_total": 116.081,
+   "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.025,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 116.081,
+  "S1_sym": 77.9,
   "budget": {
    "H2": 194.0,
    "C2": 203.42,
@@ -1801,6 +1993,7 @@
    "log2_cost_per_core": 84.42,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 67.5,
   "verdict": "stage 2 over budget [E] (2^84 per core)"
  },
  {
@@ -1848,6 +2041,8 @@
    "log2_N0_total": 113.269,
    "log2_stage1_total": 18.513,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.028,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -1915,6 +2110,8 @@
    "log2_N0_total": 127.698,
    "log2_stage1_total": 61.079,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.018,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2006,6 +2203,7 @@
    "log2_N0_total": 182.113,
    "log2_stage1_total": 85.659,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2073,6 +2271,7 @@
    "log2_N0_total": 123.081,
    "log2_stage1_total": -24.893,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2128,6 +2327,8 @@
    "log2_N0_total": 512.981,
    "log2_stage1_total": 365.38,
    "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.015,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2191,6 +2392,8 @@
    "log2_N0_total": 245.135,
    "log2_stage1_total": 151.472,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.008,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2254,6 +2457,8 @@
    "log2_N0_total": 254.631,
    "log2_stage1_total": 175.173,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.023,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2319,6 +2524,7 @@
    "log2_N0_total": 345.497,
    "log2_stage1_total": 244.919,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2386,6 +2592,7 @@
    "log2_N0_total": 250.878,
    "log2_stage1_total": 103.945,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2439,6 +2646,8 @@
    "log2_N0_total": 263.907,
    "log2_stage1_total": 116.072,
    "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.028,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2504,6 +2713,8 @@
    "log2_N0_total": 156.429,
    "log2_stage1_total": 59.815,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.033,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2569,6 +2780,8 @@
    "log2_N0_total": 156.429,
    "log2_stage1_total": 59.804,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.033,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2636,6 +2849,7 @@
    "log2_N0_total": 182.113,
    "log2_stage1_total": 85.643,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2707,6 +2921,7 @@
    "log2_N0_total": 123.081,
    "log2_stage1_total": -24.92,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2764,6 +2979,8 @@
    "log2_N0_total": 512.981,
    "log2_stage1_total": 365.444,
    "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.016,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2829,6 +3046,8 @@
    "log2_N0_total": 316.763,
    "log2_stage1_total": 217.791,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.016,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2894,6 +3113,8 @@
    "log2_N0_total": 316.763,
    "log2_stage1_total": 217.833,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.014,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -2961,6 +3182,7 @@
    "log2_N0_total": 345.497,
    "log2_stage1_total": 244.911,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3032,6 +3254,7 @@
    "log2_N0_total": 250.878,
    "log2_stage1_total": 103.969,
    "mode": "all",
+   "evaluated": 37,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3077,9 +3300,19 @@
   "L1": 102,
   "orbits": 306,
   "log2_sym": 43.275,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 684.872,
+   "log2_stage1_total": 388.306,
+   "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.023,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 388.306,
+  "S1_sym": 345.0,
   "budget": {
    "H2": 326.0,
    "C2": 426.92,
@@ -3090,6 +3323,7 @@
    "log2_cost_per_core": 231.17,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 243.1,
   "verdict": "stage 2 over budget [E] (2^231 per core)"
  },
  {
@@ -3131,9 +3365,19 @@
   "L1": 54,
   "orbits": 162,
   "log2_sym": 25.925,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 320.243,
+   "log2_stage1_total": 127.441,
+   "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.024,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 127.441,
+  "S1_sym": 101.5,
   "budget": {
    "H2": 166.0,
    "C2": 216.86,
@@ -3144,6 +3388,7 @@
    "log2_cost_per_core": 116.36,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 49.7,
   "verdict": "stage 2 over budget [E] (2^116 per core)"
  },
  {
@@ -3191,6 +3436,8 @@
    "log2_N0_total": 140.388,
    "log2_stage1_total": 50.306,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.031,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3250,9 +3497,18 @@
   "L1": 68,
   "orbits": 204,
   "log2_sym": 35.935,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 468.235,
+   "log2_stage1_total": 264.858,
+   "mode": "all",
+   "evaluated": 50,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 264.858,
+  "S1_sym": 228.9,
   "budget": {
    "H2": 208.0,
    "C2": 286.85,
@@ -3263,6 +3519,7 @@
    "log2_cost_per_core": 162.85,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 149.1,
   "verdict": "stage 2 over budget [E] (2^163 per core)"
  },
  {
@@ -3314,6 +3571,7 @@
    "log2_N0_total": 333.799,
    "log2_stage1_total": 37.741,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3389,6 +3647,7 @@
    "log2_N0_total": 218.402,
    "log2_stage1_total": 19.443,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3466,6 +3725,7 @@
    "log2_N0_total": 218.402,
    "log2_stage1_total": 19.443,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3511,9 +3771,19 @@
   "L1": 102,
   "orbits": 408,
   "log2_sym": 43.275,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 910.356,
+   "log2_stage1_total": 613.723,
+   "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.028,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 613.723,
+  "S1_sym": 570.4,
   "budget": {
    "H2": 569.0,
    "C2": 703.22,
@@ -3524,6 +3794,7 @@
    "log2_cost_per_core": 370.58,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 434.6,
   "verdict": "stage 2 over budget [E] (2^371 per core)"
  },
  {
@@ -3571,6 +3842,8 @@
    "log2_N0_total": 437.998,
    "log2_stage1_total": 245.555,
    "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.019,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3634,6 +3907,8 @@
    "log2_N0_total": 199.234,
    "log2_stage1_total": 109.906,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.011,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3693,9 +3968,18 @@
   "L1": 68,
   "orbits": 272,
   "log2_sym": 35.935,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 614.611,
+   "log2_stage1_total": 407.509,
+   "mode": "all",
+   "evaluated": 50,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 407.509,
+  "S1_sym": 371.6,
   "budget": {
    "H2": 369.3,
    "C2": 490.72,
@@ -3706,6 +3990,7 @@
    "log2_cost_per_core": 276.68,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 248.6,
   "verdict": "stage 2 over budget [E] (2^277 per core)"
  },
  {
@@ -3757,6 +4042,7 @@
    "log2_N0_total": 447.824,
    "log2_stage1_total": 151.803,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3832,6 +4118,7 @@
    "log2_N0_total": 294.699,
    "log2_stage1_total": 93.972,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3909,6 +4196,7 @@
    "log2_N0_total": 294.699,
    "log2_stage1_total": 93.972,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -3960,6 +4248,8 @@
    "log2_N0_total": 144.5,
    "log2_stage1_total": 26.943,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.008,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4050,6 +4340,7 @@
    "log2_N0_total": 101.008,
    "log2_stage1_total": 27.265,
    "mode": "all",
+   "evaluated": 39,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4113,6 +4404,8 @@
    "log2_N0_total": 264.792,
    "log2_stage1_total": 149.007,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.008,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4178,6 +4471,7 @@
    "log2_N0_total": 179.843,
    "log2_stage1_total": 103.172,
    "mode": "all",
+   "evaluated": 50,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4229,6 +4523,8 @@
    "log2_N0_total": 428.822,
    "log2_stage1_total": 312.976,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.01,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4283,6 +4579,7 @@
    "log2_N0_total": 154.019,
    "log2_stage1_total": 2.989,
    "mode": "all",
+   "evaluated": 32,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4349,6 +4646,7 @@
    "log2_N0_total": 83.528,
    "log2_stage1_total": -57.199,
    "mode": "all",
+   "evaluated": 32,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4403,6 +4701,8 @@
    "log2_N0_total": 285.969,
    "log2_stage1_total": 133.985,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.01,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4469,6 +4769,8 @@
    "log2_N0_total": 156.081,
    "log2_stage1_total": 7.705,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.024,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4523,6 +4825,8 @@
    "log2_N0_total": 473.525,
    "log2_stage1_total": 321.403,
    "mode": "importance",
+   "evaluated": 24,
+   "rel_se": 0.021,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4589,6 +4893,8 @@
    "log2_N0_total": 278.309,
    "log2_stage1_total": 129.196,
    "mode": "importance",
+   "evaluated": 40,
+   "rel_se": 0.012,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4641,6 +4947,7 @@
    "log2_N0_total": 274.867,
    "log2_stage1_total": 72.056,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4705,6 +5012,7 @@
    "log2_N0_total": 139.012,
    "log2_stage1_total": -6.58,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4769,6 +5077,7 @@
    "log2_N0_total": 190.331,
    "log2_stage1_total": 43.042,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4833,6 +5142,7 @@
    "log2_N0_total": 139.012,
    "log2_stage1_total": -53.865,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4885,6 +5195,7 @@
    "log2_N0_total": 324.049,
    "log2_stage1_total": 121.177,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -4949,6 +5260,7 @@
    "log2_N0_total": 157.203,
    "log2_stage1_total": 6.455,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5013,6 +5325,7 @@
    "log2_N0_total": 215.259,
    "log2_stage1_total": 31.683,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5077,6 +5390,7 @@
    "log2_N0_total": 157.203,
    "log2_stage1_total": -39.003,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5123,9 +5437,18 @@
   "L1": 64,
   "orbits": 320,
   "log2_sym": 44.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 474.226,
+   "log2_stage1_total": 271.656,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 271.656,
+  "S1_sym": 226.7,
   "budget": {
    "H2": 609.44,
    "C2": 583.11,
@@ -5136,6 +5459,7 @@
    "log2_cost_per_core": 220.96,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 251.0,
   "verdict": "stage 2 over budget [E] (2^221 per core)"
  },
  {
@@ -5184,6 +5508,7 @@
    "log2_N0_total": 255.597,
    "log2_stage1_total": 106.744,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5248,6 +5573,7 @@
    "log2_N0_total": 333.447,
    "log2_stage1_total": 179.364,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5312,6 +5638,7 @@
    "log2_N0_total": 255.597,
    "log2_stage1_total": 60.01,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5358,9 +5685,18 @@
   "L1": 64,
   "orbits": 448,
   "log2_sym": 44.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 621.945,
+   "log2_stage1_total": 419.335,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 419.335,
+  "S1_sym": 374.4,
   "budget": {
    "H2": 1017.49,
    "C2": 1114.97,
@@ -5371,6 +5707,7 @@
    "log2_cost_per_core": 509.08,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 274.3,
   "verdict": "stage 2 over budget [E] (2^509 per core)"
  },
  {
@@ -5419,6 +5756,7 @@
    "log2_N0_total": 346.358,
    "log2_stage1_total": 197.214,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5483,6 +5821,7 @@
    "log2_N0_total": 442.661,
    "log2_stage1_total": 285.634,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5547,6 +5886,7 @@
    "log2_N0_total": 346.358,
    "log2_stage1_total": 150.556,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5601,6 +5941,7 @@
    "log2_N0_total": 274.867,
    "log2_stage1_total": 23.643,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5667,6 +6008,7 @@
    "log2_N0_total": 190.331,
    "log2_stage1_total": -51.591,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5721,6 +6063,7 @@
    "log2_N0_total": 324.049,
    "log2_stage1_total": 72.857,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5787,6 +6130,7 @@
    "log2_N0_total": 215.259,
    "log2_stage1_total": -64.655,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5835,9 +6179,18 @@
   "L1": 64,
   "orbits": 320,
   "log2_sym": 43.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 474.226,
+   "log2_stage1_total": 223.397,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 223.397,
+  "S1_sym": 179.4,
   "budget": {
    "H2": 609.44,
    "C2": 569.01,
@@ -5848,6 +6201,7 @@
    "log2_cost_per_core": 206.85,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 217.8,
   "verdict": "stage 2 over budget [E] (2^207 per core)"
  },
  {
@@ -5898,6 +6252,7 @@
    "log2_N0_total": 333.447,
    "log2_stage1_total": 82.851,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -5946,9 +6301,18 @@
   "L1": 64,
   "orbits": 448,
   "log2_sym": 43.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 621.945,
+   "log2_stage1_total": 371.091,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 371.091,
+  "S1_sym": 327.1,
   "budget": {
    "H2": 1017.49,
    "C2": 1298.51,
@@ -5959,6 +6323,7 @@
    "log2_cost_per_core": 692.62,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 43.5,
   "verdict": "stage 2 over budget [E] (2^693 per core)"
  },
  {
@@ -6003,9 +6368,18 @@
   "L1": 48,
   "orbits": 336,
   "log2_sym": 35.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 442.661,
+   "log2_stage1_total": 189.369,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 189.369,
+  "S1_sym": 153.4,
   "budget": {
    "H2": 766.22,
    "C2": 1264.98,
@@ -6016,6 +6390,7 @@
    "log2_cost_per_core": 809.06,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -348.0,
   "verdict": "stage 2 over budget [E] (2^809 per core)"
  },
  {
@@ -6056,6 +6431,7 @@
    "log2_N0_total": 274.867,
    "log2_stage1_total": -73.129,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -6112,6 +6488,7 @@
    "log2_N0_total": 324.049,
    "log2_stage1_total": -23.784,
    "mode": "all",
+   "evaluated": 56,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -6162,9 +6539,18 @@
   "L1": 64,
   "orbits": 320,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 474.226,
+   "log2_stage1_total": 126.908,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 126.908,
+  "S1_sym": 86.9,
   "budget": {
    "H2": 609.44,
    "C2": 540.75,
@@ -6175,6 +6561,7 @@
    "log2_cost_per_core": 178.59,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 153.6,
   "verdict": "stage 2 over budget [E] (2^179 per core)"
  },
  {
@@ -6209,9 +6596,18 @@
   "L1": 64,
   "orbits": 448,
   "log2_sym": 39.977,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 56,
+   "ordered_zquads": 69206016,
+   "log2_N0_total": 621.945,
+   "log2_stage1_total": 274.587,
+   "mode": "all",
+   "evaluated": 56,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 274.587,
+  "S1_sym": 234.6,
   "budget": {
    "H2": 1017.49,
    "C2": 1664.54,
@@ -6222,6 +6618,7 @@
    "log2_cost_per_core": 1058.65,
    "energy_ok": true
   },
+  "log2_cores_per_sym": -415.0,
   "verdict": "stage 2 over budget [E] (2^1059 per core)"
  },
  {
@@ -6260,6 +6657,7 @@
    "log2_N0_total": 141.894,
    "log2_stage1_total": -13.44,
    "mode": "all",
+   "evaluated": 15,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -6326,6 +6724,7 @@
    "log2_N0_total": 76.58,
    "log2_stage1_total": null,
    "mode": "all",
+   "evaluated": 15,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -6479,6 +6878,7 @@
    "log2_N0_total": 375.051,
    "log2_stage1_total": 219.264,
    "mode": "all",
+   "evaluated": 40,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -6545,6 +6945,7 @@
    "log2_N0_total": 213.202,
    "log2_stage1_total": 60.526,
    "mode": "all",
+   "evaluated": 40,
    "exact_multisets": 0,
    "exact_zero": 0
   },
@@ -6593,9 +6994,18 @@
   "L1": 48,
   "orbits": 480,
   "log2_sym": 42.317,
-  "zscreen": {},
-  "S1": null,
-  "S1_sym": null,
+  "zscreen": {
+   "multisets": 40,
+   "ordered_zquads": 46137344,
+   "log2_N0_total": 485.605,
+   "log2_stage1_total": 329.841,
+   "mode": "all",
+   "evaluated": 40,
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 329.841,
+  "S1_sym": 287.5,
   "budget": {
    "H2": 1292.81,
    "C2": 1368.69,
@@ -6606,6 +7016,7 @@
    "log2_cost_per_core": 590.3,
    "energy_ok": true
   },
+  "log2_cores_per_sym": 208.5,
   "verdict": "stage 2 over budget [E] (2^590 per core)"
  },
  {
@@ -6656,6 +7067,7 @@
    "log2_N0_total": 285.303,
    "log2_stage1_total": 132.535,
    "mode": "all",
+   "evaluated": 40,
    "exact_multisets": 0,
    "exact_zero": 0
   },
