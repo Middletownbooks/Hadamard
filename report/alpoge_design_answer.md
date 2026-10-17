@@ -65,13 +65,16 @@ and calibration named); [L] literature recollection, unchecked.
      - 599, c = 6, q = 11, s = 2, H' = Z₉, with five multiplier groups (§7): empty;
      - **the small Paley-type family** (index 2, 3 or 4 on a prime q ∥ h plus one multiplier group on the
        cofactor, ≤ 16 G'-orbits), decided exactly (§7):
-       - at c = 4, 53 of the 61 configurations are decided empty:
+       - at c = 4 **all 61 configurations are decided empty [M]** (the last 8 on 2026-10-17,
+         `report/paley6_answer.md`):
          - 48 at the Q-level;
-         - 4 with empty stage 1: 751 q = 11, 839 q = 19, 955 q = 17, 991 q = 19;
-         - 839 at q = 11 with ⟨4⟩, empty after exact stage 2 on all 40,960 y's.
-
-         Two more are dead in stage 2 [E] (751 q = 17, 991 q = 13, about −72 and −78 bits per y), and 6 are
-         undecided (over the caps);
+         - 9 with empty stage 1: 751 q = 11, 839 q = 19, 955 q = 17 (s = 2), 991 q = 19, and, by the character
+           decomposition of stage 1 over Q, 839 q = 11 with ⟨8⟩, 955 q = 7 at s = 2 and 3, 955 q = 17 at s = 4,
+           991 q = 13 at s = 4 with ⟨8⟩;
+         - 839 at q = 11 with ⟨4⟩, empty after exact stage 2 on all 40,960 y's;
+         - 3 whose stage-1 solutions all fail exact compression conditions of stage 2: 991 q = 13, s = 3 (98,304
+           y's), 751 q = 17, s = 4 (311,296 y's; both earlier "dead [E]"), and 991 q = 13, s = 4 with ⟨4⟩
+           (119,858,496 y's);
        - at c = 6 all 19 are empty (347's border class).
 6. **(D)** The ranked table is §8.
    - The other composite orders reach b = 0 GP slices whose stage 2 is Gaussian-positive, but whose fibres are too
@@ -646,20 +649,25 @@ cyclic multiplier group on a cyclic factor of H' = Z_{h/q}, keeping ≤ 16 G'-or
       - the S/D solver: 12,992 α-quadruples, 0 S-solutions, 2,146 s.
     - 839, q = 19, s = 2, ⟨3⟩ of order 5 on Z₁₁: **stage 1 empty [M]** (2.6M block vectors, complete join).
     - 751, q = 17, s = 4, ⟨3⟩ on Z₁₁: 311,296 stage-1 solutions [M] in 102 PAF-signature classes. Stage 2 is
-      about −72 bits per y [E] (mahal 5.8), so about 2^−54 cores are expected in all: **dead**.
+      about −72 bits per y [E] (mahal 5.8). **Exactly: every y fails a compression condition of stage 2 (Z₁₇ and
+      Z₂ × Z₁₇ levels), empty [M]** (2026-10-17, `report/paley6_answer.md` §4).
     - 839, q = 11, s = 2, ⟨4⟩ of order 9 on Z₁₉: 40,960 stage-1 solutions [M] (12 PAF-signature classes). Exact
       stage 2 on every one: **0 cores, the slice is empty [M]** (2,340 s). The Gaussian had predicted −21 bits per y,
       about 0.02 cores in all.
-    - 839, q = 11, s = 2, ⟨8⟩ of order 6 on Z₁₉ (16 orbits): undecided. The block lists exceed 6·10⁷ vectors even
-      with Q-level pruning.
+    - 839, q = 11, s = 2, ⟨8⟩ of order 6 on Z₁₉ (16 orbits): the block lists exceed 6·10⁷ vectors even with
+      Q-level pruning; by the character decomposition over Q, **stage 1 empty [M]** (`report/paley6_answer.md`).
     - 955, q = 17, s = 2, ⟨3⟩ of order 6 on Z₇ (H' = Z₂ × Z₇): **stage 1 empty [M]** (230,422 block vectors).
     - 991, q = 19, s = 2, ⟨5⟩ of order 4 on Z₁₃: **stage 1 empty [M]** (72,552 block vectors).
     - 991, q = 13, s = 3, ⟨4⟩ of order 9 on Z₁₉: 98,304 stage-1 solutions [M] in 18 signature classes. Stage 2 is
-      about −78 bits per y [E] (mahal 5.1), about 2^−61 cores in all: **dead**.
-    - Undecided (over the 6·10⁷ block-vector cap, or out of memory at 7 GB): 839 q = 11 with ⟨8⟩; 955 q = 7,
-      s = 2 and 3; 955 q = 17, s = 4; 991 q = 13, s = 4 with ⟨8⟩ and with ⟨4⟩.
-    - **Totals for the 61 configurations: 53 empty [M] (48 at screen A, 4 with empty stage 1, 1 with exact stage 2
-      over all its y's), 2 dead [E], 6 undecided.**
+      about −78 bits per y [E] (mahal 5.1). **Exactly: every y fails the Z₁₃-level condition of stage 2, under each
+      Q-character separately, empty [M]** (2026-10-17, `report/paley6_answer.md` §4).
+    - Over the 6·10⁷ block-vector cap, or out of memory at 7 GB, and decided on 2026-10-17 by the character
+      decomposition of stage 1 over Q (`theory/ab_s1_chars.py`, `report/paley6_answer.md`): 839 q = 11 with ⟨8⟩;
+      955 q = 7, s = 2 and 3; 955 q = 17, s = 4; 991 q = 13, s = 4 with ⟨8⟩: **stage 1 empty [M]**. 991 q = 13,
+      s = 4 with ⟨4⟩: 119,858,496 stage-1 solutions [M], every one failing an exact compression condition of
+      stage 2 (Z₁₃, Z₂ × Z₁₃ or Q × Z₁₃ level): **empty [M]**.
+    - **Totals for the 61 configurations: all 61 empty [M]** (48 at screen A, 9 with empty stage 1, 1 with exact
+      stage 2 over all its y's, 3 by exact compression screens of stage 2 over all their y's).
   - **c = 4 with 17–24 G'-orbits** (`logs/ab/paley_c4_o24.jsonl`): 20 configurations (739, 751, 823, 839, 863, 955).
     10 fail screen A (**empty [M]**); 10 exceed the direct stage-1 cap (6·10⁷ block vectors) and are undecided.
   - **c = 6 sweep (347's border class)** (`logs/ab/paley_c6.jsonl`): every configuration with ≤ 16 orbits (659,
@@ -721,9 +729,9 @@ Status: **built** / exact obstruction **[M]** / estimate [E] / not reached. High
 | – | 839 | c = 4 | Paley q = 19, ⟨3⟩ (order 5) on Z₁₁ | **stage 1 empty [M]** | – |
 | – | 839 | c = 4 | Paley q = 11, ⟨4⟩ (order 9) on Z₁₉ | 40,960 y's, **stage 2 empty on all [M]** | – |
 | – | 955, 991 | c = 4 | q = 17 with ⟨3⟩ on Z₇; Paley q = 19 with ⟨5⟩ on Z₁₃ | **stage 1 empty [M]** | – |
-| – | 991 | c = 4 | q = 13, s = 3, ⟨4⟩ on Z₁₉ | 98,304 y's [M]; stage 2 −78 bits per y [E] | dead |
-| – | 839, 955, 991 | c = 4 | 6 Paley-type configurations over the stage-1 caps | undecided | a coset-wise meet in the middle for stage 1 |
-| – | 751 | c = 4 | q = 17, s = 4, ⟨3⟩ on Z₁₁ | 311,296 y's [M]; stage 2 −72 bits per y [E] | dead |
+| – | 991 | c = 4 | q = 13, s = 3, ⟨4⟩ on Z₁₉ | 98,304 y's [M]; every y fails the Z₁₃-level condition | **empty [M]** |
+| – | 839, 955, 991 | c = 4 | the 6 Paley-type configurations formerly over the stage-1 caps | 5: **stage 1 empty [M]**; 991 s = 4 ⟨4⟩: 119,858,496 y's, every one failing an exact compression condition | **empty [M]** (`report/paley6_answer.md`) |
+| – | 751 | c = 4 | q = 17, s = 4, ⟨3⟩ on Z₁₁ | 311,296 y's [M]; every y fails a Z₁₇ or Z₂ × Z₁₇ condition | **empty [M]** |
 | – | all open v | c = 4, 6 | Paley-type, ≤ 16 orbits: 48 + 19 configurations | **empty [M]** (screen A) | – |
 
 ---
