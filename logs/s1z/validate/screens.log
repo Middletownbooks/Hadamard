@@ -1,0 +1,44 @@
+{"check": "347 core identity", "keep": [], "ok": true}
+{"check": "347 core identity", "keep": [0], "ok": true}
+{"check": "347 core identity", "keep": [1], "ok": true}
+{"check": "347 core identity", "keep": [0, 1], "ok": true}
+{"check": "planted", "v": 131, "seed": 0, "keep": [], "hashed": 64000.0, "exact": 64000, "ok": true}
+{"check": "planted", "v": 131, "seed": 0, "keep": [0], "hashed": 8320.0, "exact": 8320, "ok": true}
+{"check": "planted", "v": 131, "seed": 0, "keep": [1], "hashed": 44928.0, "exact": 44928, "ok": true}
+{"check": "planted", "v": 131, "seed": 0, "keep": [0, 1], "hashed": 480.0, "exact": 480, "ok": true}
+{"check": "planted", "v": 131, "seed": 1, "keep": [], "hashed": 1217888.0, "exact": 1217888, "ok": true}
+{"check": "planted", "v": 131, "seed": 1, "keep": [0], "hashed": 67168.0, "exact": 67168, "ok": true}
+{"check": "planted", "v": 131, "seed": 1, "keep": [1], "hashed": 432000.0, "exact": 432000, "ok": true}
+{"check": "planted", "v": 131, "seed": 1, "keep": [0, 1], "hashed": 6912.0, "exact": 6912, "ok": true}
+{"check": "planted", "v": 131, "seed": 2, "keep": [], "hashed": 11904.0, "exact": 11904, "ok": true}
+{"check": "planted", "v": 131, "seed": 2, "keep": [0], "hashed": 2368.0, "exact": 2368, "ok": true}
+{"check": "planted", "v": 131, "seed": 2, "keep": [1], "hashed": 6624.0, "exact": 6624, "ok": true}
+{"check": "planted", "v": 131, "seed": 2, "keep": [0, 1], "hashed": 768.0, "exact": 768, "ok": true}
+{"check": "planted", "v": 95, "seed": 0, "keep": [], "hashed": 1408.0, "exact": 1408, "ok": true}
+{"check": "planted", "v": 95, "seed": 0, "keep": [0], "hashed": 48.0, "exact": 48, "ok": true}
+{"check": "planted", "v": 95, "seed": 0, "keep": [1], "hashed": 432.0, "exact": 432, "ok": true}
+{"check": "planted", "v": 95, "seed": 0, "keep": [0, 1], "hashed": 6.0, "exact": 6, "ok": true}
+{"check": "planted", "v": 95, "seed": 1, "keep": [], "hashed": 38472.0, "exact": 38472, "ok": true}
+{"check": "planted", "v": 95, "seed": 1, "keep": [0], "hashed": 404.0, "exact": 404, "ok": true}
+{"check": "planted", "v": 95, "seed": 1, "keep": [1], "hashed": 9000.0, "exact": 9000, "ok": true}
+{"check": "planted", "v": 95, "seed": 1, "keep": [0, 1], "hashed": 108.0, "exact": 108, "ok": true}
+{"check": "planted", "v": 95, "seed": 2, "keep": [], "hashed": 612.0, "exact": 612, "ok": true}
+{"check": "planted", "v": 95, "seed": 2, "keep": [0], "hashed": 24.0, "exact": 24, "ok": true}
+{"check": "planted", "v": 95, "seed": 2, "keep": [1], "hashed": 72.0, "exact": 72, "ok": true}
+{"check": "planted", "v": 95, "seed": 2, "keep": [0, 1], "hashed": 24.0, "exact": 24, "ok": true}
+{"check": "planted", "v": 83, "seed": 0, "keep": [], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "planted", "v": 83, "seed": 0, "keep": [0], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "planted", "v": 83, "seed": 0, "keep": [1], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "planted", "v": 83, "seed": 0, "keep": [0, 1], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "planted", "v": 83, "seed": 1, "keep": [], "hashed": 2.0, "exact": 2, "ok": true}
+{"check": "planted", "v": 83, "seed": 1, "keep": [0], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "planted", "v": 83, "seed": 1, "keep": [1], "hashed": 2.0, "exact": 2, "ok": true}
+{"check": "planted", "v": 83, "seed": 1, "keep": [0, 1], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "planted", "v": 83, "seed": 2, "keep": [], "hashed": 4.0, "exact": 4, "ok": true}
+{"check": "planted", "v": 83, "seed": 2, "keep": [0], "hashed": 2.0, "exact": 2, "ok": true}
+{"check": "planted", "v": 83, "seed": 2, "keep": [1], "hashed": 2.0, "exact": 2, "ok": true}
+{"check": "planted", "v": 83, "seed": 2, "keep": [0, 1], "hashed": 1.0, "exact": 1, "ok": true}
+{"check": "v = 47 control", "keep": [], "count": 900000.0}
+{"check": "v = 47 control", "keep": [0], "count": 151632.0}
+{"check": "v = 47 control", "keep": [1], "count": 41728.0}
+{"check": "v = 47 control", "keep": [0, 1], "count": 5184.0}

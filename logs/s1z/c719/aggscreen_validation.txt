@@ -1,0 +1,13 @@
+{"stage": "setup", "multisets": 39, "levels": [[], [0], [1], [0, 1]], "part": "0/1", "secs": 0.1}
+0 agg dead_at [] hits [0] per-type deaths [1313, 0, 0, 0] consistent  5.4
+1 agg dead_at [0] hits [27, 0] per-type deaths [0, 716, 0, 0] consistent  73.0
+2 agg dead_at [0] hits [27, 0] per-type deaths [0, 762, 0, 0] consistent  126.2
+3 agg dead_at [] hits [0] per-type deaths [762, 0, 0, 0] consistent  130.3
+4 agg dead_at [0] hits [27, 0] per-type deaths [0, 762, 0, 0] consistent  159.0
+5 agg dead_at [] hits [0] per-type deaths [786, 0, 0, 0] consistent  161.0
+6 agg dead_at [0] hits [288, 0] per-type deaths [0, 3105, 0, 0] consistent  185.8
+7 agg dead_at None hits [288, 576, 384] per-type deaths [0, 0, 0, 2413] MISMATCH RuntimeError('join too large (557734656, 3877547816)') 703.4
+8 agg dead_at None hits [288, 576, 384] per-type deaths [0, 0, 0, 2637] MISMATCH RuntimeError('join too large (557734656, 3888064152)') 1017.0
+9 agg dead_at [] hits [0] per-type deaths [3130, 0, 0, 0] consistent  1022.3
+
+[exited with code 144]

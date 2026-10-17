@@ -1,0 +1,5673 @@
+[
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 46.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 561.56,
+   "stage2_log2E": -227.56,
+   "D_def": 189.22,
+   "C_S": 317.84,
+   "h_D": 54.5,
+   "log2_cost_per_core": 367.31,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^367 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     2,
+     15
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    2,
+    15
+   ]
+  ],
+  "L1": 68,
+  "orbits": 204,
+  "log2_sym": 29.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 173.0,
+   "C2": 407.35,
+   "stage2_log2E": -234.35,
+   "D_def": 146.68,
+   "C_S": 232.17,
+   "h_D": 28.5,
+   "log2_cost_per_core": 306.6,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^307 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     2,
+     17
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    2,
+    17
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 41.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 241.0,
+   "C2": 436.75,
+   "stage2_log2E": -195.75,
+   "D_def": 151.8,
+   "C_S": 247.45,
+   "h_D": 37.5,
+   "log2_cost_per_core": 297.5,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^298 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     2,
+     31
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    2,
+    31
+   ]
+  ],
+  "L1": 68,
+  "orbits": 204,
+  "log2_sym": 26.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 173.0,
+   "C2": 503.45,
+   "stage2_log2E": -330.45,
+   "D_def": 179.53,
+   "C_S": 296.92,
+   "h_D": 27.0,
+   "log2_cost_per_core": 403.45,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^403 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     4,
+     7
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    4,
+    7
+   ]
+  ],
+  "L1": 52,
+  "orbits": 156,
+  "log2_sym": 28.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 125.0,
+   "C2": 300.91,
+   "stage2_log2E": -175.91,
+   "D_def": 109.01,
+   "C_S": 174.4,
+   "h_D": 17.5,
+   "log2_cost_per_core": 229.66,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^230 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     4,
+     9
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    4,
+    9
+   ]
+  ],
+  "L1": 64,
+  "orbits": 192,
+  "log2_sym": 36.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 146.0,
+   "C2": 305.35,
+   "stage2_log2E": -159.35,
+   "D_def": 108.57,
+   "C_S": 174.28,
+   "h_D": 22.5,
+   "log2_cost_per_core": 221.1,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^221 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     8,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    8,
+    3
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 27.17,
+  "zscreen": {
+   "multisets": 22,
+   "ordered_zquads": 329728,
+   "log2_N0_total": 260.952,
+   "log2_stage1_total": 87.952,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 87.952,
+  "S1_sym": 60.8,
+  "budget": {
+   "H2": 76.0,
+   "C2": 210.12,
+   "stage2_log2E": -134.12,
+   "D_def": 79.13,
+   "C_S": 120.49,
+   "h_D": 10.5,
+   "log2_cost_per_core": 166.87,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -74.3,
+  "verdict": "stage 2 over budget [E] (2^167 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    32
+   ],
+   [
+    [
+     2,
+     8,
+     5
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   32
+  ],
+  "U": [
+   [
+    2,
+    8,
+    5
+   ]
+  ],
+  "L1": 40,
+  "orbits": 120,
+  "log2_sym": 31.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 82.0,
+   "C2": 210.85,
+   "stage2_log2E": -128.85,
+   "D_def": 82.11,
+   "C_S": 118.24,
+   "h_D": 10.5,
+   "log2_cost_per_core": 164.6,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^165 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    16,
+    2
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   16,
+   2
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 45.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 586.44,
+   "stage2_log2E": -252.44,
+   "D_def": 200.98,
+   "C_S": 330.96,
+   "h_D": 54.5,
+   "log2_cost_per_core": 392.19,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^392 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    16,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   16,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    7
+   ]
+  ],
+  "L1": 72,
+  "orbits": 216,
+  "log2_sym": 32.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 178.0,
+   "C2": 439.1,
+   "stage2_log2E": -261.1,
+   "D_def": 162.05,
+   "C_S": 250.05,
+   "h_D": 27.0,
+   "log2_cost_per_core": 336.6,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^337 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    16,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     9
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   16,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    9
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 40.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 243.0,
+   "C2": 467.37,
+   "stage2_log2E": -224.37,
+   "D_def": 166.25,
+   "C_S": 264.62,
+   "h_D": 36.5,
+   "log2_cost_per_core": 327.62,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^328 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    16,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     15
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   16,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    15
+   ]
+  ],
+  "L1": 72,
+  "orbits": 216,
+  "log2_sym": 29.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 179.0,
+   "C2": 536.15,
+   "stage2_log2E": -357.15,
+   "D_def": 202.35,
+   "C_S": 307.8,
+   "h_D": 26.0,
+   "log2_cost_per_core": 433.65,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^434 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    16,
+    2
+   ],
+   [
+    [
+     2,
+     4,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   16,
+   2
+  ],
+  "U": [
+   [
+    2,
+    4,
+    3
+   ]
+  ],
+  "L1": 56,
+  "orbits": 168,
+  "log2_sym": 31.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 132.0,
+   "C2": 339.79,
+   "stage2_log2E": -207.79,
+   "D_def": 126.38,
+   "C_S": 192.91,
+   "h_D": 20.5,
+   "log2_cost_per_core": 263.54,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^264 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    16,
+    2
+   ],
+   [
+    [
+     2,
+     4,
+     5
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   16,
+   2
+  ],
+  "U": [
+   [
+    2,
+    4,
+    5
+   ]
+  ],
+  "L1": 64,
+  "orbits": 192,
+  "log2_sym": 35.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 145.0,
+   "C2": 348.38,
+   "stage2_log2E": -203.38,
+   "D_def": 132.48,
+   "C_S": 194.4,
+   "h_D": 21.5,
+   "log2_cost_per_core": 265.13,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^265 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    4
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   4
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 45.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 587.13,
+   "stage2_log2E": -253.13,
+   "D_def": 200.9,
+   "C_S": 331.73,
+   "h_D": 54.5,
+   "log2_cost_per_core": 392.88,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^393 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    4
+   ],
+   [
+    [
+     2,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   4
+  ],
+  "U": [
+   [
+    2,
+    2,
+    3
+   ]
+  ],
+  "L1": 80,
+  "orbits": 240,
+  "log2_sym": 36.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 200.0,
+   "C2": 423.14,
+   "stage2_log2E": -223.14,
+   "D_def": 150.38,
+   "C_S": 240.26,
+   "h_D": 32.5,
+   "log2_cost_per_core": 306.89,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^307 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    4
+   ],
+   [
+    [
+     2,
+     2,
+     5
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   4
+  ],
+  "U": [
+   [
+    2,
+    2,
+    5
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 40.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 242.0,
+   "C2": 462.16,
+   "stage2_log2E": -220.16,
+   "D_def": 162.52,
+   "C_S": 264.14,
+   "h_D": 35.5,
+   "log2_cost_per_core": 323.41,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^323 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    4
+   ],
+   [
+    [
+     2,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   4
+  ],
+  "U": [
+   [
+    2,
+    2,
+    7
+   ]
+  ],
+  "L1": 80,
+  "orbits": 240,
+  "log2_sym": 36.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 198.0,
+   "C2": 467.39,
+   "stage2_log2E": -269.39,
+   "D_def": 171.1,
+   "C_S": 267.29,
+   "h_D": 29.0,
+   "log2_cost_per_core": 353.89,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^354 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    4
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   4
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 40.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 241.0,
+   "C2": 482.24,
+   "stage2_log2E": -241.24,
+   "D_def": 169.11,
+   "C_S": 273.13,
+   "h_D": 40.0,
+   "log2_cost_per_core": 341.74,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^342 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 44.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 636.43,
+   "stage2_log2E": -302.43,
+   "D_def": 220.82,
+   "C_S": 361.11,
+   "h_D": 54.5,
+   "log2_cost_per_core": 442.18,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^442 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    2,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   2,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    3
+   ]
+  ],
+  "L1": 80,
+  "orbits": 240,
+  "log2_sym": 35.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 200.0,
+   "C2": 507.23,
+   "stage2_log2E": -307.23,
+   "D_def": 186.82,
+   "C_S": 287.91,
+   "h_D": 32.5,
+   "log2_cost_per_core": 390.98,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^391 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    2,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     5
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   2,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    5
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 39.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 242.0,
+   "C2": 519.06,
+   "stage2_log2E": -277.06,
+   "D_def": 186.27,
+   "C_S": 297.29,
+   "h_D": 35.5,
+   "log2_cost_per_core": 380.31,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^380 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    8,
+    2,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   8,
+   2,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    7
+   ]
+  ],
+  "L1": 80,
+  "orbits": 240,
+  "log2_sym": 32.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 198.0,
+   "C2": 593.04,
+   "stage2_log2E": -395.04,
+   "D_def": 224.72,
+   "C_S": 339.32,
+   "h_D": 29.0,
+   "log2_cost_per_core": 479.54,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^480 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    4,
+    4,
+    2
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   4,
+   4,
+   2
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 44.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 639.71,
+   "stage2_log2E": -305.71,
+   "D_def": 224.01,
+   "C_S": 361.2,
+   "h_D": 54.5,
+   "log2_cost_per_core": 445.46,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^445 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    4,
+    4,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   4,
+   4,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    3
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 39.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 248.0,
+   "C2": 555.46,
+   "stage2_log2E": -307.46,
+   "D_def": 200.2,
+   "C_S": 312.76,
+   "h_D": 42.5,
+   "log2_cost_per_core": 410.21,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^410 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    4,
+    4,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   4,
+   4,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 39.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 246.0,
+   "C2": 561.32,
+   "stage2_log2E": -315.32,
+   "D_def": 206.52,
+   "C_S": 318.3,
+   "h_D": 36.5,
+   "log2_cost_per_core": 420.07,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^420 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    4,
+    2,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   4,
+   2,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 43.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 734.85,
+   "stage2_log2E": -400.85,
+   "D_def": 260.04,
+   "C_S": 420.31,
+   "h_D": 54.5,
+   "log2_cost_per_core": 540.6,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^541 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    4,
+    2,
+    2,
+    2
+   ],
+   [
+    [
+     2,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   4,
+   2,
+   2,
+   2
+  ],
+  "U": [
+   [
+    2,
+    2,
+    3
+   ]
+  ],
+  "L1": 96,
+  "orbits": 288,
+  "log2_sym": 35.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 248.0,
+   "C2": 704.8,
+   "stage2_log2E": -456.8,
+   "D_def": 262.39,
+   "C_S": 399.91,
+   "h_D": 42.5,
+   "log2_cost_per_core": 559.55,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^560 per core)"
+ },
+ {
+  "key": [
+   643,
+   4,
+   5,
+   2,
+   [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 643,
+  "c": 4,
+  "q": 5,
+  "s": 2,
+  "f": 2,
+  "H1": [
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 128,
+  "orbits": 384,
+  "log2_sym": 39.17,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 334.0,
+   "C2": 929.12,
+   "stage2_log2E": -595.12,
+   "D_def": 338.63,
+   "C_S": 535.99,
+   "h_D": 54.5,
+   "log2_cost_per_core": 734.87,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^735 per core)"
+ },
+ {
+  "key": [
+   739,
+   4,
+   23,
+   2,
+   [
+    8
+   ],
+   []
+  ],
+  "v": 739,
+  "c": 4,
+  "q": 23,
+  "s": 2,
+  "f": 11,
+  "H1": [
+   8
+  ],
+  "U": [],
+  "L1": 32,
+  "orbits": 96,
+  "log2_sym": 36.17,
+  "zscreen": {
+   "multisets": 0,
+   "ordered_zquads": 0,
+   "stage1_empty": true
+  },
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 123.0,
+   "C2": 105.72,
+   "stage2_log2E": 17.28,
+   "D_def": 15.22,
+   "C_S": 61.0,
+   "h_D": 29.5,
+   "log2_cost_per_core": 29.47,
+   "energy_ok": true
+  },
+  "verdict": "stage 1 empty [M]"
+ },
+ {
+  "key": [
+   739,
+   4,
+   23,
+   11,
+   [
+    8
+   ],
+   []
+  ],
+  "v": 739,
+  "c": 4,
+  "q": 23,
+  "s": 11,
+  "f": 2,
+  "H1": [
+   8
+  ],
+  "U": [],
+  "L1": 32,
+  "orbits": 384,
+  "log2_sym": 36.17,
+  "zscreen": {
+   "multisets": 21,
+   "ordered_zquads": 378880,
+   "log2_N0_total": 358.693,
+   "log2_stage1_total": 255.976,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 255.976,
+  "S1_sym": 219.8,
+  "budget": {
+   "H2": 1097.2,
+   "C2": 1030.52,
+   "stage2_log2E": 66.68,
+   "D_def": 223.68,
+   "C_S": 578.15,
+   "h_D": 228.69,
+   "log2_cost_per_core": 367.57,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 283.0,
+  "verdict": "stage 2 over budget [E] (2^368 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    9
+   ],
+   []
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   9
+  ],
+  "U": [],
+  "L1": 54,
+  "orbits": 162,
+  "log2_sym": 38.189,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 194.0,
+   "C2": 203.42,
+   "stage2_log2E": -9.42,
+   "D_def": 44.75,
+   "C_S": 114.67,
+   "h_D": 44.0,
+   "log2_cost_per_core": 84.42,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^84 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    9
+   ],
+   [
+    [
+     2,
+     2,
+     8
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    2,
+    2,
+    8
+   ]
+  ],
+  "L1": 30,
+  "orbits": 90,
+  "log2_sym": 24.51,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 113.269,
+   "log2_stage1_total": 18.513,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 18.513,
+  "S1_sym": -6.0,
+  "budget": {
+   "H2": 106.0,
+   "C2": 108.24,
+   "stage2_log2E": -2.24,
+   "D_def": 21.52,
+   "C_S": 63.22,
+   "h_D": 23.5,
+   "log2_cost_per_core": 43.49,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -9.2,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    9
+   ],
+   [
+    [
+     2,
+     3,
+     4
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    2,
+    3,
+    4
+   ]
+  ],
+  "L1": 30,
+  "orbits": 90,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 127.698,
+   "log2_stage1_total": 61.079,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 61.079,
+  "S1_sym": 30.8,
+  "budget": {
+   "H2": 100.0,
+   "C2": 112.27,
+   "stage2_log2E": -12.27,
+   "D_def": 25.84,
+   "C_S": 64.93,
+   "h_D": 21.5,
+   "log2_cost_per_core": 51.52,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 17.5,
+  "verdict": "stage 2 over budget [E] (2^52 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    9
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 30.85,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 182.113,
+   "log2_stage1_total": 85.659,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 85.659,
+  "S1_sym": 54.8,
+  "budget": {
+   "H2": 123.0,
+   "C2": 136.75,
+   "stage2_log2E": -13.75,
+   "D_def": 31.94,
+   "C_S": 78.31,
+   "h_D": 26.5,
+   "log2_cost_per_core": 62.0,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 40.1,
+  "verdict": "stage 2 over budget [E] (2^62 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    9
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2
+    ]
+   ]
+  ],
+  "L1": 28,
+  "orbits": 84,
+  "log2_sym": 15.17,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 123.081,
+   "log2_stage1_total": -24.893,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -24.893,
+  "S1_sym": -40.1,
+  "budget": {
+   "H2": 100.0,
+   "C2": 95.34,
+   "stage2_log2E": 4.66,
+   "D_def": 17.23,
+   "C_S": 56.11,
+   "h_D": 22.0,
+   "log2_cost_per_core": 34.34,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -36.4,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    9
+   ],
+   []
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   9
+  ],
+  "U": [],
+  "L1": 54,
+  "orbits": 324,
+  "log2_sym": 38.189,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 665.25,
+   "C2": 633.94,
+   "stage2_log2E": 31.31,
+   "D_def": 156.22,
+   "C_S": 356.72,
+   "h_D": 121.0,
+   "log2_cost_per_core": 240.82,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^241 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    9
+   ],
+   [
+    [
+     2,
+     2,
+     8
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    2,
+    2,
+    8
+   ]
+  ],
+  "L1": 30,
+  "orbits": 180,
+  "log2_sym": 24.51,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 245.135,
+   "log2_stage1_total": 151.472,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 151.472,
+  "S1_sym": 127.0,
+  "budget": {
+   "H2": 368.99,
+   "C2": 452.34,
+   "stage2_log2E": -83.35,
+   "D_def": 123.68,
+   "C_S": 261.82,
+   "h_D": 66.84,
+   "log2_cost_per_core": 234.42,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 41.3,
+  "verdict": "stage 2 over budget [E] (2^234 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    9
+   ],
+   [
+    [
+     2,
+     3,
+     4
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    2,
+    3,
+    4
+   ]
+  ],
+  "L1": 30,
+  "orbits": 180,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 254.631,
+   "log2_stage1_total": 175.173,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 175.173,
+  "S1_sym": 144.9,
+  "budget": {
+   "H2": 360.34,
+   "C2": 371.21,
+   "stage2_log2E": -10.87,
+   "D_def": 97.61,
+   "C_S": 209.97,
+   "h_D": 63.63,
+   "log2_cost_per_core": 159.22,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 131.7,
+  "verdict": "stage 2 over budget [E] (2^159 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    9
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 36,
+  "orbits": 216,
+  "log2_sym": 30.85,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 345.497,
+   "log2_stage1_total": 244.919,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 244.919,
+  "S1_sym": 214.1,
+  "budget": {
+   "H2": 434.07,
+   "C2": 456.23,
+   "stage2_log2E": -22.16,
+   "D_def": 119.69,
+   "C_S": 259.28,
+   "h_D": 77.26,
+   "log2_cost_per_core": 200.56,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 189.6,
+  "verdict": "stage 2 over budget [E] (2^201 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    9
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   9
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2
+    ]
+   ]
+  ],
+  "L1": 28,
+  "orbits": 168,
+  "log2_sym": 15.17,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 250.878,
+   "log2_stage1_total": 103.945,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 103.945,
+  "S1_sym": 88.8,
+  "budget": {
+   "H2": 343.45,
+   "C2": 622.86,
+   "stage2_log2E": -279.41,
+   "D_def": 181.51,
+   "C_S": 378.59,
+   "h_D": 62.76,
+   "log2_cost_per_core": 419.75,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -193.0,
+  "verdict": "stage 2 over budget [E] (2^420 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    3,
+    3
+   ],
+   []
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [],
+  "L1": 54,
+  "orbits": 162,
+  "log2_sym": 37.605,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 194.0,
+   "C2": 202.96,
+   "stage2_log2E": -8.96,
+   "D_def": 44.46,
+   "C_S": 114.5,
+   "h_D": 44.0,
+   "log2_cost_per_core": 83.96,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^84 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     2,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    2,
+    2,
+    2
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 156.429,
+   "log2_stage1_total": 59.815,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 59.815,
+  "S1_sym": 29.5,
+  "budget": {
+   "H2": 124.0,
+   "C2": 135.91,
+   "stage2_log2E": -11.91,
+   "D_def": 30.78,
+   "C_S": 78.13,
+   "h_D": 27.0,
+   "log2_cost_per_core": 60.41,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 16.6,
+  "verdict": "stage 2 over budget [E] (2^60 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 156.429,
+   "log2_stage1_total": 59.804,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 59.804,
+  "S1_sym": 29.5,
+  "budget": {
+   "H2": 128.0,
+   "C2": 134.49,
+   "stage2_log2E": -6.49,
+   "D_def": 30.22,
+   "C_S": 76.27,
+   "h_D": 28.0,
+   "log2_cost_per_core": 56.49,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 22.0,
+  "verdict": "stage 2 over budget [E] (2^56 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 182.113,
+   "log2_stage1_total": 85.643,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 85.643,
+  "S1_sym": 55.4,
+  "budget": {
+   "H2": 123.0,
+   "C2": 136.08,
+   "stage2_log2E": -13.08,
+   "D_def": 31.24,
+   "C_S": 78.34,
+   "h_D": 26.5,
+   "log2_cost_per_core": 61.33,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 41.3,
+  "verdict": "stage 2 over budget [E] (2^61 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   2,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2,
+      3
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 2,
+  "f": 5,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2,
+     3
+    ]
+   ]
+  ],
+  "L1": 28,
+  "orbits": 84,
+  "log2_sym": 14.585,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 123.081,
+   "log2_stage1_total": -24.92,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -24.92,
+  "S1_sym": -39.5,
+  "budget": {
+   "H2": 100.0,
+   "C2": 95.28,
+   "stage2_log2E": 4.72,
+   "D_def": 17.18,
+   "C_S": 56.1,
+   "h_D": 22.0,
+   "log2_cost_per_core": 34.28,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -35.8,
+  "exact_stage2": {
+   "multisets": 37,
+   "done": 11,
+   "dead": 0,
+   "alive": 11,
+   "errors": 0
+  },
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    3,
+    3
+   ],
+   []
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [],
+  "L1": 54,
+  "orbits": 324,
+  "log2_sym": 37.605,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 665.25,
+   "C2": 633.82,
+   "stage2_log2E": 31.43,
+   "D_def": 156.16,
+   "C_S": 356.66,
+   "h_D": 121.0,
+   "log2_cost_per_core": 240.7,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^241 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     2,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    2,
+    2,
+    2
+   ]
+  ],
+  "L1": 36,
+  "orbits": 216,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 316.763,
+   "log2_stage1_total": 217.791,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 217.791,
+  "S1_sym": 187.5,
+  "budget": {
+   "H2": 433.43,
+   "C2": 457.44,
+   "stage2_log2E": -24.01,
+   "D_def": 121.34,
+   "C_S": 258.74,
+   "h_D": 77.36,
+   "log2_cost_per_core": 202.05,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 161.2,
+  "verdict": "stage 2 over budget [E] (2^202 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 36,
+  "orbits": 216,
+  "log2_sym": 30.265,
+  "zscreen": {
+   "multisets": 85,
+   "ordered_zquads": 7464960,
+   "log2_N0_total": 316.763,
+   "log2_stage1_total": 217.833,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 217.833,
+  "S1_sym": 187.6,
+  "budget": {
+   "H2": 444.71,
+   "C2": 457.47,
+   "stage2_log2E": -12.76,
+   "D_def": 118.07,
+   "C_S": 259.09,
+   "h_D": 80.31,
+   "log2_cost_per_core": 194.96,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 172.5,
+  "verdict": "stage 2 over budget [E] (2^195 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 36,
+  "orbits": 216,
+  "log2_sym": 30.265,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 434.07,
+   "C2": 456.36,
+   "stage2_log2E": -22.29,
+   "D_def": 119.64,
+   "C_S": 259.46,
+   "h_D": 77.26,
+   "log2_cost_per_core": 200.69,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^201 per core)"
+ },
+ {
+  "key": [
+   599,
+   6,
+   11,
+   5,
+   [
+    3,
+    3
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2,
+      3
+     ]
+    ]
+   ]
+  ],
+  "v": 599,
+  "c": 6,
+  "q": 11,
+  "s": 5,
+  "f": 2,
+  "H1": [
+   3,
+   3
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2,
+     3
+    ]
+   ]
+  ],
+  "L1": 28,
+  "orbits": 168,
+  "log2_sym": 14.585,
+  "zscreen": {
+   "multisets": 37,
+   "ordered_zquads": 55296,
+   "log2_N0_total": 250.878,
+   "log2_stage1_total": 103.969,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 103.969,
+  "S1_sym": 89.4,
+  "budget": {
+   "H2": 343.45,
+   "C2": 622.65,
+   "stage2_log2E": -279.2,
+   "D_def": 181.35,
+   "C_S": 378.54,
+   "h_D": 62.76,
+   "log2_cost_per_core": 419.54,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -192.1,
+  "verdict": "stage 2 over budget [E] (2^420 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   []
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [],
+  "L1": 102,
+  "orbits": 306,
+  "log2_sym": 43.275,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 326.0,
+   "C2": 426.92,
+   "stage2_log2E": -100.92,
+   "D_def": 118.68,
+   "C_S": 242.74,
+   "h_D": 65.5,
+   "log2_cost_per_core": 231.17,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^231 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   [
+    [
+     2,
+     2,
+     16
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    2,
+    2,
+    16
+   ]
+  ],
+  "L1": 54,
+  "orbits": 162,
+  "log2_sym": 25.925,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 166.0,
+   "C2": 216.86,
+   "stage2_log2E": -50.86,
+   "D_def": 57.5,
+   "C_S": 124.36,
+   "h_D": 35.0,
+   "log2_cost_per_core": 116.36,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^116 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   [
+    [
+     2,
+     4,
+     4
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    2,
+    4,
+    4
+   ]
+  ],
+  "L1": 30,
+  "orbits": 90,
+  "log2_sym": 24.925,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 140.388,
+   "log2_stage1_total": 50.306,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 50.306,
+  "S1_sym": 25.4,
+  "budget": {
+   "H2": 86.0,
+   "C2": 123.03,
+   "stage2_log2E": -37.03,
+   "D_def": 35.12,
+   "C_S": 70.91,
+   "h_D": 17.0,
+   "log2_cost_per_core": 71.53,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -12.6,
+  "verdict": "stage 2 over budget [E] (2^72 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 68,
+  "orbits": 204,
+  "log2_sym": 35.935,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 208.0,
+   "C2": 286.85,
+   "stage2_log2E": -78.85,
+   "D_def": 83.45,
+   "C_S": 163.4,
+   "h_D": 40.0,
+   "log2_cost_per_core": 162.85,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^163 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2
+     ]
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2
+    ]
+   ]
+  ],
+  "L1": 52,
+  "orbits": 156,
+  "log2_sym": 16.585,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 166.0,
+   "C2": 195.13,
+   "stage2_log2E": -29.13,
+   "D_def": 48.21,
+   "C_S": 112.42,
+   "h_D": 34.5,
+   "log2_cost_per_core": 94.88,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^95 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ],
+    [
+     2,
+     2,
+     16
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ],
+   [
+    2,
+    2,
+    16
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 15.585,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 218.402,
+   "log2_stage1_total": 19.443,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 19.443,
+  "S1_sym": 3.9,
+  "budget": {
+   "H2": 107.0,
+   "C2": 133.85,
+   "stage2_log2E": -26.85,
+   "D_def": 36.46,
+   "C_S": 77.39,
+   "h_D": 20.0,
+   "log2_cost_per_core": 70.35,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -24.0,
+  "verdict": "stage 2 over budget [E] (2^70 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   2,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     2,
+     2,
+     16
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 2,
+  "f": 3,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2
+    ]
+   ],
+   [
+    2,
+    2,
+    16
+   ]
+  ],
+  "L1": 36,
+  "orbits": 108,
+  "log2_sym": 15.585,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 107.0,
+   "C2": 133.85,
+   "stage2_log2E": -26.85,
+   "D_def": 36.46,
+   "C_S": 77.39,
+   "h_D": 20.0,
+   "log2_cost_per_core": 70.35,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^70 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   []
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [],
+  "L1": 102,
+  "orbits": 408,
+  "log2_sym": 43.275,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 569.0,
+   "C2": 703.22,
+   "stage2_log2E": -134.22,
+   "D_def": 212.8,
+   "C_S": 394.13,
+   "h_D": 96.29,
+   "log2_cost_per_core": 370.58,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^371 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   [
+    [
+     2,
+     2,
+     16
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    2,
+    2,
+    16
+   ]
+  ],
+  "L1": 54,
+  "orbits": 216,
+  "log2_sym": 25.925,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 301.14,
+   "C2": 477.82,
+   "stage2_log2E": -176.68,
+   "D_def": 153.61,
+   "C_S": 274.96,
+   "h_D": 49.25,
+   "log2_cost_per_core": 302.62,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^303 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   [
+    [
+     2,
+     4,
+     4
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    2,
+    4,
+    4
+   ]
+  ],
+  "L1": 30,
+  "orbits": 120,
+  "log2_sym": 24.925,
+  "zscreen": {
+   "multisets": 117,
+   "ordered_zquads": 9745920,
+   "log2_N0_total": 199.234,
+   "log2_stage1_total": 109.906,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 109.906,
+  "S1_sym": 85.0,
+  "budget": {
+   "H2": 163.25,
+   "C2": 272.09,
+   "stage2_log2E": -108.84,
+   "D_def": 88.63,
+   "C_S": 157.2,
+   "h_D": 26.26,
+   "log2_cost_per_core": 177.33,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -25.4,
+  "verdict": "stage 2 over budget [E] (2^177 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 68,
+  "orbits": 272,
+  "log2_sym": 35.935,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 369.3,
+   "C2": 490.72,
+   "stage2_log2E": -121.42,
+   "D_def": 156.53,
+   "C_S": 275.41,
+   "h_D": 58.78,
+   "log2_cost_per_core": 276.68,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^277 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2
+     ]
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2
+    ]
+   ]
+  ],
+  "L1": 52,
+  "orbits": 208,
+  "log2_sym": 16.585,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 290.05,
+   "C2": 676.77,
+   "stage2_log2E": -386.72,
+   "D_def": 222.29,
+   "C_S": 405.49,
+   "h_D": 48.99,
+   "log2_cost_per_core": 507.25,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^507 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ],
+    [
+     2,
+     2,
+     16
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ],
+   [
+    2,
+    2,
+    16
+   ]
+  ],
+  "L1": 36,
+  "orbits": 144,
+  "log2_sym": 15.585,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 199.71,
+   "C2": 476.21,
+   "stage2_log2E": -276.5,
+   "D_def": 157.23,
+   "C_S": 285.77,
+   "h_D": 33.21,
+   "log2_cost_per_core": 359.75,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^360 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   7,
+   3,
+   [
+    17
+   ],
+   [
+    [
+     "neg",
+     [
+      1,
+      2
+     ]
+    ],
+    [
+     2,
+     2,
+     16
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 7,
+  "s": 3,
+  "f": 2,
+  "H1": [
+   17
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1,
+     2
+    ]
+   ],
+   [
+    2,
+    2,
+    16
+   ]
+  ],
+  "L1": 36,
+  "orbits": 144,
+  "log2_sym": 15.585,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 294.699,
+   "log2_stage1_total": 93.972,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 93.972,
+  "S1_sym": 78.4,
+  "budget": {
+   "H2": 199.71,
+   "C2": 476.21,
+   "stage2_log2E": -276.5,
+   "D_def": 157.23,
+   "C_S": 285.77,
+   "h_D": 33.21,
+   "log2_cost_per_core": 359.75,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -199.7,
+  "verdict": "stage 2 over budget [E] (2^360 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   17,
+   2,
+   [
+    7
+   ],
+   []
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 17,
+  "s": 2,
+  "f": 8,
+  "H1": [
+   7
+  ],
+  "U": [],
+  "L1": 42,
+  "orbits": 126,
+  "log2_sym": 36.739,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 158.0,
+   "C2": 158.49,
+   "stage2_log2E": -0.49,
+   "D_def": 28.62,
+   "C_S": 92.37,
+   "h_D": 37.5,
+   "log2_cost_per_core": 60.74,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^61 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   17,
+   2,
+   [
+    7
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 17,
+  "s": 2,
+  "f": 8,
+  "H1": [
+   7
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 28,
+  "orbits": 84,
+  "log2_sym": 29.399,
+  "zscreen": {
+   "multisets": 39,
+   "ordered_zquads": 56064,
+   "log2_N0_total": 101.008,
+   "log2_stage1_total": 27.265,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 27.265,
+  "S1_sym": -2.1,
+  "budget": {
+   "H2": 103.0,
+   "C2": 111.6,
+   "stage2_log2E": -8.6,
+   "D_def": 20.57,
+   "C_S": 67.03,
+   "h_D": 24.0,
+   "log2_cost_per_core": 48.1,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -11.7,
+  "exact_stage2": {
+   "multisets": 39,
+   "done": 39,
+   "dead": 39,
+   "alive": 0,
+   "errors": 0,
+   "note": "per-type screen, all 242,977 type quadruples"
+  },
+  "verdict": "no core [M] (exact stage-2 compression screens)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   17,
+   4,
+   [
+    7
+   ],
+   []
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 17,
+  "s": 4,
+  "f": 4,
+  "H1": [
+   7
+  ],
+  "U": [],
+  "L1": 42,
+  "orbits": 210,
+  "log2_sym": 36.739,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 409.71,
+   "C2": 393.56,
+   "stage2_log2E": 16.15,
+   "D_def": 92.11,
+   "C_S": 221.8,
+   "h_D": 79.65,
+   "log2_cost_per_core": 148.88,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^149 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   17,
+   4,
+   [
+    7
+   ],
+   [
+    [
+     "neg",
+     [
+      1
+     ]
+    ]
+   ]
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 17,
+  "s": 4,
+  "f": 4,
+  "H1": [
+   7
+  ],
+  "U": [
+   [
+    "neg",
+    [
+     1
+    ]
+   ]
+  ],
+  "L1": 28,
+  "orbits": 140,
+  "log2_sym": 29.399,
+  "zscreen": {
+   "multisets": 50,
+   "ordered_zquads": 72192,
+   "log2_N0_total": 179.843,
+   "log2_stage1_total": 103.172,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 103.172,
+  "S1_sym": 73.8,
+  "budget": {
+   "H2": 271.14,
+   "C2": 287.76,
+   "stage2_log2E": -16.62,
+   "D_def": 71.03,
+   "C_S": 164.32,
+   "h_D": 52.41,
+   "log2_cost_per_core": 125.98,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 55.2,
+  "verdict": "stage 2 over budget [E] (2^126 per core)"
+ },
+ {
+  "key": [
+   719,
+   6,
+   17,
+   8,
+   [
+    7
+   ],
+   []
+  ],
+  "v": 719,
+  "c": 6,
+  "q": 17,
+  "s": 8,
+  "f": 2,
+  "H1": [
+   7
+  ],
+  "U": [],
+  "L1": 42,
+  "orbits": 378,
+  "log2_sym": 36.739,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 974.92,
+   "C2": 839.0,
+   "stage2_log2E": 135.92,
+   "D_def": 174.29,
+   "C_S": 469.4,
+   "h_D": 195.31,
+   "log2_cost_per_core": 253.88,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^254 per core)"
+ },
+ {
+  "key": [
+   823,
+   8,
+   17,
+   2,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 823,
+  "c": 8,
+  "q": 17,
+  "s": 2,
+  "f": 8,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 144,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 182.0,
+   "C2": 220.64,
+   "stage2_log2E": -38.64,
+   "D_def": 48.93,
+   "C_S": 128.71,
+   "h_D": 43.0,
+   "log2_cost_per_core": 108.14,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^108 per core)"
+ },
+ {
+  "key": [
+   823,
+   8,
+   17,
+   2,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 823,
+  "c": 8,
+  "q": 17,
+  "s": 2,
+  "f": 8,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 96,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 32,
+   "ordered_zquads": 32243712,
+   "log2_N0_total": 83.528,
+   "log2_stage1_total": -57.199,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": -57.199,
+  "S1_sym": -89.2,
+  "budget": {
+   "H2": 119.0,
+   "C2": 204.66,
+   "stage2_log2E": -85.66,
+   "D_def": 61.05,
+   "C_S": 116.11,
+   "h_D": 27.5,
+   "log2_cost_per_core": 131.41,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -175.8,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
+ },
+ {
+  "key": [
+   823,
+   8,
+   17,
+   4,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 823,
+  "c": 8,
+  "q": 17,
+  "s": 4,
+  "f": 4,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 240,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 469.4,
+   "C2": 560.46,
+   "stage2_log2E": -91.06,
+   "D_def": 153.23,
+   "C_S": 315.06,
+   "h_D": 92.17,
+   "log2_cost_per_core": 279.67,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^280 per core)"
+ },
+ {
+  "key": [
+   823,
+   8,
+   17,
+   4,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 823,
+  "c": 8,
+  "q": 17,
+  "s": 4,
+  "f": 4,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 160,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 72,
+   "ordered_zquads": 65011712,
+   "log2_N0_total": 156.081,
+   "log2_stage1_total": 7.705,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 7.705,
+  "S1_sym": -24.3,
+  "budget": {
+   "H2": 309.23,
+   "C2": 538.27,
+   "stage2_log2E": -229.04,
+   "D_def": 170.27,
+   "C_S": 307.72,
+   "h_D": 60.28,
+   "log2_cost_per_core": 353.52,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -255.3,
+  "verdict": "stage 1 < 2^-4 per symmetry class [E]"
+ },
+ {
+  "key": [
+   823,
+   8,
+   17,
+   8,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 823,
+  "c": 8,
+  "q": 17,
+  "s": 8,
+  "f": 2,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 432,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 1112.44,
+   "C2": 1190.47,
+   "stage2_log2E": -78.03,
+   "D_def": 303.8,
+   "C_S": 664.04,
+   "h_D": 222.63,
+   "log2_cost_per_core": 522.93,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^523 per core)"
+ },
+ {
+  "key": [
+   823,
+   8,
+   17,
+   8,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 823,
+  "c": 8,
+  "q": 17,
+  "s": 8,
+  "f": 2,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 288,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 72,
+   "ordered_zquads": 65011712,
+   "log2_N0_total": 278.309,
+   "log2_stage1_total": 129.196,
+   "mode": "importance",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 129.196,
+  "S1_sym": 97.2,
+  "budget": {
+   "H2": 738.98,
+   "C2": 1149.56,
+   "stage2_log2E": -410.58,
+   "D_def": 350.42,
+   "C_S": 650.98,
+   "h_D": 148.16,
+   "log2_cost_per_core": 705.99,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -316.4,
+  "verdict": "stage 2 over budget [E] (2^706 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    8
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   8
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 192,
+  "log2_sym": 44.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 236.0,
+   "C2": 292.27,
+   "stage2_log2E": -56.27,
+   "D_def": 70.09,
+   "C_S": 168.18,
+   "h_D": 54.0,
+   "log2_cost_per_core": 147.27,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^147 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 40,
+  "orbits": 120,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 142.0,
+   "C2": 241.05,
+   "stage2_log2E": -99.05,
+   "D_def": 68.99,
+   "C_S": 139.06,
+   "h_D": 33.0,
+   "log2_cost_per_core": 153.55,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^154 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     5
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    5
+   ]
+  ],
+  "L1": 48,
+  "orbits": 144,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 170.0,
+   "C2": 245.52,
+   "stage2_log2E": -75.52,
+   "D_def": 66.58,
+   "C_S": 141.94,
+   "h_D": 37.0,
+   "log2_cost_per_core": 142.02,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^142 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    7
+   ]
+  ],
+  "L1": 40,
+  "orbits": 120,
+  "log2_sym": 32.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 142.0,
+   "C2": 274.52,
+   "stage2_log2E": -132.52,
+   "D_def": 79.66,
+   "C_S": 161.36,
+   "h_D": 33.5,
+   "log2_cost_per_core": 186.77,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^187 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    8
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   8
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 256,
+  "log2_sym": 44.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 405.75,
+   "C2": 516.96,
+   "stage2_log2E": -111.21,
+   "D_def": 147.37,
+   "C_S": 293.11,
+   "h_D": 76.48,
+   "log2_cost_per_core": 275.85,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^276 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 40,
+  "orbits": 160,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 253.59,
+   "C2": 416.58,
+   "stage2_log2E": -162.99,
+   "D_def": 132.13,
+   "C_S": 236.79,
+   "h_D": 47.66,
+   "log2_cost_per_core": 265.95,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^266 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     5
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    5
+   ]
+  ],
+  "L1": 48,
+  "orbits": 192,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 304.31,
+   "C2": 425.35,
+   "stage2_log2E": -121.04,
+   "D_def": 127.32,
+   "C_S": 239.84,
+   "h_D": 58.19,
+   "log2_cost_per_core": 244.1,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^244 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    7
+   ]
+  ],
+  "L1": 40,
+  "orbits": 160,
+  "log2_sym": 32.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 253.59,
+   "C2": 489.18,
+   "stage2_log2E": -235.59,
+   "D_def": 161.32,
+   "C_S": 280.2,
+   "h_D": 47.66,
+   "log2_cost_per_core": 338.55,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^339 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    8
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   8
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 320,
+  "log2_sym": 44.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 609.44,
+   "C2": 583.11,
+   "stage2_log2E": 26.33,
+   "D_def": 142.46,
+   "C_S": 325.78,
+   "h_D": 114.87,
+   "log2_cost_per_core": 220.96,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^221 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 40,
+  "orbits": 200,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 375.67,
+   "C2": 355.39,
+   "stage2_log2E": 20.28,
+   "D_def": 85.94,
+   "C_S": 199.52,
+   "h_D": 69.93,
+   "log2_cost_per_core": 132.59,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^133 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     5
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    5
+   ]
+  ],
+  "L1": 48,
+  "orbits": 240,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 453.12,
+   "C2": 436.91,
+   "stage2_log2E": 16.21,
+   "D_def": 106.06,
+   "C_S": 246.08,
+   "h_D": 84.77,
+   "log2_cost_per_core": 167.96,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^168 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    7
+   ]
+  ],
+  "L1": 40,
+  "orbits": 200,
+  "log2_sym": 32.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 379.67,
+   "C2": 341.53,
+   "stage2_log2E": 38.14,
+   "D_def": 77.42,
+   "C_S": 192.89,
+   "h_D": 71.22,
+   "log2_cost_per_core": 116.08,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^116 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    8
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   8
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 448,
+  "log2_sym": 44.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 1017.49,
+   "C2": 1114.97,
+   "stage2_log2E": -97.48,
+   "D_def": 295.95,
+   "C_S": 624.73,
+   "h_D": 194.29,
+   "log2_cost_per_core": 509.08,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^509 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 40,
+  "orbits": 280,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 632.8,
+   "C2": 904.2,
+   "stage2_log2E": -271.4,
+   "D_def": 277.15,
+   "C_S": 508.07,
+   "h_D": 118.98,
+   "log2_cost_per_core": 528.31,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^528 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     5
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    5
+   ]
+  ],
+  "L1": 48,
+  "orbits": 336,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 758.96,
+   "C2": 923.01,
+   "stage2_log2E": -164.05,
+   "D_def": 265.33,
+   "C_S": 514.11,
+   "h_D": 143.57,
+   "log2_cost_per_core": 471.74,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^472 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    8
+   ],
+   [
+    [
+     3,
+     2,
+     7
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   8
+  ],
+  "U": [
+   [
+    3,
+    2,
+    7
+   ]
+  ],
+  "L1": 40,
+  "orbits": 280,
+  "log2_sym": 32.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 631.17,
+   "C2": 1063.85,
+   "stage2_log2E": -432.68,
+   "D_def": 344.14,
+   "C_S": 600.59,
+   "h_D": 119.12,
+   "log2_cost_per_core": 688.7,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^689 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    4,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 192,
+  "log2_sym": 43.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 236.0,
+   "C2": 334.3,
+   "stage2_log2E": -98.3,
+   "D_def": 85.26,
+   "C_S": 195.04,
+   "h_D": 54.0,
+   "log2_cost_per_core": 189.3,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^189 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    4,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 48,
+  "orbits": 144,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 172.0,
+   "C2": 329.62,
+   "stage2_log2E": -157.62,
+   "D_def": 96.79,
+   "C_S": 193.33,
+   "h_D": 39.5,
+   "log2_cost_per_core": 223.87,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^224 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    4,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 256,
+  "log2_sym": 43.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 405.75,
+   "C2": 600.61,
+   "stage2_log2E": -194.86,
+   "D_def": 182.73,
+   "C_S": 341.4,
+   "h_D": 76.48,
+   "log2_cost_per_core": 359.5,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^360 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    4,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 48,
+  "orbits": 192,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 304.31,
+   "C2": 583.23,
+   "stage2_log2E": -278.92,
+   "D_def": 194.72,
+   "C_S": 331.43,
+   "h_D": 57.08,
+   "log2_cost_per_core": 402.54,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^403 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    4,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 320,
+  "log2_sym": 43.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 609.44,
+   "C2": 569.01,
+   "stage2_log2E": 40.43,
+   "D_def": 135.34,
+   "C_S": 318.8,
+   "h_D": 114.87,
+   "log2_cost_per_core": 206.85,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^207 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    4,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 48,
+  "orbits": 240,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 454.63,
+   "C2": 409.3,
+   "stage2_log2E": 45.33,
+   "D_def": 94.05,
+   "C_S": 229.77,
+   "h_D": 85.48,
+   "log2_cost_per_core": 139.24,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^139 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    4,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 448,
+  "log2_sym": 43.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 1017.49,
+   "C2": 1298.51,
+   "stage2_log2E": -281.02,
+   "D_def": 375.2,
+   "C_S": 729.02,
+   "h_D": 194.29,
+   "log2_cost_per_core": 692.62,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^693 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    4,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     3
+    ]
+   ]
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   4,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    3
+   ]
+  ],
+  "L1": 48,
+  "orbits": 336,
+  "log2_sym": 35.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 766.22,
+   "C2": 1264.98,
+   "stage2_log2E": -498.76,
+   "D_def": 410.18,
+   "C_S": 709.19,
+   "h_D": 145.61,
+   "log2_cost_per_core": 809.06,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^809 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   2,
+   [
+    2,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 2,
+  "f": 6,
+  "H1": [
+   2,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 192,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 236.0,
+   "C2": 424.23,
+   "stage2_log2E": -188.23,
+   "D_def": 121.94,
+   "C_S": 248.29,
+   "h_D": 54.0,
+   "log2_cost_per_core": 279.23,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^279 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   3,
+   [
+    2,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 3,
+  "f": 4,
+  "H1": [
+   2,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 256,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 405.75,
+   "C2": 769.15,
+   "stage2_log2E": -363.4,
+   "D_def": 255.02,
+   "C_S": 437.65,
+   "h_D": 76.48,
+   "log2_cost_per_core": 528.04,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^528 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   4,
+   [
+    2,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 4,
+  "f": 3,
+  "H1": [
+   2,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 320,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 609.44,
+   "C2": 540.75,
+   "stage2_log2E": 68.69,
+   "D_def": 121.25,
+   "C_S": 304.63,
+   "h_D": 114.87,
+   "log2_cost_per_core": 178.59,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^179 per core)"
+ },
+ {
+  "key": [
+   839,
+   8,
+   13,
+   6,
+   [
+    2,
+    2,
+    2
+   ],
+   []
+  ],
+  "v": 839,
+  "c": 8,
+  "q": 13,
+  "s": 6,
+  "f": 2,
+  "H1": [
+   2,
+   2,
+   2
+  ],
+  "U": [],
+  "L1": 64,
+  "orbits": 448,
+  "log2_sym": 39.977,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 1017.49,
+   "C2": 1664.54,
+   "stage2_log2E": -647.05,
+   "D_def": 532.01,
+   "C_S": 938.24,
+   "h_D": 194.29,
+   "log2_cost_per_core": 1058.65,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^1059 per core)"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   2,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 2,
+  "f": 9,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 144,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 182.0,
+   "C2": 172.36,
+   "stage2_log2E": 9.64,
+   "D_def": 30.33,
+   "C_S": 99.03,
+   "h_D": 43.0,
+   "log2_cost_per_core": 59.86,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^60 per core)"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   2,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 2,
+  "f": 9,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 96,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 15,
+   "ordered_zquads": 23592960,
+   "log2_N0_total": 76.58,
+   "log2_stage1_total": null,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 118.0,
+   "C2": 111.17,
+   "stage2_log2E": 6.83,
+   "D_def": 19.17,
+   "C_S": 65.0,
+   "h_D": 27.0,
+   "log2_cost_per_core": 38.67,
+   "energy_ok": true
+  },
+  "verdict": "stage 1 empty [E] (target outside the lattice of every multiset)"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   3,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 3,
+  "f": 6,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 192,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "energy_ok": false
+  },
+  "verdict": "stage 1 empty [M]"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   3,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 3,
+  "f": 6,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 128,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 0,
+   "ordered_zquads": 0,
+   "stage1_empty": true
+  },
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "energy_ok": false
+  },
+  "verdict": "stage 1 empty [M]"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   6,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 6,
+  "f": 3,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 336,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 791.89,
+   "C2": 681.89,
+   "stage2_log2E": 110.0,
+   "D_def": 144.79,
+   "C_S": 379.17,
+   "h_D": 157.93,
+   "log2_cost_per_core": 206.98,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^207 per core)"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   6,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 6,
+  "f": 3,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 224,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 40,
+   "ordered_zquads": 46137344,
+   "log2_N0_total": 213.202,
+   "log2_stage1_total": 60.526,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 60.526,
+  "S1_sym": 28.5,
+  "budget": {
+   "H2": 524.03,
+   "C2": 437.77,
+   "stage2_log2E": 86.26,
+   "D_def": 89.68,
+   "C_S": 244.79,
+   "h_D": 103.3,
+   "log2_cost_per_core": 124.11,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": 112.2,
+  "verdict": "stage 2 over budget [E] (2^124 per core)"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   9,
+   [
+    3,
+    2
+   ],
+   []
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 9,
+  "f": 2,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [],
+  "L1": 48,
+  "orbits": 480,
+  "log2_sym": 42.317,
+  "zscreen": {},
+  "S1": null,
+  "S1_sym": null,
+  "budget": {
+   "H2": 1292.81,
+   "C2": 1368.69,
+   "stage2_log2E": -75.88,
+   "D_def": 341.87,
+   "C_S": 762.84,
+   "h_D": 263.98,
+   "log2_cost_per_core": 590.3,
+   "energy_ok": true
+  },
+  "verdict": "stage 2 over budget [E] (2^590 per core)"
+ },
+ {
+  "key": [
+   919,
+   8,
+   19,
+   9,
+   [
+    3,
+    2
+   ],
+   [
+    [
+     3,
+     2,
+     2
+    ]
+   ]
+  ],
+  "v": 919,
+  "c": 8,
+  "q": 19,
+  "s": 9,
+  "f": 2,
+  "H1": [
+   3,
+   2
+  ],
+  "U": [
+   [
+    3,
+    2,
+    2
+   ]
+  ],
+  "L1": 32,
+  "orbits": 320,
+  "log2_sym": 31.977,
+  "zscreen": {
+   "multisets": 40,
+   "ordered_zquads": 46137344,
+   "log2_N0_total": 285.303,
+   "log2_stage1_total": 132.535,
+   "mode": "all",
+   "exact_multisets": 0,
+   "exact_zero": 0
+  },
+  "S1": 132.535,
+  "S1_sym": 100.6,
+  "budget": {
+   "H2": 857.43,
+   "C2": 1323.02,
+   "stage2_log2E": -465.59,
+   "D_def": 405.28,
+   "C_S": 742.91,
+   "h_D": 174.83,
+   "log2_cost_per_core": 806.89,
+   "energy_ok": true
+  },
+  "log2_cores_per_sym": -368.2,
+  "verdict": "stage 2 over budget [E] (2^807 per core)"
+ }
+]

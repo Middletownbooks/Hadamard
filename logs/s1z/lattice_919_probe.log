@@ -1,0 +1,37 @@
+multisets 15 rest lags 24
+0 (0, 23, 40, 87) coordinate gcds [0, 8, 4, 8, 8, 8, 8, 8, 8, 8, 8, 8] ... obstructed coords (index, lag, gcd, residue): []
+   lattice rank 23 target in lattice: False
+1 (0, 23, 44, 87) coordinate gcds [0, 8, 4, 8, 8, 8, 8, 8, 8, 8, 8, 8] ... obstructed coords (index, lag, gcd, residue): []
+   lattice rank 23 target in lattice: False
+2 (0, 23, 49, 87) coordinate gcds [0, 8, 4, 8, 8, 8, 8, 8, 8, 8, 8, 8] ... obstructed coords (index, lag, gcd, residue): []
+   lattice rank 23 target in lattice: False
+3 (0, 23, 50, 87) coordinate gcds [0, 8, 4, 8, 8, 8, 8, 8, 8, 8, 8, 8] ... obstructed coords (index, lag, gcd, residue): []
+   lattice rank 23 target in lattice: False
+--- span test
+reps 32 real rank 23 target residual outside the span 1.3642420526593924e-12
+invariant direction (lags, coeff): [(0, 1.0)]
+   value on samples 3144.0 0.0 on target 3144.0
+invariant direction (lags, coeff): [(6, -0.107), (7, -0.107), (8, -0.215), (9, -0.215), (12, 0.043), (13, 0.043), (14, 0.086), (15, 0.086), (18, -0.13), (19, -0.13), (20, -0.259), (21, -0.259)]
+   value on samples -337.67618831083036 2.7264109013573136e-13 on target -337.6761883108302
+invariant direction (lags, coeff): [(6, 0.5), (7, 0.5), (8, 1.0), (9, 1.0), (12, -0.288), (13, -0.288), (14, -0.575), (15, -0.575), (18, 0.33), (19, 0.33), (20, 0.66), (21, 0.66)]
+   value on samples 7.808431330443113 4.926177016804311e-13 on target 7.80843133044295
+invariant direction (lags, coeff): [(6, 0.332), (7, 0.332), (8, 0.663), (9, 0.663), (12, -0.099), (13, -0.099), (14, -0.199), (15, -0.199), (18, -0.5), (19, -0.5), (20, -1.0), (21, -1.0)]
+   value on samples 28.06095539393931 5.789798660727513e-13 on target 28.06095539393926
+invariant direction (lags, coeff): [(6, 0.163), (7, 0.163), (8, 0.327), (9, 0.327), (12, 0.129), (13, 0.129), (14, 0.259), (15, 0.259), (18, -0.037), (19, -0.037), (20, -0.075), (21, -0.075)]
+   value on samples 69.40307894800083 3.7601945744537e-13 on target 69.4030789480004
+invariant direction (lags, coeff): [(6, -0.257), (7, -0.257), (8, -0.513), (9, -0.513), (12, -0.5), (13, -0.5), (14, -1.0), (15, -1.0), (18, -0.189), (19, -0.189), (20, -0.378), (21, -0.378)]
+   value on samples -653.1077634809554 5.140952238967949e-13 on target -653.1077634809558
+invariant direction (lags, coeff): [(6, 0.097), (7, 0.097), (8, 0.194), (9, 0.194), (12, 0.319), (13, 0.319), (14, 0.639), (15, 0.639), (18, -0.171), (19, -0.171), (20, -0.343), (21, -0.343)]
+   value on samples -351.02309935496766 3.984973003147469e-13 on target -351.0230993549677
+invariant direction (lags, coeff): [(6, 0.063), (7, 0.063), (8, 0.126), (9, 0.126), (12, -0.156), (13, -0.156), (14, -0.312), (15, -0.312), (18, 0.05), (19, 0.05), (20, 0.101), (21, 0.101)]
+   value on samples 12.017671584214522 2.1836563233682562e-13 on target 12.017671584214561
+invariant direction (lags, coeff): [(1, 0.5), (2, 1.0), (3, 1.0)]
+   value on samples -1329.9999999999986 6.811729771900556e-13 on target -1329.999999999999
+--- congruence
+target coords in the lattice basis (non-integral ones): [(21, '55/3')]
+denominator 3
+--- dual functional mod 3
+lambda (lag rep -> coeff mod 3): [(6, 1), (7, 1), (12, 1), (13, 1), (18, 1), (19, 1), (24, 1), (25, 1), (30, 1), (31, 1), (36, 1), (37, 1), (42, 1), (43, 1)]
+   lambda.(T - V0) mod 3 = 1 ; on samples: {0}
+   lag coordinates: {6: [0, 0, 1, 0, 0], 7: [0, 0, 1, 0, 1], 12: [0, 1, 0, 0, 0], 13: [0, 1, 0, 0, 1], 18: [0, 1, 1, 0, 0], 19: [0, 1, 1, 0, 1], 24: [1, 0, 0, 0, 0], 25: [1, 0, 0, 0, 1], 30: [1, 0, 1, 0, 0], 31: [1, 0, 1, 0, 1], 36: [1, 1, 0, 0, 0], 37: [1, 1, 0, 0, 1], 42: [1, 1, 1, 0, 0], 43: [1, 1, 1, 0, 1]}
+   T1 at those lags: {6: 76, 7: 76, 12: 76, 13: 76, 18: 76, 19: 76, 24: 76, 25: 76, 30: 76, 31: 76, 36: 76, 37: 76, 42: 76, 43: 76} sample value lam.V0 mod 3 1 lam.T mod 3 2

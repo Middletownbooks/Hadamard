@@ -1,0 +1,18 @@
+{"stage": "setup", "multisets": 39, "levels": [[], [0], [1], [0, 1]], "L1": 28, "T0": 2536, "part": "1/3", "secs": 0.1}
+{"stage": "ms", "i": 10, "m": [10, 19, 35, 43], "ordered": 1536, "log2N0": 77.901, "type_quads": 6192, "dead_per_level": [0, 6192, 0, 0], "survivors": 0, "secs": 12.9}
+{"stage": "ms", "i": 13, "m": [10, 21, 32, 44], "ordered": 1536, "log2N0": 76.034, "type_quads": 4915, "dead_per_level": [0, 4915, 0, 0], "survivors": 0, "secs": 24.6}
+{"stage": "ms", "i": 16, "m": [10, 23, 30, 41], "ordered": 1536, "log2N0": 78.387, "type_quads": 7041, "dead_per_level": [0, 7041, 0, 0], "survivors": 0, "secs": 37.4}
+{"stage": "ms", "i": 19, "m": [10, 27, 28, 36], "ordered": 1536, "log2N0": 77.578, "type_quads": 6582, "dead_per_level": [0, 6582, 0, 0], "survivors": 0, "secs": 53.8}
+{"stage": "ms", "i": 22, "m": [13, 22, 32, 32], "ordered": 768, "log2N0": 80.996, "type_quads": 11607, "dead_per_level": [0, 11607, 0, 0], "survivors": 0, "secs": 81.9}
+{"stage": "ms", "i": 25, "m": [15, 16, 32, 39], "ordered": 1536, "log2N0": 76.519, "type_quads": 5334, "dead_per_level": [0, 5334, 0, 0], "survivors": 0, "secs": 88.9}
+{"stage": "ms", "i": 28, "m": [15, 20, 25, 44], "ordered": 1536, "log2N0": 80.262, "type_quads": 9818, "dead_per_level": [0, 9818, 0, 0], "survivors": 0, "secs": 101.0}
+{"stage": "ms", "i": 31, "m": [16, 19, 22, 41], "ordered": 1536, "log2N0": 76.894, "type_quads": 5690, "dead_per_level": [0, 5690, 0, 0], "survivors": 0, "secs": 107.4}
+{"stage": "ms", "i": 34, "m": [17, 20, 21, 41], "ordered": 1536, "log2N0": 78.329, "type_quads": 7340, "dead_per_level": [0, 7340, 0, 0], "survivors": 0, "secs": 116.2}
+{"stage": "ms", "i": 37, "m": [20, 20, 23, 30], "ordered": 768, "log2N0": 80.331, "type_quads": 10266, "dead_per_level": [0, 10266, 0, 0], "survivors": 0, "secs": 139.2}
+{"stage": "summary", "type_quads": 74785, "survivors": 0, "secs": 139.2}
+{"stage": "setup", "multisets": 39, "levels": [[], [0], [1], [0, 1]], "L1": 28, "T0": 2536, "part": "1/4", "secs": 0.2}
+{"stage": "ms", "i": 9, "m": [8, 20, 41, 44], "ordered": 1536, "log2N0": 82.619, "type_quads": 3130, "dead_per_level": [3130, 0, 0, 0], "survivors": 0, "secs": 0.9}
+{"stage": "setup", "multisets": 39, "levels": [[], [0], [1], [0, 1]], "L1": 28, "T0": 2536, "part": "1/4", "secs": 0.1}
+{"stage": "ms", "i": 17, "m": [10, 24, 29, 41], "ordered": 1536, "log2N0": 78.387, "type_quads": 7041, "dead_per_level": [0, 7041, 0, 0], "survivors": 0, "secs": 18.2}
+{"stage": "ms", "i": 29, "m": [15, 20, 27, 33], "ordered": 1536, "log2N0": 77.507, "type_quads": 6916, "dead_per_level": [0, 6916, 0, 0], "survivors": 0, "secs": 37.6}
+{"stage": "summary", "type_quads": 13957, "survivors": 0, "secs": 37.6}
