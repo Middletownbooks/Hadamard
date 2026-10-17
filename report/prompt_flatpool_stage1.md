@@ -136,4 +136,9 @@ Steps:
   7 have 0 solutions where the Gaussian predicts 2^4.6-2^5.3 (exact obstructions it cannot see); 5 have 2^5.2-2^10.7
   where it predicts 2^5.3-2^7.9 (0-3 bits low). Averaged over the 12 the slice total is about 2.3 bits low. Use the
   totals to screen configurations (rich versus poor stage 1, to within a few bits); never trust a single z.
+- 2026-10-17, rungs 2-4 tooling (two-word masks, r <= 128): `scripts/flatw.py` (kernels; selftest against the 64-bit
+  path and direct FFT PAFs), `scripts/flat_gen_w.py` (generation to multiplier-orbit representatives),
+  `scripts/build_slot_pools_w.py`, `scripts/kt_join_slots_w.py`. Smoke test at 223 (d = 3, 75 orbits, rho = 0.36,
+  profile (17, 17, 17, 5)): blocks flat and canonical, join runs end to end. Before any 223 production: a planted test
+  (put Alpöge's 223 blocks, `data/core_v223_b0.txt`, profile (23, 11, 11, 11), into the pools and process its bucket).
 
