@@ -1,0 +1,95 @@
+{"stage": "setup", "multisets": 89, "levels": [[], [0], [1], [0, 1]], "part": "0/1", "secs": 0.5}
+{"stage": "ms", "i": 0, "m": [0, 65, 71, 71], "ordered": 6912, "log2N0": 129.382, "dead_at": [], "hits": [0], "secs": 0.7}
+{"stage": "ms", "i": 1, "m": [1, 65, 71, 71], "ordered": 13824, "log2N0": 129.382, "dead_at": [], "hits": [0], "secs": 0.7}
+{"stage": "ms", "i": 2, "m": [4, 54, 71, 74], "ordered": 165888, "log2N0": 122.928, "dead_at": [0], "hits": [1, 0], "secs": 2.0}
+{"stage": "ms", "i": 3, "m": [4, 55, 70, 74], "ordered": 165888, "log2N0": 123.038, "dead_at": [0], "hits": [1, 0], "secs": 2.6}
+{"stage": "ms", "i": 4, "m": [4, 55, 71, 72], "ordered": 27648, "log2N0": 123.038, "dead_at": [0], "hits": [1, 0], "secs": 2.9}
+{"stage": "ms", "i": 5, "m": [4, 55, 71, 73], "ordered": 13824, "log2N0": 123.038, "dead_at": [0], "hits": [1, 0], "secs": 3.2}
+{"stage": "ms", "i": 6, "m": [4, 59, 62, 71], "ordered": 41472, "log2N0": 123.038, "dead_at": [], "hits": [0], "secs": 3.3}
+{"stage": "ms", "i": 7, "m": [4, 60, 61, 71], "ordered": 165888, "log2N0": 123.038, "dead_at": [], "hits": [0], "secs": 3.3}
+{"stage": "ms", "i": 8, "m": [5, 53, 71, 74], "ordered": 41472, "log2N0": 122.928, "dead_at": [0], "hits": [1, 0], "secs": 3.7}
+{"stage": "ms", "i": 9, "m": [5, 55, 69, 74], "ordered": 41472, "log2N0": 123.038, "dead_at": [0], "hits": [1, 0], "secs": 4.1}
+{"stage": "ms", "i": 10, "m": [5, 58, 62, 71], "ordered": 41472, "log2N0": 123.038, "dead_at": [], "hits": [0], "secs": 4.1}
+{"stage": "ms", "i": 11, "m": [6, 52, 71, 74], "ordered": 165888, "log2N0": 122.928, "dead_at": [0], "hits": [1, 0], "secs": 4.4}
+{"stage": "ms", "i": 12, "m": [6, 55, 68, 74], "ordered": 165888, "log2N0": 123.038, "dead_at": [0], "hits": [1, 0], "secs": 4.8}
+{"stage": "ms", "i": 13, "m": [6, 58, 61, 71], "ordered": 165888, "log2N0": 123.038, "dead_at": [], "hits": [0], "secs": 4.8}
+{"stage": "ms", "i": 14, "m": [9, 49, 55, 71], "ordered": 13824, "log2N0": 117.922, "dead_at": [0], "hits": [6, 0], "secs": 5.2}
+{"stage": "ms", "i": 15, "m": [9, 50, 55, 71], "ordered": 27648, "log2N0": 117.922, "dead_at": [0], "hits": [6, 0], "secs": 5.6}
+{"stage": "ms", "i": 16, "m": [9, 51, 54, 71], "ordered": 165888, "log2N0": 117.922, "dead_at": [0], "hits": [6, 0], "secs": 6.0}
+{"stage": "ms", "i": 17, "m": [9, 51, 55, 70], "ordered": 165888, "log2N0": 118.033, "dead_at": [0], "hits": [6, 0], "secs": 6.2}
+{"stage": "ms", "i": 18, "m": [10, 51, 53, 71], "ordered": 41472, "log2N0": 117.922, "dead_at": null, "hits": [6, 12, 100], "error": "MemoryError((455424, 2, 3, 17), dtype('complex128'))", "secs": 61.5}
+{"stage": "ms", "i": 19, "m": [10, 51, 55, 69], "ordered": 41472, "log2N0": 118.033, "dead_at": null, "hits": [6, 12, 100], "error": "MemoryError((455424, 2, 3, 17), dtype('complex128'))", "secs": 77.1}
+{"stage": "ms", "i": 20, "m": [11, 51, 52, 71], "ordered": 165888, "log2N0": 117.922, "dead_at": null, "hits": [6, 12, 346], "error": "MemoryError((455474, 2, 3, 17), dtype('complex128'))", "secs": 86.9}
+{"stage": "ms", "i": 21, "m": [11, 51, 55, 68], "ordered": 165888, "log2N0": 118.033, "dead_at": null, "hits": [6, 12, 370], "error": "MemoryError((455474, 2, 3, 17), dtype('complex128'))", "secs": 96.6}
+{"stage": "ms", "i": 22, "m": [14, 35, 71, 77], "ordered": 13824, "log2N0": 118.075, "dead_at": [], "hits": [0], "secs": 96.7}
+{"stage": "ms", "i": 23, "m": [15, 35, 71, 77], "ordered": 27648, "log2N0": 118.075, "dead_at": [], "hits": [0], "secs": 96.7}
+{"stage": "ms", "i": 24, "m": [16, 32, 60, 74], "ordered": 165888, "log2N0": 111.192, "dead_at": [0], "hits": [1, 0], "secs": 97.3}
+{"stage": "ms", "i": 25, "m": [16, 33, 59, 74], "ordered": 41472, "log2N0": 111.192, "dead_at": [0], "hits": [1, 0], "secs": 97.8}
+{"stage": "ms", "i": 26, "m": [16, 34, 58, 74], "ordered": 165888, "log2N0": 111.192, "dead_at": [0], "hits": [1, 0], "secs": 98.5}
+{"stage": "ms", "i": 27, "m": [16, 35, 56, 74], "ordered": 27648, "log2N0": 111.567, "dead_at": [0], "hits": [1, 0], "secs": 99.2}
+{"stage": "ms", "i": 28, "m": [16, 35, 57, 74], "ordered": 13824, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 99.9}
+{"stage": "ms", "i": 29, "m": [16, 35, 58, 72], "ordered": 27648, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 100.3}
+{"stage": "ms", "i": 30, "m": [16, 35, 58, 73], "ordered": 13824, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 100.7}
+{"stage": "ms", "i": 31, "m": [16, 36, 55, 77], "ordered": 27648, "log2N0": 111.304, "dead_at": [0], "hits": [1, 0], "secs": 101.3}
+{"stage": "ms", "i": 32, "m": [16, 37, 55, 77], "ordered": 13824, "log2N0": 111.304, "dead_at": [0], "hits": [1, 0], "secs": 101.7}
+{"stage": "ms", "i": 33, "m": [16, 38, 52, 79], "ordered": 165888, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 102.4}
+{"stage": "ms", "i": 34, "m": [16, 38, 53, 78], "ordered": 41472, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 102.8}
+{"stage": "ms", "i": 35, "m": [16, 38, 54, 77], "ordered": 165888, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 103.1}
+{"stage": "ms", "i": 36, "m": [16, 38, 55, 75], "ordered": 27648, "log2N0": 111.79, "dead_at": [0], "hits": [1, 0], "secs": 103.5}
+{"stage": "ms", "i": 37, "m": [16, 38, 55, 76], "ordered": 13824, "log2N0": 111.79, "dead_at": [0], "hits": [1, 0], "secs": 104.0}
+{"stage": "ms", "i": 38, "m": [16, 39, 51, 71], "ordered": 27648, "log2N0": 111.304, "dead_at": [0], "hits": [1, 0], "secs": 104.4}
+{"stage": "ms", "i": 39, "m": [16, 40, 51, 71], "ordered": 13824, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 104.9}
+{"stage": "ms", "i": 40, "m": [16, 41, 49, 71], "ordered": 13824, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 105.3}
+{"stage": "ms", "i": 41, "m": [16, 41, 50, 71], "ordered": 27648, "log2N0": 111.678, "dead_at": [0], "hits": [1, 0], "secs": 105.5}
+{"stage": "ms", "i": 42, "m": [16, 41, 51, 70], "ordered": 165888, "log2N0": 111.79, "dead_at": [0], "hits": [1, 0], "secs": 105.8}
+{"stage": "ms", "i": 43, "m": [16, 42, 51, 69], "ordered": 41472, "log2N0": 111.79, "dead_at": [0], "hits": [1, 0], "secs": 106.4}
+{"stage": "ms", "i": 44, "m": [16, 43, 51, 68], "ordered": 165888, "log2N0": 111.79, "dead_at": [0], "hits": [1, 0], "secs": 107.0}
+{"stage": "ms", "i": 45, "m": [16, 46, 47, 62], "ordered": 41472, "log2N0": 111.901, "dead_at": [0], "hits": [1, 0], "secs": 107.9}
+{"stage": "ms", "i": 46, "m": [16, 46, 48, 61], "ordered": 165888, "log2N0": 111.901, "dead_at": [0], "hits": [1, 0], "secs": 108.6}
+{"stage": "ms", "i": 47, "m": [20, 38, 55, 55], "ordered": 6912, "log2N0": 112.499, "dead_at": [0], "hits": [1, 0], "secs": 109.0}
+{"stage": "ms", "i": 48, "m": [21, 25, 67, 71], "ordered": 165888, "log2N0": 111.081, "dead_at": [0], "hits": [1, 0], "secs": 109.8}
+{"stage": "ms", "i": 49, "m": [21, 26, 66, 71], "ordered": 41472, "log2N0": 111.081, "dead_at": [0], "hits": [1, 0], "secs": 110.6}
+{"stage": "ms", "i": 50, "m": [21, 36, 55, 55], "ordered": 13824, "log2N0": 112.499, "dead_at": [0], "hits": [1, 0], "secs": 111.0}
+{"stage": "ms", "i": 51, "m": [21, 37, 55, 55], "ordered": 6912, "log2N0": 112.499, "dead_at": [0], "hits": [1, 0], "secs": 111.4}
+{"stage": "ms", "i": 52, "m": [21, 38, 54, 55], "ordered": 165888, "log2N0": 112.874, "dead_at": [0], "hits": [1, 0], "secs": 111.8}
+{"stage": "ms", "i": 53, "m": [22, 26, 65, 71], "ordered": 41472, "log2N0": 111.081, "dead_at": [0], "hits": [1, 0], "secs": 112.5}
+{"stage": "ms", "i": 54, "m": [22, 38, 53, 55], "ordered": 41472, "log2N0": 112.874, "dead_at": [0], "hits": [1, 0], "secs": 112.8}
+{"stage": "ms", "i": 55, "m": [23, 25, 65, 71], "ordered": 165888, "log2N0": 111.081, "dead_at": [0], "hits": [1, 0], "secs": 113.2}
+{"stage": "ms", "i": 56, "m": [23, 38, 52, 55], "ordered": 165888, "log2N0": 112.874, "dead_at": [0], "hits": [1, 0], "secs": 113.6}
+{"stage": "ms", "i": 57, "m": [25, 28, 55, 67], "ordered": 165888, "log2N0": 112.276, "dead_at": [0], "hits": [1, 0], "secs": 114.2}
+{"stage": "ms", "i": 58, "m": [25, 30, 55, 65], "ordered": 165888, "log2N0": 112.276, "dead_at": [0], "hits": [1, 0], "secs": 114.7}
+{"stage": "ms", "i": 59, "m": [25, 35, 41, 79], "ordered": 165888, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 115.1}
+{"stage": "ms", "i": 60, "m": [25, 35, 43, 77], "ordered": 165888, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 115.5}
+{"stage": "ms", "i": 61, "m": [25, 35, 46, 60], "ordered": 165888, "log2N0": 113.248, "dead_at": [0], "hits": [1, 0], "secs": 115.8}
+{"stage": "ms", "i": 62, "m": [25, 35, 48, 58], "ordered": 165888, "log2N0": 113.248, "dead_at": [0], "hits": [1, 0], "secs": 116.3}
+{"stage": "ms", "i": 63, "m": [26, 28, 55, 66], "ordered": 41472, "log2N0": 112.276, "dead_at": [0], "hits": [1, 0], "secs": 116.8}
+{"stage": "ms", "i": 64, "m": [26, 29, 55, 65], "ordered": 41472, "log2N0": 112.276, "dead_at": [0], "hits": [1, 0], "secs": 117.5}
+{"stage": "ms", "i": 65, "m": [26, 35, 41, 78], "ordered": 41472, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 117.9}
+{"stage": "ms", "i": 66, "m": [26, 35, 42, 77], "ordered": 41472, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 118.3}
+{"stage": "ms", "i": 67, "m": [26, 35, 46, 59], "ordered": 41472, "log2N0": 113.248, "dead_at": [0], "hits": [1, 0], "secs": 118.7}
+{"stage": "ms", "i": 68, "m": [26, 35, 47, 58], "ordered": 41472, "log2N0": 113.248, "dead_at": [0], "hits": [1, 0], "secs": 119.1}
+{"stage": "ms", "i": 69, "m": [27, 35, 38, 71], "ordered": 27648, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 119.6}
+{"stage": "ms", "i": 70, "m": [28, 34, 38, 71], "ordered": 165888, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 120.0}
+{"stage": "ms", "i": 71, "m": [28, 35, 36, 71], "ordered": 27648, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 120.4}
+{"stage": "ms", "i": 72, "m": [28, 35, 37, 71], "ordered": 13824, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 120.8}
+{"stage": "ms", "i": 73, "m": [28, 35, 38, 70], "ordered": 165888, "log2N0": 113.512, "dead_at": [0], "hits": [1, 0], "secs": 121.2}
+{"stage": "ms", "i": 74, "m": [28, 35, 42, 62], "ordered": 41472, "log2N0": 113.623, "dead_at": [0], "hits": [1, 0], "secs": 121.6}
+{"stage": "ms", "i": 75, "m": [28, 35, 43, 61], "ordered": 165888, "log2N0": 113.623, "dead_at": [0], "hits": [1, 0], "secs": 122.0}
+{"stage": "ms", "i": 76, "m": [29, 33, 38, 71], "ordered": 41472, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 122.5}
+{"stage": "ms", "i": 77, "m": [29, 35, 38, 69], "ordered": 41472, "log2N0": 113.512, "dead_at": [0], "hits": [1, 0], "secs": 122.9}
+{"stage": "ms", "i": 78, "m": [29, 35, 41, 62], "ordered": 41472, "log2N0": 113.623, "dead_at": [0], "hits": [1, 0], "secs": 123.4}
+{"stage": "ms", "i": 79, "m": [30, 32, 38, 71], "ordered": 165888, "log2N0": 113.026, "dead_at": [0], "hits": [1, 0], "secs": 123.8}
+{"stage": "ms", "i": 80, "m": [30, 35, 38, 68], "ordered": 165888, "log2N0": 113.512, "dead_at": [0], "hits": [1, 0], "secs": 124.3}
+{"stage": "ms", "i": 81, "m": [30, 35, 41, 61], "ordered": 165888, "log2N0": 113.623, "dead_at": [0], "hits": [1, 0], "secs": 124.8}
+{"stage": "ms", "i": 82, "m": [32, 35, 43, 51], "ordered": 165888, "log2N0": 114.221, "dead_at": [0], "hits": [1, 0], "secs": 125.2}
+{"stage": "ms", "i": 83, "m": [33, 35, 42, 51], "ordered": 41472, "log2N0": 114.221, "dead_at": [0], "hits": [1, 0], "secs": 125.7}
+{"stage": "ms", "i": 84, "m": [34, 35, 41, 51], "ordered": 165888, "log2N0": 114.221, "dead_at": [0], "hits": [1, 0], "secs": 126.2}
+{"stage": "ms", "i": 85, "m": [35, 35, 39, 51], "ordered": 13824, "log2N0": 114.221, "dead_at": [0], "hits": [1, 0], "secs": 126.6}
+{"stage": "ms", "i": 86, "m": [35, 35, 40, 51], "ordered": 6912, "log2N0": 114.596, "dead_at": [0], "hits": [1, 0], "secs": 127.2}
+{"stage": "ms", "i": 87, "m": [35, 35, 41, 49], "ordered": 6912, "log2N0": 114.596, "dead_at": [0], "hits": [1, 0], "secs": 127.8}
+{"stage": "ms", "i": 88, "m": [35, 35, 41, 50], "ordered": 13824, "log2N0": 114.596, "dead_at": [0], "hits": [1, 0], "secs": 128.4}
+{"stage": "setup", "multisets": 89, "levels": [[], [0], [1], [0, 1]], "part": "0/1", "secs": 0.3}
+{"stage": "ms", "i": 18, "m": [10, 51, 53, 71], "ordered": 41472, "log2N0": 117.922, "dead_at": null, "hits": [6, 12, 100], "error": "RuntimeError('group product too large (24232198144)')", "secs": 82.5}
+{"stage": "ms", "i": 19, "m": [10, 51, 55, 69], "ordered": 41472, "log2N0": 118.033, "dead_at": null, "hits": [6, 12, 100], "error": "RuntimeError('group product too large (24232198144)')", "secs": 91.9}
+{"stage": "ms", "i": 20, "m": [11, 51, 52, 71], "ordered": 165888, "log2N0": 117.922, "dead_at": null, "hits": [6, 12, 346], "error": "RuntimeError('group product too large (24232198144)')", "secs": 174.3}
+{"stage": "ms", "i": 21, "m": [11, 51, 55, 68], "ordered": 165888, "log2N0": 118.033, "dead_at": null, "hits": [6, 12, 370], "error": "RuntimeError('group product too large (24232198144)')", "secs": 178.7}
