@@ -39,8 +39,8 @@ Cooper–Wallis (H(3668)); plus the staged b ≥ 3 pipeline, which reproduced 34
 3. **b ≥ 3: what we lack is a stage 1 for larger configurations [M] (§4).** Alpöge's three b ≥ 3 cores are small
    configurations (10–20 G'-orbits). At the open orders every configuration up to 26 G'-orbits that our exact
    batches finished is empty, and **117 of the 270 configurations (more than 26 orbits) were never examined**,
-   because exhaustive stage-1 enumeration does not scale there. The best costed lead, 599 at c = 6 (about 2^43 per
-   core), is blocked on exactly this.
+   because exhaustive stage-1 enumeration does not scale there. (The one larger configuration costed in detail, 599
+   at c = 6, has essentially no stage 1 once it is counted conditioned on the Q-compressions: `report/b599_answer.md`.)
 4. **The half-shift template, revisited [P, M, E] (§3).**
    - It is our S/D split along the Z₂ axis with the S/D support pattern σ fixed in advance, so the two halves share
      no variable [P]. Our b = 1 solvers (523, 647) use the same split but solve S first and pay the D-deficit.
@@ -210,10 +210,15 @@ sums. The scaling table uses −3.4 (S) and −0.9 (D).
 - At the open orders our exact batches (`theory/ab_cbatch.py`, ≤ 26 G'-orbits, 1,200 s and 4.5 GB caps) found no
   survivor at c = 6 outside 659 or at c = 8; c = 4 left two f = 2 slices. Of 270 configurations, **117 have more
   than 26 G'-orbits and were never examined**, and 76 hit the caps (§11.2–11.3 of the design answer).
-- Small configurations at the open orders are empty, and the larger ones are beyond exhaustive stage 1. The cost
-  that does exist for a larger one (599, c = 6, 30 G'-orbits: about 2^43 per core, D_def 21.5) is blocked on stage 1.
-- **What to build:** a stage-1 sampler (CP-SAT found a 523 stage-1 solution in 323 s; hashed joins with class splits
-  for the rest), ranked by stage-2 Gaussian yield as the 419 gadgets were, feeding the existing stage-2 solver.
+- Small configurations at the open orders are empty, and the larger ones are beyond exhaustive stage 1. The one
+  larger configuration costed in detail, 599 at c = 6 (30 G'-orbits), turned out to have essentially no stage-1
+  solutions: its "+48 bits" was an artefact of sampling y with the lag-0 energy only; conditioned on the 420
+  admissible Q-compression quadruples it holds about 2^4.9 ordered solutions, and its rich neighbour (H' = Z₃², −1 on
+  one axis, stage 1 about 2^45.7) costs 2^58–2^61 per core in stage 2 (`report/b599_answer.md`, 2026-10-15).
+- **What to build:** first a calibrated stage-1 count per configuration (the z-conditioned estimator of
+  `theory/b599_flevels.py`, which corrected 599's +48 to 2^4.9), to find configurations whose stage 1 is rich and
+  whose stage 2 is cheap; then sampling there (`theory/ab_s1_cpsat.py --enumerate`, `theory/ab_s1_sample.py` per
+  compression quadruple), ranked by stage-2 Gaussian yield, feeding the existing stage-2 solver.
 
 ---
 
@@ -222,7 +227,8 @@ sums. The scaling table uses −3.4 (S) and −0.9 (D).
 1. **Scale the flat-pool k-tree (b = 0) [§2].** Deeper pools of local minima (mean PAF²/v about 0.09) at 2^30–2^33
    per row sum; calibrate on 311 (≈ 84 flat bits) and 223 (≈ 90) before aiming at an open b = 0 slice. This is the
    one place where Alpöge's examples show a concrete, reproducible method that is simply stronger than ours.
-2. **Stage-1 sampling for b ≥ 3 configurations with 30–60 G'-orbits [§4].** First target: 599 at c = 6.
+2. **Stage-1 counting and sampling for b ≥ 3 configurations with 30–60 G'-orbits [§4].** First a calibrated
+   (z-conditioned) stage-1 count over the unexamined configurations; 599 at c = 6 is already known to be dead.
 3. **Template-first decoupling: not recommended [§3].** It is calibrated dead at v ≥ 450, and inside our slices it
    reduces to the S-first search we already run.
 4. **Low priority:** the weak A←D relation in 479 (§1).

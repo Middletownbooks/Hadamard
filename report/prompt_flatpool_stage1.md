@@ -69,8 +69,11 @@ Method improvements to make, in this order:
 
 Why: at the open orders every b ≥ 3 configuration with ≤ 26 G'-orbits that our exact batches finished is empty, and
 117 of 270 configurations (more than 26 orbits) were never examined, because exhaustive stage 1 does not scale
-(`report/alpoge_gap_analysis.md` §4, `report/alpoge_design_answer.md` §11). The best costed lead is 599 at c = 6
-(q = 11, s = 2, H' = Z₉, −1 on Z₉; 30 G'-orbits; stage 2 about 2^43 per core, D_def 21.5).
+(`report/alpoge_gap_analysis.md` §4, `report/alpoge_design_answer.md` §11). **Read `report/b599_answer.md` first:**
+the 599 c = 6 lead (H' = Z₉, −1 on Z₉, 30 G'-orbits) is dead: conditioned on its 420 admissible Q-compression
+quadruples its stage 1 holds about 2^4.9 ordered solutions (whole-slice "+48" was an artefact of energy-only
+sampling); its neighbour H' = Z₃² with −1 on one axis has a rich stage 1 (2^45.7) but stage 2 at 2^58–2^61 per
+core. Whole-slice and typical-y estimates of stage 1 are not to be trusted; count conditioned on z.
 
 Existing machinery (check `git log` before writing new files: several of these already do part of the job):
 - `theory/ab_s1_cpsat.py`: CP-SAT stage 1 for these slices (orbit variables, pair products, implied block-sum and
@@ -81,16 +84,17 @@ Existing machinery (check `git log` before writing new files: several of these a
   `theory/ab_stage2.py` and `theory/ab_prod347.py` (stage 2, validated on 347), `theory/ab_typical_levels.py` and
   `ab_gauss.stage2_typical(sl, Y)` (stage-2 Gaussian at a given y), `theory/ab_borderfit.py` (border fit of a y),
   `scripts/cyclo_stage1_cpsat.py` (CP-SAT stage 1 for cyclic GP slices; a 523 y in 323 s).
-- 599 c = 6 configuration (the lead): `{"v":599,"c":6,"b":5,"h":99,"m":594,"Q":[2,3],"H1":[9],"q":11,"s":2,"f":5,
+- 599 c = 6 configuration (dead, see above; useful as a test case): `{"v":599,"c":6,"b":5,"h":99,"m":594,"Q":[2,3],"H1":[9],"q":11,"s":2,"f":5,
   "mods":[2,3,9,11],"nQ":2,"U":[[2,2,8]]}` (30 G'-orbits; `logs/ab/p1/batch/levels_batch_p*.jsonl`).
 
 Steps:
 1. Sample stage-1 solutions y with the two tools above (CP-SAT with random objectives for diversity; or
    `ab_s1_sample.py` per border-class compression quadruple); validate on 347's slice (the published y must satisfy
    the model up to the model's symmetry breaking: positive first letter per block, non-decreasing block energies).
-2. Rank sampled y by the stage-2 Gaussian yield (`ab_typical_levels` evaluated at the actual y), as the 419 gadgets
-   were ranked; calibrate the ranking on 347 (exact stage 2 per y is affordable there).
-3. Apply to 599 c = 6, then to the unexamined configurations with the best whole-slice budgets.
+2. Before sampling anywhere: a z-conditioned stage-1 count (`theory/b599_flevels.py`) for each unexamined
+   configuration (117 with > 26 G'-orbits; `logs/ab/` batch logs list them), to find rich stage 1 with cheap stage 2.
+3. Rank sampled y by the stage-2 Gaussian yield (`ab_gauss.stage2_typical` at the actual y), as the 419 gadgets were
+   ranked; calibrate the ranking on 347 (exact stage 2 per y is affordable there); run stage 2 on the best.
 
 ## Progress log (newest last; the previous session appended here as it worked)
 
