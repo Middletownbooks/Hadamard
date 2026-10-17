@@ -1,0 +1,3043 @@
+[
+ {
+  "label": "Alpoge 167",
+  "v": 167,
+  "b": 1,
+  "mods": [
+   166
+  ],
+  "paf_ok": true,
+  "U_order": 1,
+  "orbits": 166,
+  "classes": 81,
+  "classes_top": [
+   {
+    "a": 19,
+    "ord": 82,
+    "z": -1.92,
+    "same": 304,
+    "null_mean": 326.6,
+    "n": 656,
+    "per_block": [
+     78,
+     62,
+     80,
+     84
+    ]
+   },
+   {
+    "a": 35,
+    "ord": 82,
+    "z": -1.92,
+    "same": 304,
+    "null_mean": 326.6,
+    "n": 656,
+    "per_block": [
+     78,
+     62,
+     80,
+     84
+    ]
+   },
+   {
+    "a": 13,
+    "ord": 82,
+    "z": 1.85,
+    "same": 350,
+    "null_mean": 326.6,
+    "n": 656,
+    "per_block": [
+     96,
+     90,
+     86,
+     78
+    ]
+   },
+   {
+    "a": 115,
+    "ord": 82,
+    "z": 1.85,
+    "same": 350,
+    "null_mean": 326.6,
+    "n": 656,
+    "per_block": [
+     96,
+     90,
+     86,
+     78
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "D<-A",
+    "a": 39,
+    "z": 2.86,
+    "agree": 101,
+    "n": 166,
+    "null_mean": 82.9
+   },
+   {
+    "pair": "A<-C",
+    "a": 113,
+    "z": 2.7,
+    "agree": 99,
+    "n": 166,
+    "null_mean": 82.9
+   },
+   {
+    "pair": "B<-A",
+    "a": 115,
+    "z": -2.65,
+    "agree": 67,
+    "n": 166,
+    "null_mean": 82.8
+   },
+   {
+    "pair": "A<-D",
+    "a": 149,
+    "z": 2.64,
+    "agree": 101,
+    "n": 166,
+    "null_mean": 83.1
+   }
+  ],
+  "cross_family": 984,
+  "halfshift": [
+   {
+    "tau": [
+     83
+    ],
+    "z": -16.13,
+    "boundary": 36,
+    "null_mean": 334.5,
+    "per_block": [
+     8,
+     12,
+     8,
+     8
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 179",
+  "v": 179,
+  "b": 1,
+  "mods": [
+   178
+  ],
+  "paf_ok": true,
+  "U_order": 1,
+  "orbits": 178,
+  "classes": 87,
+  "classes_top": [
+   {
+    "a": 35,
+    "ord": 88,
+    "z": 2.65,
+    "same": 384,
+    "null_mean": 350.4,
+    "n": 704,
+    "per_block": [
+     100,
+     96,
+     96,
+     92
+    ]
+   },
+   {
+    "a": 117,
+    "ord": 88,
+    "z": 2.65,
+    "same": 384,
+    "null_mean": 350.4,
+    "n": 704,
+    "per_block": [
+     100,
+     96,
+     96,
+     92
+    ]
+   },
+   {
+    "a": 3,
+    "ord": 88,
+    "z": -1.92,
+    "same": 324,
+    "null_mean": 350.6,
+    "n": 704,
+    "per_block": [
+     92,
+     66,
+     84,
+     82
+    ]
+   },
+   {
+    "a": 119,
+    "ord": 88,
+    "z": -1.92,
+    "same": 324,
+    "null_mean": 350.6,
+    "n": 704,
+    "per_block": [
+     92,
+     66,
+     84,
+     82
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "C<-B",
+    "a": 77,
+    "z": 2.91,
+    "agree": 106,
+    "n": 178,
+    "null_mean": 88.6
+   },
+   {
+    "pair": "C<-A",
+    "a": 51,
+    "z": 2.83,
+    "agree": 107,
+    "n": 178,
+    "null_mean": 89.1
+   },
+   {
+    "pair": "C<-A",
+    "a": 109,
+    "z": 2.73,
+    "agree": 107,
+    "n": 178,
+    "null_mean": 88.8
+   },
+   {
+    "pair": "A<-C",
+    "a": 7,
+    "z": 2.69,
+    "agree": 107,
+    "n": 178,
+    "null_mean": 89.2
+   }
+  ],
+  "cross_family": 1056,
+  "halfshift": [
+   {
+    "tau": [
+     89
+    ],
+    "z": -18.5,
+    "boundary": 36,
+    "null_mean": 354.5,
+    "per_block": [
+     12,
+     8,
+     8,
+     8
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 311",
+  "v": 311,
+  "b": 0,
+  "mods": [
+   311
+  ],
+  "paf_ok": true,
+  "U_order": 5,
+  "orbits": 63,
+  "classes": 61,
+  "classes_top": [
+   {
+    "a": 7,
+    "ord": 31,
+    "z": -2.89,
+    "same": 100,
+    "null_mean": 121.9,
+    "n": 248,
+    "per_block": [
+     22,
+     28,
+     22,
+     28
+    ]
+   },
+   {
+    "a": 89,
+    "ord": 31,
+    "z": -2.89,
+    "same": 100,
+    "null_mean": 121.9,
+    "n": 248,
+    "per_block": [
+     22,
+     28,
+     22,
+     28
+    ]
+   },
+   {
+    "a": 68,
+    "ord": 62,
+    "z": -2.07,
+    "same": 106,
+    "null_mean": 122.7,
+    "n": 248,
+    "per_block": [
+     30,
+     30,
+     24,
+     22
+    ]
+   },
+   {
+    "a": 92,
+    "ord": 62,
+    "z": -2.07,
+    "same": 106,
+    "null_mean": 122.7,
+    "n": 248,
+    "per_block": [
+     30,
+     30,
+     24,
+     22
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "B<-C",
+    "a": 22,
+    "z": -3.39,
+    "agree": 18,
+    "n": 63,
+    "null_mean": 31.2
+   },
+   {
+    "pair": "C<-B",
+    "a": 99,
+    "z": -3.19,
+    "agree": 18,
+    "n": 63,
+    "null_mean": 30.9
+   },
+   {
+    "pair": "A<-D",
+    "a": 17,
+    "z": 2.88,
+    "agree": 43,
+    "n": 63,
+    "null_mean": 31.5
+   },
+   {
+    "pair": "D<-A",
+    "a": 9,
+    "z": 2.78,
+    "agree": 43,
+    "n": 63,
+    "null_mean": 32.2
+   }
+  ],
+  "cross_family": 744,
+  "logshift": {
+   "f_boundary": {
+    "z": -0.46,
+    "obs": 122,
+    "null_mean": 125.3
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 2,
+     "z": -2.93,
+     "obs": 100,
+     "null_mean": 123.9
+    },
+    {
+     "s": 60,
+     "z": -2.93,
+     "obs": 100,
+     "null_mean": 123.9
+    },
+    {
+     "s": 7,
+     "z": -2.56,
+     "obs": 104,
+     "null_mean": 124.2
+    }
+   ],
+   "e": 62,
+   "g": 17
+  },
+  "b0": {
+   "T_product": {
+    "z": -1.7,
+    "obs": 24,
+    "r": 63,
+    "null_mean": 30.6
+   },
+   "legendre_z_per_block": [
+    -0.73,
+    1.36,
+    0.77,
+    -2.35
+   ]
+  }
+ },
+ {
+  "label": "Alpoge 347",
+  "v": 347,
+  "b": 5,
+  "mods": [
+   2,
+   3,
+   57
+  ],
+  "paf_ok": true,
+  "U_order": 6,
+  "orbits": 70,
+  "classes": 5,
+  "classes_top": [
+   {
+    "a": 5,
+    "ord": 3,
+    "z": -2.81,
+    "same": 98,
+    "null_mean": 118.6,
+    "n": 240,
+    "per_block": [
+     22,
+     22,
+     30,
+     24
+    ]
+   },
+   {
+    "a": 23,
+    "ord": 3,
+    "z": -2.81,
+    "same": 98,
+    "null_mean": 118.6,
+    "n": 240,
+    "per_block": [
+     22,
+     22,
+     30,
+     24
+    ]
+   },
+   {
+    "a": 13,
+    "ord": 6,
+    "z": -1.32,
+    "same": 108,
+    "null_mean": 118.2,
+    "n": 240,
+    "per_block": [
+     26,
+     30,
+     24,
+     28
+    ]
+   },
+   {
+    "a": 41,
+    "ord": 6,
+    "z": -1.32,
+    "same": 108,
+    "null_mean": 118.2,
+    "n": 240,
+    "per_block": [
+     26,
+     30,
+     24,
+     28
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "B<-A",
+    "a": 13,
+    "z": 2.62,
+    "agree": 46,
+    "n": 70,
+    "null_mean": 35.8
+   },
+   {
+    "pair": "A<-B",
+    "a": 41,
+    "z": 2.4,
+    "agree": 46,
+    "n": 70,
+    "null_mean": 36.2
+   },
+   {
+    "pair": "B<-A",
+    "a": 5,
+    "z": 2.14,
+    "agree": 44,
+    "n": 70,
+    "null_mean": 35.5
+   },
+   {
+    "pair": "A<-B",
+    "a": 23,
+    "z": 1.98,
+    "agree": 44,
+    "n": 70,
+    "null_mean": 35.7
+   }
+  ],
+  "cross_family": 72,
+  "halfshift": [
+   {
+    "tau": [
+     1,
+     0,
+     0
+    ],
+    "z": -0.72,
+    "boundary": 1240,
+    "null_mean": 1290.4,
+    "per_block": [
+     336,
+     356,
+     308,
+     240
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 359",
+  "v": 359,
+  "b": 7,
+  "mods": [
+   2,
+   2,
+   8,
+   11
+  ],
+  "paf_ok": true,
+  "U_order": 5,
+  "orbits": 96,
+  "classes": 7,
+  "classes_top": [
+   {
+    "a": 17,
+    "ord": 2,
+    "z": -8.86,
+    "same": 24,
+    "null_mean": 125.6,
+    "n": 256,
+    "per_block": [
+     16,
+     4,
+     0,
+     4
+    ]
+   },
+   {
+    "a": 19,
+    "ord": 2,
+    "z": -3.23,
+    "same": 146,
+    "null_mean": 188.0,
+    "n": 352,
+    "per_block": [
+     32,
+     36,
+     30,
+     48
+    ]
+   },
+   {
+    "a": 3,
+    "ord": 2,
+    "z": 2.87,
+    "same": 190,
+    "null_mean": 158.1,
+    "n": 288,
+    "per_block": [
+     40,
+     44,
+     62,
+     44
+    ]
+   },
+   {
+    "a": 13,
+    "ord": 2,
+    "z": -2.46,
+    "same": 138,
+    "null_mean": 167.9,
+    "n": 320,
+    "per_block": [
+     42,
+     30,
+     38,
+     28
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "D<-B",
+    "a": 19,
+    "z": 3.93,
+    "agree": 67,
+    "n": 96,
+    "null_mean": 49.4
+   },
+   {
+    "pair": "A<-C",
+    "a": 3,
+    "z": -3.62,
+    "agree": 40,
+    "n": 96,
+    "null_mean": 54.7
+   },
+   {
+    "pair": "B<-D",
+    "a": 19,
+    "z": 3.57,
+    "agree": 67,
+    "n": 96,
+    "null_mean": 49.3
+   },
+   {
+    "pair": "A<-C",
+    "a": 19,
+    "z": 3.47,
+    "agree": 68,
+    "n": 96,
+    "null_mean": 54.5
+   }
+  ],
+  "cross_family": 96,
+  "halfshift": [
+   {
+    "tau": [
+     1,
+     1,
+     0,
+     0
+    ],
+    "z": -5.21,
+    "boundary": 752,
+    "null_mean": 1152.3,
+    "per_block": [
+     120,
+     184,
+     160,
+     288
+    ]
+   },
+   {
+    "tau": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "z": -4.9,
+    "boundary": 800,
+    "null_mean": 1137.6,
+    "per_block": [
+     156,
+     256,
+     160,
+     228
+    ]
+   },
+   {
+    "tau": [
+     0,
+     1,
+     0,
+     0
+    ],
+    "z": -3.95,
+    "boundary": 864,
+    "null_mean": 1142.4,
+    "per_block": [
+     216,
+     220,
+     200,
+     228
+    ]
+   },
+   {
+    "tau": [
+     0,
+     1,
+     4,
+     0
+    ],
+    "z": -3.48,
+    "boundary": 920,
+    "null_mean": 1142.3,
+    "per_block": [
+     292,
+     224,
+     200,
+     204
+    ]
+   },
+   {
+    "tau": [
+     0,
+     0,
+     4,
+     0
+    ],
+    "z": -3.32,
+    "boundary": 904,
+    "null_mean": 1139.6,
+    "per_block": [
+     284,
+     132,
+     280,
+     208
+    ]
+   },
+   {
+    "tau": [
+     1,
+     1,
+     4,
+     0
+    ],
+    "z": -2.3,
+    "boundary": 960,
+    "null_mean": 1136.2,
+    "per_block": [
+     292,
+     180,
+     232,
+     256
+    ]
+   },
+   {
+    "tau": [
+     1,
+     0,
+     4,
+     0
+    ],
+    "z": -0.74,
+    "boundary": 1088,
+    "null_mean": 1137.7,
+    "per_block": [
+     296,
+     276,
+     232,
+     284
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 443",
+  "v": 443,
+  "b": 1,
+  "mods": [
+   442
+  ],
+  "paf_ok": true,
+  "U_order": 12,
+  "orbits": 50,
+  "classes": 15,
+  "classes_top": [
+   {
+    "a": 3,
+    "ord": 4,
+    "z": -2.59,
+    "same": 60,
+    "null_mean": 76.2,
+    "n": 160,
+    "per_block": [
+     16,
+     12,
+     18,
+     14
+    ]
+   },
+   {
+    "a": 27,
+    "ord": 4,
+    "z": -2.59,
+    "same": 60,
+    "null_mean": 76.2,
+    "n": 160,
+    "per_block": [
+     16,
+     12,
+     18,
+     14
+    ]
+   },
+   {
+    "a": 5,
+    "ord": 4,
+    "z": 2.3,
+    "same": 106,
+    "null_mean": 90.7,
+    "n": 192,
+    "per_block": [
+     26,
+     28,
+     24,
+     28
+    ]
+   },
+   {
+    "a": 7,
+    "ord": 4,
+    "z": 2.3,
+    "same": 106,
+    "null_mean": 90.7,
+    "n": 192,
+    "per_block": [
+     26,
+     28,
+     24,
+     28
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "D<-C",
+    "a": 9,
+    "z": -3.05,
+    "agree": 15,
+    "n": 50,
+    "null_mean": 25.1
+   },
+   {
+    "pair": "C<-D",
+    "a": 9,
+    "z": -2.82,
+    "agree": 15,
+    "n": 50,
+    "null_mean": 25.2
+   },
+   {
+    "pair": "A<-B",
+    "a": 67,
+    "z": -2.58,
+    "agree": 16,
+    "n": 50,
+    "null_mean": 24.9
+   },
+   {
+    "pair": "B<-A",
+    "a": 21,
+    "z": -2.46,
+    "agree": 16,
+    "n": 50,
+    "null_mean": 25.1
+   }
+  ],
+  "cross_family": 192,
+  "halfshift": [
+   {
+    "tau": [
+     221
+    ],
+    "z": 1.63,
+    "boundary": 924,
+    "null_mean": 856.7,
+    "per_block": [
+     236,
+     228,
+     264,
+     196
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 479",
+  "v": 479,
+  "b": 3,
+  "mods": [
+   2,
+   2,
+   119
+  ],
+  "paf_ok": true,
+  "U_order": 4,
+  "orbits": 128,
+  "classes": 23,
+  "classes_top": [
+   {
+    "a": 47,
+    "ord": 3,
+    "z": 4.09,
+    "same": 258,
+    "null_mean": 213.4,
+    "n": 432,
+    "per_block": [
+     72,
+     66,
+     60,
+     60
+    ]
+   },
+   {
+    "a": 67,
+    "ord": 3,
+    "z": 4.09,
+    "same": 258,
+    "null_mean": 213.4,
+    "n": 432,
+    "per_block": [
+     72,
+     66,
+     60,
+     60
+    ]
+   },
+   {
+    "a": 29,
+    "ord": 8,
+    "z": -3.37,
+    "same": 188,
+    "null_mean": 222.7,
+    "n": 448,
+    "per_block": [
+     44,
+     44,
+     46,
+     54
+    ]
+   },
+   {
+    "a": 125,
+    "ord": 8,
+    "z": -3.37,
+    "same": 188,
+    "null_mean": 222.7,
+    "n": 448,
+    "per_block": [
+     44,
+     44,
+     46,
+     54
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "A<-D",
+    "a": 29,
+    "z": -4.32,
+    "agree": 43,
+    "n": 128,
+    "null_mean": 64.9
+   },
+   {
+    "pair": "D<-A",
+    "a": 27,
+    "z": -4.1,
+    "agree": 43,
+    "n": 128,
+    "null_mean": 64.8
+   },
+   {
+    "pair": "A<-D",
+    "a": 71,
+    "z": -3.94,
+    "agree": 43,
+    "n": 128,
+    "null_mean": 65.5
+   },
+   {
+    "pair": "A<-D",
+    "a": 53,
+    "z": 3.93,
+    "agree": 87,
+    "n": 128,
+    "null_mean": 64.8
+   }
+  ],
+  "cross_family": 288,
+  "halfshift": [
+   {
+    "tau": [
+     0,
+     1,
+     0
+    ],
+    "z": 0.13,
+    "boundary": 940,
+    "null_mean": 935.5,
+    "per_block": [
+     232,
+     240,
+     228,
+     240
+    ]
+   },
+   {
+    "tau": [
+     1,
+     0,
+     0
+    ],
+    "z": 0.24,
+    "boundary": 940,
+    "null_mean": 931.6,
+    "per_block": [
+     236,
+     204,
+     244,
+     256
+    ]
+   },
+   {
+    "tau": [
+     1,
+     1,
+     0
+    ],
+    "z": 1.22,
+    "boundary": 972,
+    "null_mean": 931.7,
+    "per_block": [
+     240,
+     232,
+     244,
+     256
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 491",
+  "v": 491,
+  "b": 0,
+  "mods": [
+   491
+  ],
+  "paf_ok": true,
+  "U_order": 7,
+  "orbits": 71,
+  "classes": 69,
+  "classes_top": [
+   {
+    "a": 9,
+    "ord": 7,
+    "z": 1.82,
+    "same": 154,
+    "null_mean": 138.5,
+    "n": 280,
+    "per_block": [
+     36,
+     34,
+     44,
+     40
+    ]
+   },
+   {
+    "a": 17,
+    "ord": 7,
+    "z": 1.82,
+    "same": 154,
+    "null_mean": 138.5,
+    "n": 280,
+    "per_block": [
+     36,
+     34,
+     44,
+     40
+    ]
+   },
+   {
+    "a": 33,
+    "ord": 35,
+    "z": -1.53,
+    "same": 126,
+    "null_mean": 138.6,
+    "n": 280,
+    "per_block": [
+     26,
+     36,
+     26,
+     38
+    ]
+   },
+   {
+    "a": 220,
+    "ord": 35,
+    "z": -1.53,
+    "same": 126,
+    "null_mean": 138.6,
+    "n": 280,
+    "per_block": [
+     26,
+     36,
+     26,
+     38
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "A<-B",
+    "a": 60,
+    "z": 3.31,
+    "agree": 48,
+    "n": 71,
+    "null_mean": 35.0
+   },
+   {
+    "pair": "A<-B",
+    "a": 55,
+    "z": -3.27,
+    "agree": 22,
+    "n": 71,
+    "null_mean": 35.5
+   },
+   {
+    "pair": "B<-A",
+    "a": 49,
+    "z": -3.16,
+    "agree": 22,
+    "n": 71,
+    "null_mean": 35.4
+   },
+   {
+    "pair": "B<-A",
+    "a": 4,
+    "z": 3.12,
+    "agree": 48,
+    "n": 71,
+    "null_mean": 35.0
+   }
+  ],
+  "cross_family": 840,
+  "logshift": {
+   "f_boundary": {
+    "z": -0.21,
+    "obs": 140,
+    "null_mean": 141.8
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 10,
+     "z": -2.24,
+     "obs": 120,
+     "null_mean": 139.6
+    },
+    {
+     "s": 60,
+     "z": -2.24,
+     "obs": 120,
+     "null_mean": 139.6
+    },
+    {
+     "s": 6,
+     "z": -1.71,
+     "obs": 126,
+     "null_mean": 140.3
+    }
+   ],
+   "e": 70,
+   "g": 2
+  },
+  "b0": {
+   "T_product": {
+    "z": 1.8,
+    "obs": 43,
+    "r": 71,
+    "null_mean": 35.7
+   },
+   "legendre_z_per_block": [
+    1.17,
+    -0.21,
+    -1.92,
+    -0.58
+   ]
+  }
+ },
+ {
+  "label": "Alpoge 223",
+  "v": 223,
+  "b": 0,
+  "mods": [
+   223
+  ],
+  "paf_ok": true,
+  "U_order": 3,
+  "orbits": 75,
+  "classes": 73,
+  "classes_top": [
+   {
+    "a": 57,
+    "ord": 74,
+    "z": 2.86,
+    "same": 170,
+    "null_mean": 146.9,
+    "n": 296,
+    "per_block": [
+     42,
+     52,
+     28,
+     48
+    ]
+   },
+   {
+    "a": 90,
+    "ord": 74,
+    "z": 2.86,
+    "same": 170,
+    "null_mean": 146.9,
+    "n": 296,
+    "per_block": [
+     42,
+     52,
+     28,
+     48
+    ]
+   },
+   {
+    "a": 42,
+    "ord": 74,
+    "z": 2.18,
+    "same": 166,
+    "null_mean": 147.3,
+    "n": 296,
+    "per_block": [
+     42,
+     48,
+     38,
+     38
+    ]
+   },
+   {
+    "a": 84,
+    "ord": 74,
+    "z": 2.18,
+    "same": 166,
+    "null_mean": 147.3,
+    "n": 296,
+    "per_block": [
+     42,
+     48,
+     38,
+     38
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "A<-D",
+    "a": 57,
+    "z": 3.53,
+    "agree": 53,
+    "n": 75,
+    "null_mean": 38.2
+   },
+   {
+    "pair": "D<-A",
+    "a": 90,
+    "z": 3.48,
+    "agree": 53,
+    "n": 75,
+    "null_mean": 38.5
+   },
+   {
+    "pair": "D<-B",
+    "a": 51,
+    "z": 3.02,
+    "agree": 51,
+    "n": 75,
+    "null_mean": 38.0
+   },
+   {
+    "pair": "B<-D",
+    "a": 27,
+    "z": 2.85,
+    "agree": 51,
+    "n": 75,
+    "null_mean": 38.3
+   }
+  ],
+  "cross_family": 888,
+  "logshift": {
+   "f_boundary": {
+    "z": 0.93,
+    "obs": 156,
+    "null_mean": 148.5
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 25,
+     "z": -2.44,
+     "obs": 126,
+     "null_mean": 148.1
+    },
+    {
+     "s": 49,
+     "z": -2.44,
+     "obs": 126,
+     "null_mean": 148.1
+    },
+    {
+     "s": 8,
+     "z": -1.72,
+     "obs": 134,
+     "null_mean": 148.3
+    }
+   ],
+   "e": 74,
+   "g": 3
+  },
+  "b0": {
+   "T_product": {
+    "z": -0.81,
+    "obs": 35,
+    "r": 75,
+    "null_mean": 38.3
+   },
+   "legendre_z_per_block": [
+    1.15,
+    -0.27,
+    1.15,
+    -0.32
+   ]
+  }
+ },
+ {
+  "label": "Alpoge 283",
+  "v": 283,
+  "b": 0,
+  "mods": [
+   283
+  ],
+  "paf_ok": true,
+  "U_order": 3,
+  "orbits": 95,
+  "classes": 93,
+  "classes_top": [
+   {
+    "a": 2,
+    "ord": 94,
+    "z": -3.54,
+    "same": 154,
+    "null_mean": 187.2,
+    "n": 376,
+    "per_block": [
+     34,
+     42,
+     42,
+     36
+    ]
+   },
+   {
+    "a": 22,
+    "ord": 94,
+    "z": -3.54,
+    "same": 154,
+    "null_mean": 187.2,
+    "n": 376,
+    "per_block": [
+     34,
+     42,
+     42,
+     36
+    ]
+   },
+   {
+    "a": 6,
+    "ord": 47,
+    "z": -2.7,
+    "same": 158,
+    "null_mean": 185.8,
+    "n": 376,
+    "per_block": [
+     40,
+     42,
+     38,
+     38
+    ]
+   },
+   {
+    "a": 134,
+    "ord": 47,
+    "z": -2.7,
+    "same": 158,
+    "null_mean": 185.8,
+    "n": 376,
+    "per_block": [
+     40,
+     42,
+     38,
+     38
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "A<-C",
+    "a": 15,
+    "z": 3.99,
+    "agree": 67,
+    "n": 95,
+    "null_mean": 48.1
+   },
+   {
+    "pair": "C<-A",
+    "a": 135,
+    "z": 3.79,
+    "agree": 67,
+    "n": 95,
+    "null_mean": 48.3
+   },
+   {
+    "pair": "D<-A",
+    "a": 102,
+    "z": -2.99,
+    "agree": 33,
+    "n": 95,
+    "null_mean": 47.5
+   },
+   {
+    "pair": "A<-D",
+    "a": 178,
+    "z": -2.95,
+    "agree": 33,
+    "n": 95,
+    "null_mean": 47.7
+   }
+  ],
+  "cross_family": 1128,
+  "logshift": {
+   "f_boundary": {
+    "z": 0.53,
+    "obs": 194,
+    "null_mean": 189.2
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 45,
+     "z": -2.65,
+     "obs": 164,
+     "null_mean": 188.4
+    },
+    {
+     "s": 49,
+     "z": -2.65,
+     "obs": 164,
+     "null_mean": 188.4
+    },
+    {
+     "s": 41,
+     "z": -1.37,
+     "obs": 176,
+     "null_mean": 188.2
+    }
+   ],
+   "e": 94,
+   "g": 3
+  },
+  "b0": {
+   "T_product": {
+    "z": -0.62,
+    "obs": 45,
+    "r": 95,
+    "null_mean": 47.9
+   },
+   "legendre_z_per_block": [
+    -0.84,
+    -0.4,
+    -1.68,
+    0.44
+   ]
+  }
+ },
+ {
+  "label": "Alpoge 419",
+  "v": 419,
+  "b": 1,
+  "mods": [
+   418
+  ],
+  "paf_ok": true,
+  "U_order": 15,
+  "orbits": 42,
+  "classes": 11,
+  "classes_top": [
+   {
+    "a": 7,
+    "ord": 2,
+    "z": -4.88,
+    "same": 16,
+    "null_mean": 52.5,
+    "n": 112,
+    "per_block": [
+     2,
+     10,
+     4,
+     0
+    ]
+   },
+   {
+    "a": 13,
+    "ord": 6,
+    "z": 1.98,
+    "same": 88,
+    "null_mean": 75.8,
+    "n": 160,
+    "per_block": [
+     20,
+     26,
+     26,
+     16
+    ]
+   },
+   {
+    "a": 21,
+    "ord": 6,
+    "z": 1.98,
+    "same": 88,
+    "null_mean": 75.8,
+    "n": 160,
+    "per_block": [
+     20,
+     26,
+     26,
+     16
+    ]
+   },
+   {
+    "a": 17,
+    "ord": 6,
+    "z": 1.33,
+    "same": 84,
+    "null_mean": 75.5,
+    "n": 160,
+    "per_block": [
+     24,
+     16,
+     22,
+     22
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "C<-D",
+    "a": 61,
+    "z": 3.39,
+    "agree": 32,
+    "n": 42,
+    "null_mean": 20.6
+   },
+   {
+    "pair": "D<-C",
+    "a": 17,
+    "z": 3.11,
+    "agree": 32,
+    "n": 42,
+    "null_mean": 21.0
+   },
+   {
+    "pair": "B<-C",
+    "a": 21,
+    "z": 3.0,
+    "agree": 30,
+    "n": 42,
+    "null_mean": 21.0
+   },
+   {
+    "pair": "A<-D",
+    "a": 61,
+    "z": 2.99,
+    "agree": 31,
+    "n": 42,
+    "null_mean": 20.8
+   }
+  ],
+  "cross_family": 144,
+  "halfshift": [
+   {
+    "tau": [
+     209
+    ],
+    "z": 0.54,
+    "boundary": 828,
+    "null_mean": 803.2,
+    "per_block": [
+     160,
+     200,
+     216,
+     252
+    ]
+   }
+  ]
+ },
+ {
+  "label": "Alpoge 487",
+  "v": 487,
+  "b": 0,
+  "mods": [
+   487
+  ],
+  "paf_ok": true,
+  "U_order": 9,
+  "orbits": 55,
+  "classes": 53,
+  "classes_top": [
+   {
+    "a": 54,
+    "ord": 54,
+    "z": 2.78,
+    "same": 128,
+    "null_mean": 106.6,
+    "n": 216,
+    "per_block": [
+     26,
+     38,
+     34,
+     30
+    ]
+   },
+   {
+    "a": 104,
+    "ord": 54,
+    "z": 2.78,
+    "same": 128,
+    "null_mean": 106.6,
+    "n": 216,
+    "per_block": [
+     26,
+     38,
+     34,
+     30
+    ]
+   },
+   {
+    "a": 23,
+    "ord": 54,
+    "z": -1.72,
+    "same": 94,
+    "null_mean": 106.1,
+    "n": 216,
+    "per_block": [
+     22,
+     22,
+     24,
+     26
+    ]
+   },
+   {
+    "a": 114,
+    "ord": 54,
+    "z": -1.72,
+    "same": 94,
+    "null_mean": 106.1,
+    "n": 216,
+    "per_block": [
+     22,
+     22,
+     24,
+     26
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "D<-A",
+    "a": 16,
+    "z": -3.11,
+    "agree": 17,
+    "n": 55,
+    "null_mean": 27.5
+   },
+   {
+    "pair": "B<-C",
+    "a": 67,
+    "z": -2.88,
+    "agree": 17,
+    "n": 55,
+    "null_mean": 27.4
+   },
+   {
+    "pair": "A<-D",
+    "a": 67,
+    "z": 2.83,
+    "agree": 37,
+    "n": 55,
+    "null_mean": 27.1
+   },
+   {
+    "pair": "C<-A",
+    "a": 17,
+    "z": 2.82,
+    "agree": 37,
+    "n": 55,
+    "null_mean": 27.8
+   }
+  ],
+  "cross_family": 648,
+  "logshift": {
+   "f_boundary": {
+    "z": 0.96,
+    "obs": 118,
+    "null_mean": 110.8
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 3,
+     "z": -2.26,
+     "obs": 90,
+     "null_mean": 106.6
+    },
+    {
+     "s": 51,
+     "z": -2.26,
+     "obs": 90,
+     "null_mean": 106.6
+    },
+    {
+     "s": 12,
+     "z": -2.19,
+     "obs": 92,
+     "null_mean": 108.3
+    }
+   ],
+   "e": 54,
+   "g": 3
+  },
+  "b0": {
+   "T_product": {
+    "z": -0.72,
+    "obs": 25,
+    "r": 55,
+    "null_mean": 27.7
+   },
+   "legendre_z_per_block": [
+    1.12,
+    0.26,
+    -0.55,
+    -0.27
+   ]
+  }
+ },
+ {
+  "label": "ours 487 k-tree",
+  "v": 487,
+  "b": 0,
+  "mods": [
+   487
+  ],
+  "paf_ok": true,
+  "U_order": 9,
+  "orbits": 55,
+  "classes": 53,
+  "classes_top": [
+   {
+    "a": 27,
+    "ord": 18,
+    "z": -2.23,
+    "same": 90,
+    "null_mean": 106.6,
+    "n": 216,
+    "per_block": [
+     22,
+     24,
+     20,
+     24
+    ]
+   },
+   {
+    "a": 43,
+    "ord": 18,
+    "z": -2.23,
+    "same": 90,
+    "null_mean": 106.6,
+    "n": 216,
+    "per_block": [
+     22,
+     24,
+     20,
+     24
+    ]
+   },
+   {
+    "a": 11,
+    "ord": 54,
+    "z": 2.22,
+    "same": 124,
+    "null_mean": 105.9,
+    "n": 216,
+    "per_block": [
+     28,
+     32,
+     32,
+     32
+    ]
+   },
+   {
+    "a": 17,
+    "ord": 54,
+    "z": 2.22,
+    "same": 124,
+    "null_mean": 105.9,
+    "n": 216,
+    "per_block": [
+     28,
+     32,
+     32,
+     32
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "D<-B",
+    "a": 88,
+    "z": -2.76,
+    "agree": 17,
+    "n": 55,
+    "null_mean": 27.2
+   },
+   {
+    "pair": "B<-D",
+    "a": 6,
+    "z": -2.75,
+    "agree": 17,
+    "n": 55,
+    "null_mean": 27.0
+   },
+   {
+    "pair": "A<-D",
+    "a": 6,
+    "z": 2.72,
+    "agree": 37,
+    "n": 55,
+    "null_mean": 28.1
+   },
+   {
+    "pair": "C<-A",
+    "a": 6,
+    "z": 2.6,
+    "agree": 37,
+    "n": 55,
+    "null_mean": 27.2
+   }
+  ],
+  "cross_family": 648,
+  "logshift": {
+   "f_boundary": {
+    "z": -0.53,
+    "obs": 106,
+    "null_mean": 110.0
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 27,
+     "z": -1.61,
+     "obs": 92,
+     "null_mean": 108.8
+    },
+    {
+     "s": 19,
+     "z": -1.17,
+     "obs": 100,
+     "null_mean": 108.4
+    },
+    {
+     "s": 35,
+     "z": -1.17,
+     "obs": 100,
+     "null_mean": 108.4
+    }
+   ],
+   "e": 54,
+   "g": 3
+  },
+  "b0": {
+   "T_product": {
+    "z": -0.91,
+    "obs": 25,
+    "r": 55,
+    "null_mean": 28.3
+   },
+   "legendre_z_per_block": [
+    -0.85,
+    -1.16,
+    1.68,
+    0.21
+   ]
+  }
+ },
+ {
+  "label": "ours 883 k-tree",
+  "v": 883,
+  "b": 0,
+  "mods": [
+   883
+  ],
+  "paf_ok": true,
+  "U_order": 21,
+  "orbits": 43,
+  "classes": 41,
+  "classes_top": [
+   {
+    "a": 2,
+    "ord": 42,
+    "z": -2.41,
+    "same": 66,
+    "null_mean": 81.9,
+    "n": 168,
+    "per_block": [
+     18,
+     18,
+     16,
+     14
+    ]
+   },
+   {
+    "a": 43,
+    "ord": 42,
+    "z": -2.41,
+    "same": 66,
+    "null_mean": 81.9,
+    "n": 168,
+    "per_block": [
+     18,
+     18,
+     16,
+     14
+    ]
+   },
+   {
+    "a": 11,
+    "ord": 42,
+    "z": -1.53,
+    "same": 72,
+    "null_mean": 82.5,
+    "n": 168,
+    "per_block": [
+     18,
+     16,
+     18,
+     20
+    ]
+   },
+   {
+    "a": 66,
+    "ord": 42,
+    "z": -1.53,
+    "same": 72,
+    "null_mean": 82.5,
+    "n": 168,
+    "per_block": [
+     18,
+     16,
+     18,
+     20
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "B<-D",
+    "a": 7,
+    "z": -3.25,
+    "agree": 11,
+    "n": 43,
+    "null_mean": 21.0
+   },
+   {
+    "pair": "D<-B",
+    "a": 37,
+    "z": -3.01,
+    "agree": 11,
+    "n": 43,
+    "null_mean": 21.0
+   },
+   {
+    "pair": "A<-C",
+    "a": 132,
+    "z": 2.56,
+    "agree": 30,
+    "n": 43,
+    "null_mean": 22.1
+   },
+   {
+    "pair": "B<-D",
+    "a": 23,
+    "z": -2.56,
+    "agree": 13,
+    "n": 43,
+    "null_mean": 21.4
+   }
+  ],
+  "cross_family": 504,
+  "logshift": {
+   "f_boundary": {
+    "z": 2.41,
+    "obs": 102,
+    "null_mean": 86.1
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 7,
+     "z": -1.98,
+     "obs": 70,
+     "null_mean": 82.9
+    },
+    {
+     "s": 35,
+     "z": -1.98,
+     "obs": 70,
+     "null_mean": 82.9
+    },
+    {
+     "s": 10,
+     "z": -1.91,
+     "obs": 72,
+     "null_mean": 84.4
+    }
+   ],
+   "e": 42,
+   "g": 2
+  },
+  "b0": {
+   "T_product": {
+    "z": 1.01,
+    "obs": 24,
+    "r": 43,
+    "null_mean": 20.7
+   },
+   "legendre_z_per_block": [
+    0.08,
+    -2.03,
+    -0.32,
+    -2.65
+   ]
+  }
+ },
+ {
+  "label": "ours 919 twist",
+  "v": 919,
+  "b": 0,
+  "mods": [
+   919
+  ],
+  "paf_ok": true,
+  "U_order": 17,
+  "orbits": 55,
+  "classes": 53,
+  "classes_top": [
+   {
+    "a": 8,
+    "ord": 3,
+    "z": 4.92,
+    "same": 144,
+    "null_mean": 106.0,
+    "n": 216,
+    "per_block": [
+     54,
+     30,
+     30,
+     30
+    ]
+   },
+   {
+    "a": 36,
+    "ord": 3,
+    "z": 4.92,
+    "same": 144,
+    "null_mean": 106.0,
+    "n": 216,
+    "per_block": [
+     54,
+     30,
+     30,
+     30
+    ]
+   },
+   {
+    "a": 60,
+    "ord": 54,
+    "z": -3.88,
+    "same": 78,
+    "null_mean": 106.3,
+    "n": 216,
+    "per_block": [
+     24,
+     18,
+     18,
+     18
+    ]
+   },
+   {
+    "a": 66,
+    "ord": 54,
+    "z": -3.88,
+    "same": 78,
+    "null_mean": 106.3,
+    "n": 216,
+    "per_block": [
+     24,
+     18,
+     18,
+     18
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "C<-B",
+    "a": 36,
+    "z": 7.85,
+    "agree": 55,
+    "n": 55,
+    "null_mean": 28.3
+   },
+   {
+    "pair": "D<-B",
+    "a": 8,
+    "z": 7.85,
+    "agree": 55,
+    "n": 55,
+    "null_mean": 28.3
+   },
+   {
+    "pair": "B<-C",
+    "a": 8,
+    "z": 7.59,
+    "agree": 55,
+    "n": 55,
+    "null_mean": 27.9
+   },
+   {
+    "pair": "D<-C",
+    "a": 36,
+    "z": 7.59,
+    "agree": 55,
+    "n": 55,
+    "null_mean": 27.9
+   }
+  ],
+  "cross_family": 648,
+  "logshift": {
+   "f_boundary": {
+    "z": 1.4,
+    "obs": 120,
+    "null_mean": 109.7
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 20,
+     "z": -3.23,
+     "obs": 84,
+     "null_mean": 107.6
+    },
+    {
+     "s": 34,
+     "z": -3.23,
+     "obs": 84,
+     "null_mean": 107.6
+    },
+    {
+     "s": 18,
+     "z": -3.11,
+     "obs": 84,
+     "null_mean": 107.3
+    }
+   ],
+   "e": 54,
+   "g": 7
+  },
+  "b0": {
+   "T_product": {
+    "z": 1.66,
+    "obs": 34,
+    "r": 55,
+    "null_mean": 27.9
+   },
+   "legendre_z_per_block": [
+    -0.74,
+    1.65,
+    1.71,
+    1.61
+   ]
+  }
+ },
+ {
+  "label": "ours 933 GP",
+  "v": 933,
+  "b": 0,
+  "mods": [
+   933
+  ],
+  "paf_ok": true,
+  "U_order": 31,
+  "orbits": 33,
+  "classes": 19,
+  "classes_top": [
+   {
+    "a": 17,
+    "ord": 10,
+    "z": 2.06,
+    "same": 74,
+    "null_mean": 62.1,
+    "n": 128,
+    "per_block": [
+     12,
+     22,
+     18,
+     22
+    ]
+   },
+   {
+    "a": 38,
+    "ord": 10,
+    "z": 2.06,
+    "same": 74,
+    "null_mean": 62.1,
+    "n": 128,
+    "per_block": [
+     12,
+     22,
+     18,
+     22
+    ]
+   },
+   {
+    "a": 46,
+    "ord": 2,
+    "z": -2.02,
+    "same": 42,
+    "null_mean": 58.1,
+    "n": 120,
+    "per_block": [
+     2,
+     8,
+     16,
+     16
+    ]
+   },
+   {
+    "a": 4,
+    "ord": 5,
+    "z": -1.71,
+    "same": 48,
+    "null_mean": 58.1,
+    "n": 120,
+    "per_block": [
+     16,
+     8,
+     12,
+     12
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "C<-D",
+    "a": 23,
+    "z": -3.45,
+    "agree": 7,
+    "n": 33,
+    "null_mean": 16.1
+   },
+   {
+    "pair": "D<-C",
+    "a": 59,
+    "z": -3.04,
+    "agree": 7,
+    "n": 33,
+    "null_mean": 16.2
+   },
+   {
+    "pair": "D<-C",
+    "a": 19,
+    "z": -2.51,
+    "agree": 9,
+    "n": 33,
+    "null_mean": 15.9
+   },
+   {
+    "pair": "C<-D",
+    "a": 34,
+    "z": -2.42,
+    "agree": 9,
+    "n": 33,
+    "null_mean": 16.1
+   }
+  ],
+  "cross_family": 240
+ },
+ {
+  "label": "Djokovic 463",
+  "v": 463,
+  "b": 0,
+  "mods": [
+   463
+  ],
+  "paf_ok": true,
+  "U_order": 1,
+  "orbits": 463,
+  "classes": 461,
+  "classes_top": [
+   {
+    "a": 190,
+    "ord": 21,
+    "z": 11.2,
+    "same": 1152,
+    "null_mean": 925.1,
+    "n": 1848,
+    "per_block": [
+     462,
+     218,
+     226,
+     246
+    ]
+   },
+   {
+    "a": 251,
+    "ord": 21,
+    "z": 11.2,
+    "same": 1152,
+    "null_mean": 925.1,
+    "n": 1848,
+    "per_block": [
+     462,
+     218,
+     226,
+     246
+    ]
+   },
+   {
+    "a": 230,
+    "ord": 7,
+    "z": 11.07,
+    "same": 1146,
+    "null_mean": 922.0,
+    "n": 1848,
+    "per_block": [
+     462,
+     230,
+     224,
+     230
+    ]
+   },
+   {
+    "a": 308,
+    "ord": 7,
+    "z": 11.07,
+    "same": 1146,
+    "null_mean": 922.0,
+    "n": 1848,
+    "per_block": [
+     462,
+     230,
+     224,
+     230
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "B<-C",
+    "a": 216,
+    "z": 3.28,
+    "agree": 265,
+    "n": 463,
+    "null_mean": 231.4
+   },
+   {
+    "pair": "C<-D",
+    "a": 155,
+    "z": 3.11,
+    "agree": 263,
+    "n": 463,
+    "null_mean": 232.1
+   },
+   {
+    "pair": "D<-C",
+    "a": 233,
+    "z": 3.11,
+    "agree": 263,
+    "n": 463,
+    "null_mean": 231.1
+   },
+   {
+    "pair": "D<-C",
+    "a": 155,
+    "z": 3.07,
+    "agree": 263,
+    "n": 463,
+    "null_mean": 231.7
+   }
+  ],
+  "cross_family": 5544,
+  "logshift": {
+   "f_boundary": {
+    "z": -2.32,
+    "obs": 876,
+    "null_mean": 926.1
+   },
+   "sigma_s_lowest": [
+    {
+     "s": 88,
+     "z": -12.91,
+     "obs": 654,
+     "null_mean": 924.8
+    },
+    {
+     "s": 374,
+     "z": -12.91,
+     "obs": 654,
+     "null_mean": 924.8
+    },
+    {
+     "s": 110,
+     "z": -12.6,
+     "obs": 662,
+     "null_mean": 923.1
+    }
+   ],
+   "e": 462,
+   "g": 3
+  },
+  "b0": {
+   "T_product": {
+    "z": -1.21,
+    "obs": 218,
+    "r": 463,
+    "null_mean": 231.6
+   },
+   "legendre_z_per_block": [
+    -0.04,
+    -1.46,
+    -0.89,
+    0.55
+   ]
+  }
+ },
+ {
+  "label": "ours 419 Paley",
+  "v": 419,
+  "b": 1,
+  "mods": [
+   418
+  ],
+  "paf_ok": true,
+  "U_order": 15,
+  "orbits": 42,
+  "classes": 11,
+  "classes_top": [
+   {
+    "a": 7,
+    "ord": 2,
+    "z": -5.22,
+    "same": 14,
+    "null_mean": 51.7,
+    "n": 112,
+    "per_block": [
+     4,
+     4,
+     2,
+     4
+    ]
+   },
+   {
+    "a": 13,
+    "ord": 6,
+    "z": 3.3,
+    "same": 98,
+    "null_mean": 74.6,
+    "n": 160,
+    "per_block": [
+     24,
+     28,
+     22,
+     24
+    ]
+   },
+   {
+    "a": 21,
+    "ord": 6,
+    "z": 3.3,
+    "same": 98,
+    "null_mean": 74.6,
+    "n": 160,
+    "per_block": [
+     24,
+     28,
+     22,
+     24
+    ]
+   },
+   {
+    "a": 27,
+    "ord": 2,
+    "z": -1.54,
+    "same": 56,
+    "null_mean": 69.3,
+    "n": 144,
+    "per_block": [
+     8,
+     16,
+     20,
+     12
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "D<-A",
+    "a": 61,
+    "z": -2.62,
+    "agree": 13,
+    "n": 42,
+    "null_mean": 21.3
+   },
+   {
+    "pair": "A<-D",
+    "a": 17,
+    "z": -2.37,
+    "agree": 13,
+    "n": 42,
+    "null_mean": 21.0
+   },
+   {
+    "pair": "D<-A",
+    "a": 7,
+    "z": -2.36,
+    "agree": 13,
+    "n": 42,
+    "null_mean": 20.9
+   },
+   {
+    "pair": "A<-D",
+    "a": 7,
+    "z": -2.34,
+    "agree": 13,
+    "n": 42,
+    "null_mean": 20.8
+   }
+  ],
+  "cross_family": 144,
+  "halfshift": [
+   {
+    "tau": [
+     209
+    ],
+    "z": -1.49,
+    "boundary": 724,
+    "null_mean": 800.8,
+    "per_block": [
+     144,
+     184,
+     184,
+     212
+    ]
+   }
+  ]
+ },
+ {
+  "label": "ours 523 quartic",
+  "v": 523,
+  "b": 1,
+  "mods": [
+   522
+  ],
+  "paf_ok": true,
+  "U_order": 7,
+  "orbits": 90,
+  "classes": 23,
+  "classes_top": [
+   {
+    "a": 19,
+    "ord": 4,
+    "z": -4.46,
+    "same": 106,
+    "null_mean": 142.5,
+    "n": 288,
+    "per_block": [
+     30,
+     26,
+     22,
+     28
+    ]
+   },
+   {
+    "a": 37,
+    "ord": 4,
+    "z": -4.46,
+    "same": 106,
+    "null_mean": 142.5,
+    "n": 288,
+    "per_block": [
+     30,
+     26,
+     22,
+     28
+    ]
+   },
+   {
+    "a": 91,
+    "ord": 2,
+    "z": -3.57,
+    "same": 98,
+    "null_mean": 141.4,
+    "n": 288,
+    "per_block": [
+     22,
+     24,
+     32,
+     20
+    ]
+   },
+   {
+    "a": 5,
+    "ord": 6,
+    "z": -1.67,
+    "same": 158,
+    "null_mean": 175.8,
+    "n": 352,
+    "per_block": [
+     44,
+     34,
+     36,
+     44
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "A<-B",
+    "a": 77,
+    "z": -2.97,
+    "agree": 31,
+    "n": 90,
+    "null_mean": 44.8
+   },
+   {
+    "pair": "B<-A",
+    "a": 47,
+    "z": -2.96,
+    "agree": 31,
+    "n": 90,
+    "null_mean": 45.1
+   },
+   {
+    "pair": "C<-B",
+    "a": 65,
+    "z": -2.82,
+    "agree": 32,
+    "n": 90,
+    "null_mean": 44.9
+   },
+   {
+    "pair": "B<-C",
+    "a": 23,
+    "z": -2.72,
+    "agree": 32,
+    "n": 90,
+    "null_mean": 44.8
+   }
+  ],
+  "cross_family": 288,
+  "halfshift": [
+   {
+    "tau": [
+     261
+    ],
+    "z": -1.02,
+    "boundary": 996,
+    "null_mean": 1045.1,
+    "per_block": [
+     220,
+     244,
+     272,
+     260
+    ]
+   }
+  ]
+ },
+ {
+  "label": "ours 573 Paley",
+  "v": 573,
+  "b": 1,
+  "mods": [
+   572
+  ],
+  "paf_ok": true,
+  "U_order": 15,
+  "orbits": 60,
+  "classes": 15,
+  "classes_top": [
+   {
+    "a": 29,
+    "ord": 2,
+    "z": -6.53,
+    "same": 18,
+    "null_mean": 76.3,
+    "n": 160,
+    "per_block": [
+     4,
+     4,
+     4,
+     6
+    ]
+   },
+   {
+    "a": 35,
+    "ord": 2,
+    "z": -2.64,
+    "same": 70,
+    "null_mean": 95.4,
+    "n": 200,
+    "per_block": [
+     12,
+     14,
+     26,
+     18
+    ]
+   },
+   {
+    "a": 25,
+    "ord": 2,
+    "z": -2.12,
+    "same": 70,
+    "null_mean": 91.5,
+    "n": 192,
+    "per_block": [
+     16,
+     16,
+     24,
+     14
+    ]
+   },
+   {
+    "a": 3,
+    "ord": 2,
+    "z": 1.56,
+    "same": 68,
+    "null_mean": 56.6,
+    "n": 120,
+    "per_block": [
+     18,
+     22,
+     10,
+     18
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "B<-A",
+    "a": 1,
+    "z": 3.5,
+    "agree": 43,
+    "n": 60,
+    "null_mean": 29.8
+   },
+   {
+    "pair": "A<-D",
+    "a": 17,
+    "z": 3.24,
+    "agree": 41,
+    "n": 60,
+    "null_mean": 28.9
+   },
+   {
+    "pair": "A<-B",
+    "a": 1,
+    "z": 3.19,
+    "agree": 43,
+    "n": 60,
+    "null_mean": 29.8
+   },
+   {
+    "pair": "D<-B",
+    "a": 15,
+    "z": -3.12,
+    "agree": 20,
+    "n": 60,
+    "null_mean": 30.2
+   }
+  ],
+  "cross_family": 192,
+  "halfshift": [
+   {
+    "tau": [
+     286
+    ],
+    "z": 3.79,
+    "boundary": 1396,
+    "null_mean": 1134.7,
+    "per_block": [
+     380,
+     344,
+     360,
+     312
+    ]
+   }
+  ]
+ },
+ {
+  "label": "ours 647 doubly",
+  "v": 647,
+  "b": 1,
+  "mods": [
+   646
+  ],
+  "paf_ok": true,
+  "U_order": 12,
+  "orbits": 70,
+  "classes": 23,
+  "classes_top": [
+   {
+    "a": 7,
+    "ord": 4,
+    "z": -3.71,
+    "same": 86,
+    "null_mean": 113.1,
+    "n": 224,
+    "per_block": [
+     20,
+     22,
+     20,
+     24
+    ]
+   },
+   {
+    "a": 39,
+    "ord": 4,
+    "z": -3.71,
+    "same": 86,
+    "null_mean": 113.1,
+    "n": 224,
+    "per_block": [
+     20,
+     22,
+     20,
+     24
+    ]
+   },
+   {
+    "a": 63,
+    "ord": 12,
+    "z": 3.38,
+    "same": 164,
+    "null_mean": 139.2,
+    "n": 272,
+    "per_block": [
+     40,
+     50,
+     40,
+     34
+    ]
+   },
+   {
+    "a": 245,
+    "ord": 12,
+    "z": 3.38,
+    "same": 164,
+    "null_mean": 139.2,
+    "n": 272,
+    "per_block": [
+     40,
+     50,
+     40,
+     34
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "A<-C",
+    "a": 43,
+    "z": -2.79,
+    "agree": 22,
+    "n": 70,
+    "null_mean": 33.1
+   },
+   {
+    "pair": "A<-C",
+    "a": 13,
+    "z": -2.78,
+    "agree": 22,
+    "n": 70,
+    "null_mean": 32.9
+   },
+   {
+    "pair": "A<-B",
+    "a": 29,
+    "z": 2.76,
+    "agree": 46,
+    "n": 70,
+    "null_mean": 35.5
+   },
+   {
+    "pair": "C<-A",
+    "a": 9,
+    "z": -2.74,
+    "agree": 22,
+    "n": 70,
+    "null_mean": 33.0
+   }
+  ],
+  "cross_family": 288,
+  "halfshift": [
+   {
+    "tau": [
+     323
+    ],
+    "z": 1.63,
+    "boundary": 1356,
+    "null_mean": 1271.8,
+    "per_block": [
+     336,
+     332,
+     348,
+     340
+    ]
+   }
+  ]
+ },
+ {
+  "label": "ours 347 staged",
+  "v": 347,
+  "b": 5,
+  "mods": [
+   2,
+   3,
+   57
+  ],
+  "paf_ok": true,
+  "U_order": 6,
+  "orbits": 70,
+  "classes": 5,
+  "classes_top": [
+   {
+    "a": 5,
+    "ord": 3,
+    "z": -2.04,
+    "same": 102,
+    "null_mean": 117.5,
+    "n": 240,
+    "per_block": [
+     28,
+     26,
+     22,
+     26
+    ]
+   },
+   {
+    "a": 23,
+    "ord": 3,
+    "z": -2.04,
+    "same": 102,
+    "null_mean": 117.5,
+    "n": 240,
+    "per_block": [
+     28,
+     26,
+     22,
+     26
+    ]
+   },
+   {
+    "a": 31,
+    "ord": 2,
+    "z": -2.01,
+    "same": 96,
+    "null_mean": 118.0,
+    "n": 240,
+    "per_block": [
+     26,
+     14,
+     30,
+     26
+    ]
+   },
+   {
+    "a": 13,
+    "ord": 6,
+    "z": -1.0,
+    "same": 110,
+    "null_mean": 118.0,
+    "n": 240,
+    "per_block": [
+     24,
+     32,
+     28,
+     26
+    ]
+   }
+  ],
+  "cross_top": [
+   {
+    "pair": "B<-A",
+    "a": 23,
+    "z": -3.19,
+    "agree": 22,
+    "n": 70,
+    "null_mean": 34.6
+   },
+   {
+    "pair": "A<-B",
+    "a": 5,
+    "z": -2.87,
+    "agree": 22,
+    "n": 70,
+    "null_mean": 34.0
+   },
+   {
+    "pair": "A<-B",
+    "a": 1,
+    "z": -2.2,
+    "agree": 26,
+    "n": 70,
+    "null_mean": 34.4
+   },
+   {
+    "pair": "B<-A",
+    "a": 1,
+    "z": -2.14,
+    "agree": 26,
+    "n": 70,
+    "null_mean": 34.3
+   }
+  ],
+  "cross_family": 72,
+  "halfshift": [
+   {
+    "tau": [
+     1,
+     0,
+     0
+    ],
+    "z": -0.27,
+    "boundary": 1264,
+    "null_mean": 1282.9,
+    "per_block": [
+     336,
+     320,
+     324,
+     284
+    ]
+   }
+  ]
+ }
+]

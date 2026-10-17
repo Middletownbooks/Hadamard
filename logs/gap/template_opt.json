@@ -1,0 +1,152 @@
+[
+ {
+  "v": 167,
+  "h": 83,
+  "published": {
+   "ok": true,
+   "logES": 25.762207762575116,
+   "logED": 29.174164359375453,
+   "logES_parityfree": 25.762207762575116,
+   "logED_parityfree": 29.174164359375453,
+   "bad_lags": 0,
+   "Vmean": 81.17073170731707
+  },
+  "arcs": {
+   "ok": false,
+   "logES": -Infinity,
+   "logED": -Infinity,
+   "logES_parityfree": 26.0453276716774,
+   "logED_parityfree": 30.38603343141915,
+   "bad_lags": 41,
+   "Vmean": 81.0
+  },
+  "random_parityfree": {
+   "logES": 20.1,
+   "logED": 22.8,
+   "bad_lags": 20.6
+  },
+  "runs": [
+   {
+    "start": "published",
+    "seed": 0,
+    "parity_ok": true,
+    "bad_lags": 0,
+    "logES_parityfree": 25.8,
+    "logED_parityfree": 29.2
+   },
+   {
+    "start": "arcs",
+    "seed": 0,
+    "parity_ok": false,
+    "bad_lags": 6,
+    "logES_parityfree": 22.0,
+    "logED_parityfree": 24.8
+   },
+   {
+    "start": "random",
+    "seed": 0,
+    "parity_ok": false,
+    "bad_lags": 7,
+    "logES_parityfree": 20.1,
+    "logED_parityfree": 22.8
+   }
+  ],
+  "annealed": {
+   "ok": true,
+   "logES": 25.762207762575116,
+   "logED": 29.174164359375453,
+   "logES_parityfree": 25.762207762575116,
+   "logED_parityfree": 29.174164359375453,
+   "bad_lags": 0,
+   "Vmean": 81.17073170731707
+  },
+  "annealed_from": "published",
+  "annealed_sign_changes": [
+   4,
+   6,
+   4,
+   4
+  ],
+  "annealed_sizes": [
+   39,
+   44,
+   42,
+   40
+  ]
+ },
+ {
+  "v": 179,
+  "h": 89,
+  "published": {
+   "ok": true,
+   "logES": 25.70917467918858,
+   "logED": 29.188765600956373,
+   "logES_parityfree": 25.70917467918858,
+   "logED_parityfree": 29.188765600956373,
+   "bad_lags": 0,
+   "Vmean": 87.04545454545455
+  },
+  "arcs": {
+   "ok": false,
+   "logES": -Infinity,
+   "logED": -Infinity,
+   "logES_parityfree": 25.903459093386346,
+   "logED_parityfree": 30.269782339151618,
+   "bad_lags": 44,
+   "Vmean": 87.0
+  },
+  "random_parityfree": {
+   "logES": 19.3,
+   "logED": 22.1,
+   "bad_lags": 22.9
+  },
+  "runs": [
+   {
+    "start": "published",
+    "seed": 0,
+    "parity_ok": true,
+    "bad_lags": 0,
+    "logES_parityfree": 25.7,
+    "logED_parityfree": 29.2
+   },
+   {
+    "start": "arcs",
+    "seed": 0,
+    "parity_ok": false,
+    "bad_lags": 6,
+    "logES_parityfree": 21.3,
+    "logED_parityfree": 24.1
+   },
+   {
+    "start": "random",
+    "seed": 0,
+    "parity_ok": false,
+    "bad_lags": 9,
+    "logES_parityfree": 19.4,
+    "logED_parityfree": 22.1
+   }
+  ],
+  "annealed": {
+   "ok": true,
+   "logES": 25.70917467918858,
+   "logED": 29.188765600956373,
+   "logES_parityfree": 25.70917467918858,
+   "logED_parityfree": 29.188765600956373,
+   "bad_lags": 0,
+   "Vmean": 87.04545454545455
+  },
+  "annealed_from": "published",
+  "annealed_sign_changes": [
+   6,
+   4,
+   4,
+   4
+  ],
+  "annealed_sizes": [
+   43,
+   46,
+   44,
+   44
+  ]
+ }
+]

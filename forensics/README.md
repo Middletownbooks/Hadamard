@@ -27,6 +27,10 @@ The write-up is `report/alpoge_methods_forensics.md`.
 | `decode668.py`, `blocks668.py` | Decode the Lean-formalised H(668) (google-deepmind/formal-conjectures commit 91ebb29, `FormalConjectures/Wikipedia/Hadamard668.lean`; fetch the file into this directory first) and split it into blocks. |
 | `ff_seed_test.py` | Legendre / Sidelnikov seed tests on all repo cores (negative). |
 | `pr_structure.py` | Z₂×Z_h P/R split statistics of the repo b = 1 cores. |
+| `near_structure.py` | Near-structure ("template + deviations") census of all 12 originals with our own cores as controls: multiplier classes, half-shift boundaries, log-coordinate runs, cross-block relations, T-product/Legendre (`report/alpoge_gap_analysis.md` §1). |
+| `b0_fingerprints.py` | b = 0 block fingerprints: flatness, least-\|PAF\| fraction, local minimality under swaps, pair sums (gap analysis §2). |
+| `template_opt.py` | Half-shift templates beyond arcs: the W_t = V_t + 2 lemma, Gaussian per half, annealing over σ (gap analysis §3.3). |
+| `template_calib.py` | Exact counts of template halves at small h against the Gaussian (gap analysis §3.4). |
 
 "Natural coordinates" means the Goethals–Seidel reversal R has been undone for blocks B, C and D:
 - cyclic cores: f(y) = g(−1−y);

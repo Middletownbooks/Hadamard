@@ -306,6 +306,8 @@ In the Gaussian model, the reduced problems land at roughly 120–210 constraint
 
 Nothing in the outputs identifies the solver itself. The `func` letters name builders (array types), not search methods.
 
+**Update (2026-10-17).** `report/alpoge_gap_analysis.md` extends this with a near-structure census of all 12 cores (nothing new beyond §4–§5 and 479's twist), b = 0 solver fingerprints (local minima of the block PAF energy, as in our flat-pool k-tree), and a calibrated revisit of the half-shift template (exact counts at h ≤ 23; break-even near v ≈ 400).
+
 ## Reproduce
 
 ```
