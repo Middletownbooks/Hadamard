@@ -88,3 +88,17 @@ Steps:
 ## Progress log (newest last; the previous session appended here as it worked)
 
 - 2026-10-17: task list written.
+- 2026-10-17, rung 1 (311) probes [M] (`scripts/flat_probe.py`, logs `logs/k311/probe_rho*_s*.log`):
+  - rho = 0.40: 1 min on 4 cores gives 3.8 M blocks per row sum, nearly all in distinct multiplier orbits (coverage of
+    the rotation closure 1.6%, reversal closure 0%): the flat set is far larger than any sample. Gaussian n' = 89.9
+    (3.0 bits per class); partial joins to k = 10 sit 0.035 bits per class above it, so n' ≈ 91.
+  - rho = 0.36: 0.6 M per row sum per minute, closure coverage 1.7%; n' = 86.0 Gaussian, ≈ 87 with the partial-join
+    offset (+0.031 per class).
+  - New tools: multiplier closure (rotations of the e = 62 orbit bits keep F and the row sum [P]; checked
+    numerically), `scripts/build_slot_pools.py` (slot A = one block per multiplier orbit, slots B, C, D = samples of the
+    closures: symmetry breaking, so hits are distinct cores), `scripts/kt_join_slots.py` (the kaggle join with one pool
+    per slot), `scripts/flat_capture.py` (capture-recapture flat-set size from two seeds).
+  - Choice of rho: distinct cores in the slot pools = |A| L^3 2^(-n'), |A| growing with generation time; rho = 0.36
+    beats 0.40 by about 2^5 at equal time. The production join on 64-bit masks covers r <= 64 orbits only (311 has
+    63); rungs 2-4 (r = 71, 75, 95) need two-word masks.
+

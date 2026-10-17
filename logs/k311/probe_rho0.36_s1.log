@@ -1,0 +1,15 @@
+{"stage": "generated", "walks": 191, "minutes": 1.0, "workers": 4, "t": 64.7}
+{"stage": "pool", "rowsum": 1, "raw": 630240, "log2_raw": 19.27, "coverage_reversal": 0.002, "orbits": 603717, "coverage_rotations": 0.0168, "log2_closed": 25.16, "t": 66.6}
+{"stage": "pool", "rowsum": 19, "raw": 560466, "log2_raw": 19.1, "coverage_reversal": 0.001, "orbits": 539368, "coverage_rotations": 0.0168, "log2_closed": 25.0, "t": 67.9}
+{"stage": "pool", "rowsum": 21, "raw": 608585, "log2_raw": 19.22, "coverage_reversal": 0.001, "orbits": 586717, "coverage_rotations": 0.0167, "log2_closed": 25.12, "t": 69.4}
+{"stage": "nprime_gauss", "rho": 0.36, "profile": [21, 21, 19, 1], "n_prime": 86.0, "per_class": 2.87, "log2_closed_tuples": 100.4, "log2_solutions_in_closed_pools": 14.4, "t": 71.1}
+{"stage": "partial_join", "k": 1, "matches": 36574367413881, "bits_measured": 2.94, "bits_gaussian": 2.93, "t": 76.2}
+{"stage": "partial_join", "k": 2, "matches": 4830724341763, "bits_measured": 5.86, "bits_gaussian": 5.84, "t": 79.1}
+{"stage": "partial_join", "k": 3, "matches": 632801890031, "bits_measured": 8.8, "bits_gaussian": 8.77, "t": 82.2}
+{"stage": "partial_join", "k": 4, "matches": 81159527612, "bits_measured": 11.76, "bits_gaussian": 11.69, "t": 86.7}
+{"stage": "partial_join", "k": 5, "matches": 10490043517, "bits_measured": 14.71, "bits_gaussian": 14.61, "t": 94.2}
+{"stage": "partial_join", "k": 6, "matches": 1349659247, "bits_measured": 17.67, "bits_gaussian": 17.53, "t": 103.6}
+{"stage": "partial_join", "k": 7, "matches": 173858273, "bits_measured": 20.63, "bits_gaussian": 20.45, "t": 113.1}
+{"stage": "partial_join", "k": 8, "matches": 22501916, "bits_measured": 23.58, "bits_gaussian": 23.36, "t": 122.9}
+{"stage": "partial_join", "k": 9, "matches": 2880544, "bits_measured": 26.54, "bits_gaussian": 26.28, "t": 133.4}
+{"stage": "partial_join", "k": 10, "matches": 369662, "bits_measured": 29.5, "bits_gaussian": 29.19, "t": 143.8}
