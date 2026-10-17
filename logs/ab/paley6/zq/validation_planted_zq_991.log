@@ -1,23 +1,4 @@
-Traceback (most recent call last):
-  File "/home/user/Hadamard/logs/ab/paley6/zq/planted_screen_run.py", line 16, in <module>
-    r = SC.run(sl, yb, os.path.join(d, f'o{trial}.jsonl'), [0, 1, 2, 3])
-  File "/home/user/Hadamard/theory/ab_s2_zq_screen.py", line 128, in run
-    ex, by = count(tq, Tq[p])
-             ~~~~~^^^^^^^^^^^
-  File "/home/user/Hadamard/theory/ab_s2_zq_screen.py", line 110, in count
-    A = conv(Dp[0], Dp[1]); B = conv(Dp[2], Dp[3])
-  File "/home/user/Hadamard/theory/ab_s2_zq_screen.py", line 109, in conv
-    u, inv = np.unique(k, return_inverse=True); s = np.zeros(len(u)); np.add.at(s, inv.ravel(), v); return u, s
-             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_arraysetops_impl.py", line 296, in unique
-    ret = _unique1d(ar, return_index, return_inverse, return_counts,
-                    equal_nan=equal_nan, inverse_shape=ar.shape, axis=None,
-                    sorted=sorted)
-  File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_arraysetops_impl.py", line 407, in _unique1d
-    imask = np.cumsum(mask) - 1
-            ~~~~~~~~~^^^^^^
-  File "/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py", line 2952, in cumsum
-    return _wrapfunc(a, 'cumsum', axis=axis, dtype=dtype, out=out)
-  File "/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py", line 54, in _wrapfunc
-    return bound(*args, **kwds)
-numpy._core._exceptions._ArrayMemoryError: Unable to allocate 544. MiB for an array with shape (71333288,) and data type int64
+{"trial": 0, "alive": 1, "log2_counts": [79.422, 80.057, 79.071, 79.453]}
+{"trial": 1, "alive": 1, "log2_counts": [70.028, 69.265, 68.166, 69.992]}
+{"trial": 2, "alive": 1, "log2_counts": [67.217, 65.534, 67.487, 65.356]}
+{"trials": 3, "false_kills": 0}
