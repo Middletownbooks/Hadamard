@@ -233,3 +233,4 @@ Steps:
   The 311 join is paused at bucket 1,123 (resume: `logs/k311/runners/run_prod_rev.sh 9`).
 - 2026-10-17 16:21 UTC: container restarted (scratch in /tmp survived); the interrupted 223 chunk 3 was removed and the runner restarted (GW=4); chunks 1-2 kept (182k row-sum-11 orbits).
 - 2026-10-17 17:25 UTC: a second container reclaim (~16:25) killed 223 chunk 3 again: the session is reclaimed when idle with no harness-tracked background task, even with check-ins armed. Relaunched; now always keep a background watcher (Bash run_in_background / Monitor) running beside production.
+- 2026-10-17 22:02 UTC: third container reclaim (worker restart) during 223 chunk 27; generation stopped at 26 chunks = 2,814,949 row-sum-11 orbits (model: stopping here ~4.5 h to a core, against ~1.7 h more generation + 2.7 h for the 3.6M target); runner relaunched with TARGET=2800000 (slots, then the disk join at k = 12, --mem 6e9).
