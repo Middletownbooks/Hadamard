@@ -1,0 +1,68 @@
+{"stage": "setup", "n_o": 4, "weights": [1, 6, 6, 6], "Tpsi": [[3964, 0, 0, 0], [3756, -208, -208, -208], [3756, -208, -208, -208], [3756, -208, -208, -208]], "row_quads": [[2, 26, 28, 50], [26, 26, 26, 44]], "secs": 1.2}
+{"stage": "character", "psi": 1, "vectors": 5613, "signatures": 2807, "signature_quads": 1357, "solutions": 21700, "secs": 1.5}
+{"stage": "character", "psi": 2, "vectors": 5613, "signatures": 2807, "signature_quads": 1357, "solutions": 21700, "secs": 1.7}
+{"stage": "character", "psi": 3, "vectors": 5613, "signatures": 2807, "signature_quads": 1357, "solutions": 21700, "secs": 1.8}
+{"stage": "character", "psi": 0, "vectors": 9792, "signatures": 9792, "signature_quads": 20760, "solutions": 20760, "secs": 5.5}
+{"stage": "kept", "vectors": [3152, 1798, 1798, 1798], "secs": 5.5}
+{"stage": "blocks-progress", "done": 0, "of": 3152, "blocks": 0, "secs": 5.6}
+{"stage": "blocks-progress", "done": 2000, "of": 3152, "blocks": 1607564, "secs": 26.2}
+{"stage": "blocks", "psi0_vectors": 3152, "signatures_with_blocks": 2781, "column_valid_blocks": 2661224, "secs": 38.6}
+{"stage": "progress", "psi0_quads_done": 0, "of": 20760, "stage1_solutions": 0, "pairs": 0, "secs": 38.6}
+{"stage": "progress", "psi0_quads_done": 391, "of": 20760, "stage1_solutions": 0, "pairs": 742468272, "secs": 98.7}
+{"stage": "progress", "psi0_quads_done": 787, "of": 20760, "stage1_solutions": 0, "pairs": 1444640928, "secs": 158.7}
+{"stage": "progress", "psi0_quads_done": 1299, "of": 20760, "stage1_solutions": 0, "pairs": 2203124144, "secs": 218.9}
+{"stage": "progress", "psi0_quads_done": 1656, "of": 20760, "stage1_solutions": 0, "pairs": 2867841008, "secs": 278.9}
+{"stage": "progress", "psi0_quads_done": 2134, "of": 20760, "stage1_solutions": 0, "pairs": 3586404896, "secs": 339.0}
+{"stage": "progress", "psi0_quads_done": 2670, "of": 20760, "stage1_solutions": 0, "pairs": 4324865824, "secs": 399.1}
+{"stage": "progress", "psi0_quads_done": 2906, "of": 20760, "stage1_solutions": 0, "pairs": 4806833456, "secs": 459.2}
+{"stage": "progress", "psi0_quads_done": 3294, "of": 20760, "stage1_solutions": 0, "pairs": 5479494192, "secs": 519.3}
+{"stage": "progress", "psi0_quads_done": 3746, "of": 20760, "stage1_solutions": 0, "pairs": 6235081776, "secs": 579.4}
+{"stage": "progress", "psi0_quads_done": 4191, "of": 20760, "stage1_solutions": 0, "pairs": 6959469552, "secs": 639.5}
+{"stage": "progress", "psi0_quads_done": 4953, "of": 20760, "stage1_solutions": 0, "pairs": 7763541424, "secs": 699.9}
+{"stage": "progress", "psi0_quads_done": 5288, "of": 20760, "stage1_solutions": 0, "pairs": 8484820288, "secs": 760.1}
+{"stage": "progress", "psi0_quads_done": 5683, "of": 20760, "stage1_solutions": 0, "pairs": 9216220064, "secs": 820.3}
+{"stage": "progress", "psi0_quads_done": 6132, "of": 20760, "stage1_solutions": 0, "pairs": 9979590848, "secs": 880.5}
+{"stage": "progress", "psi0_quads_done": 6540, "of": 20760, "stage1_solutions": 0, "pairs": 10708075872, "secs": 940.5}
+{"stage": "progress", "psi0_quads_done": 7006, "of": 20760, "stage1_solutions": 0, "pairs": 11450422048, "secs": 1000.6}
+{"stage": "progress", "psi0_quads_done": 7362, "of": 20760, "stage1_solutions": 0, "pairs": 12142583328, "secs": 1060.7}
+{"stage": "progress", "psi0_quads_done": 7894, "of": 20760, "stage1_solutions": 0, "pairs": 12874911280, "secs": 1120.8}
+{"stage": "progress", "psi0_quads_done": 8282, "of": 20760, "stage1_solutions": 0, "pairs": 13590264720, "secs": 1180.9}
+{"stage": "progress", "psi0_quads_done": 8654, "of": 20760, "stage1_solutions": 0, "pairs": 14341097984, "secs": 1241.3}
+{"stage": "progress", "psi0_quads_done": 9119, "of": 20760, "stage1_solutions": 0, "pairs": 15078628576, "secs": 1301.8}
+{"stage": "progress", "psi0_quads_done": 9532, "of": 20760, "stage1_solutions": 0, "pairs": 15745977648, "secs": 1362.2}
+{"stage": "progress", "psi0_quads_done": 9906, "of": 20760, "stage1_solutions": 0, "pairs": 16417350320, "secs": 1422.6}
+{"stage": "progress", "psi0_quads_done": 10287, "of": 20760, "stage1_solutions": 0, "pairs": 17103935728, "secs": 1482.9}
+{"stage": "progress", "psi0_quads_done": 10702, "of": 20760, "stage1_solutions": 0, "pairs": 17760643408, "secs": 1543.3}
+{"stage": "progress", "psi0_quads_done": 11112, "of": 20760, "stage1_solutions": 0, "pairs": 18452864528, "secs": 1603.5}
+{"stage": "progress", "psi0_quads_done": 11451, "of": 20760, "stage1_solutions": 0, "pairs": 19099311408, "secs": 1664.1}
+{"stage": "progress", "psi0_quads_done": 11986, "of": 20760, "stage1_solutions": 0, "pairs": 19739839888, "secs": 1724.1}
+{"stage": "progress", "psi0_quads_done": 12405, "of": 20760, "stage1_solutions": 0, "pairs": 20460331360, "secs": 1784.2}
+{"stage": "progress", "psi0_quads_done": 12754, "of": 20760, "stage1_solutions": 0, "pairs": 21175023392, "secs": 1844.2}
+{"stage": "progress", "psi0_quads_done": 13082, "of": 20760, "stage1_solutions": 0, "pairs": 21900137760, "secs": 1904.4}
+{"stage": "progress", "psi0_quads_done": 13521, "of": 20760, "stage1_solutions": 0, "pairs": 22637353920, "secs": 1964.4}
+{"stage": "progress", "psi0_quads_done": 13958, "of": 20760, "stage1_solutions": 0, "pairs": 23402008720, "secs": 2024.5}
+{"stage": "progress", "psi0_quads_done": 14429, "of": 20760, "stage1_solutions": 0, "pairs": 24183178656, "secs": 2084.6}
+{"stage": "progress", "psi0_quads_done": 14728, "of": 20760, "stage1_solutions": 0, "pairs": 24843911072, "secs": 2144.7}
+{"stage": "progress", "psi0_quads_done": 15129, "of": 20760, "stage1_solutions": 0, "pairs": 25578416560, "secs": 2205.0}
+{"stage": "progress", "psi0_quads_done": 15512, "of": 20760, "stage1_solutions": 0, "pairs": 26225555008, "secs": 2265.1}
+{"stage": "progress", "psi0_quads_done": 15919, "of": 20760, "stage1_solutions": 0, "pairs": 26833657568, "secs": 2325.6}
+{"stage": "progress", "psi0_quads_done": 16049, "of": 20760, "stage1_solutions": 0, "pairs": 27162658768, "secs": 2386.1}
+{"stage": "progress", "psi0_quads_done": 16253, "of": 20760, "stage1_solutions": 0, "pairs": 27482262928, "secs": 2446.2}
+{"stage": "progress", "psi0_quads_done": 16437, "of": 20760, "stage1_solutions": 0, "pairs": 27815623328, "secs": 2506.3}
+{"stage": "progress", "psi0_quads_done": 16673, "of": 20760, "stage1_solutions": 0, "pairs": 28157502560, "secs": 2566.6}
+{"stage": "progress", "psi0_quads_done": 16850, "of": 20760, "stage1_solutions": 0, "pairs": 28537583552, "secs": 2626.7}
+{"stage": "progress", "psi0_quads_done": 17128, "of": 20760, "stage1_solutions": 0, "pairs": 29136773712, "secs": 2686.7}
+{"stage": "progress", "psi0_quads_done": 17279, "of": 20760, "stage1_solutions": 0, "pairs": 29468118704, "secs": 2747.0}
+{"stage": "progress", "psi0_quads_done": 17462, "of": 20760, "stage1_solutions": 0, "pairs": 29790677408, "secs": 2807.1}
+{"stage": "progress", "psi0_quads_done": 17698, "of": 20760, "stage1_solutions": 0, "pairs": 30127453760, "secs": 2867.4}
+{"stage": "progress", "psi0_quads_done": 17914, "of": 20760, "stage1_solutions": 0, "pairs": 30441714448, "secs": 2927.4}
+{"stage": "progress", "psi0_quads_done": 18173, "of": 20760, "stage1_solutions": 0, "pairs": 30773972336, "secs": 2987.5}
+{"stage": "progress", "psi0_quads_done": 18379, "of": 20760, "stage1_solutions": 0, "pairs": 31158700544, "secs": 3047.5}
+{"stage": "progress", "psi0_quads_done": 18831, "of": 20760, "stage1_solutions": 0, "pairs": 31841296160, "secs": 3107.8}
+{"stage": "progress", "psi0_quads_done": 19212, "of": 20760, "stage1_solutions": 0, "pairs": 32483892800, "secs": 3167.8}
+{"stage": "progress", "psi0_quads_done": 19605, "of": 20760, "stage1_solutions": 0, "pairs": 33188145280, "secs": 3228.1}
+{"stage": "progress", "psi0_quads_done": 19913, "of": 20760, "stage1_solutions": 0, "pairs": 33816856160, "secs": 3288.5}
+{"stage": "progress", "psi0_quads_done": 20281, "of": 20760, "stage1_solutions": 0, "pairs": 34316651840, "secs": 3348.8}
+{"stage": "progress", "psi0_quads_done": 20432, "of": 20760, "stage1_solutions": 0, "pairs": 34620968576, "secs": 3409.2}
+{"stage": "progress", "psi0_quads_done": 20700, "of": 20760, "stage1_solutions": 0, "pairs": 35055253712, "secs": 3469.5}
+{"stage": "done", "stage1_solutions": 0, "all_verified": true, "secs": 3489.0}
