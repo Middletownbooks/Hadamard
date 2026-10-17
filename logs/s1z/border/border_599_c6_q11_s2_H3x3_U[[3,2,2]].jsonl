@@ -1,0 +1,11 @@
+{"i": 0, "m": [2, 53, 59, 63], "ordered": 165888, "log2N0": 134.531, "template": null, "singer": null, "secs": 38.3}
+{"i": 1, "m": [2, 54, 58, 63], "ordered": 41472, "log2N0": 134.531, "template": {"z": [[-7, -9, -9, -7, -7, -7], [-3, -1, -1, -1, -3, -3], [-3, -1, -1, -3, -1, -1], [-1, -1, -1, -1, -1, -1]], "perm": [3, 2, 0, 1], "signs": [1, 1, 1, 1]}, "singer": null, "secs": 42.1}
+{"i": 2, "m": [3, 54, 57, 63], "ordered": 41472, "log2N0": 134.531, "template": {"z": [[-9, -7, -7, -9, -7, -7], [-3, -1, -1, -1, -3, -3], [-1, -3, -3, -1, -1, -1], [-1, -1, -1, -1, -1, -1]], "perm": [3, 0, 2, 1], "signs": [1, 1, 1, 1]}, "singer": null, "secs": 43.4}
+{"i": 3, "m": [4, 53, 57, 63], "ordered": 165888, "log2N0": 134.531, "template": null, "singer": null, "secs": 81.1}
+{"i": 4, "m": [5, 47, 57, 63], "ordered": 13824, "log2N0": 134.367, "template": null, "singer": null, "secs": 84.2}
+{"i": 5, "m": [6, 47, 57, 63], "ordered": 27648, "log2N0": 134.367, "template": null, "singer": null, "secs": 90.1}
+{"i": 6, "m": [7, 44, 59, 63], "ordered": 165888, "log2N0": 134.294, "template": null, "singer": null, "secs": 127.2}
+{"i": 7, "m": [7, 45, 58, 63], "ordered": 41472, "log2N0": 134.294, "template": null, "singer": null, "secs": 136.4}
+{"i": 8, "m": [7, 46, 57, 63], "ordered": 165888, "log2N0": 134.294, "template": null, "singer": null, "secs": 174.9}
+{"i": 9, "m": [7, 47, 55, 63], "ordered": 13824, "log2N0": 134.294, "template": null, "singer": {"z": [[-9, -7, -7, -7, -7, -7], [-3, -3, -3, -3, -3, -3], [-5, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1]], "template": "logs/ab/singer/template_c6_cyc_a4200_f0_1.npz", "a": [-2, 0, -4, 0], "q": [0, 0, 0, 0]}, "secs": 177.8}
+{"i": 10, "m": [7, 47, 56, 63], "ordered": 27648, "log2N0": 134.405, "template": null, "singer": null, "secs": 184.1}

@@ -1,0 +1,5 @@
+{"stage": "setup", "multisets": 39, "levels": [[], [0], [1], [0, 1]], "L1": 28, "T0": 2536, "part": "0/4", "secs": 0.1}
+{"stage": "ms", "i": 8, "m": [7, 29, 32, 40], "ordered": 1536, "log2N0": 82.643, "type_quads": 2637, "dead_per_level": [0, 0, 0, 2637], "survivors": 0, "secs": 628.0}
+{"stage": "ms", "i": 20, "m": [12, 15, 38, 41], "ordered": 1536, "log2N0": 75.923, "type_quads": 4867, "dead_per_level": [0, 4867, 0, 0], "survivors": 0, "secs": 636.2}
+{"stage": "ms", "i": 32, "m": [16, 20, 22, 40], "ordered": 1536, "log2N0": 77.388, "type_quads": 6467, "dead_per_level": [0, 6467, 0, 0], "survivors": 0, "secs": 645.5}
+{"stage": "summary", "type_quads": 13971, "survivors": 0, "secs": 645.5}

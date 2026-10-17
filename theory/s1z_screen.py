@@ -82,6 +82,9 @@ def main():
     part, nW = (int(x) for x in opt('--part', '0/1').split('/'))
     N = int(opt('--N', '3000')); K = int(opt('--K', '40')); nall = int(opt('--all', '60'))
     exact_max = int(opt('--exact-max', '30000')); secs = int(opt('--secs', '3600'))
+    import resource
+    memgb = float(opt('--memgb', '3.5'))
+    resource.setrlimit(resource.RLIMIT_AS, (int(memgb * 2 ** 30),) * 2)
     cfgs = json.load(open(opt('--cfgs', ''))) if '--cfgs' in a else skipped_configs()
     done = set()
     if os.path.exists(outp):
