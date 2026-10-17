@@ -18,7 +18,8 @@ reversing one block keeps its PAF, so closure pools hold each core as a cluster 
 row sums) = 32 tuples; reversal-canonical pools (build_slot_pools*.py --revcanon) leave m = 2 or 1), with the top-bucket rate held for the first ~10^4 buckets (the shares of
 scripts/bucket_rank.py fall by about 2x over them).
 usage: python3 scripts/ladder_cost.py RUNGS.json      (a list of dicts: name, n_ind, nprime_gauss, sigma, l (4 log2
-       pool sizes), m, optional p, rest_drift, k (else best k), t_cal [c_L, c_P])"""
+       pool sizes), m, optional p, rest_drift, k (else the best k with
+       at most 2^max_log2_pairs pairs per side, default 27), t_cal [c_L, c_P])"""
 import json, sys, math
 
 
@@ -42,8 +43,10 @@ def model(r, k):
 
 def main():
     for r in json.load(open(sys.argv[1])):
-        ks = [r['k']] if 'k' in r else range(6, min(13, r['n_ind']))
-        best = min((model(r, k) for k in ks), key=lambda z: z['hours_per_core'])
+        ks = [r['k']] if 'k' in r else range(6, min(r.get('kmax', 12) + 1, r['n_ind']))   # kmax > 12 needs a wider key
+        cap = r.get('max_log2_pairs', 27.0)          # pairs per side held in one pass (24 B each: 2^27 ~ 3 GB)
+        cands = [z for z in (model(r, k) for k in ks) if 'k' in r or max(z['log2_pairs']) <= cap] or [model(r, max(ks))]
+        best = min(cands, key=lambda z: z['hours_per_core'])
         print(json.dumps(dict(name=r['name'], **best)))
 
 

@@ -29,7 +29,7 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
   4. **Existence edge.** Alpöge's cores sit just above the existence edge of their slices: the ρ at which the whole
      flat set first contains a core.
 
-(Sections 3–7 below are filled in as the runs finish.)
+(Sections 3, 4 and 7 are filled in as runs finish.)
 
 ## 1. What changed in the method
 
@@ -126,14 +126,38 @@ Results: (pending).
 - The whole flat set needs about 1,500 h and 2^46.4 operations per core.
 - Alpöge's 491 blocks have ρ = 0.355, 0.338, 0.356, 0.311, just above the existence edge (about 0.34).
 
-## 6. 859/13 (open): estimate and decision
+## 6. 859/13 (open): estimate and decision — no-go
 
-(ρ = 0.38 measurement and the Kaggle plan pending.)
+Measurements: `logs/k859/` (capture–recapture at ρ = 0.34 and 0.36 with 65k–185k recaptures; at ρ = 0.38–0.40 the sets
+are too large for recaptures, so their flat-set sizes are extrapolated [E]).
 
-| ρ | flat set (row sums 1 / 25 / 53) [M] | n′ Gaussian | n′ sphere | distinct cores in the whole flat set [E] |
+| ρ | flat set (row sums 1 / 25 / 53) | n′ Gaussian [M] | n′ sphere [E] | distinct cores in the whole flat set [E] |
 |---|---|---|---|---|
-| 0.34 | 2^28.7 / 2^28.75 / 2^27.55 | 112.53 | 115.7 | 2^−12 |
-| 0.36 | 2^31.1 / 2^31.3 / 2^30.2 | 115.13 | 118.3 | 2^−4.6 |
+| 0.34 | 2^28.7 / 2^28.75 / 2^27.55 [M] | 112.53 | 115.7 | 2^−12 |
+| 0.36 | 2^31.1 / 2^31.3 / 2^30.2 [M] | 115.13 | 118.3 | 2^−4.6 |
+| 0.38 | ≈ 2^33.4 / 2^33.6 / 2^32.7 [E] | 117.39 | 120.5 | ≈ 6 |
+| 0.40 | ≈ 2^35.5 / 2^35.7 / 2^34.9 [E] | 119.38 | 122.5 | ≈ 550 |
+
+- Multiplicity of a core among the tuples: 66 rotations × 2³ independent block reversals × 2 (C ↔ D).
+- **Cores exist only from ρ ≈ 0.37.** Pools must hold most of a flat set of 2^33–2^35 blocks per slot; random subsets
+  lose a factor (L/N)^4.
+- **Cost of a plain 4-list k-tree** (`logs/ladder/cost_inputs_859.json`, `scripts/ladder_cost.py`), using the whole
+  ρ ≤ 0.40 flat set as reversal-canonical pools and a key wider than 64 bits (k = 10, pairs about L per bucket):
+  - E_top ≈ 2^−15.5 tuples, i.e. about 2^16.5 buckets per core;
+  - about 2^53 element operations per core;
+  - roughly 3 TB of prep data (4 slots × 2^34.5 blocks × about 30 B);
+  - about 170,000 h on this machine.
+  - At ρ = 0.38 the same costs about 2^55.
+  - With pools of 2^28–2^30 (what this machine or one GPU could hold), the pools contain 2^−8.5 to 2^−2.5 solution
+    tuples, so no core is expected at all.
+- **Kaggle:** 30 GB RAM, 2 × T4 (16 GB), about 20 GB of output per notebook, 12 h sessions, about 30 GPU-h per week.
+  That is three orders of magnitude short in storage and about 10^4 short in compute. No Kaggle plan is viable.
+- **What it would need:** a cluster-scale k-tree over 2^34–2^35 flat blocks per slot (about 3 TB, distributed by key
+  prefix), about 10^16 element operations per core (about 10 A100-days at 10^10 merged elements per second), and
+  about 300 core-hours of flat-block generation at ρ ≈ 0.40 (multiplier closure included).
+  - Or a better join: the cost exponent here is (1 + b_r/p) ≈ 2.1 in the pool size and b_r · n_ind ≈ 122 bits in
+    the slice.
+- 859/11 (n = 204.4), 739/9 (209.7) and 659/7 (236.6) are larger still. They are not pursued.
 
 ## 7. Rung 4: v = 283 (measurement only)
 
