@@ -114,4 +114,11 @@ Steps:
     63); rungs 2-4 (r = 71, 75, 95) need two-word masks.
 - 2026-10-17: caution for the next session: `theory/ab_s1_cpsat.py` and `theory/ab_s1_sample.py` already existed;
   a draft of mine briefly overwrote the first and was reverted from git (`git checkout`). Check for existing files.
+- 2026-10-17, rung 1 production at rho = 0.32 (6 chunks x 10 min, `logs/k311/gen_r0.32_c*.log`):
+  - The flat set saturates at this depth: chunk 1 found 135k-238k orbits per row sum, chunk 2 overlaps 60-70% of them.
+    Capture-recapture (chunks 1, 2; `logs/k311/capture_rho0.32_c1c2.txt`): 196k / 334k / 401k orbits for row sums
+    1 / 19 / 21, i.e. 2^23.5 / 2^24.3 / 2^24.6 blocks after closure (lower estimates).
+  - So at rho = 0.32 pools of 2^24 per slot are essentially the whole flat set. Solution tuples in pools ≈
+    2^(95.5 - 82) ≈ 2^13 (each core appears in several rotated copies, which land in different buckets). rho = 0.36
+    with pools of 2^25 gives a similar count at twice the pool size; 0.32 was kept.
 
