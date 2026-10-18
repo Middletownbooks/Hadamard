@@ -1,27 +1,27 @@
 {
  "tag": "m2a",
- "S_solutions_checked": 623886,
- "unique": 623886,
+ "S_solutions_checked": 1212459,
+ "unique": 1212459,
  "duplicates_across_workers": 0,
- "middles_done": 457,
- "cores_unique": 10,
- "hadamard_1388": 10,
+ "middles_done": 866,
+ "cores_unique": 23,
+ "hadamard_1388": 23,
  "identical_to_published": 0,
- "log2_S_per_core": 15.93,
+ "log2_S_per_core": 15.69,
  "log2_S_per_core_90": [
-  15.17,
-  16.81
+  15.18,
+  16.24
  ],
  "model_log2_S_per_core": 16.14,
- "expected_cores_model": 8.64,
+ "expected_cores_model": 16.79,
  "sjoin_excess_bits": {
-  "n": 460,
-  "mean": -1.487,
+  "n": 869,
+  "mean": -1.475,
   "min": -2.759,
   "max": -0.677
  },
- "cpu_secs_join": 2664.2,
- "cpu_secs_dcheck": 4381.0,
- "ms_per_S_solution": 11.292,
- "cpu_minutes_per_core": 11.74
+ "cpu_secs_join": 5870.9,
+ "cpu_secs_dcheck": 8891.2,
+ "ms_per_S_solution": 12.175,
+ "cpu_minutes_per_core": 10.7
 }
