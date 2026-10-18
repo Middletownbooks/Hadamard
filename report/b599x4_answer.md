@@ -63,8 +63,9 @@ calibration named).
      | the 112 skipped configurations of `report/bge3_stage1_answer.md` | 24 / 112 |
 
    - The slices of known cores (347, 523 ×181, 647 ×353) pass.
-   - Every killed slice of the 112 was already over budget or dead in stage 1, except the two 599 ×4 entries (s = 2
-     and 5). Also killed: 659 c = 4 with −1 on H′ = Z₄ (the −1 variant of the "best b ≥ 3 survivor" of
+   - Every killed slice of the 112 was already rated over budget or dead in stage 1. Only one had been ranked rich and
+     closest to the budget: 599 ×4 at s = 2 (its s = 5 twin was at 2^159).
+   - Also killed: 659 c = 4 with −1 on H′ = Z₄ (the −1 variant of the "best b ≥ 3 survivor" of
      `report/alpoge_design_answer.md` §11.2, margin 1.005), and 537's ×149 (b = 1, whole-slice estimate −0.6).
 
 4. **The brief's fallbacks (its step 6) are no better: the Z₃² variants carry a stage-2 rigidity of at least 9.5 bits
@@ -91,9 +92,11 @@ calibration named).
 5. **(B) The multi-level stage-2 solver: no slice in reach needs one, and its calibration slices show why [M, E]**
    (§5).
    - **523.** The only sub-level of the Z₉ S-level is the Z₃ compression already used as the Wagner middle level. It
-     is not constraint-dense: C_M − H_M/2 = 32.4 − 39.4 = −7.0. Its per-M-solution variant is the per-parent design
-     of `report/paley_523_answer.md` §3.1, 2^18.7 per S-solution against the Wagner tree's 2^18.1.
-   - **347.** The S-join is about 3% of the run (5–13 s per middle value against 15–275 s of D-check).
+     is not constraint-dense: C_M − H_M/2 = 32.41 − 78.37/2 = −6.8 (exact H_M, true target). Its per-M-solution
+     variant is the per-parent design of `report/paley_523_answer.md` §3.1, 2^18.7 per S-solution against the Wagner
+     tree's 2^18.1.
+   - **347.** None of the four order-3 sub-levels is dense (−8.8 to −9.9). With the old numpy D-check the S-join was
+     about 3% of the run; with the compiled one it is about half (4.5 of 10 ms per S-solution).
    - **599 ×4.** The only dense level is the artefact of item 2.
    - So no 599 production solver was built. What §5 adds is a compiled D-check for the b ≥ 3 pipeline and a
      multi-core run of the 347 control that turns its one-event calibration into a measured S-solutions-per-core
@@ -326,7 +329,8 @@ Speed: 5.6 ms per S-solution against 54 ms (one core; 1.6 ms of it builds the si
 |---|---|
 | c = 6, ×4 or ⟨2⟩ on Z₉ | no core [P] (§1) |
 | c = 6, Z₃²-a; −1 on Q's Z₃ (H′ = Z₉ or Z₃²) | ≥ 2^66.3 / ≥ 2^70.8 per core [P identity, E cost] (§3) |
-| c = 6, −1 on Z₉ (the old lead), −1 on both Z₃ of Z₃² | stage 1 2^−6 and 2^−40 per class [E] (`report/bge3_stage1_answer.md` §4) |
+| c = 6, −1 on Z₉ (the old lead); −1 on both axes of Z₃² (neg23) | stage 1 2^−6.0 per class, resp. ≪ 1 distinct solution [E] (`report/bge3_stage1_answer.md` §4.4, `report/b599_answer.md` §0) |
+| c = 6, −1 on Q's Z₃ and on H′ (28 orbits) | stage 1 2^−39.5 / 2^−40.1 per class [E] (`report/bge3_stage1_answer.md` §4.2) |
 | c = 6, U = 1 | 2^84 per core at the mean [E] (so ≥ 2^84) |
 | c = 6, H′ = 3Z₂₇ (non-split) | only U ∈ {1, −1} escape §2; not costed |
 | c = 8 | dead [E] (`report/b599_answer.md` §6) |
@@ -344,7 +348,12 @@ python3 theory/b599x4_parseval.py --out logs/b599x4/parseval_599x4.json         
 python3 theory/b599x4_cosetscreen.py logs/b599x4/cosetscreen.jsonl --summary S.json   # §2: every family (about 15 min)
 python3 theory/b599x4_z3a_rigidity.py --case z3a  --out FILE                     # §3 (1 s)
 python3 theory/b599x4_z3a_rigidity.py --case negQ3 --out FILE
-python3 theory/m2_levelcal.py 523 --N 6000 --out FILE                             # §4 (a few minutes each)
+python3 theory/m2_levelcal.py 523 --N 6000 --out FILE                             # §4, §5.1 (a few minutes each)
 python3 theory/m2_levelcal.py 347 --N 6000 --out FILE
 python3 theory/b599x4_levelprobe.py SEED 4000                                     # §1.3 (typical y, at the mean)
+python3 theory/m2_dcheck.py test347 --n 600                                       # §5.2 validation (about 3 min)
+for w in 0 1 2 3; do python3 theory/m2_prod.py --tag m2a --worker $w --middles 400 --nsample 8000000 & done   # §5.3
+python3 theory/m2_tally347.py m2a                                                 # §5.3 tally
+python3 scripts/verify_packed_h.py logs/m2/prod347/H1388_<core>.npz 1388          # independent check of each H(1388)
+python3 theory/q523_dsuccess_real.py 18 29 4 logs/q523/y523_best.json logs/q523/ssol_sample_p523f_w2_c7.npy --n 1000 --seed 1   # §5.4
 ```
