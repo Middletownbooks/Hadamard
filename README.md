@@ -68,7 +68,10 @@ Our analysis of their published matrices is in `report/alpoge_methods_forensics.
   - `report/slice_screens_20261013.md`;
   - `report/next_design_answer.md`;
   - `report/alpoge_design_answer.md`;
-  - `report/bge3_stage1_answer.md`.
+  - `report/bge3_stage1_answer.md`;
+  - `report/b599x4_answer.md`: a coset-Parseval obstruction. A multiplier slice has no core when the orbits that
+    are not unions of cosets of some subgroup N of H cover fewer than v/(1 + 1/|N|) points (|N| odd; (1 − 1/|N|)·v
+    for |N| even). It empties the 599 ×4 slice and 259 of the generated configurations in all.
 
 ## Repository map
 

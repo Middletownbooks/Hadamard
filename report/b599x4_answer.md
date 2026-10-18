@@ -77,8 +77,10 @@ calibration named).
    - **The bound.** An exact DP over every letter-pair composition allowed by the two stage-1 energies (lag 0 = 2176
      and the d-energy 599, resp. 533) shows that the best possible stage-1 solution pays **9.82 bits (Z₃²-a) and
      9.50 bits (−1 on Q's Z₃) more than the at-mean model charges.** The median over compositions is 18.4 bits.
-   - **Cost.** That is ≥ 2^66.3 and ≥ 2^70.8 per core. No solver recovers it: it removes cores, not work, and
-     D_def ≈ 30 alone already puts the D-checks near 2^43–2^44.
+   - **Cost.** That is ≥ 2^66.3 and ≥ 2^70.8 per core at the model's solver cost. Correlations with the other
+     equations cannot lower it: in the Gaussian model the joint Mahalanobis distance is at least the marginal one.
+   - Reaching 2^47 would need an S-solver about 19 bits cheaper than the model's. At 523 and 347 no nested level
+     saves anything (§5.1).
    - **A different U on Z₉ does not help:** ⟨2⟩ contains ×4 (no core [P]), −1 is the old lead (stage 1 2^−6 per class
      [E]).
    - **The non-split choice H′ = 3Z₂₇ admits only U ∈ {1, −1}.** Every other subgroup of Z₂₇* contains ×10 ≡ 1
@@ -225,7 +227,10 @@ hence D₁₁ = D* + 6.
   equation.
 - The best cases need almost every small pair to have opposite α, which is a special corner of stage 1. Typical
   stage-1 solutions pay much more.
-- Reading the excess as a cost is [E] (one equation of the stage-2 system, correlations ignored); the identity is [P].
+- Reading the excess as a cost is [E]; the identity is [P].
+  - It treats one equation of the stage-2 system on its own.
+  - In the Gaussian model the squared Mahalanobis distance of the whole stage-2 vector is at least that of any single
+    standardised coordinate, so the other equations can only add to it.
 
 ---
 
@@ -251,7 +256,67 @@ on a rigid one.
 
 ## 5. The stage-2 solver (B)
 
-*In progress.*
+### 5.1 Where a nested level could help, measured on the real y's [M entropies, E bits]
+
+The nested-level cost of `report/b599_answer.md` §5 per S-solution is
+2^(C_S − H_S + H_M/2) + 2^((C_S − C_M) − (H_S − H_M)/2). It saves work only when the level is constraint-dense,
+C_M > H_M/2.
+- `theory/m2_levelcal.py` now also computes H_M exactly: the Shannon entropy of the compressed S-values under uniform
+  lifts, by a convolution over the orbits of each coset orbit.
+- At the S level it returns H₂ − h_D exactly (131.88 at 347, 143.25 at 523), an independent check of `sd_freedom`.
+- Everything is at the true target.
+
+| slice | level | H_M | C_M | C_M − H_M/2 | nested 2^· per S-solution | realised now |
+|---|---|---|---|---|---|---|
+| 523 | S + 3Z₉ (the Z₃ middle level) | 78.37 | 32.41 | −6.8 | 2^18.7 | 2^18.1 pair visits (Wagner, K = 32) |
+| 347 | S + each order-3 subgroup of Z₃² | 91.9–92.6 | 36.4–37.2 | −8.8 to −9.9 | 2^12.1–2^13.2 | 2^13.1 pair visits (Wagner, this run) |
+| 599 ×4 | S + 3Z₉ | 60.4–60.5 | 47.9–48.0 (at the mean) | +17.4 to +17.7 | 2^17.4 | (no core, §1) |
+
+- **523.** A nested level adds nothing: the only sub-level is the Z₃ middle level the record already uses, and its
+  per-M-solution variant (the per-parent design of `report/paley_523_answer.md` §3.1) costs 0.6 bits more than the
+  Wagner tree.
+- **347.** None of the four sub-levels is dense. Their nested cost equals the realised Wagner cost, and the S-join was
+  not the bottleneck anyway (§5.3).
+- **599 ×4.** The only dense level in this work is the artefact of the obstruction.
+
+So no production multi-level S-solver was built: it has no slice to run on.
+
+### 5.2 A compiled D-check for the b ≥ 3 pipeline [M]
+
+`theory/m2_dcheck.py` replaces the numpy D-check of `theory/ab_stage2.py` (`_dcheck_fast`). It uses the same
+algorithm and returns the same output format.
+- Per S-solution, each block's D-configurations are enumerated with per-orbit-pair bilinear tables (numba).
+- The 2+2 join on a 64-bit linear hash of the D-level signature uses the block pairing with the least work and an
+  open-addressing table on the smaller pair side; every key match is re-checked exactly.
+
+Validation (`logs/m2/dcheck_test347.log`):
+- the published 347 core and the a1 core of `logs/ab/prod347/` are returned from their own S-solutions;
+- 20 of 20 planted lifts (D-target set to the planted D-signature) are found;
+- identical solution sets to the reference on all 600 real S-solutions of a middle value.
+
+Speed: 5.6 ms per S-solution against 54 ms (one core; 1.6 ms of it builds the signatures).
+
+`theory/m2_prod.py` is the restart-safe driver:
+- S-join by `ab_stage2.FastSolver2`, then the compiled D-check;
+- the S-solutions of each middle value are saved before any D-check, and D-check progress is logged, so a restarted
+  worker resumes inside a middle value;
+- every D-solution is assembled, checked on G, completed with the 347 template border and its forced corner, and
+  checked H Hᵀ = 1388·I;
+- `theory/m2_tally347.py` deduplicates S-solutions across workers and cores by hash.
+
+### 5.3 The 347 control with many cores [M counts, E model]
+
+*Run m2a (4 workers) in progress; the tally is filled in when it ends.*
+
+### 5.4 523 [M]
+
+- Model at the true target on the production y (`theory/m2_levelcal.py`): C₂ 146.15, C_S 83.59, D_def 26.13 (record:
+  146.2, 26.14).
+- D-success on the record's 1,000 saved production S-solutions (`theory/q523_dsuccess_real.py`, re-run, 51 s,
+  `logs/m2/dsuccess523_repro.log`): **2^−26.02 per S-solution** (record 2^−26.02). Also reproduced:
+  - 2^7.84 D₃-solutions and 2^11.21 D-candidates per S-solution;
+  - 37.23 fine bits, Mahalanobis 0.05;
+  - this against the model's D_def 26.13 above.
 
 ---
 
