@@ -13,6 +13,9 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
 - **Rung 3 (491) is stopped by the rule of the prompt [E].**
   - At ρ = 0.34, pools of 2^27 (the disk ceiling here) hold 2^−1.7 solution tuples.
   - The whole flat set (2^30.6 per slot) would need about 2^46.4 operations and roughly 1,500 hours per core.
+- **Rungs 1 and 2 reached: new, inequivalent cores at 311 and 223 [M]** (`data/core_v311_b0_d5_0.txt`,
+  `data/core_v223_b0_d3_0.txt`). Both were found at the rate the model predicts: buckets 1,118 and 773, against about
+  1,200 and 600 per core.
 - **Rung 1 (311): the method works at scale; the rate is slow [M/E].**
   - The pools are the whole reachable ρ ≤ 0.32 flat set.
   - A production-scale planted test recovers Alpöge's core.
@@ -134,7 +137,15 @@ and at production scale at 311. `kt_join_disk.py` reproduces `kt_join_slots.py`'
 - Reversal-canonical slots: A = 2^24.55, B = C = D = 2^26.63 (one shared pool).
 - Disk join at k = 12: about 46 s per bucket (77M AB × 273M CD pairs, 2 passes).
 - Model: about 600 buckets (about 7.7 h) per core.
-- Results: (running; log `logs/k223/join_r0.32_k12_log.jsonl`).
+- **Result [M]: a new 223 core**, `data/core_v223_b0_d3_0.txt`.
+  - Found at bucket 773 (τ = (2, 2, −2, −2, 2, 2, −2, 2, −2, 2, 2, 2)); the model predicts one core per about 600
+    buckets. The bucket held 2 tuples: the core and its C ↔ D swap.
+  - Verified by `scripts/verify_b0_core.py` (`logs/k223/verify_core_v223_0.json`): integer PAF sum 892·δ, invariant
+    under u = 39 (order 3), Goethals–Seidel H Hᵀ = 892·I.
+  - **Inequivalent to Alpöge's 223 core** (different PAF-multiset class key).
+  - Block ρ = 0.309, 0.295, 0.301, 0.308 (row sums 23, 11, 11, 11); Alpöge's are 0.3215, 0.301, 0.301, 0.301.
+  - Join time: about 6.5 h at 47 s per bucket. The 6 GB pass buffers had been squeezing the 9 GB of memory-mapped
+    prep out of RAM. With `--mem 4e9` a bucket takes 15–18 s, so about 3 h per core.
 
 ## 5. Rung 3: v = 491, d = 7, profile (29, 27, 15, 13) — stopped [E]
 
