@@ -1,0 +1,814 @@
+{
+ "tally": {
+  "cbatch": {
+   "screened": 751,
+   "killed": 73
+  },
+  "sweep_bge3": {
+   "screened": 1535,
+   "killed": 152
+  },
+  "sweep_b0": {
+   "screened": 66,
+   "killed": 0
+  },
+  "msweep_b1": {
+   "screened": 116,
+   "killed": 34
+  },
+  "table112": {
+   "screened": 112,
+   "killed": 24
+  }
+ },
+ "table112_killed": [
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     32
+    ],
+    [
+     [
+      2,
+      2,
+      17
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^298 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     16,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     32
+    ],
+    [
+     [
+      2,
+      4,
+      7
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^230 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     16,
+     0
+    ],
+    "C": 280,
+    "margin": 1.1482,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     32
+    ],
+    [
+     [
+      2,
+      4,
+      9
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^221 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     16,
+     0
+    ],
+    "C": 160,
+    "margin": 2.0094,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     32
+    ],
+    [
+     [
+      2,
+      8,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^167 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     16,
+     0
+    ],
+    "C": 120,
+    "margin": 2.6792,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     32
+    ],
+    [
+     [
+      2,
+      8,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 1 < 2^-4 per symmetry class [E]",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     16,
+     0
+    ],
+    "C": 80,
+    "margin": 4.0187,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     16,
+     2
+    ],
+    [
+     [
+      2,
+      2,
+      9
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^328 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     8,
+     0,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     16,
+     2
+    ],
+    [
+     [
+      2,
+      4,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^264 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     8,
+     0,
+     0
+    ],
+    "C": 240,
+    "margin": 1.3396,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     16,
+     2
+    ],
+    [
+     [
+      2,
+      4,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^265 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     8,
+     0,
+     0
+    ],
+    "C": 160,
+    "margin": 2.0094,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     8,
+     4
+    ],
+    [
+     [
+      2,
+      2,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^323 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     4,
+     0,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     8,
+     4
+    ],
+    [
+     [
+      3,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^342 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     2,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     8,
+     2,
+     2
+    ],
+    [
+     [
+      2,
+      2,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^380 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     4,
+     0,
+     0,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     4,
+     4,
+     2
+    ],
+    [
+     [
+      2,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^410 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     4,
+     4,
+     2
+    ],
+    [
+     [
+      3,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^420 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    643,
+    4,
+    5,
+    2,
+    [
+     4,
+     2,
+     2,
+     2
+    ],
+    [
+     [
+      2,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^560 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "C": 320,
+    "margin": 1.0047,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    599,
+    6,
+    11,
+    2,
+    [
+     9
+    ],
+    [
+     [
+      2,
+      3,
+      4
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^52 per core)",
+   "best": {
+    "N_order": 3,
+    "N_gen": [
+     0,
+     0,
+     3,
+     0
+    ],
+    "C": 198,
+    "margin": 2.2689,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    599,
+    6,
+    11,
+    5,
+    [
+     9
+    ],
+    [
+     [
+      2,
+      3,
+      4
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^159 per core)",
+   "best": {
+    "N_order": 3,
+    "N_gen": [
+     0,
+     0,
+     3,
+     0
+    ],
+    "C": 198,
+    "margin": 2.2689,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    2,
+    [
+     8
+    ],
+    [
+     [
+      3,
+      2,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^142 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     4,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    3,
+    [
+     8
+    ],
+    [
+     [
+      3,
+      2,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 1 < 2^-4 per symmetry class [E]",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     4,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    4,
+    [
+     8
+    ],
+    [
+     [
+      3,
+      2,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^168 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     4,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    6,
+    [
+     8
+    ],
+    [
+     [
+      3,
+      2,
+      5
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^472 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     4,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    2,
+    [
+     4,
+     2
+    ],
+    [
+     [
+      3,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 1 < 2^-4 per symmetry class [E]",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    3,
+    [
+     4,
+     2
+    ],
+    [
+     [
+      3,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 1 < 2^-4 per symmetry class [E]",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    4,
+    [
+     4,
+     2
+    ],
+    [
+     [
+      3,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^139 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  },
+  {
+   "key": [
+    839,
+    8,
+    13,
+    6,
+    [
+     4,
+     2
+    ],
+    [
+     [
+      3,
+      2,
+      3
+     ]
+    ]
+   ],
+   "verdict_before": "stage 2 over budget [E] (2^809 per core)",
+   "best": {
+    "N_order": 2,
+    "N_gen": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0
+    ],
+    "C": 416,
+    "margin": 1.0084,
+    "dead": true
+   }
+  }
+ ]
+}
