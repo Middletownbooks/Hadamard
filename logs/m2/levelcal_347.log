@@ -1,0 +1,63 @@
+{
+ "slice": "347",
+ "y_letters": [
+  1,
+  5,
+  7,
+  11,
+  13
+ ],
+ "H2": 164.42,
+ "N": 6000,
+ "seed": 1,
+ "C2": {
+  "true": 117.92,
+  "at_mean": 111.95,
+  "rank": 29,
+  "mahal": 2.88,
+  "in_lattice": true
+ },
+ "levels": {
+  "S": {
+   "true": 69.24,
+   "at_mean": 65.51,
+   "rank": 15,
+   "mahal": 2.28,
+   "in_lattice": true
+  },
+  "S+<(0, 1)>": {
+   "true": 36.41,
+   "at_mean": 32.97,
+   "rank": 6,
+   "mahal": 2.18,
+   "in_lattice": true
+  },
+  "S+<(1, 0)>": {
+   "true": 37.19,
+   "at_mean": 33.68,
+   "rank": 6,
+   "mahal": 2.2,
+   "in_lattice": true
+  },
+  "S+<(1, 1)>": {
+   "true": 36.4,
+   "at_mean": 33.0,
+   "rank": 6,
+   "mahal": 2.17,
+   "in_lattice": true
+  },
+  "S+<(1, 2)>": {
+   "true": 36.37,
+   "at_mean": 33.0,
+   "rank": 6,
+   "mahal": 2.16,
+   "in_lattice": true
+  }
+ },
+ "h_D": 32.54,
+ "H_S": 131.88,
+ "D_def_true": 16.14,
+ "stage2_per_y_true": 46.5,
+ "D_def_at_mean": 13.9,
+ "stage2_per_y_at_mean": 52.47
+}

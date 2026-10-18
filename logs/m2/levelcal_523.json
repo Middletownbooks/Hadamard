@@ -1,0 +1,40 @@
+{
+ "slice": "523",
+ "y_letters": [
+  1,
+  13,
+  15
+ ],
+ "H2": 179.68,
+ "N": 6000,
+ "seed": 1,
+ "C2": {
+  "true": 146.15,
+  "at_mean": 146.09,
+  "rank": 35,
+  "mahal": 0.36,
+  "in_lattice": true
+ },
+ "levels": {
+  "S": {
+   "true": 83.59,
+   "at_mean": 83.52,
+   "rank": 18,
+   "mahal": 0.35,
+   "in_lattice": true
+  },
+  "S+<(3,)>": {
+   "true": 32.41,
+   "at_mean": 32.32,
+   "rank": 6,
+   "mahal": 0.34,
+   "in_lattice": true
+  }
+ },
+ "h_D": 36.43,
+ "H_S": 143.25,
+ "D_def_true": 26.13,
+ "stage2_per_y_true": 33.53,
+ "D_def_at_mean": 26.14,
+ "stage2_per_y_at_mean": 33.59
+}
