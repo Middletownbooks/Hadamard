@@ -70,6 +70,56 @@ def candidate_levels(sl):
     return levels
 
 
+def level_entropy(cfg, Y, sl, levels):
+    """exact Shannon entropy (bits, summed over the four blocks) of the S-level values and of each sub-level's
+    compressed values, under uniform lifts (S-values weighted by their D-multiplicities); levels as from
+    candidate_levels (masks on G' containing axis 0)"""
+    import ab_stage2 as S2m
+    from collections import Counter
+    st = S2m.Stage2(cfg, Y, 1 if len(sl.Gp.mods) > 1 else 1)
+    n2 = sl.Gp.n // 2
+    out = {}
+    for name, m in levels.items():
+        # cosets of the subgroup (restricted to G'' = elements with axis-0 coordinate 0)
+        Lpp = [g for g in range(n2) if m[g]]
+        cos = -np.ones(n2, np.int64); nc = 0
+        for g in range(n2):
+            if cos[g] >= 0: continue
+            for l in Lpp: cos[int(sl.Gp.add(g, l))] = nc
+            nc += 1
+        # U permutes the cosets; the compressed function is U-invariant, so one representative coset per U-orbit of
+        # cosets determines it, and different coset orbits receive disjoint sets of S-orbits (independent sums)
+        perms = [sl.Gp.act(u) for u in sl.Sp]
+        corb = list(range(nc))
+        def find(a):
+            while corb[a] != a: corb[a] = corb[corb[a]]; a = corb[a]
+            return a
+        for g in range(n2):
+            for P in perms: corb[find(int(cos[g]))] = find(int(cos[int(P[g])]))
+        reps = sorted({find(c) for c in range(nc)})
+        H = 0.0
+        for k in range(4):
+            bp = st.block_pairs(k)
+            per_coset = {c: Counter({tuple(): 1.0}) for c in reps}
+            for o, (j0, j1) in enumerate(st.pairs):
+                els = [g for g in range(n2) if int(sl.borb[g]) == j0]
+                cnt = Counter(int(cos[g]) for g in els)
+                tot = sum(len(v) for v in bp[o]['byS'].values())
+                pv = [(np.array(sv, np.int64), len(v) / tot) for sv, v in bp[o]['byS'].items()]
+                for c, mult in cnt.items():
+                    if c not in per_coset: continue
+                    new = Counter()
+                    for key, p in per_coset[c].items():
+                        base = np.array(key, np.int64) if key else 0
+                        for sv, q in pv:
+                            new[tuple((base + mult * sv).tolist())] += p * q
+                    per_coset[c] = new
+            for c in reps:
+                H += -sum(p * math.log2(p) for p in per_coset[c].values() if p > 0)
+        out[name] = round(H, 2)
+    return out
+
+
 def run(which, N=6000, seed=1):
     cfg, sl, Y = load(which)
     G = sl.G; rng = np.random.default_rng(seed)
@@ -104,6 +154,19 @@ def run(which, N=6000, seed=1):
         np.add.at(VL.T, cos, V.T); np.add.at(TL, cos, sl.T)
         out['levels'][name] = both(VL, TL)
     sd = sd_freedom(sl, Y); out['h_D'] = sd['h_D']; out['H_S'] = round(H2 - sd['h_D'], 2)
+    try:
+        ent = level_entropy(cfg, Y, sl, candidate_levels(sl))
+        out['entropy'] = ent
+        CS = out['levels']['S']['true']; HS = ent['S']
+        for name, HM in ent.items():
+            if name == 'S': continue
+            CM = out['levels'][name]['true']
+            t1 = CS - HS + HM / 2; t2 = (CS - CM) - (HS - HM) / 2
+            out['levels'][name].update(H_M=HM, dense=round(CM - HM / 2, 2),
+                                       nested_log2_per_S=round(math.log2(2 ** t1 + 2 ** t2), 2))
+        out['plain_log2_per_S'] = round(CS - HS / 2, 2)
+    except Exception as e:
+        out['entropy_error'] = repr(e)[:200]
     for key in ('true', 'at_mean'):
         C2 = out['C2'][key]; CS = out['levels']['S'][key]
         out[f'D_def_{key}'] = round(C2 - CS - sd['h_D'], 2) if C2 is not None and CS is not None else None

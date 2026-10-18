@@ -30,32 +30,52 @@
    "at_mean": 32.97,
    "rank": 6,
    "mahal": 2.18,
-   "in_lattice": true
+   "in_lattice": true,
+   "H_M": 92.19,
+   "dense": -9.69,
+   "nested_log2_per_S": 12.99
   },
   "S+<(1, 0)>": {
    "true": 37.19,
    "at_mean": 33.68,
    "rank": 6,
    "mahal": 2.2,
-   "in_lattice": true
+   "in_lattice": true,
+   "H_M": 91.94,
+   "dense": -8.78,
+   "nested_log2_per_S": 12.08
   },
   "S+<(1, 1)>": {
    "true": 36.4,
    "at_mean": 33.0,
    "rank": 6,
    "mahal": 2.17,
-   "in_lattice": true
+   "in_lattice": true,
+   "H_M": 92.58,
+   "dense": -9.89,
+   "nested_log2_per_S": 13.19
   },
   "S+<(1, 2)>": {
    "true": 36.37,
    "at_mean": 33.0,
    "rank": 6,
    "mahal": 2.16,
-   "in_lattice": true
+   "in_lattice": true,
+   "H_M": 92.58,
+   "dense": -9.92,
+   "nested_log2_per_S": 13.22
   }
  },
  "h_D": 32.54,
  "H_S": 131.88,
+ "entropy": {
+  "S": 131.88,
+  "S+<(0, 1)>": 92.19,
+  "S+<(1, 0)>": 91.94,
+  "S+<(1, 1)>": 92.58,
+  "S+<(1, 2)>": 92.58
+ },
+ "plain_log2_per_S": 3.3,
  "D_def_true": 16.14,
  "stage2_per_y_true": 46.5,
  "D_def_at_mean": 13.9,

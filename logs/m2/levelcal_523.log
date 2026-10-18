@@ -28,11 +28,19 @@
    "at_mean": 32.32,
    "rank": 6,
    "mahal": 0.34,
-   "in_lattice": true
+   "in_lattice": true,
+   "H_M": 78.37,
+   "dense": -6.78,
+   "nested_log2_per_S": 18.74
   }
  },
  "h_D": 36.43,
  "H_S": 143.25,
+ "entropy": {
+  "S": 143.25,
+  "S+<(3,)>": 78.37
+ },
+ "plain_log2_per_S": 11.97,
  "D_def_true": 26.13,
  "stage2_per_y_true": 33.53,
  "D_def_at_mean": 26.14,
