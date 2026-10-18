@@ -1,0 +1,48 @@
+{
+ "group": [
+  2,
+  3,
+  9,
+  11
+ ],
+ "v": 599,
+ "b": 5,
+ "orbits": 90,
+ "orbit_sizes": [
+  1,
+  3,
+  5,
+  15
+ ],
+ "N": "3Z9 (order 3)",
+ "C_size": 198,
+ "C_is": "Q x 3Z9 x Z11",
+ "identity_exact": true,
+ "characters_nontrivial_on_N": 396,
+ "max_per_block": 104544.0,
+ "max_four_blocks": 418176.0,
+ "needed_four_blocks": 948816,
+ "needed_per_block_average": 237204.0,
+ "obstruction": true,
+ "criterion": "|C| (1 + 1/|N|) = 264.0 < v = 599",
+ "trials": 2000,
+ "max_seen_per_block": 104544.0,
+ "identity_numeric": true,
+ "control_v19": {
+  "x4 on Z9": {
+   "orbits": 10,
+   "ordered_cores": 0,
+   "theorem_kills": true
+  },
+  "x2 on Z9": {
+   "orbits": 6,
+   "ordered_cores": 0,
+   "theorem_kills": true
+  },
+  "-1 on Z9": {
+   "orbits": 10,
+   "ordered_cores": 18432,
+   "theorem_kills": false
+  }
+ }
+}
