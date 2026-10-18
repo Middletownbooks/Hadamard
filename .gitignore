@@ -142,6 +142,7 @@ logs/k311/join_*.out
 logs/k223/join_*.out
 logs/k223/gen_prod_*.log
 
-# m2 347 calibration: per-middle-value S-solution arrays (regenerable, ~90 MB); logs, cores and H1388 files are committed
-logs/m2/prod347/*_w[0-9]_*.npy
-!logs/m2/prod347/core_*.npy
+# m2 live run directories (S-solution arrays ~90 MB, live logs); snapshots of logs, cores and H1388 files are committed
+# to logs/m2/snap347/ at each check-in, final tallies to logs/m2/
+logs/m2/prod347/
+logs/m2/q523_repro_m2r.out
