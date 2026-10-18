@@ -5,22 +5,26 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
 
 ## Bottom line
 
+- **Rungs 1 and 2 reached: new, inequivalent cores at 311 and 223 [M]** (`data/core_v311_b0_d5_0.txt`,
+  `data/core_v223_b0_d3_0.txt`).
+  - Each was verified by a script sharing no code with the search: integer PAF, U-invariance, H Hᵀ = 4v·I.
+  - Each is inequivalent to Alpöge's core of the same order.
+  - Both came at the rate the cost model predicts: buckets 1,118 and 773, against about 1,200 and 600 per core.
+  - Join time on 4 cores: about 4 h per core at 311 (k = 9, 13 s per bucket) and about 3 h at 223 (disk join,
+    k = 12, 16 s per bucket).
+  - Both pools are (nearly) the whole reachable flat set: ρ ≤ 0.32 at 311; 2.8M orbits at 223.
+  - A production-scale planted test at 311 recovers Alpöge's core.
+- **Rung 3 (491) is stopped by the rule of the prompt [E].** At ρ = 0.34, pools of 2^27 (the disk ceiling here)
+  hold 2^−1.7 solution tuples. The whole flat set (2^30.6 per slot) would need about 2^46.4 operations and roughly
+  1,500 hours per core.
 - **859/13: no-go on this machine, and on Kaggle [E].**
   - Its ρ-flat sets hold about 2^−12 cores at ρ ≤ 0.34 and about 2^−4.6 at ρ ≤ 0.36.
-  - Cores first exist near ρ ≈ 0.37–0.38, where the flat sets are about 2^33 blocks per slot.
-  - A plain 4-list k-tree there needs pools of that size: roughly 1 TB of prep data and 2^45 or more operations per
-    core (§6).
-- **Rung 3 (491) is stopped by the rule of the prompt [E].**
-  - At ρ = 0.34, pools of 2^27 (the disk ceiling here) hold 2^−1.7 solution tuples.
-  - The whole flat set (2^30.6 per slot) would need about 2^46.4 operations and roughly 1,500 hours per core.
-- **Rungs 1 and 2 reached: new, inequivalent cores at 311 and 223 [M]** (`data/core_v311_b0_d5_0.txt`,
-  `data/core_v223_b0_d3_0.txt`). Both were found at the rate the model predicts: buckets 1,118 and 773, against about
-  1,200 and 600 per core.
-- **Rung 1 (311): the method works at scale; the rate is slow [M/E].**
-  - The pools are the whole reachable ρ ≤ 0.32 flat set.
-  - A production-scale planted test recovers Alpöge's core.
-  - The measured and modelled rate is one core per about 1,200 k = 9 buckets, about 2 hours of join per core on 4 cores.
-  - Production result: **a new, inequivalent 311 core** after about 1,100 k = 9 buckets (§3), at the predicted rate.
+  - Cores first exist near ρ ≈ 0.37–0.38.
+  - A plain 4-list k-tree over the whole ρ ≤ 0.40 flat set (2^34–2^35 per slot, about 3 TB of prep data) needs about
+    2^53 operations per core (§6).
+- **283 (rung 4, measurement) [M/E]:** the ρ ≤ 0.30 flat set is about 2^35 per row sum (converging
+  capture–recapture, ±2 bits). It holds about 20 cores, and a plain k-tree needs about 2^53 operations per core, so
+  Alpöge's 283 is reachable by a plain k-tree only at cluster scale (§7).
 - **New quantitative understanding [E, checked against measurements]:**
   1. **Energy-shell drift.** Flat blocks sit on a PAF-energy sphere. This makes the true n′ about
      **n′_Gauss + 0.1 · n_ind**: 0.098 bits per independent class, from an exact sphere model with no free parameter
@@ -32,7 +36,7 @@ Session of 2026-10-17 (prompt `report/prompt_p1_flatpools.md`; running log at th
   4. **Existence edge.** Alpöge's cores sit just above the existence edge of their slices: the ρ at which the whole
      flat set first contains a core.
 
-(Sections 3, 4 and 7 are filled in as runs finish.)
+
 
 ## 1. What changed in the method
 
@@ -208,17 +212,25 @@ are too large for recaptures, so their flat-set sizes are extrapolated [E]).
   - Data: 311, 223, 491, 859 by capture–recapture, 487 by Wang–Landau.
   - The low ends belong to unbalanced row sums (223's 23, 859's 53).
   - At 283 (r = 95), ρ ≤ 0.30 gives 2^32.0–2^33.2 blocks per row sum. The old rough "~2^33" agrees.
-- **Capture–recapture at 283, ρ = 0.30:** 10-minute single-core samples (about 1,000 orbits each) give 0 recaptures,
-  as expected for 2^26+ orbits. Two 60-minute samples (5,801 / 5,933 orbits at row sum 19; 3,841 / 3,750 at row
-  sum 7; `logs/k283/capture_r0.30_m60.txt`) also give 0 recaptures, so N ≥ n₁n₂/3 at about 95%: at least 2^30.0 /
-  2^28.9 blocks [M, lower bound], consistent with the curve. A converging count needs about 36k orbits per sample
-  (about 2 h on 4 cores); it is not run while the 311 join holds the machine.
-- **Existence:** a core occupies 94 rotations × 2³ block reversals × 6 slot assignments ≈ 2^12.1 tuples. The whole
-  ρ ≤ 0.30 flat set then holds 2^(4·32.6 − 122.8 − 12.1) ≈ 2^−4.5 cores (up to about 2 at the curve's upper end).
-  Alpöge's 283 blocks have ρ = 0.291, 0.299, 0.287, 0.290.
-- **Plain k-tree cost** (`logs/ladder/cost_inputs_283.json`): the whole flat set in reversal-canonical pools and a key
-  wider than 64 bits (k = 13) cost about 2^56–2^57 operations per core over 2^32–2^33 blocks per slot. Pools of
-  2^28 hold 2^−10.8 tuples.
-- **Conclusion [E]:** a plain flat-pool k-tree is not a plausible route to Alpöge's 283. Either the ρ ≤ 0.30 flat set
-  is 2^35 or more per row sum (+2.5 bits over every other slice's curve), or his join was substantially better than a
-  plain 4-list k-tree: structure, symmetry, or a different search over the flat set.
+- **Capture–recapture at 283, ρ = 0.30 [M]** (`logs/k283/capture_r0.30_pooled.txt`): four independent samples.
+  Two are 60 min × 1 core, with 5,801 / 5,933 orbits at row sum 19; two are 60 min × 4 cores, with 22,284 / 22,801.
+  - Pooled pairwise Lincoln–Petersen (Σ nᵢnⱼ / Σ mᵢⱼ):
+    - row sum 19: 3 recaptures, **about 2^35.0 blocks** (95%: 2^33.7–2^37.6);
+    - row sum 7: 2 recaptures, **about 2^34.2** (2^32.7–2^36.2).
+  - The estimate converges, though only to about ±2 bits with so few recaptures. Tabu walks catch some orbits more
+    easily, which biases it low.
+  - This is about 2.4 bits above the universal curve. The ρ ≤ 0.30 flat set at 283 is larger than the other slices'
+    curve suggests, as the old "flat sets larger than the estimate" option of the gap analysis allowed.
+  - Caution for repeats: `flat_gen_w.py` seeds workers with 1000k + ρ·1000 + 7919·seed, so equal seeds at different
+    lengths give nested, not independent, samples.
+- **Existence:** a core occupies 94 rotations × 2³ block reversals × 6 slot assignments ≈ 2^12.1 tuples. With the
+  measured sizes, the whole ρ ≤ 0.30 flat set holds 2^(3·35.0 + 34.2 − 122.8 − 12.1) ≈ 2^4.3, about 20 cores (about
+  0.04–2 on the universal curve). Alpöge's 283 blocks have ρ = 0.291, 0.299, 0.287, 0.290.
+- **Plain k-tree cost** (`logs/ladder/cost_inputs_283b.json`, wide key, k = 15): over the whole flat set in
+  reversal-canonical pools (2^34 / 2^34 / 2^34 / 2^33.2), about 2^16.6 buckets and **about 2^53 operations per
+  core**. Pools of 2^30 hold 2^−2.8 tuples.
+- **Conclusion [E]:** a plain flat-pool k-tree could have produced Alpöge's 283, but only at cluster scale. The search
+  needs essentially the whole ρ ≤ 0.30 flat set (about 2^35 blocks per slot, tens of TB of prep data) and about 10^16
+  element operations per core (about 1,000 GPU-hours at 10^10 per second). That is the same scale as 859/13 (§6).
+  It is far beyond one machine, but plausible for a well-resourced group. A substantially better join than a plain
+  4-list k-tree would lower it.
