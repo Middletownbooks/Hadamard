@@ -1,0 +1,122 @@
+{
+ "slice": "599 c=6 q=11 s=2 H'=Z3^2, -1 on one axis (Z3^2-a)",
+ "W_target": 599,
+ "stage1_dd_target": 599,
+ "D11_minus_Dstar": 0,
+ "identity_checked": true,
+ "small_pair_cross": [
+  -10,
+  0
+ ],
+ "fixed_cross_values": {
+  "(-11, -11)": 0,
+  "(-11, -9)": 0,
+  "(-11, -1)": 20,
+  "(-11, 1)": 30,
+  "(-11, 9)": 90,
+  "(-11, 11)": 110,
+  "(-9, -11)": 0,
+  "(-9, -9)": 0,
+  "(-9, -1)": 10,
+  "(-9, 1)": 20,
+  "(-9, 9)": 70,
+  "(-9, 11)": 90,
+  "(-1, -11)": 20,
+  "(-1, -9)": 10,
+  "(-1, 9)": 20,
+  "(-1, 11)": 30,
+  "(1, -11)": 30,
+  "(1, -9)": 20,
+  "(1, 9)": 10,
+  "(1, 11)": 20,
+  "(9, -11)": 90,
+  "(9, -9)": 70,
+  "(9, -1)": 20,
+  "(9, 1)": 10,
+  "(9, 9)": 0,
+  "(9, 11)": 0,
+  "(11, -11)": 110,
+  "(11, -9)": 90,
+  "(11, -1)": 30,
+  "(11, 1)": 20,
+  "(11, 9)": 0,
+  "(11, 11)": 0
+ },
+ "feasible_compositions": 1725,
+ "best": [
+  {
+   "n_nonsmall": 9,
+   "N11": 63,
+   "A": 60,
+   "Dstar": 46,
+   "D11_needed": 46,
+   "log2P": -13.15,
+   "excess_over_mode": 9.82
+  },
+  {
+   "n_nonsmall": 9,
+   "N11": 63,
+   "A": 61,
+   "Dstar": 46,
+   "D11_needed": 46,
+   "log2P": -13.15,
+   "excess_over_mode": 9.82
+  },
+  {
+   "n_nonsmall": 9,
+   "N11": 63,
+   "A": 62,
+   "Dstar": 46,
+   "D11_needed": 46,
+   "log2P": -13.15,
+   "excess_over_mode": 9.82
+  },
+  {
+   "n_nonsmall": 9,
+   "N11": 63,
+   "A": 63,
+   "Dstar": 46,
+   "D11_needed": 46,
+   "log2P": -13.15,
+   "excess_over_mode": 9.82
+  },
+  {
+   "n_nonsmall": 11,
+   "N11": 61,
+   "A": 60,
+   "Dstar": 45,
+   "D11_needed": 45,
+   "log2P": -13.47,
+   "excess_over_mode": 10.16
+  },
+  {
+   "n_nonsmall": 11,
+   "N11": 61,
+   "A": 58,
+   "Dstar": 45,
+   "D11_needed": 45,
+   "log2P": -13.47,
+   "excess_over_mode": 10.16
+  },
+  {
+   "n_nonsmall": 11,
+   "N11": 61,
+   "A": 59,
+   "Dstar": 45,
+   "D11_needed": 45,
+   "log2P": -13.47,
+   "excess_over_mode": 10.16
+  },
+  {
+   "n_nonsmall": 11,
+   "N11": 61,
+   "A": 61,
+   "Dstar": 45,
+   "D11_needed": 45,
+   "log2P": -13.47,
+   "excess_over_mode": 10.16
+  }
+ ],
+ "worst_of_best10_excess": 10.38,
+ "min_excess_over_mode": 9.82
+}
