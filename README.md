@@ -1,23 +1,27 @@
-# Hadamard matrices of previously unknown orders
+# Hadamard matrices from Claude Code searches
 
-This repository holds constructions of Hadamard matrices of eight orders between 2000 and 4000. As far as we know,
-none of these orders had a construction before. It also holds the search code, logs and write-ups behind them.
+This repository holds Hadamard matrices of eight orders between 2000 and 4000, the search code that found them, and
+the write-ups, logs and negative results behind them.
+
+**Status, following Egan, Kotsireas, London and Ó Catháin [EKLO].** Three of the orders, 2092, 2292 and 2588, were
+open in the published literature and were first constructed here. They are credited to this repository in [EKLO].
+The other five were constructed here independently of earlier or concurrent work, listed below.
 
 Every matrix is given as short generating data: four ±1 sequences, plus a border where one is used. A standalone
 verifier checks H Hᵀ = N·I exactly in integer arithmetic.
 
 ## Results
 
-| order N = 4v | v | construction | first committed (UTC) | data and verifier |
-|---|---|---|---|---|
-| 2092 | 523 | bordered Goethals–Seidel (b = 1), cyclic Z₅₂₂; quartic-residue multiplier slice (×181) | 2026-10-14, `5ef41fb` | `pub/H2092/` |
-| 2292 | 573 | bordered Goethals–Seidel (b = 1), Z₅₂ × Z₁₁; Paley(11) cosets with an order-3 multiplier | 2026-10-09, `39569f5` | `pub/H2292/` |
-| 2588 | 647 | bordered Goethals–Seidel (b = 1), cyclic Z₆₄₆; multiplier ×353 acting on Z₁₇ and Z₁₉ | 2026-10-14, `556c3ca` | `pub/H2588/` |
-| 2884 | 721 = 7·103 | Cooper–Wallis: T-matrices of order 103 (from L. Schneider's order-2060 construction) with Williamson matrices of order 7 | 2026-10-06, `866e105` | `cw/` (`python3 scripts/cw_build.py 7`) |
-| 3532 | 883 | Goethals–Seidel (b = 0), cyclic Z₈₈₃; order-21 multiplier slice; flat-pool k-tree search | 2026-10-16, `52f6aa1` | `pub/H3532/` |
-| 3668 | 917 = 7·131 | Cooper–Wallis: new cyclotomic T-matrices of order 131 with Williamson matrices of order 7 | 2026-10-15, `363a9cb` | `pub/H3668/` |
-| 3676 | 919 | Goethals–Seidel (b = 0), cyclic Z₉₁₉; order-51 multiplier with a 3-cycle twist on blocks B, C, D | 2026-10-16, `d3ef318` | `pub/H3676/` |
-| 3732 | 933 = 3·311 | Goethals–Seidel (b = 0), Z₃ × Z₃₁₁; index-10 cyclotomic classes on Z₃₁₁ | 2026-10-14, `a5b63b5` | `pub/H3732/` |
+| order N = 4v | v | construction here | first committed here (UTC) | status | data and verifier |
+|---|---|---|---|---|---|
+| 2092 | 523 | bordered Goethals–Seidel (b = 1, a Legendre quadruple of length 522); quartic-residue multiplier slice (×181) | 2026-10-14, `5ef41fb` | **first construction** [EKLO]; an independent matrix of this order, by a different construction (an SDS in ℤ₅₂₃ with a multiplier group of order 9), is in [K] ([hadamard/2092](https://github.com/vatskishan03/Hadamard/tree/main/hadamard/2092)) | `pub/H2092/` |
+| 2292 | 573 | bordered Goethals–Seidel (b = 1), ℤ₅₂ × ℤ₁₁; Paley(11) cosets with an order-3 multiplier | 2026-10-09, `39569f5` | **first construction** [EKLO]; [K] has a later independent matrix | `pub/H2292/` |
+| 2588 | 647 | bordered Goethals–Seidel (b = 1), cyclic ℤ₆₄₆; multiplier ×353 acting on ℤ₁₇ and ℤ₁₉ | 2026-10-14, `556c3ca` | **first construction** [EKLO] | `pub/H2588/` |
+| 3676 | 919 | Goethals–Seidel (b = 0), cyclic ℤ₉₁₉; order-51 multiplier with a 3-cycle twist on blocks B, C, D | 2026-10-16, `d3ef318` | independent; Schumer gave a skew Hadamard matrix of this order earlier [S] (cited with this repository in [EKLO]) | `pub/H3676/` |
+| 3732 | 933 = 3·311 | Goethals–Seidel (b = 0), ℤ₃ × ℤ₃₁₁; index-10 cyclotomic classes on ℤ₃₁₁ | 2026-10-14, `a5b63b5` | independent; found concurrently by the authors of [EKLO] and in [K] | `pub/H3732/` |
+| 3532 | 883 | Goethals–Seidel (b = 0), cyclic ℤ₈₈₃; order-21 multiplier slice; flat-pool k-tree search | 2026-10-16, `52f6aa1` | independent; the order was already settled (Đoković, arXiv:1008.2043, 2010) | `pub/H3532/` |
+| 3668 | 917 = 7·131 | Cooper–Wallis: cyclotomic T-matrices of order 131 found here, with Williamson matrices of order 7 | 2026-10-15, `363a9cb` | independent; already obtainable classically (T-matrices of order 131 from London and Kotsireas's TT(44), 2025, with Cooper–Wallis) | `pub/H3668/` |
+| 2884 | 721 = 7·103 | Cooper–Wallis: L. Schneider's T-matrices of order 103 with Williamson matrices of order 7 | 2026-10-06, `866e105` | an immediate consequence of Schneider's published T-matrices; not open in [EKLO] | `cw/` (`python3 scripts/cw_build.py 7`) |
 
 **Verify** (Python 3 and numpy only):
 
@@ -36,9 +40,17 @@ Every result was also checked by at least one further script that shares no code
 (`scripts/verify_h*.py`, `scripts/verify_b0_bundle_rebuild.py`, `scripts/verify_h2092_rebuild.py`; logs in
 `logs/verify/`).
 
-**Which orders were open.** The orders below 3000 were open on the list in `report/unattempted_2000_3000.md`. The
-3000–4000 orders were open on a list compiled from public sources; SageMath's `hadamard_matrix(n, existence=True)`
-also reports them as unknown (`data/sage_unknown_orders_le4000.json`). We would welcome corrections.
+**Open orders.** By Table 5 of [EKLO], the smallest order with no known Hadamard matrix is now 2396 = 4·599. The
+open orders below 4000 are 4v for v = 599, 643, 669, 719, 739, 751, 839, 859, 863, 907, 947, 955 and 971. Our earlier
+working lists (`report/unattempted_2000_3000.md`, `data/sage_unknown_orders_le4000.json`) predate the 2026 results
+and should not be read as current.
+
+**References.**
+- [EKLO] R. Egan, I. S. Kotsireas, S. London and P. Ó Catháin, *Recent progress in the construction of Hadamard
+  matrices* (2026). Their matrices are at https://www.math74.com/Hadamard/.
+- [K] K. Kumar, *New Hadamard matrices*, https://github.com/vatskishan03/Hadamard (2026).
+- [S] A. Schumer, *Periodic T-matrices of order 151 and a skew spin Goethals–Seidel family over ℤ/919ℤ*, Zenodo,
+  doi:10.5281/zenodo.22820997 (17 September 2026).
 
 ## How they were found
 
@@ -46,8 +58,11 @@ also reports them as unknown (`data/sage_unknown_orders_le4000.json`). We would 
 models) in Claude Code sessions, directed and checked by the repository owner.
 
 **Background.** Two 2026 constructions set the context:
-- Alpöge, Voinov, Reynolds-Haertle and Claude, every open order below 2000;
+- Alpöge, Voinov and Reynolds-Haertle (announced 12 August 2026), every open order below 2000;
 - L. Schneider, order 2060.
+
+Related work of 2026 on the next orders includes [EKLO] and [K]; in particular [K] constructs 2148, 2636 and 3964 with
+bordered Goethals–Seidel arrays of border width 12 over non-cyclic groups.
 
 Our analysis of their published matrices is in `report/alpoge_methods_forensics.md`.
 
@@ -85,5 +100,4 @@ Our analysis of their published matrices is in `report/alpoge_methods_forensics.
 | `forensics/` | analysis of the published Alpöge et al. matrices |
 | `cw/` | the H(2884) Cooper–Wallis construction |
 
-Work in progress (open orders 537, 571, 599, 643, 659, 669, 719, 739, 751, 789, 823, 839, 859, 863, 907, 947, 955,
-971 and 991) is described in the most recent files of `report/`.
+Work in progress on the open orders is described in the most recent files of `report/`.
