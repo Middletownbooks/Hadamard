@@ -1,0 +1,12 @@
+{"control": "1916 split", "r": [46, 128, 128, 46], "e": 79}
+{"level": "Q (split structure)", "rows": [6, 6, 38, 20], "solutions": 16, "prompt_reports": 16}
+{"level": "published 479 core", "all_blocks_invariant_under_order12_after_translation": true, "r": [46, 46, 46, 46], "e": 29}
+{"control": "2636", "r": [54, 54, 54, 54], "e": 27}
+{"level": "Z4^2 (G/Z41)", "compressed_vectors": 2954, "kumar_reports": 2954}
+{"level": "border for Kumar core (our frames)", "found": true, "hadamard": true}
+{"control": "3964", "r": [46, 46, 46, 46], "e": 23}
+{"level": "Q", "rows": [-50, -26, -2, 28], "solutions": 1, "z": [[-11, -13], [-5, -7], [1, -1], [7, 7]]}
+{"level": "Z19 (G/Z19 = Z2^2 x Z13)", "solutions": 304, "kumar_reports": 304, "planted_at": [65]}
+{"level": "Z13 inside the planted level-A fibre", "lists": [14, 24, 38, 30], "combinations": 160, "kumar_reports": 160, "planted_at": [13]}
+{"level": "final join of the planted combination", "fibres": [348502, 78327, 227993, 42567], "cores": 3, "planted_found": true, "secs": 173.4}
+{"level": "border + assembly of every core", "bordered_and_hadamard": 3, "of": 3}
