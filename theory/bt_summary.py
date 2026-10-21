@@ -3,7 +3,8 @@ r"""Census tables for report/b3_push_answer.md from the logs (no computation; re
 Reads the census logs (logs/bt/census/k4_P4_w*.jsonl, logs/bt/census2/*.jsonl), the Theorem alpha screen
 (logs/bt/census/thm_alpha.jsonl), the gate ladders (logs/bt/ladder_run*.jsonl), the level-A gates
 (logs/bt/level1_*.jsonl), the exhaustive chains (logs/bt/decide_run1.log), the border census
-(logs/bt/border_census.jsonl) and the next-gate costs (logs/bt/cost_next_gate.jsonl), and prints Markdown tables.
+(logs/bt/border_census.jsonl), the next-gate costs (logs/bt/cost_next_gate.jsonl) and the cheapest-first gates
+(logs/bt/gates_run.jsonl), and prints Markdown tables.
 usage: python3 theory/bt_summary.py [--top 5]
 """
 import sys, os, json, glob, argparse, collections
@@ -29,10 +30,15 @@ def main():
     ap.add_argument('--top', type=int, default=5)
     a = ap.parse_args()
     census = {}
-    for d in jl('logs/bt/census/k4_P4_w*.jsonl') + jl('logs/bt/census2/*.jsonl'):
+    for d in jl('logs/bt/census/k4_P4_w*.jsonl') + [d for d in jl('logs/bt/census2/*.jsonl')
+                                                    if not d.get('verdict', '').startswith('skipped')]:
         d.setdefault('fam', 'k4')
         census[d['key']] = d
+    for d in jl('logs/bt/census2/*.jsonl'):                  # prefilter-skipped, unless re-run by bt_close.py
+        if d.get('verdict', '').startswith('skipped') and d['key'] not in census:
+            census[d['key']] = d
     alpha = {d['key']: d['dead'] for d in jl('logs/bt/census/thm_alpha.jsonl')}
+    rigid = {d['key']: d['dead'] for d in jl('logs/bt/census/thm_rigid.jsonl')}
     ladder = {}
     for d in jl('logs/bt/ladder_run*.jsonl'):
         ladder[d['key']] = d
@@ -41,6 +47,9 @@ def main():
         level1[d['key']].append(d)
     decide = {d['key']: d for d in jl('logs/bt/decide_run1.log') if 'key' in d}
     border = {d['key']: d for d in jl('logs/bt/border_census.jsonl')}
+    gates = collections.defaultdict(list)
+    for d in jl('logs/bt/gates_run.jsonl'):
+        gates[d['key']].append(d)
     cost = {d['key']: d for d in jl('logs/bt/cost_next_gate.jsonl')}
 
     def status(d):
@@ -50,6 +59,8 @@ def main():
             return 'P:cp'
         if 'Theorem alpha' in v or 'order-3 element' in v or alpha.get(k):
             return 'P:alpha'
+        if rigid.get(k):
+            return 'P:rigid'
         if v.startswith('skipped'):
             return 'pre'
         if 'Q-level empty' in v:
@@ -62,14 +73,16 @@ def main():
             return 'M:level'
         if any(x.get('levelA_solutions_weighted') == 0 for x in level1.get(k, [])):
             return 'M:level'
+        if any(x.get('verdict', '').startswith('no core') for x in gates.get(k, [])):
+            return 'M:level'
         return 'alive'
 
     groups = collections.defaultdict(list)
     for d in census.values():
         groups[(d['n'], d['fam'])].append(d)
-    print('| n | family | structures | [P] coset-Parseval | [P] Theorem alpha | prefilter (4r - 6.5e < -45) | '
+    print('| n | family | structures | [P] coset-Parseval | [P] Theorem alpha | [P] Lemma R | prefilter (4r - 6.5e < -45) | '
           '[M] Q-level empty | [M] deeper level / chain empty | alive | best alive: S, r, e, log2 E_Q |')
-    print('|---|---|---|---|---|---|---|---|---|---|')
+    print('|---|---|---|---|---|---|---|---|---|---|---|')
     alive_all = []
     for (n, fam) in sorted(groups):
         c = collections.Counter(status(d) for d in groups[(n, fam)])
@@ -78,7 +91,7 @@ def main():
         best = max(alive, key=lambda d: (d.get('log2E_Q') if d.get('log2E_Q') is not None else -1e9), default=None)
         bs = '—' if best is None else \
             f"S{best['order']}, {best['r']}, {best['e']}, {best.get('log2E_Q') if best.get('log2E_Q') is not None else '−∞'}"
-        print(f"| {n} | {fam} | {len(groups[(n, fam)])} | {c['P:cp']} | {c['P:alpha']} | {c['pre']} | {c['M:Q']} | "
+        print(f"| {n} | {fam} | {len(groups[(n, fam)])} | {c['P:cp']} | {c['P:alpha']} | {c['P:rigid']} | {c['pre']} | {c['M:Q']} | "
               f"{c['M:level'] + c['M:chain']} | {len(alive)} | {bs} |")
     print()
     print(f'Top {a.top} alive structures per order and family (log2 E_Q = Q-level stratified count at the true target; '
@@ -92,8 +105,12 @@ def main():
     for k in sorted(by):
         for d in sorted(by[k], key=lambda d: -(d.get('log2E_Q') if d.get('log2E_Q') is not None else -1e9))[:a.top]:
             lv = ladder.get(d['key'], {}).get('levels', [])
-            passed = ', '.join(f"N{l['N']}: {l['solutions']}" for l in lv if l.get('solutions'))
-            capped = [l['N'] for l in lv if l.get('capped')]
+            sols = {l['N']: l['solutions'] for l in lv if l.get('solutions')}
+            for x in gates.get(d['key'], []):
+                if x.get('solutions_weighted'):
+                    sols[x['N']] = x['solutions_weighted']
+            passed = ', '.join(f"N{N}: {v}" for N, v in sorted(sols.items(), key=lambda t: -t[0]))
+            capped = [l['N'] for l in lv if l.get('capped') and l['N'] not in sols]
             if capped:
                 passed += (' ' if passed else '') + f"(capped: N{', N'.join(map(str, capped))})"
             co = cost.get(d['key'], {}).get('log2_cost_next')
