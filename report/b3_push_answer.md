@@ -64,6 +64,13 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - k6 at 839 and 947.
    - **Effectively closed** (every alive structure at log2 E_Q < −20, or no structure alive with a finite estimate):
      k4 at 739 (small 2-parts) and 947; k6 at 599 and 971; k8 at 599, 719 and 863; the product family at 669.
+   - **Exact closure pass [M]** (`logs/bt/closure.sh`, `theory/bt_gates_levels.py`). It runs every exact level of every
+     alive structure in these families, each under a time limit, because the cost bounds overestimate badly.
+     - It has closed structures at a deeper exact level, mostly at 739. The current counts are in the "deeper
+       level" column of §4.1. The 739 survivors are mostly large-orbit structures (r up to 141, estimates near
+       2^−300), whose levels pass or exceed the list cap.
+     - At 599 k8, all 845 structures that the census had skipped by its rule of thumb were decided exactly, by the
+       Q-level gate or by coset-Parseval (`theory/bt_close.py`).
    - **The 669 ℤ₃ family (Kumar's 2148 family) is closed except for two hosts [P, M].**
      - All 239 structures of the census range are dead except 2: 75 by coset-Parseval, 10 by Lemma R, and 152 at an
        exact finer level G/N = ℤ₉ or ℤ₆ (`theory/bt_gates_levels.py`, timed gates, `logs/bt/gates_run_levels.jsonl`).
