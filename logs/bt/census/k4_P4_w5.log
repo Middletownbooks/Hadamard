@@ -100,3 +100,20 @@ n = 751: 217 structures with 8 <= r <= 160
 {"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 12, "r": 100, "e": 59, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 1.3}
 {"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 8, "r": 132, "e": 71, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": 40.67, "secs": 60.2}
 {"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 16, "r": 88, "e": 47, "verdict": "passes Q-level", "q_solutions": 64, "log2E_Q": null, "secs": 9.8}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 10, "r": 136, "e": 71, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": null, "secs": 59.9}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 40, "r": 32, "e": 23, "verdict": "passes Q-level", "q_solutions": 64, "log2E_Q": null, "secs": 9.4}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 80, "r": 20, "e": 15, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.9}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 20, "r": 56, "e": 39, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": null, "secs": 35.7}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 10, "r": 104, "e": 103, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": -307.75, "secs": 93.2}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 40, "r": 36, "e": 23, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": -37.13, "secs": 19.2}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 80, "r": 24, "e": 15, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.4}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 20, "r": 60, "e": 39, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": -48.2, "secs": 39.7}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 10, "r": 108, "e": 71, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": -70.69, "secs": 63.7}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 8, "r": 112, "e": 71, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": 18.39, "secs": 52.7}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 16, "r": 68, "e": 47, "verdict": "passes Q-level", "q_solutions": 64, "log2E_Q": null, "secs": 8.7}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 16, "r": 99, "e": 53, "verdict": "passes Q-level", "q_solutions": 152, "log2E_Q": -80.38, "secs": 37.4}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 32, "r": 66, "e": 35, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 6.4}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 20, "r": 102, "e": 53, "verdict": "passes Q-level", "q_solutions": 152, "log2E_Q": null, "secs": 40.1}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 80, "r": 24, "e": 17, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 5.5}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 160, "r": 15, "e": 11, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.1}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 40, "r": 42, "e": 29, "verdict": "passes Q-level", "q_solutions": 152, "log2E_Q": null, "secs": 25.5}
