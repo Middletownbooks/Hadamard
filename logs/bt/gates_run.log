@@ -69,3 +69,6 @@
 {"n": 955, "fam": "k4", "order": 8, "r": 154, "log2E_Q": 68.74, "N": 119, "log2_pairs": 33.0, "verdict": "passes", "solutions_weighted": 1685663907840, "secs": 1565.3}
 {"n": 955, "fam": "k4", "order": 8, "r": 154, "log2E_Q": 60.61, "N": 119, "log2_pairs": 33.0, "verdict": "passes", "solutions_weighted": 5096079360, "secs": 101.9}
 {"n": 955, "fam": "k4", "order": 8, "r": 142, "log2E_Q": 75.51, "N": 119, "log2_pairs": 33.0, "verdict": "passes", "solutions_weighted": 1685663907840, "secs": 1654.3}
+{"n": 863, "fam": "k4", "order": 12, "r": 105, "log2E_Q": -7.1, "N": 43, "log2_pairs": 33.7, "verdict": "passes", "solutions_weighted": 72443904, "secs": 29.1}
+{"n": 669, "fam": "z3all", "order": 18, "r": 54, "log2E_Q": 9.62, "N": 111, "log2_pairs": 34.0, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.6}
+{"n": 669, "fam": "z3all", "order": 18, "r": 54, "log2E_Q": 9.85, "N": 111, "log2_pairs": 34.0, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.7}
