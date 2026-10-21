@@ -1758,3 +1758,4 @@ n = 739: 2382 structures with 8 <= r <= 160
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 22, "r": 54, "e": 31, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": -53.37, "secs": 13.0}
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 22, "r": 50, "e": 37, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 11.9}
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 22, "r": 60, "e": 32, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 11.0}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 22, "r": 52, "e": 32, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 12.3}
