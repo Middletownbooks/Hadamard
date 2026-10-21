@@ -4,3 +4,5 @@
 {"n": 669, "fam": "z3all", "order": 9, "r": 90, "log2E_Q": 73.12, "N": 74, "verdict": "capped (refined list 7.79e+07 > 20000000)", "solutions_weighted": null, "secs": 0.0}
 {"n": 669, "fam": "z3all", "order": 12, "r": 84, "log2E_Q": -18.3, "N": 111, "verdict": "capped (time limit 900 s)", "solutions_weighted": null, "secs": 900.0}
 {"n": 669, "fam": "z3all", "order": 12, "r": 84, "log2E_Q": -18.3, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 669, "fam": "z3all", "order": 12, "r": 84, "log2E_Q": -18.3, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.6}
+{"n": 669, "fam": "z3all", "order": 12, "r": 84, "log2E_Q": -20.7, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
