@@ -2,10 +2,12 @@ r"""Re-run the census evaluation of structures whose Q-level gate hit a cap ("Q-
 
 The product family at 669 (theory/bt_census2.py --fam prod12) left 17 structures undecided: 9 ran out of memory under
 the earlier 6 GB address-space limit (the 2 + 2 join output array) and 8 exceeded the two-step Q-level list cap of
-2*10^6 (theory/bt_chain.q_level_list_two_step).  This driver raises both caps (--maxlen, --maxout) and evaluates the
-structures again with the unchanged census code (bt_census2.evaluate); each result is appended to the census file it
-came from, where it supersedes the capped record (theory/bt_summary.py keeps the last record per key).
-usage: python3 theory/bt_rerun_capped.py CENSUS.jsonl [--maxlen 1e7] [--maxout 3e7] [--N 1200]
+2*10^6 (theory/bt_chain.q_level_list_two_step).  This driver raises the list cap (--maxlen) and bounds the stored
+join output (--maxout): the join keeps the exact solution count when its output is truncated (bt_gates.Gates.qcount),
+and the estimate samples its few Q-level solutions from the stored ones.  The structures are evaluated again with the
+census code (bt_census2.evaluate); each result is appended to the census file it came from, where it supersedes the
+capped record (theory/bt_summary.py keeps the last record per key).
+usage: python3 theory/bt_rerun_capped.py CENSUS.jsonl [--maxlen 6e6] [--maxout 1e6] [--N 1200]
 """
 import sys, os, json, time, argparse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -14,8 +16,8 @@ import bt_chain as C, bt_census2 as C2
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('census'); ap.add_argument('--maxlen', type=float, default=1e7)
-    ap.add_argument('--maxout', type=float, default=3e7); ap.add_argument('--N', type=int, default=1200)
+    ap.add_argument('census'); ap.add_argument('--maxlen', type=float, default=6e6)
+    ap.add_argument('--maxout', type=float, default=1e6); ap.add_argument('--N', type=int, default=1200)
     a = ap.parse_args()
     last = {}
     for x in open(a.census):

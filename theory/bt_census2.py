@@ -241,7 +241,9 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1, prefilter=-45.0):
     except MemoryError as e:
         out['verdict'] = f'Q-level cap ({e})'; out['secs'] = round(time.time() - t0, 1); return out
     out['q_patterns'] = [list(map(int, q[0])) for q in qs]
-    out['q_solutions'] = int(sum(len(q[1]) for q in qs))
+    out['q_solutions'] = int(sum(g.qcount.get(tuple(q[0]), len(q[1])) for q in qs))
+    if any(g.qcount.get(tuple(q[0]), len(q[1])) > len(q[1]) for q in qs):
+        out['q_solutions_listed'] = int(sum(len(q[1]) for q in qs))      # the join output was truncated
     if not qs:
         out['verdict'] = 'no core [M] (Q-level empty)'; out['secs'] = round(time.time() - t0, 1); return out
     import q523_gauss as QG
@@ -267,7 +269,7 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1, prefilter=-45.0):
             terms.append(dict(rows=list(map(int, rows)), log2E=round(vals[-1], 2) if np.isfinite(vals[-1]) else None,
                               mahal=r.get('mahal')))
         vals = np.array(vals)
-        tot += w * len(sol) * np.mean(np.where(np.isfinite(vals), 2.0 ** vals, 0.0))
+        tot += w * g.qcount.get(tuple(rows), len(sol)) * np.mean(np.where(np.isfinite(vals), 2.0 ** vals, 0.0))
     out['log2E_Q'] = round(math.log2(tot), 2) if tot > 0 else None
     out['q_terms'] = sorted(terms, key=lambda d: -(d['log2E'] if d['log2E'] is not None else -1e9))[:5]
     out['verdict'] = 'passes Q-level'

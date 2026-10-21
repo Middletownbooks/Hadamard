@@ -51,6 +51,7 @@ class Gates:
         self.chQ = C.char_matrix(self.qQ)
         self.log = log if log is not None else {}
         self._lq = {}
+        self.qcount = {}
 
     def q_list(self, i, row):
         key = (i if self.st.split else 0, row)
@@ -75,6 +76,7 @@ class Gates:
                 P = [C.paf_reduced(self.qQ, i, L[i][0]) for i in range(4)]
                 sol, no = C.join4(P, self.qQ.cls_target)
                 if no:
+                    self.qcount[tuple(rows)] = int(no)                 # exact count (sol is truncated at maxout)
                     out.append((rows, sol, L))
         return out
 

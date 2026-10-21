@@ -61,9 +61,13 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - k6 at 839 and 947.
    - **Effectively closed** (every alive structure at log2 E_Q < −20, or no structure alive with a finite estimate):
      k4 at 739 (small 2-parts) and 947; k6 at 599 and 971; k8 at 599, 719 and 863; the product family at 669.
-   - **The 669 ℤ₃ family:** every gated host with an estimate from 2^26 to 2^85 dies at the exact levels G/N = ℤ₆ or
-     ℤ₉, except S9 r90 (2^73.1, which passes G/N = ℤ₆). The S9 r82 and S12 r64 cases are confirmed by an independent
-     CP-SAT checker (§5).
+   - **The 669 ℤ₃ family (Kumar's 2148 family) is closed except for two hosts [P, M].**
+     - All 239 structures of the census range are dead except 2: 75 by coset-Parseval, 10 by Lemma R, and 152 at an
+       exact finer level G/N = ℤ₉ or ℤ₆ (`theory/bt_gates_levels.py`, timed gates, `logs/bt/gates_run_levels.jsonl`).
+     - The dead include every host with an estimate from 2^8 to 2^85. The S9 r82 and S12 r64 cases are confirmed by
+       an independent CP-SAT checker (§5).
+     - The two left are the S9 r90 hosts (2^73.1, on ℤ₂ × ℤ₃² × ℤ₃₇ and ℤ₂ × ℤ₉ × ℤ₃₇). They pass G/N = ℤ₆ with
+       1.3·10⁸ weighted solutions, and their ℤ₉ and ℤ₁₈ levels exceed the list caps: rich hosts.
 4. **Calibration (§6).** On 561 small-order structures with exact counts from an independent enumerator:
    - the gates never kill a structure that has cores;
    - when cores exist, E_Q is within −3.9 to +0.6 bits of the count;
@@ -364,8 +368,10 @@ counts are common among alive structures with E_Q below about 2^30.
   - But with 119 orbits the last chain step leaves fibres of up to 2^44 per block. So these are rich hosts too.
   - The census of the 2-parts with more than 4,096 (643) or 1,024 (739) endomorphisms is still running.
 - **669 (ℤ₃ family).**
-  - Every gated host with log2 E_Q ≥ 8 dies at G/N = ℤ₆ or ℤ₉, except the two S9 r90 hosts. These pass G/N = ℤ₆
-    (1.3·10⁸ weighted solutions), and their ℤ₉ level exceeds the list cap.
+  - The timed gates at G/N = ℤ₉ and ℤ₆ (ℤ₉ first; it usually decides in under a second, while the pair bound of
+    `bt_cost.py` predicted up to 2^37 pairs) closed every alive host except the two S9 r90 hosts. These pass
+    G/N = ℤ₆ (1.3·10⁸ weighted solutions), and their ℤ₉ level exceeds the list cap (7.8·10⁷ vectors for one
+    block).
   - The product family (Q = ℤ₂² × ℤ₃, t = 9) dies almost entirely at the Q-level: 249 of 282 structures.
 - **751.**
   - k4: the cheapest finer level of the best host (S8, r = 121, 2^73.5), N = ℤ₁₁, costs 2^48.3 pairs.
@@ -746,10 +752,14 @@ python3 theory/bt_ladder.py CENSUS.jsonl logs/bt/ladder_run2.jsonl --maxlen 2e6
 python3 theory/bt_level1.py CENSUS.jsonl KEY --out logs/bt/level1_KEY.jsonl
 python3 theory/bt_decide.py CENSUS.jsonl logs/bt/decide --rmax 45
 python3 theory/bt_xcheck_level.py logs/bt/xcheck/x669_S9_N111.json        # independent CP-SAT
+python3 theory/bt_gates_levels.py logs/bt/gates_run_levels.jsonl CENSUS.jsonl[,...] --levels 74,111 --fam 669:z3all --tmax 600
+sh logs/bt/closure.sh                                                       # timed gates at every level, effectively closed families
+python3 theory/bt_rerun_capped.py logs/bt/census2/prod12_669.jsonl --maxlen 6e6 --maxout 1e6   # capped Q-levels
 
 # borders, calibration, local search
 python3 theory/bt_border_census.py logs/bt/border_census.jsonl CENSUS.jsonl[,...] --top 25 --min-logE -10
 python3 theory/bt_border_k8.py --random 40                                   # k = 8: Kronecker, Singer template, Z2^3 vs Z8
+python3 theory/bt_border_k6.py --frames 3000 --survivors 3                   # k = 6: 347 control, Lemma-1 frames, survivors
 python3 theory/bt_calib_small.py logs/bt/calib/calib_small.jsonl --ns 7,11,15,19,23,27,31 --rmax 18
 python3 theory/bt_brute_count.py RECORD.json                                # independent exact count
 python3 theory/bt_anneal.py logs/bt/anneal/ctrl3964 --control 3964 --hours 0.05
