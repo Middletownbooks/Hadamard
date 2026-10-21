@@ -206,6 +206,28 @@ def closed_families(D):
     return '\n'.join(lines)
 
 
+def notes(D):
+    """one line per open order: families covered, how many structures, alive, best alive"""
+    by = collections.defaultdict(list)
+    for (n, fam), L in D.groups().items():
+        by[n].append((fam, L))
+    out = []
+    for n in sorted(by):
+        parts = []
+        for fam, L in sorted(by[n]):
+            alive = [d for d in L if D.status(d) == 'alive']
+            pre = sum(1 for d in L if D.status(d) == 'pre')
+            best = max(alive, key=e_of, default=None)
+            if not alive and not pre:
+                parts.append(f"{fam}: {len(L)} structures, all dead")
+            else:
+                b = '' if best is None else (f", best S{best['order']} r = {rstr(best['r'])} at log2 E_Q = "
+                                             f"{fmt_e(e_of(best))}")
+                parts.append(f"{fam}: {len(L)} structures, {len(alive)} alive{b}" + (f", {pre} prefiltered" if pre else ''))
+        out.append(f"- **{n}.** " + '; '.join(parts) + '.')
+    return '\n'.join(out)
+
+
 def screen_counts(D):
     tot = collections.Counter(D.status(d) for d in D.census.values())
     return (f"Over {len(D.census)} structures: coset-Parseval {tot['P:cp']}, Theorem α {tot['P:alpha']}, Lemma R "
@@ -229,6 +251,7 @@ def fill(D, top):
     rigid_n = sum(1 for v in D.rigid.values() if v)
     blocks = {'CENSUS-TABLE': table_status(D), 'TOP-TABLE': table_top(D, top), 'WINDOW-TABLE': table_window(D),
               'RICH-TABLE': table_rich(D), 'CLOSED-FAMILIES': closed_families(D), 'SCREEN-COUNTS': screen_counts(D),
+              'NOTES-AUTO': notes(D),
               'BORDER-COUNTS': border_counts(D), 'CALIB-TABLE': calib, 'ALPHA-COUNTS': str(alpha_n),
               'RIGID-COUNTS': f'{rigid_n} structures killed', 'NSTRUCT': f'{len(D.census):,}'}
     inline = {'ALPHA-COUNTS', 'RIGID-COUNTS', 'BORDER-COUNTS', 'NSTRUCT'}

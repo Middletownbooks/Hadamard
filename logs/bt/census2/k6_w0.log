@@ -69,3 +69,4 @@ n = 863 fam k6: 60 structures (2.9s)
 {"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 60, "r": 40, "e": 23, "verdict": "passes Q-level", "q_solutions": 56, "log2E_Q": null, "log2E_whole": -1314.45, "secs": 95.3}
 {"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 40, "r": 44, "e": 31, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 10.8}
 {"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 120, "r": 20, "e": 15, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 10.5}
+{"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 60, "r": 32, "e": 31, "verdict": "skipped (4r - 6.5e = -73.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.6}
