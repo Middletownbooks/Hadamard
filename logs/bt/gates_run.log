@@ -72,3 +72,5 @@
 {"n": 863, "fam": "k4", "order": 12, "r": 105, "log2E_Q": -7.1, "N": 43, "log2_pairs": 33.7, "verdict": "passes", "solutions_weighted": 72443904, "secs": 29.1}
 {"n": 669, "fam": "z3all", "order": 18, "r": 54, "log2E_Q": 9.62, "N": 111, "log2_pairs": 34.0, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.6}
 {"n": 669, "fam": "z3all", "order": 18, "r": 54, "log2E_Q": 9.85, "N": 111, "log2_pairs": 34.0, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.7}
+{"n": 669, "fam": "z3all", "order": 12, "r": 72, "log2E_Q": 32.17, "N": 6, "log2_pairs": 37.0, "verdict": "passes", "solutions_weighted": 6936814080, "secs": 6118.0}
+{"n": 669, "fam": "z3all", "order": 12, "r": 72, "log2E_Q": 32.17, "N": 111, "log2_pairs": 37.1, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 5.4}
