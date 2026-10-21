@@ -210,3 +210,70 @@ def border_for_compressions(st, zfull, frames=None, max_frames=20000, tmax=5.0):
         if (np.abs(Ch) == 1).all() and (Ch @ Ch.T == np.kron(np.eye(4, dtype=np.int64), Q.Gmat)).all():
             return X, Rh, Ch, k
     return None
+
+
+def sylvester(m):
+    H = np.array([[1]], np.int64)
+    while H.shape[0] < m:
+        H = np.block([[H, H], [H, -H]])
+    assert H.shape[0] == m
+    return H
+
+
+def frames_balanced(q, count=2000, seed=1):
+    """frames for T = all nontrivial characters of Q with q a power of 2 (V_T = block-balanced vectors, 4t = 4(q - 1)):
+    H_4 (x) H_q[1:] with the columns of blocks 2..4 permuted at random (block 1 fixed), the first one unpermuted"""
+    H4 = sylvester(4); Hq = sylvester(q)
+    base = np.kron(H4, Hq[1:])                                   # 4(q-1) x 4q
+    rng = np.random.default_rng(seed)
+    yield base
+    for _ in range(count - 1):
+        cols = list(range(q))
+        for J in range(1, 4):
+            cols += list(J * q + rng.permutation(q))
+        yield base[:, cols]
+
+
+def admissible_balanced(Mc, Rh, t, q):
+    """S_R for block-balanced V_T: the eps with Mc Rh^T eps = 4t s, s in {+-1}^{4q} with every block summing to 0,
+    are eps = Rh Mc^T s / (4q) (Rh Mc^T Mc Rh^T = 4t 4q I); enumerate the balanced s (C(q, q/2)^4 of them, first
+    entry of the result normalised to +1)"""
+    blk = np.array([v for v in itertools.product((1, -1), repeat=q) if sum(v) == 0], np.int64)
+    W = (Rh @ Mc.T).astype(np.float64)                           # 4t x 4q
+    out = []
+    nb = len(blk)
+    for a in range(nb):
+        for b in range(nb):
+            S2 = np.concatenate([np.repeat(blk[[a]], nb * nb, 0), np.repeat(blk[[b]], nb * nb, 0),
+                                 np.repeat(blk, nb, 0), np.tile(blk, (nb, 1))], 1)          # (nb^2) x 4q
+            E = (S2.astype(np.float64) @ W.T) / (4 * q)
+            ok = np.all(np.abs(np.abs(E) - 1) < 1e-9, axis=1)
+            if ok.any():
+                Ei = np.rint(E[ok]).astype(np.int64)
+                Ei = Ei * Ei[:, :1]
+                out.append(Ei)
+    if not out:
+        return np.zeros((0, Rh.shape[0]), np.int64)
+    return np.unique(np.concatenate(out), axis=0)
+
+
+def border_balanced(st, zfull, max_frames=200, tmax=20.0):
+    """border for (q, t) = (q, q - 1), q a power of 2 (k = q family), via frames_balanced / admissible_balanced"""
+    Q = QData(st)
+    Mc = gs_array([np.asarray(z, np.int64) for z in zfull], Q.add, Q.neg)
+    t, q = st.t, st.q
+    for k, Rh in enumerate(frames_balanced(q, count=max_frames)):
+        S = admissible_balanced(Mc, Rh, t, q)
+        if len(S) < 4 * t:
+            continue
+        Xc = clique(S, 4 * t, tmax=tmax)
+        if Xc is None:
+            continue
+        X = Xc.T.copy()
+        num = -(Mc @ Rh.T @ X)
+        if (num % (4 * t)).any():
+            continue
+        Ch = num // (4 * t)
+        if (np.abs(Ch) == 1).all() and (Ch @ Ch.T == np.kron(np.eye(4, dtype=np.int64), Q.Gmat)).all():
+            return X, Rh, Ch, k
+    return None

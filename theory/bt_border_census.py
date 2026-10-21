@@ -1,6 +1,8 @@
 r"""Border-problem status of census survivors [M]: for every Q-level solution (all row patterns) of a structure,
 is there a border (X, Rh, Ch) for its Q-compressions?  (theory/bt_border.border_for_compressions; frames: Sylvester
-frames with column permutations for q = 4, t = 3; Paley H12 frames for q = 3, t = 3.)
+frames with column permutations for q = 4, t = 3; Paley H12 frames for q = 3, t = 3; for q = 8, t = 7 the balanced
+frames H_4 (x) H_8[1:] with the admissible set enumerated through block-balanced sign vectors,
+theory/bt_border.border_balanced.)
 
 A border depends only on the Q-compressions, so this decides the border problem for every core the structure could
 have: "all" means every Q-level class has a border, "none" means no core of the structure can be completed (with these
@@ -28,7 +30,10 @@ def border_status(st, max_frames=3000, tmax=2.0, maxcls=40):
             if len(seen) >= maxcls:
                 break
             t = time.time()
-            res = BB.border_for_compressions(st, z, max_frames=max_frames, tmax=tmax)
+            if st.q == 8 and st.t == 7:
+                res = BB.border_balanced(st, z, max_frames=min(max_frames, 40), tmax=30.0)
+            else:
+                res = BB.border_for_compressions(st, z, max_frames=max_frames, tmax=tmax)
             seen[key] = res is not None
             out.append(dict(rows=list(map(int, rows)), z=z.tolist(), border=res is not None,
                             frame=None if res is None else int(res[3]), secs=round(time.time() - t, 1)))
@@ -64,7 +69,7 @@ def main():
             if d['key'] in done:
                 continue
             st = C2.build(d) if 'fam' in d else R.build(d)
-            if not ((st.q == 4 and st.t == 3) or (st.q == 3 and st.t == 3)):
+            if not ((st.q == 4 and st.t == 3) or (st.q == 3 and st.t == 3) or (st.q == 8 and st.t == 7)):
                 res = dict(status='no frames implemented for (q, t) = (%d, %d)' % (st.q, st.t))
             else:
                 t = time.time()
