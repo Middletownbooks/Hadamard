@@ -153,8 +153,9 @@ def table_top(D, top=3):
             passed = ', '.join(f"N{N}: {v}" for N, v in sorted(sols.items(), key=lambda t: -t[0])) or '—'
             nc, nN = D.next_cost(d)
             b = D.border.get(d['key'])
-            bs = '—' if b is None else (f"{b.get('with_border')}/{b.get('classes')}" if 'classes' in b else
-                                        ('open (Q = ℤ₈, §7)' if d['Pmods'] == [8] else 'open (k = 8, §7)'))
+            bs = ('open (k = 6, §7)' if fam == 'k6' else '—') if b is None else \
+                (f"{b.get('with_border')}/{b.get('classes')}" if 'classes' in b else
+                 ('open (Q = ℤ₈, §7)' if d['Pmods'] == [8] else 'open (k = 8, §7)'))
             out.append(f"| {n} | {fam} | {d['Pmods']} × {d['Omods']} | {d['order']} | {rstr(d['r'])} | {d['e']} | "
                        f"{d['log2E_Q'] if d.get('log2E_Q') is not None else '−∞'} | {passed} | "
                        f"{'—' if nc is None else f'N{nN}: {nc}'} | {bs} |")
