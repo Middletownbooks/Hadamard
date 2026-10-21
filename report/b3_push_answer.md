@@ -29,7 +29,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - 669 (ℤ₃ family, r = 90: 73.1, first finer level passed);
      - 719 (k6, r = 112: 66.2; k4, r = 360: 64.1);
      - 643 (k4, r = 122: 24.3).
-   - **Exact gates kill even large estimates.** The 25 richest 971 hosts (r = 106, estimates 2^83–2^98.7) have no
+   - **Exact gates kill even large estimates.** The 32 richest 971 hosts (r = 106, estimates 2^83–2^98.7) have no
      solution at the level G/N = ℤ₂ × ℤ₄. The 669 ℤ₃ hosts with estimates 2^26–2^85 die at G/N = ℤ₆ or ℤ₉, all
      except S9 r90 (§5).
    - **Structures like the known successes.** 3964, 2636 and 2148 have 46–54 orbits and estimates of 2^30–2^62. No
@@ -371,8 +371,8 @@ exact gates on every skipped structure.
 | 669 | ℤ₃ | S of order 18 (4 structures) | 46, 25 | 26.2–26.4 | G/N of order 9 (N of order 74) | `bt_gates_run.py` |
 | 669 | ℤ₃ | S of order 18 (3 structures) | 60, 31 | 8.2–9.4 | N of order 74 | `bt_gates_run.py` |
 | 669 | ℤ₃ | S of order 12 (2 structures) | 72, 39 | 32.1–32.2 | G/N = ℤ₆ (N of order 111), after passing N of order 6 with 6.9·10⁹ weighted solutions | `bt_gates_run.py` (`logs/bt/gates_run_extra.jsonl`) |
-| 971 | k4 | ℤ₂ × ℤ₄ × ℤ₁₁², S of order 10 (split torus), 33 structures | 106, 56–59 | 83.2–98.7 | G/N = ℤ₂ × ℤ₄ (N = ℤ₁₁², order 121): no solution, about 3 s each | `bt_gates_run.py` (`logs/bt/gates_run_971b.log`) |
-| 971 | k4 | S of order 10, r = 112 (several) | 112, 57–59 | 73–75 | N of order 22 (one of the two axis subgroups) | `bt_gates_run.py` |
+| 971 | k4 | ℤ₂ × ℤ₄ × ℤ₁₁², S of order 10 (split torus), 32 structures | 106, 56–59 | 83.3–98.7 | G/N = ℤ₂ × ℤ₄ (N = ℤ₁₁², order 121): no solution, about 3 s each | `bt_gates_run.py` (`logs/bt/gates_run_971b.log`) |
+| 971 | k4 | S of order 10, r = 112, 16 structures | 112, 57–59 | 52.5–75.2 | N of order 22 (one of the two axis subgroups) | `bt_gates_run.py` |
 | 839 | k4 | ℤ₂² × ℤ₁₁ × ℤ₁₉, S = ⟨(α, ×3, ×4)⟩ (order 45) | 30, 15 | 5.2 | exhaustive chain (160 level-A solutions, 0 cores); the ℤ₁₉-level gate is empty on its own | `bt_decide.py`, `bt_gates_run.py` |
 | 839 | k4 | S of order 45 | 36, 19 | −8.5 | N of order 19 | `bt_gates_run.py` |
 | 839 | k4 | nine more structures, r = 18–33 | | ≤ 5 | exhaustive chain | `bt_decide.py` (`logs/bt/decide_run1.log`) |
