@@ -4,3 +4,6 @@ Terminated
 17 capped structures
 {"n": 669, "fam": "prod12", "order": 30, "r": 54, "e": 29, "verdict": "passes Q-level", "q_solutions": 1070037216, "log2E_Q": -53.32, "secs": 157.9}
 {"n": 669, "fam": "prod12", "order": 60, "r": 54, "e": 29, "verdict": "passes Q-level", "q_solutions": 1070037216, "log2E_Q": -53.32, "secs": 168.6}
+{"n": 669, "fam": "prod12", "order": 30, "r": 54, "e": 29, "verdict": "passes Q-level", "q_solutions": 1070037216, "log2E_Q": -53.32, "secs": 138.3}
+{"n": 669, "fam": "prod12", "order": 20, "r": 72, "e": 41, "verdict": "Q-level cap (two-step Q-level list too large)", "q_solutions": null, "log2E_Q": null, "secs": 341.5}
+{"n": 669, "fam": "prod12", "order": 24, "r": 72, "e": 47, "verdict": "passes Q-level", "q_solutions": 1070037216, "log2E_Q": -511.15, "secs": 165.5}
