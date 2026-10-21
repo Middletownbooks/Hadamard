@@ -120,7 +120,7 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1):
         return out
     g = BG.Gates(st)
     try:
-        qs = g.q_level()
+        qs = g.q_level(allow_truncated=True)
     except MemoryError as e:
         out['verdict'] = f'Q-level cap ({e})'
         out['secs'] = round(time.time() - t0, 1)

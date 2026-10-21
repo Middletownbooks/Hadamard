@@ -514,3 +514,4 @@ closure tier 1 done
 {"n": 599, "fam": "k8", "order": 9, "r": 104, "log2E_Q": -32.91, "N": 2, "verdict": "capped (refined list 2.96e+19 > 20000000)", "solutions_weighted": null, "secs": 0.9}
 {"n": 669, "fam": "prod12", "order": 10, "r": 91, "log2E_Q": null, "N": 11, "verdict": "capped (refined list 1.08e+14 > 20000000)", "solutions_weighted": null, "secs": 18.4}
 {"n": 669, "fam": "prod12", "order": 10, "r": 91, "log2E_Q": null, "N": 5, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 303.5}
+{"n": 669, "fam": "prod12", "order": 20, "r": 57, "log2E_Q": null, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.6}

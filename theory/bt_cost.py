@@ -41,7 +41,7 @@ def cell_sizes(qc, yc, qf, i, cvals):
 
 def cost(st, maxq=64):
     g = BG.Gates(st)
-    qs = g.q_level(patterns=LD.patterns_for(st))
+    qs = g.q_level(patterns=LD.patterns_for(st), allow_truncated=True)
     sols = [(rows, s, L) for rows, sol, L in qs for s in sol]
     res = dict(q_solutions=len(sols), levels=[])
     if not sols:

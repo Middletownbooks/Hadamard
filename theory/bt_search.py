@@ -80,6 +80,8 @@ class Run:
                 continue
             P = [C.paf_reduced(self.qQ, i, L[i][0]) for i in range(4)]
             sol, no = C.join4(P, self.qQ.cls_target)
+            if no > len(sol):                                # a truncated join would make "exhausted" wrong
+                raise MemoryError(f"Q-level join truncated ({no} solutions, {len(sol)} stored)")
             for k, s in enumerate(sol):
                 out.append((tuple(rows), k, [L[i][0][s[i]] for i in range(4)]))
         return out
@@ -91,6 +93,8 @@ class Run:
             return LA, np.zeros((0, 4), np.int64)
         PA = [C.paf_reduced(self.qA, i, LA[i][0]) for i in range(4)]
         solA, noA = C.join4(PA, self.qA.cls_target)
+        if noA > len(solA):
+            raise MemoryError(f"level-A join truncated ({noA} solutions, {len(solA)} stored)")
         return LA, solA
 
     def level_B(self, yA):
@@ -105,6 +109,8 @@ class Run:
             return LB, np.zeros((0, 4), np.int64)
         PB = [C.paf_reduced(self.qB, i, LB[i][0]) for i in range(4)]
         solB, noB = C.join4(PB, self.qB.cls_target)
+        if noB > len(solB):
+            raise MemoryError(f"level-B join truncated ({noB} solutions, {len(solB)} stored)")
         return LB, solB
 
     def finish(self, yA, yB, item):

@@ -37,3 +37,4 @@
 {"verdict": "capped (refined list 2.96e+19 > 20000000)", "key": "7e0f662582eb7300", "n": 599, "fam": "k8", "order": 9, "r": 104, "e": 55, "log2E_Q": -32.91, "N": 2, "Nkey": "eca73603e3cc", "log2_pairs": null, "secs": 0.9}
 {"verdict": "capped (refined list 1.08e+14 > 20000000)", "key": "4f62929dc0b6b288", "n": 669, "fam": "prod12", "order": 10, "r": 91, "e": 68, "log2E_Q": null, "N": 11, "Nkey": "bf91a05b67d7", "log2_pairs": null, "secs": 18.4}
 {"verdict": "capped (time limit 300 s)", "key": "4f62929dc0b6b288", "n": 669, "fam": "prod12", "order": 10, "r": 91, "e": 68, "log2E_Q": null, "N": 5, "Nkey": "4dd50da9e0cd", "log2_pairs": null, "secs": 303.5}
+{"verdict": "capped (time limit 300 s)", "key": "3d00a3318ed7b6be", "n": 669, "fam": "prod12", "order": 20, "r": 57, "e": 44, "log2E_Q": null, "N": 11, "Nkey": "bf91a05b67d7", "log2_pairs": null, "secs": 300.6}

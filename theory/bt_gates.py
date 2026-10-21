@@ -59,8 +59,10 @@ class Gates:
             self._lq[key] = C.q_level_list_two_step(self.st, self.qQ, i, row, self.chQ)
         return self._lq[key]
 
-    def q_level(self, patterns=None, signs=False):
-        """Q-level solutions per row pattern: list of (pattern-with-signs, [index quadruples], lists)"""
+    def q_level(self, patterns=None, signs=False, allow_truncated=False):
+        """Q-level solutions per row pattern: list of (pattern-with-signs, [index quadruples], lists).  The join stores
+        at most maxout solutions per pattern (the count, self.qcount, stays exact).  Callers that refine every
+        solution (the exact gates) must see them all: unless allow_truncated, a truncated join raises MemoryError."""
         st = self.st
         pats = row_patterns(st) if patterns is None else patterns
         out = []
@@ -77,6 +79,8 @@ class Gates:
                 sol, no = C.join4(P, self.qQ.cls_target)
                 if no:
                     self.qcount[tuple(rows)] = int(no)                 # exact count (sol is truncated at maxout)
+                    if no > len(sol) and not allow_truncated:
+                        raise MemoryError(f"Q-level join truncated ({no} solutions, {len(sol)} stored)")
                     out.append((rows, sol, L))
         return out
 

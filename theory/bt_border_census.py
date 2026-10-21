@@ -17,7 +17,7 @@ import bt_engine as E, bt_gates as BG, bt_border as BB, bt_census_run as R, bt_c
 
 def border_status(st, max_frames=3000, tmax=2.0, maxcls=40):
     g = BG.Gates(st)
-    qs = g.q_level(patterns=LD.patterns_for(st))
+    qs = g.q_level(patterns=LD.patterns_for(st), allow_truncated=True)
     qQ = g.qQ
     assert (qQ.pi == st.coset).all(), "coset numbering of the Q quotient differs from QData"
     seen = {}; out = []

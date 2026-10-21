@@ -237,7 +237,7 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1, prefilter=-45.0):
                 d = math.isqrt(d2)
                 if d * d == d2 and d % 2 == par: pats.append((a, b, c, d))
     try:
-        qs = g.q_level(patterns=pats)
+        qs = g.q_level(patterns=pats, allow_truncated=True)
     except MemoryError as e:
         out['verdict'] = f'Q-level cap ({e})'; out['secs'] = round(time.time() - t0, 1); return out
     out['q_patterns'] = [list(map(int, q[0])) for q in qs]

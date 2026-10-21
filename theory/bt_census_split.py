@@ -103,7 +103,7 @@ def evaluate(base, label, bgens, N=1200, maxq=2, seed=1):
         out['verdict'] = f'skipped (sum r - 6.5e = {rule:.1f} < -45)'; out['secs'] = round(time.time() - t0, 1); return out
     g = BG.Gates(st)
     try:
-        qs = g.q_level(patterns=ordered_patterns(st))
+        qs = g.q_level(patterns=ordered_patterns(st), allow_truncated=True)
     except MemoryError as ex:
         out['verdict'] = f'Q-level cap ({ex})'; out['secs'] = round(time.time() - t0, 1); return out
     out['q_solutions'] = int(sum(len(q[1]) for q in qs))
