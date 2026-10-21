@@ -2345,3 +2345,10 @@ n = 643: 24520 structures with 8 <= r <= 160
 {"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 116, "e": 91, "verdict": "passes Q-level", "q_solutions": 12, "log2E_Q": -164.29, "secs": 24.0}
 {"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 100, "e": 99, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.3}
 {"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 134, "e": 101, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 116, "e": 91, "verdict": "passes Q-level", "q_solutions": 4, "log2E_Q": -176.61, "secs": 14.4}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 100, "e": 99, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.9}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 134, "e": 101, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 100, "e": 99, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 134, "e": 101, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 108, "e": 83, "verdict": "passes Q-level", "q_solutions": 4, "log2E_Q": -73.57, "secs": 9.6}
+{"n": 643, "Pmods": [2, 64], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 146, "e": 99, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.7}
