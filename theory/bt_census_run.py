@@ -175,12 +175,14 @@ def main():
     a = ap.parse_args()
     pi, pw = map(int, a.part.split('/'))
     done = set()
-    if os.path.exists(a.out):
-        for line in open(a.out):
-            try:
-                done.add(json.loads(line)['key'])
-            except Exception:
-                pass
+    import glob as _glob
+    for fn in set([a.out] + _glob.glob(os.path.join(os.path.dirname(a.out) or '.', 'k4_P4_w*.jsonl'))):
+        if os.path.exists(fn):
+            for line in open(fn):
+                try:
+                    done.add(json.loads(line)['key'])
+                except Exception:
+                    pass
     k = 0
     for n in map(int, a.ns.split(',')):
         recs = list(structures(n, a.rmin, a.rmax))

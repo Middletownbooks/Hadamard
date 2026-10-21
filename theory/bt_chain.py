@@ -665,47 +665,40 @@ def q_level_list_two_step(st, qQ, i, row, chars, cvals=None, maxlen=2 * 10 ** 6)
     Dsq = sum(tg[k] for k in tight) / q
     cv = coord_values(qQ, i) if cvals is None else cvals
     sz = qQ.bsize[i]
-    # reduced coordinate U -> its points; each S-orbit U lies inside one coarse coset only if S preserves the
-    # coarse cosets setwise per orbit; group coordinates by the coarse coset of their representative points
+    # group the fine coordinates (S-orbits U on Q) by the S-orbit of their coarse cosets ("coarse orbits"); every U
+    # meets each coset of its coarse orbit in |U| / |O_c| points (S-invariance), so the coarse value per coset is
+    # w = sum_U (|U| / |O_c|) z_U and the deviation energy of the group is sum_U |U| (z_U - w / m0)^2
     pts = [np.flatnonzero(qQ.borb[i] == U) for U in range(len(sz))]
-    ccU = []
-    for U in range(len(sz)):
-        cs = set(cc[pts[U]].tolist())
-        ccU.append(cs)
-    if any(len(c) > 1 for c in ccU):
-        return q_level_list(qQ, i, row, chars, cvals)       # S mixes coarse cosets: fall back
-    ccU = [next(iter(c)) for c in ccU]
+    cos_of = [sorted(set(cc[pts[U]].tolist())) for U in range(len(sz))]
+    # union-find coarse cosets that share a fine orbit
+    parent = list(range(nc))
+    def fd(a):
+        while parent[a] != a:
+            parent[a] = parent[parent[a]]; a = parent[a]
+        return a
+    for cs in cos_of:
+        for c2 in cs[1:]:
+            ra, rb = fd(cs[0]), fd(c2)
+            if ra != rb: parent[rb] = ra
+    groups = {}
+    for c in range(nc):
+        groups.setdefault(fd(c), []).append(c)
+    gl = list(groups.values())
     m0 = len(Q0)
     out_Y, out_C = [], []
-    # per coarse coset: enumerate fine combos (coordinates in that coset) with deviation energy <= Dsq,
-    # grouped by coset sum
-    per = []
-    for c in range(nc):
-        idx = [U for U in range(len(sz)) if ccU[U] == c]
-        combos = {}
-        def rec(j, vals, cnt):
-            if j == len(idx):
-                s = sum(sz[idx[k]] * vals[k] for k in range(len(idx)))
-                mean = s / m0
-                dev = sum(sz[idx[k]] * (vals[k] - mean) ** 2 for k in range(len(idx)))
-                if dev <= Dsq + 1e-9:
-                    combos.setdefault(s, []).append((tuple(vals), cnt, dev))
-                return
-            for v in sorted(cv[idx[j]]):
-                rec(j + 1, vals + [v], cnt * cv[idx[j]][v])
-        # prune the per-coordinate values: |v - mean| <= sqrt(Dsq) for every point, mean unknown -> use spread
-        if len(idx) == 0:
-            per.append((idx, {0: [((), 1.0, 0.0)]})); continue
-        # restrict each coordinate to values within sqrt(Dsq) * 2 of each other via the joint recursion with pruning
+    per = []                                                  # per coarse orbit: (fine coords, {row contribution: [...]})
+    for cos_list in gl:
+        oc = len(cos_list)
+        idx = [U for U in range(len(sz)) if cos_of[U][0] in cos_list]
         vals_sorted = [np.array(sorted(cv[U])) for U in idx]
         res = {}
         def rec2(j, vals, cnt):
             if j == len(idx):
-                s = sum(sz[idx[k]] * vals[k] for k in range(len(idx)))
-                mean = s / m0
-                dev = sum(sz[idx[k]] * (vals[k] - mean) ** 2 for k in range(len(idx)))
+                tot = sum(sz[idx[k]] * vals[k] for k in range(len(idx)))   # row contribution of the group
+                w = tot / oc
+                dev = sum(sz[idx[k]] * (vals[k] - w / m0) ** 2 for k in range(len(idx)))
                 if dev <= Dsq + 1e-9:
-                    res.setdefault(s, []).append((tuple(vals), cnt, dev))
+                    res.setdefault(int(tot), []).append((tuple(vals), cnt, dev))
                 return
             lo_ = min(vals) if vals else None; hi_ = max(vals) if vals else None
             for v in vals_sorted[j]:
@@ -714,23 +707,37 @@ def q_level_list_two_step(st, qQ, i, row, chars, cvals=None, maxlen=2 * 10 ** 6)
                 rec2(j + 1, vals + [int(v)], cnt * cv[idx[j]][int(v)])
         rec2(0, [], 1.0)
         per.append((idx, res))
-    # combine coarse cosets: row sum and total deviation <= Dsq
+    nc = len(per)
+    # combine coarse cosets: row sum and total deviation <= Dsq (pruned merge, lists sorted by deviation)
     keys = [sorted(p[1].keys()) for p in per]
-    for ws in itertools.product(*keys):
-        if sum(ws) != row:
-            continue
-        lists = [per[c][1][ws[c]] for c in range(nc)]
-        for combo in itertools.product(*lists):
-            if sum(x[2] for x in combo) > Dsq + 1e-9:
-                continue
-            y = np.zeros(len(sz), np.int64); cnt = 1.0
-            for c in range(nc):
-                for k, U in enumerate(per[c][0]):
-                    y[U] = combo[c][0][k]
-                cnt *= combo[c][1]
+    for c in range(nc):
+        for k in per[c][1]:
+            per[c][1][k].sort(key=lambda t: t[2])
+    mins = [{k: per[c][1][k][0][2] for k in per[c][1]} for c in range(nc)]
+    def rec3(c, wsum, partial, cnt, dev):
+        if c == nc:
+            if wsum != row:
+                return
+            y = np.zeros(len(sz), np.int64)
+            for cc_, combo in enumerate(partial):
+                for k, U in enumerate(per[cc_][0]):
+                    y[U] = combo[k]
             out_Y.append(y); out_C.append(cnt)
             if len(out_Y) > maxlen:
                 raise MemoryError("two-step Q-level list too large")
+            return
+        rest_min = 0.0
+        for k in keys[c]:
+            if c == nc - 1 and wsum + k != row:
+                continue
+            base = mins[c][k]
+            if dev + base > Dsq + 1e-9:
+                continue
+            for vals, ct, dv in per[c][1][k]:
+                if dev + dv > Dsq + 1e-9:
+                    break
+                rec3(c + 1, wsum + k, partial + [vals], cnt * ct, dev + dv)
+    rec3(0, 0, [], 1.0, 0.0)
     if not out_Y:
         return np.zeros((0, len(sz)), np.int64), np.zeros(0)
     Y = np.array(out_Y); Cn = np.array(out_C)
