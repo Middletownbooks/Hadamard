@@ -1,9 +1,9 @@
 #!/bin/bash
-# Heartbeat for the b3-push session (run under the Monitor tool): one status line every INT seconds (default 480),
-# plus an immediate line when the set of running theory/bt_* workers changes (a job finished, died or started).
-# Keeps the session active so the container is not reclaimed for inactivity while workers run.
+# Heartbeat for the b3-push session (run under the Monitor tool): one status line every INT seconds (default 1500),
+# plus an immediate line when a theory/bt_* worker ends (a job finished or died).  Every line wakes the session and
+# costs usage, so the interval is long and worker starts are not reported.
 # usage: bash logs/bt/heartbeat.sh [INT]
-INT=${1:-480}
+INT=${1:-1500}
 cd /home/user/Hadamard || exit 1
 workers() {
   # the bracket keeps this script's own command line from matching
@@ -17,8 +17,7 @@ while true; do
   now=$(date +%s)
   if [ "$cur" != "$prev" ]; then
     gone=$(comm -23 <(echo "$prev") <(echo "$cur") | tr '\n' ' ')
-    new=$(comm -13 <(echo "$prev") <(echo "$cur") | tr '\n' ' ')
-    echo "CHANGE $(date -u +%H:%M) ended: ${gone:-none} | started: ${new:-none} | running: $(echo "$cur" | grep -c .)"
+    [ -n "$gone" ] && echo "ENDED $(date -u +%H:%M) ${gone} | running: $(echo "$cur" | grep -c .)"
     prev=$cur
   fi
   if [ $((now - last)) -ge "$INT" ]; then

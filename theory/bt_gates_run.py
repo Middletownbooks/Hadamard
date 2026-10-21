@@ -49,13 +49,15 @@ def main():
             d = json.loads(x)
             if d.get('verdict', '').startswith('no core'):
                 decided.add(d['key'])
-    done = set()
+    done = set(); old_done = set()
     if os.path.exists(a.out):
         for x in open(a.out):
             d = json.loads(x)
             if d.get('verdict', '').startswith('capped'):
                 continue                                        # retried (the caps may have changed)
             done.add((d['key'], d.get('Nkey') or d['N']))
+            if not d.get('Nkey'):
+                old_done.add((d['key'], d['N']))           # recorded before subgroup keys: valid if N is unique
             if d.get('verdict', '').startswith('no core'):
                 decided.add(d['key'])
     jobs = []
@@ -71,6 +73,8 @@ def main():
         rec = recs[key]
         st = C2.build(rec) if 'fam' in rec else R.build(rec)
         cands = [N for N in st.invariant_subgroups() if len(N) == Nsz and np.isin(N, st.Kel).all()]
+        if (key, Nsz) in old_done and len(cands) == 1:
+            continue
         NA = next((N for N in cands if CO.nkey(N) == nk), cands[0]) if nk else cands[0]
         t = time.time()
         try:
