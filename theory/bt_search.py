@@ -34,8 +34,9 @@ def pick_subgroup(st, size, inside=None):
 
 
 class Run:
-    def __init__(self, spec, outdir, worker=0, workers=1, seed=1):
+    def __init__(self, spec, outdir, worker=0, workers=1, seed=1, border=True):
         self.spec = spec
+        self.border = border
         self.st = st = build_spec(spec)
         self.out = outdir
         os.makedirs(outdir, exist_ok=True)
@@ -123,7 +124,7 @@ class Run:
             assert st.check_core(xs)
             rec = dict(item=item, eps=[EPS[i][f[i]].astype(int).tolist() for i in range(4)],
                        rows=[int(x.sum()) for x in xs])
-            r = BB.solve_border(st, xs)
+            r = BB.solve_border(st, xs) if self.border else None
             if r is not None:
                 X, Rh, Ch, k = r
                 H = BB.assemble(st, xs, X, Rh, Ch)

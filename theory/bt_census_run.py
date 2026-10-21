@@ -112,6 +112,11 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1):
         out['verdict'] = 'no core [P] (coset-Parseval)'
         out['secs'] = round(time.time() - t0, 1)
         return out
+    import bt_census2 as C2
+    if len(st.Kel) > 1 and C2.alpha_trivial_on_K(st):
+        out['verdict'] = 'no core [P] (Theorem alpha)'
+        out['secs'] = round(time.time() - t0, 1)
+        return out
     g = BG.Gates(st)
     try:
         qs = g.q_level()

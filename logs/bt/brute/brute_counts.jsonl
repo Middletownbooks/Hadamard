@@ -1,0 +1,5 @@
+{"case": "n=7 G=Z2^2 K=0 S=1", "spec": {"mods":[2,2],"Kgens":[],"gens":[[[1,0],[0,1]]]}, "cores_ordered": 4096, "naive_enumeration": 4096}
+{"case": "n=15 G=Z2^2xZ3 K=Z3 S=1", "spec": {"mods":[2,2,3],"Kgens":[[0,0,1]],"gens":[[[1,0,0],[0,1,0],[0,0,1]]]}, "cores_ordered": 5008490496, "log2": 32.22, "log2E_Q": 32.45, "log2E_whole": 30.39}
+{"case": "n=19 G=Z4^2 K=2Z4^2 (non-split) S=1", "spec": {"mods":[4,4],"Kgens":[[2,0],[0,2]],"gens":[[[1,0],[0,1]]]}, "cores_ordered": 1636650975232, "log2": 40.57, "log2E_Q": 40.9, "log2E_whole": 39.94}
+{"case": "n=23 G=Z2^2xZ5 K=Z5 S=<alpha>", "spec": {"mods":[2,2,5],"Kgens":[[0,0,1]],"gens":[[[0,1,0],[1,1,0],[0,0,1]]]}, "cores_ordered": 0, "log2E_Q": 12.27, "note": "Theorem alpha"}
+{"case": "n=63 G=Z2^2xZ3xZ5 K=Z15 S=<(alpha,1,x4)> (calib key 58ae2ebe071bc5a4)", "cores_ordered": 0, "log2E_Q": 4.92, "log2E_A": 12.04, "chain": 0, "note": "Theorem alpha (sigma^4 = (alpha,1,1))"}
