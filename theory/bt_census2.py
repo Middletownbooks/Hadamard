@@ -112,7 +112,7 @@ def odd_options_q(o, q3, maxgl=5):
     return out
 
 
-def structures(n, fam, rmin, rmax):
+def structures(n, fam, rmin, rmax, cap=2 ** 20):
     F = FAMS[fam]
     t, q2, q3 = F['t'], F['q2'], F['q3']
     m = n - t
@@ -123,7 +123,7 @@ def structures(n, fam, rmin, rmax):
         o //= 2; a += 1
     if o % q3:
         return
-    for popt in two_options_q(a, q2):
+    for popt in two_options_q(a, q2, cap=cap):
         P = popt['P']
         for omods, gl, KOgens in odd_options_q(o, q3):
             O = BC.OddPart(omods, gl)
@@ -284,6 +284,7 @@ def main():
     ap.add_argument('--rmin', type=int, default=8); ap.add_argument('--rmax', type=int, default=140)
     ap.add_argument('--N', type=int, default=1200); ap.add_argument('--part', default='0/1')
     ap.add_argument('--list-only', action='store_true')
+    ap.add_argument('--cap', type=float, default=2 ** 20, help='largest endomorphism count of the 2-part')
     a = ap.parse_args()
     pi, pw = map(int, a.part.split('/'))
     done = set()
@@ -295,7 +296,7 @@ def main():
     for n in map(int, a.ns.split(',')):
         t0 = time.time()
         try:
-            recs = list(structures(n, a.fam, a.rmin, a.rmax))
+            recs = list(structures(n, a.fam, a.rmin, a.rmax, cap=int(a.cap)))
         except MemoryError as e:
             print(f'n = {n}: enumeration cap ({e})', flush=True); continue
         print(f'n = {n} fam {a.fam}: {len(recs)} structures ({time.time() - t0:.1f}s)', flush=True)

@@ -1262,3 +1262,6 @@ closure tier 1 done
 {"n": 739, "fam": "k4", "order": 22, "r": 72, "log2E_Q": -127.35, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.9}
 {"n": 739, "fam": "k4", "order": 11, "r": 96, "log2E_Q": -55.39, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 71.5}
 {"n": 739, "fam": "k4", "order": 11, "r": 96, "log2E_Q": -55.21, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 66.6}
+{"n": 739, "fam": "k4", "order": 11, "r": 96, "log2E_Q": -66.24, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 69.0}
+{"n": 739, "fam": "k4", "order": 8, "r": 118, "log2E_Q": -157.39, "N": 92, "verdict": "passes", "solutions_weighted": 2880, "secs": 0.3}
+{"n": 739, "fam": "k4", "order": 8, "r": 118, "log2E_Q": -157.39, "N": 46, "verdict": "passes", "solutions_weighted": 1624320, "secs": 0.7}

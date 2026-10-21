@@ -1,0 +1,11 @@
+n = 599 fam k4one: 12 structures (1.2s)
+{"n": 599, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [4], "Omods": [149], "order": 74, "r": 12, "e": 8, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.5}
+{"n": 599, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [4], "Omods": [149], "order": 74, "r": 15, "e": 8, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 0.8}
+{"n": 599, "fam": "k4one", "T": "Z2^2:1+all-but-149", "Pmods": [2, 2], "Omods": [149], "order": 37, "r": 20, "e": 11, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.8}
+{"n": 599, "fam": "k4one", "T": "Z2^2:1+all-but-298", "Pmods": [2, 2], "Omods": [149], "order": 74, "r": 12, "e": 11, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.0}
+{"n": 599, "fam": "k4one", "T": "Z2^2:1+all-but-298", "Pmods": [2, 2], "Omods": [149], "order": 74, "r": 15, "e": 8, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.0}
+{"n": 599, "fam": "k4one", "T": "Z2^2:1+all-but-447", "Pmods": [2, 2], "Omods": [149], "order": 74, "r": 12, "e": 11, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.7}
+n = 719 fam k4one: 4 structures (2.6s)
+{"n": 719, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [4], "Omods": [179], "order": 89, "r": 12, "e": 6, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.0}
+{"n": 719, "fam": "k4one", "T": "Z2^2:1+all-but-358", "Pmods": [2, 2], "Omods": [179], "order": 89, "r": 12, "e": 7, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.4}
+n = 751 fam k4one: 204 structures (2.8s)

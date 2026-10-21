@@ -39,7 +39,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - k4 at every n ≡ 3 (mod 4). 643 and 739 are covered for the 2-parts with few automorphisms (≤ 4096 and ≤ 1024
      endomorphisms; the larger ones are still running).
    - k6 at 599, 719, 839, 863, 947 and 971.
-   - k8 at 599, 719, 751, 839 and 863 (839 still running).
+   - k8 at 599, 719, 751 and 863; at 839 for the 2-parts with at most 16,384 endomorphisms (running; the full enumeration of S over the 2-groups of order 64 did not finish in 8 hours).
    - The ℤ₃ and product families at 669.
    - Split structures of the 1916 shape (§4).
    - Each structure has its exact gate status, a Q-level stratified count read at the true target, and the cost of
