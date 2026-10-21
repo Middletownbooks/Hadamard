@@ -469,3 +469,4 @@ n = 955: 1321 structures with 8 <= r <= 160
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 32, "r": 53, "e": 43, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 5.7}
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 24, "r": 67, "e": 57, "verdict": "passes Q-level", "q_solutions": 3, "log2E_Q": -294.11, "secs": 36.3}
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 8, "r": 143, "e": 115, "verdict": "passes Q-level", "q_solutions": 3, "log2E_Q": -94.34, "secs": 30.8}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 12, "r": 123, "e": 97, "verdict": "passes Q-level", "q_solutions": 3, "log2E_Q": -487.24, "secs": 26.5}
