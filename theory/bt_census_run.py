@@ -48,12 +48,12 @@ def two_options(a, cap=2 ** 20):
     return out
 
 
-def structures(n, rmin, rmax, t=3):
+def structures(n, rmin, rmax, t=3, cap=2 ** 20):
     m = n - t
     a = 0
     while m % 2 == 0:
         m //= 2; a += 1
-    for opt in two_options(a):
+    for opt in two_options(a, cap=cap):
         P = opt['P']
         for omods, gl in odd_options(m):
             O = BC.OddPart(omods, gl)
@@ -177,6 +177,7 @@ def main():
     ap.add_argument('--N', type=int, default=1500)
     ap.add_argument('--part', default='0/1')
     ap.add_argument('--list-only', action='store_true')
+    ap.add_argument('--cap', type=float, default=2 ** 20, help='largest endomorphism count of the 2-part')
     a = ap.parse_args()
     pi, pw = map(int, a.part.split('/'))
     done = set()
@@ -190,7 +191,7 @@ def main():
                     pass
     k = 0
     for n in map(int, a.ns.split(',')):
-        recs = list(structures(n, a.rmin, a.rmax))
+        recs = list(structures(n, a.rmin, a.rmax, cap=int(a.cap)))
         print(f'n = {n}: {len(recs)} structures with {a.rmin} <= r <= {a.rmax}', flush=True)
         if a.list_only:
             continue

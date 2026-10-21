@@ -231,16 +231,18 @@ def fill(D, top):
               'RICH-TABLE': table_rich(D), 'CLOSED-FAMILIES': closed_families(D), 'SCREEN-COUNTS': screen_counts(D),
               'BORDER-COUNTS': border_counts(D), 'CALIB-TABLE': calib, 'ALPHA-COUNTS': str(alpha_n),
               'RIGID-COUNTS': f'{rigid_n} structures killed'}
+    inline = {'ALPHA-COUNTS', 'RIGID-COUNTS', 'BORDER-COUNTS'}
     for name, text in blocks.items():
         a, b = f'<!-- {name} -->', f'<!-- /{name} -->'
         if a not in s:
             continue
+        sep = '' if name in inline else '\n'
         i = s.index(a)
         if b in s:
             j = s.index(b) + len(b)
-            s = s[:i] + a + '\n' + text + '\n' + b + s[j:]
+            s = s[:i] + a + sep + text + sep + b + s[j:]
         else:
-            s = s[:i] + a + '\n' + text + '\n' + b + s[i + len(a):]
+            s = s[:i] + a + sep + text + sep + b + s[i + len(a):]
     open(p, 'w').write(s)
 
 

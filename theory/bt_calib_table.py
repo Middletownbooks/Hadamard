@@ -10,8 +10,11 @@ import sys, os, json, math, collections
 f = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'logs', 'bt',
                                                        'calib', 'calib_small.jsonl')
 rows = [json.loads(x) for x in open(f)]
+n7 = [d for d in rows if d['n'] == 7]
+rows = [d for d in rows if d['n'] != 7]          # n = 7: K = 0, so G = Q and the Q-level count is the exact count
 killed = [d for d in rows if not d['verdict'].startswith('passes')]
 bad = [d for d in killed if d['N_exact']]
+print(f"(n = 7 left out: K = 0 there, so the Q-level solutions are the cores and E_Q is exact; {len(n7)} structures.)")
 print(f"structures: {len(rows)} at orders {sorted(set(d['n'] for d in rows))}; killed by the gates: {len(killed)} "
       f"(coset-Parseval {sum('coset' in d['verdict'] for d in killed)}, Theorem alpha "
       f"{sum('alpha' in d['verdict'] for d in killed)}, Q-level {sum('Q-level' in d['verdict'] for d in killed)}); "

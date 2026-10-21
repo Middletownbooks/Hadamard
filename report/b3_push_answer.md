@@ -96,9 +96,9 @@ log2 E_Q = 4.9, log2 E_A = 12.0; the exhaustive chain also gives 0). With K = 0 
 must: α-invariant cores exist there.
 
 *Use.* The k = 4 census (`theory/bt_census_run.py`, until this session) did not apply it; the post-screen
-`theory/bt_thm_alpha.py` removes <!-- ALPHA-COUNTS --> survivors, all with log2 E_Q ≤ −26. `theory/bt_census2.py`
-applied it from the start (verdict "order-3 element of S trivial on K"). It is the precise form of the "α coupled
-only with a trivial action on K" kills recorded in the earlier sessions.
+`theory/bt_thm_alpha.py` removes <!-- ALPHA-COUNTS -->102<!-- /ALPHA-COUNTS --> survivors, all with log2 E_Q ≤ −26 (the Q-level
+conditioning already saw most of the rigidity). `theory/bt_census2.py` applied the same screen from the start
+(verdict "order-3 element of S trivial on K"); this section supplies its proof.
 
 ### 3.2 Lemma R (rigidity)
 
@@ -112,7 +112,7 @@ PAF(ν₀) = Σ_m [(|N| − 2)c_m² + 2c_m d_m] ≥ (|N| − 4)|M| > 0.
 But Σᵢ PAFᵢ(ν₀) = −4t. ∎
 
 Transitivity on N \ 0 forces N to be elementary abelian: ℤ_p with a primitive multiplier, or ℤ₁₁² with a Singer
-cycle at 971. `theory/bt_thm_rigid.py` screens every survivor (<!-- RIGID-COUNTS -->). Brute-force control: ℤ₂² × ℤ₅
+cycle at 971. `theory/bt_thm_rigid.py` screens every survivor (<!-- RIGID-COUNTS -->92 structures killed<!-- /RIGID-COUNTS -->). Brute-force control: ℤ₂² × ℤ₅
 with S = ⟨(1, ×2)⟩ has 0 cores.
 
 ### 3.3 Coset-Parseval adapted to T
@@ -159,6 +159,22 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 ### 4.1 Status of every structure, per order and family
 
 <!-- CENSUS-TABLE -->
+| n | family | structures | [P] coset-Parseval | [P] Theorem α | [P] Lemma R | prefilter only (4r − 6.5e < −45) | [M] Q-level empty | [M] deeper level / chain empty | alive | alive with log2 E_Q ≥ 0 | best alive: S, r, e, log2 E_Q |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 669 | prod12 | 110 | 0 | 0 | 0 | 26 | 66 | 0 | 10 | 0 | S20, 57, 32, -14.28 |
+| 669 | z3all | 239 | 75 | 0 | 0 | 0 | 0 | 19 | 145 | 6 | S9, 90, 45, 73.14 |
+| 719 | k8 | 142 | 38 | 0 | 0 | 0 | 103 | 0 | 1 | 0 | S14, 90, 89, −∞ |
+| 751 | k4 | 32 | 0 | 0 | 0 | 0 | 4 | 0 | 28 | 4 | S8, 121, 63, 73.45 |
+| 751 | k8 | 441 | 134 | 0 | 0 | 0 | 272 | 0 | 35 | 7 | S10, 105, 54, 66.19 |
+| 839 | k4 | 232 | 0 | 52 | 13 | 0 | 89 | 6 | 72 | 9 | S6, 156, 83, 165.86 |
+| 839 | k4split | 9 | 0 | 5 | 1 | 2 | 0 | 0 | 1 | 0 | S90, 16/30/30/16, 15, -16.41 |
+| 859 | k4 | 81 | 39 | 0 | 0 | 0 | 42 | 0 | 0 | 0 | — |
+| 863 | k4 | 246 | 0 | 44 | 14 | 0 | 134 | 1 | 53 | 12 | S7, 140, 71, 136.89 |
+| 863 | k8 | 33 | 5 | 0 | 0 | 0 | 27 | 0 | 1 | 0 | S14, 108, 107, −∞ |
+| 907 | k4 | 384 | 175 | 0 | 0 | 0 | 206 | 3 | 0 | 0 | — |
+| 955 | k4 | 1010 | 295 | 6 | 50 | 0 | 152 | 0 | 507 | 62 | S8, 147, 76, 103.58 |
+| 971 | k4 | 588 | 156 | 0 | 0 | 232 | 146 | 0 | 54 | 24 | S10, 106, 56, 98.7 |
+<!-- /CENSUS-TABLE -->
 
 "alive" means the structure passed every gate run on it. It is not a claim that cores exist: §6 shows that zero
 counts are common among alive structures with E_Q below about 2^30.
@@ -166,6 +182,36 @@ counts are common among alive structures with E_Q below about 2^30.
 ### 4.2 The best alive structures
 
 <!-- TOP-TABLE -->
+| n | family | G = P × O | S order | r | e | log2 E_Q | exact levels passed (N: weighted solutions) | cheapest unrun level (log2 pairs) | border (classes with a border) |
+|---|---|---|---|---|---|---|---|---|---|
+| 669 | prod12 | [2, 2] × [3, 5, 11] | 20 | 57 | 32 | -14.28 | — | N11: 40.1 | — |
+| 669 | prod12 | [2, 2] × [3, 5, 11] | 10 | 93 | 54 | -17.79 | — | N5: 56.9 | — |
+| 669 | prod12 | [2, 2] × [3, 5, 11] | 20 | 55 | 34 | -31.2 | — | N11: 34.8 | — |
+| 669 | z3all | [2] × [3, 3, 37] | 9 | 90 | 45 | 73.14 | N111: 151104 | N6: 52.9 | 1/1 |
+| 669 | z3all | [2] × [9, 37] | 9 | 90 | 45 | 73.12 | N111: 151104 | N6: 52.9 | 1/1 |
+| 669 | z3all | [2] × [9, 37] | 12 | 72 | 39 | 32.17 | — | N6: 37.0 | 1/1 |
+| 719 | k8 | [2, 2, 2] × [89] | 14 | 90 | 89 | −∞ | — | — | — |
+| 751 | k4 | [4] × [11, 17] | 8 | 121 | 63 | 73.45 | — | — | — |
+| 751 | k4 | [4] × [11, 17] | 8 | 112 | 63 | 48.86 | — | — | — |
+| 751 | k4 | [4] × [11, 17] | 8 | 132 | 68 | 41.34 | — | — | — |
+| 751 | k8 | [8] × [3, 31] | 10 | 105 | 54 | 66.19 | — | N31: 68.8 | not checked (k = 8) |
+| 751 | k8 | [8] × [3, 31] | 10 | 105 | 53 | 61.06 | — | N31: 68.8 | not checked (k = 8) |
+| 751 | k8 | [8] × [3, 31] | 10 | 91 | 48 | 48.64 | — | N31: 51.2 | not checked (k = 8) |
+| 839 | k4 | [2, 2] × [11, 19] | 6 | 156 | 83 | 165.86 | — | N19: 78.4 | 20/20 |
+| 839 | k4 | [2, 2] × [11, 19] | 6 | 154 | 83 | 157.24 | — | N11: 81.0 | 20/20 |
+| 839 | k4 | [2, 2] × [11, 19] | 9 | 110 | 55 | 105.13 | — | N11: 51.5 | 20/20 |
+| 839 | k4split | [2, 2] × [11, 19] | 90 | 16/30/30/16 | 15 | -16.41 | — | — | — |
+| 863 | k4 | [2, 2] × [5, 43] | 7 | 140 | 71 | 136.89 | — | N5: 106.7 | 9/9 |
+| 863 | k4 | [2, 2] × [5, 43] | 6 | 155 | 85 | 135.2 | — | N43: 98.0 | 21/21 |
+| 863 | k4 | [4] × [5, 43] | 7 | 140 | 70 | 133.35 | — | N5: 106.7 | 9/9 |
+| 863 | k8 | [2, 2, 2] × [107] | 14 | 108 | 107 | −∞ | — | — | — |
+| 955 | k4 | [8] × [7, 17] | 8 | 147 | 76 | 103.58 | N119: 54872832 | N14: 50.2 | 15/15 |
+| 955 | k4 | [2, 4] × [7, 17] | 8 | 140 | 75 | 101.0 | N119: 2211840 | N14: 48.1 | 3/3 |
+| 955 | k4 | [8] × [7, 17] | 8 | 147 | 77 | 96.99 | N119: 1104150528 | N14: 50.2 | 15/15 |
+| 971 | k4 | [2, 4] × [11, 11] | 10 | 106 | 56 | 98.7 | — | — | — |
+| 971 | k4 | [2, 4] × [11, 11] | 10 | 106 | 56 | 98.35 | — | — | — |
+| 971 | k4 | [2, 4] × [11, 11] | 10 | 106 | 56 | 98.21 | — | — | — |
+<!-- /TOP-TABLE -->
 
 ### 4.3 Notes per order
 
@@ -186,6 +232,11 @@ The prefilter of `bt_census2.py` (4r − 6.5e < −45, an estimate) is undone by
 exact gates on every skipped structure.
 
 <!-- CLOSED-FAMILIES -->
+- **719, k8: effectively closed.** 1 of 142 structures pass the gates run, all with log2 E_Q < −20 (best −∞).
+- **859, k4: closed [P, M].** All 81 structures are dead: 39 coset-Parseval, 0 Theorem α, 0 Lemma R, 42 Q-level, 0 deeper level.
+- **863, k8: effectively closed.** 1 of 33 structures pass the gates run, all with log2 E_Q < −20 (best −∞).
+- **907, k4: closed [P, M].** All 384 structures are dead: 175 coset-Parseval, 0 Theorem α, 0 Lemma R, 206 Q-level, 3 deeper level.
+<!-- /CLOSED-FAMILIES -->
 
 ### 5.2 Rich structures killed by an exact gate
 
@@ -207,6 +258,8 @@ exact gates on every skipped structure.
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
+Over 3547 structures: coset-Parseval 917, Theorem α 107, Lemma R 78 (the screens [P]); Q-level empty 1241, deeper level or chain empty 29 [M]; prefilter only 260; alive 907.
+<!-- /SCREEN-COUNTS -->
 
 
 ---
@@ -232,29 +285,47 @@ two independent 64-bit hashes, which always agreed. The tables are made by `theo
 `logs/bt/calib/calib_small.jsonl`.
 
 <!-- CALIB-TABLE -->
+(n = 7 left out: K = 0 there, so the Q-level solutions are the cores and E_Q is exact; 6 structures.)
+structures: 561 at orders [11, 15, 19, 23, 27, 31]; killed by the gates: 466 (coset-Parseval 312, Theorem alpha 43, Q-level 111); killed but with cores: 0; hash disagreements: 0
+
+| log2 E_Q | structures passing the gates | with cores | log2 N − log2 E_Q (median; min, max) over those with cores |
+|---|---|---|---|
+| none (−∞) | 11 | 0 | — |
+| < 0 | 2 | 0 | — |
+| [0, 10) | 8 | 0 | — |
+| [10, 20) | 36 | 6 | -0.49; -0.80, +0.03 |
+| [20, 30) | 24 | 10 | -0.27; -3.29, +0.56 |
+| [30, 40) | 12 | 12 | -0.81; -3.90, -0.14 |
+| [40, 50) | 2 | 2 | -0.28; -0.35, -0.28 |
+
+S = 1 (no symmetry): n = 11 [8]x[]: log2 E_Q 21.76, log2 N 21.58, n = 11 [2, 4]x[]: log2 E_Q 22.25, log2 N 22.17, n = 11 [2, 4]x[]: log2 E_Q 20.42, log2 N 18.58, n = 11 [2, 2, 2]x[]: log2 E_Q 19.61, log2 N None, n = 15 [4]x[3]: log2 E_Q 31.6, log2 N 31.46, n = 15 [2, 2]x[3]: log2 E_Q 32.41, log2 N 32.22, n = 19 [16]x[]: log2 E_Q 39.94, log2 N 39.74, n = 19 [2, 8]x[]: log2 E_Q 40.97, log2 N 40.69, n = 19 [2, 8]x[]: log2 E_Q 38.38, log2 N 37.68, n = 19 [2, 8]x[]: log2 E_Q 38.32, log2 N 37.51, n = 19 [4, 4]x[]: log2 E_Q 38.37, log2 N 37.49, n = 19 [4, 4]x[]: log2 E_Q 40.92, log2 N 40.57, n = 19 [2, 2, 4]x[]: log2 E_Q 37.8, log2 N 36.3, n = 19 [2, 2, 4]x[]: log2 E_Q 37.79, log2 N 36.27, n = 19 [2, 2, 4]x[]: log2 E_Q 35.2, log2 N 33.3, n = 19 [2, 2, 2, 2]x[]: log2 E_Q 31.48, log2 N 27.58
+<!-- /CALIB-TABLE -->
 
 Reading:
 1. **The gates are sound.** No structure that coset-Parseval, Theorem α or the Q-level gate kills has a core.
 2. **When cores exist, E_Q is close.** Over the structures with cores, log2 N − log2 E_Q lies between −3.9 and
-   +0.6 bits, with median about −0.3, so E_Q slightly overestimates. With S = 1 the estimate is within 0.4 bits
-   for cyclic or mixed 2-parts. The largest gaps come from elementary abelian 2-parts: −3.9 bits for ℤ₂⁴ at
-   n = 19, and a zero for ℤ₂³ at n = 11.
+   +0.6 bits, with per-bin medians between −0.8 and −0.3, so E_Q slightly overestimates.
+   - With S = 1 the overestimate is 0.1–0.3 bits for cyclic 2-parts and the split ones at n = 15.
+   - It grows with the elementary abelian part of P: up to 1.9 bits for ℤ₂ × ℤ₂ × ℤ₄, and 3.9 bits for ℤ₂⁴
+     (n = 19).
+   - ℤ₂³ at n = 11 has no core at all, against E_Q = 2^19.6.
 3. **Zero counts are common below about 2^30.** Many structures with E_Q between 2^10 and 2^30 have no core at all.
    Above 2^30 every structure seen so far had cores. A positive E_Q is necessary, not sufficient: the zeros are
    arithmetic (the target is not reachable), which the Gaussian cannot see. The n = 63 cases of
-   `theory/bt_calib.py` (estimates 2^12.8–2^19.0, exhaustive chain 0, `logs/bt/calib/calib_k4.jsonl`) are the same
-   phenomenon; three of them are Theorem α, the others have no known reason.
+   `theory/bt_calib.py` (Q-level estimates 2^4.9–2^19.0, exhaustive chain 0, `logs/bt/calib/calib_k4.jsonl`) are the
+   same phenomenon. Three of them are Theorem α (with level-A estimates 2^12.0); the three with S of order 4 and
+   r = 19–20 have no known reason. One of the α cases was also confirmed by the brute-force counter.
 
 ### 6.2 At the known successes [M levels, E counts]
 
 | control | r, e | log2 E_Q | exact data |
 |---|---|---|---|
-| 3964 (Kumar) | 46, 23 | 30.0 | 2 Q-level solutions; 304 ℤ₁₉-level solutions; in the planted branch 160 ℤ₁₃ combinations, one of which holds 3 cores. Spread evenly, this gives about 2^25.7 ordered cores. |
+| 3964 (Kumar) | 46, 23 | 30.0 | 2 Q-level solutions (two sorted row patterns); 304 ℤ₁₉-level solutions; in the planted ℤ₁₉ solution 160 ℤ₁₃ combinations, of which the one run (the planted one) holds 3 cores. A crude extrapolation (3 per combination, every branch alike) gives 2^26–2^27 ordered cores. |
 | 2636 (Kumar) | 54, 27 | 53.1 | 4 Q-level solutions; 192 level-A solutions at Kumar's row pattern |
 | 2148 (Kumar) | 54, 27 | 62.1 | 27 Q-level solutions (one row pattern, (0, 2, 2, 2)); Kumar: 1 completion of 284,292 U-solutions, at his predicted rate |
 
-So the successes sit at r = 46–54 with E_Q = 2^30–2^62, and the 3964 estimate is within about 4 bits of the
-extrapolated count (the planted branch is not a random one).
+So the successes sit at r = 46–54 with E_Q = 2^30–2^62. The 3964 estimate is within 3–4 bits of the crude
+extrapolation, which comes from the planted branch and so is biased upward.
 
 ### 6.3 At the open orders [M]
 
@@ -284,7 +355,7 @@ used here only to rank structures that pass every affordable exact gate, never t
 - **Status [M]** (`theory/bt_border_census.py`, `logs/bt/border_census.jsonl`). A border depends only on the
   Q-compressions, so checking every Q-level class of a structure settles the border problem for every core it could
   have.
-  - The census covered the top 25 survivors per order and family by E_Q: <!-- BORDER-COUNTS -->.
+  - The census covered the top 25 survivors per order and family by E_Q: <!-- BORDER-COUNTS -->78 structures (669 z3all: 25, 839 k4: 11, 863 k4: 17, 955 k4: 25), 786 Q-level classes, 786 with a border<!-- /BORDER-COUNTS -->.
   - Every class has a border. This matches the earlier 2048 of 2048 at Q = ℤ₂²
     (`report/alpoge_design_answer.md` §3) and Kumar's 864 of 864 at Q = ℤ₃.
   - The controls 3964, 2636 and 2148 were bordered and assembled into Hadamard matrices (§1).
@@ -306,6 +377,29 @@ days, and 2^50 about 10⁴ years.
 ### 8.1 The hosts with the largest estimates
 
 <!-- RICH-TABLE -->
+| n | family | S, r, e | log2 E_Q | exact levels passed | capped levels | cheapest unrun level (log2 pairs) |
+|---|---|---|---|---|---|---|
+| 669 | z3all | S9, 90, 45 | 73.14 | N111: 151104 | N74, N37, N6, N3, N2 | N6: 52.9 |
+| 669 | z3all | S9, 90, 45 | 73.12 | N111: 151104 | N74, N37, N6, N3, N2 | N6: 52.9 |
+| 751 | k4 | S8, 121, 63 | 73.45 | — | — | — |
+| 751 | k4 | S8, 112, 63 | 48.86 | — | — | — |
+| 751 | k4 | S8, 132, 68 | 41.34 | — | — | — |
+| 751 | k8 | S10, 105, 54 | 66.19 | — | N31, N3 | N31: 68.8 |
+| 751 | k8 | S10, 105, 53 | 61.06 | — | N31, N3 | N31: 68.8 |
+| 751 | k8 | S10, 91, 48 | 48.64 | — | N31, N3 | N31: 51.2 |
+| 839 | k4 | S6, 156, 83 | 165.86 | — | N19, N11 | N19: 78.4 |
+| 839 | k4 | S6, 154, 83 | 157.24 | — | N19, N11 | N11: 81.0 |
+| 839 | k4 | S9, 110, 55 | 105.13 | — | N19, N11 | N11: 51.5 |
+| 863 | k4 | S7, 140, 71 | 136.89 | — | N43, N5 | N5: 106.7 |
+| 863 | k4 | S6, 155, 85 | 135.2 | — | N43, N5 | N43: 98.0 |
+| 863 | k4 | S7, 140, 70 | 133.35 | — | N43, N5 | N5: 106.7 |
+| 955 | k4 | S8, 147, 76 | 103.58 | N119: 54872832 | N34, N17, N14, N7, N2 | N14: 50.2 |
+| 955 | k4 | S8, 140, 75 | 101.0 | N119: 2211840 | N34, N17, N14, N7, N2 | N14: 48.1 |
+| 955 | k4 | S8, 147, 77 | 96.99 | N119: 1104150528 | N34, N17, N14, N7, N2 | N14: 50.2 |
+| 971 | k4 | S10, 106, 56 | 98.7 | — | — | — |
+| 971 | k4 | S10, 106, 56 | 98.35 | — | — | — |
+| 971 | k4 | S10, 106, 56 | 98.21 | — | — | — |
+<!-- /RICH-TABLE -->
 
 Every structure with E_Q ≥ 2^40 at an open order has r ≥ 77. Its cheapest unrun exact gate costs 2^50 pairs or more,
 or its last gate passed with so many solutions (5.5·10⁷ at 955, 2.5·10⁹ at 839) that the next level would have to
@@ -317,6 +411,22 @@ The three successes reproduced in §1 have r = 46–54 and E_Q = 2^30–2^62, an
 vectors (3964). At the open orders, the best live structures in and near that window are:
 
 <!-- WINDOW-TABLE -->
+| n | family | best alive with r ≤ 60: log2 E_Q (S, r) | best alive with r ≤ 80 | best alive overall |
+|---|---|---|---|---|
+| 669 | prod12 | -14.28 (S20, 57) | -14.28 (S20, 57) | -14.28 (S20, 57) |
+| 669 | z3all | 9.85 (S18, 54) | 32.17 (S12, 72) | 73.14 (S9, 90) |
+| 719 | k8 | — | — | — |
+| 751 | k4 | -15.38 (S20, 57) | -15.38 (S20, 57) | 73.45 (S8, 121) |
+| 751 | k8 | -571.37 (S42, 44) | -571.37 (S42, 44) | 66.19 (S10, 105) |
+| 839 | k4 | 11.17 (S18, 60) | 44.86 (S15, 78) | 165.86 (S6, 156) |
+| 839 | k4split | -16.41 (S90, 16/30/30/16) | -16.41 (S90, 16/30/30/16) | -16.41 (S90, 16/30/30/16) |
+| 859 | k4 | — | — | — |
+| 863 | k4 | — | 45.11 (S14, 77) | 136.89 (S7, 140) |
+| 863 | k8 | — | — | — |
+| 907 | k4 | — | — | — |
+| 955 | k4 | -10.95 (S24, 60) | -4.22 (S24, 63) | 103.58 (S8, 147) |
+| 971 | k4 | -71.88 (S50, 54) | -17.98 (S25, 72) | 98.7 (S10, 106) |
+<!-- /WINDOW-TABLE -->
 
 ### 8.3 The best candidate measured to the end of what the tools can do: 839, S15, r = 78
 
@@ -363,4 +473,42 @@ None of these was built here. §8.1 gives each host's measured gate status and n
 
 ## 9. Reproduce
 
-<!-- REPRODUCE -->
+Python 3 with numpy, numba, ortools. Kumar's repository is needed only for the controls; it is cloned read-only at
+`/home/user/vatskishan03/hadamard`.
+
+```
+# controls (section 1)
+python3 theory/bt_controls.py --kumar /home/user/vatskishan03/hadamard      # 3964, 1916, 2636 -> logs/bt/controls.log
+python3 theory/bt_control2148.py /home/user/vatskishan03/hadamard/hadamard/2148/certificate.json
+
+# census (section 4); every runner resumes from its output file
+python3 theory/bt_census_run.py logs/bt/census/k4_P4_w0.jsonl --ns 839,863,955 --rmin 8 --rmax 160   # k = 4
+python3 theory/bt_census2.py logs/bt/census2/k8_w0.jsonl --fam k8 --ns 751,719,863 --rmin 12 --rmax 110
+python3 theory/bt_census2.py logs/bt/census2/z3all_669.jsonl --fam z3all --ns 669
+python3 theory/bt_census2.py logs/bt/census2/prod12_669.jsonl --fam prod12 --ns 669 --rmin 12 --rmax 100
+sh logs/bt/census2/queue2.sh 0 1                                              # 971, 947, k6, k8 (599, 839), k4one
+python3 theory/bt_census_split.py logs/bt/census/split_k4.jsonl logs/bt/census/k4_P4_w0.jsonl --rmin 16 --rmax 50
+python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k8_w0.jsonl     # exact gates for prefiltered
+
+# screens [P] and deeper gates [M]
+python3 theory/bt_thm_alpha.py logs/bt/census/thm_alpha.jsonl CENSUS.jsonl[,...]
+python3 theory/bt_thm_rigid.py logs/bt/census/thm_rigid.jsonl CENSUS.jsonl[,...]
+python3 theory/bt_cost.py logs/bt/cost_next_gate.jsonl CENSUS.jsonl[,...] --top 25 --min-logE -10
+python3 theory/bt_gates_run.py logs/bt/cost_next_gate.jsonl logs/bt/gates_run.jsonl CENSUS.jsonl[,...] --cap 34
+python3 theory/bt_ladder.py CENSUS.jsonl logs/bt/ladder_run2.jsonl --maxlen 2e6
+python3 theory/bt_level1.py CENSUS.jsonl KEY --out logs/bt/level1_KEY.jsonl
+python3 theory/bt_decide.py CENSUS.jsonl logs/bt/decide --rmax 45
+python3 theory/bt_xcheck_level.py logs/bt/xcheck/x669_S9_N111.json        # independent CP-SAT
+
+# borders, calibration, local search
+python3 theory/bt_border_census.py logs/bt/border_census.jsonl CENSUS.jsonl[,...] --top 25 --min-logE -10
+python3 theory/bt_calib_small.py logs/bt/calib/calib_small.jsonl --ns 7,11,15,19,23,27,31 --rmax 18
+python3 theory/bt_brute_count.py RECORD.json                                # independent exact count
+python3 theory/bt_anneal.py logs/bt/anneal/ctrl3964 --control 3964 --hours 0.05
+
+# tables of this report
+python3 theory/bt_summary.py            # print
+python3 theory/bt_summary.py --fill     # rewrite the generated blocks of this file
+python3 theory/bt_calib_table.py
+```
+
