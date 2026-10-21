@@ -415,3 +415,5 @@
 {"n": 971, "fam": "k4", "order": 20, "r": 101, "e": 100, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
 {"n": 971, "fam": "k4", "order": 20, "r": 101, "e": 100, "verdict": "passes Q-level", "q_solutions": 24, "log2E_Q": -491.55, "secs": 17.5}
 {"n": 971, "fam": "k4", "order": 20, "r": 81, "e": 69, "verdict": "passes Q-level", "q_solutions": 3, "log2E_Q": null, "secs": 6.1}
+{"n": 971, "fam": "k4", "order": 20, "r": 81, "e": 69, "verdict": "passes Q-level", "q_solutions": 24, "log2E_Q": -1000.79, "secs": 14.8}
+{"n": 971, "fam": "k4", "order": 20, "r": 101, "e": 100, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
