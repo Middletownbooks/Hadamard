@@ -167,3 +167,4 @@ n = 669 fam prod12: 282 structures (0.7s)
 {"n": 669, "fam": "prod12", "T": "prod12", "Pmods": [2, 2], "Omods": [3, 5, 11], "order": 40, "r": 35, "e": 34, "verdict": "skipped (4r - 6.5e = -81.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
 {"n": 669, "fam": "prod12", "T": "prod12", "Pmods": [2, 2], "Omods": [3, 5, 11], "order": 40, "r": 42, "e": 27, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 3.8}
 {"n": 669, "fam": "prod12", "T": "prod12", "Pmods": [2, 2], "Omods": [3, 5, 11], "order": 120, "r": 24, "e": 15, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.4}
+{"n": 669, "fam": "prod12", "T": "prod12", "Pmods": [2, 2], "Omods": [3, 5, 11], "order": 60, "r": 36, "e": 19, "verdict": "passes Q-level", "q_solutions": 4806, "log2E_Q": -254.31, "log2E_whole": -342.43, "secs": 18.2}
