@@ -700,3 +700,4 @@
 {"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 30, "r": 56, "e": 31, "rule": 22.5, "verdict": "no core [P] (order-3 element of S trivial on K)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.4}
 {"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 30, "r": 72, "e": 47, "rule": -17.5, "verdict": "no core [P] (order-3 element of S trivial on K)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 1.9}
 {"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 30, "r": 72, "e": 47, "rule": -17.5, "verdict": "no core [P] (order-3 element of S trivial on K)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 1.7}
+{"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 10, "r": 112, "e": 63, "rule": 38.5, "verdict": "passes Q-level", "q_solutions": 64, "log2E_Q": 52.69, "log2E_whole": 68.24, "secs": 82.7}
