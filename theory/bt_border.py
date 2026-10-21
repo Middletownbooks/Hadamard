@@ -235,23 +235,31 @@ def frames_balanced(q, count=2000, seed=1):
 
 
 def admissible_balanced(Mc, Rh, t, q):
-    """S_R for block-balanced V_T: the eps with Mc Rh^T eps = 4t s, s in {+-1}^{4q} with every block summing to 0,
-    are eps = Rh Mc^T s / (4q) (Rh Mc^T Mc Rh^T = 4t 4q I); enumerate the balanced s (C(q, q/2)^4 of them, first
-    entry of the result normalised to +1)"""
+    """S_R for block-balanced V_T: the eps with Mc Rh^T eps = 4t s for some s in {+-1}^{4q} whose blocks sum to 0 are
+    eps = Rh Mc^T s / (4q), since Rh Mc^T Mc Rh^T = (4t)(4q) I.  Meet in the middle over the four blocks of s:
+    u = A_1 s_1 + A_2 s_2 and v = A_3 s_3 + A_4 s_4 (A_J = the block-J columns of Rh Mc^T), matched on the first
+    coordinate (normalised: u_1 + v_1 = 4q, i.e. eps_1 = +1), then checked on all coordinates (|u + v| = 4q)."""
     blk = np.array([v for v in itertools.product((1, -1), repeat=q) if sum(v) == 0], np.int64)
-    W = (Rh @ Mc.T).astype(np.float64)                           # 4t x 4q
-    out = []
+    W = (Rh @ Mc.T).astype(np.int64)                             # 4t x 4q
+    A = [W[:, J * q:(J + 1) * q] @ blk.T for J in range(4)]      # 4t x nb each
     nb = len(blk)
-    for a in range(nb):
-        for b in range(nb):
-            S2 = np.concatenate([np.repeat(blk[[a]], nb * nb, 0), np.repeat(blk[[b]], nb * nb, 0),
-                                 np.repeat(blk, nb, 0), np.tile(blk, (nb, 1))], 1)          # (nb^2) x 4q
-            E = (S2.astype(np.float64) @ W.T) / (4 * q)
-            ok = np.all(np.abs(np.abs(E) - 1) < 1e-9, axis=1)
-            if ok.any():
-                Ei = np.rint(E[ok]).astype(np.int64)
-                Ei = Ei * Ei[:, :1]
-                out.append(Ei)
+    U = (A[0][:, :, None] + A[1][:, None, :]).reshape(W.shape[0], nb * nb).T      # (nb^2) x 4t
+    V = (A[2][:, :, None] + A[3][:, None, :]).reshape(W.shape[0], nb * nb).T
+    target = 4 * q
+    order = np.argsort(V[:, 0], kind='stable')
+    Vs = V[order]; keys = Vs[:, 0]
+    out = []
+    uk, inv = np.unique(U[:, 0], return_inverse=True)
+    inv = inv.ravel()
+    for a, k in enumerate(uk):
+        lo, hi = np.searchsorted(keys, target - k, 'left'), np.searchsorted(keys, target - k, 'right')
+        if lo == hi:
+            continue
+        Ug = U[inv == a]; Vg = Vs[lo:hi]
+        S = Ug[:, None, :] + Vg[None, :, :]
+        ok = np.all(np.abs(S) == target, axis=2)
+        if ok.any():
+            out.append(S[ok] // target)
     if not out:
         return np.zeros((0, Rh.shape[0]), np.int64)
     return np.unique(np.concatenate(out), axis=0)
