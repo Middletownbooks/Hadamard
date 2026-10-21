@@ -1940,3 +1940,5 @@ n = 739: 2382 structures with 8 <= r <= 160
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 32, "e": 25, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 15.5}
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 32, "e": 25, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 13.1}
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 32, "e": 21, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 11.7}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 48, "e": 28, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 6.7}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 36, "e": 27, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 11.9}
