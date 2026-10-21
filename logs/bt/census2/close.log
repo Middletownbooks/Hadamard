@@ -1437,3 +1437,18 @@
 {"n": 863, "fam": "k6", "order": 24, "r": 60, "e": 47, "verdict": "passes Q-level", "q_solutions": 264, "log2E_Q": -695.33, "secs": 60.1}
 {"n": 863, "fam": "k6", "order": 12, "r": 96, "e": 95, "verdict": "passes Q-level", "q_solutions": 264, "log2E_Q": -187.29, "secs": 107.3}
 {"n": 863, "fam": "k6", "order": 24, "r": 58, "e": 57, "verdict": "passes Q-level", "q_solutions": 264, "log2E_Q": null, "secs": 65.4}
+{"n": 863, "fam": "k6", "order": 12, "r": 92, "e": 71, "verdict": "passes Q-level", "q_solutions": 264, "log2E_Q": -80.82, "secs": 57.0}
+{"n": 947, "fam": "k6", "order": 26, "r": 40, "e": 39, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.9}
+{"n": 947, "fam": "k6", "order": 52, "r": 28, "e": 27, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.4}
+{"n": 947, "fam": "k6", "order": 24, "r": 56, "e": 55, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.4}
+{"n": 971, "fam": "k6", "order": 12, "r": 120, "e": 119, "verdict": "passes Q-level", "q_solutions": 304, "log2E_Q": -430.58, "secs": 142.3}
+{"n": 971, "fam": "k6", "order": 44, "r": 44, "e": 43, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 4.3}
+{"n": 599, "fam": "k6", "order": 36, "r": 48, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.7}
+{"n": 599, "fam": "k6", "order": 12, "r": 96, "e": 95, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.6}
+{"n": 719, "fam": "k6", "order": 16, "r": 66, "e": 65, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": null, "secs": 30.6}
+{"n": 719, "fam": "k6", "order": 32, "r": 44, "e": 43, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.5}
+{"n": 719, "fam": "k6", "order": 24, "r": 50, "e": 49, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": -165.61, "secs": 26.6}
+{"n": 719, "fam": "k6", "order": 12, "r": 90, "e": 89, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": -306.52, "secs": 44.1}
+{"n": 719, "fam": "k6", "order": 12, "r": 104, "e": 103, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": null, "secs": 54.0}
+{"n": 719, "fam": "k6", "order": 48, "r": 28, "e": 27, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.4}
+{"n": 719, "fam": "k6", "order": 24, "r": 48, "e": 47, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": null, "secs": 24.3}
