@@ -23,12 +23,13 @@ def odd_options(o):
     return opts
 
 
-def two_options(a, cap=2 ** 20):
-    """2-groups of order 2^a whose endomorphisms can be enumerated, with their index-4 subgroups up to Aut(P)"""
+def two_options(a, cap=2 ** 20, min_cap=0):
+    """2-groups of order 2^a whose endomorphisms can be enumerated (min_cap < count <= cap), with their index-4
+    subgroups up to Aut(P)"""
     out = []
     for part in BC.partitions(a):
         P = BC.TwoGroup(part)
-        if P.n_endos() > cap:
+        if P.n_endos() > cap or P.n_endos() <= min_cap:
             continue
         mats, perms = P.automorphisms(cap)
         K2s = P.subgroups_of_index(4)
@@ -48,12 +49,12 @@ def two_options(a, cap=2 ** 20):
     return out
 
 
-def structures(n, rmin, rmax, t=3, cap=2 ** 20):
+def structures(n, rmin, rmax, t=3, cap=2 ** 20, min_cap=0):
     m = n - t
     a = 0
     while m % 2 == 0:
         m //= 2; a += 1
-    for opt in two_options(a, cap=cap):
+    for opt in two_options(a, cap=cap, min_cap=min_cap):
         P = opt['P']
         for omods, gl in odd_options(m):
             O = BC.OddPart(omods, gl)
@@ -178,6 +179,7 @@ def main():
     ap.add_argument('--part', default='0/1')
     ap.add_argument('--list-only', action='store_true')
     ap.add_argument('--cap', type=float, default=2 ** 20, help='largest endomorphism count of the 2-part')
+    ap.add_argument('--min-cap', type=float, default=0, help='only 2-parts with more endomorphisms than this')
     a = ap.parse_args()
     pi, pw = map(int, a.part.split('/'))
     done = set()
@@ -191,7 +193,7 @@ def main():
                     pass
     k = 0
     for n in map(int, a.ns.split(',')):
-        recs = list(structures(n, a.rmin, a.rmax, cap=int(a.cap)))
+        recs = list(structures(n, a.rmin, a.rmax, cap=int(a.cap), min_cap=int(a.min_cap)))
         print(f'n = {n}: {len(recs)} structures with {a.rmin} <= r <= {a.rmax}', flush=True)
         if a.list_only:
             continue

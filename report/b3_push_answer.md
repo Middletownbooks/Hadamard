@@ -196,6 +196,11 @@ N-cosets.
    - **971.** G = P × ℤ₁₁², with S inside a torus of GL(2, 11): split, Singer, or Z × U (`bt_census971.py`).
    - **k4split.** Split structures of the 1916 shape: S on blocks 1 and 4, S′ ≤ S of index 2 or 3 on blocks 2 and 3
      (`bt_census_split.py`).
+     - The bases are the k4 structures with 16 ≤ r ≤ 50 that the screens leave: 2 at 599, 52 at 751, 100 at 839, 118
+       at 863 and 232 at 955.
+     - The run is slow: the mixed-group estimate takes 20–45 minutes per structure. It covers the bases at 751 and
+       part of 839 so far.
+     - Every split structure evaluated has log2 E_Q ≤ −16.
 2. **Groups.** G = P × O, with P running over the abelian 2-groups of order 2^{v₂(n−t)} whose endomorphisms can be
    listed (≤ 2^20), and K_P over the subgroups of P with the required quotient, up to Aut(P). O is the odd part,
    cyclic factors plus GL(2, p) for a square p².

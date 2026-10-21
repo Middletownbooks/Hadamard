@@ -1,2 +1,6 @@
 {"n": 669, "fam": "z3all", "order": 9, "r": 90, "log2E_Q": 73.14, "N": 111, "verdict": "passes", "solutions_weighted": 130553856, "secs": 60.8}
 {"n": 669, "fam": "z3all", "order": 9, "r": 90, "log2E_Q": 73.14, "N": 74, "verdict": "capped (refined list 7.79e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 669, "fam": "z3all", "order": 9, "r": 90, "log2E_Q": 73.12, "N": 111, "verdict": "passes", "solutions_weighted": 130553856, "secs": 62.9}
+{"n": 669, "fam": "z3all", "order": 9, "r": 90, "log2E_Q": 73.12, "N": 74, "verdict": "capped (refined list 7.79e+07 > 20000000)", "solutions_weighted": null, "secs": 0.0}
+{"n": 669, "fam": "z3all", "order": 12, "r": 84, "log2E_Q": -18.3, "N": 111, "verdict": "capped (time limit 900 s)", "solutions_weighted": null, "secs": 900.0}
+{"n": 669, "fam": "z3all", "order": 12, "r": 84, "log2E_Q": -18.3, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}

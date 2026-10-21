@@ -220,6 +220,49 @@ def sylvester(m):
     return H
 
 
+def frames_lemma1(c, count=2000, seed=1):
+    """frames for T = all nontrivial characters of Q with |Q| = c even (V_T = block-balanced vectors, 4t = 4(c - 1)),
+    from H_2 (x) H(2c) (report/alpoge_design_answer.md section 3.1, Lemma 1): with r = the all-ones row and s another
+    row of a normalised H(2c), the rows (r, r), (s, s), (r, -r), (s, -s) take each of the four patterns of H_4 on c
+    columns; grouping the columns by pattern makes them H_4 (x) 1_c^T and the other 4c - 4 rows a frame.  H(2c):
+    Paley I for 2c = 12, Sylvester for 2c a power of 2.  Yields frames for every choice of s, then with the columns
+    of blocks 2..4 permuted at random."""
+    if 2 * c == 12:
+        H = paley_h12()
+    else:
+        H = sylvester(2 * c)
+    H = H * H[0][None, :]                                        # normalise: first row all ones
+    H = H * H[:, 0][:, None]
+    H2 = np.array([[1, 1], [1, -1]], np.int64)
+    rng = np.random.default_rng(seed)
+    base = []
+    for si in range(1, 2 * c):
+        B = np.kron(H2, H)                                       # 4c x 4c
+        r_, s_ = 0, si
+        rows4 = [r_, s_, 2 * c + r_, 2 * c + s_]                  # (r, r), (s, s), (r, -r), (s, -s)
+        pat = B[rows4]                                           # 4 x 4c
+        H4 = np.array([[1, 1, 1, 1], [1, -1, 1, -1], [1, 1, -1, -1], [1, -1, -1, 1]])
+        cols = []
+        for J in range(4):                                       # block J: the columns whose pattern is column J of H4
+            cJ = [k for k in range(4 * c) if (pat[:, k] == H4[:, J]).all()]
+            cols += cJ
+        if len(cols) != 4 * c:
+            continue
+        F = np.delete(B, rows4, axis=0)[:, cols]
+        assert (F @ F.T == 4 * c * np.eye(4 * c - 4, dtype=np.int64)).all()
+        assert all((F[:, J * c:(J + 1) * c].sum(1) == 0).all() for J in range(4))
+        base.append(F)
+    k = 0
+    for F in base:
+        yield F; k += 1
+    while k < count:
+        F = base[rng.integers(len(base))]
+        cols = list(range(c))
+        for J in range(1, 4):
+            cols += list(J * c + rng.permutation(c))
+        yield F[:, cols]; k += 1
+
+
 def frames_balanced(q, count=2000, seed=1):
     """frames for T = all nontrivial characters of Q with q a power of 2 (V_T = block-balanced vectors, 4t = 4(q - 1)):
     H_4 (x) H_q[1:] with the columns of blocks 2..4 permuted at random (block 1 fixed), the first one unpermuted"""
