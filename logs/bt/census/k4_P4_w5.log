@@ -42,3 +42,5 @@ n = 751: 217 structures with 8 <= r <= 160
 {"n": 751, "Pmods": [4], "Omods": [11, 17], "Qtype": "Z4", "order": 8, "r": 120, "e": 89, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": -54.59, "secs": 58.3}
 {"n": 751, "Pmods": [4], "Omods": [11, 17], "Qtype": "Z4", "order": 40, "r": 35, "e": 34, "verdict": "passes Q-level", "q_solutions": 80, "log2E_Q": -504.29, "secs": 23.0}
 {"n": 751, "Pmods": [4], "Omods": [11, 17], "Qtype": "Z4", "order": 40, "r": 45, "e": 29, "verdict": "passes Q-level", "q_solutions": 152, "log2E_Q": -76.46, "secs": 22.3}
+{"n": 751, "Pmods": [4], "Omods": [11, 17], "Qtype": "Z4", "order": 8, "r": 115, "e": 114, "verdict": "passes Q-level", "q_solutions": 152, "log2E_Q": -178.86, "secs": 79.7}
+{"n": 751, "Pmods": [4], "Omods": [11, 17], "Qtype": "Z4", "order": 20, "r": 72, "e": 53, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": null, "secs": 37.7}
