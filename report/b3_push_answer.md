@@ -28,7 +28,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - 751 (k4 r = 121: 73.5; k8 r = 105: 66.2);
      - 669 (ℤ₃ family, r = 90: 73.1, first finer level passed);
      - 719 (k6, r = 112: 66.2; k4, r = 360: 64.1);
-     - 643 (k4, r = 122: 24.3).
+     - 643 (k4, r = 119: 48.5; census still running).
    - **Exact gates kill even large estimates.** The 32 richest 971 hosts (r = 106, estimates 2^83–2^98.7) have no
      solution at the level G/N = ℤ₂ × ℤ₄. The 669 ℤ₃ hosts with estimates 2^26–2^85 die at G/N = ℤ₆ or ℤ₉, all
      except S9 r90 (§5).
@@ -44,7 +44,10 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - Split structures of the 1916 shape (§4).
    - Each structure has its exact gate status, a Q-level stratified count read at the true target, and the cost of
      its next exact gate.
-   - The border problem is settled for the top survivors: all 786 Q-level classes tested have a border (§7).
+   - The border problem is settled for the top k = 4 and ℤ₃ survivors: all 786 Q-level classes tested have a
+     border (§7). At k = 8, the monomial classes at Q = ℤ₂³ have a border (Alpöge's Singer-type frames). At
+     Q = ℤ₈ (the 751 survivors) the question is open: no Singer-type symmetry exists there [P], and the
+     Kronecker frames give no admissible vector.
 3. **(C) Obstructions.**
    - **Two theorems [P]** with proofs (§3), each checked against an independent brute-force count:
      - **Theorem α:** an element of S that fixes K pointwise and has order 3 on Q = ℤ₂² rules out cores. It explains
@@ -485,9 +488,36 @@ used here only to rank structures that pass every affordable exact gate, never t
   - Every class has a border. This matches the earlier 2048 of 2048 at Q = ℤ₂²
     (`report/alpoge_design_answer.md` §3) and Kumar's 864 of 864 at Q = ℤ₃.
   - The controls 3964, 2636 and 2148 were bordered and assembled into Hadamard matrices (§1).
-- **k = 8 (751).** Frames exist for every even k (`report/alpoge_design_answer.md` §3.1), but the S_R search at
-  4t = 28 (2^27 sign vectors per frame) was not implemented. The k = 8 survivors are marked "not checked".
-- **The border problem is not what stops these structures.**
+- **k = 8 (q = 8, t = 7)** (`theory/bt_border_k8.py`, `logs/bt/border_k8.jsonl`; S_R by a meet in the middle over the
+  four blocks, `bt_border.admissible_balanced`, about 0.6 s per frame).
+  - *Reduction [P].* The Q-level classes of the 751 survivors are monomial: z_k = c_k + a_k δ_{p_k} with
+    {|a_k|} = {2, 2, 2, 4}. Translating, negating or permuting the blocks of a core gives a core. So a monomial class
+    can be completed (after such a change of the core) iff the normal form (2, 2, 2, 4)·δ₀ has a border, and the
+    answer depends only on Q.
+  - *Kronecker frames fail.* The frame H₄ ⊗ H₈[1:] has no admissible vector at Q = ℤ₂³ [P]. The proof is in the
+    script header: flatness would need the Walsh coefficients of the blocks to equal (2/7)·Cᵀe with C = H₄ Q_Sᵀ, and
+    Cᵀe never has entries in {0, ±14, ±28}. Its block-permuted variants have none either [M]: 0 admissible vectors in
+    40 frames at ℤ₂³ and ℤ₈, and in 300 frames at the two 751 classes (`logs/bt/border_k8_751.log`).
+  - *Q = ℤ₂³: every monomial class has a border [M].* The c = 8 Singer-type template of `theory/ab_singer.py`
+    (Alpöge's 1436 form, `logs/ab/singer/c8_control/`) is used in our layout as the frame R̂, with one block negated.
+    Its admissible set has exactly 28 vectors, and they form the corner. The script checks X Xᵀ = 28 I, Ĉ ∈ {±1},
+    Ĉ Ĉᵀ = I₄ ⊗ Γ_Q and X Ĉᵀ + R̂ Mcᵀ = 0.
+  - *Q = ℤ₈ (the 751 survivors with log2 E_Q ≥ 0): open.* The template frames have no admissible vector, with either
+    frame and every block sign, at the normal form and at both 751 classes [M].
+    - On V_T the ℤ₈ array is Q_S ⊗ Π₊ + Q_Sᵀ ⊗ Π₋, where Π₊ and Π₋ project onto the balanced functions that are even
+      or odd under negation. At ℤ₂³ it is Q_S ⊗ I.
+    - No frame symmetry relates the two arrays [P]. Such a symmetry would make the product of the four blocks
+      around every rectangle of the block array trivial. But a rectangle through one diagonal block (a translation)
+      and three off-diagonal blocks (reflections g ↦ p − g) gives a reflection, which is never the identity on ℤ₈.
+    - The same argument excludes a symmetry of order 7, for every placement of the spikes [P]. Its components would
+      have to commute with that reflection, and no involution of 8 points commutes with a 7-cycle. So the
+      Singer-type ansatz, which needs an order-7 symmetry, is not available.
+    - The diagonal symmetries of the ℤ₈ array are the 96 permutations commuting with negation, against 8! at ℤ₂³
+      [M].
+    - A frame search adapted to that group was not built.
+- **The border problem is not what stops these structures.** At k = 4 and in the ℤ₃ family every tested class has a
+  border. At k = 8 the classes at ℤ₂³ have one; the ℤ₈ classes are open, and their cores are out of reach anyway
+  (§8.1: next gate 2^68.8 pairs).
 
 
 ---
@@ -647,6 +677,7 @@ python3 theory/bt_xcheck_level.py logs/bt/xcheck/x669_S9_N111.json        # inde
 
 # borders, calibration, local search
 python3 theory/bt_border_census.py logs/bt/border_census.jsonl CENSUS.jsonl[,...] --top 25 --min-logE -10
+python3 theory/bt_border_k8.py --random 40                                   # k = 8: Kronecker, Singer template, Z2^3 vs Z8
 python3 theory/bt_calib_small.py logs/bt/calib/calib_small.jsonl --ns 7,11,15,19,23,27,31 --rmax 18
 python3 theory/bt_brute_count.py RECORD.json                                # independent exact count
 python3 theory/bt_anneal.py logs/bt/anneal/ctrl3964 --control 3964 --hours 0.05
