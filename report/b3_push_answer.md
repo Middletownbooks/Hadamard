@@ -17,6 +17,45 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
 ## 0. Bottom line
 
 <!-- BOTTOM-LINE -->
+1. **(A) No Hadamard matrix at an open order.** No structure reached a core.
+   - **Rich structures.** Every structure that survives the exact gates with a large calibrated estimate is "rich
+     and flat": 77 or more orbits per block, and a next exact gate of 2^48 pairs or more (§8):
+     - 839 (k4, r = 156: log2 E_Q = 165.9);
+     - 863 (r = 140: 136.9);
+     - 955 (r = 147: 103.6, its first finer level passed with 5.5·10⁷ solutions);
+     - 971 (r = 106: 98.7);
+     - 751 (k4 r = 121: 73.5; k8 r = 105: 66.2);
+     - 669 (ℤ₃ family, r = 90: 73.1, first finer level passed).
+   - **Structures like the known successes.** 3964, 2636 and 2148 have 46–54 orbits and estimates of 2^30–2^62. No
+     open-order structure in that window survives: the best alive with r ≤ 60 is 839 S18 r60 at 2^11.2 (§8.2).
+   - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
+2. **(B) A ranked census** of <!-- NSTRUCT -->4,274<!-- /NSTRUCT --> structures. It covers k4 at 751, 839, 859,
+   863, 907, 955 and 971 (599, 643, 719, 739 and 947 still running), k8 at 719, 751 and 863, the ℤ₃ and product
+   families at 669, and split structures of the 1916 shape (§4).
+   - Each structure has its exact gate status, a Q-level stratified count read at the true target, and the cost of
+     its next exact gate.
+   - The border problem is settled for the top survivors: all 786 Q-level classes tested have a border (§7).
+3. **(C) Obstructions.**
+   - **Two theorems [P]** with proofs (§3), each checked against an independent brute-force count:
+     - **Theorem α:** an element of S that fixes K pointwise and has order 3 on Q = ℤ₂² rules out cores. It explains
+       several small-order cases where the estimate was positive and the exact count was zero.
+     - **Lemma R:** a symmetry transitive on N \ 0 that fixes a complement rules out cores. It covers primitive
+       multipliers and Singer cycles.
+   - **Coset-Parseval** adapted to T [P].
+   - **Families closed** inside the census range [P, M]: k4 at 859 and 907. Effectively closed: k8 at 719 and 863
+     (one structure each, with zero Gaussian probability and no finer level).
+   - **The 669 ℤ₃ family:** every gated host with an estimate from 2^26 to 2^85 dies at the exact levels G/N = ℤ₆ or
+     ℤ₉. The S9 r82 and S12 r64 cases are confirmed by an independent CP-SAT checker (§5).
+4. **Calibration (§6).** On 561 small-order structures with exact counts from an independent enumerator:
+   - the gates never kill a structure that has cores;
+   - when cores exist, E_Q is within −3.9 to +0.6 bits of the count;
+   - zero counts are common below about 2^30;
+   - at the open orders, every exactly decided structure with a positive estimate was a zero, up to 2^85 at 669.
+   - Estimates are therefore used only to rank structures that pass every affordable exact gate.
+5. **What would reach further (§8.5):** a staged solver that never lists a level, for the rich hosts. Two candidates:
+   - the ℤ₂ U/W split with a four-list k-tree (Kumar's 2148 route), at the 955, 971 and 751 hosts;
+   - a Gauss-period slice along ℤ₄₃ (863) or ℤ₁₉ (839).
+<!-- /BOTTOM-LINE -->
 
 ---
 
@@ -112,7 +151,7 @@ PAF(ν₀) = Σ_m [(|N| − 2)c_m² + 2c_m d_m] ≥ (|N| − 4)|M| > 0.
 But Σᵢ PAFᵢ(ν₀) = −4t. ∎
 
 Transitivity on N \ 0 forces N to be elementary abelian: ℤ_p with a primitive multiplier, or ℤ₁₁² with a Singer
-cycle at 971. `theory/bt_thm_rigid.py` screens every survivor (<!-- RIGID-COUNTS -->131 structures killed<!-- /RIGID-COUNTS -->). Brute-force control: ℤ₂² × ℤ₅
+cycle at 971. `theory/bt_thm_rigid.py` screens every survivor (<!-- RIGID-COUNTS -->133 structures killed<!-- /RIGID-COUNTS -->). Brute-force control: ℤ₂² × ℤ₅
 with S = ⟨(1, ×2)⟩ has 0 cores.
 
 ### 3.3 Coset-Parseval adapted to T
@@ -173,7 +212,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 863 | k8 | 33 | 5 | 0 | 0 | 0 | 27 | 0 | 1 | 0 | S14, 108, 107, −∞ |
 | 907 | k4 | 384 | 175 | 0 | 0 | 0 | 206 | 3 | 0 | 0 | — |
 | 955 | k4 | 1038 | 309 | 6 | 67 | 0 | 152 | 0 | 504 | 62 | S8, 147, 76, 103.58 |
-| 971 | k4 | 1210 | 290 | 71 | 10 | 555 | 200 | 0 | 84 | 34 | S10, 106, 56, 98.7 |
+| 971 | k4 | 1220 | 291 | 72 | 12 | 563 | 200 | 0 | 82 | 34 | S10, 106, 56, 98.7 |
 <!-- /CENSUS-TABLE -->
 
 "alive" means the structure passed every gate run on it. It is not a claim that cores exist: §6 shows that zero
@@ -258,7 +297,7 @@ exact gates on every skipped structure.
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 4264 structures: coset-Parseval 1065, Theorem α 194, Lemma R 117 (the screens [P]); Q-level empty 1303, deeper level or chain empty 29 [M]; prefilter only 583; alive 965.
+Over 4274 structures: coset-Parseval 1066, Theorem α 195, Lemma R 119 (the screens [P]); Q-level empty 1303, deeper level or chain empty 29 [M]; prefilter only 591; alive 963.
 <!-- /SCREEN-COUNTS -->
 
 

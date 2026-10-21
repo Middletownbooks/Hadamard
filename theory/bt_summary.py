@@ -230,8 +230,8 @@ def fill(D, top):
     blocks = {'CENSUS-TABLE': table_status(D), 'TOP-TABLE': table_top(D, top), 'WINDOW-TABLE': table_window(D),
               'RICH-TABLE': table_rich(D), 'CLOSED-FAMILIES': closed_families(D), 'SCREEN-COUNTS': screen_counts(D),
               'BORDER-COUNTS': border_counts(D), 'CALIB-TABLE': calib, 'ALPHA-COUNTS': str(alpha_n),
-              'RIGID-COUNTS': f'{rigid_n} structures killed'}
-    inline = {'ALPHA-COUNTS', 'RIGID-COUNTS', 'BORDER-COUNTS'}
+              'RIGID-COUNTS': f'{rigid_n} structures killed', 'NSTRUCT': f'{len(D.census):,}'}
+    inline = {'ALPHA-COUNTS', 'RIGID-COUNTS', 'BORDER-COUNTS', 'NSTRUCT'}
     for name, text in blocks.items():
         a, b = f'<!-- {name} -->', f'<!-- /{name} -->'
         if a not in s:

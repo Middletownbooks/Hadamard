@@ -98,3 +98,4 @@ n = 751: 217 structures with 8 <= r <= 160
 {"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 24, "r": 56, "e": 35, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}
 {"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 48, "r": 34, "e": 23, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 1.0}
 {"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 12, "r": 100, "e": 59, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 1.3}
+{"n": 751, "Pmods": [2, 2], "Omods": [11, 17], "Qtype": "Z2^2", "order": 8, "r": 132, "e": 71, "verdict": "passes Q-level", "q_solutions": 1216, "log2E_Q": 40.67, "secs": 60.2}
