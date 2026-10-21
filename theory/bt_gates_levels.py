@@ -19,7 +19,11 @@ class Timeout(Exception):
     pass
 
 
+FIRED = [False]
+
+
 def _alarm(signum, frame):
+    FIRED[0] = True
     raise Timeout()
 
 
@@ -70,14 +74,17 @@ def main():
                 if (key, nk) in done:
                     continue
                 t = time.time()
+                FIRED[0] = False
                 signal.alarm(int(a.tmax))
                 try:
                     res = GR.run_level(st, NA, cap_pairs=2.0 ** 40, maxlen=int(a.maxlen))
                     res['verdict'] = 'no core [M] (level empty)' if res['solutions_weighted'] == 0 else 'passes'
-                except Timeout:
-                    res = dict(verdict=f'capped (time limit {a.tmax:.0f} s)')
                 except MemoryError as e:
                     res = dict(verdict=f'capped ({e})')
+                except Exception:
+                    if not FIRED[0]:                             # inside numba the Timeout arrives as a SystemError
+                        raise
+                    res = dict(verdict=f'capped (time limit {a.tmax:.0f} s)')
                 finally:
                     signal.alarm(0)
                 res.update(key=key, n=rec['n'], fam=rec.get('fam', 'k4'), order=rec['order'], r=rec['r'], e=rec['e'],
