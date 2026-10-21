@@ -17,3 +17,4 @@ nohup python3 theory/bt_census_run.py logs/bt/census/k4_P4_w8.jsonl --ns 643 --r
 nohup sh logs/bt/gate_loop.sh >> logs/bt/gate_loop.log 2>&1 &
 nohup sh logs/bt/closure.sh >> logs/bt/closure.log 2>&1 &
 nohup nice -n 5 python3 theory/bt_gates_levels.py logs/bt/gates_run_levels.jsonl $CEN --levels 74,111 --fam 669:z3all --tmax 600 >> logs/bt/gates_levels_669.log 2>&1 &
+nohup sh -c "ulimit -v 6000000; nice -n 15 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k8b_w0.jsonl,logs/bt/census2/k8b_w1.jsonl --ns 599" >> logs/bt/census2/close_k8b.log 2>&1 &
