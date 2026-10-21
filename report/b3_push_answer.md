@@ -35,7 +35,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - **Structures like the known successes.** 3964, 2636 and 2148 have 46–54 orbits and estimates of 2^30–2^62. No
      open-order structure in that window survives: the best alive with r ≤ 60 is 839 S18 r60 at 2^11.2 (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
-2. **(B) A ranked census** of <!-- NSTRUCT -->16,152<!-- /NSTRUCT --> structures. It covers:
+2. **(B) A ranked census** of <!-- NSTRUCT -->16,888<!-- /NSTRUCT --> structures. It covers:
    - k4 at every n ≡ 3 (mod 4). 643 and 739 are covered for the 2-parts with few automorphisms (≤ 4096 and ≤ 1024
      endomorphisms; the larger ones are still running).
    - k6 at 599, 719, 839, 863, 947 and 971.
@@ -232,14 +232,14 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 599 | k4 | 34 | 0 | 10 | 0 | 0 | 18 | 0 | 0 | 6 | 2 | S2, 300, 224, 76.71 |
 | 599 | k6 | 19 | 15 | 0 | 0 | 0 | 0 | 2 | 0 | 2 | 0 | S10, 84, 55, -49.81 |
-| 599 | k8 | 2143 | 605 | 0 | 0 | 845 | 688 | 0 | 0 | 5 | 0 | S9, 104, 53, -18.54 |
-| 643 | k4 | 3811 | 3458 | 0 | 0 | 0 | 108 | 0 | 0 | 245 | 50 | S8, 124, 67, 58.71 |
+| 599 | k8 | 2143 | 923 | 0 | 0 | 0 | 1214 | 0 | 0 | 6 | 0 | S9, 104, 53, -18.54 |
+| 643 | k4 | 3957 | 3577 | 0 | 0 | 0 | 108 | 0 | 0 | 272 | 56 | S8, 124, 67, 58.71 |
 | 669 | prod12 | 282 | 0 | 0 | 4 | 0 | 249 | 0 | 10 | 19 | 0 | S20, 57, 32, -14.28 |
 | 669 | z3all | 239 | 75 | 0 | 10 | 0 | 0 | 152 | 0 | 2 | 2 | S9, 90, 45, 73.14 |
 | 719 | k4 | 17 | 0 | 5 | 0 | 0 | 6 | 0 | 0 | 6 | 1 | S2, 360, 269, 64.09 |
 | 719 | k6 | 59 | 0 | 0 | 0 | 0 | 27 | 0 | 0 | 32 | 5 | S8, 112, 59, 66.18 |
 | 719 | k8 | 142 | 38 | 0 | 0 | 0 | 103 | 0 | 0 | 1 | 0 | S14, 90, 89, −∞ |
-| 739 | k4 | 3168 | 2103 | 52 | 67 | 0 | 245 | 97 | 0 | 604 | 0 | S22, 60, 31, -20.25 |
+| 739 | k4 | 3758 | 2565 | 52 | 67 | 0 | 336 | 513 | 0 | 225 | 0 | S22, 60, 32, -28.38 |
 | 751 | k4 | 217 | 0 | 79 | 24 | 0 | 20 | 2 | 0 | 92 | 8 | S8, 121, 63, 73.45 |
 | 751 | k4split | 44 | 0 | 0 | 8 | 7 | 1 | 0 | 0 | 28 | 0 | S80, 27/36/36/27, 20, -33.19 |
 | 751 | k8 | 441 | 134 | 0 | 0 | 0 | 272 | 0 | 0 | 35 | 7 | S10, 105, 54, 66.19 |
@@ -275,8 +275,8 @@ counts are common among alive structures with E_Q below about 2^30.
 | 599 | k8 | [2, 2, 2, 2] × [37] | 9 | 104 | 55 | -32.91 | N37: 16318464 | N2: 137.1 | — |
 | 599 | k8 | [2, 8] × [37] | 12 | 104 | 54 | -161.94 | N37: 447086592 | N2: 137.1 | — |
 | 643 | k4 | [4, 32] × [5] | 8 | 124 | 67 | 58.71 | — | — | — |
+| 643 | k4 | [4, 32] × [5] | 8 | 124 | 67 | 58.38 | — | — | — |
 | 643 | k4 | [4, 32] × [5] | 8 | 124 | 67 | 58.09 | — | — | — |
-| 643 | k4 | [4, 32] × [5] | 8 | 115 | 67 | 51.36 | — | — | — |
 | 669 | prod12 | [2, 2] × [3, 5, 11] | 20 | 57 | 32 | -14.28 | — | N11: 40.1 | — |
 | 669 | prod12 | [2, 2] × [3, 5, 11] | 10 | 93 | 54 | -17.79 | — | N5: 56.9 | — |
 | 669 | prod12 | [2, 2] × [3, 5, 11] | 20 | 55 | 34 | -31.2 | — | N11: 34.8 | — |
@@ -289,9 +289,9 @@ counts are common among alive structures with E_Q below about 2^30.
 | 719 | k6 | [2] × [3, 7, 17] | 8 | 108 | 59 | 35.3 | — | N7: 51.8 | open (k = 6, §7) |
 | 719 | k6 | [2] × [3, 7, 17] | 12 | 84 | 47 | 25.6 | — | N17: 50.4 | open (k = 6, §7) |
 | 719 | k8 | [2, 2, 2] × [89] | 14 | 90 | 89 | −∞ | — | — | — |
-| 739 | k4 | [4, 8] × [23] | 22 | 60 | 31 | -20.25 | — | N92: 15.0 | — |
 | 739 | k4 | [2, 2, 8] × [23] | 22 | 60 | 32 | -28.38 | — | — | — |
-| 739 | k4 | [4, 8] × [23] | 22 | 60 | 32 | -28.5 | — | N92: 15.0 | — |
+| 739 | k4 | [4, 8] × [23] | 8 | 118 | 82 | -31.41 | N92: 2880, N46: 142652160 | N23: 42.7 | — |
+| 739 | k4 | [4, 8] × [23] | 8 | 120 | 83 | -34.9 | — | N92: 10.0 | — |
 | 751 | k4 | [4] × [11, 17] | 8 | 121 | 63 | 73.45 | — | N11: 48.3 | — |
 | 751 | k4 | [2, 2] × [11, 17] | 8 | 121 | 65 | 66.02 | — | N11: 48.3 | — |
 | 751 | k4 | [2, 2] × [11, 17] | 8 | 111 | 65 | 49.36 | — | N11: 48.3 | — |
@@ -329,11 +329,11 @@ counts are common among alive structures with E_Q below about 2^30.
 ### 4.3 Notes per order
 
 <!-- NOTES-AUTO -->
-- **599.** k4: 34 structures, 6 alive, best S2 r = 300 at log2 E_Q = 76.7; k6: 19 structures, 2 alive, best S10 r = 84 at log2 E_Q = -49.8; k8: 2143 structures, 5 alive, best S9 r = 104 at log2 E_Q = -18.5, 845 prefiltered.
-- **643.** k4: 3811 structures, 245 alive, best S8 r = 124 at log2 E_Q = 58.7.
+- **599.** k4: 34 structures, 6 alive, best S2 r = 300 at log2 E_Q = 76.7; k6: 19 structures, 2 alive, best S10 r = 84 at log2 E_Q = -49.8; k8: 2143 structures, 6 alive, best S9 r = 104 at log2 E_Q = -18.5.
+- **643.** k4: 3957 structures, 272 alive, best S8 r = 124 at log2 E_Q = 58.7.
 - **669.** prod12: 282 structures, 19 alive, best S20 r = 57 at log2 E_Q = -14.3; z3all: 239 structures, 2 alive, best S9 r = 90 at log2 E_Q = 73.1.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k6: 59 structures, 32 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
-- **739.** k4: 3168 structures, 604 alive, best S22 r = 60 at log2 E_Q = -20.2.
+- **739.** k4: 3758 structures, 225 alive, best S22 r = 60 at log2 E_Q = -28.4.
 - **751.** k4: 217 structures, 92 alive, best S8 r = 121 at log2 E_Q = 73.5; k4split: 44 structures, 28 alive, best S80 r = 27/36/36/27 at log2 E_Q = -33.2, 7 prefiltered; k8: 441 structures, 35 alive, best S10 r = 105 at log2 E_Q = 66.2.
 - **839.** k4: 232 structures, 70 alive, best S6 r = 156 at log2 E_Q = 165.9; k4split: 9 structures, 1 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 2 prefiltered; k6: 9 structures, all dead.
 - **859.** k4: 81 structures, all dead.
@@ -413,7 +413,7 @@ exact gates on every skipped structure.
 <!-- CLOSED-FAMILIES -->
 - **599, k6: effectively closed.** 2 of 19 structures pass the gates run, all with log2 E_Q < −20 (best -49.8).
 - **719, k8: effectively closed.** 1 of 142 structures pass the gates run, all with log2 E_Q < −20 (best −∞).
-- **739, k4: effectively closed.** 604 of 3168 structures pass the gates run, all with log2 E_Q < −20 (best -20.2).
+- **739, k4: effectively closed.** 225 of 3758 structures pass the gates run, all with log2 E_Q < −20 (best -28.4).
 - **751, k4split: effectively closed.** 28 of 44 structures pass the gates run, all with log2 E_Q < −20 (best -33.2); 7 prefiltered.
 - **839, k6: closed [P, M].** All 9 structures are dead: 0 coset-Parseval, 0 Theorem α, 0 Lemma R, 9 Q-level, 0 deeper level.
 - **859, k4: closed [P, M].** All 81 structures are dead: 39 coset-Parseval, 0 Theorem α, 0 Lemma R, 42 Q-level, 0 deeper level.
@@ -473,7 +473,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 16152 structures: coset-Parseval 8450, Theorem α 624, Lemma R 243 (the screens [P]); Q-level empty 3619, deeper level or chain empty 313 [M]; prefilter only 854; alive 2039.
+Over 16888 structures: coset-Parseval 9349, Theorem α 624, Lemma R 243 (the screens [P]); Q-level empty 4236, deeper level or chain empty 729 [M]; prefilter only 9; alive 1688.
 <!-- /SCREEN-COUNTS -->
 
 
@@ -636,8 +636,8 @@ days, and 2^50 about 10⁴ years.
 |---|---|---|---|---|---|---|
 | 599 | k4 | S2, 300, 224 | 76.71 | — | — | — |
 | 643 | k4 | S8, 124, 67 | 58.71 | — | — | — |
+| 643 | k4 | S8, 124, 67 | 58.38 | — | — | — |
 | 643 | k4 | S8, 124, 67 | 58.09 | — | — | — |
-| 643 | k4 | S8, 115, 67 | 51.36 | — | — | — |
 | 669 | z3all | S9, 90, 45 | 73.14 | N111: 130553856 | N74, N37, N6, N3, N2 | N6: 52.9 |
 | 669 | z3all | S9, 90, 45 | 73.12 | N111: 130553856 | N74, N37, N6, N3, N2 | N6: 52.9 |
 | 719 | k4 | S2, 360, 269 | 64.09 | — | — | — |
@@ -683,7 +683,7 @@ vectors (3964). At the open orders, the best live structures in and near that wi
 | 719 | k4 | — | — | 64.09 (S2, 360) |
 | 719 | k6 | -1.93 (S24, 48) | -1.93 (S24, 48) | 66.18 (S8, 112) |
 | 719 | k8 | — | — | — |
-| 739 | k4 | -20.25 (S22, 60) | -20.25 (S22, 60) | -20.25 (S22, 60) |
+| 739 | k4 | -28.38 (S22, 60) | -28.38 (S22, 60) | -28.38 (S22, 60) |
 | 751 | k4 | -15.38 (S20, 57) | -15.38 (S20, 57) | 73.45 (S8, 121) |
 | 751 | k4split | -33.19 (S80, 27/36/36/27) | -33.19 (S80, 27/36/36/27) | -33.19 (S80, 27/36/36/27) |
 | 751 | k8 | -571.37 (S42, 44) | -571.37 (S42, 44) | 66.19 (S10, 105) |
