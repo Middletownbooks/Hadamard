@@ -10,7 +10,7 @@ The method of Kumar's order-3964 search (search/NOTES.md, METHOD.md "Bordered st
   search, every key match re-checked exactly);
 - expansion: all orbit sign vectors in a fibre (DP-guided backtracking), for the final join on every class.
 """
-import math, time
+import math, time, itertools
 import numpy as np
 from numba import njit
 import bt_engine as E
@@ -78,8 +78,12 @@ def level_list(qt, i, rows=None, chars=None, maxlen=5 * 10 ** 7, cvals=None):
             a = np.searchsorted(rows_arr, Rn + rlo[k + 1], 'left')
             b = np.searchsorted(rows_arr, Rn + rhi[k + 1], 'right')
             keep = b > a
-        Yn = np.concatenate([np.repeat(Y, len(v), 0), np.tile(v, len(Y))[:, None]], 1)[keep]
-        C = (C[:, None] * c[None, :]).ravel()[keep]; R = Rn[keep]; Y = Yn
+        kept = np.flatnonzero(keep)
+        if len(kept) > maxlen:
+            raise MemoryError(f"level list > {maxlen}")
+        ri, vi = kept // len(v), kept % len(v)
+        Y = np.concatenate([Y[ri], v[vi][:, None]], 1)
+        C = C[ri] * c[vi]; R = Rn[kept]
         if len(Y) > maxlen:
             raise MemoryError(f"level list > {maxlen}")
     inv = np.argsort(order)
@@ -128,8 +132,12 @@ def refine_list(qc, yc, qf, i, chars=None, cvals=None, maxlen=5 * 10 ** 7):
             v = np.array(sorted(cv[u]), np.int64); cc = np.array([cv[u][x] for x in v], float)
             Sn = (S[:, None] + wt[u] * v[None, :]).ravel()
             keep = (Sn + rlo[k + 1] <= tgt) & (Sn + rhi[k + 1] >= tgt)
-            Y = np.concatenate([np.repeat(Y, len(v), 0), np.tile(v, len(Y))[:, None]], 1)[keep]
-            C = (C[:, None] * cc[None, :]).ravel()[keep]; S = Sn[keep]
+            kept = np.flatnonzero(keep)
+            if len(kept) > maxlen:
+                raise MemoryError(f"refined cell list > {maxlen}")
+            ri, vi = kept // len(v), kept % len(v)
+            Y = np.concatenate([Y[ri], v[vi][:, None]], 1)
+            C = C[ri] * cc[vi]; S = Sn[kept]
         ok = S == tgt
         parts.append((idx, Y[ok], C[ok]))
         if ok.sum() == 0:
@@ -627,3 +635,105 @@ def q_level_list(qQ, i, row, chars, cvals=None):
     en = np.abs(yf @ Ch.T) ** 2
     keep = np.all(en <= tg[None, :] + 1e-6, axis=1)
     return Y[keep], C[keep]
+
+
+def q_level_list_two_step(st, qQ, i, row, chars, cvals=None, maxlen=2 * 10 ** 6):
+    """Q-level list when some nontrivial characters of Q have the loose bound 4n (product families): the loose
+    characters are those trivial on Q0 = the intersection of their kernels; z = (Q/Q0-compression w) + deviation,
+    and the deviation energy sum_u (z(u) - w(c(u))/|Q0|)^2 <= (1/q) sum_{tight chi} bound(chi) (Parseval) [exact].
+    Enumerates w (coarse level, row and loose-character filters), then per Q0-coset the fine combinations within
+    the deviation budget, then the exact character filter."""
+    Ch, tg = chars
+    q = qQ.nb
+    n4 = 4 * st.nH
+    triv = int(np.argmax(np.all(np.abs(Ch - 1) < 1e-9, axis=1)))
+    loose = [k for k in range(len(tg)) if k != triv and tg[k] > 4 * st.t + 1e-6]
+    tight = [k for k in range(len(tg)) if k != triv and k not in loose]
+    if not loose:
+        return q_level_list(qQ, i, row, chars, cvals)
+    # Q0 = common kernel of the loose characters, as a set of cosets (indices into Q = cosets of K)
+    ker = np.all(np.abs(Ch[loose] - 1) < 1e-9, axis=0)
+    Q0 = np.flatnonzero(ker)
+    # coarse cosets of Q0 in Q
+    addQ = qQ.add
+    cc = -np.ones(q, np.int64); nc = 0
+    for u in range(q):
+        if cc[u] < 0:
+            for v in Q0:
+                cc[addQ[u, v]] = nc
+            nc += 1
+    Dsq = sum(tg[k] for k in tight) / q
+    cv = coord_values(qQ, i) if cvals is None else cvals
+    sz = qQ.bsize[i]
+    # reduced coordinate U -> its points; each S-orbit U lies inside one coarse coset only if S preserves the
+    # coarse cosets setwise per orbit; group coordinates by the coarse coset of their representative points
+    pts = [np.flatnonzero(qQ.borb[i] == U) for U in range(len(sz))]
+    ccU = []
+    for U in range(len(sz)):
+        cs = set(cc[pts[U]].tolist())
+        ccU.append(cs)
+    if any(len(c) > 1 for c in ccU):
+        return q_level_list(qQ, i, row, chars, cvals)       # S mixes coarse cosets: fall back
+    ccU = [next(iter(c)) for c in ccU]
+    m0 = len(Q0)
+    out_Y, out_C = [], []
+    # per coarse coset: enumerate fine combos (coordinates in that coset) with deviation energy <= Dsq,
+    # grouped by coset sum
+    per = []
+    for c in range(nc):
+        idx = [U for U in range(len(sz)) if ccU[U] == c]
+        combos = {}
+        def rec(j, vals, cnt):
+            if j == len(idx):
+                s = sum(sz[idx[k]] * vals[k] for k in range(len(idx)))
+                mean = s / m0
+                dev = sum(sz[idx[k]] * (vals[k] - mean) ** 2 for k in range(len(idx)))
+                if dev <= Dsq + 1e-9:
+                    combos.setdefault(s, []).append((tuple(vals), cnt, dev))
+                return
+            for v in sorted(cv[idx[j]]):
+                rec(j + 1, vals + [v], cnt * cv[idx[j]][v])
+        # prune the per-coordinate values: |v - mean| <= sqrt(Dsq) for every point, mean unknown -> use spread
+        if len(idx) == 0:
+            per.append((idx, {0: [((), 1.0, 0.0)]})); continue
+        # restrict each coordinate to values within sqrt(Dsq) * 2 of each other via the joint recursion with pruning
+        vals_sorted = [np.array(sorted(cv[U])) for U in idx]
+        res = {}
+        def rec2(j, vals, cnt):
+            if j == len(idx):
+                s = sum(sz[idx[k]] * vals[k] for k in range(len(idx)))
+                mean = s / m0
+                dev = sum(sz[idx[k]] * (vals[k] - mean) ** 2 for k in range(len(idx)))
+                if dev <= Dsq + 1e-9:
+                    res.setdefault(s, []).append((tuple(vals), cnt, dev))
+                return
+            lo_ = min(vals) if vals else None; hi_ = max(vals) if vals else None
+            for v in vals_sorted[j]:
+                if vals and (max(hi_, v) - min(lo_, v)) > 2 * Dsq ** 0.5 + 1e-9:
+                    continue
+                rec2(j + 1, vals + [int(v)], cnt * cv[idx[j]][int(v)])
+        rec2(0, [], 1.0)
+        per.append((idx, res))
+    # combine coarse cosets: row sum and total deviation <= Dsq
+    keys = [sorted(p[1].keys()) for p in per]
+    for ws in itertools.product(*keys):
+        if sum(ws) != row:
+            continue
+        lists = [per[c][1][ws[c]] for c in range(nc)]
+        for combo in itertools.product(*lists):
+            if sum(x[2] for x in combo) > Dsq + 1e-9:
+                continue
+            y = np.zeros(len(sz), np.int64); cnt = 1.0
+            for c in range(nc):
+                for k, U in enumerate(per[c][0]):
+                    y[U] = combo[c][0][k]
+                cnt *= combo[c][1]
+            out_Y.append(y); out_C.append(cnt)
+            if len(out_Y) > maxlen:
+                raise MemoryError("two-step Q-level list too large")
+    if not out_Y:
+        return np.zeros((0, len(sz)), np.int64), np.zeros(0)
+    Y = np.array(out_Y); Cn = np.array(out_C)
+    en = np.abs(Y[:, qQ.borb[i]].astype(float) @ Ch.T) ** 2
+    keep = np.all(en <= tg[None, :] + 1e-6, axis=1)
+    return Y[keep], Cn[keep]

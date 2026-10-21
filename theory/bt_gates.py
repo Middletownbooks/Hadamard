@@ -55,7 +55,7 @@ class Gates:
     def q_list(self, i, row):
         key = (i if self.st.split else 0, row)
         if key not in self._lq:
-            self._lq[key] = C.q_level_list(self.qQ, i, row, self.chQ)
+            self._lq[key] = C.q_level_list_two_step(self.st, self.qQ, i, row, self.chQ)
         return self._lq[key]
 
     def q_level(self, patterns=None, signs=False):
