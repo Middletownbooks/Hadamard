@@ -9,3 +9,4 @@ n = 599: 8 structures with 161 <= r <= 400
 {"n": 599, "Pmods": [2, 2], "Omods": [149], "Qtype": "Z2^2", "order": 6, "r": 298, "e": 149, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
 n = 719: 11 structures with 161 <= r <= 400
 {"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 2, "r": 360, "e": 269, "verdict": "passes Q-level", "q_solutions": 1088, "log2E_Q": 64.09, "secs": 300.4}
+{"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 2, "r": 359, "e": 358, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -359.39, "secs": 987.9}
