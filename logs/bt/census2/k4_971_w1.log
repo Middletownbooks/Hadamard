@@ -607,3 +607,6 @@
 {"T": "nontrivial:split", "Pmods": [2, 4], "order": 20, "r": 81, "e": 80, "rule": -196.0, "verdict": "skipped (4r - 6.5e = -196.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.5}
 {"T": "nontrivial:split", "Pmods": [2, 4], "order": 20, "r": 101, "e": 100, "rule": -246.0, "verdict": "skipped (4r - 6.5e = -246.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.6}
 {"T": "nontrivial:split", "Pmods": [2, 4], "order": 20, "r": 105, "e": 69, "rule": -28.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 15.2}
+{"T": "nontrivial:split", "Pmods": [2, 4], "order": 20, "r": 105, "e": 69, "rule": -28.5, "verdict": "passes Q-level", "q_solutions": 24, "log2E_Q": -202.68, "log2E_whole": -212.88, "secs": 104.3}
+{"T": "nontrivial:split", "Pmods": [2, 4], "order": 20, "r": 81, "e": 80, "rule": -196.0, "verdict": "skipped (4r - 6.5e = -196.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.6}
+{"T": "nontrivial:split", "Pmods": [2, 4], "order": 20, "r": 101, "e": 100, "rule": -246.0, "verdict": "skipped (4r - 6.5e = -246.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.7}
