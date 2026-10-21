@@ -3956,3 +3956,4 @@ n = 643: 24520 structures with 8 <= r <= 160
 {"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.7}
 {"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 8.6}
 {"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 9.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 72, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 9.7}
