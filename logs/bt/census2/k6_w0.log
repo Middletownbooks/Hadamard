@@ -11,3 +11,17 @@ n = 599 fam k6: 19 structures (0.4s)
 {"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 20, "r": 56, "e": 55, "verdict": "skipped (4r - 6.5e = -133.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.0}
 n = 719 fam k6: 59 structures (0.3s)
 {"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 24, "r": 54, "e": 29, "verdict": "passes Q-level", "q_solutions": 144, "log2E_Q": null, "log2E_whole": -9.95, "secs": 8.7}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 12, "r": 90, "e": 49, "verdict": "passes Q-level", "q_solutions": 29160, "log2E_Q": -2.97, "log2E_whole": 35.92, "secs": 25.9}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 48, "r": 30, "e": 17, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 1.9}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 8, "r": 108, "e": 59, "verdict": "passes Q-level", "q_solutions": 29160, "log2E_Q": 35.3, "log2E_whole": 81.94, "secs": 28.0}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 8, "r": 112, "e": 59, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": 66.18, "log2E_whole": 77.9, "secs": 32.0}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 24, "r": 48, "e": 27, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": -1.93, "log2E_whole": -2.58, "secs": 26.1}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 12, "r": 84, "e": 47, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": 25.6, "log2E_whole": 36.7, "secs": 33.5}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 48, "r": 28, "e": 19, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.8}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 8, "r": 106, "e": 65, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": 20.84, "log2E_whole": 37.91, "secs": 43.6}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 48, "r": 36, "e": 23, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.4}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 16, "r": 84, "e": 47, "verdict": "passes Q-level", "q_solutions": 216, "log2E_Q": -38.79, "log2E_whole": -25.64, "secs": 27.7}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 48, "r": 30, "e": 29, "verdict": "skipped (4r - 6.5e = -68.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 96, "r": 24, "e": 15, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.0}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 32, "r": 56, "e": 31, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.6}
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 96, "r": 20, "e": 19, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.5}
