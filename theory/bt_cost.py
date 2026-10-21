@@ -88,6 +88,12 @@ def main():
     if os.path.exists('logs/bt/census/thm_alpha.jsonl'):
         for x in open('logs/bt/census/thm_alpha.jsonl'):
             d = json.loads(x); alpha[d['key']] = d['dead']
+    import glob as _g                                        # structures an exact gate already closed
+    for f in _g.glob('logs/bt/gates_run*.jsonl') + _g.glob('logs/bt/ladder_run*.jsonl'):
+        for x in open(f):
+            d = json.loads(x)
+            if d.get('verdict', '').startswith('no core'):
+                alpha[d['key']] = True
     by = {}
     for f in a.census.split(','):
         for x in open(f):
