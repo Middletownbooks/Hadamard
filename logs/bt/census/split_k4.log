@@ -45,3 +45,4 @@
 {"n": 751, "order": 80, "label": "index 2", "r": [24, 40, 40, 24], "e": 39, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
 {"n": 751, "order": 80, "label": "index 2", "r": [27, 36, 36, 27], "e": 20, "verdict": "passes Q-level", "q_solutions": 23040, "log2E_Q": -33.19, "secs": 1075.4}
 {"n": 751, "order": 80, "label": "index 2", "r": [27, 45, 45, 27], "e": 29, "verdict": "passes Q-level", "q_solutions": 19200, "log2E_Q": -87.56, "secs": 2681.5}
+{"n": 751, "order": 80, "label": "index 2", "r": [27, 45, 45, 27], "e": 29, "verdict": "passes Q-level", "q_solutions": 19200, "log2E_Q": -87.56, "secs": 3497.1}

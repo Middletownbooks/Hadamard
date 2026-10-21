@@ -35,8 +35,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('costs'); ap.add_argument('out'); ap.add_argument('census')
     ap.add_argument('--cap', type=float, default=34); ap.add_argument('--part', default='0/1')
-    ap.add_argument('--keys', default=None, help='restrict to these structure keys (comma-separated)')
+    ap.add_argument('--keys', default=None, help='restrict to these structure keys (comma-separated, or @FILE)')
     a = ap.parse_args()
+    if a.keys and a.keys.startswith('@'):                    # @FILE: keys separated by commas or newlines
+        a.keys = open(a.keys[1:]).read().replace('\n', ',').strip(',')
     only = set(a.keys.split(',')) if a.keys else None
     pi, pw = map(int, a.part.split('/'))
     recs = {}

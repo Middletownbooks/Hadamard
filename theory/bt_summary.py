@@ -230,6 +230,45 @@ def notes(D):
     return '\n'.join(out)
 
 
+def kill_evidence(D, d):
+    """(killing level |N| or None, script) for a structure an exact level or chain closed"""
+    k = d['key']
+    if k in D.decide and D.decide[k]['verdict'].startswith('no core'):
+        return None, 'bt_decide.py (exhaustive chain)'
+    for x in D.gates.get(k, []):
+        if x.get('verdict', '').startswith('no core'):
+            return x['N'], 'bt_gates_run.py'
+    for x in D.level1.get(k, []):
+        if x.get('levelA_solutions_weighted') == 0:
+            return x['NA'], 'bt_level1.py'
+    lv = D.ladder.get(k, {})
+    if lv.get('verdict', '').startswith('no core'):
+        z = [l['N'] for l in lv.get('levels', []) if l.get('solutions') == 0]
+        return (z[0] if z else None), 'bt_ladder.py'
+    return None, '?'
+
+
+def table_kills(D, thr=0.0):
+    """every structure with log2 E_Q >= thr that an exact level or chain closed, grouped"""
+    grp = collections.defaultdict(list)
+    for d in D.census.values():
+        if D.status(d) in ('M:level', 'M:chain') and e_of(d) >= thr:
+            N, src = kill_evidence(D, d)
+            G = 1
+            for m in d['Pmods'] + d['Omods']:
+                G *= m
+            grp[(d['n'], d['fam'], str(d['Pmods']), str(d['Omods']), d['order'], rstr(d['r']), N, G, src)].append(d)
+    rows = sorted(grp.items(), key=lambda kv: -max(e_of(d) for d in kv[1]))
+    out = ['| n | family | G = P × O | S order | r | structures | log2 E_Q [E] | killed at | script |',
+           '|---|---|---|---|---|---|---|---|---|']
+    for (n, fam, P, O, so, r, N, G, src), L in rows:
+        es = sorted(e_of(d) for d in L)
+        er = fmt_e(es[0]) if len(es) == 1 or es[0] == es[-1] else f"{fmt_e(es[0])}–{fmt_e(es[-1])}"
+        at = 'chain' if N is None else f"N of order {N} (G/N of order {G // N})"
+        out.append(f"| {n} | {fam} | {P} × {O} | {so} | {r} | {len(L)} | {er} | {at} | `{src}` |")
+    return '\n'.join(out)
+
+
 def screen_counts(D):
     tot = collections.Counter(D.status(d) for d in D.census.values())
     return (f"Over {len(D.census)} structures: coset-Parseval {tot['P:cp']}, Theorem α {tot['P:alpha']}, Lemma R "
@@ -254,6 +293,7 @@ def fill(D, top):
     blocks = {'CENSUS-TABLE': table_status(D), 'TOP-TABLE': table_top(D, top), 'WINDOW-TABLE': table_window(D),
               'RICH-TABLE': table_rich(D), 'CLOSED-FAMILIES': closed_families(D), 'SCREEN-COUNTS': screen_counts(D),
               'NOTES-AUTO': notes(D),
+              'MORE-KILLS': table_kills(D),
               'BORDER-COUNTS': border_counts(D), 'CALIB-TABLE': calib, 'ALPHA-COUNTS': str(alpha_n),
               'RIGID-COUNTS': f'{rigid_n} structures killed', 'NSTRUCT': f'{len(D.census):,}'}
     inline = {'ALPHA-COUNTS', 'RIGID-COUNTS', 'BORDER-COUNTS', 'NSTRUCT'}

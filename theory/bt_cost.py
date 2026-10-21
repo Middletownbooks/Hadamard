@@ -77,8 +77,10 @@ def main():
     ap.add_argument('out'); ap.add_argument('census')
     ap.add_argument('--top', type=int, default=25); ap.add_argument('--min-logE', type=float, default=-10)
     ap.add_argument('--maxq', type=int, default=64)
-    ap.add_argument('--keys', default=None, help='only these structure keys (any estimate)')
+    ap.add_argument('--keys', default=None, help='only these structure keys (any estimate; comma-separated, or @FILE)')
     a = ap.parse_args()
+    if a.keys and a.keys.startswith('@'):                    # @FILE: keys separated by commas or newlines
+        a.keys = open(a.keys[1:]).read().replace('\n', ',').strip(',')
     only = set(a.keys.split(',')) if a.keys else None
     done = set()
     if os.path.exists(a.out):
