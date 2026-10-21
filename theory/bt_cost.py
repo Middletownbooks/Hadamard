@@ -6,7 +6,7 @@ product over the Q-cells of the per-cell list sizes (theory/bt_chain.refine_list
 2 + 2 join at G/N costs L_a L_d + L_b L_c pair operations (sizes sorted), summed over the Q-level solutions.  The
 cheapest level is the cost of continuing the exact chain one step; levels whose lists fit were already run by
 theory/bt_ladder.py.
-usage: python3 theory/bt_cost.py OUT.jsonl CENSUS.jsonl[,...] [--top 25] [--min-logE -10] [--maxq 64]
+usage: python3 theory/bt_cost.py OUT.jsonl CENSUS.jsonl[,...] [--top 25] [--min-logE -10] [--maxq 64] [--keys k1,k2]
 """
 import sys, os, json, math, time, argparse
 import numpy as np
@@ -71,7 +71,9 @@ def main():
     ap.add_argument('out'); ap.add_argument('census')
     ap.add_argument('--top', type=int, default=25); ap.add_argument('--min-logE', type=float, default=-10)
     ap.add_argument('--maxq', type=int, default=64)
+    ap.add_argument('--keys', default=None, help='only these structure keys (any estimate)')
     a = ap.parse_args()
+    only = set(a.keys.split(',')) if a.keys else None
     done = set()
     if os.path.exists(a.out):
         for x in open(a.out):
@@ -84,6 +86,10 @@ def main():
     for f in a.census.split(','):
         for x in open(f):
             d = json.loads(x)
+            if only is not None:
+                if d['key'] in only and d.get('verdict', '').startswith('passes'):
+                    by.setdefault((d['n'], d.get('fam', 'k4')), []).append(d)
+                continue
             if d.get('verdict', '').startswith('passes') and (d.get('log2E_Q') or -1e9) >= a.min_logE \
                     and not alpha.get(d['key']):
                 by.setdefault((d['n'], d.get('fam', 'k4')), []).append(d)

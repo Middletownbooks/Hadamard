@@ -6,7 +6,7 @@ log2_pairs <= --cap that no ladder run has decided is run: each Q-level solution
 and joined exactly (theory/bt_gates.Gates.refine_level).  A level with no solution over all Q-level solutions closes
 the structure: no core [M].  Otherwise the number of level solutions (and their total multiplicity) is recorded.
 One JSON line per (structure, level); restart-safe.
-usage: python3 theory/bt_gates_run.py COSTS.jsonl OUT.jsonl CENSUS.jsonl[,...] [--cap 34] [--part i/W]
+usage: python3 theory/bt_gates_run.py COSTS.jsonl OUT.jsonl CENSUS.jsonl[,...] [--cap 34] [--part i/W] [--keys k1,k2]
 """
 import sys, os, json, math, time, argparse, glob
 import numpy as np
@@ -34,7 +34,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('costs'); ap.add_argument('out'); ap.add_argument('census')
     ap.add_argument('--cap', type=float, default=34); ap.add_argument('--part', default='0/1')
+    ap.add_argument('--keys', default=None, help='restrict to these structure keys (comma-separated)')
     a = ap.parse_args()
+    only = set(a.keys.split(',')) if a.keys else None
     pi, pw = map(int, a.part.split('/'))
     recs = {}
     for f in a.census.split(','):
@@ -61,7 +63,7 @@ def main():
                 jobs.append((l['log2_pairs'], c['key'], l['N'], l['log2_maxlist']))
     jobs.sort()
     for k, (lp, key, Nsz, lml) in enumerate(jobs):
-        if k % pw != pi or key in decided or (key, Nsz) in done or key not in recs:
+        if k % pw != pi or key in decided or (key, Nsz) in done or key not in recs or (only and key not in only):
             continue
         rec = recs[key]
         st = C2.build(rec) if 'fam' in rec else R.build(rec)
