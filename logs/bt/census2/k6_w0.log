@@ -1,0 +1,13 @@
+n = 599 fam k6: 19 structures (0.4s)
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 18, "r": 88, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 1.7}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 90, "r": 22, "e": 21, "verdict": "skipped (4r - 6.5e = -48.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 30, "r": 46, "e": 45, "verdict": "skipped (4r - 6.5e = -108.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 10, "r": 82, "e": 81, "verdict": "skipped (4r - 6.5e = -198.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 45, "r": 42, "e": 21, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 1.5}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 15, "r": 90, "e": 45, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 1.7}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 18, "r": 78, "e": 77, "verdict": "skipped (4r - 6.5e = -188.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.0}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 180, "r": 16, "e": 15, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 1.5}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 60, "r": 32, "e": 31, "verdict": "skipped (4r - 6.5e = -73.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.0}
+{"n": 599, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [11, 27], "order": 20, "r": 56, "e": 55, "verdict": "skipped (4r - 6.5e = -133.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.0}
+n = 719 fam k6: 59 structures (0.3s)
+{"n": 719, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 7, 17], "order": 24, "r": 54, "e": 29, "verdict": "passes Q-level", "q_solutions": 144, "log2E_Q": null, "log2E_whole": -9.95, "secs": 8.7}

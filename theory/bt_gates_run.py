@@ -52,6 +52,8 @@ def main():
     if os.path.exists(a.out):
         for x in open(a.out):
             d = json.loads(x)
+            if d.get('verdict', '').startswith('capped'):
+                continue                                        # retried (the caps may have changed)
             done.add((d['key'], d['N']))
             if d.get('verdict', '').startswith('no core'):
                 decided.add(d['key'])
@@ -70,7 +72,8 @@ def main():
         NA = [N for N in st.invariant_subgroups() if len(N) == Nsz and np.isin(N, st.Kel).all()][0]
         t = time.time()
         try:
-            res = run_level(st, NA, cap_pairs=2.0 ** (a.cap + 1), maxlen=int(min(2 ** (lml + 1), 6e7)))
+            # per-cell partial lists can exceed the final list bound, so the list cap has a floor of 4e6
+            res = run_level(st, NA, cap_pairs=2.0 ** (a.cap + 1), maxlen=int(min(max(2 ** (lml + 1), 4e6), 6e7)))
             res['verdict'] = 'no core [M] (level empty)' if res['solutions_weighted'] == 0 else 'passes'
         except MemoryError as e:
             res = dict(verdict=f'capped ({e})')
