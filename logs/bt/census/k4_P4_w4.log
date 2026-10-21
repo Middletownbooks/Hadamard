@@ -1892,3 +1892,5 @@ n = 739: 3623 structures with 8 <= r <= 160
 {"n": 739, "Pmods": [2, 2, 8], "Omods": [23], "Qtype": "Z2^2", "order": 88, "r": 32, "e": 21, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.0}
 {"n": 739, "Pmods": [2, 2, 8], "Omods": [23], "Qtype": "Z2^2", "order": 88, "r": 28, "e": 21, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.9}
 {"n": 739, "Pmods": [2, 2, 8], "Omods": [23], "Qtype": "Z2^2", "order": 44, "r": 48, "e": 31, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 14.7}
+{"n": 739, "Pmods": [2, 2, 8], "Omods": [23], "Qtype": "Z2^2", "order": 44, "r": 40, "e": 31, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 14.4}
+{"n": 739, "Pmods": [2, 2, 8], "Omods": [23], "Qtype": "Z2^2", "order": 44, "r": 40, "e": 27, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": null, "secs": 10.6}
