@@ -459,3 +459,35 @@
 {"n": 599, "fam": "k6", "order": 10, "r": 108, "log2E_Q": null, "N": 3, "verdict": "capped (refined list 8.06e+07 > 20000000)", "solutions_weighted": null, "secs": 227.9}
 {"n": 599, "fam": "k6", "order": 10, "r": 84, "log2E_Q": -49.81, "N": 33, "verdict": "capped (refined list 2.3e+07 > 20000000)", "solutions_weighted": null, "secs": 0.2}
 {"n": 599, "fam": "k6", "order": 10, "r": 84, "log2E_Q": -49.81, "N": 11, "verdict": "capped (refined list 3.52e+15 > 20000000)", "solutions_weighted": null, "secs": 1.0}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/numba/core/serialize.py", line 30, in _numba_unpickle
+    def _numba_unpickle(address, bytedata, hashed):
+    
+  File "/home/user/Hadamard/theory/bt_gates_levels.py", line 23, in _alarm
+    raise Timeout()
+Timeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/bt_gates_levels.py", line 97, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/bt_gates_levels.py", line 75, in main
+    res = GR.run_level(st, NA, cap_pairs=2.0 ** 40, maxlen=int(a.maxlen))
+  File "/home/user/Hadamard/theory/bt_gates_run.py", line 28, in run_level
+    LA, solA, noA, m = g.refine_level(qA, (rows, s, L), chA=chA, cvA=cvA)
+                       ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/bt_gates.py", line 95, in refine_level
+    if float(sz[0]) * sz[3] + float(sz[1]) * sz[2] > self.maxpairs:
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/bt_chain.py", line 569, in join4b
+    out, no, ovf = _bucket_join(Q[0], Q[1], Q[2], Q[3], hs[0], hs[1], hs[2], hs[3], ht, T, j, maxout, maxbuf)
+                   ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SystemError: CPUDispatcher(<function _bucket_join at 0x7f9a8fc83a60>) returned a result with an exception set
+closure tier 1 done
+{"n": 643, "fam": "k4", "order": 8, "r": 130, "log2E_Q": -519.58, "N": 80, "verdict": "passes", "solutions_weighted": 19903872, "secs": 3.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 130, "log2E_Q": -519.58, "N": 40, "verdict": "capped (refined list 8.31e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 130, "log2E_Q": -519.58, "N": 32, "verdict": "passes", "solutions_weighted": 121536, "secs": 1.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 130, "log2E_Q": -519.58, "N": 20, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 17.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 130, "log2E_Q": -519.58, "N": 16, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.1}
