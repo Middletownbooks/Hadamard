@@ -127,8 +127,9 @@ def fmt_e(x):
 
 def table_status(D):
     out = ['| n | family | structures | [P] coset-Parseval | [P] Theorem α | [P] Lemma R | prefilter only (4r − 6.5e < −45) | '
-           '[M] Q-level empty | [M] deeper level / chain empty | alive | alive with log2 E_Q ≥ 0 | best alive: S, r, e, log2 E_Q |',
-           '|---|---|---|---|---|---|---|---|---|---|---|---|']
+           '[M] Q-level empty | [M] deeper level / chain empty | undecided (Q-level cap) | alive | alive with log2 E_Q ≥ 0 | '
+           'best alive: S, r, e, log2 E_Q |',
+           '|---|---|---|---|---|---|---|---|---|---|---|---|---|']
     for (n, fam), L in sorted(D.groups().items()):
         c = collections.Counter(D.status(d) for d in L)
         alive = [d for d in L if D.status(d) == 'alive']
@@ -137,7 +138,7 @@ def table_status(D):
         bs = '—' if best is None else \
             f"S{best['order']}, {rstr(best['r'])}, {best['e']}, {best['log2E_Q'] if best.get('log2E_Q') is not None else '−∞'}"
         out.append(f"| {n} | {fam} | {len(L)} | {c['P:cp']} | {c['P:alpha']} | {c['P:rigid']} | {c['pre']} | {c['M:Q']} | "
-                   f"{c['M:level'] + c['M:chain']} | {len(alive)} | {len(pos)} | {bs} |")
+                   f"{c['M:level'] + c['M:chain']} | {c['other']} | {len(alive)} | {len(pos)} | {bs} |")
     return '\n'.join(out)
 
 

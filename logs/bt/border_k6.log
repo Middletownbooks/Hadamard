@@ -1,0 +1,4 @@
+{"case": "347 layout, Q = Z2 x Z3", "corner_reproduced": true, "template_frames_admissible": {"K": 20, "Kc": 20}, "lemma1_frames": 2000, "lemma1_max_admissible": 6, "lemma1_border_frame": null, "secs": 9.1}
+{"case": "Kumar's layout, Q = Z6", "template_frames_admissible": {"K": 20, "Kc": 20}, "lemma1_frames": 2000, "lemma1_max_admissible": 4, "lemma1_border_frame": null, "secs": 10.3}
+{"case": "k6 survivor", "n": 599, "order": 10, "r": 84, "log2E_Q": -49.81, "classes": 6, "with_border": 0, "max_admissible": 4}
+{"case": "k6 survivor", "n": 599, "order": 10, "r": 82, "log2E_Q": -187.91, "classes": 6, "with_border": 0, "max_admissible": 4}
