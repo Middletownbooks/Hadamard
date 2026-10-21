@@ -171,3 +171,8 @@
 {"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 110, "r": 30, "e": 17, "rule": 9.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 6.2}
 {"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 44, "r": 84, "e": 43, "rule": 56.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 2.9}
 {"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 220, "r": 16, "e": 11, "rule": -7.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 3.6}
+{"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 220, "r": 20, "e": 11, "rule": 8.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 2.0}
+{"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 33, "r": 84, "e": 43, "rule": 56.5, "verdict": "no core [P] (order-3 element of S trivial on K)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.2}
+{"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 330, "r": 12, "e": 11, "rule": -23.5, "verdict": "no core [P] (order-3 element of S trivial on K)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
+{"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 165, "r": 20, "e": 11, "rule": 8.5, "verdict": "no core [P] (order-3 element of S trivial on K)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.4}
+{"T": "nontrivial:zu", "Pmods": [2, 2, 2], "order": 10, "r": 104, "e": 103, "rule": -253.5, "verdict": "skipped (4r - 6.5e = -253.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
