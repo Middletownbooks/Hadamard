@@ -1,9 +1,9 @@
 #!/bin/bash
-# Heartbeat for the b3-push session (run under the Monitor tool): one status line every INT seconds (default 1500),
+# Heartbeat for the b3-push session (run under the Monitor tool): one status line every INT seconds (default 900),
 # plus an immediate line when a theory/bt_* worker ends (a job finished or died).  Every line wakes the session and
 # costs usage, so the interval is long and worker starts are not reported.
 # usage: bash logs/bt/heartbeat.sh [INT]
-INT=${1:-1500}
+INT=${1:-900}
 cd /home/user/Hadamard || exit 1
 workers() {
   # the bracket keeps this script's own command line from matching
