@@ -3,6 +3,7 @@
 cd /home/user/Hadamard
 CEN=$(ls logs/bt/census/k4_P4_w*.jsonl logs/bt/census2/*.jsonl | tr '\n' ',' | sed 's/,$//')
 nohup python3 theory/bt_census_run.py logs/bt/census/k4_P4_w3.jsonl --ns 955 --rmin 8 --rmax 160 >> logs/bt/census/k4_P4_w3.log 2>&1 &
+nohup sh -c "ulimit -v 6000000; python3 theory/bt_census2.py logs/bt/census2/prod12_669.jsonl --fam prod12 --ns 669 --rmin 12 --rmax 100" >> logs/bt/census2/prod12_669.log 2>&1 &
 nohup python3 theory/bt_census_run.py logs/bt/census/k4_P4_w7.jsonl --ns 739 --rmin 8 --rmax 160 --cap 1024 >> logs/bt/census/k4_P4_w7.log 2>&1 &
 nohup python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643,739 --rmin 8 --rmax 160 --cap 16384 >> logs/bt/census/k4_P4_w4.log 2>&1 &
 nohup sh logs/bt/census2/queue2.sh 0 2 > /dev/null 2>&1 &
