@@ -2044,3 +2044,7 @@ n = 739: 2382 structures with 8 <= r <= 160
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 32, "e": 27, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 13.8}
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 32, "e": 31, "verdict": "passes Q-level", "q_solutions": 1, "log2E_Q": null, "secs": 12.7}
 {"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 88, "r": 29, "e": 18, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.0}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 88, "r": 27, "e": 18, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 176, "r": 23, "e": 15, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 176, "r": 25, "e": 17, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 739, "Pmods": [4, 8], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 42, "e": 26, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 7.7}

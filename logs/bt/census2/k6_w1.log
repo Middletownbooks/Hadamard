@@ -55,3 +55,5 @@ n = 863 fam k6: 60 structures (2.4s)
 {"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 20, "r": 64, "e": 39, "verdict": "passes Q-level", "q_solutions": 100, "log2E_Q": -33.54, "log2E_whole": -15.49, "secs": 41.1}
 {"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 60, "r": 30, "e": 17, "verdict": "passes Q-level", "q_solutions": 8, "log2E_Q": -253.69, "log2E_whole": -304.4, "secs": 13.9}
 {"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 30, "r": 48, "e": 31, "verdict": "passes Q-level", "q_solutions": 44, "log2E_Q": -43.7, "log2E_whole": -46.71, "secs": 55.2}
+{"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 10, "r": 120, "e": 79, "verdict": "passes Q-level", "q_solutions": 264, "log2E_Q": -89.42, "log2E_whole": -75.9, "secs": 109.8}
+{"n": 863, "fam": "k6", "T": "nontrivial", "Pmods": [2], "Omods": [3, 11, 13], "order": 120, "r": 24, "e": 15, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 4.5}
