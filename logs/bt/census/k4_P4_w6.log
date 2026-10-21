@@ -11,3 +11,11 @@ n = 719: 11 structures with 161 <= r <= 400
 {"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 2, "r": 360, "e": 269, "verdict": "passes Q-level", "q_solutions": 1088, "log2E_Q": 64.09, "secs": 300.4}
 {"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 2, "r": 359, "e": 358, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -359.39, "secs": 987.9}
 {"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 4, "r": 270, "e": 269, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -548.06, "secs": 374.4}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 2, "r": 359, "e": 269, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -11.55, "secs": 393.5}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 3, "r": 358, "e": 179, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 1.0}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 6, "r": 180, "e": 179, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 2, "r": 360, "e": 359, "verdict": "passes Q-level", "q_solutions": 1088, "log2E_Q": -279.63, "secs": 1108.1}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 4, "r": 270, "e": 269, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -548.06, "secs": 388.1}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 6, "r": 358, "e": 179, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 1.0}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 12, "r": 180, "e": 179, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 719, "Pmods": [2, 2], "Omods": [179], "Qtype": "Z2^2", "order": 6, "r": 180, "e": 179, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}

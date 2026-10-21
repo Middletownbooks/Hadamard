@@ -412,3 +412,15 @@ n = 955: 1321 structures with 8 <= r <= 160
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 12, "r": 108, "e": 107, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": -224.18, "secs": 570.5}
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 48, "r": 72, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 6.8}
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 48, "r": 48, "e": 47, "verdict": "passes Q-level", "q_solutions": 640, "log2E_Q": -693.85, "secs": 286.2}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 16, "r": 96, "e": 95, "verdict": "passes Q-level", "q_solutions": 2048, "log2E_Q": -218.96, "secs": 461.6}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 16, "r": 126, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 21.0}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 48, "r": 54, "e": 35, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 21.3}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 48, "r": 42, "e": 35, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 19.7}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 71, "verdict": "passes Q-level", "q_solutions": 24, "log2E_Q": -132.15, "secs": 116.3}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 96, "r": 32, "e": 31, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 50.1}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 63, "verdict": "passes Q-level", "q_solutions": 1856, "log2E_Q": null, "secs": 347.1}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 32, "r": 84, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 19.4}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 96, "r": 36, "e": 23, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 20.5}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 96, "r": 28, "e": 23, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 18.9}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 32, "r": 60, "e": 47, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 20.2}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 24, "r": 80, "e": 79, "verdict": "passes Q-level", "q_solutions": 2048, "log2E_Q": -799.6, "secs": 493.9}
