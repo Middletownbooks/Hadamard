@@ -24,3 +24,5 @@
 {"n": 839, "fam": "k4", "order": 45, "r": 36, "log2E_Q": -10.67, "N": 19, "log2_pairs": 26.0, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.7}
 {"n": 839, "fam": "k4", "order": 30, "r": 45, "log2E_Q": -27.42, "N": 19, "log2_pairs": 26.4, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.1}
 {"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 74.63, "N": 22, "log2_pairs": 17.3, "verdict": "capped (refined list 1.79e+07 > 4000000)", "solutions_weighted": null, "secs": 2.3}
+{"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 74.71, "N": 22, "log2_pairs": 17.3, "verdict": "capped (refined list 1.79e+07 > 4000000)", "solutions_weighted": null, "secs": 0.4}
+{"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 22, "log2_pairs": 17.3, "verdict": "capped (refined list 1.79e+07 > 4000000)", "solutions_weighted": null, "secs": 0.3}
