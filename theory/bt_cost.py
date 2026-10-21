@@ -12,6 +12,12 @@ import sys, os, json, math, time, argparse
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bt_engine as E, bt_chain as C, bt_gates as BG, bt_census_run as R, bt_census2 as C2, bt_ladder as LD
+import hashlib
+
+
+def nkey(N):
+    """identifier of an invariant subgroup (several can share an order, e.g. the two axes of Z_11^2 at 971)"""
+    return hashlib.sha1(np.sort(np.asarray(N, np.int64)).tobytes()).hexdigest()[:12]
 
 
 def cell_sizes(qc, yc, qf, i, cvals):
@@ -58,7 +64,7 @@ def cost(st, maxq=64):
             tot += sz[0] * sz[3] + sz[1] * sz[2]
             mx = max(mx, sz[3])
         tot *= scale
-        res['levels'].append(dict(N=int(len(N)), coords=[len(b) for b in qA.bsize],
+        res['levels'].append(dict(N=int(len(N)), Nkey=nkey(N), coords=[len(b) for b in qA.bsize],
                                   log2_pairs=round(math.log2(tot), 1) if tot > 0 else None,
                                   log2_maxlist=round(math.log2(mx), 1) if mx > 0 else None))
     fin = [l['log2_pairs'] for l in res['levels'] if l['log2_pairs'] is not None]

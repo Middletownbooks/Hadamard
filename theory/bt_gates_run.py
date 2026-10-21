@@ -12,6 +12,7 @@ import sys, os, json, math, time, argparse, glob
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bt_engine as E, bt_chain as C, bt_gates as BG, bt_census_run as R, bt_census2 as C2, bt_ladder as LD
+import bt_cost as CO
 
 
 def run_level(st, NA, cap_pairs, maxlen):
@@ -54,7 +55,7 @@ def main():
             d = json.loads(x)
             if d.get('verdict', '').startswith('capped'):
                 continue                                        # retried (the caps may have changed)
-            done.add((d['key'], d['N']))
+            done.add((d['key'], d.get('Nkey') or d['N']))
             if d.get('verdict', '').startswith('no core'):
                 decided.add(d['key'])
     jobs = []
@@ -62,14 +63,15 @@ def main():
         c = json.loads(x)
         for l in c.get('levels', []):
             if l.get('log2_pairs') is not None and l['log2_pairs'] <= a.cap:
-                jobs.append((l['log2_pairs'], c['key'], l['N'], l['log2_maxlist']))
+                jobs.append((l['log2_pairs'], c['key'], l['N'], l['log2_maxlist'], l.get('Nkey')))
     jobs.sort()
-    for k, (lp, key, Nsz, lml) in enumerate(jobs):
-        if k % pw != pi or key in decided or (key, Nsz) in done or key not in recs or (only and key not in only):
+    for k, (lp, key, Nsz, lml, nk) in enumerate(jobs):
+        if k % pw != pi or key in decided or (key, nk or Nsz) in done or key not in recs or (only and key not in only):
             continue
         rec = recs[key]
         st = C2.build(rec) if 'fam' in rec else R.build(rec)
-        NA = [N for N in st.invariant_subgroups() if len(N) == Nsz and np.isin(N, st.Kel).all()][0]
+        cands = [N for N in st.invariant_subgroups() if len(N) == Nsz and np.isin(N, st.Kel).all()]
+        NA = next((N for N in cands if CO.nkey(N) == nk), cands[0]) if nk else cands[0]
         t = time.time()
         try:
             # per-cell partial lists can exceed the final list bound, so the list cap has a floor of 4e6
@@ -78,7 +80,7 @@ def main():
         except MemoryError as e:
             res = dict(verdict=f'capped ({e})')
         res.update(key=key, n=rec['n'], fam=rec.get('fam', 'k4'), order=rec['order'], r=rec['r'], e=rec['e'],
-                   log2E_Q=rec.get('log2E_Q'), N=int(Nsz), log2_pairs=lp, secs=round(time.time() - t, 1))
+                   log2E_Q=rec.get('log2E_Q'), N=int(Nsz), Nkey=CO.nkey(NA), log2_pairs=lp, secs=round(time.time() - t, 1))
         if res['verdict'].startswith('no core'):
             decided.add(key)
         with open(a.out, 'a') as fo:

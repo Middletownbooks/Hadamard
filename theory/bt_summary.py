@@ -57,6 +57,7 @@ class Data:
         for d in jl('logs/bt/gates_run*.jsonl'):
             self.gates[d['key']].append(d)
         self.cost = {d['key']: d for d in jl('logs/bt/cost_next_gate.jsonl')}
+        self.cost.update({d['key']: d for d in jl('logs/bt/cost_v2.jsonl')})    # levels identified by subgroup key
 
     def status(self, d):
         v = d.get('verdict', '')
