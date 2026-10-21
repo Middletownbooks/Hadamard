@@ -411,3 +411,4 @@ n = 955: 1321 structures with 8 <= r <= 160
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 96, "r": 40, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.9}
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 12, "r": 108, "e": 107, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": -224.18, "secs": 570.5}
 {"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 48, "r": 72, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 6.8}
+{"n": 955, "Pmods": [2, 2, 2], "Omods": [7, 17], "Qtype": "Z2^2", "order": 48, "r": 48, "e": 47, "verdict": "passes Q-level", "q_solutions": 640, "log2E_Q": -693.85, "secs": 286.2}
