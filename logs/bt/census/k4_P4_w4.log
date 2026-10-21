@@ -505,3 +505,5 @@ n = 739: 6005 structures with 8 <= r <= 160
 {"n": 739, "Pmods": [32], "Omods": [23], "Qtype": "Z4", "order": 8, "r": 152, "e": 151, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.5}
 {"n": 739, "Pmods": [32], "Omods": [23], "Qtype": "Z4", "order": 88, "r": 25, "e": 24, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.2}
 {"n": 739, "Pmods": [32], "Omods": [23], "Qtype": "Z4", "order": 88, "r": 22, "e": 17, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 739, "Pmods": [32], "Omods": [23], "Qtype": "Z4", "order": 8, "r": 152, "e": 107, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.6}
+{"n": 739, "Pmods": [32], "Omods": [23], "Qtype": "Z4", "order": 44, "r": 39, "e": 25, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.8}

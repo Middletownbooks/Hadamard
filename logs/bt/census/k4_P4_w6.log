@@ -10,3 +10,4 @@ n = 599: 8 structures with 161 <= r <= 400
 n = 719: 11 structures with 161 <= r <= 400
 {"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 2, "r": 360, "e": 269, "verdict": "passes Q-level", "q_solutions": 1088, "log2E_Q": 64.09, "secs": 300.4}
 {"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 2, "r": 359, "e": 358, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -359.39, "secs": 987.9}
+{"n": 719, "Pmods": [4], "Omods": [179], "Qtype": "Z4", "order": 4, "r": 270, "e": 269, "verdict": "passes Q-level", "q_solutions": 136, "log2E_Q": -548.06, "secs": 374.4}
