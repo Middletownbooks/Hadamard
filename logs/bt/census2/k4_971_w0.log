@@ -1042,3 +1042,4 @@
 {"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 100, "r": 32, "e": 31, "rule": -73.5, "verdict": "skipped (4r - 6.5e = -73.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.2}
 {"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 20, "r": 96, "e": 95, "rule": -233.5, "verdict": "skipped (4r - 6.5e = -233.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.1}
 {"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 100, "r": 36, "e": 23, "rule": -5.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 5.7}
+{"T": "nontrivial:split", "Pmods": [2, 2, 2], "order": 50, "r": 48, "e": 31, "rule": -9.5, "verdict": "passes Q-level", "q_solutions": 64, "log2E_Q": null, "log2E_whole": -1771.04, "secs": 22.6}
