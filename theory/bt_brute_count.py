@@ -14,8 +14,8 @@ import sys, json, itertools
 import numpy as np
 
 
-def main():
-    rec = json.load(open(sys.argv[1]))
+def count_cores(rec, rmax=24):
+    """exact number of ordered cores of the structure rec (dict as in the usage line)"""
     if 'mods' in rec:
         mods, Kgens = rec['mods'], rec['Kgens']
     else:
@@ -57,7 +57,8 @@ def main():
                         orb[y] = r; st.append(y)
             r += 1
     assert r <= 20, r
-    assert r <= 24, r
+    if r > rmax:
+        return dict(n_group=n, r=r, skipped=f'r > {rmax}')
     # distinct PAF vectors of one block (all 2^r orbit signs, FFT over G in chunks) with multiplicities
     ax = tuple(range(1, k + 1))
     parts = []
@@ -119,8 +120,11 @@ def main():
             cnt = int((TL[1][ok] * TR[1][pos[ok]]).sum())
             total += cnt if S == tot4 - S else 2 * cnt       # (left, right) and (right, left) orders
         res.append(total)
-    print(json.dumps(dict(n_group=n, r=r, distinct_paf_vectors=int(len(V)), cores_ordered=res[0],
-                          hashes_agree=res[0] == res[1])), flush=True)
+    return dict(n_group=n, r=r, distinct_paf_vectors=int(len(V)), cores_ordered=res[0], hashes_agree=res[0] == res[1])
+
+
+def main():
+    print(json.dumps(count_cores(json.load(open(sys.argv[1])))), flush=True)
 
 
 if __name__ == '__main__':
