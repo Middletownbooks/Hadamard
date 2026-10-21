@@ -459,3 +459,9 @@
 {"T": "nontrivial:zu", "Pmods": [2, 4], "order": 20, "r": 77, "e": 76, "rule": -186.0, "verdict": "skipped (4r - 6.5e = -186.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.4}
 {"T": "nontrivial:zu", "Pmods": [2, 4], "order": 44, "r": 65, "e": 64, "rule": -156.0, "verdict": "skipped (4r - 6.5e = -156.0 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.4}
 {"T": "nontrivial:zu", "Pmods": [2, 4], "order": 88, "r": 84, "e": 43, "rule": 56.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 4.7}
+{"T": "nontrivial:zu", "Pmods": [2, 4], "order": 440, "r": 14, "e": 11, "rule": -15.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 5.4}
+{"T": "nontrivial:zu", "Pmods": [2, 4], "order": 440, "r": 20, "e": 11, "rule": 8.5, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 4.7}
+{"T": "nontrivial:zu", "Pmods": [2, 4], "order": 40, "r": 64, "e": 51, "rule": -75.5, "verdict": "skipped (4r - 6.5e = -75.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.5}
+{"T": "nontrivial:zu", "Pmods": [2, 4], "order": 40, "r": 52, "e": 51, "rule": -123.5, "verdict": "skipped (4r - 6.5e = -123.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.4}
+{"T": "nontrivial:zu", "Pmods": [2, 4], "order": 88, "r": 54, "e": 43, "rule": -63.5, "verdict": "skipped (4r - 6.5e = -63.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.5}
+{"T": "nontrivial:split", "Pmods": [2, 4], "order": 10, "r": 104, "e": 77, "rule": -84.5, "verdict": "skipped (4r - 6.5e = -84.5 < -45.0)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 0.6}
