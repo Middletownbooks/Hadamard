@@ -43,9 +43,10 @@ def pattern_weight(pat):
 
 
 class Gates:
-    def __init__(self, st, maxlen=4 * 10 ** 6, log=None):
+    def __init__(self, st, maxlen=4 * 10 ** 6, log=None, maxpairs=3e11):
         self.st = st
         self.maxlen = maxlen
+        self.maxpairs = maxpairs
         self.qQ = st.quotient(st.Kel)
         self.chQ = C.char_matrix(self.qQ)
         self.log = log if log is not None else {}
@@ -88,7 +89,10 @@ class Gates:
         if min(len(l[0]) for l in LA) == 0:
             return LA, np.zeros((0, 4), np.int64), 0, 0.0
         PA = [C.paf_reduced(qA, i, LA[i][0]) for i in range(4)]
-        solA, noA = C.join4(PA, qA.cls_target)
+        sz = sorted(len(l[0]) for l in LA)
+        if float(sz[0]) * sz[3] + float(sz[1]) * sz[2] > self.maxpairs:
+            raise MemoryError(f"level join pairs {float(sz[0]) * sz[3] + float(sz[1]) * sz[2]:.3g} > {self.maxpairs:.3g}")
+        solA, noA = C.join4b(PA, qA.cls_target)
         mult = float(sum(np.prod([LA[i][1][a[i]] for i in range(4)]) for a in solA))
         return LA, solA, noA, mult
 

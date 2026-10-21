@@ -155,3 +155,58 @@ def is_hadamard(H):
     Hf = H.astype(np.float64)
     P = Hf @ Hf.T
     return bool(np.array_equal(P, n * np.eye(n)))
+
+
+def paley_h12():
+    """Hadamard matrix of order 12 (Paley I, q = 11)"""
+    q = 11
+    sq = {(x * x) % q for x in range(1, q)}
+    chi = lambda a: 0 if a % q == 0 else (1 if a % q in sq else -1)
+    Qm = np.array([[chi(j - i) for j in range(q)] for i in range(q)], np.int64)
+    S = np.zeros((12, 12), np.int64)
+    S[0, 1:] = 1; S[1:, 0] = -1; S[1:, 1:] = Qm
+    H = S + np.eye(12, dtype=np.int64)
+    assert (H @ H.T == 12 * np.eye(12)).all()
+    return H
+
+
+def frames_full(n4, seed=1, count=20000):
+    """frames for T = all characters (V_T = R^{4q}, 4t = 4q = n4): Hadamard matrices of order n4 (Paley for 12)
+    with random signed column permutations"""
+    assert n4 == 12
+    H = paley_h12()
+    rng = np.random.default_rng(seed)
+    for _ in range(count):
+        perm = rng.permutation(n4); sg = rng.choice([-1, 1], n4)
+        yield H[:, perm] * sg[None, :]
+
+
+def border_for_compressions(st, zfull, frames=None, max_frames=20000, tmax=5.0):
+    """border (X, Rh, Ch, frame index) for Q-compressions zfull (4 x q, full vectors on the cosets of K), or None"""
+    Q = QData(st)
+    Mc = gs_array([np.asarray(z, np.int64) for z in zfull], Q.add, Q.neg)
+    t = st.t
+    if frames is None:
+        if st.q == 4 and t == 3:
+            frames = frames_k4()
+        elif st.q == 3 and t == 3:
+            frames = frames_full(12)
+        else:
+            raise ValueError("no default frames for this (q, t)")
+    for k, Rh in enumerate(frames):
+        if k >= max_frames:
+            break
+        S = admissible(Mc, Rh, t)
+        if len(S) < 4 * t:
+            continue
+        Xc = clique(S, 4 * t, tmax=tmax)
+        if Xc is None:
+            continue
+        X = Xc.T.copy()
+        num = -(Mc @ Rh.T @ X)
+        if (num % (4 * t)).any():
+            continue
+        Ch = num // (4 * t)
+        if (np.abs(Ch) == 1).all() and (Ch @ Ch.T == np.kron(np.eye(4, dtype=np.int64), Q.Gmat)).all():
+            return X, Rh, Ch, k
+    return None

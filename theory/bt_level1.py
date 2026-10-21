@@ -10,7 +10,7 @@ usage: python3 theory/bt_level1.py CENSUS.jsonl KEY [--NA size] [--N 2000] [--ma
 import sys, os, json, math, time, argparse
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import bt_engine as E, bt_chain as C, bt_gates as BG, bt_census_run as R
+import bt_engine as E, bt_chain as C, bt_gates as BG, bt_census_run as R, bt_census2 as C2
 
 
 def level_candidates(st, maxlen=3 * 10 ** 6):
@@ -24,6 +24,15 @@ def level_candidates(st, maxlen=3 * 10 ** 6):
 
 def run_level(st, NA, N=2000, maxA=40, seed=1, maxlen=3 * 10 ** 6, patterns=None, log=None):
     g = BG.Gates(st, maxlen=maxlen)
+    if patterns is None and abs(sum(st.gamma) / st.q / 4 - 1) < 1e-9:     # trivial character in T: sum r^2 = 4t
+        import math as _m
+        tot = 4 * st.t; par = st.G.n % 2; lim = _m.isqrt(tot); patterns = []
+        for a in range(par, lim + 1, 2):
+            for b in range(a, lim + 1, 2):
+                for c in range(b, lim + 1, 2):
+                    d2 = tot - a * a - b * b - c * c
+                    if d2 >= c * c and _m.isqrt(d2) ** 2 == d2 and _m.isqrt(d2) % 2 == par:
+                        patterns.append((a, b, c, _m.isqrt(d2)))
     qA = st.quotient(NA)
     chA = C.char_matrix(qA)
     cvA = [C.coord_values(qA, i) for i in range(4)]
@@ -81,7 +90,7 @@ def main():
             if d.get('key') == a.key:
                 rec = d
     assert rec is not None
-    st = R.build(rec)
+    st = C2.build(rec) if 'fam' in rec else R.build(rec)
     cands = level_candidates(st)
     if a.NA is not None:
         cands = [N for N in cands if len(N) == a.NA]
