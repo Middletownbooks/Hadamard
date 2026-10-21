@@ -14,3 +14,4 @@ nohup nice -n 10 python3 theory/bt_thm_rigid.py logs/bt/census/thm_rigid.jsonl $
 nohup nice -n 5 python3 theory/bt_cost.py logs/bt/cost_v2.jsonl $CEN --top 25 --min-logE -10 >> logs/bt/cost_v2.log 2>&1 &
 nohup nice -n 5 python3 theory/bt_census_split.py logs/bt/census/split_k4.jsonl logs/bt/census/k4_P4_w0.jsonl,logs/bt/census/k4_P4_w1.jsonl,logs/bt/census/k4_P4_w2.jsonl,logs/bt/census/k4_P4_w3.jsonl,logs/bt/census/k4_P4_w5.jsonl --rmin 16 --rmax 50 >> logs/bt/census/split_k4.log 2>&1 &
 nohup python3 theory/bt_census_run.py logs/bt/census/k4_P4_w8.jsonl --ns 643 --rmin 8 --rmax 160 --cap 4096 >> logs/bt/census/k4_P4_w8.log 2>&1 &
+nohup sh logs/bt/gate_loop.sh >> logs/bt/gate_loop.log 2>&1 &
