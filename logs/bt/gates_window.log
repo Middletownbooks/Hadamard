@@ -22,3 +22,5 @@
 {"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 41.45, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 0.9}
 {"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 41.45, "N": 43, "verdict": "capped (refined list 3.27e+07 > 30000000)", "solutions_weighted": null, "secs": 302.6}
 {"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 41.45, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 0.8}
+{"n": 863, "fam": "k4", "order": 14, "r": 77, "log2E_Q": 31.37, "N": 43, "verdict": "capped (time limit 1800 s)", "solutions_weighted": null, "secs": 1800.3}
+{"n": 863, "fam": "k4", "order": 14, "r": 77, "log2E_Q": 31.37, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 2.2}

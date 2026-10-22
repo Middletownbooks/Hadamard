@@ -851,10 +851,15 @@ python3 theory/bt_control2148.py /home/user/vatskishan03/hadamard/hadamard/2148/
 
 # census (section 4); every runner resumes from its output file
 python3 theory/bt_census_run.py logs/bt/census/k4_P4_w0.jsonl --ns 839,863,955 --rmin 8 --rmax 160   # k = 4
+python3 theory/bt_census_run.py logs/bt/census/k4_P4_w8.jsonl --ns 643 --rmin 8 --rmax 160 --cap 4096   # 643: 2-parts with <= 4,096 endomorphisms
+python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 739 --rmin 8 --rmax 160 --cap 16384 --min-cap 1024
+python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 0/3   # and 1/3, 2/3
 python3 theory/bt_census2.py logs/bt/census2/k8_w0.jsonl --fam k8 --ns 751,719,863 --rmin 12 --rmax 110
 python3 theory/bt_census2.py logs/bt/census2/z3all_669.jsonl --fam z3all --ns 669
 python3 theory/bt_census2.py logs/bt/census2/prod12_669.jsonl --fam prod12 --ns 669 --rmin 12 --rmax 100
 sh logs/bt/census2/queue2.sh 0 1                                              # 971, 947, k6, k8 (599, 839), k4one
+python3 theory/bt_census2.py logs/bt/census2/k8c_839.jsonl --fam k8 --ns 839 --rmin 12 --rmax 110 --cap 16384 --part 0/2   # and 1/2
+sh logs/bt/restart.sh                                                         # every live worker, after a container restart
 python3 theory/bt_census_split.py logs/bt/census/split_k4.jsonl logs/bt/census/k4_P4_w0.jsonl --rmin 16 --rmax 50
 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k8_w0.jsonl     # exact gates for prefiltered
 
