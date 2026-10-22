@@ -232,3 +232,4 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 37.4}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 20, "verdict": "capped (refined list 2.47e+15 > 20000000)", "solutions_weighted": null, "secs": 150.6}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 20, "verdict": "capped (refined list 8.15e+11 > 20000000)", "solutions_weighted": null, "secs": 2.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 16, "verdict": "capped (refined list 1.14e+09 > 20000000)", "solutions_weighted": null, "secs": 1.8}
