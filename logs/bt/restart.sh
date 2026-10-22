@@ -13,4 +13,4 @@ nohup nice -n 10 python3 theory/bt_thm_rigid.py logs/bt/census/thm_rigid.jsonl $
 nohup sh logs/bt/closure.sh >> logs/bt/closure.log 2>&1 &
 nohup nice -n 5 python3 theory/bt_gates_levels.py logs/bt/gates_run_top.jsonl $CEN --levels auto --keys @logs/bt/top_new_keys.txt --tmax 300 >> logs/bt/gates_top.log 2>&1 &
 nohup sh -c "ulimit -v 6000000; nice -n 15 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k4one_w0.jsonl,logs/bt/census2/k4one_w1.jsonl" >> logs/bt/census2/close_k4one.log 2>&1 &
-nohup sh -c "ulimit -v 6000000; nice -n 15 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k8c_839.jsonl" >> logs/bt/census2/close_k8c.log 2>&1 &
+nohup sh logs/bt/close_loop.sh > /dev/null 2>&1 &
