@@ -147,3 +147,5 @@ logs/k223/gen_prod_*.log
 logs/m2/prod347/
 logs/m2/q523_repro_m2r.out
 logs/bt/calib/calib_work/
+logs/bt/census/*.structs_*.json*
+logs/bt/census2/*.structs_*.json*
