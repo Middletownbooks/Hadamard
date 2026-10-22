@@ -2,3 +2,7 @@
 {"n": 719, "fam": "k6", "order": 24, "r": 48, "log2E_Q": -1.93, "N": 7, "verdict": "capped (time limit 1800 s)", "solutions_weighted": null, "secs": 2145.8}
 {"n": 839, "fam": "k4", "order": 18, "r": 60, "log2E_Q": 11.17, "N": 19, "verdict": "capped (refined list 5.27e+07 > 30000000)", "solutions_weighted": null, "secs": 0.5}
 {"n": 839, "fam": "k4", "order": 18, "r": 60, "log2E_Q": 11.17, "N": 11, "verdict": "capped (level join pairs 4.87e+11 > 5.4e+09)", "solutions_weighted": null, "secs": 335.5}
+{"n": 955, "fam": "k4one", "order": 24, "r": 63, "log2E_Q": -3.7, "N": 119, "verdict": "capped (time limit 1800 s)", "solutions_weighted": null, "secs": 1800.0}
+{"n": 955, "fam": "k4one", "order": 24, "r": 63, "log2E_Q": -3.7, "N": 34, "verdict": "passes", "solutions_weighted": 4054272, "secs": 297.6}
+{"n": 955, "fam": "k4one", "order": 24, "r": 63, "log2E_Q": -3.7, "N": 17, "verdict": "capped (refined list 5.15e+07 > 30000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 955, "fam": "k4one", "order": 24, "r": 63, "log2E_Q": -3.7, "N": 14, "verdict": "capped (level join pairs 2.68e+10 > 5.4e+09)", "solutions_weighted": null, "secs": 554.7}

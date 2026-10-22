@@ -2514,3 +2514,14 @@ closure round 1 tier 1 done
 {"n": 751, "fam": "k4one", "order": 40, "r": 36, "log2E_Q": null, "N": 17, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.2}
 {"n": 751, "fam": "k4one", "order": 40, "r": 36, "log2E_Q": null, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.2}
 {"n": 751, "fam": "k4one", "order": 40, "r": 36, "log2E_Q": null, "N": 17, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.1}
+{"n": 751, "fam": "k4one", "order": 40, "r": 36, "log2E_Q": null, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.0}
+{"n": 839, "fam": "k4", "order": 60, "r": 36, "log2E_Q": -72.43, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 8.9}
+{"n": 839, "fam": "k4", "order": 60, "r": 36, "log2E_Q": -72.43, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 8.3}
+{"n": 839, "fam": "k4one", "order": 45, "r": 36, "log2E_Q": -11.08, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 276.0}
+{"n": 839, "fam": "k4one", "order": 60, "r": 36, "log2E_Q": -73.73, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 67.5}
+{"n": 839, "fam": "k4one", "order": 60, "r": 36, "log2E_Q": -73.46, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 68.7}
+{"n": 839, "fam": "k4one", "order": 60, "r": 36, "log2E_Q": -73.73, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 67.5}
+{"n": 839, "fam": "k4one", "order": 60, "r": 36, "log2E_Q": -73.73, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 67.1}
+{"n": 863, "fam": "k6", "order": 60, "r": 36, "log2E_Q": -37.83, "N": 13, "verdict": "passes", "solutions_weighted": 860160, "secs": 19.5}
+{"n": 863, "fam": "k6", "order": 60, "r": 36, "log2E_Q": -37.83, "N": 11, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 18.9}
+{"n": 955, "fam": "k4", "order": 48, "r": 36, "log2E_Q": null, "N": 119, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
