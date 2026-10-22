@@ -43,7 +43,8 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      endomorphisms). At 643 the 2-parts of order 128 with at most 16,384 endomorphisms are covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄
      and ℤ₄ × ℤ₃₂ (at most 4,096), and ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192). This part of the census is still running.
    - k6 at 599, 719, 839, 863, 947 and 971.
-   - k8 at 599, 719, 751 and 863; at 839 for the 2-parts with at most 16,384 endomorphisms (running; the full enumeration of S over the 2-groups of order 64 did not finish in 8 hours).
+   - k8 at 599, 719, 751 and 863; at 839 for the 2-parts with at most 16,384 endomorphisms (18,201 structures; the
+     enumeration of S over the remaining 2-groups of order 64 did not finish in 8 hours).
    - The ℤ₃ and product families at 669.
    - Split structures of the 1916 shape (§4).
    - Each structure has its exact gate status, a Q-level stratified count read at the true target, and the cost of
