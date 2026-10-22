@@ -1,1 +1,4 @@
 {"n": 719, "fam": "k6", "order": 24, "r": 48, "log2E_Q": -1.93, "N": 17, "verdict": "passes", "solutions_weighted": 24576, "secs": 2.5}
+{"n": 719, "fam": "k6", "order": 24, "r": 48, "log2E_Q": -1.93, "N": 7, "verdict": "capped (time limit 1800 s)", "solutions_weighted": null, "secs": 2145.8}
+{"n": 839, "fam": "k4", "order": 18, "r": 60, "log2E_Q": 11.17, "N": 19, "verdict": "capped (refined list 5.27e+07 > 30000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 839, "fam": "k4", "order": 18, "r": 60, "log2E_Q": 11.17, "N": 11, "verdict": "capped (level join pairs 4.87e+11 > 5.4e+09)", "solutions_weighted": null, "secs": 335.5}
