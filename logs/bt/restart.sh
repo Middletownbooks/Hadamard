@@ -5,6 +5,7 @@
 # every session gets an equal CPU share.  So each worker gets its own session (setsid), and its group's share is set
 # through /proc/self/autogroup: census at 0, gates and screens at 5-15, the slow split census at 19.
 cd /home/user/Hadamard
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1      # the matrices are small; idle BLAS threads only add load
 CEN=$(ls logs/bt/census/k4_P4_w*.jsonl logs/bt/census2/*.jsonl | tr '\n' ',' | sed 's/,$//')
 run() {   # run PRIO LOG [ULIMIT_KB|-] CMD...
   prio=$1; log=$2; lim=$3; shift 3
