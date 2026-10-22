@@ -19,8 +19,13 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
 <!-- BOTTOM-LINE -->
 1. **(A) No Hadamard matrix at an open order.** No structure reached a core.
    - **Rich structures.** Every structure that survives the exact gates with a large calibrated estimate is "rich
-     and flat": 77 or more orbits per block, and a next exact gate of 2^48 pairs or more (§8):
-     - 839 (k4, r = 156: log2 E_Q = 165.9);
+     and flat" (§8):
+     - it has 77 or more orbits per block;
+     - its first finer levels pass, with 10⁶–10¹¹ weighted solutions, or exceed the list caps;
+     - every level after them exceeds the list caps or is bounded at 2^45 pairs or more.
+
+     The hosts with the largest estimates:
+     - 839 (k4, r = 156: log2 E_Q = 165.9; k8, r = 105: 53.0, after G/N₅₂ passed);
      - 863 (r = 140: 136.9);
      - 955 (r = 147: 103.6, its first finer level passed with 5.5·10⁷ solutions);
      - 599 (k4, r = 300: 76.7);
