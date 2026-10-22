@@ -16,3 +16,7 @@
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 2, "verdict": "capped (refined list 5.83e+09 > 30000000)", "solutions_weighted": null, "secs": 4.3}
 {"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 47.85, "N": 43, "verdict": "capped (refined list 3.27e+07 > 30000000)", "solutions_weighted": null, "secs": 302.9}
 {"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 47.85, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 0.7}
+{"n": 863, "fam": "k4", "order": 14, "r": 77, "log2E_Q": 45.11, "N": 43, "verdict": "capped (time limit 1800 s)", "solutions_weighted": null, "secs": 1800.0}
+{"n": 863, "fam": "k4", "order": 14, "r": 77, "log2E_Q": 45.11, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 0.7}
+{"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 41.45, "N": 43, "verdict": "capped (refined list 3.27e+07 > 30000000)", "solutions_weighted": null, "secs": 329.1}
+{"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 41.45, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 0.9}
