@@ -2783,3 +2783,6 @@ closure round 1 tier 1 done
 {"n": 719, "fam": "k6", "order": 24, "r": 48, "log2E_Q": -1.93, "N": 7, "verdict": "capped (level join pairs 1.71e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 63.2}
 {"n": 839, "fam": "k4", "order": 30, "r": 48, "log2E_Q": -35.23, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 33.2}
 {"n": 839, "fam": "k4", "order": 30, "r": 48, "log2E_Q": -53.56, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 34.1}
+{"n": 839, "fam": "k4one", "order": 30, "r": 48, "log2E_Q": -35.91, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 283.3}
+{"n": 839, "fam": "k4one", "order": 30, "r": 48, "log2E_Q": -54.68, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 271.5}
+{"n": 839, "fam": "k4one", "order": 30, "r": 48, "log2E_Q": -55.9, "N": 19, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 279.1}
