@@ -232,7 +232,6 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1, prefilter=-45.0):
         out['secs'] = round(time.time() - t0, 1); return out
     cp = st.coset_parseval()
     out['cp'] = [(d['p'], round(d['margin'], 3)) for d in cp]
-    out['inv_subgroups'] = [len(Nn) for Nn in st.invariant_subgroups()]
     if any(d['dead'] for d in cp):
         out['verdict'] = 'no core [P] (coset-Parseval)'
         out['secs'] = round(time.time() - t0, 1); return out
@@ -261,6 +260,7 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1, prefilter=-45.0):
         out['q_solutions_listed'] = int(sum(len(q[1]) for q in qs))      # the join output was truncated
     if not qs:
         out['verdict'] = 'no core [M] (Q-level empty)'; out['secs'] = round(time.time() - t0, 1); return out
+    out['inv_subgroups'] = [len(Nn) for Nn in st.invariant_subgroups()]     # survivors only (the full list is slow)
     import q523_gauss as QG
     rng = np.random.default_rng(seed)
     V = np.zeros((N, st.ncls), np.int64)
