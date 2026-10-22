@@ -16251,3 +16251,4 @@ n = 643: 31747 structures with 8 <= r <= 160
 {"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 140, "e": 107, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
 {"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 104, "e": 103, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 0.3}
 {"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 140, "e": 107, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 112, "e": 87, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": -76.41, "secs": 21.6}
