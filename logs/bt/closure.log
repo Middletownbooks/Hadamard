@@ -1725,3 +1725,12 @@ closure tier 1 done
 {"n": 971, "fam": "k6", "order": 22, "r": 66, "log2E_Q": null, "N": 23, "verdict": "capped (refined list 8.34e+10 > 20000000)", "solutions_weighted": null, "secs": 0.2}
 {"n": 971, "fam": "k6", "order": 22, "r": 66, "log2E_Q": null, "N": 7, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 39.9}
 {"n": 971, "fam": "k6", "order": 22, "r": 72, "log2E_Q": null, "N": 23, "verdict": "capped (refined list 8.58e+07 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 971, "fam": "k6", "order": 22, "r": 72, "log2E_Q": null, "N": 7, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 3778.4}
+{"n": 971, "fam": "k6", "order": 22, "r": 84, "log2E_Q": null, "N": 23, "verdict": "capped (refined list 3.58e+16 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 971, "fam": "k6", "order": 22, "r": 84, "log2E_Q": null, "N": 7, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 53.1}
+{"n": 971, "fam": "k6", "order": 12, "r": 118, "log2E_Q": null, "N": 23, "verdict": "passes", "solutions_weighted": 4632576, "secs": 59.4}
+{"n": 971, "fam": "k6", "order": 12, "r": 118, "log2E_Q": null, "N": 7, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 15.0}
+488 1754 433
+{"n": 739, "fam": "k4", "order": 132, "r": 16, "log2E_Q": null, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.8}
+{"n": 739, "fam": "k4", "order": 132, "r": 16, "log2E_Q": null, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 739, "fam": "k4", "order": 66, "r": 20, "log2E_Q": null, "N": 92, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}

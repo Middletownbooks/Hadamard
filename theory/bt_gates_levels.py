@@ -77,7 +77,9 @@ def main():
                 FIRED[0] = False
                 signal.alarm(int(a.tmax))
                 try:
-                    res = GR.run_level(st, NA, cap_pairs=2.0 ** 40, maxlen=int(a.maxlen))
+                    # the alarm cannot interrupt a compiled join, so joins that could not finish in time are
+                    # refused up front: pair cap = measured rate (about 3e6 pairs/s) x time limit
+                    res = GR.run_level(st, NA, cap_pairs=max(2.0 ** 30, 3e6 * a.tmax), maxlen=int(a.maxlen))
                     res['verdict'] = 'no core [M] (level empty)' if res['solutions_weighted'] == 0 else 'passes'
                 except MemoryError as e:
                     res = dict(verdict=f'capped ({e})')
