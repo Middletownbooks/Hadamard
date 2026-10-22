@@ -84,8 +84,9 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - It has closed structures at a deeper exact level, mostly at 739. The current counts are in the "deeper
        level" column of §4.1. The 739 survivors are mostly large-orbit structures (r up to 141, estimates near
        2^−300), whose levels pass or exceed the list cap.
-     - At 599 k8, all 845 structures that the census had skipped by its rule of thumb were decided exactly, by the
-       Q-level gate or by coset-Parseval (`theory/bt_close.py`).
+     - Every structure that the census had skipped by its rule of thumb (4r − 6.5e < −45) was decided exactly by
+       the screens and the Q-level gate (`theory/bt_close.py`): 845 at 599 k8, 4,357 at 839 k8, and 12,882 k4one
+       structures at 643, 739 and 971. The 839 k8 ones left alive all have log2 E_Q ≤ −24.7.
    - **The 669 ℤ₃ family (Kumar's 2148 family) is closed except for two hosts [P, M].**
      - All 239 structures of the census range are dead except 2: 75 by coset-Parseval, 10 by Lemma R, and 152 at an
        exact finer level G/N = ℤ₉ or ℤ₆ (`theory/bt_gates_levels.py`, timed gates, `logs/bt/gates_run_levels.jsonl`).
