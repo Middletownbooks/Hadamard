@@ -205,7 +205,7 @@ PAF(ν₀) = Σ_m [(|N| − 2)c_m² + 2c_m d_m] ≥ (|N| − 4)|M| > 0.
 But Σᵢ PAFᵢ(ν₀) = −4t. ∎
 
 Transitivity on N \ 0 forces N to be elementary abelian: ℤ_p with a primitive multiplier, or ℤ₁₁² with a Singer
-cycle at 971. `theory/bt_thm_rigid.py` screens every survivor (<!-- RIGID-COUNTS -->1114 structures killed<!-- /RIGID-COUNTS -->). Brute-force control: ℤ₂² × ℤ₅
+cycle at 971. `theory/bt_thm_rigid.py` screens every survivor (<!-- RIGID-COUNTS -->1221 structures killed<!-- /RIGID-COUNTS -->). Brute-force control: ℤ₂² × ℤ₅
 with S = ⟨(1, ×2)⟩ has 0 cores.
 
 ### 3.3 Coset-Parseval adapted to T
@@ -281,7 +281,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 839 | k4one | 204 | 0 | 0 | 16 | 0 | 108 | 32 | 0 | 48 | 4 | S15, 84, 43, 19.59 |
 | 839 | k4split | 9 | 0 | 5 | 1 | 2 | 0 | 0 | 0 | 1 | 0 | S90, 16/30/30/16, 15, -16.41 |
 | 839 | k6 | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 | 0 | — |
-| 839 | k8 | 18201 | 13184 | 0 | 270 | 0 | 1166 | 3 | 0 | 3578 | 103 | S12, 105, 56, 53.02 |
+| 839 | k8 | 18201 | 13184 | 0 | 377 | 0 | 1166 | 3 | 0 | 3471 | 103 | S12, 105, 56, 53.02 |
 | 859 | k4 | 81 | 39 | 0 | 0 | 0 | 42 | 0 | 0 | 0 | 0 | — |
 | 859 | k4one | 106 | 52 | 0 | 0 | 0 | 54 | 0 | 0 | 0 | 0 | — |
 | 863 | k4 | 246 | 0 | 44 | 14 | 0 | 134 | 1 | 0 | 53 | 12 | S7, 140, 71, 136.89 |
@@ -400,7 +400,7 @@ counts are common among alive structures with E_Q below about 2^30.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k4one: 4 structures, all dead; k6: 59 structures, 26 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
 - **739.** k4: 6334 structures, 220 alive, best S6 r = 144 at log2 E_Q = 53.6; k4one: 12803 structures, 2779 alive, best S22 r = 60 at log2 E_Q = -22.8.
 - **751.** k4: 217 structures, 67 alive, best S8 r = 121 at log2 E_Q = 73.5; k4one: 204 structures, 76 alive, best S20 r = 57 at log2 E_Q = -22.5; k4split: 54 structures, 32 alive, best S80 r = 27/36/36/27 at log2 E_Q = -33.2, 13 prefiltered; k8: 441 structures, 33 alive, best S10 r = 105 at log2 E_Q = 66.2.
-- **839.** k4: 232 structures, 60 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 48 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 9 structures, 1 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 2 prefiltered; k6: 9 structures, all dead; k8: 18201 structures, 3578 alive, best S12 r = 105 at log2 E_Q = 53.0.
+- **839.** k4: 232 structures, 60 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 48 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 9 structures, 1 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 2 prefiltered; k6: 9 structures, all dead; k8: 18201 structures, 3471 alive, best S12 r = 105 at log2 E_Q = 53.0.
 - **859.** k4: 81 structures, all dead; k4one: 106 structures, all dead.
 - **863.** k4: 246 structures, 53 alive, best S7 r = 140 at log2 E_Q = 136.9; k4one: 224 structures, 36 alive, best S14 r = 77 at log2 E_Q = 47.9; k6: 60 structures, 29 alive, best S15 r = 90 at log2 E_Q = 3.3; k8: 33 structures, 1 alive, best S14 r = 108 at log2 E_Q = −∞.
 - **907.** k4: 384 structures, all dead; k4one: 580 structures, all dead.
@@ -551,7 +551,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 144237 structures: coset-Parseval 115519, Theorem α 701, Lemma R 1108 (the screens [P]); Q-level empty 13683, deeper level or chain empty 1630 [M]; prefilter only 15; alive 11571.
+Over 144237 structures: coset-Parseval 115519, Theorem α 701, Lemma R 1215 (the screens [P]); Q-level empty 13683, deeper level or chain empty 1630 [M]; prefilter only 15; alive 11464.
 <!-- /SCREEN-COUNTS -->
 
 
