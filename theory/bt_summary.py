@@ -53,6 +53,7 @@ class Data:
             self.level1[d['key']].append(d)
         self.decide = {d['key']: d for d in jl('logs/bt/decide_run1.log') if 'key' in d}
         self.border = {d['key']: d for d in jl('logs/bt/border_census.jsonl')}
+        self.border.update({d['key']: d for d in jl('logs/bt/border_k4one.jsonl')})   # k4one frames (bt_border_k4one)
         self.gates = collections.defaultdict(list)
         for d in jl('logs/bt/gates_run*.jsonl'):
             self.gates[d['key']].append(d)
