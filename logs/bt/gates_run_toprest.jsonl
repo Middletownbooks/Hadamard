@@ -22,3 +22,4 @@
 {"verdict": "capped (refined list 9.72e+18 > 20000000)", "key": "e86a52525f229de2", "n": 719, "fam": "k6", "order": 8, "r": 112, "e": 59, "log2E_Q": 66.18, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 0.4}
 {"verdict": "capped (refined list 2.96e+07 > 20000000)", "key": "e86a52525f229de2", "n": 719, "fam": "k6", "order": 8, "r": 112, "e": 59, "log2E_Q": 66.18, "N": 7, "Nkey": "334f65c84c69", "log2_pairs": null, "secs": 0.1}
 {"verdict": "capped (refined list 2.02e+13 > 20000000)", "key": "c89e8c63f5f864e8", "n": 719, "fam": "k6", "order": 8, "r": 108, "e": 59, "log2E_Q": 35.3, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 0.1}
+{"verdict": "capped (time limit 900 s)", "key": "c89e8c63f5f864e8", "n": 719, "fam": "k6", "order": 8, "r": 108, "e": 59, "log2E_Q": 35.3, "N": 7, "Nkey": "334f65c84c69", "log2_pairs": null, "secs": 910.6}
