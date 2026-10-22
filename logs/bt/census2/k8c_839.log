@@ -11781,3 +11781,4 @@ n = 839 fam k8: 18201 structures (14.9s)
 {"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [2, 2, 16], "Omods": [13], "order": 12, "r": 110, "e": 58, "verdict": "passes Q-level", "q_solutions": 48, "log2E_Q": 21.7, "log2E_whole": 23.93, "secs": 15.0}
 {"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [2, 2, 16], "Omods": [13], "order": 12, "r": 102, "e": 62, "verdict": "passes Q-level", "q_solutions": 48, "log2E_Q": 13.79, "log2E_whole": 29.89, "secs": 14.9}
 {"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [2, 2, 16], "Omods": [13], "order": 12, "r": 88, "e": 50, "verdict": "passes Q-level", "q_solutions": 48, "log2E_Q": -58.02, "log2E_whole": -43.28, "secs": 14.7}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [2, 2, 16], "Omods": [13], "order": 12, "r": 104, "e": 58, "verdict": "passes Q-level", "q_solutions": 48, "log2E_Q": 43.67, "log2E_whole": 60.17, "secs": 17.6}
