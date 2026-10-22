@@ -11,7 +11,7 @@ for round in 1 2 3 4 5 6 7 8 9 10; do
   python3 logs/bt/closure_keys.py > logs/bt/closure_keys.txt
   for tier in 1 2; do
     sed -n "${tier}p" logs/bt/closure_keys.txt > logs/bt/closure_keys_t$tier.txt
-    nice -n 10 python3 theory/bt_gates_levels.py logs/bt/gates_run_closure.jsonl $CEN --levels auto --keys @logs/bt/closure_keys_t$tier.txt --tmax 300
+    nice -n 10 python3 theory/bt_gates_levels.py logs/bt/gates_run_closure.jsonl $CEN --levels auto --keys @logs/bt/closure_keys_t$tier.txt --tmax 300 --seen-all
     echo "closure round $round tier $tier done"
   done
   after=$(cat logs/bt/gates_run_closure.jsonl | wc -l)

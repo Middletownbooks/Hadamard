@@ -6,7 +6,7 @@ by 2^37 pairs ran in 8 s).  This runner takes the levels by the order of N (ever
 theory/bt_gates_run.run_level under an alarm.  A level with no solution closes the structure: no core [M].  One JSON
 line per (structure, level), restart-safe; output in the format of bt_gates_run (read by theory/bt_summary.py).
 usage: python3 theory/bt_gates_levels.py OUT.jsonl CENSUS.jsonl[,...] --levels 111,74|auto
-       (--keys k1,k2|@FILE | --fam n:fam) [--tmax 900] [--maxlen 2e7]
+       (--keys k1,k2|@FILE | --fam n:fam) [--tmax 900] [--maxlen 2e7] [--seen-all]
 """
 import sys, os, json, time, math, argparse, signal
 import numpy as np
@@ -33,6 +33,8 @@ def main():
     ap.add_argument('--levels', required=True); ap.add_argument('--keys', default=None)
     ap.add_argument('--fam', default=None, help='n:fam, every alive structure of that order and family')
     ap.add_argument('--tmax', type=float, default=900); ap.add_argument('--maxlen', type=float, default=2e7)
+    ap.add_argument('--seen-all', action='store_true',
+                    help='also skip (structure, level) pairs recorded in any logs/bt/gates_run*.jsonl')
     a = ap.parse_args()
     levels = None if a.levels == 'auto' else [int(x) for x in a.levels.split(',')]
     recs = {}
@@ -56,6 +58,15 @@ def main():
             done.add((d['key'], d.get('Nkey')))
             if d.get('verdict', '').startswith('no core'):
                 dead.add(d['key'])
+    if a.seen_all:                                             # levels another runner already tried or decided
+        import glob
+        for f in glob.glob(os.path.join(os.path.dirname(os.path.abspath(a.out)), 'gates_run*.jsonl')):
+            for x in open(f):
+                d = json.loads(x)
+                if d.get('Nkey'):
+                    done.add((d['key'], d['Nkey']))
+                if d.get('verdict', '').startswith('no core'):
+                    dead.add(d['key'])
     signal.signal(signal.SIGALRM, _alarm)
     for key in keys:
         if key in dead or key not in recs:

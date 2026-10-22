@@ -437,9 +437,10 @@ Every item names its script; "dead" means no core [M] for that structure.
 
 *Soundness check of the recorded kills.* An exact gate refines every Q-level solution, and the 2 + 2 join stores at
 most 10⁷ solutions per row pattern. So a kill counts only if the Q-level was stored in full.
-- All 219 recorded kills of the gate runners have at most 4,806 Q-level solutions.
+- All 1,488 structures killed by an exact gate (every `gates_run*`, `ladder_run*` and `level1_*` log, checked on
+  2026-10-22) have at most 4,806 Q-level solutions.
 - The exhaustive chains saw at most 64 Q-level and 384 level-A solutions.
-- The gate code now refuses a truncated join (`bt_gates.Gates.q_level`, `bt_search.Run`). The census only needs
+- The gate code also refuses a truncated join (`bt_gates.Gates.q_level`, `bt_search.Run`). The census only needs
   the count, which stays exact.
 
 ### 5.1 Families closed inside the census range
