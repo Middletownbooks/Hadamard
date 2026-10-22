@@ -2339,3 +2339,7 @@ closure tier 1 done
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -290.04, "N": 2, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 301.6}
 {"n": 739, "fam": "k4", "order": 6, "r": 144, "log2E_Q": 53.64, "N": 92, "verdict": "passes", "solutions_weighted": 202515200, "secs": 47.7}
 113 2755 19
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -307.08, "N": 92, "verdict": "passes", "solutions_weighted": 1929216, "secs": 5.9}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -307.08, "N": 92, "verdict": "passes", "solutions_weighted": 142080, "secs": 0.9}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -307.08, "N": 92, "verdict": "passes", "solutions_weighted": 17760, "secs": 0.8}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -307.08, "N": 46, "verdict": "capped (refined list 2.02e+07 > 20000000)", "solutions_weighted": null, "secs": 0.7}
