@@ -775,6 +775,18 @@ vectors (3964). At the open orders, the best live structures in and near that wi
 | 971 | k6 | — | — | -368.36 (S12, 118) |
 <!-- /WINDOW-TABLE -->
 
+**Timed exact gates on the window [M]** (`theory/bt_gates_levels.py --tmax 1800 --maxlen 3e7`,
+`logs/bt/gates_run_window.jsonl`). Every alive structure with r ≤ 80 and log2 E_Q ≥ −5 (11 structures) was run at
+every invariant level inside K. None died; each level passed or hit a cap:
+- 719 k6, S24 r48 (2^−1.9): G/N₁₇ passes with 24,576 weighted solutions; G/N₇ exceeds 30 minutes.
+- 839 S18 r60 (2^11.2): the G/N₁₉ list exceeds 3·10⁷ vectors. G/N₁₁ needs 4.9·10¹¹ join pairs for the first of its
+  20 Q-level solutions alone.
+- 955 k4 and k4one, S24 r63 (2^−4.2 and 2^−3.7): G/N₃₄ passes with 4.1·10⁶. G/N₁₁₉ exceeds 30 minutes, G/N₁₄ needs
+  2.7·10¹⁰ pairs, and the other levels exceed the list cap.
+- 863 S14 r77 (six structures, 2^27–2^48): G/N₄₃ exceeds the list cap or 30 minutes; the G/N₅ lists have 8·10¹⁰
+  vectors.
+- 839 S15 r78 (2^44.9): G/N₁₉ passes with 2.5·10⁹; G/N₁₁ exceeds the list cap.
+
 ### 8.3 The best candidate measured to the end of what the tools can do: 839, S15, r = 78
 
 - **The structure.** ℤ₂² × ℤ₁₁ × ℤ₁₉, S of order 15, 78 orbits per block, 39 equations; log2 E_Q = 44.9.
