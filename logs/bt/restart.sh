@@ -22,3 +22,5 @@ run 10 logs/bt/closure.log - sh logs/bt/closure.sh
 run 15 /dev/null - sh logs/bt/close_loop.sh
 # timed exact gates on the alive structures with r <= 80 and log2 E_Q >= -5 (the window of the known successes)
 run 10 logs/bt/gates_window.log 8000000 python3 theory/bt_gates_levels.py logs/bt/gates_run_window.jsonl $CEN --levels auto --keys @logs/bt/window_keys.txt --tmax 1800 --maxlen 3e7
+# timed exact gates on the top 20 alive 643 hosts (levels no runner has tried yet)
+run 5 logs/bt/gates_top643.log 7000000 python3 theory/bt_gates_levels.py logs/bt/gates_run_top643.jsonl $CEN --levels auto --keys @logs/bt/top643_keys.txt --tmax 900 --seen-all
