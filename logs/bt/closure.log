@@ -1713,3 +1713,4 @@ closure tier 1 done
 {"n": 739, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -134.88, "N": 46, "verdict": "passes", "solutions_weighted": 1624320, "secs": 0.5}
 {"n": 739, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -134.88, "N": 23, "verdict": "capped (refined list 2.39e+07 > 20000000)", "solutions_weighted": null, "secs": 0.3}
 {"n": 739, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -134.88, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 7.3}
+{"n": 739, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -134.88, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 10.5}
