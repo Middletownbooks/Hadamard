@@ -25571,3 +25571,14 @@ n = 643: 31747 structures with 8 <= r <= 160
 n = 643: 31747 structures with 8 <= r <= 160
 n = 643: 31747 structures with 8 <= r <= 160
 n = 643: 31747 structures with 8 <= r <= 160
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 126, "e": 71, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": 45.13, "secs": 10.9}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 102, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 102, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 107, "e": 71, "verdict": "passes Q-level", "q_solutions": 12, "log2E_Q": -11.92, "secs": 11.1}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 32, "r": 59, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.0}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 83, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 128, "e": 75, "verdict": "passes Q-level", "q_solutions": 1408, "log2E_Q": -81.15, "secs": 20.5}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 32, "r": 60, "e": 38, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 92, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 114, "e": 68, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": -5.96, "secs": 10.3}
+{"n": 643, "Pmods": [8, 16], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 111, "e": 85, "verdict": "passes Q-level", "q_solutions": 12, "log2E_Q": -96.84, "secs": 14.4}
