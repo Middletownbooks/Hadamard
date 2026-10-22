@@ -12,7 +12,9 @@ run() {   # run PRIO LOG [ULIMIT_KB|-] CMD...
   setsid nohup sh -c "echo $prio > /proc/self/autogroup 2>/dev/null; ${pre}exec nice -n $prio $*" >> "$log" 2>&1 < /dev/null &
 }
 # census (643 with at most 4,096 endomorphisms finished at 13:05)
-run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096
+run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 0/3
+run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 1/3
+run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 2/3
 run 0 logs/bt/census2/k8c_839.log - python3 theory/bt_census2.py logs/bt/census2/k8c_839.jsonl --fam k8 --ns 839 --rmin 12 --rmax 110 --cap 16384 --part 0/2
 run 0 logs/bt/census2/k8c_839.log - python3 theory/bt_census2.py logs/bt/census2/k8c_839.jsonl --fam k8 --ns 839 --rmin 12 --rmax 110 --cap 16384 --part 1/2
 run 19 logs/bt/census/split_k4.log - python3 theory/bt_census_split.py logs/bt/census/split_k4.jsonl logs/bt/census/k4_P4_w0.jsonl,logs/bt/census/k4_P4_w1.jsonl,logs/bt/census/k4_P4_w2.jsonl,logs/bt/census/k4_P4_w3.jsonl,logs/bt/census/k4_P4_w5.jsonl --rmin 16 --rmax 50
