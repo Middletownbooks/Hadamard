@@ -2791,3 +2791,18 @@ closure round 1 tier 1 done
 {"n": 863, "fam": "k6", "order": 40, "r": 48, "log2E_Q": -58.1, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.8}
 {"n": 863, "fam": "k6", "order": 30, "r": 48, "log2E_Q": null, "N": 13, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 183.0}
 {"n": 863, "fam": "k6", "order": 30, "r": 48, "log2E_Q": -43.7, "N": 13, "verdict": "passes", "solutions_weighted": 3735552, "secs": 8.3}
+{"n": 863, "fam": "k6", "order": 30, "r": 48, "log2E_Q": -43.7, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.7}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -63.78, "N": 119, "verdict": "passes", "solutions_weighted": 66650112, "secs": 15.2}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -63.78, "N": 34, "verdict": "passes", "solutions_weighted": 6144, "secs": 0.4}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -63.78, "N": 17, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 67.9}
+{"n": 955, "fam": "k4", "order": 32, "r": 48, "log2E_Q": -534.38, "N": 119, "verdict": "passes", "solutions_weighted": 61440, "secs": 0.1}
+{"n": 955, "fam": "k4", "order": 32, "r": 48, "log2E_Q": -534.38, "N": 34, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 3.1}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -64.71, "N": 119, "verdict": "passes", "solutions_weighted": 66650112, "secs": 14.7}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -64.71, "N": 34, "verdict": "passes", "solutions_weighted": 6144, "secs": 0.3}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -64.71, "N": 17, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 68.2}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -90.05, "N": 119, "verdict": "passes", "solutions_weighted": 2162688, "secs": 14.3}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -90.05, "N": 34, "verdict": "passes", "solutions_weighted": 6144, "secs": 0.3}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -90.05, "N": 17, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 66.8}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -90.05, "N": 119, "verdict": "passes", "solutions_weighted": 2162688, "secs": 13.2}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -90.05, "N": 34, "verdict": "passes", "solutions_weighted": 6144, "secs": 0.4}
+{"n": 955, "fam": "k4", "order": 48, "r": 48, "log2E_Q": -90.05, "N": 17, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 68.6}
