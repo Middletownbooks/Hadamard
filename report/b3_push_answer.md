@@ -759,7 +759,9 @@ days, and 2^50 about 10⁴ years.
 `logs/bt/gates_run_top643.jsonl`, `gates_run_top839k8.jsonl`, `gates_run_toprest.jsonl`). This covered the 31 best
 643 hosts (357 levels), the six best 839 k8 hosts, and the three best hosts each of 751 k4, 971 k4 and 719 k6. No
 level was empty. The levels that ran passed, with 10⁵–10¹² weighted solutions; every other level exceeded the list,
-memory, pair or 15-minute limit.
+memory, pair or 15-minute limit. One of them, G/N₁₁ of the best 751 host (S8 r121, 2^73.5), needs 4.3·10⁹ join pairs
+for its first Q-level solution. Rerun with a two-hour limit (`logs/bt/gates_run_751n11.jsonl`), it ran out of time
+too.
 
 Every structure with E_Q ≥ 2^40 at an open order has r ≥ 77. Its cheapest unrun exact gate costs 2^50 pairs or more,
 or its last gate passed with so many solutions (5.5·10⁷ at 955, 2.5·10⁹ at 839) that the next level would have to
