@@ -22,19 +22,20 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      and flat" (§8):
      - it has 77 or more orbits per block;
      - its first finer levels pass, with 10⁶–10¹¹ weighted solutions, or exceed the list caps;
-     - every level after them exceeds the list caps or is bounded at 2^45 pairs or more.
+     - every level after them exceeds the list caps or is bounded at 2^45 pairs or more;
+     - or, at 599 and 719 (k4), it has no exact level between Q and G at all (§4.3).
 
      The hosts with the largest estimates:
      - 839 (k4, r = 156: log2 E_Q = 165.9; k8, r = 105: 53.0, after G/N₅₂ passed);
      - 863 (r = 140: 136.9);
-     - 955 (r = 147: 103.6, its first finer level passed with 5.5·10⁷ solutions);
-     - 599 (k4, r = 300: 76.7);
-     - 971 (r = 112: 73.3, first finer level passed);
-     - 751 (k4 r = 121: 73.5; k8 r = 105: 66.2);
-     - 669 (ℤ₃ family, r = 90: 73.1, first finer level passed);
-     - 719 (k6, r = 112: 66.2; k4, r = 360: 64.1);
      - 643 (k4 on ℤ₂² × ℤ₃₂ × ℤ₅, S of order 8, r = 160: 116.5; on ℤ₄ × ℤ₃₂ × ℤ₅, r = 124: 95.4, after three exact
        levels passed);
+     - 955 (r = 147: 103.6, its first finer level passed with 2.5·10¹¹ weighted solutions);
+     - 599 (k4, r = 300: 76.7);
+     - 751 (k4, r = 121: 73.5; k8, r = 105: 66.2);
+     - 971 (r = 112: 73.3, first finer level passed);
+     - 669 (ℤ₃ family, r = 90: 73.1, first finer level passed);
+     - 719 (k6, r = 112: 66.2; k4, r = 360: 64.1);
      - 739 (k4 on ℤ₂ × ℤ₄² × ℤ₂₃, S of order 6, r = 144: 53.6).
    - **Exact gates kill even large estimates.** The 32 richest 971 hosts (r = 106, estimates 2^83–2^98.7) have no
      solution at the level G/N = ℤ₂ × ℤ₄. The 669 ℤ₃ hosts with estimates 2^26–2^85 die at G/N = ℤ₆ or ℤ₉, all
