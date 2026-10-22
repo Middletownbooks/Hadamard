@@ -755,6 +755,12 @@ days, and 2^50 about 10⁴ years.
 | 971 | k4 | S10, 112, 57 | 73.23 | N22: 786432 | — | N121: 49.5 |
 <!-- /RICH-TABLE -->
 
+**Timed gates at every untried level of the top hosts [M]** (`theory/bt_gates_levels.py --tmax 900 --seen-all`,
+`logs/bt/gates_run_top643.jsonl`, `gates_run_top839k8.jsonl`, `gates_run_toprest.jsonl`). This covered the 31 best
+643 hosts (357 levels), the six best 839 k8 hosts, and the three best hosts each of 751 k4, 971 k4 and 719 k6. No
+level was empty. The levels that ran passed, with 10⁵–10¹² weighted solutions; every other level exceeded the list,
+memory, pair or 15-minute limit.
+
 Every structure with E_Q ≥ 2^40 at an open order has r ≥ 77. Its cheapest unrun exact gate costs 2^50 pairs or more,
 or its last gate passed with so many solutions (5.5·10⁷ at 955, 2.5·10⁹ at 839) that the next level would have to
 run inside each of them.
