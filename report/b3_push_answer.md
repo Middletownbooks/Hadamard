@@ -49,6 +49,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂³ × ℤ₄ and ℤ₂⁵ (2^17 and 2^25
      endomorphisms). At 643 the 2-parts of order 128 with at most 16,384 endomorphisms are covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄
      and ℤ₄ × ℤ₃₂ (at most 4,096), and ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192).
+   - k4one at every n ≡ 3 (mod 4) for 12 ≤ r ≤ 90 (643, 739 and 971 still running).
    - k6 at 599, 719, 839, 863, 947 and 971.
    - k8 at 599, 719, 751 and 863; at 839 for the 2-parts with at most 16,384 endomorphisms (18,201 structures; the
      enumeration of S over the remaining 2-groups of order 64 did not finish in 8 hours).
