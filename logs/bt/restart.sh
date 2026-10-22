@@ -29,3 +29,4 @@ run 0 logs/bt/census/k4_P4_w10.log - python3 theory/bt_census_run.py logs/bt/cen
 run 0 logs/bt/census2/k4one_643.log - python3 theory/bt_census2.py logs/bt/census2/k4one_643.jsonl --fam k4one --ns 643 --rmin 12 --rmax 90 --cap 16384
 run 0 logs/bt/census2/k4one_739.log - python3 theory/bt_census2.py logs/bt/census2/k4one_739.jsonl --fam k4one --ns 739 --rmin 12 --rmax 90 --cap 16384
 run 0 logs/bt/census2/k4one_971.log - python3 theory/bt_census2.py logs/bt/census2/k4one_971.jsonl --fam k4one --ns 971 --rmin 12 --rmax 90 --cap 1048576
+run 0 logs/bt/census2/k4one_971b.log - python3 theory/bt_census971.py logs/bt/census2/k4one_971b.jsonl --fam k4one --rmin 12 --rmax 90
