@@ -2320,3 +2320,12 @@ closure tier 1 done
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -322.43, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 84.3}
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -322.43, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 242.0}
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -289.6, "N": 92, "verdict": "passes", "solutions_weighted": 90654720, "secs": 45.2}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -289.6, "N": 46, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 621.8}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -289.6, "N": 23, "verdict": "capped (refined list 1.1e+11 > 20000000)", "solutions_weighted": null, "secs": 1.8}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -289.6, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 46.7}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -289.6, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 85.6}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -289.6, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 249.7}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -322.43, "N": 92, "verdict": "passes", "solutions_weighted": 9216, "secs": 2.2}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -322.43, "N": 46, "verdict": "passes", "solutions_weighted": 40817664, "secs": 151.6}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -322.43, "N": 23, "verdict": "capped (refined list 6.88e+09 > 20000000)", "solutions_weighted": null, "secs": 1.6}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -322.43, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 49.1}
