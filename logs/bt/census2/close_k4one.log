@@ -1032,3 +1032,6 @@
 {"n": 955, "fam": "k4one", "order": 16, "r": 90, "e": 89, "verdict": "passes Q-level", "q_solutions": 2304, "log2E_Q": -201.16, "secs": 21.1}
 {"n": 955, "fam": "k4one", "order": 16, "r": 90, "e": 68, "verdict": "passes Q-level", "q_solutions": 2304, "log2E_Q": -101.97, "secs": 16.2}
 {"n": 955, "fam": "k4one", "order": 32, "r": 64, "e": 47, "verdict": "passes Q-level", "q_solutions": 16896, "log2E_Q": null, "secs": 15.0}
+{"n": 955, "fam": "k4one", "order": 32, "r": 60, "e": 59, "verdict": "passes Q-level", "q_solutions": 2112, "log2E_Q": null, "secs": 18.2}
+{"n": 955, "fam": "k4one", "order": 32, "r": 60, "e": 45, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 5.7}
+{"n": 955, "fam": "k4one", "order": 32, "r": 60, "e": 45, "verdict": "passes Q-level", "q_solutions": 2112, "log2E_Q": null, "secs": 12.1}
