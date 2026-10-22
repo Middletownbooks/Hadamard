@@ -6,7 +6,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 import bt_summary as S
 D = S.Data()
-eff = [(739, 'k4'), (947, 'k4'), (863, 'k8'), (719, 'k8'), (971, 'k6'), (599, 'k6'), (599, 'k8'), (669, 'prod12')]
+eff = [(739, 'k4'), (947, 'k4'), (863, 'k8'), (719, 'k8'), (971, 'k6'), (599, 'k6'), (599, 'k8'), (669, 'prod12'),
+       (751, 'k4one')]
 done = set()
 if os.path.exists('logs/bt/gates_run_closure.jsonl'):
     done = {json.loads(x)['key'] for x in open('logs/bt/gates_run_closure.jsonl')}

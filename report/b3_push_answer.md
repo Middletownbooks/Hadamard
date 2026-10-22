@@ -90,7 +90,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
 5. **What would reach further (§8.5):** a staged solver that never lists a level, for the rich hosts.
    - Kumar's ℤ₂ U/W split (the 2148 route) is not that solver [E], calibrated on 2148 (2^−14 estimated, 2^−18
      observed). At the hosts with an S-fixed involution it predicts:
-     - 2^−13 to 2^−61 completions per U-solution, with W-lists of 2^19 or more per block;
+     - 2^−13 to 2^−95 completions per U-solution, with W-lists of 2^19 or more per block;
      - or, where completions are commoner, W-lists of 2^27 or more per block.
    - The 839 hosts have no S-fixed involution.
    - A Gauss-period slice along ℤ₄₃ (863) or ℤ₁₉ (839) is untested.
@@ -821,11 +821,12 @@ At our hosts:
 | hosts | zc (W-list size per block, log2) | completions per U-solution [E] |
 |---|---|---|
 | 863 k4 r140; 955 r147; 971 r112; 669 S9 r90 | 31; 31; 25.5; 19 | 2^−61; 2^−60; 2^−51; 2^−45 |
+| 751 k4 r121; 719 k6 r112; 739 r144; 863 k4 r155; 955 r140 | 24; 23.4; 32.8; 36.1; 30.3 | 2^−50 to 2^−57; 2^−70; 2^−95; 2^−38; 2^−31 |
 | 751 k8 r105 | 23 | 2^−13 to 2^−19 |
 | 643 r122; 599 r300; 719 r360 | 26.7; 75; 90 | 2^−6; 2^8; 2^−1.5 |
 | 863 r77; 955 r63; 719 k6 r48 (the window) | 16.6; 11.4; 8.6 | 2^−25; 2^−41; 2^−52 |
 
-- In the first two rows a core needs 2^13 to 2^61 U-solutions, each with an exact W-join of 2^38 pairs or more.
+- In the first three rows a core needs 2^13 to 2^95 U-solutions, each with an exact W-join of 2^38 pairs or more.
 - The hosts with more completions (third row) have W-lists of 2^27 or more per block.
 - The 839 hosts (r = 60 to 156) have no S-fixed involution: S permutes the three involutions of ℤ₂² cyclically.
 
