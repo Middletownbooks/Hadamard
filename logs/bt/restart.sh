@@ -28,5 +28,5 @@ run 0 logs/bt/census/k4_P4_w10.log - python3 theory/bt_census_run.py logs/bt/cen
 # k4one at the three orders the first k4one queue left out (12 <= r <= 90, as at the other orders)
 run 0 logs/bt/census2/k4one_643.log - python3 theory/bt_census2.py logs/bt/census2/k4one_643.jsonl --fam k4one --ns 643 --rmin 12 --rmax 90 --cap 16384
 run 0 logs/bt/census2/k4one_739.log - python3 theory/bt_census2.py logs/bt/census2/k4one_739.jsonl --fam k4one --ns 739 --rmin 12 --rmax 90 --cap 16384
-run 0 logs/bt/census2/k4one_971.log - python3 theory/bt_census2.py logs/bt/census2/k4one_971.jsonl --fam k4one --ns 971 --rmin 12 --rmax 90 --cap 1048576
-run 0 logs/bt/census2/k4one_971b.log - python3 theory/bt_census971.py logs/bt/census2/k4one_971b.jsonl --fam k4one --rmin 12 --rmax 90
+
+run 5 logs/bt/census2/close_k4one.log 6000000 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k4one_971.jsonl,logs/bt/census2/k4one_971b.jsonl
