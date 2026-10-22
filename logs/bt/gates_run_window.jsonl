@@ -20,3 +20,5 @@
 {"verdict": "capped (refined list 8.13e+10 > 30000000)", "key": "fbf4f510b2566552", "n": 863, "fam": "k4", "order": 14, "r": 77, "e": 41, "log2E_Q": 45.11, "N": 5, "Nkey": "30e6d3c413bf", "log2_pairs": null, "secs": 0.7}
 {"verdict": "capped (refined list 3.27e+07 > 30000000)", "key": "8dc9ab5d3f7851e7", "n": 863, "fam": "k4one", "order": 14, "r": 77, "e": 41, "log2E_Q": 41.45, "N": 43, "Nkey": "8bcf380e7feb", "log2_pairs": null, "secs": 329.1}
 {"verdict": "capped (refined list 8.13e+10 > 30000000)", "key": "8dc9ab5d3f7851e7", "n": 863, "fam": "k4one", "order": 14, "r": 77, "e": 41, "log2E_Q": 41.45, "N": 5, "Nkey": "30e6d3c413bf", "log2_pairs": null, "secs": 0.9}
+{"verdict": "capped (refined list 3.27e+07 > 30000000)", "key": "bb9620b834a15a52", "n": 863, "fam": "k4one", "order": 14, "r": 77, "e": 41, "log2E_Q": 41.45, "N": 43, "Nkey": "8bcf380e7feb", "log2_pairs": null, "secs": 302.6}
+{"verdict": "capped (refined list 8.13e+10 > 30000000)", "key": "bb9620b834a15a52", "n": 863, "fam": "k4one", "order": 14, "r": 77, "e": 41, "log2E_Q": 41.45, "N": 5, "Nkey": "30e6d3c413bf", "log2_pairs": null, "secs": 0.8}
