@@ -34,3 +34,4 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 39.7}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 30.2}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 2, "verdict": "capped (Unable to allocate 3.13 GiB for an array with shape (19994270, 21) and data type int64)", "solutions_weighted": null, "secs": 111.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.88, "N": 40, "verdict": "capped (time limit 900 s)", "solutions_weighted": null, "secs": 1092.6}

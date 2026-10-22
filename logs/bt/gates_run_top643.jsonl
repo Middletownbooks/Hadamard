@@ -34,3 +34,4 @@
 {"verdict": "capped (refined cell list > 20000000)", "key": "19f6c30604a7878f", "n": 643, "fam": "k4", "order": 8, "r": 124, "e": 65, "log2E_Q": 95.3, "N": 4, "Nkey": "505b6253b298", "log2_pairs": null, "secs": 39.7}
 {"verdict": "capped (refined cell list > 20000000)", "key": "19f6c30604a7878f", "n": 643, "fam": "k4", "order": 8, "r": 124, "e": 65, "log2E_Q": 95.3, "N": 4, "Nkey": "b5583e41861e", "log2_pairs": null, "secs": 30.2}
 {"verdict": "capped (Unable to allocate 3.13 GiB for an array with shape (19994270, 21) and data type int64)", "key": "19f6c30604a7878f", "n": 643, "fam": "k4", "order": 8, "r": 124, "e": 65, "log2E_Q": 95.3, "N": 2, "Nkey": "944c9f7f5571", "log2_pairs": null, "secs": 111.1}
+{"verdict": "capped (time limit 900 s)", "key": "bd951c30dfd5d9ea", "n": 643, "fam": "k4", "order": 8, "r": 122, "e": 65, "log2E_Q": 91.88, "N": 40, "Nkey": "e4f14955fc22", "log2_pairs": null, "secs": 1092.6}
