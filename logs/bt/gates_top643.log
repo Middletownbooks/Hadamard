@@ -18,3 +18,15 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.4, "N": 2, "verdict": "capped (Unable to allocate 3.13 GiB for an array with shape (19994270, 21) and data type int64)", "solutions_weighted": null, "secs": 34.2}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 80, "verdict": "passes", "solutions_weighted": 9534720, "secs": 1.6}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 40, "verdict": "passes", "solutions_weighted": 2474082404352, "secs": 739.2}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 40, "verdict": "passes", "solutions_weighted": 141103911168, "secs": 597.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 40, "verdict": "capped (refined list 3.28e+10 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 32, "verdict": "passes", "solutions_weighted": 66710016, "secs": 11.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 20, "verdict": "capped (refined list 1.41e+13 > 20000000)", "solutions_weighted": null, "secs": 0.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 20, "verdict": "capped (refined list 8.4e+16 > 20000000)", "solutions_weighted": null, "secs": 137.2}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 20, "verdict": "capped (refined list 1.6e+14 > 20000000)", "solutions_weighted": null, "secs": 3.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 16, "verdict": "capped (refined list 6.03e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 84.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 8, "verdict": "capped (refined list 1.6e+12 > 20000000)", "solutions_weighted": null, "secs": 1.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 8, "verdict": "capped (refined list 8.01e+11 > 20000000)", "solutions_weighted": null, "secs": 0.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 22.2}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 95.3, "N": 5, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 33.7}
