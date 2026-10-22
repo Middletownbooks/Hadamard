@@ -28,7 +28,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - 751 (k4 r = 121: 73.5; k8 r = 105: 66.2);
      - 669 (ℤ₃ family, r = 90: 73.1, first finer level passed);
      - 719 (k6, r = 112: 66.2; k4, r = 360: 64.1);
-     - 643 (k4, r = 124: 58.7; census still running);
+     - 643 (k4 on ℤ₄ × ℤ₃₂ × ℤ₅, S of order 8, r = 122: 91.9; census still running);
      - 739 (k4 on ℤ₂ × ℤ₄² × ℤ₂₃, S of order 6, r = 144: 53.6).
    - **Exact gates kill even large estimates.** The 32 richest 971 hosts (r = 106, estimates 2^83–2^98.7) have no
      solution at the level G/N = ℤ₂ × ℤ₄. The 669 ℤ₃ hosts with estimates 2^26–2^85 die at G/N = ℤ₆ or ℤ₉, all
@@ -36,9 +36,10 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - **Structures like the known successes.** 3964, 2636 and 2148 have 46–54 orbits and estimates of 2^30–2^62. No
      open-order structure in that window survives: the best alive with r ≤ 60 is 839 S18 r60 at 2^11.2 (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
-2. **(B) A ranked census** of <!-- NSTRUCT -->50,886<!-- /NSTRUCT --> structures. It covers:
-   - k4 at every n ≡ 3 (mod 4). 643 and 739 are covered for the 2-parts with few automorphisms (≤ 4096 and ≤ 1024
-     endomorphisms; the larger ones are still running).
+2. **(B) A ranked census** of <!-- NSTRUCT -->51,476<!-- /NSTRUCT --> structures. It covers:
+   - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂³ × ℤ₄ and ℤ₂⁵ (2^17 and 2^25
+     endomorphisms). At 643 the 2-parts of order 128 with at most 16,384 endomorphisms are covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄
+     and ℤ₄ × ℤ₃₂ (at most 4,096), and ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192). This part of the census is still running.
    - k6 at 599, 719, 839, 863, 947 and 971.
    - k8 at 599, 719, 751 and 863; at 839 for the 2-parts with at most 16,384 endomorphisms (running; the full enumeration of S over the 2-groups of order 64 did not finish in 8 hours).
    - The ℤ₃ and product families at 669.
@@ -86,9 +87,13 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - zero counts are common below about 2^30;
    - at the open orders, every exactly decided structure with a positive estimate was a zero, up to 2^85 at 669.
    - Estimates are therefore used only to rank structures that pass every affordable exact gate.
-5. **What would reach further (§8.5):** a staged solver that never lists a level, for the rich hosts. Two candidates:
-   - the ℤ₂ U/W split with a four-list k-tree (Kumar's 2148 route), at the 955, 971 and 751 hosts;
-   - a Gauss-period slice along ℤ₄₃ (863) or ℤ₁₉ (839).
+5. **What would reach further (§8.5):** a staged solver that never lists a level, for the rich hosts.
+   - Kumar's ℤ₂ U/W split (the 2148 route) is not that solver [E], calibrated on 2148 (2^−14 estimated, 2^−18
+     observed). At the hosts with an S-fixed involution it predicts:
+     - 2^−13 to 2^−61 completions per U-solution, with W-lists of 2^19 or more per block;
+     - or, where completions are commoner, W-lists of 2^27 or more per block.
+   - The 839 hosts have no S-fixed involution.
+   - A Gauss-period slice along ℤ₄₃ (863) or ℤ₁₉ (839) is untested.
 <!-- /BOTTOM-LINE -->
 
 ---
@@ -131,7 +136,8 @@ production-path control `logs/bt/search/`; CP-SAT control `logs/bt/xcheck/ctrl21
   engine (§3.3).
 - **Borders.** `bt_border.py` (reduction to the frame problem, Sylvester frames for (q, t) = (4, 3), Paley frames for
   (3, 3), assembly), `bt_border_census.py`.
-- **Calibration.** `bt_calib_small.py`, `bt_calib.py`; local search `bt_anneal.py`.
+- **Calibration.** `bt_calib_small.py`, `bt_calib.py`; local search `bt_anneal.py`; feasibility of Kumar's ℤ₂ U/W
+  split at the hosts, calibrated on 2148, `bt_uw_scan.py`.
 
 ---
 
@@ -243,7 +249,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 599 | k4one | 12 | 0 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 | — |
 | 599 | k6 | 19 | 15 | 0 | 2 | 0 | 0 | 1 | 0 | 1 | 0 | S10, 84, 55, -49.81 |
 | 599 | k8 | 2143 | 923 | 0 | 0 | 0 | 1214 | 0 | 0 | 6 | 0 | S9, 104, 53, -18.54 |
-| 643 | k4 | 21214 | 19229 | 72 | 89 | 0 | 1199 | 0 | 0 | 625 | 138 | S8, 122, 65, 91.88 |
+| 643 | k4 | 21484 | 19474 | 72 | 89 | 0 | 1210 | 0 | 0 | 639 | 138 | S8, 122, 65, 91.88 |
 | 669 | prod12 | 282 | 0 | 0 | 8 | 0 | 249 | 2 | 10 | 13 | 0 | S20, 57, 32, -14.28 |
 | 669 | z3all | 239 | 75 | 0 | 10 | 0 | 0 | 152 | 0 | 2 | 2 | S9, 90, 45, 73.14 |
 | 719 | k4 | 17 | 0 | 5 | 0 | 0 | 6 | 0 | 0 | 6 | 1 | S2, 360, 269, 64.09 |
@@ -256,10 +262,10 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 751 | k4split | 54 | 0 | 0 | 8 | 13 | 1 | 0 | 0 | 32 | 0 | S80, 27/36/36/27, 20, -33.19 |
 | 751 | k8 | 441 | 134 | 0 | 0 | 0 | 272 | 0 | 0 | 35 | 7 | S10, 105, 54, 66.19 |
 | 839 | k4 | 232 | 0 | 52 | 13 | 0 | 89 | 8 | 0 | 70 | 9 | S6, 156, 83, 165.86 |
-| 839 | k4one | 204 | 0 | 0 | 16 | 0 | 108 | 0 | 0 | 80 | 4 | S15, 84, 43, 19.59 |
+| 839 | k4one | 204 | 0 | 0 | 16 | 0 | 108 | 3 | 0 | 77 | 4 | S15, 84, 43, 19.59 |
 | 839 | k4split | 9 | 0 | 5 | 1 | 2 | 0 | 0 | 0 | 1 | 0 | S90, 16/30/30/16, 15, -16.41 |
 | 839 | k6 | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 | 0 | — |
-| 839 | k8 | 9729 | 7451 | 0 | 57 | 631 | 594 | 0 | 0 | 996 | 7 | S12, 108, 62, 38.43 |
+| 839 | k8 | 10049 | 7697 | 0 | 57 | 681 | 594 | 2 | 0 | 1018 | 7 | S12, 108, 62, 38.43 |
 | 859 | k4 | 81 | 39 | 0 | 0 | 0 | 42 | 0 | 0 | 0 | 0 | — |
 | 859 | k4one | 106 | 52 | 0 | 0 | 0 | 54 | 0 | 0 | 0 | 0 | — |
 | 863 | k4 | 246 | 0 | 44 | 14 | 0 | 134 | 1 | 0 | 53 | 12 | S7, 140, 71, 136.89 |
@@ -292,9 +298,9 @@ counts are common among alive structures with E_Q below about 2^30.
 | 599 | k8 | [2, 2, 4] × [37] | 9 | 104 | 53 | -18.54 | N37: 5941493760 | N2: 137.1 | — |
 | 599 | k8 | [2, 2, 2, 2] × [37] | 9 | 104 | 55 | -32.91 | N37: 16318464 | N2: 137.1 | — |
 | 599 | k8 | [2, 8] × [37] | 12 | 104 | 54 | -161.94 | N37: 447086592 | N2: 137.1 | — |
-| 643 | k4 | [4, 32] × [5] | 8 | 122 | 65 | 91.88 | — | — | — |
-| 643 | k4 | [4, 32] × [5] | 8 | 122 | 65 | 91.65 | — | — | — |
-| 643 | k4 | [4, 32] × [5] | 8 | 124 | 68 | 68.13 | — | — | — |
+| 643 | k4 | [4, 32] × [5] | 8 | 122 | 65 | 91.88 | N80: 625152, N32: 66710016 | N40: 44.9 | — |
+| 643 | k4 | [4, 32] × [5] | 8 | 122 | 65 | 91.65 | N80: 625152, N32: 66710016 | N40: 44.9 | — |
+| 643 | k4 | [4, 32] × [5] | 8 | 124 | 68 | 68.13 | N80: 625152, N32: 66710016 | N40: 41.7 | — |
 | 669 | prod12 | [2, 2] × [3, 5, 11] | 20 | 57 | 32 | -14.28 | — | N11: 40.1 | — |
 | 669 | prod12 | [2, 2] × [3, 5, 11] | 10 | 93 | 54 | -17.79 | — | N5: 56.9 | — |
 | 669 | prod12 | [2, 2] × [3, 5, 11] | 20 | 63 | 38 | -32.53 | — | N11: 52.4 | — |
@@ -307,8 +313,8 @@ counts are common among alive structures with E_Q below about 2^30.
 | 719 | k6 | [2] × [3, 7, 17] | 8 | 108 | 59 | 35.3 | — | N7: 51.8 | open (k = 6, §7) |
 | 719 | k6 | [2] × [3, 7, 17] | 12 | 84 | 47 | 25.6 | — | N17: 50.4 | open (k = 6, §7) |
 | 719 | k8 | [2, 2, 2] × [89] | 14 | 90 | 89 | −∞ | — | — | — |
-| 739 | k4 | [2, 4, 4] × [23] | 6 | 144 | 95 | 53.64 | N92: 202515200 | — | — |
-| 739 | k4 | [2, 4, 4] × [23] | 6 | 140 | 93 | 37.37 | N92: 3211008, N46: 579863904 | — | — |
+| 739 | k4 | [2, 4, 4] × [23] | 6 | 144 | 95 | 53.64 | N92: 202515200 | N46: 45.5 | — |
+| 739 | k4 | [2, 4, 4] × [23] | 6 | 140 | 93 | 37.37 | N92: 3211008, N46: 579863904 | N23: 53.3 | — |
 | 739 | k4 | [4, 8] × [23] | 8 | 118 | 82 | -31.41 | N92: 2880, N46: 142652160 | N23: 42.7 | — |
 | 751 | k4 | [4] × [11, 17] | 8 | 121 | 63 | 73.45 | — | N11: 48.3 | — |
 | 751 | k4 | [2, 2] × [11, 17] | 8 | 121 | 65 | 66.02 | — | N11: 48.3 | — |
@@ -325,19 +331,19 @@ counts are common among alive structures with E_Q below about 2^30.
 | 839 | k4 | [2, 2] × [11, 19] | 6 | 156 | 83 | 165.86 | — | N19: 78.4 | 20/20 |
 | 839 | k4 | [2, 2] × [11, 19] | 6 | 154 | 83 | 157.24 | — | N11: 81.0 | 20/20 |
 | 839 | k4 | [2, 2] × [11, 19] | 9 | 110 | 55 | 105.13 | — | N11: 51.5 | 20/20 |
-| 839 | k4one | [2, 2] × [11, 19] | 15 | 84 | 43 | 19.59 | — | — | — |
-| 839 | k4one | [2, 2] × [11, 19] | 15 | 84 | 43 | 19.56 | — | — | — |
-| 839 | k4one | [2, 2] × [11, 19] | 15 | 84 | 43 | 19.31 | — | — | — |
+| 839 | k4one | [2, 2] × [11, 19] | 15 | 84 | 43 | 19.59 | — | N19: 51.7 | — |
+| 839 | k4one | [2, 2] × [11, 19] | 15 | 84 | 43 | 19.56 | — | N19: 51.8 | — |
+| 839 | k4one | [2, 2] × [11, 19] | 15 | 84 | 43 | 19.31 | — | N19: 51.8 | — |
 | 839 | k4split | [2, 2] × [11, 19] | 90 | 16/30/30/16 | 15 | -16.41 | — | — | — |
-| 839 | k8 | [4, 16] × [13] | 12 | 108 | 62 | 38.43 | — | — | — |
-| 839 | k8 | [4, 16] × [13] | 12 | 108 | 62 | 38.05 | — | — | — |
-| 839 | k8 | [2, 32] × [13] | 12 | 110 | 61 | 32.3 | — | — | — |
+| 839 | k8 | [4, 16] × [13] | 12 | 108 | 62 | 38.43 | — | N8: 50.6 | — |
+| 839 | k8 | [4, 16] × [13] | 12 | 108 | 62 | 38.05 | — | N8: 50.6 | — |
+| 839 | k8 | [2, 32] × [13] | 12 | 110 | 61 | 32.3 | — | N52: 41.4 | — |
 | 863 | k4 | [2, 2] × [5, 43] | 7 | 140 | 71 | 136.89 | — | N5: 106.7 | 9/9 |
 | 863 | k4 | [2, 2] × [5, 43] | 6 | 155 | 85 | 135.2 | — | N43: 98.0 | 21/21 |
 | 863 | k4 | [4] × [5, 43] | 7 | 140 | 70 | 133.35 | — | N5: 106.7 | 9/9 |
-| 863 | k4one | [2, 2] × [5, 43] | 14 | 77 | 41 | 47.85 | — | — | 8/8 |
-| 863 | k4one | [2, 2] × [5, 43] | 14 | 77 | 41 | 41.45 | — | — | 8/8 |
-| 863 | k4one | [2, 2] × [5, 43] | 14 | 77 | 41 | 41.45 | — | — | 8/8 |
+| 863 | k4one | [2, 2] × [5, 43] | 14 | 77 | 41 | 47.85 | — | N43: 55.6 | 8/8 |
+| 863 | k4one | [2, 2] × [5, 43] | 14 | 77 | 41 | 41.45 | — | N43: 55.9 | 8/8 |
+| 863 | k4one | [2, 2] × [5, 43] | 14 | 77 | 41 | 41.45 | — | N43: 55.9 | 8/8 |
 | 863 | k6 | [2] × [3, 11, 13] | 15 | 90 | 45 | 3.28 | — | N13: 60.9 | open (k = 6, §7) |
 | 863 | k6 | [2] × [3, 11, 13] | 12 | 120 | 71 | -8.65 | — | N11: 106.2 | open (k = 6, §7) |
 | 863 | k6 | [2] × [3, 11, 13] | 20 | 66 | 37 | -11.31 | — | — | open (k = 6, §7) |
@@ -348,8 +354,8 @@ counts are common among alive structures with E_Q below about 2^30.
 | 955 | k4 | [8] × [7, 17] | 8 | 147 | 76 | 103.58 | N119: 252861382656 | N14: 50.2 | 15/15 |
 | 955 | k4 | [2, 4] × [7, 17] | 8 | 140 | 75 | 101.0 | N119: 2211840 | N14: 48.1 | 3/3 |
 | 955 | k4 | [8] × [7, 17] | 8 | 147 | 77 | 96.99 | N119: 1104150528 | N14: 50.2 | 15/15 |
-| 955 | k4one | [8] × [7, 17] | 24 | 63 | 34 | -3.7 | — | — | — |
-| 955 | k4one | [8] × [7, 17] | 24 | 61 | 35 | -9.58 | — | — | — |
+| 955 | k4one | [8] × [7, 17] | 24 | 63 | 34 | -3.7 | — | N119: 33.8 | — |
+| 955 | k4one | [8] × [7, 17] | 24 | 61 | 35 | -9.58 | N34: 768 | N119: 30.6 | — |
 | 955 | k4one | [8] × [7, 17] | 16 | 90 | 53 | -10.26 | — | — | — |
 | 971 | k4 | [8] × [11, 11] | 10 | 112 | 57 | 73.3 | N22: 786432 | N121: 49.5 | — |
 | 971 | k4 | [8] × [11, 11] | 10 | 112 | 57 | 73.3 | N22: 786432 | N121: 49.5 | — |
@@ -363,12 +369,12 @@ counts are common among alive structures with E_Q below about 2^30.
 
 <!-- NOTES-AUTO -->
 - **599.** k4: 34 structures, 6 alive, best S2 r = 300 at log2 E_Q = 76.7; k4one: 12 structures, all dead; k6: 19 structures, 1 alive, best S10 r = 84 at log2 E_Q = -49.8; k8: 2143 structures, 6 alive, best S9 r = 104 at log2 E_Q = -18.5.
-- **643.** k4: 21214 structures, 625 alive, best S8 r = 122 at log2 E_Q = 91.9.
+- **643.** k4: 21484 structures, 639 alive, best S8 r = 122 at log2 E_Q = 91.9.
 - **669.** prod12: 282 structures, 13 alive, best S20 r = 57 at log2 E_Q = -14.3; z3all: 239 structures, 2 alive, best S9 r = 90 at log2 E_Q = 73.1.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k4one: 4 structures, all dead; k6: 59 structures, 28 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
 - **739.** k4: 6005 structures, 83 alive, best S6 r = 144 at log2 E_Q = 53.6.
 - **751.** k4: 217 structures, 92 alive, best S8 r = 121 at log2 E_Q = 73.5; k4one: 204 structures, 124 alive, best S40 r = 33 at log2 E_Q = -20.3; k4split: 54 structures, 32 alive, best S80 r = 27/36/36/27 at log2 E_Q = -33.2, 13 prefiltered; k8: 441 structures, 35 alive, best S10 r = 105 at log2 E_Q = 66.2.
-- **839.** k4: 232 structures, 70 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 80 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 9 structures, 1 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 2 prefiltered; k6: 9 structures, all dead; k8: 9729 structures, 996 alive, best S12 r = 108 at log2 E_Q = 38.4, 631 prefiltered.
+- **839.** k4: 232 structures, 70 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 77 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 9 structures, 1 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 2 prefiltered; k6: 9 structures, all dead; k8: 10049 structures, 1018 alive, best S12 r = 108 at log2 E_Q = 38.4, 681 prefiltered.
 - **859.** k4: 81 structures, all dead; k4one: 106 structures, all dead.
 - **863.** k4: 246 structures, 53 alive, best S7 r = 140 at log2 E_Q = 136.9; k4one: 224 structures, 36 alive, best S14 r = 77 at log2 E_Q = 47.9; k6: 60 structures, 37 alive, best S15 r = 90 at log2 E_Q = 3.3; k8: 33 structures, 1 alive, best S14 r = 108 at log2 E_Q = −∞.
 - **907.** k4: 384 structures, all dead; k4one: 580 structures, all dead.
@@ -511,7 +517,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 50886 structures: coset-Parseval 36088, Theorem α 696, Lemma R 721 (the screens [P]); Q-level empty 7733, deeper level or chain empty 1380 [M]; prefilter only 646; alive 3612.
+Over 51476 structures: coset-Parseval 36579, Theorem α 696, Lemma R 721 (the screens [P]); Q-level empty 7744, deeper level or chain empty 1385 [M]; prefilter only 696; alive 3645.
 <!-- /SCREEN-COUNTS -->
 
 
@@ -681,14 +687,14 @@ days, and 2^50 about 10⁴ years.
 | n | family | S, r, e | log2 E_Q | exact levels passed | capped levels | cheapest unrun level (log2 pairs) |
 |---|---|---|---|---|---|---|
 | 599 | k4 | S2, 300, 224 | 76.71 | — | — | — |
-| 643 | k4 | S8, 122, 65 | 91.88 | — | — | — |
-| 643 | k4 | S8, 122, 65 | 91.65 | — | — | — |
-| 643 | k4 | S8, 124, 68 | 68.13 | — | — | — |
+| 643 | k4 | S8, 122, 65 | 91.88 | N80: 625152, N32: 66710016 | — | N40: 44.9 |
+| 643 | k4 | S8, 122, 65 | 91.65 | N80: 625152, N32: 66710016 | — | N40: 44.9 |
+| 643 | k4 | S8, 124, 68 | 68.13 | N80: 625152, N32: 66710016 | — | N40: 41.7 |
 | 669 | z3all | S9, 90, 45 | 73.14 | N111: 130553856 | N74, N37, N6, N3, N2 | N6: 52.9 |
 | 669 | z3all | S9, 90, 45 | 73.12 | N111: 130553856 | N74, N37, N6, N3, N2 | N6: 52.9 |
 | 719 | k4 | S2, 360, 269 | 64.09 | — | — | — |
 | 719 | k6 | S8, 112, 59 | 66.18 | — | — | N7: 58.3 |
-| 739 | k4 | S6, 144, 95 | 53.64 | N92: 202515200 | — | — |
+| 739 | k4 | S6, 144, 95 | 53.64 | N92: 202515200 | — | N46: 45.5 |
 | 751 | k4 | S8, 121, 63 | 73.45 | — | — | N11: 48.3 |
 | 751 | k4 | S8, 121, 65 | 66.02 | — | — | N11: 48.3 |
 | 751 | k4 | S8, 111, 65 | 49.36 | — | — | N11: 48.3 |
@@ -701,9 +707,9 @@ days, and 2^50 about 10⁴ years.
 | 863 | k4 | S7, 140, 71 | 136.89 | — | N43, N5 | N5: 106.7 |
 | 863 | k4 | S6, 155, 85 | 135.2 | — | N43, N5 | N43: 98.0 |
 | 863 | k4 | S7, 140, 70 | 133.35 | — | N43, N5 | N5: 106.7 |
-| 863 | k4one | S14, 77, 41 | 47.85 | — | — | — |
-| 863 | k4one | S14, 77, 41 | 41.45 | — | — | — |
-| 863 | k4one | S14, 77, 41 | 41.45 | — | — | — |
+| 863 | k4one | S14, 77, 41 | 47.85 | — | — | N43: 55.6 |
+| 863 | k4one | S14, 77, 41 | 41.45 | — | — | N43: 55.9 |
+| 863 | k4one | S14, 77, 41 | 41.45 | — | — | N43: 55.9 |
 | 955 | k4 | S8, 147, 76 | 103.58 | N119: 252861382656 | N34, N17, N14, N7, N2 | N14: 50.2 |
 | 955 | k4 | S8, 140, 75 | 101.0 | N119: 2211840 | N34, N17, N14, N7, N2 | N14: 48.1 |
 | 955 | k4 | S8, 147, 77 | 96.99 | N119: 1104150528 | N34, N17, N14, N7, N2 | N14: 50.2 |
@@ -741,7 +747,7 @@ vectors (3964). At the open orders, the best live structures in and near that wi
 | 751 | k4split | -33.19 (S80, 27/36/36/27) | -33.19 (S80, 27/36/36/27) | -33.19 (S80, 27/36/36/27) |
 | 751 | k8 | -571.37 (S42, 44) | -571.37 (S42, 44) | 66.19 (S10, 105) |
 | 839 | k4 | 11.17 (S18, 60) | 44.86 (S15, 78) | 165.86 (S6, 156) |
-| 839 | k4one | -8.69 (S45, 36) | -8.69 (S45, 36) | 19.59 (S15, 84) |
+| 839 | k4one | -11.08 (S45, 36) | -11.08 (S45, 36) | 19.59 (S15, 84) |
 | 839 | k4split | -16.41 (S90, 16/30/30/16) | -16.41 (S90, 16/30/30/16) | -16.41 (S90, 16/30/30/16) |
 | 839 | k6 | — | — | — |
 | 839 | k8 | -118.92 (S24, 59) | -79.55 (S24, 62) | 38.43 (S12, 108) |
@@ -791,16 +797,36 @@ of invariant subgroups, and level lists far beyond 10⁷. A construction at thes
 of the following:
 - a structure with r ≈ 50–60 and a calibrated E_Q above 2^30. The census found none: the best such structure is
   839, S18 r60, at 2^11.2, and below 2^30 zero counts are common (§6.1);
-- or a staged solver for the rich hosts that never lists a level, such as the ℤ₂ U/W split (Kumar §19, which made
-  2148). It needs an S-fixed subgroup Z of order 2 and splits the characters into those trivial on Z (the half-sums
-  u) and those nontrivial on Z (the half-differences w). Kumar's form uses a direct factor ℤ₂ = ⟨3⟩ ≤ ℤ₆. The 955,
-  971 and 751 hosts have an order-2 subgroup in the 2-part of K, but in the cyclic 2-parts (ℤ₈) it is not a direct
-  factor, so the w-part becomes a twisted function. A four-list k-tree of the 2148 kind then samples U-solutions
-  instead of enumerating them;
-- or a Gauss-period slice along a large prime axis (ℤ₄₃ at 863, ℤ₁₉ at 839) with a twisted S/D split, as in our 571
-  and 523 stage-2 solvers.
+- or a staged solver for the rich hosts that never lists a level, such as a Gauss-period slice along a large prime
+  axis (ℤ₄₃ at 863, ℤ₁₉ at 839) with a twisted S/D split, as in our 571 and 523 stage-2 solvers. None was built
+  here. §8.1 gives each host's measured gate status and next-gate cost as the starting point.
 
-None of these was built here. §8.1 gives each host's measured gate status and next-gate cost as the starting point.
+**Kumar's ℤ₂ U/W split (§19, the route that made 2148) does not reach these hosts [E]** (`theory/bt_uw_scan.py`,
+`logs/bt/uw_scan.jsonl`).
+- *The split.* Take an S-fixed involution z. U = (x + x(· + z))/2 is the compression to G/⟨z⟩, and W carries one free
+  sign on each zero cell of U. The class equations split into U-equations (the characters trivial on z) and
+  W-equations.
+- *Zero points [P].* The lag-0 equation of the compression fixes the number of zero points of U over the four blocks:
+  |G| + Γ(z + K)/4, which is n when z ∈ K. So a U-solution leaves W-lists of about 2^zc sign vectors per block, with zc
+  ≈ r/4 zero cells. Its exact W-join costs about 2^(2zc) pairs before the coset-sum constraints.
+- *Completion rate.* The scan estimates the completions per U-solution as 2^(4zc) · P(W | U). P(W | U) comes from the
+  lattice Gaussian of the class sums, taken on all equations and on the U-equations alone.
+- *Calibration on 2148.* The scan gives zc = 12.3 (Kumar: 12 zero cells per block, about 200 W-vectors after the
+  constraints) and 2^−14 completions per U-solution. Kumar observed 2^−18 (one in 284,292). The estimate is 4 bits
+  optimistic.
+
+At our hosts:
+
+| hosts | zc (W-list size per block, log2) | completions per U-solution [E] |
+|---|---|---|
+| 863 k4 r140; 955 r147; 971 r112; 669 S9 r90 | 31; 31; 25.5; 19 | 2^−61; 2^−60; 2^−51; 2^−45 |
+| 751 k8 r105 | 23 | 2^−13 to 2^−19 |
+| 643 r122; 599 r300; 719 r360 | 26.7; 75; 90 | 2^−6; 2^8; 2^−1.5 |
+| 863 r77; 955 r63; 719 k6 r48 (the window) | 16.6; 11.4; 8.6 | 2^−25; 2^−41; 2^−52 |
+
+- In the first two rows a core needs 2^13 to 2^61 U-solutions, each with an exact W-join of 2^38 pairs or more.
+- The hosts with more completions (third row) have W-lists of 2^27 or more per block.
+- The 839 hosts (r = 60 to 156) have no S-fixed involution: S permutes the three involutions of ℤ₂² cyclically.
 
 
 ---
@@ -845,6 +871,8 @@ python3 theory/bt_border_k4one.py --min-logE 20                             # k4
 python3 theory/bt_calib_small.py logs/bt/calib/calib_small.jsonl --ns 7,11,15,19,23,27,31 --rmax 18
 python3 theory/bt_brute_count.py RECORD.json                                # independent exact count
 python3 theory/bt_anneal.py logs/bt/anneal/ctrl3964 --control 3964 --hours 0.05
+python3 theory/bt_uw_scan.py --cert /home/user/vatskishan03/hadamard/hadamard/2148/certificate.json   # U/W split: 2148
+python3 theory/bt_uw_scan.py --top 2 --min-logE 40; python3 theory/bt_uw_scan.py --keys @logs/bt/window_keys.txt
 
 # tables of this report
 python3 theory/bt_summary.py            # print
