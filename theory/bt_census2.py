@@ -112,18 +112,33 @@ def odd_options_q(o, q3, maxgl=5):
     return out
 
 
-def structures(n, fam, rmin, rmax, cap=2 ** 20):
+def _two_adic(n, fam):
     F = FAMS[fam]
-    t, q2, q3 = F['t'], F['q2'], F['q3']
-    m = n - t
-    if m <= 0 or m % (q2 * q3):
-        return
+    m = n - F['t']
+    if m <= 0 or m % (F['q2'] * F['q3']):
+        return None
     a = 0; o = m
     while o % 2 == 0:
         o //= 2; a += 1
-    if o % q3:
+    return None if o % F['q3'] else (a, o)
+
+
+def n_two_options(n, fam, cap=2 ** 20):
+    ao = _two_adic(n, fam)
+    return 0 if ao is None else len(two_options_q(ao[0], FAMS[fam]['q2'], cap=cap))
+
+
+def structures(n, fam, rmin, rmax, cap=2 ** 20, only=None):
+    """census structures at n; only = index of a single 2-part option (for checkpointed enumeration)"""
+    F = FAMS[fam]
+    t, q2, q3 = F['t'], F['q2'], F['q3']
+    ao = _two_adic(n, fam)
+    if ao is None:
         return
-    for popt in two_options_q(a, q2, cap=cap):
+    a, o = ao
+    for ip, popt in enumerate(two_options_q(a, q2, cap=cap)):
+        if only is not None and ip != only:
+            continue
         P = popt['P']
         for omods, gl, KOgens in odd_options_q(o, q3):
             O = BC.OddPart(omods, gl)
@@ -296,14 +311,17 @@ def main():
     for n in map(int, a.ns.split(',')):
         t0 = time.time()
         try:
-            cache = f'{a.out}.structs_{n}_{int(a.cap)}.json'       # the enumeration can take hours: cached
-            if os.path.exists(cache):
-                recs = json.load(open(cache))
-            else:
-                recs = list(structures(n, a.fam, a.rmin, a.rmax, cap=int(a.cap)))
-                with open(cache + '.tmp', 'w') as fo:
-                    json.dump(recs, fo)
-                os.replace(cache + '.tmp', cache)
+            recs = []                      # the enumeration can take hours: cached per 2-part option
+            for ip in range(n_two_options(n, a.fam, cap=int(a.cap))):
+                cache = f'{a.out}.structs_{n}_{a.rmin}_{a.rmax}_{int(a.cap)}_p{ip}.json'
+                if os.path.exists(cache):
+                    part = json.load(open(cache))
+                else:
+                    part = list(structures(n, a.fam, a.rmin, a.rmax, cap=int(a.cap), only=ip))
+                    with open(cache + '.tmp', 'w') as fo:
+                        json.dump(part, fo)
+                    os.replace(cache + '.tmp', cache)
+                recs += part
         except MemoryError as e:
             print(f'n = {n}: enumeration cap ({e})', flush=True); continue
         print(f'n = {n} fam {a.fam}: {len(recs)} structures ({time.time() - t0:.1f}s)', flush=True)
