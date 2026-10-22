@@ -2286,3 +2286,5 @@ n = 947 fam k4one: 1785 structures (154.3s)
 {"n": 947, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [2, 2, 4], "Omods": [59], "order": 116, "r": 24, "e": 14, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "log2E_whole": null, "secs": 5.5}
 {"n": 947, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [2, 2, 4], "Omods": [59], "order": 87, "r": 24, "e": 13, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 4.2}
 {"n": 947, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [2, 2, 4], "Omods": [59], "order": 174, "r": 18, "e": 11, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 3.9}
+{"n": 947, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [2, 2, 4], "Omods": [59], "order": 29, "r": 48, "e": 27, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 27.3}
+{"n": 947, "fam": "k4one", "T": "Z4:1+order4", "Pmods": [2, 2, 4], "Omods": [59], "order": 58, "r": 36, "e": 23, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 27.2}
