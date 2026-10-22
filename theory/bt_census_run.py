@@ -130,7 +130,6 @@ def evaluate(rec, N=1200, maxq=3, maxtot=24, seed=1):
         out['verdict'] = 'no core [M] (Q-level empty)'
         out['secs'] = round(time.time() - t0, 1)
         return out
-    out['inv_subgroups'] = [len(N) for N in st.invariant_subgroups()]      # survivors only (the full list is slow)
     # whole-structure lattice Gaussian (uniform orbit signs, no conditioning) for comparison [E]
     import q523_gauss as QG
     rng = np.random.default_rng(seed)

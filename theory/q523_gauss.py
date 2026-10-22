@@ -22,12 +22,13 @@ def echelon(rows):
     B = {}                                        # pivot column -> row
     for r in rows:
         v = list(map(int, r))
+        changed = False
         while True:
             col = next((j for j, a in enumerate(v) if a), None)
             if col is None: break
             if col not in B:
                 if v[col] < 0: v = [-a for a in v]
-                B[col] = v; break
+                B[col] = v; changed = True; break
             p = B[col]
             if v[col] % p[col] == 0:
                 t = v[col] // p[col]; v = [a - t * b for a, b in zip(v, p)]; continue
@@ -35,7 +36,9 @@ def echelon(rows):
             new = [x * a + y * b for a, b in zip(p, v)]
             rem = [(v[col] // g) * a - (p[col] // g) * b for a, b in zip(p, v)]
             if new[col] < 0: new = [-a for a in new]
-            B[col] = new; v = rem
+            B[col] = new; v = rem; changed = True
+        if not changed:                           # the row was in the lattice: B is unchanged and already reduced
+            continue
         # reduce entries above pivots (keeps numbers small)
         cols = sorted(B)
         for i, c in enumerate(cols):
