@@ -46,8 +46,8 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
 2. **(B) A ranked census** of <!-- NSTRUCT -->130,299<!-- /NSTRUCT --> structures. It covers:
-   - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂³ × ℤ₄ and ℤ₂⁵ (2^17 and 2^25
-     endomorphisms). At 643 the 2-parts of order 128 with at most 16,384 endomorphisms are covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄
+   - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂⁵, whose 2^25 endomorphisms
+     exceed the enumeration limit of 2^20. At 643 the 2-parts of order 128 with at most 16,384 endomorphisms are covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄
      and ℤ₄ × ℤ₃₂ (at most 4,096), and ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192).
    - k4one at every n ≡ 3 (mod 4) for 12 ≤ r ≤ 90 (643, 739 and 971 still running).
    - k6 at 599, 719, 839, 863, 947 and 971.
@@ -76,7 +76,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - k4 at 599 and 719 for 8 ≤ r ≤ 160 (the richer structures there have r ≥ 300);
      - k6 at 839 and 947.
    - **Effectively closed** (every alive structure at log2 E_Q < −20, or no structure alive with a finite estimate):
-     - k4 at 739 for the 2-parts with at most 2,048 endomorphisms (ℤ₂ × ℤ₄² adds rich hosts at r = 140–144);
+     - k4 at 739 on every 2-part except ℤ₂ × ℤ₄², which adds rich hosts at r = 140–144;
      - k4 at 947; k4one and k4split at 751; k6 at 599 and 971; k8 at 599, 719 and 863; the product family at 669.
    - **Exact closure pass [M]** (`logs/bt/closure.sh`, `theory/bt_gates_levels.py`). It runs every exact level of every
      alive structure in these families, each under a time limit, because the cost bounds overestimate badly.
@@ -425,7 +425,8 @@ counts are common among alive structures with E_Q below about 2^30.
     r = 46–72. All 384 structures still die: 175 by coset-Parseval, 206 at the Q-level and 3 at a deeper level.
 - **643 and 739: large 2-parts** (2⁷ and 2⁵).
   - Coverage: at 643 the 2-parts with at most 16,384 endomorphisms (ℤ₁₂₈, ℤ₂ × ℤ₆₄, ℤ₄ × ℤ₃₂, ℤ₂² × ℤ₃₂,
-    ℤ₈ × ℤ₁₆); at 739 every 2-part except ℤ₂³ × ℤ₄ and ℤ₂⁵.
+    ℤ₈ × ℤ₁₆); at 739 every 2-part except ℤ₂⁵. On ℤ₂³ × ℤ₄ (739, 329 structures) every alive structure has
+    log2 E_Q ≤ −55.9.
   - Coset-Parseval removes most structures: 50,353 of 56,267 at 643 and 4,080 of 6,005 at 739.
   - The 643 hosts with the largest estimates are rich. On ℤ₂² × ℤ₃₂ × ℤ₅ two structures with S of order 8 reach
     r = 160, the top of the census range, at log2 E_Q = 115.2 and 116.5. On ℤ₄ × ℤ₃₂ × ℤ₅ (S of order 8,
