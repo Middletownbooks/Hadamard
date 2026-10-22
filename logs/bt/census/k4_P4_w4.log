@@ -6633,3 +6633,6 @@ n = 643: 31747 structures with 8 <= r <= 160
 {"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 136, "e": 103, "verdict": "passes Q-level", "q_solutions": 176, "log2E_Q": -431.34, "secs": 44.9}
 {"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 160, "e": 87, "verdict": "passes Q-level", "q_solutions": 176, "log2E_Q": -423.65, "secs": 35.7}
 {"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 72, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 6.3}
+{"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 80, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 7.4}
+{"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 104, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 8.6}
+{"n": 643, "Pmods": [2, 2, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 128, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 7.9}
