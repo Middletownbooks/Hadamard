@@ -18,6 +18,6 @@ nohup sh logs/bt/closure.sh >> logs/bt/closure.log 2>&1 &
 nohup nice -n 5 python3 theory/bt_gates_levels.py logs/bt/gates_run_levels.jsonl $CEN --levels 74,111 --fam 669:z3all --tmax 600 >> logs/bt/gates_levels_669.log 2>&1 &
 nohup sh -c "ulimit -v 6000000; nice -n 15 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k8b_w0.jsonl,logs/bt/census2/k8b_w1.jsonl --ns 599" >> logs/bt/census2/close_k8b.log 2>&1 &
 nohup python3 theory/bt_census2.py logs/bt/census2/k8c_839.jsonl --fam k8 --ns 839 --rmin 12 --rmax 110 --cap 16384 >> logs/bt/census2/k8c_839.log 2>&1 &
-nohup nice -n 5 python3 theory/bt_gates_levels.py logs/bt/gates_run_top.jsonl $CEN --levels auto --keys @logs/bt/top_new_keys.txt --tmax 600 >> logs/bt/gates_top.log 2>&1 &
+nohup nice -n 5 python3 theory/bt_gates_levels.py logs/bt/gates_run_top.jsonl $CEN --levels auto --keys @logs/bt/top_new_keys.txt --tmax 300 >> logs/bt/gates_top.log 2>&1 &
 nohup nice -n 5 python3 theory/bt_gates_levels.py logs/bt/gates_run_top.jsonl $CEN --levels auto --keys @logs/bt/top_k4one_keys.txt --tmax 600 >> logs/bt/gates_top_k4one.log 2>&1 &
 nohup sh -c "ulimit -v 6000000; nice -n 15 python3 theory/bt_close.py logs/bt/census2/close.jsonl logs/bt/census2/k4one_w0.jsonl,logs/bt/census2/k4one_w1.jsonl" >> logs/bt/census2/close_k4one.log 2>&1 &
