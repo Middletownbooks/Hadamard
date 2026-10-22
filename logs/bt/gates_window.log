@@ -11,3 +11,6 @@
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 119, "verdict": "capped (time limit 1800 s)", "solutions_weighted": null, "secs": 1800.0}
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 34, "verdict": "passes", "solutions_weighted": 4054272, "secs": 57.2}
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 17, "verdict": "capped (refined list 1.85e+08 > 30000000)", "solutions_weighted": null, "secs": 1.2}
+{"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 14, "verdict": "capped (level join pairs 2.75e+10 > 5.4e+09)", "solutions_weighted": null, "secs": 850.5}
+{"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 7, "verdict": "capped (refined list 1.31e+11 > 30000000)", "solutions_weighted": null, "secs": 16.9}
+{"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 2, "verdict": "capped (refined list 5.83e+09 > 30000000)", "solutions_weighted": null, "secs": 4.3}
