@@ -33,8 +33,10 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - **Exact gates kill even large estimates.** The 32 richest 971 hosts (r = 106, estimates 2^83–2^98.7) have no
      solution at the level G/N = ℤ₂ × ℤ₄. The 669 ℤ₃ hosts with estimates 2^26–2^85 die at G/N = ℤ₆ or ℤ₉, all
      except S9 r90 (§5).
-   - **Structures like the known successes.** 3964, 2636 and 2148 have 46–54 orbits and estimates of 2^30–2^62. No
-     open-order structure in that window survives: the best alive with r ≤ 60 is 839 S18 r60 at 2^11.2 (§8.2).
+   - **Structures like the known successes.** 3964, 2636 and 2148 have 46–54 orbits and estimates of 2^30–2^62. The
+     census found nothing comparable in that window. The best alive structure with r ≤ 60 is 839 S18 r60 at
+     2^11.2. Its cheapest exact level needs 4.9·10¹¹ join pairs for the first of its 20 Q-level solutions alone
+     (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
 2. **(B) A ranked census** of <!-- NSTRUCT -->68,556<!-- /NSTRUCT --> structures. It covers:
    - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂³ × ℤ₄ and ℤ₂⁵ (2^17 and 2^25
@@ -46,8 +48,8 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
    - Split structures of the 1916 shape (§4).
    - Each structure has its exact gate status, a Q-level stratified count read at the true target, and the cost of
      its next exact gate.
-   - The border problem is settled for the top k = 4 and ℤ₃ survivors: all 786 Q-level classes tested have a
-     border (§7).
+   - The border problem is settled for the top k = 4, k4one and ℤ₃ survivors: all 850 Q-level classes tested (86
+     structures) have a border (§7).
      - At k = 8, the monomial classes at Q = ℤ₂³ have a border (Alpöge's Singer-type frames).
      - At Q = ℤ₈ (the 751 survivors) the question is open: no Singer-type symmetry exists there [P], and the
        Kronecker frames give no admissible vector.
@@ -66,7 +68,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      - k6 at 839 and 947.
    - **Effectively closed** (every alive structure at log2 E_Q < −20, or no structure alive with a finite estimate):
      - k4 at 739 for the 2-parts with at most 2,048 endomorphisms (ℤ₂ × ℤ₄² adds rich hosts at r = 140–144);
-     - k4 at 947; k6 at 599 and 971; k8 at 599, 719 and 863; the product family at 669.
+     - k4 at 947; k4one and k4split at 751; k6 at 599 and 971; k8 at 599, 719 and 863; the product family at 669.
    - **Exact closure pass [M]** (`logs/bt/closure.sh`, `theory/bt_gates_levels.py`). It runs every exact level of every
      alive structure in these families, each under a time limit, because the cost bounds overestimate badly.
      - It has closed structures at a deeper exact level, mostly at 739. The current counts are in the "deeper

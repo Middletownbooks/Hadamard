@@ -14,3 +14,5 @@
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 14, "verdict": "capped (level join pairs 2.75e+10 > 5.4e+09)", "solutions_weighted": null, "secs": 850.5}
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 7, "verdict": "capped (refined list 1.31e+11 > 30000000)", "solutions_weighted": null, "secs": 16.9}
 {"n": 955, "fam": "k4", "order": 24, "r": 63, "log2E_Q": -4.22, "N": 2, "verdict": "capped (refined list 5.83e+09 > 30000000)", "solutions_weighted": null, "secs": 4.3}
+{"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 47.85, "N": 43, "verdict": "capped (refined list 3.27e+07 > 30000000)", "solutions_weighted": null, "secs": 302.9}
+{"n": 863, "fam": "k4one", "order": 14, "r": 77, "log2E_Q": 47.85, "N": 5, "verdict": "capped (refined list 8.13e+10 > 30000000)", "solutions_weighted": null, "secs": 0.7}

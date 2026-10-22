@@ -2604,3 +2604,7 @@ closure round 1 tier 1 done
 {"n": 955, "fam": "k4", "order": 72, "r": 40, "log2E_Q": -714.67, "N": 119, "verdict": "passes", "solutions_weighted": 211381248, "secs": 38.8}
 {"n": 955, "fam": "k4", "order": 72, "r": 40, "log2E_Q": -714.67, "N": 34, "verdict": "passes", "solutions_weighted": 2688, "secs": 1.1}
 {"n": 955, "fam": "k4", "order": 72, "r": 40, "log2E_Q": -714.67, "N": 17, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 26.4}
+{"n": 955, "fam": "k4one", "order": 48, "r": 40, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.2}
+{"n": 955, "fam": "k4one", "order": 48, "r": 40, "log2E_Q": null, "N": 34, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 9.7}
+{"n": 955, "fam": "k4one", "order": 48, "r": 40, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.1}
+{"n": 955, "fam": "k4one", "order": 48, "r": 40, "log2E_Q": null, "N": 34, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 9.8}

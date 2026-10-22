@@ -14,3 +14,5 @@
 {"verdict": "capped (level join pairs 2.75e+10 > 5.4e+09)", "key": "64a0df75ced0d0da", "n": 955, "fam": "k4", "order": 24, "r": 63, "e": 34, "log2E_Q": -4.22, "N": 14, "Nkey": "697da80583e1", "log2_pairs": null, "secs": 850.5}
 {"verdict": "capped (refined list 1.31e+11 > 30000000)", "key": "64a0df75ced0d0da", "n": 955, "fam": "k4", "order": 24, "r": 63, "e": 34, "log2E_Q": -4.22, "N": 7, "Nkey": "334f65c84c69", "log2_pairs": null, "secs": 16.9}
 {"verdict": "capped (refined list 5.83e+09 > 30000000)", "key": "64a0df75ced0d0da", "n": 955, "fam": "k4", "order": 24, "r": 63, "e": 34, "log2E_Q": -4.22, "N": 2, "Nkey": "76386f07ff21", "log2_pairs": null, "secs": 4.3}
+{"verdict": "capped (refined list 3.27e+07 > 30000000)", "key": "8ce3031ec97ded2b", "n": 863, "fam": "k4one", "order": 14, "r": 77, "e": 41, "log2E_Q": 47.85, "N": 43, "Nkey": "8bcf380e7feb", "log2_pairs": null, "secs": 302.9}
+{"verdict": "capped (refined list 8.13e+10 > 30000000)", "key": "8ce3031ec97ded2b", "n": 863, "fam": "k4one", "order": 14, "r": 77, "e": 41, "log2E_Q": 47.85, "N": 5, "Nkey": "30e6d3c413bf", "log2_pairs": null, "secs": 0.7}
