@@ -2710,3 +2710,12 @@ n = 839 fam k8: 18201 structures (14392.8s)
 {"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 98, "e": 59, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": null, "log2E_whole": -115.08, "secs": 25.3}
 {"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 104, "e": 56, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": null, "log2E_whole": -526.97, "secs": 21.5}
 {"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 98, "e": 67, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": null, "log2E_whole": -178.62, "secs": 26.4}
+n = 839 fam k8: 18201 structures (7218.6s)
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 104, "e": 56, "verdict": "passes Q-level", "q_solutions": 96, "log2E_Q": null, "log2E_whole": -496.09, "secs": 8.7}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 90, "e": 51, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.6}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 92, "e": 50, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 2.4}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 90, "e": 51, "verdict": "passes Q-level", "q_solutions": 32, "log2E_Q": null, "log2E_whole": -17.5, "secs": 4.6}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 90, "e": 51, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 3.7}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 90, "e": 51, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "log2E_whole": null, "secs": 4.0}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 98, "e": 59, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": null, "log2E_whole": -117.19, "secs": 9.9}
+{"n": 839, "fam": "k8", "T": "nontrivial", "Pmods": [4, 16], "Omods": [13], "order": 12, "r": 98, "e": 59, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": null, "log2E_whole": -117.95, "secs": 9.3}
