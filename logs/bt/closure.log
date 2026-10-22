@@ -2400,3 +2400,4 @@ closure tier 1 done
 {"n": 669, "fam": "prod12", "order": 30, "r": 54, "log2E_Q": -53.32, "N": 5, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 20.6}
 {"n": 669, "fam": "prod12", "order": 20, "r": 55, "log2E_Q": -31.2, "N": 11, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 213.2}
 {"n": 669, "fam": "prod12", "order": 20, "r": 57, "log2E_Q": -14.28, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.3}
+{"n": 669, "fam": "prod12", "order": 20, "r": 57, "log2E_Q": -14.28, "N": 5, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 427.8}
