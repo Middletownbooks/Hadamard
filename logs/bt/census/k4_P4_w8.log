@@ -10591,3 +10591,249 @@ n = 643: 24520 structures with 8 <= r <= 160
 {"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 120, "e": 64, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.7}
 {"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 122, "e": 79, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.9}
 {"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 136, "e": 72, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 108, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 140, "e": 72, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 124, "e": 72, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 140, "e": 72, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 124, "e": 72, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 128, "e": 68, "verdict": "passes Q-level", "q_solutions": 4, "log2E_Q": 54.47, "secs": 5.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 120, "e": 64, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 120, "e": 64, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 128, "e": 68, "verdict": "passes Q-level", "q_solutions": 4, "log2E_Q": 54.46, "secs": 5.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 160, "e": 85, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 144, "e": 77, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 60, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 60, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 96, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 108, "e": 83, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 108, "e": 75, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 108, "e": 107, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 108, "e": 83, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 108, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 55, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 60, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 60, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 108, "e": 87, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 108, "e": 87, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 136, "e": 73, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 108, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 55, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 120, "e": 65, "verdict": "passes Q-level", "q_solutions": 4, "log2E_Q": 23.51, "secs": 5.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 96, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 120, "e": 65, "verdict": "passes Q-level", "q_solutions": 4, "log2E_Q": 27.13, "secs": 5.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 94, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 94, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 93, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 93, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 152, "e": 84, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 156, "e": 86, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 94, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 94, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 93, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 93, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 156, "e": 86, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 50, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 152, "e": 84, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 150, "e": 77, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.8}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 70, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 110, "e": 65, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 110, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 62, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 81, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 110, "e": 65, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 62, "e": 43, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 101, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 140, "e": 72, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 68, "e": 38, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 108, "e": 64, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 110, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 62, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 91, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 110, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 62, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 91, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 140, "e": 72, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 68, "e": 38, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 108, "e": 64, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 130, "e": 67, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 66, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 106, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 56, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 66, "e": 38, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 86, "e": 48, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 56, "e": 39, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 56, "e": 43, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 55, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 56, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 56, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 64, "e": 37, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 32, "r": 62, "e": 36, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 82, "e": 46, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 82, "e": 46, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 56, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 86, "e": 48, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.8}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 55, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 72, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 92, "e": 51, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 47, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 82, "e": 46, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 82, "e": 46, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 126, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 102, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 69, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 65, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 89, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 116, "e": 66, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 79, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 90, "e": 79, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 116, "e": 66, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 100, "e": 58, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 98, "e": 57, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 106, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 112, "e": 60, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 98, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 98, "e": 67, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 112, "e": 60, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 104, "e": 56, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 98, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 98, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 112, "e": 60, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 104, "e": 56, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 104, "e": 56, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 144, "e": 77, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.8}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 104, "e": 57, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 128, "e": 69, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 59, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 100, "e": 67, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 100, "e": 67, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 100, "e": 99, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.8}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 67, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 100, "e": 83, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 112, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 96, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 144, "e": 77, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 128, "e": 69, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 100, "e": 79, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 100, "e": 79, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 4.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 84, "e": 63, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 112, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 96, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 112, "e": 61, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 16, "r": 96, "e": 53, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 112, "e": 61, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 160, "e": 88, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 93, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 93, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 101, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 133, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 152, "e": 84, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 113, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 97, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 97, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 134, "e": 113, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 152, "e": 84, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 152, "e": 84, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z2^2", "order": 8, "r": 152, "e": 84, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 69, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 69, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.6}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.3}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.0}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 132, "e": 70, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 69, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 69, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 1.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 4.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 130, "e": 71, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 32, "r": 72, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 32, "r": 80, "e": 43, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.2}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 104, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 128, "e": 67, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 5.8}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 85, "verdict": "passes Q-level", "q_solutions": 12, "log2E_Q": -427.48, "secs": 14.8}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 8, "r": 136, "e": 101, "verdict": "passes Q-level", "q_solutions": 12, "log2E_Q": -496.46, "secs": 16.9}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 128, "e": 67, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.5}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 32, "r": 72, "e": 41, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.7}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 32, "r": 80, "e": 43, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 3.4}
+{"n": 643, "Pmods": [4, 32], "Omods": [5], "Qtype": "Z4", "order": 16, "r": 104, "e": 61, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 2.8}
