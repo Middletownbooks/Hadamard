@@ -172,3 +172,5 @@
 {"verdict": "capped (refined list 8.82e+14 > 20000000)", "key": "9913f7f4509b283b", "n": 643, "fam": "k4", "order": 8, "r": 122, "e": 65, "log2E_Q": 92.96, "N": 20, "Nkey": "8dc4d02f05ab", "log2_pairs": null, "secs": 47.1}
 {"verdict": "capped (refined list 6.03e+08 > 20000000)", "key": "9913f7f4509b283b", "n": 643, "fam": "k4", "order": 8, "r": 122, "e": 65, "log2E_Q": 92.96, "N": 16, "Nkey": "614c5ae20393", "log2_pairs": null, "secs": 0.5}
 {"verdict": "capped (refined cell list > 20000000)", "key": "9913f7f4509b283b", "n": 643, "fam": "k4", "order": 8, "r": 122, "e": 65, "log2E_Q": 92.96, "N": 10, "Nkey": "e1a3d7d1709a", "log2_pairs": null, "secs": 30.6}
+{"verdict": "capped (refined cell list > 20000000)", "key": "8ec6ab0b0d0dbffc", "n": 643, "fam": "k4", "order": 8, "r": 124, "e": 68, "log2E_Q": 67.82, "N": 5, "Nkey": "0f4dbf66f47e", "log2_pairs": null, "secs": 100.5}
+{"verdict": "capped (refined cell list > 20000000)", "key": "9913f7f4509b283b", "n": 643, "fam": "k4", "order": 8, "r": 122, "e": 65, "log2E_Q": 92.96, "N": 10, "Nkey": "2dd4835182fd", "log2_pairs": null, "secs": 43.3}

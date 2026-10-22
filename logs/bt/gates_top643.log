@@ -172,3 +172,5 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 92.96, "N": 20, "verdict": "capped (refined list 8.82e+14 > 20000000)", "solutions_weighted": null, "secs": 47.1}
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 92.96, "N": 16, "verdict": "capped (refined list 6.03e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 92.96, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 30.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 67.82, "N": 5, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 100.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 92.96, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 43.3}
