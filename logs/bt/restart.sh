@@ -21,3 +21,4 @@ run 5 logs/bt/census2/close_k8c.log 6000000 python3 theory/bt_close.py logs/bt/c
 # (the window gates, logs/bt/gates_run_window.jsonl, finished at 15:21)
 # timed exact gates on the top 20 alive 643 hosts (levels no runner has tried yet)
 run 5 logs/bt/gates_top643.log 7000000 python3 theory/bt_gates_levels.py logs/bt/gates_run_top643.jsonl $CEN --levels auto --keys @logs/bt/top643_keys.txt --tmax 900 --seen-all
+run 5 logs/bt/gates_top643.log 7000000 python3 theory/bt_gates_levels.py logs/bt/gates_run_top643.jsonl $CEN --levels auto --keys @logs/bt/top643b_keys.txt --tmax 900 --seen-all
