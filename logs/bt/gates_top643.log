@@ -128,3 +128,5 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 160, "log2E_Q": 115.18, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 12.5}
 {"n": 643, "fam": "k4", "order": 8, "r": 160, "log2E_Q": 115.18, "N": 2, "verdict": "capped (Unable to allocate 2.15 GiB for an array with shape (17006112, 17) and data type int64)", "solutions_weighted": null, "secs": 40.4}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 67.82, "N": 40, "verdict": "capped (level join pairs 5.55e+09 > 2.7e+09)", "solutions_weighted": null, "secs": 606.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 128, "log2E_Q": 94.03, "N": 40, "verdict": "capped (time limit 900 s)", "solutions_weighted": null, "secs": 900.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 67.82, "N": 40, "verdict": "capped (time limit 900 s)", "solutions_weighted": null, "secs": 902.1}
