@@ -2401,3 +2401,12 @@ closure tier 1 done
 {"n": 669, "fam": "prod12", "order": 20, "r": 55, "log2E_Q": -31.2, "N": 11, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 213.2}
 {"n": 669, "fam": "prod12", "order": 20, "r": 57, "log2E_Q": -14.28, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.3}
 {"n": 669, "fam": "prod12", "order": 20, "r": 57, "log2E_Q": -14.28, "N": 5, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 427.8}
+{"n": 669, "fam": "prod12", "order": 20, "r": 63, "log2E_Q": -32.53, "N": 11, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.4}
+{"n": 669, "fam": "prod12", "order": 20, "r": 63, "log2E_Q": -32.53, "N": 5, "verdict": "capped (level join pairs 5.95e+10 > 1.07e+09)", "solutions_weighted": null, "secs": 209.9}
+{"n": 669, "fam": "prod12", "order": 24, "r": 72, "log2E_Q": -511.15, "N": 11, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 12.1}
+{"n": 669, "fam": "prod12", "order": 24, "r": 72, "log2E_Q": -511.15, "N": 5, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 13.6}
+{"n": 669, "fam": "prod12", "order": 24, "r": 72, "log2E_Q": -511.15, "N": 11, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 12.8}
+{"n": 669, "fam": "prod12", "order": 24, "r": 72, "log2E_Q": -511.15, "N": 5, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 13.0}
+{"n": 669, "fam": "prod12", "order": 10, "r": 93, "log2E_Q": -17.79, "N": 11, "verdict": "capped (refined list 1.24e+15 > 20000000)", "solutions_weighted": null, "secs": 21.7}
+{"n": 669, "fam": "prod12", "order": 10, "r": 93, "log2E_Q": -17.79, "N": 5, "verdict": "capped (level join pairs 5.95e+10 > 1.07e+09)", "solutions_weighted": null, "secs": 246.7}
+{"n": 669, "fam": "prod12", "order": 10, "r": 95, "log2E_Q": -251.44, "N": 11, "verdict": "capped (refined list 4.31e+14 > 20000000)", "solutions_weighted": null, "secs": 14.8}
