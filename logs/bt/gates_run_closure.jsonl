@@ -2217,3 +2217,4 @@
 {"verdict": "capped (time limit 300 s)", "key": "515f74794b151cdf", "n": 955, "fam": "k4one", "order": 48, "r": 42, "e": 24, "log2E_Q": null, "N": 2, "Nkey": "bdff0363a6ed", "log2_pairs": null, "secs": 302.6}
 {"verdict": "capped (time limit 300 s)", "key": "a4a5a8412725fd3c", "n": 955, "fam": "k4one", "order": 48, "r": 42, "e": 32, "log2E_Q": -171.91, "N": 119, "Nkey": "bf130809f7db", "log2_pairs": null, "secs": 300.0}
 {"solutions_weighted": 0, "log2_mult": null, "per_pattern": [{"rows": [0, 2, 2, 2], "solutions": 0}], "verdict": "no core [M] (level empty)", "key": "a4a5a8412725fd3c", "n": 955, "fam": "k4one", "order": 48, "r": 42, "e": 32, "log2E_Q": -171.91, "N": 34, "Nkey": "62037317886c", "log2_pairs": null, "secs": 26.8}
+{"verdict": "capped (time limit 300 s)", "key": "0af8507b28f5f23c", "n": 955, "fam": "k4one", "order": 48, "r": 42, "e": 27, "log2E_Q": null, "N": 119, "Nkey": "bf130809f7db", "log2_pairs": null, "secs": 300.0}
