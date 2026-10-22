@@ -209,3 +209,23 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.47, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 80.8}
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.47, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 32.5}
 {"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.47, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 46.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.47, "N": 2, "verdict": "capped (Unable to allocate 2.03 GiB for an array with shape (16995358, 16) and data type int64)", "solutions_weighted": null, "secs": 52.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 40, "verdict": "capped (refined list 1.57e+08 > 20000000)", "solutions_weighted": null, "secs": 0.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 40, "verdict": "capped (refined list 2.07e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 40, "verdict": "capped (refined list 2.87e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 20, "verdict": "capped (refined list 1.14e+12 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 20, "verdict": "capped (refined list 1.14e+12 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 20, "verdict": "capped (refined list 8.82e+14 > 20000000)", "solutions_weighted": null, "secs": 72.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 16, "verdict": "capped (refined list 6.03e+08 > 20000000)", "solutions_weighted": null, "secs": 0.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 26.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 10, "verdict": "capped (Unable to allocate 193. MiB for an array with shape (202202616,) and data type bool)", "solutions_weighted": null, "secs": 84.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 37.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 19.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 22.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 8, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 24.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 5, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 59.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 40, "verdict": "capped (level join pairs 5.47e+09 > 2.7e+09)", "solutions_weighted": null, "secs": 758.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 40, "verdict": "capped (refined list 8.1e+08 > 20000000)", "solutions_weighted": null, "secs": 1.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 40, "verdict": "capped (refined list 3.14e+08 > 20000000)", "solutions_weighted": null, "secs": 1.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.6, "N": 20, "verdict": "capped (refined list 3.52e+13 > 20000000)", "solutions_weighted": null, "secs": 5.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 122, "log2E_Q": 91.33, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 46.1}
