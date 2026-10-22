@@ -27,3 +27,4 @@ run 0 logs/bt/census/k4_P4_w10.log - python3 theory/bt_census_run.py logs/bt/cen
 
 
 run 0 logs/bt/gates_toprest.log 7000000 python3 theory/bt_gates_levels.py logs/bt/gates_run_toprest.jsonl $CEN --levels auto --keys @logs/bt/toprest_keys.txt --tmax 900 --seen-all
+run 0 logs/bt/gates_751n11.log 8000000 python3 theory/bt_gates_levels.py logs/bt/gates_run_751n11.jsonl $CEN --levels 11 --keys @logs/bt/n751_keys.txt --tmax 7200 --maxlen 3e7
