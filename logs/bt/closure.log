@@ -2387,3 +2387,14 @@ closure tier 1 done
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -301.09, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 71.8}
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -301.09, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 14.0}
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -301.09, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 37.5}
+{"n": 971, "fam": "k6", "order": 12, "r": 120, "log2E_Q": null, "N": 23, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 524.0}
+{"n": 971, "fam": "k6", "order": 12, "r": 120, "log2E_Q": null, "N": 7, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 25.5}
+{"n": 599, "fam": "k8", "order": 14, "r": 76, "log2E_Q": null, "N": 37, "verdict": "passes", "solutions_weighted": 3649536, "secs": 0.8}
+{"n": 599, "fam": "k8", "order": 14, "r": 76, "log2E_Q": null, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 40.4}
+{"n": 669, "fam": "prod12", "order": 60, "r": 36, "log2E_Q": -254.31, "N": 11, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 61.7}
+{"n": 669, "fam": "prod12", "order": 30, "r": 54, "log2E_Q": -53.32, "N": 11, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 22.7}
+{"n": 669, "fam": "prod12", "order": 30, "r": 54, "log2E_Q": -53.32, "N": 5, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 23.0}
+{"n": 669, "fam": "prod12", "order": 60, "r": 54, "log2E_Q": -53.32, "N": 11, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 21.9}
+{"n": 669, "fam": "prod12", "order": 60, "r": 54, "log2E_Q": -53.32, "N": 5, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 22.8}
+{"n": 669, "fam": "prod12", "order": 30, "r": 54, "log2E_Q": -53.32, "N": 11, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 22.7}
+{"n": 669, "fam": "prod12", "order": 30, "r": 54, "log2E_Q": -53.32, "N": 5, "verdict": "capped (Q-level join truncated (56846124 solutions, 10000000 stored))", "solutions_weighted": null, "secs": 20.6}
