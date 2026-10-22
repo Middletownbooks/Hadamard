@@ -1708,3 +1708,4 @@
 {"solutions_weighted": 5102208, "log2_mult": 487.87, "per_pattern": [{"rows": [0, 30, 30, 34], "solutions": 53148}], "verdict": "passes", "key": "fe83395e0a90cee6", "n": 739, "fam": "k4", "order": 8, "r": 141, "e": 140, "log2E_Q": -421.55, "N": 46, "Nkey": "2ec7ebbc845c", "log2_pairs": null, "secs": 4.2}
 {"verdict": "capped (refined list 2.39e+07 > 20000000)", "key": "fe83395e0a90cee6", "n": 739, "fam": "k4", "order": 8, "r": 141, "e": 140, "log2E_Q": -421.55, "N": 23, "Nkey": "456e30f83c13", "log2_pairs": null, "secs": 0.2}
 {"verdict": "capped (refined cell list > 20000000)", "key": "fe83395e0a90cee6", "n": 739, "fam": "k4", "order": 8, "r": 141, "e": 140, "log2E_Q": -421.55, "N": 8, "Nkey": "d452db4aed6f", "log2_pairs": null, "secs": 7.0}
+{"verdict": "capped (refined cell list > 20000000)", "key": "fe83395e0a90cee6", "n": 739, "fam": "k4", "order": 8, "r": 141, "e": 140, "log2E_Q": -421.55, "N": 4, "Nkey": "3151e4f441de", "log2_pairs": null, "secs": 9.7}
