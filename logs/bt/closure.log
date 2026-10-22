@@ -2213,3 +2213,4 @@ closure tier 1 done
 {"n": 739, "fam": "k4", "order": 8, "r": 142, "log2E_Q": -408.37, "N": 46, "verdict": "passes", "solutions_weighted": 40817664, "secs": 65.7}
 {"n": 739, "fam": "k4", "order": 8, "r": 142, "log2E_Q": -408.37, "N": 23, "verdict": "capped (refined list 2.87e+08 > 20000000)", "solutions_weighted": null, "secs": 0.6}
 114 2214 40
+{"n": 739, "fam": "k4", "order": 8, "r": 142, "log2E_Q": -406.67, "N": 92, "verdict": "passes", "solutions_weighted": 9216, "secs": 4.4}
