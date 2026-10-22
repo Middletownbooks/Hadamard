@@ -258,3 +258,4 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.36, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 58.9}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.36, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 49.0}
 {"n": 643, "fam": "k4", "order": 8, "r": 124, "log2E_Q": 65.36, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 86.5}
+{"n": 643, "fam": "k4", "order": 8, "r": 128, "log2E_Q": 54.47, "N": 40, "verdict": "capped (level join pairs 5.47e+09 > 2.7e+09)", "solutions_weighted": null, "secs": 530.9}
