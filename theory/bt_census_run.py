@@ -193,7 +193,14 @@ def main():
                     pass
     k = 0
     for n in map(int, a.ns.split(',')):
-        recs = list(structures(n, a.rmin, a.rmax, cap=int(a.cap), min_cap=int(a.min_cap)))
+        cache = f'{a.out}.structs_{n}_{a.rmin}_{a.rmax}_{int(a.min_cap)}_{int(a.cap)}.json'   # enumeration cached
+        if os.path.exists(cache):
+            recs = json.load(open(cache))
+        else:
+            recs = list(structures(n, a.rmin, a.rmax, cap=int(a.cap), min_cap=int(a.min_cap)))
+            with open(cache + '.tmp', 'w') as fo:
+                json.dump(recs, fo)
+            os.replace(cache + '.tmp', cache)
         print(f'n = {n}: {len(recs)} structures with {a.rmin} <= r <= {a.rmax}', flush=True)
         if a.list_only:
             continue

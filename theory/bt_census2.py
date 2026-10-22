@@ -296,7 +296,14 @@ def main():
     for n in map(int, a.ns.split(',')):
         t0 = time.time()
         try:
-            recs = list(structures(n, a.fam, a.rmin, a.rmax, cap=int(a.cap)))
+            cache = f'{a.out}.structs_{n}_{int(a.cap)}.json'       # the enumeration can take hours: cached
+            if os.path.exists(cache):
+                recs = json.load(open(cache))
+            else:
+                recs = list(structures(n, a.fam, a.rmin, a.rmax, cap=int(a.cap)))
+                with open(cache + '.tmp', 'w') as fo:
+                    json.dump(recs, fo)
+                os.replace(cache + '.tmp', cache)
         except MemoryError as e:
             print(f'n = {n}: enumeration cap ({e})', flush=True); continue
         print(f'n = {n} fam {a.fam}: {len(recs)} structures ({time.time() - t0:.1f}s)', flush=True)
