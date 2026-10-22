@@ -10,3 +10,7 @@
 {"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 11, "verdict": "capped (refined list 1.81e+08 > 20000000)", "solutions_weighted": null, "secs": 0.2}
 {"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 2, "verdict": "capped (refined list 2.45e+20 > 20000000)", "solutions_weighted": null, "secs": 0.7}
 {"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 121, "verdict": "capped (time limit 900 s)", "solutions_weighted": null, "secs": 900.0}
+{"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 22, "verdict": "capped (level join pairs 5.74e+10 > 2.7e+09)", "solutions_weighted": null, "secs": 186.7}
+{"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 11, "verdict": "capped (refined list 1.81e+08 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 11, "verdict": "capped (refined list 6.76e+15 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 971, "fam": "k4", "order": 10, "r": 112, "log2E_Q": 73.3, "N": 2, "verdict": "capped (refined list 2.45e+20 > 20000000)", "solutions_weighted": null, "secs": 0.7}
