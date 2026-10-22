@@ -12,11 +12,7 @@ run() {   # run PRIO LOG [ULIMIT_KB|-] CMD...
   pre=""; [ "$lim" != "-" ] && pre="ulimit -v $lim; "
   setsid nohup sh -c "echo $prio > /proc/self/autogroup 2>/dev/null; ${pre}exec nice -n $prio $*" >> "$log" 2>&1 < /dev/null &
 }
-# census (643 with at most 4,096 endomorphisms finished at 13:05; 839 k8 finished at 16:15)
-run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 0/4
-run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 1/4
-run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 2/4
-run 0 logs/bt/census/k4_P4_w4.log - python3 theory/bt_census_run.py logs/bt/census/k4_P4_w4.jsonl --ns 643 --rmin 8 --rmax 160 --cap 16384 --min-cap 4096 --part 3/4
+# census (643 with at most 4,096 endomorphisms finished at 13:05; 839 k8 finished at 16:15; 643 up to 16,384 endomorphisms at 16:35)
 run 19 logs/bt/census/split_k4.log - python3 theory/bt_census_split.py logs/bt/census/split_k4.jsonl logs/bt/census/k4_P4_w0.jsonl,logs/bt/census/k4_P4_w1.jsonl,logs/bt/census/k4_P4_w2.jsonl,logs/bt/census/k4_P4_w3.jsonl,logs/bt/census/k4_P4_w5.jsonl --rmin 16 --rmax 50
 # screens [P] and exact gates [M]
 run 10 logs/bt/census/thm_rigid.log - python3 theory/bt_thm_rigid.py logs/bt/census/thm_rigid.jsonl $CEN
