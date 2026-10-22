@@ -2848,3 +2848,4 @@ closure round 1 tier 1 done
 {"n": 955, "fam": "k4one", "order": 48, "r": 48, "log2E_Q": -91.49, "N": 34, "verdict": "passes", "solutions_weighted": 6144, "secs": 5.9}
 {"n": 955, "fam": "k4one", "order": 48, "r": 48, "log2E_Q": -91.49, "N": 17, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 301.8}
 {"n": 955, "fam": "k4one", "order": 48, "r": 48, "log2E_Q": -91.49, "N": 14, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.1}
+{"n": 955, "fam": "k4one", "order": 48, "r": 48, "log2E_Q": -91.49, "N": 7, "verdict": "capped (refined list 2.02e+07 > 20000000)", "solutions_weighted": null, "secs": 229.1}
