@@ -3813,3 +3813,5 @@
 {"n": 839, "fam": "k8", "order": 16, "r": 95, "e": 80, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.2}
 {"n": 839, "fam": "k8", "order": 16, "r": 90, "e": 64, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.2}
 {"n": 839, "fam": "k8", "order": 16, "r": 95, "e": 80, "verdict": "no core [P] (coset-Parseval)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 24, "r": 55, "e": 43, "verdict": "passes Q-level", "q_solutions": 208, "log2E_Q": null, "secs": 14.3}
+{"n": 839, "fam": "k8", "order": 12, "r": 89, "e": 63, "verdict": "passes Q-level", "q_solutions": 224, "log2E_Q": -25.2, "secs": 15.2}
