@@ -1,6 +1,7 @@
 # Bordered Goethals–Seidel arrays with a character set T at the open orders below 4000: census, two obstructions, a calibration, and no new matrix
 
-Date: 2026-10-21. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_b3_push.md`.
+Dates: 2026-10-21 to 2026-10-23 (the tables are regenerated from the logs by `theory/bt_summary.py --fill`). Branch
+`claude/focused-planck-j1645f`. Answers `report/prompt_b3_push.md`.
 Scripts: `theory/bt_*.py`. Logs: `logs/bt/`.
 
 **Tags.** [P] proved here (proof in the text); [M] exact computation (script named); [E] estimate (estimator,
