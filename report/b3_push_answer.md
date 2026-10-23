@@ -88,8 +88,9 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
        2^−300), whose levels pass or exceed the list cap.
      - Every structure that the census had skipped by its rule of thumb (4r − 6.5e < −45) was decided exactly by
        the screens and the Q-level gate (`theory/bt_close.py`): 845 at 599 k8, 4,357 at 839 k8, and 12,882 k4one
-       structures at 643, 739 and 971. The 839 k8 ones left alive all have log2 E_Q ≤ −24.7. Only 15 split
-       structures (751 and 839, prefiltered by `theory/bt_census_split.py`) remain undecided.
+       structures at 643, 739 and 971. The 839 k8 ones left alive all have log2 E_Q ≤ −24.7. Only split structures
+       remain undecided (751 and 839, prefiltered by `theory/bt_census_split.py`; the "prefilter only" column of
+       §4.1 counts them).
    - **The 669 ℤ₃ family (Kumar's 2148 family) is closed except for two hosts [P, M].**
      - All 239 structures of the census range are dead except 2: 75 by coset-Parseval, 10 by Lemma R, and 152 at an
        exact finer level G/N = ℤ₉ or ℤ₆ (`theory/bt_gates_levels.py`, timed gates, `logs/bt/gates_run_levels.jsonl`).
