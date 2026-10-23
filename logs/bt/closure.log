@@ -3053,3 +3053,6 @@ closure round 1 tier 1 done
 {"n": 955, "fam": "k4", "order": 48, "r": 54, "log2E_Q": -114.76, "N": 17, "verdict": "capped (refined list 3.2e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
 {"n": 955, "fam": "k4", "order": 48, "r": 54, "log2E_Q": -114.76, "N": 14, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 301.2}
 {"n": 955, "fam": "k4", "order": 48, "r": 54, "log2E_Q": -114.76, "N": 7, "verdict": "capped (refined list 3.2e+08 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 955, "fam": "k4", "order": 48, "r": 54, "log2E_Q": -114.76, "N": 2, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 326.6}
+{"n": 955, "fam": "k4", "order": 32, "r": 54, "log2E_Q": null, "N": 119, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 245.6}
+{"n": 955, "fam": "k4", "order": 32, "r": 54, "log2E_Q": null, "N": 119, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 254.7}
