@@ -175,3 +175,4 @@
 {"n": 839, "order": 90, "label": "index 3", "r": [24, 60, 60, 24], "e": 39, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
 {"n": 839, "order": 90, "label": "index 3", "r": [24, 42, 42, 24], "e": 27, "verdict": "passes Q-level", "q_solutions": 1024, "log2E_Q": -69.6, "secs": 426.0}
 {"n": 839, "order": 90, "label": "index 2", "r": [27, 36, 36, 27], "e": 18, "verdict": "passes Q-level", "q_solutions": 9216, "log2E_Q": -19.74, "secs": 233.8}
+{"n": 839, "order": 90, "label": "index 3", "r": [27, 63, 63, 27], "e": 32, "verdict": "passes Q-level", "q_solutions": 11520, "log2E_Q": -61.65, "secs": 920.3}
