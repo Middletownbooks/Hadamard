@@ -126,3 +126,14 @@
 {"n": 839, "order": 90, "label": "index 3", "r": [19, 43, 43, 19], "e": 42, "verdict": "skipped (sum r - 6.5e = -149.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
 {"n": 839, "order": 90, "label": "index 2", "r": [19, 36, 36, 19], "e": 19, "verdict": "passes Q-level", "q_solutions": 5120, "log2E_Q": -21.76, "secs": 146.9}
 {"n": 839, "order": 90, "label": "index 3", "r": [19, 43, 43, 19], "e": 32, "verdict": "skipped (sum r - 6.5e = -84.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
+{"n": 839, "order": 90, "label": "index 2", "r": [20, 36, 36, 20], "e": 18, "verdict": "passes Q-level", "q_solutions": 12288, "log2E_Q": -20.78, "secs": 116.7}
+{"n": 839, "order": 90, "label": "index 3", "r": [20, 44, 44, 20], "e": 32, "verdict": "skipped (sum r - 6.5e = -80.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 839, "order": 90, "label": "index 2", "r": [20, 36, 36, 20], "e": 19, "verdict": "passes Q-level", "q_solutions": 12288, "log2E_Q": -20.93, "secs": 153.7}
+{"n": 839, "order": 90, "label": "index 3", "r": [20, 44, 44, 20], "e": 43, "verdict": "skipped (sum r - 6.5e = -151.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}
+{"n": 839, "order": 90, "label": "index 2", "r": [20, 30, 30, 20], "e": 15, "verdict": "passes Q-level", "q_solutions": 192, "log2E_Q": -54.27, "secs": 77.8}
+{"n": 839, "order": 90, "label": "index 3", "r": [20, 56, 56, 20], "e": 31, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.3}
+{"n": 839, "order": 90, "label": "index 2", "r": [21, 36, 36, 21], "e": 18, "verdict": "passes Q-level", "q_solutions": 5120, "log2E_Q": -48.02, "secs": 114.8}
+{"n": 839, "order": 90, "label": "index 3", "r": [21, 45, 45, 21], "e": 29, "verdict": "skipped (sum r - 6.5e = -56.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 839, "order": 90, "label": "index 2", "r": [21, 36, 36, 21], "e": 19, "verdict": "passes Q-level", "q_solutions": 5120, "log2E_Q": -45.92, "secs": 151.9}
+{"n": 839, "order": 90, "label": "index 3", "r": [21, 45, 45, 21], "e": 26, "verdict": "passes Q-level", "q_solutions": 2048, "log2E_Q": -99.96, "secs": 204.7}
+{"n": 839, "order": 90, "label": "index 2", "r": [21, 36, 36, 21], "e": 18, "verdict": "passes Q-level", "q_solutions": 5120, "log2E_Q": -38.85, "secs": 109.2}
