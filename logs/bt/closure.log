@@ -6009,3 +6009,7 @@ closure round 1 tier 1 done
 {"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -116.27, "N": 17, "verdict": "capped (refined list 3.2e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -116.27, "N": 14, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.0}
 {"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -116.27, "N": 7, "verdict": "capped (refined list 3.2e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -116.27, "N": 2, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 301.2}
+{"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -102.37, "N": 119, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.0}
+{"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -102.37, "N": 34, "verdict": "passes", "solutions_weighted": 14180352, "secs": 62.6}
+{"n": 955, "fam": "k4one", "order": 48, "r": 54, "log2E_Q": -102.37, "N": 17, "verdict": "capped (refined list 3.2e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
