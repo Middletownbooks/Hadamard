@@ -329,3 +329,5 @@
 {"n": 643, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -219.35, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 20.8}
 {"n": 643, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -219.35, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 14.4}
 {"n": 643, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -219.35, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 10.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -226.74, "N": 80, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 2115.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 152, "log2E_Q": -226.74, "N": 80, "verdict": "passes", "solutions_weighted": 1661736960, "secs": 57.4}

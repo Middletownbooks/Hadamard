@@ -223,3 +223,4 @@
 {"n": 839, "order": 54, "label": "index 2", "r": [34, 66, 66, 34], "e": 33, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
 {"n": 839, "order": 54, "label": "index 3", "r": [34, 78, 78, 34], "e": 77, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
 {"n": 839, "order": 108, "label": "index 2", "r": [34, 66, 66, 34], "e": 33, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 45, "label": "index 3", "r": [36, 84, 84, 36], "e": 42, "verdict": "passes Q-level", "q_solutions": 92160, "log2E_Q": -47.38, "secs": 1096.5}
