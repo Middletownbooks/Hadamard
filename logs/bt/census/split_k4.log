@@ -75,3 +75,11 @@
 {"n": 751, "order": 32, "label": "index 2", "r": [41, 77, 77, 41], "e": 40, "verdict": "passes Q-level", "q_solutions": 3072, "log2E_Q": null, "secs": 197.9}
 {"n": 751, "order": 32, "label": "index 2", "r": [41, 77, 77, 41], "e": 41, "verdict": "passes Q-level", "q_solutions": 3072, "log2E_Q": null, "secs": 264.8}
 {"n": 751, "order": 32, "label": "index 2", "r": [41, 69, 69, 41], "e": 53, "verdict": "skipped (sum r - 6.5e = -124.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 751, "order": 40, "label": "index 2", "r": [42, 56, 56, 42], "e": 33, "verdict": "passes Q-level", "q_solutions": 144384, "log2E_Q": null, "secs": 3041.3}
+{"n": 751, "order": 40, "label": "index 2", "r": [42, 81, 81, 42], "e": 53, "verdict": "skipped (sum r - 6.5e = -98.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 751, "order": 32, "label": "index 2", "r": [42, 72, 72, 42], "e": 53, "verdict": "skipped (sum r - 6.5e = -116.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 751, "order": 32, "label": "index 2", "r": [42, 77, 77, 42], "e": 40, "verdict": "passes Q-level", "q_solutions": 3072, "log2E_Q": null, "secs": 211.2}
+{"n": 751, "order": 40, "label": "index 2", "r": [42, 81, 81, 42], "e": 53, "verdict": "skipped (sum r - 6.5e = -98.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 751, "order": 40, "label": "index 2", "r": [42, 55, 55, 42], "e": 37, "verdict": "skipped (sum r - 6.5e = -46.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
+{"n": 751, "order": 32, "label": "index 2", "r": [42, 77, 77, 42], "e": 41, "verdict": "passes Q-level", "q_solutions": 3072, "log2E_Q": null, "secs": 278.9}
+{"n": 751, "order": 32, "label": "index 2", "r": [42, 67, 67, 42], "e": 41, "verdict": "skipped (sum r - 6.5e = -48.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
