@@ -2925,3 +2925,5 @@
 {"verdict": "capped (refined list 2.71e+15 > 20000000)", "key": "1decaac250b9a685", "n": 751, "fam": "k4one", "order": 20, "r": 81, "e": 53, "log2E_Q": -150.62, "N": 11, "Nkey": "f4b8148864de", "log2_pairs": null, "secs": 0.8}
 {"verdict": "capped (time limit 300 s)", "key": "2131a26a49c5810d", "n": 751, "fam": "k4one", "order": 20, "r": 81, "e": 53, "log2E_Q": -143.19, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 777.4}
 {"verdict": "capped (refined list 2.71e+15 > 20000000)", "key": "2131a26a49c5810d", "n": 751, "fam": "k4one", "order": 20, "r": 81, "e": 53, "log2E_Q": -143.19, "N": 11, "Nkey": "f4b8148864de", "log2_pairs": null, "secs": 0.8}
+{"verdict": "capped (time limit 300 s)", "key": "595c964a0cd4da69", "n": 751, "fam": "k4one", "order": 20, "r": 81, "e": 53, "log2E_Q": -150.62, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 786.7}
+{"verdict": "capped (refined list 2.71e+15 > 20000000)", "key": "595c964a0cd4da69", "n": 751, "fam": "k4one", "order": 20, "r": 81, "e": 53, "log2E_Q": -150.62, "N": 11, "Nkey": "f4b8148864de", "log2_pairs": null, "secs": 0.8}
