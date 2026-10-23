@@ -45,10 +45,11 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      2^11.2. Its cheapest exact level needs 4.9·10¹¹ join pairs for the first of its 20 Q-level solutions alone
      (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
-2. **(B) A ranked census** of <!-- NSTRUCT -->164,586<!-- /NSTRUCT --> structures. It covers:
+2. **(B) A ranked census** of <!-- NSTRUCT -->169,855<!-- /NSTRUCT --> structures. It covers:
    - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂⁵, whose 2^25 endomorphisms
-     exceed the enumeration limit of 2^20. At 643 the 2-parts of order 128 with at most 16,384 endomorphisms are covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄
-     and ℤ₄ × ℤ₃₂ (at most 4,096), and ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192).
+     exceed the enumeration limit of 2^20. At 643 the 2-parts of order 128 with at most 32,768 endomorphisms are
+     covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄ and ℤ₄ × ℤ₃₂ (at most 4,096), ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192), and ℤ₂ × ℤ₄ × ℤ₁₆
+     (32,768).
    - k4one at every n ≡ 3 (mod 4) for 12 ≤ r ≤ 90 (with the same 2-part limits as k4 at 643 and 739).
    - k6 at 599, 719, 839, 863, 947 and 971.
    - k8 at 599, 719, 751 and 863; at 839 for the 2-parts with at most 16,384 endomorphisms (18,201 structures; the
@@ -263,7 +264,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 599 | k4one | 12 | 0 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 | — |
 | 599 | k6 | 19 | 15 | 0 | 2 | 0 | 0 | 1 | 0 | 1 | 0 | S10, 84, 55, -49.81 |
 | 599 | k8 | 2143 | 923 | 0 | 0 | 0 | 1214 | 0 | 0 | 6 | 0 | S9, 104, 53, -18.54 |
-| 643 | k4 | 76613 | 67820 | 72 | 338 | 0 | 2868 | 0 | 0 | 5515 | 2313 | S8, 160, 86, 116.51 |
+| 643 | k4 | 81882 | 72368 | 72 | 338 | 0 | 3004 | 0 | 0 | 6100 | 2504 | S8, 160, 86, 116.51 |
 | 643 | k4one | 32746 | 32125 | 0 | 2 | 0 | 599 | 0 | 0 | 20 | 0 | S16, 83, 50, -178.26 |
 | 669 | prod12 | 282 | 0 | 0 | 8 | 0 | 249 | 2 | 10 | 13 | 0 | S20, 57, 32, -14.28 |
 | 669 | z3all | 239 | 75 | 0 | 10 | 0 | 0 | 152 | 0 | 2 | 2 | S9, 90, 45, 73.14 |
@@ -395,7 +396,7 @@ counts are common among alive structures with E_Q below about 2^30.
 
 <!-- NOTES-AUTO -->
 - **599.** k4: 34 structures, 6 alive, best S2 r = 300 at log2 E_Q = 76.7; k4one: 12 structures, all dead; k6: 19 structures, 1 alive, best S10 r = 84 at log2 E_Q = -49.8; k8: 2143 structures, 6 alive, best S9 r = 104 at log2 E_Q = -18.5.
-- **643.** k4: 76613 structures, 5515 alive, best S8 r = 160 at log2 E_Q = 116.5; k4one: 32746 structures, 20 alive, best S16 r = 83 at log2 E_Q = -178.3.
+- **643.** k4: 81882 structures, 6100 alive, best S8 r = 160 at log2 E_Q = 116.5; k4one: 32746 structures, 20 alive, best S16 r = 83 at log2 E_Q = -178.3.
 - **669.** prod12: 282 structures, 13 alive, best S20 r = 57 at log2 E_Q = -14.3; z3all: 239 structures, 2 alive, best S9 r = 90 at log2 E_Q = 73.1.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k4one: 4 structures, all dead; k6: 59 structures, 24 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
 - **739.** k4: 6334 structures, 220 alive, best S6 r = 144 at log2 E_Q = 53.6; k4one: 12803 structures, 2779 alive, best S22 r = 60 at log2 E_Q = -22.8.
@@ -427,10 +428,11 @@ counts are common among alive structures with E_Q below about 2^30.
   - At 907 (8·113; the multipliers of ℤ₁₁₃ form ℤ₁₆ × ℤ₇) the window is populated: S of order 14–32 with
     r = 46–72. All 384 structures still die: 175 by coset-Parseval, 206 at the Q-level and 3 at a deeper level.
 - **643 and 739: large 2-parts** (2⁷ and 2⁵).
-  - Coverage: at 643 the 2-parts with at most 16,384 endomorphisms (ℤ₁₂₈, ℤ₂ × ℤ₆₄, ℤ₄ × ℤ₃₂, ℤ₂² × ℤ₃₂,
-    ℤ₈ × ℤ₁₆); at 739 every 2-part except ℤ₂⁵. On ℤ₂³ × ℤ₄ (739, 329 structures) every alive structure has
+  - Coverage: at 643 the 2-parts with at most 32,768 endomorphisms (ℤ₁₂₈, ℤ₂ × ℤ₆₄, ℤ₄ × ℤ₃₂, ℤ₂² × ℤ₃₂,
+    ℤ₈ × ℤ₁₆, ℤ₂ × ℤ₄ × ℤ₁₆); at 739 every 2-part except ℤ₂⁵. On ℤ₂³ × ℤ₄ (739, 329 structures) every alive structure has
     log2 E_Q ≤ −55.9.
-  - Coset-Parseval removes most structures: 50,353 of 56,267 at 643 and 4,080 of 6,005 at 739.
+  - Coset-Parseval removes most structures: 72,368 of 81,882 at 643 and 4,244 of 6,334 at 739. On ℤ₂ × ℤ₄ × ℤ₁₆
+    (643, 25,615 structures) the best alive host has log2 E_Q = 81.9.
   - The 643 hosts with the largest estimates are rich. On ℤ₂² × ℤ₃₂ × ℤ₅ two structures with S of order 8 reach
     r = 160, the top of the census range, at log2 E_Q = 115.2 and 116.5. On ℤ₄ × ℤ₃₂ × ℤ₅ (S of order 8,
     r = 122–124, 2^91.7–2^95.4) the invariant subgroups form a long chain of index-2 steps. The exact levels of
@@ -551,7 +553,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 164586 structures: coset-Parseval 132986, Theorem α 701, Lemma R 1529 (the screens [P]); Q-level empty 13942, deeper level or chain empty 1768 [M]; prefilter only 16; alive 13634.
+Over 169855 structures: coset-Parseval 137534, Theorem α 701, Lemma R 1529 (the screens [P]); Q-level empty 14078, deeper level or chain empty 1768 [M]; prefilter only 16; alive 14219.
 <!-- /SCREEN-COUNTS -->
 
 
@@ -779,7 +781,7 @@ vectors (3964). At the open orders, the best live structures in and near that wi
 | 599 | k4one | — | — | — |
 | 599 | k6 | — | — | -49.81 (S10, 84) |
 | 599 | k8 | -594.85 (S21, 52) | -594.85 (S21, 52) | -18.54 (S9, 104) |
-| 643 | k4 | — | — | 116.51 (S8, 160) |
+| 643 | k4 | — | -227.74 (S16, 76) | 116.51 (S8, 160) |
 | 643 | k4one | — | — | -178.26 (S16, 83) |
 | 669 | prod12 | -14.28 (S20, 57) | -14.28 (S20, 57) | -14.28 (S20, 57) |
 | 669 | z3all | — | — | 73.14 (S9, 90) |
