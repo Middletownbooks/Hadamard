@@ -23,3 +23,4 @@ run 10 logs/bt/closure.log - sh logs/bt/closure.sh
 # k4one at the three orders the first k4one queue left out (12 <= r <= 90, as at the other orders)
 
 
+run 10 logs/bt/closure2.log - python3 theory/bt_gates_levels.py logs/bt/gates_run_closure2.jsonl $CEN --levels auto --keys @logs/bt/closure_keys_t2r.txt --tmax 300 --seen-all

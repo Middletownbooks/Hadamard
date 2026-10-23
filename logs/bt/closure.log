@@ -3408,3 +3408,5 @@ closure round 1 tier 1 done
 {"n": 751, "fam": "k4one", "order": 20, "r": 78, "log2E_Q": null, "N": 17, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.4}
 {"n": 751, "fam": "k4one", "order": 20, "r": 81, "log2E_Q": -150.62, "N": 17, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 761.0}
 {"n": 751, "fam": "k4one", "order": 20, "r": 81, "log2E_Q": -150.62, "N": 11, "verdict": "capped (refined list 2.71e+15 > 20000000)", "solutions_weighted": null, "secs": 0.8}
+{"n": 751, "fam": "k4one", "order": 20, "r": 81, "log2E_Q": -143.19, "N": 17, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 777.4}
+{"n": 751, "fam": "k4one", "order": 20, "r": 81, "log2E_Q": -143.19, "N": 11, "verdict": "capped (refined list 2.71e+15 > 20000000)", "solutions_weighted": null, "secs": 0.8}
