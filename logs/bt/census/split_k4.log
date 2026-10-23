@@ -211,3 +211,5 @@
 {"n": 839, "order": 60, "label": "index 2", "r": [32, 56, 56, 32], "e": 29, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
 {"n": 839, "order": 60, "label": "index 3", "r": [32, 80, 80, 32], "e": 59, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
 {"n": 839, "order": 60, "label": "index 2", "r": [33, 44, 44, 33], "e": 32, "verdict": "skipped (sum r - 6.5e = -54.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 60, "label": "index 2", "r": [33, 63, 63, 33], "e": 32, "verdict": "passes Q-level", "q_solutions": 16384, "log2E_Q": -68.06, "secs": 1461.4}
+{"n": 839, "order": 60, "label": "index 3", "r": [33, 87, 87, 33], "e": 86, "verdict": "skipped (sum r - 6.5e = -319.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
