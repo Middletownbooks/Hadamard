@@ -3056,3 +3056,4 @@ closure round 1 tier 1 done
 {"n": 955, "fam": "k4", "order": 48, "r": 54, "log2E_Q": -114.76, "N": 2, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 326.6}
 {"n": 955, "fam": "k4", "order": 32, "r": 54, "log2E_Q": null, "N": 119, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 245.6}
 {"n": 955, "fam": "k4", "order": 32, "r": 54, "log2E_Q": null, "N": 119, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 254.7}
+{"n": 955, "fam": "k4", "order": 48, "r": 54, "log2E_Q": -114.76, "N": 119, "verdict": "capped (time limit 300 s)", "solutions_weighted": null, "secs": 300.0}
