@@ -5,10 +5,13 @@ by 2^37 pairs ran in 8 s).  This runner takes the levels by the order of N (ever
 'auto': every invariant N <= K, coarsest level first) and the structures by key or by family, and runs
 theory/bt_gates_run.run_level under an alarm.  A level with no solution closes the structure: no core [M].  One JSON
 line per (structure, level), restart-safe; output in the format of bt_gates_run (read by theory/bt_summary.py).
+A level capped under a shorter time limit counts as untried under a longer one, so a pass at --tmax 30 followed by
+one at --tmax 300 retries only the levels the first pass could not finish.  --part i/W runs every W-th key from the
+i-th, for W parallel runners sharing one output file.
 usage: python3 theory/bt_gates_levels.py OUT.jsonl CENSUS.jsonl[,...] --levels 111,74|auto
-       (--keys k1,k2|@FILE | --fam n:fam) [--tmax 900] [--maxlen 2e7] [--seen-all]
+       (--keys k1,k2|@FILE | --fam n:fam) [--tmax 900] [--maxlen 2e7] [--seen-all] [--part i/W]
 """
-import sys, os, json, time, math, argparse, signal
+import sys, os, re, json, time, math, argparse, signal
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bt_census_run as R, bt_census2 as C2, bt_cost as CO, bt_gates_run as GR
@@ -27,6 +30,12 @@ def _alarm(signum, frame):
     raise Timeout()
 
 
+def _tried(d, tmax):
+    """A recorded level counts as tried unless it was capped under a shorter time limit than tmax."""
+    m = re.match(r'capped \(time limit ([\d.]+) s\)', d.get('verdict', ''))
+    return m is None or float(m.group(1)) >= tmax
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('out'); ap.add_argument('census')
@@ -35,6 +44,7 @@ def main():
     ap.add_argument('--tmax', type=float, default=900); ap.add_argument('--maxlen', type=float, default=2e7)
     ap.add_argument('--seen-all', action='store_true',
                     help='also skip (structure, level) pairs recorded in any logs/bt/gates_run*.jsonl')
+    ap.add_argument('--part', default=None, help='i/W: every W-th key from the i-th (W parallel runners)')
     a = ap.parse_args()
     levels = None if a.levels == 'auto' else [int(x) for x in a.levels.split(',')]
     recs = {}
@@ -51,11 +61,15 @@ def main():
         D = SU.Data()
         keys = [d['key'] for d in sorted(D.groups().get((int(n), fam), []), key=lambda d: -SU.e_of(d))
                 if D.status(d) == 'alive']
+    if a.part:
+        i, W = (int(x) for x in a.part.split('/'))
+        keys = keys[i::W]
     done = set(); dead = set()
     if os.path.exists(a.out):
         for x in open(a.out):
             d = json.loads(x)
-            done.add((d['key'], d.get('Nkey')))
+            if _tried(d, a.tmax):
+                done.add((d['key'], d.get('Nkey')))
             if d.get('verdict', '').startswith('no core'):
                 dead.add(d['key'])
     if a.seen_all:                                             # levels another runner already tried or decided
@@ -63,7 +77,7 @@ def main():
         for f in glob.glob(os.path.join(os.path.dirname(os.path.abspath(a.out)), 'gates_run*.jsonl')):
             for x in open(f):
                 d = json.loads(x)
-                if d.get('Nkey'):
+                if d.get('Nkey') and _tried(d, a.tmax):
                     done.add((d['key'], d['Nkey']))
                 if d.get('verdict', '').startswith('no core'):
                     dead.add(d['key'])
