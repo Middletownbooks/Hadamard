@@ -7695,3 +7695,4 @@ closure round 1 tier 1 memory retry done
 {"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -37.27, "N": 119, "verdict": "capped (time limit 30 s)", "solutions_weighted": null, "secs": 30.3}
 {"n": 839, "fam": "k8", "order": 24, "r": 64, "log2E_Q": null, "N": 8, "verdict": "capped (time limit 30 s)", "solutions_weighted": null, "secs": 30.0}
 {"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -37.27, "N": 34, "verdict": "passes", "solutions_weighted": 98304, "secs": 9.9}
+170 6992 2
