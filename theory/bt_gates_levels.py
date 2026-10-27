@@ -121,6 +121,7 @@ def main():
                     continue
                 t = time.time()
                 FIRED[0] = False
+                real = False
                 signal.alarm(int(a.tmax))
                 try:
                     # the alarm cannot interrupt a compiled join, so joins that could not finish in time are
@@ -148,6 +149,11 @@ def main():
                 if res['verdict'].startswith('no core'):
                     dead.add(key)
                     break
+                if real:                    # after a refused allocation the memory can stay held (every later
+                    sys.exit(EXIT_FRESH)    # allocation then fails at once): resume in a fresh process instead
+
+
+EXIT_FRESH = 75                             # closure.sh restarts a runner that exits with this code
 
 
 if __name__ == '__main__':
