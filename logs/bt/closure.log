@@ -7270,3 +7270,6 @@ closure round 1 tier 1 tmax 300 done
 {"n": 955, "fam": "k4", "order": 24, "r": 62, "log2E_Q": -189.99, "N": 119, "verdict": "passes", "solutions_weighted": 605184, "secs": 0.1}
 {"n": 955, "fam": "k4", "order": 24, "r": 62, "log2E_Q": -189.99, "N": 34, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
 170 7220 2
+closure round 1 tier 1 tmax 30 done
+closure round 1 tier 1 tmax 300 done
+closure round 1 tier 1 memory retry done
