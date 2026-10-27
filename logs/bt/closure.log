@@ -8002,3 +8002,5 @@ closure round 1 tier 1 memory retry done
 {"n": 839, "fam": "k8", "order": 24, "r": 66, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 6.93e+07 > 20000000)", "solutions_weighted": null, "secs": 0.4}
 {"n": 839, "fam": "k8", "order": 24, "r": 66, "log2E_Q": null, "N": 52, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 17.6}
 {"n": 839, "fam": "k8", "order": 24, "r": 66, "log2E_Q": -340.46, "N": 52, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 6.6}
+{"n": 839, "fam": "k8", "order": 24, "r": 66, "log2E_Q": null, "N": 52, "verdict": "capped (time limit 30 s)", "solutions_weighted": null, "secs": 30.1}
+{"n": 839, "fam": "k8", "order": 24, "r": 66, "log2E_Q": null, "N": 52, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 16.5}
