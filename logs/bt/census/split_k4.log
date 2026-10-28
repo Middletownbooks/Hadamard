@@ -554,3 +554,5 @@
 {"n": 863, "order": 28, "label": "index 2", "r": [44, 80, 80, 44], "e": 43, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.1}
 {"n": 863, "order": 28, "label": "index 2", "r": [44, 77, 77, 44], "e": 43, "verdict": "passes Q-level", "q_solutions": 1536, "log2E_Q": -47.89, "secs": 203.7}
 {"n": 863, "order": 42, "label": "index 2", "r": [45, 60, 60, 45], "e": 30, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 0.9}
+{"n": 863, "order": 42, "label": "index 3", "r": [45, 105, 105, 45], "e": 53, "verdict": "passes Q-level", "q_solutions": 6912, "log2E_Q": -72.54, "secs": 1046.8}
+{"n": 863, "order": 42, "label": "index 2", "r": [45, 60, 60, 45], "e": 31, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 0.9}
