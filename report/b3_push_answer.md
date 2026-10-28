@@ -46,7 +46,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      2^11.2. Its cheapest exact level needs 4.9·10¹¹ join pairs for the first of its 20 Q-level solutions alone
      (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
-2. **(B) A ranked census** of <!-- NSTRUCT -->170,051<!-- /NSTRUCT --> structures. It covers:
+2. **(B) A ranked census** of <!-- NSTRUCT -->170,053<!-- /NSTRUCT --> structures. It covers:
    - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂⁵, whose 2^25 endomorphisms
      exceed the enumeration limit of 2^20. At 643 the 2-parts of order 128 with at most 32,768 endomorphisms are
      covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄ and ℤ₄ × ℤ₃₂ (at most 4,096), ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192), and ℤ₂ × ℤ₄ × ℤ₁₆
@@ -287,7 +287,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 751 | k8 | 441 | 134 | 0 | 0 | 0 | 272 | 7 | 0 | 28 | 7 | S10, 105, 54, 66.19 |
 | 839 | k4 | 232 | 0 | 52 | 13 | 0 | 89 | 24 | 0 | 54 | 9 | S6, 156, 83, 165.86 |
 | 839 | k4one | 204 | 0 | 0 | 16 | 0 | 108 | 44 | 0 | 36 | 4 | S15, 84, 43, 19.59 |
-| 839 | k4split | 174 | 0 | 48 | 26 | 40 | 16 | 0 | 0 | 44 | 0 | S90, 16/30/30/16, 15, -16.41 |
+| 839 | k4split | 176 | 0 | 48 | 27 | 40 | 16 | 0 | 0 | 45 | 0 | S90, 16/30/30/16, 15, -16.41 |
 | 839 | k6 | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 | 0 | — |
 | 839 | k8 | 18201 | 13184 | 0 | 582 | 0 | 1166 | 1087 | 0 | 2182 | 103 | S12, 105, 56, 53.02 |
 | 859 | k4 | 81 | 39 | 0 | 0 | 0 | 42 | 0 | 0 | 0 | 0 | — |
@@ -304,7 +304,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 955 | k4 | 1321 | 485 | 43 | 79 | 0 | 168 | 135 | 0 | 411 | 62 | S8, 147, 76, 103.58 |
 | 955 | k4one | 1636 | 648 | 0 | 106 | 0 | 358 | 212 | 0 | 312 | 0 | S24, 63, 34, -3.7 |
 | 971 | k4 | 2440 | 978 | 299 | 50 | 0 | 857 | 60 | 0 | 196 | 16 | S10, 112, 57, 73.3 |
-| 971 | k4one | 3948 | 2326 | 0 | 32 | 0 | 1308 | 18 | 0 | 264 | 0 | S25, 72, 37, -16.31 |
+| 971 | k4one | 3948 | 2326 | 0 | 32 | 0 | 1308 | 34 | 0 | 248 | 0 | S25, 72, 37, -16.31 |
 | 971 | k6 | 31 | 0 | 0 | 0 | 0 | 25 | 3 | 0 | 3 | 0 | S12, 118, 95, -368.36 |
 <!-- /CENSUS-TABLE -->
 
@@ -407,13 +407,13 @@ counts are common among alive structures with E_Q below about 2^30.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k4one: 4 structures, all dead; k6: 59 structures, 20 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
 - **739.** k4: 6334 structures, 95 alive, best S6 r = 144 at log2 E_Q = 53.6; k4one: 12803 structures, all dead.
 - **751.** k4: 217 structures, 56 alive, best S8 r = 121 at log2 E_Q = 73.5; k4one: 204 structures, 47 alive, best S20 r = 57 at log2 E_Q = -22.5; k4split: 88 structures, 44 alive, best S80 r = 27/36/36/27 at log2 E_Q = -33.2, 29 prefiltered; k8: 441 structures, 28 alive, best S10 r = 105 at log2 E_Q = 66.2.
-- **839.** k4: 232 structures, 54 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 36 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 174 structures, 44 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 40 prefiltered; k6: 9 structures, all dead; k8: 18201 structures, 2182 alive, best S12 r = 105 at log2 E_Q = 53.0.
+- **839.** k4: 232 structures, 54 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 36 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 176 structures, 45 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 40 prefiltered; k6: 9 structures, all dead; k8: 18201 structures, 2182 alive, best S12 r = 105 at log2 E_Q = 53.0.
 - **859.** k4: 81 structures, all dead; k4one: 106 structures, all dead.
 - **863.** k4: 246 structures, 43 alive, best S7 r = 140 at log2 E_Q = 136.9; k4one: 224 structures, 20 alive, best S14 r = 77 at log2 E_Q = 47.9; k6: 60 structures, 22 alive, best S15 r = 90 at log2 E_Q = 3.3; k8: 33 structures, 1 alive, best S14 r = 108 at log2 E_Q = −∞.
 - **907.** k4: 384 structures, all dead; k4one: 580 structures, all dead.
 - **947.** k4: 672 structures, 3 alive, best S12 r = 120 at log2 E_Q = -113.8; k4one: 1785 structures, all dead; k6: 18 structures, all dead.
 - **955.** k4: 1321 structures, 411 alive, best S8 r = 147 at log2 E_Q = 103.6; k4one: 1636 structures, 312 alive, best S24 r = 63 at log2 E_Q = -3.7.
-- **971.** k4: 2440 structures, 196 alive, best S10 r = 112 at log2 E_Q = 73.3; k4one: 3948 structures, 264 alive, best S25 r = 72 at log2 E_Q = -16.3; k6: 31 structures, 3 alive, best S12 r = 118 at log2 E_Q = -368.4.
+- **971.** k4: 2440 structures, 196 alive, best S10 r = 112 at log2 E_Q = 73.3; k4one: 3948 structures, 248 alive, best S25 r = 72 at log2 E_Q = -16.3; k6: 31 structures, 3 alive, best S12 r = 118 at log2 E_Q = -368.4.
 <!-- /NOTES-AUTO -->
 
 <!-- NOTES -->
@@ -559,7 +559,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 170051 structures: coset-Parseval 137534, Theorem α 744, Lemma R 2253 (the screens [P]); Q-level empty 14094, deeper level or chain empty 5610 [M]; prefilter only 69; alive 9737.
+Over 170053 structures: coset-Parseval 137534, Theorem α 744, Lemma R 2254 (the screens [P]); Q-level empty 14094, deeper level or chain empty 5626 [M]; prefilter only 69; alive 9722.
 <!-- /SCREEN-COUNTS -->
 
 
