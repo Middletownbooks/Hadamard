@@ -584,3 +584,4 @@
 {"n": 863, "order": 36, "label": "index 3", "r": [48, 93, 93, 48], "e": 71, "verdict": "skipped (sum r - 6.5e = -179.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.5}
 {"n": 863, "order": 36, "label": "index 2", "r": [48, 90, 90, 48], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
 {"n": 863, "order": 36, "label": "index 3", "r": [48, 132, 132, 48], "e": 131, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 863, "order": 28, "label": "index 2", "r": [49, 84, 84, 49], "e": 44, "verdict": "passes Q-level", "q_solutions": 14848, "log2E_Q": -31.47, "secs": 628.1}
