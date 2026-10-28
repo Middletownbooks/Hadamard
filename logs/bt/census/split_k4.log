@@ -300,3 +300,19 @@
 {"n": 839, "order": 36, "label": "index 2", "r": [46, 69, 69, 46], "e": 45, "verdict": "skipped (sum r - 6.5e = -62.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
 {"n": 839, "order": 36, "label": "index 3", "r": [46, 92, 92, 46], "e": 91, "verdict": "skipped (sum r - 6.5e = -315.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
 {"n": 839, "order": 36, "label": "index 2", "r": [48, 88, 88, 48], "e": 45, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 72, 72, 48], "e": 41, "verdict": "passes Q-level", "q_solutions": 69632, "log2E_Q": -268.42, "secs": 984.7}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 96, 96, 48], "e": 71, "verdict": "skipped (sum r - 6.5e = -173.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 88, 88, 48], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 90, 90, 48], "e": 71, "verdict": "skipped (sum r - 6.5e = -185.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 84, 84, 48], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 120, 120, 48], "e": 119, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 88, 88, 48], "e": 47, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 1.5}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 72, 72, 48], "e": 47, "verdict": "skipped (sum r - 6.5e = -65.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 1.4}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 96, 96, 48], "e": 95, "verdict": "skipped (sum r - 6.5e = -329.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 1.6}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 88, 88, 48], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.3}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 87, 87, 48], "e": 86, "verdict": "skipped (sum r - 6.5e = -289.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 78, 78, 48], "e": 77, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 88, 88, 48], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 84, 84, 48], "e": 83, "verdict": "skipped (sum r - 6.5e = -275.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 84, 84, 48], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.2}
+{"n": 839, "order": 36, "label": "index 3", "r": [48, 120, 120, 48], "e": 119, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
