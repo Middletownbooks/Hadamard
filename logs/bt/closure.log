@@ -18246,3 +18246,8 @@ closure round 1 tier 2 big-list retry done
 {"n": 839, "fam": "k8", "order": 24, "r": 84, "log2E_Q": null, "N": 26, "verdict": "capped (refined list 7.29e+12 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 24, "r": 84, "log2E_Q": null, "N": 13, "verdict": "capped (refined list 8.31e+17 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 24, "r": 84, "log2E_Q": null, "N": 8, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": null, "N": 22, "verdict": "passes", "solutions_weighted": 246743040, "secs": 6.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 84, "log2E_Q": null, "N": 52, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 3.1}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": null, "N": 11, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 6.2}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": null, "N": 11, "verdict": "capped (refined list 1.21e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": null, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 5.5}
