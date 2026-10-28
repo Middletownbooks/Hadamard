@@ -11931,3 +11931,4 @@ closure round 1 tier 1 memory retry done
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -258.67, "N": 46, "verdict": "capped (level join pairs 4.83e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 42.1}
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -237.98, "N": 46, "verdict": "capped (level join pairs 4.83e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 44.3}
 {"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -258.14, "N": 46, "verdict": "capped (level join pairs 4.83e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 38.3}
+{"n": 739, "fam": "k4", "order": 8, "r": 144, "log2E_Q": -299.1, "N": 46, "verdict": "capped (level join pairs 2.12e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 33.3}
