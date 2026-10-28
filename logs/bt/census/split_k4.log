@@ -293,3 +293,10 @@
 {"n": 839, "order": 30, "label": "index 3", "r": [45, 117, 117, 45], "e": 77, "verdict": "skipped (sum r - 6.5e = -176.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
 {"n": 839, "order": 30, "label": "index 2", "r": [45, 84, 84, 45], "e": 43, "verdict": "passes Q-level", "q_solutions": 49664, "log2E_Q": -32.58, "secs": 2527.6}
 {"n": 839, "order": 30, "label": "index 3", "r": [45, 117, 117, 45], "e": 68, "verdict": "skipped (sum r - 6.5e = -118.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.8}
+{"n": 839, "order": 36, "label": "index 2", "r": [46, 69, 69, 46], "e": 40, "verdict": "passes Q-level", "q_solutions": 8704, "log2E_Q": -267.48, "secs": 1246.0}
+{"n": 839, "order": 36, "label": "index 3", "r": [46, 92, 92, 46], "e": 71, "verdict": "skipped (sum r - 6.5e = -185.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 36, "label": "index 2", "r": [46, 67, 67, 46], "e": 50, "verdict": "skipped (sum r - 6.5e = -99.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 36, "label": "index 2", "r": [46, 88, 88, 46], "e": 45, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
+{"n": 839, "order": 36, "label": "index 2", "r": [46, 69, 69, 46], "e": 45, "verdict": "skipped (sum r - 6.5e = -62.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 36, "label": "index 3", "r": [46, 92, 92, 46], "e": 91, "verdict": "skipped (sum r - 6.5e = -315.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 36, "label": "index 2", "r": [48, 88, 88, 48], "e": 45, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}

@@ -12877,3 +12877,17 @@ closure round 1 tier 2 tmax 10 done
 {"n": 955, "fam": "k4one", "order": 16, "r": 87, "log2E_Q": null, "N": 14, "verdict": "passes", "solutions_weighted": 7680, "secs": 11.6}
 {"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -136.92, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -136.92, "N": 34, "verdict": "capped (level join pairs 1.18e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 16.4}
+{"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -112.56, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -112.56, "N": 34, "verdict": "capped (level join pairs 1.18e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 16.8}
+{"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -126.57, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -126.57, "N": 34, "verdict": "capped (level join pairs 1.18e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 14.9}
+{"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -136.92, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 24, "r": 87, "log2E_Q": -136.92, "N": 34, "verdict": "capped (level join pairs 1.18e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 17.8}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 197.8}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.1}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 197.4}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.7}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 2.2}
