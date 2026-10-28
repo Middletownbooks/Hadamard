@@ -12739,3 +12739,4 @@
 {"verdict": "capped (time limit 60 s)", "key": "b103f136a8b2946d", "n": 955, "fam": "k4one", "order": 24, "r": 66, "e": 43, "log2E_Q": -65.72, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 60.4}
 {"verdict": "capped (refined list 9.78e+07 > 60000000)", "key": "a1e3591c558d5731", "n": 955, "fam": "k4one", "order": 24, "r": 66, "e": 43, "log2E_Q": -64.82, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 59.8}
 {"verdict": "capped (time limit 60 s)", "key": "e6d4a51d2135affa", "n": 955, "fam": "k4one", "order": 24, "r": 66, "e": 43, "log2E_Q": -64.09, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 60.1}
+{"verdict": "capped (time limit 60 s)", "key": "ec83b6e06aba4f52", "n": 955, "fam": "k4one", "order": 24, "r": 72, "e": 38, "log2E_Q": -35.57, "N": 119, "Nkey": "bf130809f7db", "log2_pairs": null, "secs": 1111.6}
