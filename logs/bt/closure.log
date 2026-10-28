@@ -17682,3 +17682,4 @@ Timeout
 {"n": 839, "fam": "k8", "order": 12, "r": 95, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 6.73e+16 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 95, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 2.47e+16 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 95, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 1.83e+16 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 95, "log2E_Q": null, "N": 52, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 115.9}
