@@ -11890,3 +11890,14 @@ closure round 1 tier 1 big-list retry done
 {"n": 955, "fam": "k4one", "order": 24, "r": 90, "log2E_Q": -137.36, "N": 14, "verdict": "capped (refined list 3.06e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 955, "fam": "k4one", "order": 24, "r": 90, "log2E_Q": -137.36, "N": 7, "verdict": "capped (refined list 8e+17 > 20000000)", "solutions_weighted": null, "secs": 8.0}
 {"n": 955, "fam": "k4one", "order": 24, "r": 90, "log2E_Q": -137.36, "N": 2, "verdict": "capped (refined list 8.37e+15 > 20000000)", "solutions_weighted": null, "secs": 1.6}
+{"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -37.27, "N": 17, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.4}
+{"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -37.27, "N": 14, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.0}
+{"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -37.27, "N": 7, "verdict": "capped (refined list 7.89e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -37.27, "N": 2, "verdict": "capped (refined list 1.52e+08 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 2, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.9}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 34, "verdict": "capped (refined list 1.69e+10 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 17, "verdict": "capped (refined list 1.31e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.2}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 7, "verdict": "capped (refined list 3.44e+12 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 4.42e+14 > 20000000)", "solutions_weighted": null, "secs": 0.3}
