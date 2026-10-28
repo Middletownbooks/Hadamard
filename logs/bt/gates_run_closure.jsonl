@@ -11313,3 +11313,4 @@
 {"verdict": "capped (refined list 2.87e+13 > 20000000)", "key": "d775d5bca10726b4", "n": 955, "fam": "k4one", "order": 16, "r": 90, "e": 59, "log2E_Q": -40.63, "N": 17, "Nkey": "e2702921f946", "log2_pairs": null, "secs": 2.5}
 {"verdict": "capped (time limit 10 s)", "key": "d775d5bca10726b4", "n": 955, "fam": "k4one", "order": 16, "r": 90, "e": 59, "log2E_Q": -40.63, "N": 14, "Nkey": "697da80583e1", "log2_pairs": null, "secs": 10.0}
 {"verdict": "capped (refined list 5.95e+07 > 20000000)", "key": "d775d5bca10726b4", "n": 955, "fam": "k4one", "order": 16, "r": 90, "e": 59, "log2E_Q": -40.63, "N": 7, "Nkey": "334f65c84c69", "log2_pairs": null, "secs": 0.1}
+{"verdict": "capped (memory limit 3613 MB)", "key": "d775d5bca10726b4", "n": 955, "fam": "k4one", "order": 16, "r": 90, "e": 59, "log2E_Q": -40.63, "N": 2, "Nkey": "76386f07ff21", "log2_pairs": null, "secs": 5.2}
