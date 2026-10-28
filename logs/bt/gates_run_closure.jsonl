@@ -11864,3 +11864,4 @@
 {"verdict": "capped (refined cell list > 20000000)", "key": "1460bbc11cb6d4a0", "n": 971, "fam": "k4one", "order": 20, "r": 84, "e": 71, "log2E_Q": null, "N": 11, "Nkey": "175f0132f9db", "log2_pairs": null, "secs": 11.2}
 {"verdict": "capped (time limit 60 s)", "key": "e3b5ede8a2cfba9f", "n": 971, "fam": "k4one", "order": 20, "r": 84, "e": 71, "log2E_Q": null, "N": 121, "Nkey": "4b138bae8766", "log2_pairs": null, "secs": 60.0}
 {"verdict": "capped (time limit 60 s)", "key": "eb36552b92bdb4ac", "n": 971, "fam": "k4one", "order": 20, "r": 84, "e": 71, "log2E_Q": null, "N": 121, "Nkey": "4b138bae8766", "log2_pairs": null, "secs": 60.0}
+{"verdict": "capped (time limit 60 s)", "key": "cfb42550841909fa", "n": 971, "fam": "k4one", "order": 20, "r": 84, "e": 71, "log2E_Q": null, "N": 121, "Nkey": "4b138bae8766", "log2_pairs": null, "secs": 60.0}
