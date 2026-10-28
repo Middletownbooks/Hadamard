@@ -26,7 +26,7 @@ Normal:
 
 Abnormal: report these to the user and change nothing:
 - A new `Traceback` in `logs/bt/closure.log`. The newest known ones are at lines 12924 and 12952 (Oct 28 09:49, fixed
-  the same day). Check with
+  the same day) and 13690 (Oct 28 14:19, a time-limit alarm racing its own cancel; fixed at 22:10). Check with
   `grep -n Traceback logs/bt/closure.log | tail -1`.
 - An out-of-memory kill: `dmesg | grep 'Killed process'` prints a line.
 - `workers=1` or `workers=0` on two heartbeats in a row while `closure.log` does not end with `closure pass finished`.
