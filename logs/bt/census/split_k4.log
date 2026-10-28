@@ -280,3 +280,12 @@
 {"n": 839, "order": 30, "label": "index 3", "r": [43, 115, 115, 43], "e": 86, "verdict": "skipped (sum r - 6.5e = -243.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
 {"n": 839, "order": 30, "label": "index 2", "r": [44, 84, 84, 44], "e": 42, "verdict": "passes Q-level", "q_solutions": 131072, "log2E_Q": -42.74, "secs": 1948.9}
 {"n": 839, "order": 30, "label": "index 3", "r": [44, 116, 116, 44], "e": 86, "verdict": "skipped (sum r - 6.5e = -239.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}
+{"n": 839, "order": 30, "label": "index 2", "r": [44, 84, 84, 44], "e": 43, "verdict": "passes Q-level", "q_solutions": 131072, "log2E_Q": -47.17, "secs": 2544.7}
+{"n": 839, "order": 30, "label": "index 3", "r": [44, 116, 116, 44], "e": 115, "verdict": "skipped (sum r - 6.5e = -427.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 1.4}
+{"n": 839, "order": 54, "label": "index 2", "r": [44, 66, 66, 44], "e": 33, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.2}
+{"n": 839, "order": 54, "label": "index 3", "r": [44, 88, 88, 44], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.2}
+{"n": 839, "order": 54, "label": "index 3", "r": [44, 66, 66, 44], "e": 35, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.0}
+{"n": 839, "order": 108, "label": "index 2", "r": [44, 66, 66, 44], "e": 33, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.2}
+{"n": 839, "order": 54, "label": "index 3", "r": [44, 77, 77, 44], "e": 40, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.2}
+{"n": 839, "order": 54, "label": "index 2", "r": [44, 66, 66, 44], "e": 33, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 839, "order": 54, "label": "index 3", "r": [44, 88, 88, 44], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
