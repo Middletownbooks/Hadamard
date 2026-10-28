@@ -291,3 +291,5 @@
 {"n": 839, "order": 54, "label": "index 3", "r": [44, 88, 88, 44], "e": 47, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
 {"n": 839, "order": 30, "label": "index 2", "r": [45, 84, 84, 45], "e": 42, "verdict": "passes Q-level", "q_solutions": 49664, "log2E_Q": -37.95, "secs": 1966.0}
 {"n": 839, "order": 30, "label": "index 3", "r": [45, 117, 117, 45], "e": 77, "verdict": "skipped (sum r - 6.5e = -176.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
+{"n": 839, "order": 30, "label": "index 2", "r": [45, 84, 84, 45], "e": 43, "verdict": "passes Q-level", "q_solutions": 49664, "log2E_Q": -32.58, "secs": 2527.6}
+{"n": 839, "order": 30, "label": "index 3", "r": [45, 117, 117, 45], "e": 68, "verdict": "skipped (sum r - 6.5e = -118.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.8}
