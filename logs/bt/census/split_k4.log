@@ -260,3 +260,5 @@
 {"n": 839, "order": 36, "label": "index 3", "r": [41, 87, 87, 41], "e": 86, "verdict": "skipped (sum r - 6.5e = -303.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 1.0}
 {"n": 839, "order": 30, "label": "index 2", "r": [42, 78, 78, 42], "e": 39, "verdict": "passes Q-level", "q_solutions": 3616, "log2E_Q": -16.76, "secs": 1929.5}
 {"n": 839, "order": 30, "label": "index 3", "r": [42, 120, 120, 42], "e": 79, "verdict": "skipped (sum r - 6.5e = -189.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.4}
+{"n": 839, "order": 60, "label": "index 2", "r": [42, 63, 63, 42], "e": 32, "verdict": "passes Q-level", "q_solutions": 43008, "log2E_Q": -241.9, "secs": 5288.2}
+{"n": 839, "order": 60, "label": "index 3", "r": [42, 114, 114, 42], "e": 59, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.8}
