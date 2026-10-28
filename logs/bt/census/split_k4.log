@@ -278,3 +278,5 @@
 {"n": 839, "order": 30, "label": "index 3", "r": [43, 115, 115, 43], "e": 114, "verdict": "skipped (sum r - 6.5e = -425.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
 {"n": 839, "order": 30, "label": "index 2", "r": [43, 84, 84, 43], "e": 43, "verdict": "passes Q-level", "q_solutions": 49664, "log2E_Q": -38.09, "secs": 2397.9}
 {"n": 839, "order": 30, "label": "index 3", "r": [43, 115, 115, 43], "e": 86, "verdict": "skipped (sum r - 6.5e = -243.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 30, "label": "index 2", "r": [44, 84, 84, 44], "e": 42, "verdict": "passes Q-level", "q_solutions": 131072, "log2E_Q": -42.74, "secs": 1948.9}
+{"n": 839, "order": 30, "label": "index 3", "r": [44, 116, 116, 44], "e": 86, "verdict": "skipped (sum r - 6.5e = -239.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}
