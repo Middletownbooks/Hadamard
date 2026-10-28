@@ -11458,3 +11458,5 @@ closure round 1 tier 1 big-list retry done
 {"n": 955, "fam": "k4one", "order": 24, "r": 83, "log2E_Q": -127.61, "N": 17, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.2}
 {"n": 955, "fam": "k4one", "order": 24, "r": 83, "log2E_Q": -127.61, "N": 14, "verdict": "capped (refined list 2.98e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 955, "fam": "k4one", "order": 24, "r": 83, "log2E_Q": -127.61, "N": 7, "verdict": "capped (refined list 3.58e+16 > 20000000)", "solutions_weighted": null, "secs": 0.9}
+{"n": 955, "fam": "k4one", "order": 24, "r": 83, "log2E_Q": -127.61, "N": 2, "verdict": "capped (refined list 6.34e+14 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 955, "fam": "k4one", "order": 24, "r": 83, "log2E_Q": -127.61, "N": 119, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
