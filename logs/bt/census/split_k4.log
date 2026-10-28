@@ -543,3 +543,7 @@
 {"n": 863, "order": 56, "label": "index 2", "r": [42, 49, 49, 42], "e": 27, "verdict": "passes Q-level", "q_solutions": 1536, "log2E_Q": null, "secs": 239.7}
 {"n": 863, "order": 28, "label": "index 2", "r": [42, 75, 75, 42], "e": 41, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.1}
 {"n": 863, "order": 28, "label": "index 2", "r": [42, 77, 77, 42], "e": 41, "verdict": "passes Q-level", "q_solutions": 1536, "log2E_Q": -33.46, "secs": 260.8}
+{"n": 863, "order": 42, "label": "index 3", "r": [42, 77, 77, 42], "e": 41, "verdict": "passes Q-level", "q_solutions": 7488, "log2E_Q": -29.89, "secs": 3396.6}
+{"n": 863, "order": 42, "label": "index 2", "r": [42, 70, 70, 42], "e": 35, "verdict": "no core [P] (Theorem alpha)", "q_solutions": null, "log2E_Q": null, "secs": 0.1}
+{"n": 863, "order": 28, "label": "index 2", "r": [43, 84, 84, 43], "e": 44, "verdict": "passes Q-level", "q_solutions": 3072, "log2E_Q": -28.55, "secs": 139.7}
+{"n": 863, "order": 28, "label": "index 2", "r": [43, 84, 84, 43], "e": 47, "verdict": "skipped (sum r - 6.5e = -51.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
