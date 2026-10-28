@@ -13166,3 +13166,14 @@ closure round 1 tier 2 tmax 10 done
 {"n": 955, "fam": "k4one", "order": 16, "r": 90, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 955, "fam": "k4one", "order": 16, "r": 90, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 955, "fam": "k4one", "order": 16, "r": 90, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 90, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.1}
+{"n": 955, "fam": "k4one", "order": 24, "r": 90, "log2E_Q": -100.78, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 24, "r": 90, "log2E_Q": -100.78, "N": 34, "verdict": "capped (level join pairs 3.93e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 22.5}
+{"n": 955, "fam": "k4one", "order": 16, "r": 90, "log2E_Q": -40.63, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 90, "log2E_Q": -40.63, "N": 14, "verdict": "passes", "solutions_weighted": 7680, "secs": 9.7}
+closure round 1 tier 2 tmax 60 done
+{"n": 971, "fam": "k4one", "order": 20, "r": 84, "log2E_Q": null, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 19.2}
+{"n": 971, "fam": "k4one", "order": 20, "r": 84, "log2E_Q": null, "N": 11, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.1}
+{"n": 971, "fam": "k4one", "order": 20, "r": 84, "log2E_Q": null, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 17.6}
+{"n": 971, "fam": "k4one", "order": 20, "r": 84, "log2E_Q": null, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 10.1}
+{"n": 971, "fam": "k4one", "order": 20, "r": 84, "log2E_Q": null, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 10.2}
