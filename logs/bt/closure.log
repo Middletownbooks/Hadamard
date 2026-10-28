@@ -12948,3 +12948,29 @@ Traceback (most recent call last):
 numpy._core._exceptions._ArrayMemoryError: Unable to allocate 34.6 MiB for an array with shape (952, 952, 5) and data type int64
 {"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 14, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 73.7}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/bt_gates_levels.py", line 169, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/bt_gates_levels.py", line 119, in main
+    st = C2.build(rec) if 'fam' in rec else R.build(rec)
+         ~~~~~~~~^^^^^
+  File "/home/user/Hadamard/theory/bt_census2.py", line 193, in build
+    return E.BStruct(tuple(rec['Pmods'] + rec['Omods']), [tuple(k) for k in rec['Kgens']], gam,
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     [np.array(M) for M in rec['gens']], name=f"{rec['n']}:{rec['fam']}:{rec['T']}")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/bt_engine.py", line 155, in __init__
+    self.Kel = G.subgroup(Kgens) if len(Kgens) else np.array([0])
+               ~~~~~~~~~~^^^^^^^
+  File "/home/user/Hadamard/theory/bt_engine.py", line 78, in subgroup
+    A = self.add if self.n <= 6000 else None
+        ^^^^^^^^
+  File "/home/user/Hadamard/theory/bt_engine.py", line 58, in add
+    self._add = self.idx(self.co[:, None, :] + self.co[None, :, :]).astype(np.int32)
+                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/bt_engine.py", line 51, in idx
+    c = np.asarray(c, dtype=np.int64) % self.marr
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 34.6 MiB for an array with shape (952, 952, 5) and data type int64
