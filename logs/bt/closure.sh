@@ -1,11 +1,12 @@
 #!/bin/sh
 # Exact closure pass [M]: every exact level G/N (N invariant inside K, coarsest first, under a time limit; the pair
 # bound of bt_cost.py overestimates badly, so levels are tried under a time limit instead of a bound) for each alive
-# structure of the families judged "effectively closed" [E] (tier 1), then for the other alive structures with
-# log2 E_Q < 0 or no finite estimate (tier 2).  Each tier runs in three passes:
-#   - 30 s per level, the key list split over W runners (--part i/W), each under ulimit -v MEM (98% of the tier-1
-#     kills took under 30 s, and a level capped by time costs the whole limit);
-#   - 300 s, same split, only on the levels the first pass could not finish (--retry-only);
+# structure of the families judged "effectively closed" [E] (tier 1), then for the families with no alive structure at
+# log2 E_Q >= 0, which can still be closed exactly, smallest first (tier 2), then for the other alive structures with
+# log2 E_Q < 0 or no finite estimate (tier 3); see closure_keys.py.  Each tier runs in four passes:
+#   - 10 s per level, the key list split over W runners (--part i/W), each under ulimit -v MEM (90% of the first 746
+#     tier-2 kills took under 10 s, while levels capped at 30 s took 80% of the CPU time);
+#   - 60 s and then 300 s, same split, only on the levels the previous pass could not finish (--retry-only);
 #   - 300 s, one runner under ulimit -v MEM1, only on the levels refused an allocation under MEM.
 # The runners share one memory cgroup (13.4 GiB); on Oct 27 one of three unlimited runners was OOM-killed at 7.0 GB.
 # After a refused allocation a runner records it and exits 75 (the memory can stay held: every later allocation then
@@ -26,11 +27,11 @@ for round in 1 2 3 4 5 6 7 8 9 10; do
   CEN=$(ls logs/bt/census/k4_P4_w*.jsonl logs/bt/census2/*.jsonl | tr '\n' ',' | sed 's/,$//')
   before=$(cat logs/bt/gates_run_closure.jsonl 2>/dev/null | wc -l)
   python3 logs/bt/closure_keys.py > logs/bt/closure_keys.txt
-  for tier in 1 2; do
+  for tier in 1 2 3; do
     sed -n "${tier}p" logs/bt/closure_keys.txt > logs/bt/closure_keys_t$tier.txt
     ARGS="logs/bt/gates_run_closure.jsonl $CEN --levels auto --keys @logs/bt/closure_keys_t$tier.txt --seen-all"
-    for tmax in 30 300; do
-      RETRY=""; [ $tmax -gt 30 ] && RETRY="--retry-only"
+    for tmax in 10 60 300; do
+      RETRY=""; [ $tmax -gt 10 ] && RETRY="--retry-only"
       i=0
       while [ $i -lt $W ]; do
         runloop $MEM $ARGS --tmax $tmax $RETRY --part $i/$W &
