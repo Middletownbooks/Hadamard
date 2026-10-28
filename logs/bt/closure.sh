@@ -14,14 +14,15 @@
 # of the tier-1 levels that ran past 30 s, 99 were killed within 300 s and 246 hit the 300 s limit).
 # The runners share one memory cgroup (13.4 GiB); on Oct 27 one of three unlimited runners was OOM-killed at 7.0 GB.
 # After a refused allocation a runner records it and exits 75 (the memory can stay held: every later allocation then
-# fails at once), and runloop restarts it in a fresh process.
+# fails at once), and runloop restarts it in a fresh process; it does the same after a level overran its time limit
+# by more than 10 s, or when building a structure is refused memory.
 # The key lists are regenerated every round (the census keeps adding structures); a round that adds no record ends
 # the pass.  Restart-safe (bt_gates_levels.py resumes from its output).
 cd /home/user/Hadamard
 W=3; MEM=3700000; MEM1=11500000; BIGLIST=6e7; TMAX=60   # KB, KB, list entries, s
-runloop() {   # runloop KB ARGS...: bt_gates_levels.py ARGS under ulimit -v KB, restarted on exit 75, at most 50 times
+runloop() {   # runloop KB ARGS...: bt_gates_levels.py ARGS under ulimit -v KB, restarted on exit 75, at most 500 times
   kb=$1; shift; k=0
-  while [ $k -lt 50 ]; do
+  while [ $k -lt 500 ]; do
     (ulimit -v $kb; exec nice -n 10 python3 theory/bt_gates_levels.py "$@")
     [ $? -eq 75 ] || break
     k=$((k + 1))

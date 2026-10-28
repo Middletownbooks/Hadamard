@@ -116,7 +116,10 @@ def main():
         if key in dead or key not in recs:
             continue
         rec = recs[key]
-        st = C2.build(rec) if 'fam' in rec else R.build(rec)
+        try:
+            st = C2.build(rec) if 'fam' in rec else R.build(rec)
+        except MemoryError:                # memory still held from an earlier level: resume in a fresh process
+            sys.exit(EXIT_FRESH)
         lv = levels
         if lv is None:                                           # every invariant N inside K, coarsest level first
             lv = sorted({len(N) for N in st.invariant_subgroups() if 1 < len(N) < len(st.Kel)
@@ -160,6 +163,8 @@ def main():
                     break
                 if real:                    # after a refused allocation the memory can stay held (every later
                     sys.exit(EXIT_FRESH)    # allocation then fails at once): resume in a fresh process instead
+                if res['verdict'].startswith('capped (time limit') and res['secs'] > a.tmax + 10:
+                    sys.exit(EXIT_FRESH)    # a compiled join overran the alarm; its memory can stay held too
 
 
 EXIT_FRESH = 75                             # closure.sh restarts a runner that exits with this code

@@ -25,7 +25,8 @@ Normal:
 - New lines in `logs/bt/closure.log` such as `closure round 1 tier 2 tmax 60 done`.
 
 Abnormal: report these to the user and change nothing:
-- A new `Traceback` in `logs/bt/closure.log`. The newest known one is at line 7865 (Oct 27, already fixed). Check with
+- A new `Traceback` in `logs/bt/closure.log`. The newest known ones are at lines 12924 and 12952 (Oct 28 09:49, fixed
+  the same day). Check with
   `grep -n Traceback logs/bt/closure.log | tail -1`.
 - An out-of-memory kill: `dmesg | grep 'Killed process'` prints a line.
 - `workers=1` or `workers=0` on two heartbeats in a row while `closure.log` does not end with `closure pass finished`.
