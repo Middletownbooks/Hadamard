@@ -9127,3 +9127,10 @@ closure round 1 tier 1 memory retry done
 {"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 26, "verdict": "capped (refined list 5.15e+11 > 20000000)", "solutions_weighted": null, "secs": 0.0}
 {"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 13, "verdict": "capped (refined list 1.22e+15 > 20000000)", "solutions_weighted": null, "secs": 0.0}
 {"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 8, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 52, "verdict": "capped (time limit 30 s)", "solutions_weighted": null, "secs": 30.0}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 26, "verdict": "capped (refined list 5.15e+11 > 20000000)", "solutions_weighted": null, "secs": 0.0}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 13, "verdict": "capped (refined list 1.22e+15 > 20000000)", "solutions_weighted": null, "secs": 0.0}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 8, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 8, "verdict": "capped (level join pairs 2.24e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 29.4}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 4, "verdict": "capped (refined list 5.39e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 24, "r": 72, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 2.73e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
