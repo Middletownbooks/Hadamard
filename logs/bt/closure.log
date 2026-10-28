@@ -14343,3 +14343,13 @@ Timeout
 {"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -49.93, "N": 121, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
 {"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -40.2, "N": 121, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
 {"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -49.93, "N": 121, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -873.2, "N": 121, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -873.2, "N": 22, "verdict": "capped (refined list 7.66e+12 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -873.2, "N": 22, "verdict": "passes", "solutions_weighted": 92160, "secs": 0.2}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -873.2, "N": 11, "verdict": "capped (refined list 3.01e+16 > 20000000)", "solutions_weighted": null, "secs": 0.8}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -873.2, "N": 11, "verdict": "capped (refined list 3.82e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -873.2, "N": 2, "verdict": "capped (refined list 7.66e+12 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": null, "N": 121, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 39.5}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -58.57, "N": 121, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -40.16, "N": 121, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 971, "fam": "k4", "order": 20, "r": 84, "log2E_Q": -49.78, "N": 121, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
