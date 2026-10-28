@@ -9391,3 +9391,6 @@ closure round 1 tier 1 memory retry done
 {"n": 643, "fam": "k4one", "order": 16, "r": 81, "log2E_Q": null, "N": 20, "verdict": "capped (refined list 1.21e+13 > 20000000)", "solutions_weighted": null, "secs": 2.8}
 {"n": 643, "fam": "k4one", "order": 16, "r": 81, "log2E_Q": null, "N": 20, "verdict": "capped (refined list 2.36e+09 > 20000000)", "solutions_weighted": null, "secs": 0.0}
 {"n": 643, "fam": "k4one", "order": 16, "r": 81, "log2E_Q": null, "N": 20, "verdict": "capped (refined list 2.36e+09 > 20000000)", "solutions_weighted": null, "secs": 0.0}
+{"n": 643, "fam": "k4one", "order": 16, "r": 83, "log2E_Q": -178.26, "N": 16, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 14.3}
+{"n": 643, "fam": "k4one", "order": 16, "r": 81, "log2E_Q": null, "N": 16, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 14.3}
+{"n": 643, "fam": "k4one", "order": 16, "r": 81, "log2E_Q": null, "N": 16, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 14.6}
