@@ -12468,3 +12468,6 @@ closure round 1 tier 2 tmax 10 done
 {"n": 971, "fam": "k4one", "order": 20, "r": 90, "log2E_Q": -92.7, "N": 121, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 971, "fam": "k4one", "order": 20, "r": 87, "log2E_Q": -70.52, "N": 22, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 971, "fam": "k4one", "order": 20, "r": 87, "log2E_Q": -70.52, "N": 11, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 8.0}
+{"n": 971, "fam": "k4one", "order": 20, "r": 87, "log2E_Q": -72.42, "N": 22, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 971, "fam": "k4one", "order": 20, "r": 87, "log2E_Q": -72.42, "N": 11, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 8.5}
+{"n": 971, "fam": "k4one", "order": 20, "r": 87, "log2E_Q": -72.42, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 5.6}
