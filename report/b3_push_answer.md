@@ -84,10 +84,14 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
        family at 669.
    - **Exact closure pass [M]** (`logs/bt/closure.sh`, `theory/bt_gates_levels.py`). It runs every exact level of every
      alive structure in these families, each under a time limit, because the cost bounds overestimate badly.
-     It then does the same for the other alive structures with log2 E_Q < 0 or no finite estimate. Each pass runs
-     every level at 30 s, then reruns at 300 s only the levels that hit the 30 s limit; three runners share each key
-     list, each under a 3.5 GiB memory cap, and a level refused memory under that cap is rerun alone with 11 GiB.
-     Of the first 5,107 kills, 5,008 took under 30 s, while each level that hit the limit used the full 300 s.
+     It then does the same for the families with no alive structure at log2 E_Q ≥ 0, which can still close exactly
+     (smallest first), and last for the other alive structures with log2 E_Q < 0 or no finite estimate.
+     - Each level runs at 10 s; levels that hit the limit are rerun at 60 s, then at 300 s.
+     - Three runners share each key list, each under a 3.5 GiB memory cap. A level refused memory under that cap is
+       rerun alone with 11 GiB. In the families that can still close, levels over the list cap (2·10⁷ entries) are
+       rerun with lists up to 6·10⁷ entries.
+     - The time ladder pays because most kills are fast: 5,008 of the first 5,107 kills took under 30 s, and 672 of
+       the first 746 tier-2 kills under 10 s. A level that hits the limit costs the whole limit.
      - It has closed structures at a deeper exact level, mostly at 739. The current counts are in the "deeper
        level" column of §4.1. The 739 survivors are mostly large-orbit structures (r up to 141, estimates near
        2^−300), whose levels pass or exceed the list cap.
