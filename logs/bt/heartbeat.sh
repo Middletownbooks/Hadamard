@@ -1,7 +1,8 @@
 #!/bin/bash
 # Heartbeat for the b3-push session (run under the Monitor tool): one status line every INT seconds (default 900),
 # plus an immediate line when a theory/bt_* worker ends (a job finished or died).  Every line wakes the session and
-# costs usage, so the interval is long and worker starts are not reported.
+# costs usage, so the interval is long, worker starts are not reported, and the first status line comes INT seconds
+# after a start (the Monitor restart that starts this script already woke the session).
 # usage: bash logs/bt/heartbeat.sh [INT]
 INT=${1:-900}
 cd /home/user/Hadamard || exit 1
@@ -10,7 +11,7 @@ workers() {
   ps -eo args | grep -E "^python3 theor[y]/bt_" | sed -E 's#^python3 theory/(bt_[a-z0-9_]+)\.py ([^ ]*).*#\1:\2#; s#logs/bt/##' | sort
 }
 prev=$(workers)
-last=0
+last=$(date +%s)
 while true; do
   sleep 20
   cur=$(workers)

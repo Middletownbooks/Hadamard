@@ -17,7 +17,8 @@ Both resume from their output files after any restart. `logs/bt/restart.sh` star
 ## Normal and abnormal signs
 
 Normal:
-- Heartbeat `HB ... workers=4`: three closure runners and the split census.
+- Heartbeat `HB ... workers=4`: three closure runners and the split census. A restarted heartbeat prints its first
+  `HB` line after 15 minutes, not at once.
 - `workers=2` while a single-runner retry runs (memory retry or large-list retry, 11 GiB). This can last a few hours.
 - `ENDED ... bt_gates_levels` events: a pass ended, or a runner hit its memory cap and was restarted (exit code 75; a
   new PID appears within seconds).
