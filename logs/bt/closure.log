@@ -13208,3 +13208,4 @@ closure round 1 tier 2 tmax 60 done
 {"n": 971, "fam": "k4one", "order": 20, "r": 90, "log2E_Q": -92.7, "N": 2, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 10.2}
 {"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": null, "N": 2, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 69.6}
 {"n": 955, "fam": "k4one", "order": 24, "r": 64, "log2E_Q": -22.55, "N": 2, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.2}
+{"n": 955, "fam": "k4one", "order": 24, "r": 65, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
