@@ -8191,3 +8191,6 @@ closure round 1 tier 1 memory retry done
 {"n": 955, "fam": "k4one", "order": 24, "r": 66, "log2E_Q": -34.2, "N": 34, "verdict": "capped (time limit 30 s)", "solutions_weighted": null, "secs": 30.0}
 {"n": 955, "fam": "k4one", "order": 24, "r": 66, "log2E_Q": -34.2, "N": 17, "verdict": "capped (refined list 2.11e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 170 6924 2
+closure round 1 tier 1 tmax 30 done
+closure round 1 tier 1 tmax 300 done
+closure round 1 tier 1 memory retry done
