@@ -8,7 +8,8 @@ line per (structure, level), restart-safe; output in the format of bt_gates_run 
 A level capped under a shorter time limit counts as untried under a longer one, so a pass at --tmax 30 followed by
 one at --tmax 300 retries only the levels the first pass could not finish.  Likewise a level whose allocation was
 refused under an address-space limit (ulimit -v; recorded as 'capped (memory limit N MB)', unlike the list caps of
-bt_chain) counts as untried under a larger limit.  --part i/W runs every W-th key from the i-th, for W parallel
+bt_chain) counts as untried under a larger limit, and a level over a list cap ('refined list x > N') counts as
+untried under a larger --maxlen.  --part i/W runs every W-th key from the i-th, for W parallel
 runners sharing one output file; --retry-only skips the keys whose records are all final under the current limits.
 usage: python3 theory/bt_gates_levels.py OUT.jsonl CENSUS.jsonl[,...] --levels 111,74|auto
        (--keys k1,k2|@FILE | --fam n:fam) [--tmax 900] [--maxlen 2e7] [--seen-all] [--part i/W] [--retry-only]
@@ -37,9 +38,10 @@ def _mem_limit_mb():
     return None if lim == resource.RLIM_INFINITY else lim // 2 ** 20
 
 
-def _tried(d, tmax, mem_mb):
-    """A recorded level counts as tried unless it was capped under a shorter time limit than tmax, or under a smaller
-    address-space limit than mem_mb (None: unlimited)."""
+def _tried(d, tmax, mem_mb, maxlen=2e7):
+    """A recorded level counts as tried unless it was capped under a shorter time limit than tmax, under a smaller
+    address-space limit than mem_mb (None: unlimited), or under a smaller list cap than maxlen.  An allocation failure
+    recorded without its limit (older runners) counts as untried only under a limit of 8 GiB or more."""
     v = d.get('verdict', '')
     m = re.match(r'capped \(time limit ([\d.]+) s\)', v)
     if m:
@@ -47,6 +49,11 @@ def _tried(d, tmax, mem_mb):
     m = re.match(r'capped \(memory limit (\d+) MB\)', v)
     if m:
         return mem_mb is not None and int(m.group(1)) >= mem_mb
+    m = re.match(r'capped \((?:refined list \S+|refined cell list|level list) > (\d+)\)', v)
+    if m:
+        return int(m.group(1)) >= maxlen
+    if v.startswith(('capped (Unable to allocate', 'capped (Allocation failed')):
+        return not (mem_mb is not None and mem_mb >= 8192)
     return True
 
 
@@ -86,7 +93,7 @@ def main():
         for x in open(a.out):
             d = json.loads(x)
             seen.add(d['key'])
-            (done if _tried(d, a.tmax, mem_mb) else untried).add((d['key'], d.get('Nkey')))
+            (done if _tried(d, a.tmax, mem_mb, a.maxlen) else untried).add((d['key'], d.get('Nkey')))
             if d.get('verdict', '').startswith('no core'):
                 dead.add(d['key'])
     if a.seen_all:                                             # levels another runner already tried or decided
@@ -96,7 +103,7 @@ def main():
                 d = json.loads(x)
                 seen.add(d['key'])
                 if d.get('Nkey'):
-                    (done if _tried(d, a.tmax, mem_mb) else untried).add((d['key'], d['Nkey']))
+                    (done if _tried(d, a.tmax, mem_mb, a.maxlen) else untried).add((d['key'], d['Nkey']))
                 if d.get('verdict', '').startswith('no core'):
                     dead.add(d['key'])
     if a.retry_only:                                           # keys never run, or with a level to rerun

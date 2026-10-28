@@ -7,14 +7,16 @@
 #   - 10 s per level, the key list split over W runners (--part i/W), each under ulimit -v MEM (90% of the first 746
 #     tier-2 kills took under 10 s, while levels capped at 30 s took 80% of the CPU time);
 #   - 60 s and then 300 s, same split, only on the levels the previous pass could not finish (--retry-only);
-#   - 300 s, one runner under ulimit -v MEM1, only on the levels refused an allocation under MEM.
+#   - 300 s, one runner under ulimit -v MEM1, only on the levels refused an allocation under MEM;
+#   - tiers 1 and 2 only: the same runner with list caps raised from 2e7 to BIGLIST entries, on the levels that hit
+#     the list cap (most of the undecided levels in the closable families).
 # The runners share one memory cgroup (13.4 GiB); on Oct 27 one of three unlimited runners was OOM-killed at 7.0 GB.
 # After a refused allocation a runner records it and exits 75 (the memory can stay held: every later allocation then
 # fails at once), and runloop restarts it in a fresh process.
 # The key lists are regenerated every round (the census keeps adding structures); a round that adds no record ends
 # the pass.  Restart-safe (bt_gates_levels.py resumes from its output).
 cd /home/user/Hadamard
-W=3; MEM=3700000; MEM1=11500000                     # KB
+W=3; MEM=3700000; MEM1=11500000; BIGLIST=6e7        # KB, KB, list entries
 runloop() {   # runloop KB ARGS...: bt_gates_levels.py ARGS under ulimit -v KB, restarted on exit 75, at most 50 times
   kb=$1; shift; k=0
   while [ $k -lt 50 ]; do
@@ -42,6 +44,10 @@ for round in 1 2 3 4 5 6 7 8 9 10; do
     done
     runloop $MEM1 $ARGS --tmax 300 --retry-only
     echo "closure round $round tier $tier memory retry done"
+    if [ $tier -le 2 ]; then          # families that can still close exactly: lists up to BIGLIST entries
+      runloop $MEM1 $ARGS --tmax 300 --retry-only --maxlen $BIGLIST
+      echo "closure round $round tier $tier big-list retry done"
+    fi
   done
   after=$(cat logs/bt/gates_run_closure.jsonl | wc -l)
   [ "$after" -eq "$before" ] && break
