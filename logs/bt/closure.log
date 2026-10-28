@@ -12947,3 +12947,4 @@ Traceback (most recent call last):
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
 numpy._core._exceptions._ArrayMemoryError: Unable to allocate 34.6 MiB for an array with shape (952, 952, 5) and data type int64
 {"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 955, "fam": "k4one", "order": 16, "r": 88, "log2E_Q": null, "N": 119, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
