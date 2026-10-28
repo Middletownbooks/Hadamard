@@ -270,3 +270,4 @@
 {"n": 839, "order": 45, "label": "index 3", "r": [42, 78, 78, 42], "e": 39, "verdict": "passes Q-level", "q_solutions": 6720, "log2E_Q": -37.66, "secs": 3415.7}
 {"n": 839, "order": 60, "label": "index 2", "r": [42, 56, 56, 42], "e": 29, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
 {"n": 839, "order": 60, "label": "index 3", "r": [42, 114, 114, 42], "e": 59, "verdict": "no core [P] (Lemma R)", "q_solutions": null, "log2E_Q": null, "secs": 0.6}
+{"n": 839, "order": 60, "label": "index 2", "r": [42, 63, 63, 42], "e": 32, "verdict": "passes Q-level", "q_solutions": 43008, "log2E_Q": -241.9, "secs": 4183.5}
