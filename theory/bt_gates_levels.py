@@ -9,7 +9,7 @@ A level capped under a shorter time limit counts as untried under a longer one, 
 one at --tmax 300 retries only the levels the first pass could not finish.  Likewise a level whose allocation was
 refused under an address-space limit (ulimit -v; recorded as 'capped (memory limit N MB)', unlike the list caps of
 bt_chain) counts as untried under a larger limit, and a level over a list cap ('refined list x > N') counts as
-untried under a larger --maxlen.  --part i/W runs every W-th key from the i-th, for W parallel
+untried under a larger --maxlen when its recorded size fits.  --part i/W runs every W-th key from the i-th, for W parallel
 runners sharing one output file; --retry-only skips the keys whose records are all final under the current limits.
 usage: python3 theory/bt_gates_levels.py OUT.jsonl CENSUS.jsonl[,...] --levels 111,74|auto
        (--keys k1,k2|@FILE | --fam n:fam) [--tmax 900] [--maxlen 2e7] [--seen-all] [--part i/W] [--retry-only]
@@ -49,9 +49,11 @@ def _tried(d, tmax, mem_mb, maxlen=2e7):
     m = re.match(r'capped \(memory limit (\d+) MB\)', v)
     if m:
         return mem_mb is not None and int(m.group(1)) >= mem_mb
-    m = re.match(r'capped \((?:refined list \S+|refined cell list|level list) > (\d+)\)', v)
-    if m:
-        return int(m.group(1)) >= maxlen
+    m = re.match(r'capped \(refined list (\S+) > (\d+)\)', v)
+    if m:                                       # rerun only a list that fits under the larger cap
+        return not (int(m.group(2)) < maxlen and float(m.group(1)) <= maxlen)
+    if re.match(r'capped \((?:refined cell list|level list) > \d+\)', v):
+        return True                             # size not recorded: on 739 k4 such reruns took 7-200 s and all re-capped
     if v.startswith(('capped (Unable to allocate', 'capped (Allocation failed')):
         return not (mem_mb is not None and mem_mb >= 8192)
     return True

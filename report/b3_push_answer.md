@@ -88,8 +88,11 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      (smallest first), and last for the other alive structures with log2 E_Q < 0 or no finite estimate.
      - Each level runs at 10 s; levels that hit the limit are rerun at 60 s, then at 300 s.
      - Three runners share each key list, each under a 3.5 GiB memory cap. A level refused memory under that cap is
-       rerun alone with 11 GiB. In the families that can still close, levels over the list cap (2·10⁷ entries) are
-       rerun with lists up to 6·10⁷ entries.
+       rerun alone with 11 GiB. In the families that can still close, a level over the list cap (2·10⁷ entries) is
+       rerun with lists up to 6·10⁷ entries when its recorded list size fits.
+     - That retry killed nothing in the effectively closed families (Oct 28): their remaining levels have refined
+       lists of 10⁹–10¹⁵ entries, or exceed the join pair cap or 11 GiB. In the k4one families at 643, 955 and 971,
+       most list-capped levels exceed 10⁹ entries too (only 8, 28 and 0 levels fit under 6·10⁷).
      - The time ladder pays because most kills are fast: 5,008 of the first 5,107 kills took under 30 s, and 672 of
        the first 746 tier-2 kills under 10 s. A level that hits the limit costs the whole limit.
      - It has closed structures at a deeper exact level, mostly at 739. The current counts are in the "deeper
