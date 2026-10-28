@@ -16,7 +16,7 @@ run() {   # run PRIO LOG [ULIMIT_KB|-] CMD...
 run 19 logs/bt/census/split_k4.log - python3 theory/bt_census_split.py logs/bt/census/split_k4.jsonl logs/bt/census/k4_P4_w0.jsonl,logs/bt/census/k4_P4_w1.jsonl,logs/bt/census/k4_P4_w2.jsonl,logs/bt/census/k4_P4_w3.jsonl,logs/bt/census/k4_P4_w5.jsonl --rmin 16 --rmax 50
 # screens [P] and exact gates [M]
 run 10 logs/bt/census/thm_rigid.log - python3 theory/bt_thm_rigid.py logs/bt/census/thm_rigid.jsonl $CEN
-run 10 logs/bt/closure.log - sh logs/bt/closure.sh            # tiers 1 and 2, 30 s then 300 s per level, 3 runners
+run 10 logs/bt/closure.log - sh logs/bt/closure.sh            # tiers 1-3, 10 s then 60 s per level, 3 runners
 # (the window gates, logs/bt/gates_run_window.jsonl, finished at 15:21)
 # timed exact gates on the top 20 alive 643 hosts (levels no runner has tried yet)
 # census extension: 739 on Z2^3 x Z4 (2^17 endomorphisms) and 643 on Z2 x Z4 x Z16 (2^15); the enumeration is cached once done

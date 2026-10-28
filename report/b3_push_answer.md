@@ -86,7 +86,9 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      alive structure in these families, each under a time limit, because the cost bounds overestimate badly.
      It then does the same for the families with no alive structure at log2 E_Q ≥ 0, which can still close exactly
      (smallest first), and last for the other alive structures with log2 E_Q < 0 or no finite estimate.
-     - Each level runs at 10 s; levels that hit the limit are rerun at 60 s, then at 300 s.
+     - Each level runs at 10 s; levels that hit the limit are rerun once at 60 s. No level gets more than 60 s
+       since Oct 28: a further 300 s step would have cost 15–21 h on tier 2 alone, and of the tier-1 levels that ran
+       past 30 s, 99 were killed within 300 s and 246 hit the limit.
      - Three runners share each key list, each under a 3.5 GiB memory cap. A level refused memory under that cap is
        rerun alone with 11 GiB. In the families that can still close, a level over the list cap (2·10⁷ entries) is
        rerun with lists up to 6·10⁷ entries when its recorded list size fits.
