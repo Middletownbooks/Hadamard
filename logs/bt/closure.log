@@ -26143,3 +26143,7 @@ closure round 1 tier 2 big-list retry done
 {"n": 839, "fam": "k8", "order": 12, "r": 102, "log2E_Q": -18.12, "N": 26, "verdict": "capped (refined list 1.27e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 102, "log2E_Q": -18.12, "N": 13, "verdict": "capped (refined list 1.23e+17 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 170 492 4761 2
+closure round 1 tier 1 tmax 10 done
+closure round 1 tier 1 tmax 60 done
+closure round 1 tier 1 memory retry done
+closure round 1 tier 1 big-list retry done
