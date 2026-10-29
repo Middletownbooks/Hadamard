@@ -46,7 +46,7 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
      2^11.2. Its cheapest exact level needs 4.9·10¹¹ join pairs for the first of its 20 Q-level solutions alone
      (§8.2).
    - **Local search.** Annealing over orbit signs did not find a core of the 3964 control in 141 restarts (§8.4).
-2. **(B) A ranked census** of <!-- NSTRUCT -->170,685<!-- /NSTRUCT --> structures. It covers:
+2. **(B) A ranked census** of <!-- NSTRUCT -->170,690<!-- /NSTRUCT --> structures. It covers:
    - k4 at every n ≡ 3 (mod 4). At 739 every 2-part of order 32 is covered except ℤ₂⁵, whose 2^25 endomorphisms
      exceed the enumeration limit of 2^20. At 643 the 2-parts of order 128 with at most 32,768 endomorphisms are
      covered: ℤ₁₂₈, ℤ₂ × ℤ₆₄ and ℤ₄ × ℤ₃₂ (at most 4,096), ℤ₂² × ℤ₃₂ and ℤ₈ × ℤ₁₆ (8,192), and ℤ₂ × ℤ₄ × ℤ₁₆
@@ -313,7 +313,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 947 | k6 | 18 | 0 | 0 | 0 | 0 | 18 | 0 | 0 | 0 | 0 | — |
 | 955 | k4 | 1321 | 485 | 43 | 79 | 0 | 168 | 169 | 0 | 377 | 62 | S8, 147, 76, 103.58 |
 | 955 | k4one | 1636 | 648 | 0 | 106 | 0 | 358 | 258 | 0 | 266 | 0 | S24, 63, 34, -3.7 |
-| 955 | k4split | 307 | 0 | 11 | 57 | 128 | 78 | 0 | 0 | 33 | 0 | S48, 36/64/64/36, 35, -58.38 |
+| 955 | k4split | 312 | 0 | 12 | 57 | 131 | 78 | 0 | 0 | 34 | 0 | S48, 36/64/64/36, 35, -58.38 |
 | 971 | k4 | 2440 | 978 | 299 | 50 | 0 | 857 | 101 | 0 | 155 | 16 | S10, 112, 57, 73.3 |
 | 971 | k4one | 3948 | 2326 | 0 | 32 | 0 | 1308 | 66 | 0 | 216 | 0 | S25, 72, 37, -16.31 |
 | 971 | k6 | 31 | 0 | 0 | 0 | 0 | 25 | 3 | 0 | 3 | 0 | S12, 118, 95, -368.36 |
@@ -429,7 +429,7 @@ counts are common among alive structures with E_Q below about 2^30.
 - **863.** k4: 246 structures, 41 alive, best S7 r = 140 at log2 E_Q = 136.9; k4one: 224 structures, 20 alive, best S14 r = 77 at log2 E_Q = 47.9; k4split: 262 structures, 25 alive, best S28 r = 44/84/84/44 at log2 E_Q = -26.8, 74 prefiltered; k6: 60 structures, 20 alive, best S15 r = 90 at log2 E_Q = 3.3; k8: 33 structures, 1 alive, best S14 r = 108 at log2 E_Q = −∞.
 - **907.** k4: 384 structures, all dead; k4one: 580 structures, all dead.
 - **947.** k4: 672 structures, 3 alive, best S12 r = 120 at log2 E_Q = -113.8; k4one: 1785 structures, all dead; k6: 18 structures, all dead.
-- **955.** k4: 1321 structures, 377 alive, best S8 r = 147 at log2 E_Q = 103.6; k4one: 1636 structures, 266 alive, best S24 r = 63 at log2 E_Q = -3.7; k4split: 307 structures, 33 alive, best S48 r = 36/64/64/36 at log2 E_Q = -58.4, 128 prefiltered.
+- **955.** k4: 1321 structures, 377 alive, best S8 r = 147 at log2 E_Q = 103.6; k4one: 1636 structures, 266 alive, best S24 r = 63 at log2 E_Q = -3.7; k4split: 312 structures, 34 alive, best S48 r = 36/64/64/36 at log2 E_Q = -58.4, 131 prefiltered.
 - **971.** k4: 2440 structures, 155 alive, best S10 r = 112 at log2 E_Q = 73.3; k4one: 3948 structures, 216 alive, best S25 r = 72 at log2 E_Q = -16.3; k6: 31 structures, 3 alive, best S12 r = 118 at log2 E_Q = -368.4.
 <!-- /NOTES-AUTO -->
 
@@ -524,7 +524,7 @@ exact gates on every skipped structure.
 - **947, k4: effectively closed.** 3 of 672 structures pass the gates run, all with log2 E_Q < −20 (best -113.8).
 - **947, k4one: closed [P, M].** All 1785 structures are dead: 1105 coset-Parseval, 0 Theorem α, 0 Lemma R, 680 Q-level, 0 deeper level.
 - **947, k6: closed [P, M].** All 18 structures are dead: 0 coset-Parseval, 0 Theorem α, 0 Lemma R, 18 Q-level, 0 deeper level.
-- **955, k4split: effectively closed.** 33 of 307 structures pass the gates run, all with log2 E_Q < −20 (best -58.4); 128 prefiltered.
+- **955, k4split: effectively closed.** 34 of 312 structures pass the gates run, all with log2 E_Q < −20 (best -58.4); 131 prefiltered.
 - **971, k6: effectively closed.** 3 of 31 structures pass the gates run, all with log2 E_Q < −20 (best -368.4).
 <!-- /CLOSED-FAMILIES -->
 
@@ -578,7 +578,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 170685 structures: coset-Parseval 137534, Theorem α 839, Lemma R 2340 (the screens [P]); Q-level empty 14246, deeper level or chain empty 7431 [M]; prefilter only 294; alive 7991.
+Over 170690 structures: coset-Parseval 137534, Theorem α 840, Lemma R 2340 (the screens [P]); Q-level empty 14246, deeper level or chain empty 7431 [M]; prefilter only 297; alive 7992.
 <!-- /SCREEN-COUNTS -->
 
 
