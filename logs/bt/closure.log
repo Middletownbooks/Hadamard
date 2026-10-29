@@ -24036,3 +24036,12 @@ closure round 1 tier 2 big-list retry done
 {"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 52, "verdict": "capped (refined list 2.28e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 26, "verdict": "capped (refined list 1.02e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 13, "verdict": "capped (refined list 1.7e+19 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 52, "verdict": "capped (refined list 6.83e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 8, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 2.2}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 26, "verdict": "capped (refined list 2.19e+12 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 13, "verdict": "capped (refined list 3.56e+18 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 8, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 4, "verdict": "capped (refined list 6.1e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 2, "verdict": "capped (refined list 7.38e+15 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 52, "verdict": "passes", "solutions_weighted": 160333824, "secs": 9.9}
+{"n": 839, "fam": "k8", "order": 12, "r": 100, "log2E_Q": null, "N": 52, "verdict": "capped (refined list 6.83e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
