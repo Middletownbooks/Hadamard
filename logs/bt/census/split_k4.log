@@ -953,3 +953,5 @@
 {"n": 955, "order": 48, "label": "index 2", "r": [39, 62, 62, 39], "e": 34, "verdict": "no core [M] (Q-level empty)", "q_solutions": 0, "log2E_Q": null, "secs": 1.8}
 {"n": 955, "order": 48, "label": "index 3", "r": [39, 89, 89, 39], "e": 55, "verdict": "skipped (sum r - 6.5e = -101.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 1.1}
 {"n": 955, "order": 48, "label": "index 2", "r": [39, 62, 62, 39], "e": 41, "verdict": "skipped (sum r - 6.5e = -64.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
+{"n": 955, "order": 48, "label": "index 2", "r": [39, 66, 66, 39], "e": 38, "verdict": "passes Q-level", "q_solutions": 8960, "log2E_Q": -93.32, "secs": 1381.9}
+{"n": 955, "order": 48, "label": "index 3", "r": [39, 83, 83, 39], "e": 68, "verdict": "skipped (sum r - 6.5e = -198.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 2.1}
