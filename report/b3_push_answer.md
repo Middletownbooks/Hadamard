@@ -280,7 +280,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 599 | k4one | 12 | 0 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 | — |
 | 599 | k6 | 19 | 15 | 0 | 2 | 0 | 0 | 1 | 0 | 1 | 0 | S10, 84, 55, -49.81 |
 | 599 | k8 | 2143 | 923 | 0 | 0 | 0 | 1214 | 0 | 0 | 6 | 0 | S9, 104, 53, -18.54 |
-| 643 | k4 | 81882 | 72368 | 72 | 627 | 0 | 3004 | 584 | 0 | 5227 | 2504 | S8, 160, 86, 116.51 |
+| 643 | k4 | 81882 | 72368 | 72 | 627 | 0 | 3004 | 619 | 0 | 5192 | 2504 | S8, 160, 86, 116.51 |
 | 643 | k4one | 32746 | 32125 | 0 | 12 | 0 | 599 | 0 | 0 | 10 | 0 | S16, 83, 50, -178.26 |
 | 669 | prod12 | 282 | 0 | 0 | 8 | 0 | 249 | 2 | 10 | 13 | 0 | S20, 57, 32, -14.28 |
 | 669 | z3all | 239 | 75 | 0 | 10 | 0 | 0 | 152 | 0 | 2 | 2 | S9, 90, 45, 73.14 |
@@ -419,7 +419,7 @@ counts are common among alive structures with E_Q below about 2^30.
 
 <!-- NOTES-AUTO -->
 - **599.** k4: 34 structures, 6 alive, best S2 r = 300 at log2 E_Q = 76.7; k4one: 12 structures, all dead; k6: 19 structures, 1 alive, best S10 r = 84 at log2 E_Q = -49.8; k8: 2143 structures, 6 alive, best S9 r = 104 at log2 E_Q = -18.5.
-- **643.** k4: 81882 structures, 5227 alive, best S8 r = 160 at log2 E_Q = 116.5; k4one: 32746 structures, 10 alive, best S16 r = 83 at log2 E_Q = -178.3.
+- **643.** k4: 81882 structures, 5192 alive, best S8 r = 160 at log2 E_Q = 116.5; k4one: 32746 structures, 10 alive, best S16 r = 83 at log2 E_Q = -178.3.
 - **669.** prod12: 282 structures, 13 alive, best S20 r = 57 at log2 E_Q = -14.3; z3all: 239 structures, 2 alive, best S9 r = 90 at log2 E_Q = 73.1.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k4one: 4 structures, all dead; k6: 59 structures, 20 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
 - **739.** k4: 6334 structures, 95 alive, best S6 r = 144 at log2 E_Q = 53.6; k4one: 12803 structures, all dead.
@@ -578,7 +578,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 170680 structures: coset-Parseval 137534, Theorem α 839, Lemma R 2339 (the screens [P]); Q-level empty 14246, deeper level or chain empty 7057 [M]; prefilter only 291; alive 8364.
+Over 170680 structures: coset-Parseval 137534, Theorem α 839, Lemma R 2339 (the screens [P]); Q-level empty 14246, deeper level or chain empty 7092 [M]; prefilter only 291; alive 8329.
 <!-- /SCREEN-COUNTS -->
 
 
