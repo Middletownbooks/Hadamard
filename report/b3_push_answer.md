@@ -298,7 +298,7 @@ The tables are made by `theory/bt_summary.py` from the logs; the per-structure r
 | 839 | k4one | 204 | 0 | 0 | 16 | 0 | 108 | 48 | 0 | 32 | 4 | S15, 84, 43, 19.59 |
 | 839 | k4split | 239 | 0 | 63 | 32 | 63 | 20 | 0 | 0 | 61 | 0 | S90, 16/30/30/16, 15, -16.41 |
 | 839 | k6 | 9 | 0 | 0 | 0 | 0 | 9 | 0 | 0 | 0 | 0 | — |
-| 839 | k8 | 18201 | 13184 | 0 | 582 | 0 | 1166 | 1760 | 0 | 1509 | 103 | S12, 105, 56, 53.02 |
+| 839 | k8 | 18201 | 13184 | 0 | 582 | 0 | 1166 | 1764 | 0 | 1505 | 103 | S12, 105, 56, 53.02 |
 | 859 | k4 | 81 | 39 | 0 | 0 | 0 | 42 | 0 | 0 | 0 | 0 | — |
 | 859 | k4one | 106 | 52 | 0 | 0 | 0 | 54 | 0 | 0 | 0 | 0 | — |
 | 863 | k4 | 246 | 0 | 44 | 14 | 0 | 134 | 13 | 0 | 41 | 12 | S7, 140, 71, 136.89 |
@@ -424,7 +424,7 @@ counts are common among alive structures with E_Q below about 2^30.
 - **719.** k4: 17 structures, 6 alive, best S2 r = 360 at log2 E_Q = 64.1; k4one: 4 structures, all dead; k6: 59 structures, 20 alive, best S8 r = 112 at log2 E_Q = 66.2; k8: 142 structures, 1 alive, best S14 r = 90 at log2 E_Q = −∞.
 - **739.** k4: 6334 structures, 95 alive, best S6 r = 144 at log2 E_Q = 53.6; k4one: 12803 structures, all dead.
 - **751.** k4: 217 structures, 52 alive, best S8 r = 121 at log2 E_Q = 73.5; k4one: 204 structures, 47 alive, best S20 r = 57 at log2 E_Q = -22.5; k4split: 88 structures, 44 alive, best S80 r = 27/36/36/27 at log2 E_Q = -33.2, 29 prefiltered; k8: 441 structures, 21 alive, best S10 r = 105 at log2 E_Q = 66.2.
-- **839.** k4: 232 structures, 52 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 32 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 239 structures, 61 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 63 prefiltered; k6: 9 structures, all dead; k8: 18201 structures, 1509 alive, best S12 r = 105 at log2 E_Q = 53.0.
+- **839.** k4: 232 structures, 52 alive, best S6 r = 156 at log2 E_Q = 165.9; k4one: 204 structures, 32 alive, best S15 r = 84 at log2 E_Q = 19.6; k4split: 239 structures, 61 alive, best S90 r = 16/30/30/16 at log2 E_Q = -16.4, 63 prefiltered; k6: 9 structures, all dead; k8: 18201 structures, 1505 alive, best S12 r = 105 at log2 E_Q = 53.0.
 - **859.** k4: 81 structures, all dead; k4one: 106 structures, all dead.
 - **863.** k4: 246 structures, 41 alive, best S7 r = 140 at log2 E_Q = 136.9; k4one: 224 structures, 20 alive, best S14 r = 77 at log2 E_Q = 47.9; k4split: 262 structures, 25 alive, best S28 r = 44/84/84/44 at log2 E_Q = -26.8, 74 prefiltered; k6: 60 structures, 20 alive, best S15 r = 90 at log2 E_Q = 3.3; k8: 33 structures, 1 alive, best S14 r = 108 at log2 E_Q = −∞.
 - **907.** k4: 384 structures, all dead; k4one: 580 structures, all dead.
@@ -578,7 +578,7 @@ named by the order of N; "chain" = the exhaustive chain):
 ### 5.3 What the screens [P] remove
 
 <!-- SCREEN-COUNTS -->
-Over 170680 structures: coset-Parseval 137534, Theorem α 839, Lemma R 2339 (the screens [P]); Q-level empty 14246, deeper level or chain empty 7092 [M]; prefilter only 291; alive 8329.
+Over 170680 structures: coset-Parseval 137534, Theorem α 839, Lemma R 2339 (the screens [P]); Q-level empty 14246, deeper level or chain empty 7096 [M]; prefilter only 291; alive 8325.
 <!-- /SCREEN-COUNTS -->
 
 
