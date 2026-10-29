@@ -30052,3 +30052,35 @@ closure round 1 tier 2 big-list retry done
 {"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 121, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
 {"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 22, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 125.9}
 {"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 121, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 22, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 124.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 105, "log2E_Q": -53.92, "N": 4, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 14.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 105, "log2E_Q": -53.92, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 6.1}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 22, "verdict": "capped (refined list 2.12e+15 > 20000000)", "solutions_weighted": null, "secs": 1.4}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 11, "verdict": "capped (refined list 3.87e+10 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 11, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.5}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 9.0}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 22, "verdict": "capped (refined list 2.12e+15 > 20000000)", "solutions_weighted": null, "secs": 1.9}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 11, "verdict": "capped (refined list 3.87e+10 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 11, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.4}
+{"n": 971, "fam": "k4", "order": 20, "r": 105, "log2E_Q": -165.97, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 4.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 105, "log2E_Q": -53.92, "N": 2, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 12.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 105, "log2E_Q": -53.92, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 2.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.03, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.03, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.03, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -30.61, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -48.39, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -48.39, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -48.39, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.3, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.3, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.3, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -47.9, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.41, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.41, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -49.41, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -15.57, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -18.62, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -19.6, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -19.6, "N": 80, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 106, "log2E_Q": -19.6, "N": 80, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.0}
