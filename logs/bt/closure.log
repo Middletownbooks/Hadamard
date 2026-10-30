@@ -31574,3 +31574,6 @@ closure round 1 tier 2 big-list retry done
 {"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -46.14, "N": 40, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 86.0}
 {"n": 955, "fam": "k4", "order": 16, "r": 107, "log2E_Q": -106.49, "N": 119, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
 {"n": 955, "fam": "k4", "order": 16, "r": 107, "log2E_Q": -106.49, "N": 34, "verdict": "capped (refined list 3.51e+10 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 955, "fam": "k4", "order": 16, "r": 107, "log2E_Q": -106.49, "N": 17, "verdict": "capped (refined list 9.48e+16 > 20000000)", "solutions_weighted": null, "secs": 4.0}
+{"n": 955, "fam": "k4", "order": 16, "r": 107, "log2E_Q": -106.49, "N": 14, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.3}
+{"n": 955, "fam": "k4", "order": 16, "r": 107, "log2E_Q": -106.49, "N": 7, "verdict": "capped (refined list 5.14e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
