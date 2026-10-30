@@ -32903,3 +32903,9 @@ closure round 1 tier 2 big-list retry done
 {"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 80, "verdict": "passes", "solutions_weighted": 1236480, "secs": 0.3}
 {"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 80, "verdict": "passes", "solutions_weighted": 1236480, "secs": 0.1}
 {"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 80, "verdict": "passes", "solutions_weighted": 396288, "secs": 0.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 40, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 15.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 40, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.9}
+{"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 40, "verdict": "capped (refined list 2.87e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 32, "verdict": "passes", "solutions_weighted": 37632, "secs": 0.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 20, "verdict": "capped (refined list 7.71e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 108, "log2E_Q": -81.65, "N": 20, "verdict": "capped (refined list 7.61e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
