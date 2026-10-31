@@ -41265,3 +41265,10 @@ closure round 1 tier 2 big-list retry done
 {"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -38.09, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 9.4}
 {"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -40.92, "N": 10, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 9.5}
 {"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -38.09, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 1.3}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -81.63, "N": 80, "verdict": "passes", "solutions_weighted": 152832, "secs": 0.3}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -40.92, "N": 10, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 9.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -34.59, "N": 4, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 8.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -34.59, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 4.3}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -81.63, "N": 40, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -81.63, "N": 40, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 111, "log2E_Q": -81.63, "N": 40, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 23.2}
