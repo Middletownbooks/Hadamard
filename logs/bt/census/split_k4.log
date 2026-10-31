@@ -1137,3 +1137,7 @@
 {"n": 955, "order": 48, "label": "index 2", "r": [45, 72, 72, 45], "e": 38, "verdict": "passes Q-level", "q_solutions": 31872, "log2E_Q": -64.07, "secs": 3114.1}
 {"n": 955, "order": 48, "label": "index 3", "r": [45, 105, 105, 45], "e": 59, "verdict": "skipped (sum r - 6.5e = -83.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.8}
 {"n": 955, "order": 48, "label": "index 2", "r": [45, 75, 75, 45], "e": 49, "verdict": "skipped (sum r - 6.5e = -78.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
+{"n": 955, "order": 48, "label": "index 2", "r": [45, 72, 72, 45], "e": 38, "verdict": "passes Q-level", "q_solutions": 31872, "log2E_Q": -62.56, "secs": 3003.4}
+{"n": 955, "order": 48, "label": "index 3", "r": [45, 105, 105, 45], "e": 56, "verdict": "skipped (sum r - 6.5e = -64.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
+{"n": 955, "order": 48, "label": "index 2", "r": [45, 75, 75, 45], "e": 44, "verdict": "skipped (sum r - 6.5e = -46.0 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.7}
+{"n": 955, "order": 32, "label": "index 2", "r": [46, 84, 84, 46], "e": 83, "verdict": "skipped (sum r - 6.5e = -279.5 < -45)", "q_solutions": null, "log2E_Q": null, "secs": 0.9}
