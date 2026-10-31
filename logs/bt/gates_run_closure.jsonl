@@ -39763,3 +39763,7 @@
 {"verdict": "capped (refined cell list > 20000000)", "key": "23ed9edcf9cd222f", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 85, "log2E_Q": -90.0, "N": 4, "Nkey": "3c153470ee24", "log2_pairs": null, "secs": 2.0}
 {"verdict": "capped (memory limit 3613 MB)", "key": "714f063b8012d377", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 85, "log2E_Q": -93.34, "N": 2, "Nkey": "eeb87898335a", "log2_pairs": null, "secs": 2.1}
 {"verdict": "capped (memory limit 3613 MB)", "key": "23ed9edcf9cd222f", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 85, "log2E_Q": -90.0, "N": 2, "Nkey": "eeb87898335a", "log2_pairs": null, "secs": 1.6}
+{"verdict": "capped (time limit 10 s)", "key": "3d288edc6dc11eec", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 86, "log2E_Q": -95.37, "N": 2, "Nkey": "0220a2fd065c", "log2_pairs": null, "secs": 10.3}
+{"verdict": "capped (memory limit 3613 MB)", "key": "23ed9edcf9cd222f", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 85, "log2E_Q": -90.0, "N": 2, "Nkey": "0220a2fd065c", "log2_pairs": null, "secs": 7.1}
+{"verdict": "capped (memory limit 3613 MB)", "key": "3d288edc6dc11eec", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 86, "log2E_Q": -95.37, "N": 2, "Nkey": "229908f63d6b", "log2_pairs": null, "secs": 3.3}
+{"verdict": "capped (memory limit 3613 MB)", "key": "714f063b8012d377", "n": 643, "fam": "k4", "order": 8, "r": 111, "e": 85, "log2E_Q": -93.34, "N": 2, "Nkey": "0220a2fd065c", "log2_pairs": null, "secs": 8.3}
