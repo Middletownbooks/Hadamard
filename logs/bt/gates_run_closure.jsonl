@@ -34802,3 +34802,4 @@
 {"verdict": "capped (refined list 1.42e+13 > 20000000)", "key": "0b9c41b7bd13c7e7", "n": 839, "fam": "k8", "order": 12, "r": 108, "e": 68, "log2E_Q": -49.41, "N": 26, "Nkey": "7d9d39e9a065", "log2_pairs": null, "secs": 0.1}
 {"verdict": "capped (refined list 1.42e+13 > 20000000)", "key": "0b9c41b7bd13c7e7", "n": 839, "fam": "k8", "order": 12, "r": 108, "e": 68, "log2E_Q": -49.41, "N": 26, "Nkey": "5fe01a56562e", "log2_pairs": null, "secs": 0.1}
 {"verdict": "capped (refined list 7.66e+20 > 20000000)", "key": "0b9c41b7bd13c7e7", "n": 839, "fam": "k8", "order": 12, "r": 108, "e": 68, "log2E_Q": -49.41, "N": 13, "Nkey": "773329f7c3d8", "log2_pairs": null, "secs": 0.1}
+{"verdict": "capped (time limit 10 s)", "key": "0b9c41b7bd13c7e7", "n": 839, "fam": "k8", "order": 12, "r": 108, "e": 68, "log2E_Q": -49.41, "N": 8, "Nkey": "896686d8acac", "log2_pairs": null, "secs": 80.1}

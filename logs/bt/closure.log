@@ -35460,3 +35460,4 @@ closure round 1 tier 2 big-list retry done
 {"n": 839, "fam": "k8", "order": 12, "r": 108, "log2E_Q": -49.41, "N": 26, "verdict": "capped (refined list 1.42e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 108, "log2E_Q": -49.41, "N": 26, "verdict": "capped (refined list 1.42e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 839, "fam": "k8", "order": 12, "r": 108, "log2E_Q": -49.41, "N": 13, "verdict": "capped (refined list 7.66e+20 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 839, "fam": "k8", "order": 12, "r": 108, "log2E_Q": -49.41, "N": 8, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 80.1}
