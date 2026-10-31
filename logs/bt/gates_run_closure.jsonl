@@ -33220,3 +33220,5 @@
 {"verdict": "capped (memory limit 3613 MB)", "key": "176f2ce7c9536894", "n": 643, "fam": "k4", "order": 8, "r": 108, "e": 87, "log2E_Q": -79.93, "N": 20, "Nkey": "17ee2e75f623", "log2_pairs": null, "secs": 6.6}
 {"verdict": "capped (memory limit 3613 MB)", "key": "450befa0bb5b2469", "n": 643, "fam": "k4", "order": 8, "r": 108, "e": 83, "log2E_Q": -70.92, "N": 10, "Nkey": "2dd4835182fd", "log2_pairs": null, "secs": 7.7}
 {"verdict": "capped (level join pairs 2.16e+09 > 1.07e+09)", "key": "176f2ce7c9536894", "n": 643, "fam": "k4", "order": 8, "r": 108, "e": 87, "log2E_Q": -79.93, "N": 16, "Nkey": "e7a057590f2f", "log2_pairs": null, "secs": 5.2}
+{"verdict": "capped (level join pairs 2.16e+09 > 1.07e+09)", "key": "176f2ce7c9536894", "n": 643, "fam": "k4", "order": 8, "r": 108, "e": 87, "log2E_Q": -79.93, "N": 16, "Nkey": "2141e7942ada", "log2_pairs": null, "secs": 4.3}
+{"verdict": "capped (time limit 10 s)", "key": "176f2ce7c9536894", "n": 643, "fam": "k4", "order": 8, "r": 108, "e": 87, "log2E_Q": -79.93, "N": 16, "Nkey": "f3f26f893d59", "log2_pairs": null, "secs": 10.1}
