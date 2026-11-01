@@ -151,18 +151,18 @@ open levels with what stopped them:
 | 5748 | 1437 | z3all | 11 | 0 | 1 | 0 | 10 | 0 | 0 | 0 | — | — |
 | 5892 | 1473 | z3all | 40 | 35 | 2 | 0 | 3 | 0 | 0 | 0 | — | — |
 | 6852 | 1713 | z3all | 513 | 178 | 66 | 0 | 260 | 0 | 9 | 0 | S36, r90, e47, -108.76 | N114: 10194336 / N285: list 2.34e+07; CP-SAT 20 s, N190: 10 s; 60 s; CP-SAT 20 s, N95: list 1.53e+13; CP-SAT 20 s, N57: list 1.47e+10; CP-SAT 20 s, N38: list 1.05e+10; CP-SAT 20 s, N30: 10 s; capped (level join p; CP-SAT 20 s, N19: list 3.91e+16; CP-SAT 20 s, N15: list 5.48e+14; CP-SAT 20 s, N10: list 5.64e+10; CP-SAT 20 s, N6: list 6.26e+07; CP-SAT 20 s, N5: memory; CP-SAT 20 s, N3: list 5.48e+14; CP-SAT 20 s, N2: list 1.71e+14; CP-SAT 20 s |
-| 6876 | 1719 | z3all | 496 | 30 | 83 | 9 | 10 | 0 | 364 | 0 | S30, r105, e54, -31.96 | N286: 3244032 / N143: memory, N52: 10 s, N44: list 8.09e+11, N26: memory, N22: list > cap, N13: list > cap, N11: list > cap, N4: list > cap, N2: memory |
+| 6876 | 1719 | z3all | 496 | 30 | 83 | 9 | 13 | 0 | 361 | 0 | S30, r105, e54, -31.96 | N286: 3244032 / N143: memory, N52: 10 s; 60 s, N44: list 8.09e+11, N26: memory, N22: list > cap, N13: list > cap, N11: list > cap, N4: list > cap, N2: memory |
 | 6876 | 1719 | z9all | 109 | 39 | 18 | 0 | 0 | 0 | 52 | 0 | S18, r120, e71, None | — / — |
-| 6876 | 1719 | z9x3all | 1910 | 556 | 182 | 0 | 0 | 0 | 1172 | 0 | S36, r84, e47, None | — / — |
+| 6876 | 1719 | z9x3all | 1910 | 556 | 182 | 0 | 0 | 0 | 1172 | 0 | S36, r84, e47, None | — / N95: list 6.9e+08, N38: 10 s, N19: list 2.92e+12, N10: 10 s, N5: list 1.61e+12, N2: list 1.43e+09 |
 | 7180 | 1795 | z5all | 6 | 0 | 2 | 3 | 1 | 0 | 0 | 0 | — | — |
-| 7572 | 1893 | z3all | 68 | 64 | 0 | 0 | 0 | 0 | 4 | 0 | S24, r116, e87, None | — / — |
-| 7716 | 1929 | z3all | 60 | 20 | 10 | 0 | 0 | 0 | 30 | 0 | S53, r54, e27, -13.37 | — / — |
-| 7876 | 1969 | z11all | 23 | 0 | 3 | 17 | 2 | 0 | 1 | 1 | S22, r110, e59, 23.73 | — / N89: CP-SAT 30 s; CP-SAT 300 s; CP-SAT 600 s, N2: CP-SAT 30 s; CP-SAT 300 s; CP-SAT 600 s |
-| 7924 | 1981 | z7all | 29 | 0 | 8 | 0 | 0 | 0 | 21 | 0 | S69, r54, e27, -36.95 | — / — |
-| 8380 | 2095 | z5all | 67 | 0 | 21 | 8 | 0 | 0 | 38 | 0 | S45, r90, e45, -68.86 | — / — |
+| 7572 | 1893 | z3all | 68 | 64 | 0 | 0 | 4 | 0 | 0 | 0 | — | — |
+| 7716 | 1929 | z3all | 60 | 20 | 10 | 0 | 30 | 0 | 0 | 0 | — | — |
+| 7876 | 1969 | z11all | 23 | 0 | 3 | 17 | 2 | 0 | 1 | 1 | S22, r110, e59, 23.73 | — / N89: capped (Q-level join; CP-SAT 30 s; CP-SAT 300 s; CP-SAT 600 s, N2: capped (Q-level join; CP-SAT 30 s; CP-SAT 300 s; CP-SAT 600 s |
+| 7924 | 1981 | z7all | 29 | 0 | 8 | 0 | 18 | 0 | 3 | 0 | S69, r54, e27, -36.95 | N141: 98304, N6: 7802880 / N94: 10 s; 60 s, N47: list 1.68e+10, N3: 10 s; memory, N2: list 8.24e+08 |
+| 8380 | 2095 | z5all | 67 | 0 | 21 | 8 | 35 | 0 | 3 | 0 | S45, r90, e45, -68.86 | — / N209: list 1.04e+09, N38: 10 s; 60 s, N22: list 2.68e+07, N19: list 7.67e+13, N11: list 1.43e+14, N2: list 6.58e+11 |
 | 8684 | 2171 | z13all | 14 | 0 | 5 | 7 | 2 | 0 | 0 | 0 | — | — |
-| 8860 | 2215 | z5all | 223 | 0 | 28 | 142 | 0 | 0 | 53 | 0 | S48, r90, e53, -115.09 | — / — |
-| 9260 | 2315 | z5all | 85 | 0 | 21 | 0 | 55 | 0 | 9 | 0 | S60, r100, e59, -282.85 | — / N231: list 6e+11, N154: list 8.78e+07, N77: list 1.9e+16, N66: 10 s; 60 s, N42: 10 s; 60 s, N33: list 1.04e+15, N22: list 2.85e+08, N21: list 7.14e+13, N14: list 2.85e+08, N11: list 1.9e+16, N7: list 1.9e+16, N6: list 2.53e+09, N3: list 1.13e+19, N2: list 5.95e+11 |
+| 8860 | 2215 | z5all | 223 | 0 | 28 | 142 | 47 | 0 | 6 | 0 | S48, r90, e53, -115.09 | — / N221: list 3.08e+09; CP-SAT 20 s, N34: 10 s; 60 s; CP-SAT 20 s, N26: 10 s; 60 s; CP-SAT 20 s, N17: list 7.81e+13; CP-SAT 20 s, N13: list 7.81e+13; CP-SAT 20 s, N2: list 3.05e+11; CP-SAT 20 s |
+| 9260 | 2315 | z5all | 85 | 0 | 21 | 0 | 61 | 0 | 3 | 0 | S60, r108, e59, None | N154: 22391040 / N231: 10 s; 60 s; CP-SAT 20 s, N77: list 6.05e+15; CP-SAT 20 s, N66: list 2.8e+09; CP-SAT 20 s, N42: list 4.94e+07; CP-SAT 20 s, N33: memory; CP-SAT 20 s, N22: list 2.39e+14; CP-SAT 20 s, N21: list 3.28e+17; CP-SAT 20 s, N14: list 2.48e+14; CP-SAT 20 s, N11: list > cap; CP-SAT 20 s, N7: list > cap; CP-SAT 20 s, N6: list 1.62e+16; CP-SAT 20 s, N3: memory; CP-SAT 20 s, N2: 10 s; memory; CP-SAT 20 s |
 | 9308 | 2327 | z13all | 48 | 0 | 5 | 38 | 4 | 0 | 1 | 1 | S33, r90, e45, 34.95 | — / N89: 10 s; 60 s; CP-SAT 60 s; CP-SAT 600 s, N2: list 1.66e+15; CP-SAT 60 s; CP-SAT 600 s |
 | 9716 | 2429 | z7all | 14 | 0 | 3 | 7 | 4 | 0 | 0 | 0 | — | — |
 <!-- /ZQ-TABLE -->
