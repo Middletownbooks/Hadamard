@@ -95,7 +95,7 @@ def canon_quad(Qg, quad):
     return best
 
 
-def patterns(q, mods=None):
+def patterns(q, mods=None, classes_only=False):
     mods = mods or (q,)
     Qg = QGroup(mods)
     B = blocks_by_weight(Qg, q)
@@ -147,6 +147,17 @@ def patterns(q, mods=None):
                         found.append((i1, i2, i3, i4))
     # expand to block-vector quadruples and canonicalise
     pats = {}
+    if classes_only:                     # one representative quadruple per multiset of (weight, PAF) block classes
+        out = []
+        for cl in found:
+            quad = [tuple([0] * Qg.n) if classes[i][0] == 0 else B[classes[i][0]][classes[i][1]][0] for i in cl]
+            z = np.array(quad)
+            tot = sum(Qg.paf(zz) for zz in z)
+            assert tot[0] == q and not tot[1:].any()
+            out.append(dict(z=z.tolist(), weights=[int((zz * zz).sum()) for zz in z], rows=[int(zz.sum()) for zz in z],
+                            support=[int((zz != 0).sum()) for zz in z],
+                            n_vectors=[1 if classes[i][0] == 0 else len(B[classes[i][0]][classes[i][1]]) for i in cl]))
+        return Qg, out
     for cl in found:
         lists = []
         for i in cl:
@@ -168,10 +179,11 @@ def patterns(q, mods=None):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(); ap.add_argument('q', type=int); ap.add_argument('mods', nargs='?', default=None)
     ap.add_argument('--out', default=None)
+    ap.add_argument('--classes-only', action='store_true')
     a = ap.parse_args()
     mods = tuple(map(int, a.mods.split(','))) if a.mods else (a.q,)
-    Qg, pats = patterns(a.q, mods)
-    print(json.dumps(dict(q=a.q, mods=mods, n_auts=len(Qg.auts), n_patterns=len(pats))))
+    Qg, pats = patterns(a.q, mods, classes_only=a.classes_only)
+    print(json.dumps(dict(q=a.q, mods=mods, n_auts=len(Qg.auts), n_patterns=len(pats), classes_only=a.classes_only)))
     for p in pats:
         print(json.dumps(p))
     if a.out:
