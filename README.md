@@ -40,10 +40,12 @@ Every result was also checked by at least one further script that shares no code
 (`scripts/verify_h*.py`, `scripts/verify_b0_bundle_rebuild.py`, `scripts/verify_h2092_rebuild.py`; logs in
 `logs/verify/`).
 
-**Open orders.** By Table 5 of [EKLO], the smallest order with no known Hadamard matrix is now 2396 = 4·599. The
-open orders below 4000 are 4v for v = 599, 643, 669, 719, 739, 751, 839, 859, 863, 907, 947, 955 and 971. Our earlier
-working lists (`report/unattempted_2000_3000.md`, `data/sage_unknown_orders_le4000.json`) predate the 2026 results
-and should not be read as current.
+**Open orders.** EKLO's website (November 2026) lists 86 orders below 10,000 with no known Hadamard matrix; one of
+them, 5912 = 8·739, has since been built by Kumar [K]. That leaves 85 (`data/open_orders_lt10000.json`). The
+smallest is 2396 = 4·599. The open orders below 4000 are 4v for v = 599, 669, 719, 739, 751, 863, 907, 947 and 971
+(643, 839, 859 and 955 were settled by Kumar after Table 5 of [EKLO]). Our earlier working lists
+(`report/unattempted_2000_3000.md`, `data/sage_unknown_orders_le4000.json`) predate the 2026 results and should not
+be read as current.
 
 **References.**
 - [EKLO] R. Egan, I. S. Kotsireas, S. London and P. Ó Catháin, *Recent progress in the construction of Hadamard
