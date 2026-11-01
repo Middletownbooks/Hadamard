@@ -109,31 +109,42 @@ def patterns(q, mods=None):
         byw.setdefault(w, []).append(i)
     P = np.array([c[1] for c in classes], np.int64)
     W = np.array([c[0] for c in classes])
+    # meet in the middle: weights w1 >= w2 >= w3 >= w4, pairs (1,2) against pairs (3,4) on the PAF sum
+    base = 4 * q + 1
+    wv = base ** np.arange(Qg.n - 1, dtype=np.int64)
+    enc = lambda V: ((V + 2 * q) * wv).sum(-1)
+    def pairs(wa, wb):
+        A = np.array(byw.get(wa, []), np.int64); B = np.array(byw.get(wb, []), np.int64)
+        if not len(A) or not len(B):
+            return np.zeros((0, 2), np.int64), np.zeros(0, np.int64)
+        I = np.repeat(A, len(B)); J = np.tile(B, len(A))
+        keep = J >= I if wa == wb else np.ones(len(I), bool)
+        I, J = I[keep], J[keep]
+        S = P[I] + P[J]
+        ok = np.abs(S).max(1, initial=0) <= q - wa - wb if S.shape[1] else np.ones(len(I), bool)
+        return np.stack([I[ok], J[ok]], 1), enc(S[ok])
     for w1 in range(q, -1, -1):
         for w2 in range(min(w1, q - w1), -1, -1):
+            p12, k12 = pairs(w1, w2)
+            if not len(k12):
+                continue
             for w3 in range(min(w2, q - w1 - w2), -1, -1):
                 w4 = q - w1 - w2 - w3
                 if w4 > w3 or w4 < 0:
                     continue
-                # hash the 4th by paf
-                h4 = {}
-                for i in byw.get(w4, []):
-                    h4.setdefault(tuple(P[i]), []).append(i)
-                for i1 in byw.get(w1, []):
-                    for i2 in byw.get(w2, []):
-                        if w2 == w1 and i2 < i1:
+                p34, k34 = pairs(w3, w4)
+                if not len(k34):
+                    continue
+                o = np.argsort(k34, kind='stable'); k34s = k34[o]; p34s = p34[o]
+                need = enc(-(P[p12[:, 0]] + P[p12[:, 1]]))
+                lo = np.searchsorted(k34s, need, 'left'); hi = np.searchsorted(k34s, need, 'right')
+                for t in np.flatnonzero(hi > lo):
+                    i1, i2 = map(int, p12[t])
+                    for u in range(lo[t], hi[t]):
+                        i3, i4 = map(int, p34s[u])
+                        if w3 == w2 and i3 < i2:
                             continue
-                        s12 = P[i1] + P[i2]
-                        if np.abs(s12).max(initial=0) > w3 + w4:
-                            continue
-                        for i3 in byw.get(w3, []):
-                            if w3 == w2 and i3 < i2:
-                                continue
-                            need = tuple((-(s12 + P[i3])).tolist())
-                            for i4 in h4.get(need, []):
-                                if w4 == w3 and i4 < i3:
-                                    continue
-                                found.append((i1, i2, i3, i4))
+                        found.append((i1, i2, i3, i4))
     # expand to block-vector quadruples and canonicalise
     pats = {}
     for cl in found:
