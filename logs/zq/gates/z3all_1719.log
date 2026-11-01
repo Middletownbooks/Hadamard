@@ -379,3 +379,116 @@
 {"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -633.03, "N": 13, "verdict": "capped (refined list 6.07e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
 {"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -633.03, "N": 11, "verdict": "capped (refined list 2.21e+11 > 20000000)", "solutions_weighted": null, "secs": 0.3}
 {"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -633.03, "N": 4, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 5.7}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -633.03, "N": 2, "verdict": "capped (refined list 2.56e+09 > 20000000)", "solutions_weighted": null, "secs": 0.4}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 143, "verdict": "capped (refined list 4.67e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 52, "verdict": "passes", "solutions_weighted": 5132160, "secs": 3.9}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 44, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 26, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.3}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 22, "verdict": "capped (refined list 6.68e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 13, "verdict": "capped (refined list 4.67e+07 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 11, "verdict": "capped (refined list 4.13e+10 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 4, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 6.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": -636.61, "N": 2, "verdict": "capped (refined list 6.68e+08 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 143, "verdict": "capped (refined list 6.21e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 52, "verdict": "passes", "solutions_weighted": 5132160, "secs": 3.9}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 44, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.6}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 26, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.4}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 22, "verdict": "capped (refined list 2.56e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 13, "verdict": "capped (refined list 6.07e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 11, "verdict": "capped (refined list 2.21e+11 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 4, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 1.8}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -643.36, "N": 2, "verdict": "capped (refined list 2.56e+09 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 1719, "fam": "z3all", "order": 72, "r": 102, "log2E_Q": -651.19, "N": 143, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 72, "r": 102, "log2E_Q": -651.19, "N": 52, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 5.3}
+{"n": 1719, "fam": "z3all", "order": 72, "r": 102, "log2E_Q": -651.19, "N": 44, "verdict": "passes", "solutions_weighted": 456192, "secs": 0.5}
+{"n": 1719, "fam": "z3all", "order": 72, "r": 102, "log2E_Q": -651.19, "N": 13, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 4.2}
+{"n": 1719, "fam": "z3all", "order": 72, "r": 102, "log2E_Q": -651.19, "N": 11, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 72, "r": 102, "log2E_Q": -651.19, "N": 4, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 7.2}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 143, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 52, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 5.3}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 44, "verdict": "passes", "solutions_weighted": 456192, "secs": 0.4}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 13, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 4.0}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 11, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.8}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 4, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 7.3}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 143, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 52, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 8.0}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 44, "verdict": "passes", "solutions_weighted": 456192, "secs": 0.6}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 13, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 3.2}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 11, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.4}
+{"n": 1719, "fam": "z3all", "order": 36, "r": 102, "log2E_Q": -651.19, "N": 4, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 7.5}
+{"n": 1719, "fam": "z3all", "order": 24, "r": 109, "log2E_Q": -729.79, "N": 286, "verdict": "passes", "solutions_weighted": 3244032, "secs": 1.0}
+{"n": 1719, "fam": "z3all", "order": 24, "r": 109, "log2E_Q": -729.79, "N": 143, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 2.2}
+{"n": 1719, "fam": "z3all", "order": 24, "r": 109, "log2E_Q": -729.79, "N": 52, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.4}
+{"n": 1719, "fam": "z3all", "order": 24, "r": 109, "log2E_Q": -729.79, "N": 44, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 143, "verdict": "capped (refined list 4.67e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 52, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 44, "verdict": "passes", "solutions_weighted": 456192, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 26, "verdict": "capped (refined list 2.16e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 22, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.8}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 13, "verdict": "capped (refined list 1.91e+11 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 11, "verdict": "capped (refined list 5.34e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 4, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.8}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -861.7, "N": 2, "verdict": "capped (refined list 2.16e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 143, "verdict": "capped (refined list 4.67e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 52, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 44, "verdict": "passes", "solutions_weighted": 456192, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 26, "verdict": "capped (refined list 2.16e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 22, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 13, "verdict": "capped (refined list 1.91e+11 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 11, "verdict": "capped (refined list 5.34e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 4, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.7}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 63, "log2E_Q": -867.76, "N": 2, "verdict": "capped (refined list 2.16e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 143, "verdict": "capped (refined list 5.68e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 52, "verdict": "passes", "solutions_weighted": 12286080, "secs": 5.9}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 44, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 26, "verdict": "capped (refined list 4.67e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 22, "verdict": "capped (refined list 2.12e+14 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 13, "verdict": "capped (refined list 8.5e+11 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 11, "verdict": "capped (refined list 1.22e+17 > 20000000)", "solutions_weighted": null, "secs": 6.9}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 4, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -889.75, "N": 2, "verdict": "capped (refined list 2.12e+14 > 20000000)", "solutions_weighted": null, "secs": 1.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 143, "verdict": "capped (refined list 5.68e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 52, "verdict": "passes", "solutions_weighted": 12286080, "secs": 6.4}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 44, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 26, "verdict": "capped (refined list 4.67e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 22, "verdict": "capped (refined list 2.12e+14 > 20000000)", "solutions_weighted": null, "secs": 0.6}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 13, "verdict": "capped (refined list 8.5e+11 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 11, "verdict": "capped (refined list 1.22e+17 > 20000000)", "solutions_weighted": null, "secs": 8.6}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 4, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 84, "log2E_Q": -908.71, "N": 2, "verdict": "capped (refined list 2.12e+14 > 20000000)", "solutions_weighted": null, "secs": 1.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 143, "verdict": "capped (refined list 4.03e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 52, "verdict": "passes", "solutions_weighted": 12286080, "secs": 6.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 44, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.4}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 26, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.3}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 22, "verdict": "capped (refined list 4.97e+13 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 13, "verdict": "capped (refined list 4.03e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 11, "verdict": "capped (refined list 2.5e+16 > 20000000)", "solutions_weighted": null, "secs": 2.5}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 4, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -952.24, "N": 2, "verdict": "capped (refined list 4.97e+13 > 20000000)", "solutions_weighted": null, "secs": 0.9}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 143, "verdict": "capped (refined list 4.03e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 52, "verdict": "passes", "solutions_weighted": 12286080, "secs": 6.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 44, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 26, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 22, "verdict": "capped (refined list 4.97e+13 > 20000000)", "solutions_weighted": null, "secs": 0.4}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 13, "verdict": "capped (refined list 4.03e+09 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 11, "verdict": "capped (refined list 2.5e+16 > 20000000)", "solutions_weighted": null, "secs": 2.4}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 4, "verdict": "capped (refined list 3.6e+09 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 40, "r": 81, "log2E_Q": -965.47, "N": 2, "verdict": "capped (refined list 4.97e+13 > 20000000)", "solutions_weighted": null, "secs": 0.9}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 286, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.6}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 143, "verdict": "capped (refined list 6.6e+10 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 52, "verdict": "passes", "solutions_weighted": 12286080, "secs": 5.9}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 44, "verdict": "capped (refined list 6.67e+13 > 20000000)", "solutions_weighted": null, "secs": 0.7}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 26, "verdict": "capped (refined list 3.92e+08 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 22, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 7.7}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 13, "verdict": "capped (refined list 8.58e+13 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 11, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 1.9}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 4, "verdict": "capped (refined list 6.67e+13 > 20000000)", "solutions_weighted": null, "secs": 0.8}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 105, "log2E_Q": -1061.66, "N": 2, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 4.1}

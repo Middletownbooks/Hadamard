@@ -104,12 +104,13 @@ if __name__ == '__main__':
     ap.add_argument('--tries', type=int, default=2000); ap.add_argument('--tmax', type=float, default=3600.0)
     ap.add_argument('--tone', type=float, default=10.0); ap.add_argument('--out', default=None)
     ap.add_argument('--seed', type=int, default=1)
+    ap.add_argument('--stop-first', action='store_true', help='stop after the first bordered pattern')
     a = ap.parse_args()
     P = json.load(open(a.pfile)); Qg = ZP.QGroup(tuple(P['mods']))
     only = None if a.only is None else {int(i) for i in a.only.split(',')}
     done = set()
     if a.out and os.path.exists(a.out):
-        done = {json.loads(l)['index'] for l in open(a.out) if json.loads(l).get('found')}
+        done = {json.loads(l)['index'] for l in open(a.out)}
     S = Perfect(Qg, seed=a.seed)
     for i, p in enumerate(P['patterns']):
         if (only is not None and i not in only) or i in done:
@@ -121,3 +122,5 @@ if __name__ == '__main__':
         if a.out:
             with open(a.out, 'a') as f:
                 f.write(json.dumps(rec) + '\n')
+        if a.stop_first and r['found']:
+            break
