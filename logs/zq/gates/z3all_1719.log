@@ -670,3 +670,6 @@
 {"n": 1719, "fam": "z3all", "order": 90, "r": 54, "log2E_Q": -149.69, "N": 44, "verdict": "capped (level join pairs 1.55e+09 > 1.07e+09)", "solutions_weighted": null, "secs": 46.7}
 {"n": 1719, "fam": "z3all", "order": 90, "r": 54, "log2E_Q": -149.69, "N": 13, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.6}
 {"n": 1719, "fam": "z3all", "order": 90, "r": 54, "log2E_Q": -149.69, "N": 11, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.2}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 72, "log2E_Q": -187.8, "N": 143, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 1719, "fam": "z3all", "order": 60, "r": 72, "log2E_Q": -187.8, "N": 52, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.2}
+{"n": 1719, "fam": "z3all", "order": 120, "r": 72, "log2E_Q": -187.8, "N": 143, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
