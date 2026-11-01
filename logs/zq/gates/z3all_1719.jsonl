@@ -588,3 +588,5 @@
 {"verdict": "capped (refined cell list > 20000000)", "key": "982d38b9b5d8278d", "n": 1719, "fam": "z3all", "order": 30, "r": 95, "e": 56, "log2E_Q": null, "N": 11, "Nkey": "f6dc203a2727", "log2_pairs": null, "secs": 1.4}
 {"verdict": "capped (refined cell list > 20000000)", "key": "982d38b9b5d8278d", "n": 1719, "fam": "z3all", "order": 30, "r": 95, "e": 56, "log2E_Q": null, "N": 4, "Nkey": "06a6837eb3d8", "log2_pairs": null, "secs": 2.9}
 {"verdict": "capped (memory limit 3515 MB)", "key": "982d38b9b5d8278d", "n": 1719, "fam": "z3all", "order": 30, "r": 95, "e": 56, "log2E_Q": null, "N": 2, "Nkey": "fd96018a4110", "log2_pairs": null, "secs": 2.8}
+{"solutions_weighted": 3244032, "log2_mult": 285.67, "per_pattern": [{"rows": [0, 2, 2, 2], "solutions": 101376}], "verdict": "passes", "key": "55a6b8162e6a6e5a", "n": 1719, "fam": "z3all", "order": 30, "r": 91, "e": 90, "log2E_Q": null, "N": 286, "Nkey": "34c9ab30006a", "log2_pairs": null, "secs": 1.0}
+{"verdict": "capped (memory limit 3515 MB)", "key": "55a6b8162e6a6e5a", "n": 1719, "fam": "z3all", "order": 30, "r": 91, "e": 90, "log2E_Q": null, "N": 143, "Nkey": "91d7835b1d97", "log2_pairs": null, "secs": 9.3}
