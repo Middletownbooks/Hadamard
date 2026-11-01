@@ -387,3 +387,136 @@
 {"n": 1713, "fam": "z3all", "order": 24, "r": 114, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
 {"n": 1713, "fam": "z3all", "order": 24, "r": 102, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
 {"n": 1713, "fam": "z3all", "order": 24, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 102, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 190, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 114, "verdict": "capped (refined list 4.7e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 95, "verdict": "capped (refined list 2.7e+13 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 57, "verdict": "capped (refined list 1.44e+15 > 20000000)", "solutions_weighted": null, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 38, "verdict": "capped (refined list 5.42e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 30, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 190, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 114, "verdict": "capped (refined list 4.7e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 95, "verdict": "capped (refined list 2.7e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 57, "verdict": "capped (refined list 1.44e+15 > 20000000)", "solutions_weighted": null, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 38, "verdict": "capped (refined list 5.42e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 30, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 190, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 114, "verdict": "capped (refined list 4.7e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 95, "verdict": "capped (refined list 2.7e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 57, "verdict": "capped (refined list 1.44e+15 > 20000000)", "solutions_weighted": null, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 38, "verdict": "capped (refined list 5.42e+11 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 30, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 72, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 72, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 190, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 190, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 190, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 190, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 190, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 190, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 1.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 80, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 76, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 64, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 68, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 68, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 64, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 100, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 120, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 56, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 60, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 92, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 100, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 50, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 80, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 110, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 104, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 50, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 60, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 110, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 54, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 56, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 104, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 80, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 76, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 92, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 76, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 100, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 120, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 56, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 60, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 92, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 90, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 100, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 50, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 80, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 104, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 110, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 54, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 50, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 60, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 110, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 48, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 56, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 108, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 104, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.6}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 76, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 84, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 80, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 96, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 76, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.4}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 78, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 92, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 100, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
+{"n": 1713, "fam": "z3all", "order": 36, "r": 120, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 56, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.3}
+{"n": 1713, "fam": "z3all", "order": 72, "r": 60, "log2E_Q": null, "N": 285, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 0.5}
