@@ -24,6 +24,11 @@ def load(tag):
     G = {}
     for d in jl(f'{ROOT}/logs/zq/gates/{tag}.jsonl'):
         G.setdefault(d['key'], []).append(d)
+    for d in jl(f'{ROOT}/logs/zq/xcheck/{tag}.jsonl'):          # CP-SAT levels (theory/zq_xcheck_run.py)
+        G.setdefault(d['key'], []).append(dict(N=d['Nsize'], cpsat=True, solutions_weighted=None,
+                                               verdict={'dead': 'no core [M] (CP-SAT level infeasible)',
+                                                        'feasible': 'passes (CP-SAT feasible)'}.get(
+                                                   d['status'], f"undecided (CP-SAT {d['secs_limit']:.0f} s)")))
     return C, G
 
 
@@ -56,7 +61,8 @@ def table(tags):
         nxt = None
         if best is not None:
             lv = G.get(best['key'], [])
-            pas = [f"N{x['N']}:{x.get('solutions_weighted')}" for x in lv if x.get('verdict') == 'passes']
+            pas = [f"N{x['N']}:{x.get('solutions_weighted') or 'CP-SAT feasible'}" for x in lv
+                   if x.get('verdict', '').startswith('passes')]
             cap = [f"N{x['N']}:{x['verdict']}" for x in lv if not x.get('verdict', '').startswith(('passes', 'no core'))]
             nxt = dict(passed=pas, open=cap)
         rows.append(dict(n=int(n), fam=fam, structures=len(C), **cnt, alive_pos=len(pos),
