@@ -1,5 +1,9 @@
 # b3 push: runbook for the monitoring session
 
+**Stopped on 2026-11-01 at 13:13 UTC at the owner's request.** No worker runs; do not run `restart.sh`. The hourly
+check-in is disabled. The cutoff is recorded in `report/b3_push_answer.md` (§0, item 3). The rest of this file
+describes how the workers were monitored while they ran.
+
 Written 2026-10-28 for a session that keeps the b3 push running without changing it. The task is
 `report/prompt_b3_push.md`; the write-up is `report/b3_push_answer.md`. Your job: keep the workers alive, commit their
 logs, and refresh the generated report tables. Code changes, new computations and new claims in the report belong to a

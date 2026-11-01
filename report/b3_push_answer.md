@@ -1,6 +1,7 @@
 # Bordered Goethals–Seidel arrays with a character set T at the open orders below 4000: census, two obstructions, a calibration, and no new matrix
 
-Dates: 2026-10-21 to 2026-10-28 (the tables are regenerated from the logs by `theory/bt_summary.py --fill`). Branch
+Dates: 2026-10-21 to 2026-11-01; the computations were stopped on 2026-11-01 at 13:13 UTC, before the exact closure
+pass finished (§0, item 3). The tables are regenerated from the logs by `theory/bt_summary.py --fill`. Branch
 `claude/focused-planck-j1645f`. Answers `report/prompt_b3_push.md`.
 Scripts: `theory/bt_*.py`. Logs: `logs/bt/`.
 
@@ -97,9 +98,17 @@ border reduction follows Kumar's `border3.c`/`border_probe.py` and our `theory/a
        most list-capped levels exceed 10⁹ entries too (only 8, 28 and 0 levels fit under 6·10⁷).
      - The time ladder pays because most kills are fast: 5,008 of the first 5,107 kills took under 30 s, and 672 of
        the first 746 tier-2 kills under 10 s. A level that hits the limit costs the whole limit.
-     - It has closed structures at a deeper exact level, mostly at 739. The current counts are in the "deeper
-       level" column of §4.1. The 739 survivors are mostly large-orbit structures (r up to 141, estimates near
-       2^−300), whose levels pass or exceed the list cap.
+     - It has closed structures at a deeper exact level, mostly at 739. The counts are in the "deeper level" column
+       of §4.1. The 739 survivors are mostly large-orbit structures (r up to 141, estimates near 2^−300), whose
+       levels pass or exceed the list cap.
+     - **Stopped before it finished (2026-11-01, 13:13 UTC).** Tiers 1 and 2 completed every pass (10 s, 60 s,
+       memory retry, list retry). Tier 3 was in its 10 s pass and had reached 2,342 of its 4,338 structures; its
+       60 s retry, its memory retry and a second round were not run. It left 5,108 tier-3 levels capped at 10 s and
+       2,808 refused memory under 3.5 GiB, all undecided. The return had fallen off: the deeper-level count rose from
+       about 5,760 to 7,515 in tier 3's first 27 hours (Oct 28–29) and by 26 more in the last 68 hours, as tier 3 reached structures (643 k4
+       of order 8, r = 107–112) whose levels nearly all hit the memory or list caps. Finishing was estimated at two
+       to three more weeks. None of this changes (A): every structure it could still close has log2 E_Q < 0 or no
+       finite estimate.
      - Every structure that the census had skipped by its rule of thumb (4r − 6.5e < −45) was decided exactly by
        the screens and the Q-level gate (`theory/bt_close.py`): 845 at 599 k8, 4,357 at 839 k8, and 12,882 k4one
        structures at 643, 739 and 971. The 839 k8 ones left alive all have log2 E_Q ≤ −24.7. Only split structures
@@ -955,7 +964,7 @@ python3 theory/bt_level1.py CENSUS.jsonl KEY --out logs/bt/level1_KEY.jsonl
 python3 theory/bt_decide.py CENSUS.jsonl logs/bt/decide --rmax 45
 python3 theory/bt_xcheck_level.py logs/bt/xcheck/x669_S9_N111.json        # independent CP-SAT
 python3 theory/bt_gates_levels.py logs/bt/gates_run_levels.jsonl CENSUS.jsonl[,...] --levels 74,111 --fam 669:z3all --tmax 600
-sh logs/bt/closure.sh                                                       # timed gates at every level, effectively closed families
+sh logs/bt/closure.sh                                                       # timed gates at every level (stopped 2026-11-01 in tier 3; resumes from its log)
 python3 theory/bt_rerun_capped.py logs/bt/census2/prod12_669.jsonl --maxlen 6e6 --maxout 1e6   # capped Q-levels
 
 # borders, calibration, local search
