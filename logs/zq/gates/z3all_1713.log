@@ -55,3 +55,11 @@
 {"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -132.58, "N": 3, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 7.2}
 {"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -132.58, "N": 2, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.6}
 {"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 285, "verdict": "capped (refined list 2.34e+07 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 190, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 17.9}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 114, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.0}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 95, "verdict": "capped (refined list 4.4e+15 > 20000000)", "solutions_weighted": null, "secs": 1.8}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 57, "verdict": "capped (refined list 1.06e+12 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 38, "verdict": "capped (refined list 1.93e+12 > 20000000)", "solutions_weighted": null, "secs": 0.2}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 30, "verdict": "capped (refined list 4.65e+10 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 19, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 9.7}
+{"n": 1713, "fam": "z3all", "order": 24, "r": 120, "log2E_Q": -133.39, "N": 15, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 8.4}
