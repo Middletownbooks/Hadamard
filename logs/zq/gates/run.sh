@@ -20,8 +20,11 @@ PY
   for T in 10 60; do
     python3 theory/zq_summary.py --keys $tag logs/zq/gates/$tag.keys > /dev/null
     [ -s logs/zq/gates/$tag.keys ] || break
-    python3 theory/bt_gates_levels.py logs/zq/gates/$tag.jsonl logs/zq/census/$tag.jsonl --levels auto \
-      --keys @logs/zq/gates/$tag.keys --tmax $T >> logs/zq/gates/$tag.log 2>&1
+    while true; do                       # exit code 75: memory held after a refused level, resume fresh
+      python3 theory/bt_gates_levels.py logs/zq/gates/$tag.jsonl logs/zq/census/$tag.jsonl --levels auto \
+        --keys @logs/zq/gates/$tag.keys --tmax $T >> logs/zq/gates/$tag.log 2>&1
+      [ $? -eq 75 ] || break
+    done
   done
-  echo "$tag done" >> logs/zq/gates/run.done
+  grep -q "^$tag done" logs/zq/gates/run.done 2>/dev/null || echo "$tag done" >> logs/zq/gates/run.done
 done
