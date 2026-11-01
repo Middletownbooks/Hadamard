@@ -127,3 +127,7 @@
 {"n": 1115, "fam": "z5all", "order": 18, "r": 80, "log2E_Q": -5.96, "N": 74, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 1115, "fam": "z5all", "order": 18, "r": 80, "log2E_Q": -5.96, "N": 6, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
 {"n": 1115, "fam": "z5all", "order": 36, "r": 60, "log2E_Q": -36.81, "N": 111, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.1}
+{"n": 1115, "fam": "z5all", "order": 36, "r": 60, "log2E_Q": -36.81, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 53.3}
+{"n": 1115, "fam": "z5all", "order": 24, "r": 80, "log2E_Q": -47.81, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 53.0}
+{"n": 1115, "fam": "z5all", "order": 36, "r": 50, "log2E_Q": null, "N": 111, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 1115, "fam": "z5all", "order": 36, "r": 50, "log2E_Q": null, "N": 74, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 52.9}
