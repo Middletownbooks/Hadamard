@@ -590,3 +590,6 @@
 {"n": 1719, "fam": "z3all", "order": 30, "r": 95, "log2E_Q": null, "N": 2, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 2.8}
 {"n": 1719, "fam": "z3all", "order": 30, "r": 91, "log2E_Q": null, "N": 286, "verdict": "passes", "solutions_weighted": 3244032, "secs": 1.0}
 {"n": 1719, "fam": "z3all", "order": 30, "r": 91, "log2E_Q": null, "N": 143, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 9.3}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 91, "log2E_Q": null, "N": 52, "verdict": "passes", "solutions_weighted": 11136, "secs": 0.5}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 91, "log2E_Q": null, "N": 44, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 10.7}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 91, "log2E_Q": null, "N": 26, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 5.7}

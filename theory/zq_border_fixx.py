@@ -46,10 +46,11 @@ class Perfect:
                 return x
 
 
-def solve_c(Qg, W, x, tmax=10.0):
+def solve_c(Qg, W, x, tmax=10.0, X=None):
     from ortools.sat.python import cp_model
     q = Qg.n; m = 4 * q
-    X = BB.gs_array(list(x), Qg.add, Qg.neg)
+    if X is None:
+        X = BB.gs_array(list(x), Qg.add, Qg.neg)
     sg, vid = ZG.sym_gs(Qg)
     md = cp_model.CpModel()
     cb = [md.NewBoolVar(f'c{u}') for u in range(m)]
@@ -85,14 +86,24 @@ def solve_c(Qg, W, x, tmax=10.0):
     return ('FOUND' if ok else 'BAD'), dict(x=x.tolist(), c=c.tolist(), X=X.tolist(), Rh=Rh.tolist(), Ch=Ch.tolist())
 
 
-def run(Qg, z, sampler, tries=2000, tmax_total=3600.0, tmax_one=10.0):
+def run(Qg, z, sampler, tries=2000, tmax_total=3600.0, tmax_one=10.0, xpaley=False, seed=1):
     W = BB.gs_array([np.asarray(v, np.int64) for v in z], Qg.add, Qg.neg)
     t0 = time.time(); stat = {}
+    if xpaley:                           # X = Paley matrix with a random signed column permutation (Ch still GS)
+        import zq_border as ZB
+        H0 = ZB.paley(4 * Qg.n); rng = np.random.default_rng(seed)
     for k in range(tries):
         if time.time() - t0 > tmax_total:
             break
-        x = sampler.sample()
-        st, res = solve_c(Qg, W, x, tmax=tmax_one)
+        if xpaley:
+            m = 4 * Qg.n
+            Xm = H0[:, rng.permutation(m)] * rng.choice([-1, 1], m)[None, :]
+            st, res = solve_c(Qg, W, None, tmax=tmax_one, X=Xm)
+            if res is not None:
+                res['x'] = None
+        else:
+            x = sampler.sample()
+            st, res = solve_c(Qg, W, x, tmax=tmax_one)
         stat[st] = stat.get(st, 0) + 1
         if st == 'FOUND':
             return dict(found=True, tries=k + 1, stat=stat, secs=round(time.time() - t0, 1), **res)
@@ -104,6 +115,7 @@ if __name__ == '__main__':
     ap.add_argument('--tries', type=int, default=2000); ap.add_argument('--tmax', type=float, default=3600.0)
     ap.add_argument('--tone', type=float, default=10.0); ap.add_argument('--out', default=None)
     ap.add_argument('--seed', type=int, default=1)
+    ap.add_argument('--xpaley', action='store_true')
     ap.add_argument('--stop-first', action='store_true', help='stop after the first bordered pattern')
     a = ap.parse_args()
     P = json.load(open(a.pfile)); Qg = ZP.QGroup(tuple(P['mods']))
@@ -115,8 +127,8 @@ if __name__ == '__main__':
     for i, p in enumerate(P['patterns']):
         if (only is not None and i not in only) or i in done:
             continue
-        r = run(Qg, p['z'], S, tries=a.tries, tmax_total=a.tmax, tmax_one=a.tone)
-        rec = dict(q=P['q'], mods=P['mods'], index=i, z=p['z'], ansatz='GS, X fixed (sampled)', **r)
+        r = run(Qg, p['z'], S, tries=a.tries, tmax_total=a.tmax, tmax_one=a.tone, xpaley=a.xpaley, seed=a.seed)
+        rec = dict(q=P['q'], mods=P['mods'], index=i, z=p['z'], ansatz='Ch GS, X ' + ('Paley, random signed column permutation' if a.xpaley else 'GS (sampled)'), **r)
         print(json.dumps({k: rec.get(k) for k in ('q', 'mods', 'index', 'found', 'tries', 'stat', 'secs')}),
               flush=True)
         if a.out:
