@@ -696,3 +696,4 @@
 {"verdict": "capped (memory limit 3515 MB)", "key": "09190c8a6fef55cc", "n": 1719, "fam": "z3all", "order": 40, "r": 76, "e": 59, "log2E_Q": -331.14, "N": 13, "Nkey": "773329f7c3d8", "log2_pairs": null, "secs": 4.1}
 {"verdict": "capped (time limit 60 s)", "key": "60e875a84abe7665", "n": 1719, "fam": "z3all", "order": 24, "r": 108, "e": 71, "log2E_Q": -524.71, "N": 143, "Nkey": "91d7835b1d97", "log2_pairs": null, "secs": 60.0}
 {"verdict": "capped (memory limit 3515 MB)", "key": "60e875a84abe7665", "n": 1719, "fam": "z3all", "order": 24, "r": 108, "e": 71, "log2E_Q": -524.71, "N": 13, "Nkey": "773329f7c3d8", "log2_pairs": null, "secs": 15.4}
+{"verdict": "capped (time limit 60 s)", "key": "eb3695d9904a57ae", "n": 1719, "fam": "z3all", "order": 30, "r": 120, "e": 79, "log2E_Q": -530.88, "N": 143, "Nkey": "91d7835b1d97", "log2_pairs": null, "secs": 60.0}
