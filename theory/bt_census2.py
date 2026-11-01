@@ -22,6 +22,11 @@ FAMS = {
     'k4': dict(t=3, q2=4, q3=1), 'k4one': dict(t=3, q2=4, q3=1), 'k6': dict(t=5, q2=2, q3=3),
     'k8': dict(t=7, q2=8, q3=1), 'z3all': dict(t=3, q2=1, q3=3), 'prod12': dict(t=9, q2=4, q3=3),
 }
+# Z_q all-character family (Kumar, NOTES section 18, generalised from q = 3): Q = Z_q (or Z_3^2 for z9x3all),
+# T = all q characters, t = q, target -4q on K \ 0 and 0 off K (theory/zq_census.py, report/zq_census_answer.md)
+for _q in (5, 7, 9, 11, 13):
+    FAMS[f'z{_q}all'] = dict(t=_q, q2=1, q3=_q)
+FAMS['z9x3all'] = dict(t=9, q2=1, q3=9, qsq=True)
 
 
 def chars_trivial_on(G, Kel):
@@ -47,7 +52,7 @@ def gamma_options(fam, G, Kel, coset, q):
     out = []
     if fam in ('k4', 'k6', 'k8'):
         out.append(('nontrivial', val(nontriv)))
-    elif fam == 'z3all':
+    elif fam == 'z3all' or (fam.startswith('z') and fam.endswith('all')):
         out.append(('all', val(list(xis))))
     elif fam == 'k4one':
         o4 = [x for x in nontriv if char_order(G, x) == 4]
@@ -89,9 +94,12 @@ def two_options_q(a, q2, cap=2 ** 20):
     return out
 
 
-def odd_options_q(o, q3, maxgl=5):
-    """odd parts O of order o with K_O of index q3 (q3 in {1, 3}); returns (mods, gl_pairs, K_O generators).
-    Z_p^2 with GL(2, p) is included only for p <= maxgl (971's Z_11^2 is handled by theory/bt_census971.py)."""
+def odd_options_q(o, q3, maxgl=5, qsq=False):
+    """odd parts O of order o with K_O of index q3 and O/K_O cyclic (q3 = 1, 3 or an odd prime, or 9), or
+    O/K_O = Z_3^2 (qsq); returns (mods, gl_pairs, K_O generators).
+    Z_p^2 with GL(2, p) is included only for p <= maxgl (971's Z_11^2 is handled by theory/bt_census971.py).
+    One K_O per cyclic factor m_j divisible by q3 (K_O = q3 Z_{m_j} x the other factors), as for q3 = 3 before; for Z_3^2 the two factors of order divisible by 3 with K_O = 3 x both (only when O has
+    exactly two such factors)."""
     out = []
     for mods, gl in R.odd_options(o):
         if gl and mods[gl[0][0]] > maxgl:
@@ -99,15 +107,24 @@ def odd_options_q(o, q3, maxgl=5):
         if q3 == 1:
             out.append((mods, gl, [tuple(int(i == j) for i in range(len(mods))) for j in range(len(mods))]))
             continue
-        # K_O = index-3 subgroup: choose a factor divisible by 3 and take 3x that factor (or drop a Z_3)
-        for j, mj in enumerate(mods):
-            if mj % 3:
+        if qsq:
+            js = [j for j, mj in enumerate(mods) if mj % 3 == 0]
+            if len(js) != 2:
                 continue
             gens = []
             for i in range(len(mods)):
-                v = [0] * len(mods); v[i] = 3 if i == j else 1; gens.append(tuple(v))
+                v = [0] * len(mods); v[i] = 3 if i in js else 1; gens.append(tuple(v))
             out.append((mods, gl, gens))
-            if mods.count(mj) > 1 and gl:                         # equal factors (Z_3^2): one choice suffices
+            continue
+        # K_O = index-q3 subgroup: choose a factor divisible by q3 and take q3 x that factor
+        for j, mj in enumerate(mods):
+            if mj % q3:
+                continue
+            gens = []
+            for i in range(len(mods)):
+                v = [0] * len(mods); v[i] = q3 if i == j else 1; gens.append(tuple(v))
+            out.append((mods, gl, gens))
+            if mods.count(mj) > 1 and gl:                         # equal factors (Z_p^2): one choice suffices
                 break
     return out
 
@@ -140,7 +157,7 @@ def structures(n, fam, rmin, rmax, cap=2 ** 20, only=None):
         if only is not None and ip != only:
             continue
         P = popt['P']
-        for omods, gl, KOgens in odd_options_q(o, q3):
+        for omods, gl, KOgens in odd_options_q(o, q3, qsq=F.get('qsq', False)):
             O = BC.OddPart(omods, gl)
             omats = O.automorphisms() if omods else [np.zeros((0, 0), np.int64)]
             mods = P.mods + omods
