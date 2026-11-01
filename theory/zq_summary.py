@@ -61,9 +61,25 @@ def table(tags):
         nxt = None
         if best is not None:
             lv = G.get(best['key'], [])
-            pas = [f"N{x['N']}:{x.get('solutions_weighted') or 'CP-SAT feasible'}" for x in lv
-                   if x.get('verdict', '').startswith('passes')]
-            cap = [f"N{x['N']}:{x['verdict']}" for x in lv if not x.get('verdict', '').startswith(('passes', 'no core'))]
+            pas = list(dict.fromkeys(f"N{x['N']}: {x.get('solutions_weighted') or 'CP-SAT feasible'}" for x in lv
+                                     if x.get('verdict', '').startswith('passes')))
+            import re
+            def short(v):
+                m = re.search(r'refined (cell )?list ([0-9.e+]+)?', v)
+                if m: return 'list ' + (m.group(2) or '> cap')
+                m = re.search(r'time limit (\d+) s', v)
+                if m: return f'{m.group(1)} s'
+                if 'memory' in v: return 'memory'
+                m = re.search(r'CP-SAT (\d+) s', v)
+                if m: return f'CP-SAT {m.group(1)} s'
+                return v[:20]
+            best_open = {}
+            passedN = {x['N'] for x in lv if x.get('verdict', '').startswith('passes')}
+            for x in lv:
+                if x.get('verdict', '').startswith(('passes', 'no core')) or x['N'] in passedN:
+                    continue
+                best_open.setdefault(x['N'], []).append(short(x['verdict']))
+            cap = [f"N{N}: " + '; '.join(dict.fromkeys(v)) for N, v in sorted(best_open.items(), key=lambda t: -t[0])]
             nxt = dict(passed=pas, open=cap)
         rows.append(dict(n=int(n), fam=fam, structures=len(C), **cnt, alive_pos=len(pos),
                          best=None if best is None else
@@ -79,13 +95,24 @@ def md(rows):
     for r in sorted(rows, key=lambda r: (r['n'], r['fam'])):
         nx = '—' if not r['next'] else (', '.join(r['next']['passed']) or '—') + ' / ' + \
             (', '.join(r['next']['open']) or '—')
+        nx = nx.replace('|', '/')
         out.append(f"| {4 * r['n']} | {r['n']} | {r['fam']} | {r['structures']} | {r['cp']} | {r['rigid']} | "
                    f"{r['qempty']} | {r['deeper']} | {r['undecided']} | {r['alive']} | {r['alive_pos']} | "
                    f"{r['best'] or '—'} | {nx} |")
     return '\n'.join(out)
 
 
+def fill(path):
+    """rewrite the block between <!-- ZQ-TABLE --> and <!-- /ZQ-TABLE --> of the report"""
+    tags = sorted(os.path.basename(p)[:-6] for p in glob.glob(f'{ROOT}/logs/zq/census/*.jsonl') if 'regress' not in p)
+    txt = open(path).read()
+    a, b = txt.index('<!-- ZQ-TABLE -->') + len('<!-- ZQ-TABLE -->'), txt.index('<!-- /ZQ-TABLE -->')
+    open(path, 'w').write(txt[:a] + '\n' + md(table(tags)) + '\n' + txt[b:])
+
+
 if __name__ == '__main__':
+    if len(sys.argv) > 2 and sys.argv[1] == '--fill':
+        fill(sys.argv[2]); sys.exit()
     if len(sys.argv) > 1 and sys.argv[1] == '--keys':
         C, G = load(sys.argv[2])
         ks = [k for k, d in C.items() if status(d, G.get(k, [])) == 'alive']
