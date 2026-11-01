@@ -537,3 +537,4 @@
 {"n": 1719, "fam": "z3all", "order": 60, "r": 60, "log2E_Q": null, "N": 2, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 8.2}
 {"n": 1719, "fam": "z3all", "order": 30, "r": 120, "log2E_Q": null, "N": 286, "verdict": "passes", "solutions_weighted": 25952256, "secs": 4.4}
 {"n": 1719, "fam": "z3all", "order": 30, "r": 120, "log2E_Q": null, "N": 143, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 5.9}
+{"n": 1719, "fam": "z3all", "order": 30, "r": 120, "log2E_Q": null, "N": 52, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 265.7}

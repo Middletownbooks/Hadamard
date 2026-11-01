@@ -1,1 +1,2 @@
 {"q": 7, "mods": [7], "index": 0, "z": [[1, 1, 0, 0, 0, 0, 0], [1, 0, 0, 1, 0, 0, -1], [1, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0]], "ansatz": "GS, X fixed (sampled)", "found": false, "tries": 564, "stat": {"INFEASIBLE": 564}, "secs": 1200.8}
+{"q": 7, "mods": [7], "index": 1, "z": [[1, 1, 0, 1, 0, 0, -1], [1, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0]], "ansatz": "GS, X fixed (sampled)", "found": false, "tries": 504, "stat": {"INFEASIBLE": 504}, "secs": 1202.0}
