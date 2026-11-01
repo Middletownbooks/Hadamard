@@ -43869,3 +43869,15 @@ closure round 1 tier 2 big-list retry done
 {"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 20, "verdict": "capped (refined list 2.31e+12 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 16, "verdict": "capped (refined list 6.03e+08 > 20000000)", "solutions_weighted": null, "secs": 0.1}
 {"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 10, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 7.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -69.23, "N": 4, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 13.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -69.23, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 5.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -20.59, "N": 4, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 13.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -20.59, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 4.6}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 4.0}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 10, "verdict": "capped (refined cell list > 20000000)", "solutions_weighted": null, "secs": 3.7}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 8, "verdict": "capped (refined list 7.54e+12 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 8, "verdict": "capped (refined list 1.24e+13 > 20000000)", "solutions_weighted": null, "secs": 0.1}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 8, "verdict": "capped (refined list 7.13e+11 > 20000000)", "solutions_weighted": null, "secs": 0.3}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -19.72, "N": 5, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 2.8}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -69.23, "N": 2, "verdict": "capped (time limit 10 s)", "solutions_weighted": null, "secs": 11.4}
+{"n": 643, "fam": "k4", "order": 8, "r": 112, "log2E_Q": -69.23, "N": 2, "verdict": "capped (memory limit 3613 MB)", "solutions_weighted": null, "secs": 4.2}
