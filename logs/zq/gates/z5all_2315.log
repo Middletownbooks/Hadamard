@@ -254,3 +254,7 @@
 {"n": 2315, "fam": "z5all", "order": 60, "r": 96, "log2E_Q": null, "N": 2, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 12.3}
 {"n": 2315, "fam": "z5all", "order": 60, "r": 84, "log2E_Q": null, "N": 231, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 67.1}
 {"n": 2315, "fam": "z5all", "order": 60, "r": 92, "log2E_Q": null, "N": 231, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 64.7}
+{"n": 2315, "fam": "z5all", "order": 60, "r": 92, "log2E_Q": null, "N": 66, "verdict": "capped (time limit 60 s)", "solutions_weighted": null, "secs": 60.0}
+{"n": 2315, "fam": "z5all", "order": 60, "r": 92, "log2E_Q": null, "N": 42, "verdict": "passes", "solutions_weighted": 930816, "secs": 36.7}
+{"n": 2315, "fam": "z5all", "order": 60, "r": 92, "log2E_Q": null, "N": 2, "verdict": "capped (memory limit 3515 MB)", "solutions_weighted": null, "secs": 11.7}
+{"n": 2315, "fam": "z5all", "order": 60, "r": 78, "log2E_Q": null, "N": 231, "verdict": "no core [M] (level empty)", "solutions_weighted": 0, "secs": 41.7}
