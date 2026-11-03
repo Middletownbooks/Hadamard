@@ -1,0 +1,19 @@
+{"N": 4194304, "varying": 71, "fixed_classes_on_target": true}
+{"order": "K-lags first", "k": 1, "lags": [[0, 0, 1]], "hits": 209110, "exact_bits": 4.33, "gauss_bits": 4.33, "rank": 1}
+{"order": "K-lags first", "k": 2, "lags": [[0, 0, 1], [0, 0, 3]], "hits": 12109, "exact_bits": 8.44, "gauss_bits": 8.43, "rank": 2}
+{"order": "K-lags first", "k": 3, "lags": [[0, 0, 1], [0, 0, 3], [0, 0, 7]], "hits": 12109, "exact_bits": 8.44, "gauss_bits": 8.43, "rank": 2}
+{"order": "K-lags first", "k": 4, "lags": [[0, 0, 1], [0, 0, 3], [0, 0, 7], [0, 1, 0]], "hits": 1257, "exact_bits": 11.7, "gauss_bits": 11.71, "rank": 3}
+{"order": "K-lags first", "k": 5, "lags": [[0, 0, 1], [0, 0, 3], [0, 0, 7], [0, 1, 0], [0, 1, 1]], "hits": 49, "exact_bits": 16.39, "gauss_bits": 16.59, "rank": 4}
+{"order": "K-lags first", "k": 6, "lags": [[0, 0, 1], [0, 0, 3], [0, 0, 7], [0, 1, 0], [0, 1, 1], [0, 1, 2]], "hits": 0, "exact_bits": null, "gauss_bits": 21.25, "rank": 5}
+{"order": "random 0", "k": 1, "lags": [[3, 2, 9]], "hits": 137461, "exact_bits": 4.93, "gauss_bits": 4.94, "rank": 1}
+{"order": "random 0", "k": 2, "lags": [[3, 2, 9], [0, 1, 2]], "hits": 4696, "exact_bits": 9.8, "gauss_bits": 9.83, "rank": 2}
+{"order": "random 0", "k": 3, "lags": [[3, 2, 9], [0, 1, 2], [2, 2, 6]], "hits": 154, "exact_bits": 14.73, "gauss_bits": 14.76, "rank": 3}
+{"order": "random 0", "k": 4, "lags": [[3, 2, 9], [0, 1, 2], [2, 2, 6], [1, 2, 2]], "hits": 3, "exact_bits": 20.42, "gauss_bits": 19.68, "rank": 4}
+{"order": "random 1", "k": 1, "lags": [[3, 2, 2]], "hits": 140141, "exact_bits": 4.9, "gauss_bits": 4.9, "rank": 1}
+{"order": "random 1", "k": 2, "lags": [[3, 2, 2], [3, 1, 9]], "hits": 4764, "exact_bits": 9.78, "gauss_bits": 9.84, "rank": 2}
+{"order": "random 1", "k": 3, "lags": [[3, 2, 2], [3, 1, 9], [0, 1, 3]], "hits": 181, "exact_bits": 14.5, "gauss_bits": 14.75, "rank": 3}
+{"order": "random 1", "k": 4, "lags": [[3, 2, 2], [3, 1, 9], [0, 1, 3], [1, 2, 7]], "hits": 3, "exact_bits": 20.42, "gauss_bits": 19.69, "rank": 4}
+{"order": "random 2", "k": 1, "lags": [[3, 1, 3]], "hits": 138755, "exact_bits": 4.92, "gauss_bits": 4.92, "rank": 1}
+{"order": "random 2", "k": 2, "lags": [[3, 1, 3], [2, 1, 2]], "hits": 4517, "exact_bits": 9.86, "gauss_bits": 9.84, "rank": 2}
+{"order": "random 2", "k": 3, "lags": [[3, 1, 3], [2, 1, 2], [1, 1, 7]], "hits": 160, "exact_bits": 14.68, "gauss_bits": 14.78, "rank": 3}
+{"order": "random 2", "k": 4, "lags": [[3, 1, 3], [2, 1, 2], [1, 1, 7], [3, 2, 9]], "hits": 6, "exact_bits": 19.42, "gauss_bits": 19.72, "rank": 4}

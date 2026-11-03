@@ -192,3 +192,126 @@ def psi_sig(E4, w4):
     z0 = np.einsum('pq,...iq->...ip', PSI, E4)               # (..., 4 blocks, 4 psi)
     zc = np.einsum('pq,...iqj->...ipj', PSI, w4)             # (..., 4, 4, 6)
     return z43_paf3(z0, zc).sum(-3)
+
+
+# ------------------------------------------------------------------ full level G = Z2^2 x Z5 x Z43
+# index g = ((q * 5 + u) * 43 + t), q = 2 q1 + q2.  Lag classes under S (t -> 4t) and negation (q, u, t) -> (q, -u, -t).
+def _lag_classes():
+    rep = {}
+    reps = []
+    for q in range(4):
+        for u in range(5):
+            for t in range(P):
+                g = (q, u, t)
+                if g in rep: continue
+                orb = set()
+                for s in HSUB:
+                    orb.add((q, u, t * s % P)); orb.add((q, (-u) % 5, (-t * s) % P))
+                for h in orb: rep[h] = len(reps)
+                reps.append(g)
+    return rep, reps
+LAGCLS, LAGREPS = _lag_classes()
+assert len(LAGREPS) == 72
+LAGREP_IDX = np.array([(q * 5 + u) * P + t for q, u, t in LAGREPS], dtype=np.int64)
+LAGCLS_SIZE = np.bincount([LAGCLS[(q, u, t)] for q in range(4) for u in range(5) for t in range(P)], minlength=72)
+
+
+def full_target():
+    T = np.empty(72, np.int64)
+    for c, (q, u, t) in enumerate(LAGREPS):
+        T[c] = 3440 if (q, u, t) == (0, 0, 0) else (-12 if q == 0 else 4)
+    return T
+FULL_TARGET = full_target()
+
+# character classes (psi, theta, phi-class) for the "mixed" bookkeeping: a lag class is H-level if its t = 0 ... (the
+# equations are read in lag form; which combinations are fixed by y / w is found by the lattice reduction)
+
+
+def assemble(e, c):
+    """explicit block sequences. e: (..., 20) singleton signs; c: (..., 20, 6) class signs -> (..., 860) int8"""
+    e = np.asarray(e); c = np.asarray(c)
+    lead = e.shape[:-1]
+    x = np.empty(lead + (20, P), np.int8)
+    x[..., 0] = e
+    x[..., 1:] = c[..., np.array(CLS[1:])]
+    return x.reshape(lead + (20 * P,))
+
+
+def class_paf(x, chunk=4096):
+    """class PAF of block sequences x (..., 860): returns (..., 72) int64 via 4-D FFT (chunked to bound memory)"""
+    x = np.asarray(x)
+    lead = x.shape[:-1]
+    xf = x.reshape(-1, 20 * P)
+    out = np.empty((len(xf), 72), np.int64)
+    for a in range(0, len(xf), chunk):
+        xc = xf[a:a + chunk].astype(np.float64).reshape(-1, 2, 2, 5, P)
+        F = np.fft.rfftn(xc, axes=(-4, -3, -2, -1))
+        pa = np.fft.irfftn(F.real ** 2 + F.imag ** 2, s=(2, 2, 5, P), axes=(-4, -3, -2, -1))
+        out[a:a + chunk] = np.rint(pa.reshape(len(xc), 20 * P)[:, LAGREP_IDX]).astype(np.int64)
+    return out.reshape(lead + (72,))
+
+
+# ------------------------------------------------------------------ samplers
+_SUBS = {n: np.array([[1 if j in s else 0 for j in range(6)] for s in it.combinations(range(6), n)], np.int8)
+         for n in range(7)}
+
+
+def sample_y_fibre(S, N, rng):
+    """uniform class signs c (N, 4, 20, 6) with row sums S (4, 20)"""
+    c = np.empty((N, 4, 20, 6), np.int8)
+    for i in range(4):
+        for k in range(20):
+            n = (int(S[i, k]) + 6) // 2
+            sub = _SUBS[n]
+            c[:, i, k] = 2 * sub[rng.integers(len(sub), size=N)] - 1
+    return c
+
+
+class TableSampler:
+    """uniform +-1 R x C tables (R = 5, C = 6) with given row sums and column sums (exact DP over rows)"""
+    _cache = {}
+
+    def __init__(self, rowsums, colsums):
+        self.R, self.C = len(rowsums), len(colsums)
+        self.rp = [(s + self.C) // 2 for s in rowsums]
+        cp = [(s + self.R) // 2 for s in colsums]
+        base = self.R + 1
+        self.base = base
+        self.pw = np.array([base ** j for j in range(self.C)], np.int64)
+        start = int(sum(a * b for a, b in zip(cp, self.pw)))
+        self.start = start
+        nst = base ** self.C
+        # count[r][state] = ways to fill rows r..R-1 exactly consuming 'state' (remaining column demands)
+        digits = (np.arange(nst)[:, None] // self.pw[None, :]) % base          # (nst, C)
+        self.digits = digits
+        cnt = [None] * (self.R + 1)
+        z = np.zeros(nst, object); z[0] = 1
+        cnt[self.R] = z
+        self.nxt = []
+        for r in range(self.R - 1, -1, -1):
+            sub = _SUBS[self.rp[r]]                                            # (m, C)
+            ok = (digits[:, None, :] >= sub[None, :, :]).all(-1)               # (nst, m)
+            nx = np.arange(nst)[:, None] - (sub.astype(np.int64) @ self.pw)[None, :]
+            nx = np.where(ok, nx, 0)
+            c = np.zeros(nst, object)
+            for s in range(len(sub)):
+                vals = cnt[r + 1][nx[:, s]]
+                c = c + np.where(ok[:, s], vals, 0)
+            cnt[r] = c
+            self.nxt.insert(0, (sub, ok, nx))
+        self.cnt = cnt
+        self.total = int(cnt[0][start])
+        self.cntf = [np.array([float(v) for v in cc]) for cc in cnt]
+
+    def sample(self, N, rng):
+        T = np.empty((N, self.R, self.C), np.int8)
+        st = np.full(N, self.start, np.int64)
+        for r in range(self.R):
+            sub, ok, nx = self.nxt[r]
+            w = np.where(ok[st], self.cntf[r + 1][nx[st]], 0.0)               # (N, m)
+            cs = np.cumsum(w, 1); u = rng.random(N) * cs[:, -1]
+            k = (cs < u[:, None]).sum(1)
+            T[:, r] = 2 * sub[k] - 1
+            st = nx[st, k]
+        assert (st == 0).all()
+        return T
