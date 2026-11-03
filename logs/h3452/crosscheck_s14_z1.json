@@ -1,0 +1,51 @@
+{
+  "status": "UNKNOWN",
+  "seconds": 180.000954645,
+  "branches": 1936092,
+  "conflicts": 135000,
+  "z": [
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      3
+    ],
+    [
+      1,
+      1,
+      1,
+      3
+    ],
+    [
+      13,
+      15,
+      15,
+      15
+    ]
+  ],
+  "max_abs": null,
+  "domain": [
+    -43,
+    -41,
+    -29,
+    -27,
+    -15,
+    -13,
+    -1,
+    1,
+    13,
+    15,
+    27,
+    29,
+    41,
+    43
+  ],
+  "scope": "fixed S14 Z43 compression fibre; independent all-lag model",
+  "input": "logs/h3452/s14_z1_full120.json"
+}
