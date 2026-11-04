@@ -1,6 +1,6 @@
 # H(3452), v = 863: the S7 host's G/ℤ₅ level is solved in a second, its lift is out of reach (no-go), and the S14 slice is empty
 
-Date: 2026-11-03. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_863_lift.md`.
+Date: 2026-11-03 to 2026-11-04. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_863_lift.md`.
 Scripts: `theory/h863_*.py`. Logs: `logs/h863/`. Solutions: `data/h863_g5_solutions.json`.
 
 **Credit.**
@@ -95,8 +95,9 @@ UNKNOWN from a solver decides nothing. No core and no H(3452) was found.
    - **The large-prime compression route for the k4 family is effectively closed at these orders** [E].
 7. **The S14 sibling is empty [M] (§3.5).**
    - **Why it mattered.** The S14 host `fbf4f510b2566552` is the S7 host plus τ = (q₁, q₂, u, t) → (q₂, q₁, −u, t),
-     with r = 77, so its cores are S7 cores. It is the only k4 structure at 863 in the 523 regime. Given a
-     synthetic y it has 2^42.4 cores per y [E], and its ℤ₂ split along the τ-fixed involution has h_D = 34.8 and
+     with r = 77, so its cores are S7 cores. It is the only k4 structure at 863 in the 523 regime: the U/W scan of
+     `report/b3_push_answer.md` §8.5 puts it at 2^−24.6 completions per U-solution, against 2^−61 for S7 r140 and
+     2^−38 for S6 r155. Given a synthetic y it has 2^42.4 cores per y [E], and its ℤ₂ split along the τ-fixed involution has h_D = 34.8 and
      C(D|S) = 57.5, so D_def = 22.7 (523: 36.4, 62.5, 26.1).
    - **But stage 1 has no solution.** All 78 Q-level solutions were decided (up to symmetry: 21 row patterns, a
      superset of the census's 9). For 47 the Q-sums are unreachable in the y-alphabet within the energy; the other 31
@@ -104,10 +105,12 @@ UNKNOWN from a solver decides nothing. No core and no H(3452) was found.
      agrees (§3.5). Planted recovery: 6/6 and 4/4.
    - **Consequence.** This confirms Codex's unconfirmed CP-SAT INFEASIBLE for the fibres it tested and extends it to
      the whole host. One more positive estimate, 2^45.1 for the host, decided exactly as zero.
-8. **Next computation (§5).** Stop the 863 S7 lift. If the route is to be kept at all, screen the census's alive
-   rich hosts by their **split deficits** rather than by E_Q, at about a minute per host with
-   `theory/h863_analog.py` generalised to their groups. Build a staged solver only for a host with D_def ≲ 26 and a
-   D-fibre ≲ 2^40, and validate it first on the 519 analogue.
+8. **Next computation (§5).** Stop the 863 S7 lift; the S14 slice is closed.
+   - If the route is to be kept at all, screen the census's alive rich hosts by their **split deficits** rather than
+     by E_Q, at about a minute per host with `theory/h863_analog.py` generalised to their groups.
+   - For any host that lands in the 523 regime (D_def ≲ 26, D-fibre ≲ 2^40), decide its stage 1 exactly first. That
+     takes minutes, as for S14.
+   - Only then build a staged solver, and validate it on the 519 analogue.
 
 ---
 
@@ -153,7 +156,7 @@ UNKNOWN from a solver decides nothing. No core and no H(3452) was found.
   - **Stage β** (ψ01, ψ11) depends only on the half differences. Given (A₀, B₀), a choice of w(00) fixes w(01), and
     likewise for w(10).
   - The other two pairings give the other two ℤ₂ quotients.
-- **Bits [E]** (table-weighted sampling, `logs/h863` runs of `theory/h863_g5_calib.py`):
+- **Bits [E]** (table-weighted sampling, 40,000 samples; the stage values are logged in `logs/h863/g5_calib.jsonl`):
   - each ψ alone: 19.3 bits, rank 3;
   - stage α: 35.65 bits, rank 6;
   - stage β given α: 29.5–29.6 bits;
@@ -343,15 +346,16 @@ Measured by `theory/h863_split_deficits.py` (given y, and with `--inner` inside 
 
   - Two more random orders agree to within 0.25 bit up to 14.8 bits, with 3 and 6 hits at about 19.7 bits.
   - The rank drop from adding (0,0,7) is the exact linear relation fixed by (y, w).
-  - Together with §2.3 (exact join counts at 30–36 bits, within 1 bit), the deficits above are good to about 1 bit. A
-    "go" would need them wrong by more than 10 bits (design 1) or 25 bits (design 2).
+  - Together with §2.3 (exact join counts at 30–36 bits, within 1 bit), the deficits above are good to about 1 bit.
+  - A "go" through the 523 route would need D_def about 6 bits lower with free S-solutions and D-checks, or 24 bits
+    lower at 523's costs. Design 1 fails on its cost per (y, w), not on its deficit.
 - **The chain rule** C(mixed | y, w) = C(all | y) − C(w | y) gives 210.2, against 209.8–210.3 measured directly.
   The synthetic-y version of the general module (`theory/h863_analog.py`, read at the mean) reproduces every 863 number
   to within 0.5 bit. This validates the transfer method of §4.
 - **The analogues 519 and 583.** Both are in the table of §4.
   - **519** (G = ℤ₂² × ℤ₃ × ℤ₄₃, ×4; 4n = 2076 is known): ℤ₃ split D_def = 21.7, (y, w) fibre 2^70.7; ℤ₂ split
     D_def = 22.3, h_D = 42.0. That is the 523 regime.
-  - **583** (ℤ₂² × ℤ₅ × ℤ₂₉, ×7 of order 7): 22.5 and 30.0.
+  - **583** (ℤ₂² × ℤ₅ × ℤ₂₉, ×7 of order 7, the same subgroup as the prompt's ⟨16⟩): 22.5 and 30.0.
   - **No core-count comparison.** It was not run. Even at 519, the chain costs 2^21.7 × 2^35 ≈ 2^57 per core with
     2 + 2 lift checks, and a 523-style ℤ₂ solver for this group shape does not exist in the repository. The estimator
     is instead calibrated on the 863 level counts and tails above, and by the earlier calibrations of the same
@@ -370,8 +374,9 @@ Measured by `theory/h863_split_deficits.py` (given y, and with `--inner` inside 
   - the ℤ₂ split along the τ-fixed involution z = (1,1): C_S = 86.0–86.2 (rank 18), h_D = 34.5–35.1 exactly (4 orbits
     are z-stable), C(D | S) = 57.4–57.6, so **D_def = 22.5–22.9**;
   - this matches the U/W scan of `report/b3_push_answer.md` §8.5, which gave 2^−24.6 completions per U-solution here;
-  - it is the 523 regime (h_D 36.4, C(D|S) 62.5, D_def 26.1). This is the only 863 k4 structure where a 523-style
-    route would be in range, so its stage 1 decides everything.
+  - it is the 523 regime (h_D 36.4, C(D|S) 62.5, D_def 26.1). The same scan puts the other 863 k4 hosts at 2^−61
+    (S7 r140) and 2^−38 (S6 r155). So S14 is the only 863 k4 structure where a 523-style route would be in range,
+    and its stage 1 decides everything.
 - **Stage 1 decided exactly** (`theory/h863_s14_stage1_exact.py`, `logs/h863/s14_stage1_exact.jsonl`).
   - **Q-level.** The S14 Q-level solutions are enumerated exactly: per block (a, b, c) = (z(00), z(01) = z(10),
     z(11)), with Σ(a² + 2b² + c²) = 872, Σ 2(ab + bc) = 860 and Σ(2ac + 2b²) = 860. Up to block order, per-block sign
@@ -394,8 +399,8 @@ Measured by `theory/h863_split_deficits.py` (given y, and with `--inner` inside 
     methods here confirm it and extend it to every Q-level solution. My own direct CP-SAT model of these fibres
     (`theory/h863_s14_stage1.py`) returned UNKNOWN at 20 s, which decides nothing.
 - **Consequence.** The S14 host has no core [M]: every core has an S14-invariant stage-1 compression, and there is
-  none. The k4 structures left at 863 are the rich S7 and S6 hosts. The S6 r155 host (2^135.2) was not measured;
-  its size puts it with S7.
+  none. The k4 structures left at 863 are the rich S7 and S6 hosts. The S6 r155 host (2^135.2) was not measured
+  here. Its U/W split is at 2^−38 with W-lists of 2^36 per block (b3 §8.5), outside the 523 regime.
 
 ## 4. Transfer to the other orders [E; P where marked]
 
@@ -448,8 +453,9 @@ Measured by `theory/h863_split_deficits.py` (given y, and with `--inner` inside 
   (2^16), and the S-level merges match 69–118 bits.
   - D_def scales with the size of stage 2: C₂ = 149 bits at the 519 analogue against 275.6 at 863. A host qualifies
     only if C₂ is at most about 150 bits **and** E[cores/y] is large.
-  - At the open orders the census found no such structure: every structure with E_Q ≥ 2^40 has r ≥ 77
-    (`report/b3_push_answer.md` §8).
+  - The S14 sibling met this requirement (C₂ = 143.6 bits, 2^42 cores per y, D_def 22.7), and an exact stage-1 gate
+    killed it (§3.5). Otherwise the census found no such structure at the open orders: every structure with
+    E_Q ≥ 2^40 has r ≥ 77 (`report/b3_push_answer.md` §8).
 - **Next computation (cheap).** Rank the census's alive rich hosts (`report/b3_push_answer.md` §8.1) by the minimum
   over their splits of (D_def, log₂ D-fibre), instead of by E_Q.
   - Generalise `theory/h863_analog.py` and `theory/h863_s14_estimate.py` to their groups. They already handle any
