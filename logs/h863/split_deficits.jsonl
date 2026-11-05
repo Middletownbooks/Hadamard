@@ -1,0 +1,4 @@
+{"what": "given y", "total": {"bits": 275.57, "rank": 59, "in_lattice": true, "mahal": 0.15}, "log2_fibre": 339.11}
+{"what": "S/D split given y", "z": "z=(0,1)", "C_S": 154.06, "rank_S": 30, "in_lattice_S": true, "C_D_given_S": 121.51, "h_D": 69.75, "D_def": 51.76, "log2_S_solutions_per_y": 115.3}
+{"what": "S/D split given y", "z": "z=(1,0)", "C_S": 154.15, "rank_S": 30, "in_lattice_S": true, "C_D_given_S": 121.42, "h_D": 69.93, "D_def": 51.49, "log2_S_solutions_per_y": 115.03}
+{"what": "S/D split given y", "z": "z=(1,1)", "C_S": 154.03, "rank_S": 30, "in_lattice_S": true, "C_D_given_S": 121.54, "h_D": 69.75, "D_def": 51.79, "log2_S_solutions_per_y": 115.33}

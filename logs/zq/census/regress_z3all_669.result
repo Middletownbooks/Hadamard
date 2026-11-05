@@ -1,0 +1,1 @@
+{"old_records": 239, "new_records": 285, "old_keys_reproduced": 239, "field_mismatches": 0, "fields": ["verdict", "r", "e", "q_solutions", "log2E_Q", "q_patterns"], "extra_keys_r_range": [104, 130], "n_extra": 46, "note": "the old run (rmax 100) did not contain the 46 structures with r = 104..130; the regression run used the defaults rmin 8, rmax 140"}

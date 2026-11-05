@@ -103,3 +103,8 @@ Our analysis of their published matrices is in `report/alpoge_methods_forensics.
 | `cw/` | the H(2884) Cooper–Wallis construction |
 
 Work in progress on the open orders is described in the most recent files of `report/`.
+
+- **Order 3452 (2026-11-03):** an exact Z43-compressed solution and compatible 12-row/column border,
+  with no full core or Hadamard matrix yet. See [`report/h3452_stage1_20261103.md`](report/h3452_stage1_20261103.md).
+  The [fixed-compression lift experiments](report/h3452_lift_20261103.md) reduce the residual and verify a
+  compatible second projection, but still find no full core.

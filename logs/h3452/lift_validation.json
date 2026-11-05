@@ -1,0 +1,72 @@
+{
+  "independent_group_translation_check": true,
+  "all_candidates_preserve_original_compression": true,
+  "prime_projection_exact": true,
+  "double_projection_candidates_checked": true,
+  "results": [
+    {
+      "file": "exact_full_seed1",
+      "cost": 71.375,
+      "nonzero_lags": 794,
+      "nonzero_classes": 61,
+      "max_abs_residual": 56
+    },
+    {
+      "file": "repair_cells10_seed1",
+      "cost": 71.375,
+      "nonzero_lags": 794,
+      "nonzero_classes": 61,
+      "max_abs_residual": 56
+    },
+    {
+      "file": "repair_cells4_seed3",
+      "cost": 71.375,
+      "nonzero_lags": 794,
+      "nonzero_classes": 61,
+      "max_abs_residual": 56
+    },
+    {
+      "file": "tabu_seed1",
+      "cost": 50.25,
+      "nonzero_lags": 762,
+      "nonzero_classes": 57,
+      "max_abs_residual": 36
+    },
+    {
+      "file": "tabu_seed10",
+      "cost": 40.375,
+      "nonzero_lags": 718,
+      "nonzero_classes": 53,
+      "max_abs_residual": 28
+    },
+    {
+      "file": "tabu_seed100",
+      "cost": 44.25,
+      "nonzero_lags": 736,
+      "nonzero_classes": 56,
+      "max_abs_residual": 28
+    },
+    {
+      "file": "tabu_seed200",
+      "cost": 40.375,
+      "nonzero_lags": 718,
+      "nonzero_classes": 53,
+      "max_abs_residual": 28
+    },
+    {
+      "file": "double_fibre_seed1",
+      "cost": 49.875,
+      "nonzero_lags": 768,
+      "nonzero_classes": 60,
+      "max_abs_residual": 28
+    },
+    {
+      "file": "double_fibre_seed20",
+      "cost": 49.875,
+      "nonzero_lags": 768,
+      "nonzero_classes": 60,
+      "max_abs_residual": 28
+    }
+  ],
+  "core_found": false
+}
