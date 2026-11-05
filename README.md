@@ -108,3 +108,7 @@ Work in progress on the open orders is described in the most recent files of `re
   with no full core or Hadamard matrix yet. See [`report/h3452_stage1_20261103.md`](report/h3452_stage1_20261103.md).
   The [fixed-compression lift experiments](report/h3452_lift_20261103.md) reduce the residual and verify a
   compatible second projection, but still find no full core.
+- **Order 3452, block-exchanging ansatz (2026-11-05):** the OpenAI model's (A, B, C, τC) slice of the S7 host has an
+  exactly empty stage 1. All 40 surviving Q tuples were decided by two independent exhaustive methods, so the slice
+  holds no core. See [`report/blockswap_answer.md`](report/blockswap_answer.md), which includes a transfer screen of
+  the 863-shaped hosts.
