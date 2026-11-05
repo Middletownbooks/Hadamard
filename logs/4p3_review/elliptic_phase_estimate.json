@@ -1,0 +1,579 @@
+{
+ "script": "theory/4p3_review_elliptic.py phase-estimate",
+ "command": "theory/4p3_review_elliptic.py phase-estimate --primes 5,7,13,17,19,23,29,31,37,43,53,61,149,179 --q v4 --reps 2 --N 3000 --exact-max-p 13 --out logs/4p3_review/elliptic_phase_estimate.json",
+ "seed": 1,
+ "records": [
+  {
+   "p": 5,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    1,
+    1,
+    -1
+   ],
+   "log2_shift_choices": 27.86,
+   "gauss": {
+    "bits": 13.68,
+    "rank": 6,
+    "in_lattice": true,
+    "mahal": 0.03
+   },
+   "log2_expected_shift_solutions": 14.18,
+   "exact_shift_solutions": 7008,
+   "hash_hits": 7008,
+   "rep": 0,
+   "secs": 0.1
+  },
+  {
+   "p": 5,
+   "q": "v4",
+   "C_tuple": [
+    -1,
+    1,
+    -1,
+    1
+   ],
+   "log2_shift_choices": 27.86,
+   "gauss": {
+    "bits": 13.47,
+    "rank": 6,
+    "in_lattice": true,
+    "mahal": 0.04
+   },
+   "log2_expected_shift_solutions": 14.39,
+   "exact_shift_solutions": 16128,
+   "hash_hits": 16128,
+   "rep": 1,
+   "secs": 0.2
+  },
+  {
+   "p": 7,
+   "q": "v4",
+   "C_tuple": [
+    -1,
+    -3,
+    -1,
+    -1
+   ],
+   "log2_shift_choices": 33.69,
+   "gauss": {
+    "bits": 21.17,
+    "rank": 9,
+    "in_lattice": true,
+    "mahal": 0.06
+   },
+   "log2_expected_shift_solutions": 12.52,
+   "exact_shift_solutions": 3120,
+   "hash_hits": 3120,
+   "rep": 0,
+   "secs": 0.1
+  },
+  {
+   "p": 7,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    -1,
+    -1,
+    -3
+   ],
+   "log2_shift_choices": 33.69,
+   "gauss": {
+    "bits": 20.3,
+    "rank": 9,
+    "in_lattice": true,
+    "mahal": 0.07
+   },
+   "log2_expected_shift_solutions": 13.39,
+   "exact_shift_solutions": 4488,
+   "hash_hits": 4488,
+   "rep": 1,
+   "secs": 0.1
+  },
+  {
+   "p": 13,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    -3,
+    -3,
+    -1
+   ],
+   "log2_shift_choices": 44.41,
+   "gauss": {
+    "bits": 56.84,
+    "rank": 18,
+    "in_lattice": true,
+    "mahal": 0.09
+   },
+   "log2_expected_shift_solutions": -12.43,
+   "exact_shift_solutions": 0,
+   "hash_hits": 0,
+   "rep": 0,
+   "secs": 3.2
+  },
+  {
+   "p": 13,
+   "q": "v4",
+   "C_tuple": [
+    -1,
+    -1,
+    3,
+    -1
+   ],
+   "log2_shift_choices": 44.41,
+   "gauss": {
+    "bits": 53.33,
+    "rank": 18,
+    "in_lattice": true,
+    "mahal": 0.06
+   },
+   "log2_expected_shift_solutions": -8.92,
+   "exact_shift_solutions": 0,
+   "hash_hits": 0,
+   "rep": 1,
+   "secs": 2.9
+  },
+  {
+   "p": 17,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    1,
+    1,
+    3
+   ],
+   "log2_shift_choices": 49.05,
+   "gauss": {
+    "bits": 80.2,
+    "rank": 24,
+    "in_lattice": true,
+    "mahal": 0.1
+   },
+   "log2_expected_shift_solutions": -31.15,
+   "rep": 0,
+   "secs": 0.1
+  },
+  {
+   "p": 17,
+   "q": "v4",
+   "C_tuple": [
+    -1,
+    1,
+    3,
+    1
+   ],
+   "log2_shift_choices": 49.05,
+   "gauss": {
+    "bits": 78.49,
+    "rank": 24,
+    "in_lattice": true,
+    "mahal": 0.09
+   },
+   "log2_expected_shift_solutions": -29.44,
+   "rep": 1,
+   "secs": 0.1
+  },
+  {
+   "p": 19,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    -3,
+    3,
+    -1
+   ],
+   "log2_shift_choices": 50.98,
+   "gauss": {
+    "bits": 96.0,
+    "rank": 27,
+    "in_lattice": true,
+    "mahal": 0.1
+   },
+   "log2_expected_shift_solutions": -45.02,
+   "rep": 0,
+   "secs": 0.1
+  },
+  {
+   "p": 19,
+   "q": "v4",
+   "C_tuple": [
+    -1,
+    3,
+    -3,
+    -1
+   ],
+   "log2_shift_choices": 50.98,
+   "gauss": {
+    "bits": 92.09,
+    "rank": 27,
+    "in_lattice": true,
+    "mahal": 0.11
+   },
+   "log2_expected_shift_solutions": -41.11,
+   "rep": 1,
+   "secs": 0.1
+  },
+  {
+   "p": 23,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    -1,
+    1,
+    -5
+   ],
+   "log2_shift_choices": 54.28,
+   "gauss": {
+    "bits": 123.21,
+    "rank": 33,
+    "in_lattice": true,
+    "mahal": 0.12
+   },
+   "log2_expected_shift_solutions": -68.93,
+   "rep": 0,
+   "secs": 0.3
+  },
+  {
+   "p": 23,
+   "q": "v4",
+   "C_tuple": [
+    -3,
+    -3,
+    -3,
+    1
+   ],
+   "log2_shift_choices": 54.28,
+   "gauss": {
+    "bits": 120.65,
+    "rank": 33,
+    "in_lattice": true,
+    "mahal": 0.11
+   },
+   "log2_expected_shift_solutions": -66.37,
+   "rep": 1,
+   "secs": 0.3
+  },
+  {
+   "p": 29,
+   "q": "v4",
+   "C_tuple": [
+    3,
+    -1,
+    -1,
+    -5
+   ],
+   "log2_shift_choices": 58.3,
+   "gauss": {
+    "bits": 159.5,
+    "rank": 42,
+    "in_lattice": true,
+    "mahal": 0.14
+   },
+   "log2_expected_shift_solutions": -101.2,
+   "rep": 0,
+   "secs": 0.4
+  },
+  {
+   "p": 29,
+   "q": "v4",
+   "C_tuple": [
+    -1,
+    -5,
+    1,
+    -3
+   ],
+   "log2_shift_choices": 58.3,
+   "gauss": {
+    "bits": 156.98,
+    "rank": 42,
+    "in_lattice": true,
+    "mahal": 0.14
+   },
+   "log2_expected_shift_solutions": -98.68,
+   "rep": 1,
+   "secs": 0.4
+  },
+  {
+   "p": 31,
+   "q": "v4",
+   "C_tuple": [
+    1,
+    -3,
+    3,
+    3
+   ],
+   "log2_shift_choices": 59.45,
+   "gauss": {
+    "bits": 171.21,
+    "rank": 45,
+    "in_lattice": true,
+    "mahal": 0.14
+   },
+   "log2_expected_shift_solutions": -111.76,
+   "rep": 0,
+   "secs": 0.5
+  },
+  {
+   "p": 31,
+   "q": "v4",
+   "C_tuple": [
+    -3,
+    1,
+    -5,
+    -1
+   ],
+   "log2_shift_choices": 59.45,
+   "gauss": {
+    "bits": 170.0,
+    "rank": 45,
+    "in_lattice": true,
+    "mahal": 0.14
+   },
+   "log2_expected_shift_solutions": -110.55,
+   "rep": 1,
+   "secs": 0.3
+  },
+  {
+   "p": 37,
+   "q": "v4",
+   "C_tuple": [
+    3,
+    1,
+    -5,
+    -3
+   ],
+   "log2_shift_choices": 62.51,
+   "gauss": {
+    "bits": 206.39,
+    "rank": 54,
+    "in_lattice": true,
+    "mahal": 0.14
+   },
+   "log2_expected_shift_solutions": -143.88,
+   "rep": 0,
+   "secs": 0.5
+  },
+  {
+   "p": 37,
+   "q": "v4",
+   "C_tuple": [
+    -3,
+    -5,
+    1,
+    -3
+   ],
+   "log2_shift_choices": 62.51,
+   "gauss": {
+    "bits": 198.98,
+    "rank": 54,
+    "in_lattice": true,
+    "mahal": 0.12
+   },
+   "log2_expected_shift_solutions": -136.47,
+   "rep": 1,
+   "secs": 0.3
+  },
+  {
+   "p": 43,
+   "q": "v4",
+   "C_tuple": [
+    3,
+    -5,
+    3,
+    1
+   ],
+   "log2_shift_choices": 65.12,
+   "gauss": {
+    "bits": 258.15,
+    "rank": 63,
+    "in_lattice": true,
+    "mahal": 0.14
+   },
+   "log2_expected_shift_solutions": -193.03,
+   "rep": 0,
+   "secs": 0.5
+  },
+  {
+   "p": 43,
+   "q": "v4",
+   "C_tuple": [
+    5,
+    -1,
+    -3,
+    3
+   ],
+   "log2_shift_choices": 65.12,
+   "gauss": {
+    "bits": 255.59,
+    "rank": 63,
+    "in_lattice": true,
+    "mahal": 0.17
+   },
+   "log2_expected_shift_solutions": -190.47,
+   "rep": 1,
+   "secs": 0.5
+  },
+  {
+   "p": 53,
+   "q": "v4",
+   "C_tuple": [
+    -7,
+    1,
+    -1,
+    1
+   ],
+   "log2_shift_choices": 68.74,
+   "gauss": {
+    "bits": 338.18,
+    "rank": 78,
+    "in_lattice": true,
+    "mahal": 0.17
+   },
+   "log2_expected_shift_solutions": -269.44,
+   "rep": 0,
+   "secs": 0.7
+  },
+  {
+   "p": 53,
+   "q": "v4",
+   "C_tuple": [
+    -5,
+    1,
+    -5,
+    -3
+   ],
+   "log2_shift_choices": 68.74,
+   "gauss": {
+    "bits": 330.1,
+    "rank": 78,
+    "in_lattice": true,
+    "mahal": 0.18
+   },
+   "log2_expected_shift_solutions": -261.36,
+   "rep": 1,
+   "secs": 0.9
+  },
+  {
+   "p": 61,
+   "q": "v4",
+   "C_tuple": [
+    7,
+    -1,
+    -3,
+    -3
+   ],
+   "log2_shift_choices": 71.17,
+   "gauss": {
+    "bits": 390.31,
+    "rank": 90,
+    "in_lattice": true,
+    "mahal": 0.17
+   },
+   "log2_expected_shift_solutions": -319.14,
+   "rep": 0,
+   "secs": 1.1
+  },
+  {
+   "p": 61,
+   "q": "v4",
+   "C_tuple": [
+    -3,
+    1,
+    -5,
+    5
+   ],
+   "log2_shift_choices": 71.17,
+   "gauss": {
+    "bits": 387.9,
+    "rank": 90,
+    "in_lattice": true,
+    "mahal": 0.18
+   },
+   "log2_expected_shift_solutions": -316.73,
+   "rep": 1,
+   "secs": 1.2
+  },
+  {
+   "p": 149,
+   "q": "v4",
+   "C_tuple": [
+    -9,
+    -5,
+    -7,
+    -3
+   ],
+   "log2_shift_choices": 86.63,
+   "gauss": {
+    "bits": 1108.15,
+    "rank": 222,
+    "in_lattice": true,
+    "mahal": 0.28
+   },
+   "log2_expected_shift_solutions": -1021.52,
+   "rep": 0,
+   "secs": 15.3
+  },
+  {
+   "p": 149,
+   "q": "v4",
+   "C_tuple": [
+    -7,
+    -7,
+    7,
+    1
+   ],
+   "log2_shift_choices": 86.63,
+   "gauss": {
+    "bits": 1110.69,
+    "rank": 222,
+    "in_lattice": true,
+    "mahal": 0.28
+   },
+   "log2_expected_shift_solutions": -1024.06,
+   "rep": 1,
+   "secs": 12.4
+  },
+  {
+   "p": 179,
+   "q": "v4",
+   "C_tuple": [
+    9,
+    -1,
+    7,
+    -7
+   ],
+   "log2_shift_choices": 89.81,
+   "gauss": {
+    "bits": 1375.73,
+    "rank": 267,
+    "in_lattice": true,
+    "mahal": 0.31
+   },
+   "log2_expected_shift_solutions": -1285.92,
+   "rep": 0,
+   "secs": 27.9
+  },
+  {
+   "p": 179,
+   "q": "v4",
+   "C_tuple": [
+    3,
+    3,
+    -13,
+    1
+   ],
+   "log2_shift_choices": 89.81,
+   "gauss": {
+    "bits": 1367.63,
+    "rank": 267,
+    "in_lattice": true,
+    "mahal": 0.32
+   },
+   "log2_expected_shift_solutions": -1277.82,
+   "rep": 1,
+   "secs": 25.6
+  }
+ ]
+}

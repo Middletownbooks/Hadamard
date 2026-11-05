@@ -28,8 +28,13 @@ ANSWER_TABLE = {149: (29, 4), 179: (29, 4), 257: (37, 5), 271: (38, 5), 331: (41
                 571: (53, 6), 599: (61, 7)}
 
 
+_FORMS = {}
+
+
 def forms(m):
-    """every normal form (a > 0, ordered (t1, t2, t3)), a and t odd"""
+    """every normal form (a > 0, ordered (t1, t2, t3)), a and t odd (memoised)"""
+    if m in _FORMS:
+        return _FORMS[m]
     L = math.isqrt(m) + 3
     ts = [t for t in range(-L - 1, L + 1) if t % 2 and t * (t + 1) <= m]
     out = []
@@ -37,6 +42,7 @@ def forms(m):
         for t1, t2, t3 in itertools.product(ts, repeat=3):
             if a * a + t1 * (t1 + 1) + t2 * (t2 + 1) + t3 * (t3 + 1) == m:
                 out.append((a, t1, t2, t3))
+    _FORMS[m] = out
     return out
 
 
@@ -109,9 +115,39 @@ def table_row(p, indices=(2, 4, 6, 8, 12, 16), cmax=12):
                 cap_witness=list(wc), all_forms_pass_direct_Q_check=all(qcheck(f, p) for f in fs), per_e=per_e)
 
 
+def budget_check(pmax=1200, es=(1, 2, 3, 4, 6, 8), cs=(0, 1, 2, 3, 4)):
+    """the answer's fixed-budget inequalities [P] against the exact gate: for every prime p <= pmax, applicable e and
+    c, whenever the inequality says 'no core' the gate must fail; also the largest p at which the gate passes"""
+    primes = [p for p in range(5, pmax + 1) if all(p % d for d in range(2, math.isqrt(p) + 1))]
+    out = []
+    for e in es:
+        for c in cs:
+            largest, contradictions, npass = None, [], 0
+            for p in primes:
+                if (p - 1) % e:
+                    continue
+                S = attainable(p, e, c)
+                fs = forms(p)
+                ok = any(all(z in S for z in cells(f)) for f in fs)
+                if e % 2 == 0:
+                    B0 = 2 * c + 1
+                    says_none = 2 * (p - 1) / e - B0 > math.sqrt(4 * p + 12) and p > 4 * B0 * B0 - 3
+                else:
+                    L = (p - 1) // e - 1 - 2 * c
+                    says_none = L > 0 and 16 * L * L > 4 * p + 12
+                if ok:
+                    npass += 1
+                    largest = p
+                    if says_none:
+                        contradictions.append(p)
+            out.append(dict(e=e, c=c, primes_passing=npass, largest_passing=largest, contradictions=contradictions))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', required=True)
+    ap.add_argument('--budget-pmax', type=int, default=1200)
     ap.add_argument('--host', default='logs/openai_4p3/compression_host.json',
                     help="the answer's log, read only to compare numbers")
     a = ap.parse_args()
@@ -141,7 +177,9 @@ def main():
                         per_e_equal_cap=all(v.get('min_c') == r['min_cap'] for v in r['per_e'].values())))
     agree_table = all(c['answer_table'] is None or c['answer_table'] == c['ours'] for c in cmp)
     agree_log = all(c['answer_log'] is None or c['answer_log'] == c['ours'] for c in cmp)
+    bc = budget_check(a.budget_pmax)
     res = dict(script='theory/4p3_review_repair.py', command=' '.join(sys.argv), seed=None,
+               budget_inequalities_vs_gate=bc, budget_contradictions=sum(len(x['contradictions']) for x in bc),
                formula_vs_explicit_cells=formula_checks, formula_all_ok=all(x[3] for x in formula_checks),
                rows=rows, comparison=cmp, agree_with_answer_table=agree_table, agree_with_answer_log=agree_log,
                targets_per_e_equal_cap=all(c['per_e_equal_cap'] for c in cmp if c['p'] in TARGETS),
@@ -152,6 +190,9 @@ def main():
         if c['p'] in TARGETS:
             r = next(x for x in rows if x['p'] == c['p'])
             print(c['p'], c['ours'], c['answer_table'], {e: v['min_c'] for e, v in r['per_e'].items()})
+    for x in bc:
+        print('budget e=%d c=%d: %d primes pass, largest %s, contradictions %s' % (
+            x['e'], x['c'], x['primes_passing'], x['largest_passing'], x['contradictions']))
     print(json.dumps(dict(formula_all_ok=res['formula_all_ok'], agree_with_answer_table=agree_table,
                           agree_with_answer_log=agree_log, targets_per_e_equal_cap=res['targets_per_e_equal_cap'],
                           secs=res['secs'])))

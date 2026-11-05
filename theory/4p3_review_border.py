@@ -5,8 +5,9 @@ odd |K|): independent check of the certificates, and end-to-end assembly of real
 Credit.  The universal-border theorem and the certificates (logs/openai_4p3/border_certificates.json) are by the OpenAI
 model; the bordered construction is Kumar's form of Theorem 7 of Egan-Kotsireas-London-O Cathain (EKLO); the
 frame-search border reduction that found the certificates is the repository's (theory/bt_border.py).  The cores: 1916
-(v = 479, data/core_v479_b3.txt, this repository), 3964 (Kumar, https://github.com/vatskishan03/hadamard,
-hadamard/3964/certificate.json, Apache-2.0), and elliptic-ansatz cores found by theory/4p3_review_elliptic.py.
+(v = 479: the published core of Alpoge-Voinov-Reynolds-Haertle's H(1916), data/core_v479_b3.txt), 3964 (Kumar,
+https://github.com/vatskishan03/hadamard, hadamard/3964/certificate.json, Apache-2.0), and elliptic-ansatz cores found by
+theory/4p3_review_elliptic.py.
 This script is new (Claude Code review) and imports no repository code: the group, the Goethals-Seidel array (Kumar's
 layout, from its definition), the core check, the normalisation and the assembly are written here from scratch.  The
 assembled matrices are verified by theory/4p3_review_hverify.py, a separate process that shares no code with this file.

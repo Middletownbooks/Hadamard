@@ -1,0 +1,30 @@
+{
+  "command": "theory/openai_4p3_search.py --primes 23,29,31 --phase-max-p 0 --seconds 540 --out logs/openai_4p3/next_seeds.json",
+  "seed": null,
+  "arithmetic": "Python integers",
+  "mode": "seed_then_selected_phases",
+  "records": [
+    {
+      "p": 23,
+      "base_vectors": 308,
+      "defect_vectors": 924,
+      "pairs": 427350,
+      "status": "no_seed_quadruple"
+    },
+    {
+      "p": 29,
+      "base_vectors": 532,
+      "defect_vectors": 1540,
+      "pairs": 1186570,
+      "status": "no_seed_quadruple"
+    },
+    {
+      "p": 31,
+      "base_vectors": 580,
+      "defect_vectors": 1740,
+      "pairs": 1514670,
+      "status": "no_seed_quadruple"
+    }
+  ],
+  "seconds": 15.263
+}

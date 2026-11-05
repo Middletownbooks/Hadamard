@@ -112,7 +112,7 @@ def gate(p, want_list=True, cap=200000):
     hT = int(T @ coef)
     # pairs (D_i, D_j), i <= j, keyed by hash; ordered weights for the parameter-tuple count
     nb = len(Bv)
-    I, J = np.triu_indices(nb)
+    I, J = (x.astype(np.int32) for x in np.triu_indices(nb))
     hp = hb[I] + hb[J]
     o = np.argsort(hp, kind='stable')
     hp, I, J = hp[o], I[o], J[o]
@@ -390,6 +390,92 @@ def sample_K_vectors(p, N, rng):
     return V
 
 
+def random_cells(p, rng, chi):
+    """row 0: 4 copies of a uniform seed; rows 1..3: (b', b, b, b) for a uniform (seed, negative root) pair"""
+    def rs():
+        return (int(rng.integers(2, p)), int(rng.choice((1, -1))), int(rng.integers(8)), int(rng.integers(1, p)))
+    cells = [[seed(p, *rs(), chi=chi)] * 4]
+    while len(cells) < 4:
+        par = rs()
+        b = seed(p, *par, chi=chi)
+        negs = [k for k in range(p) if (par[3] * k) % p in (0, 1, par[0]) and b[k] == -1]
+        if rng.random() >= len(negs) / 3:
+            continue
+        b2 = b.copy(); b2[negs[int(rng.integers(len(negs)))]] = 1
+        cells.append([b2, b, b, b])
+    return cells
+
+
+def cells_with_C(p, rng, chi):
+    """a random realisation satisfying the compression condition (C): c_0^2 + sum_i c_i (c_i + 1) = p, where c_0 is a
+    seed sum and c_i a switched-row seed sum (the cell sums are eps T_l + (3 - 2 popcount(mask)), T_l = sum_k
+    chi(f_l(k)), independent of the dilation); uniform over the (C)-tuples, then over the parameters realising them"""
+    k = np.arange(p)
+    T = {lam: int(chi[(k * (k - 1) % p) * ((k - lam) % p) % p].sum()) for lam in range(2, p)}
+    ordp, swp = {}, {}
+    for lam, t in T.items():
+        for eps in (1, -1):
+            for mask in range(8):
+                s = eps * t + 3 - 2 * bin(mask).count('1')
+                ordp.setdefault(s, []).append((lam, eps, mask))
+                if mask:
+                    swp.setdefault(s, []).append((lam, eps, mask))
+    tuples = [(c0, c1, c2, c3) for c0 in ordp for c1 in swp for c2 in swp for c3 in swp
+              if c0 * c0 + c1 * (c1 + 1) + c2 * (c2 + 1) + c3 * (c3 + 1) == p]
+    if not tuples:
+        return None, None
+    c = tuples[int(rng.integers(len(tuples)))]
+    lam, eps, mask = ordp[c[0]][int(rng.integers(len(ordp[c[0]])))]
+    cells = [[seed(p, lam, eps, mask, int(rng.integers(1, p)), chi=chi)] * 4]
+    for ci in c[1:]:
+        lam, eps, mask = swp[ci][int(rng.integers(len(swp[ci])))]
+        u = int(rng.integers(1, p))
+        b = seed(p, lam, eps, mask, u, chi=chi)
+        negs = [kk for kk in range(p) if (u * kk) % p in (0, 1, lam) and b[kk] == -1]
+        b2 = b.copy(); b2[negs[int(rng.integers(len(negs)))]] = 1
+        cells.append([b2, b, b, b])
+    return cells, list(c)
+
+
+def s_vectors(cells, q, H):
+    """(S)-vectors of one row for shift rows H (N x 4, H[:, 0] = 0): shape (N, 3p)"""
+    p = len(cells[0])
+    par = partner(q)
+    t = np.arange(p)
+    out = np.zeros((len(H), 3, p), np.int64)
+    for d in range(1, 4):
+        for a_ in range(4):
+            b_ = par[d][a_]
+            C = pcf_table(cells[a_], cells[b_])
+            out[:, d - 1, :] += C[(t[None, :] + H[:, a_:a_ + 1] - H[:, b_:b_ + 1]) % p]
+    return out.reshape(len(H), 3 * p)
+
+
+def phase_estimate(p, q, N, rng, QG, exact=False):
+    """[E] bits of the phase gate (S) for one random realisation: N uniform shift choices per row, the summed
+    (S)-vector, lattice Gaussian at the target 4; expected number of shift solutions = p^12 2^-bits.  With exact, the
+    exact number of shift solutions of the same realisation (2 + 2 join over all p^3 shift triples per row)."""
+    chi = chi_table(p)
+    cells, ctuple = cells_with_C(p, rng, chi)
+    if cells is None:
+        return dict(p=p, q=q, note='no (C) tuple')
+    V = np.zeros((N, 3 * p), np.int64)
+    for c in cells:
+        H = np.concatenate([np.zeros((N, 1), np.int64), rng.integers(0, p, (N, 3))], 1)
+        V += s_vectors(c, q, H)
+    gb = QG.gauss_bits(V, np.full(3 * p, 4, np.int64), nlat=min(400, N - 1))
+    rec = dict(p=p, q=q, C_tuple=ctuple, log2_shift_choices=round(12 * math.log2(p), 2), gauss=gb,
+               log2_expected_shift_solutions=round(12 * math.log2(p) - gb['bits'], 2)
+               if np.isfinite(gb.get('bits', np.nan)) else None)
+    if exact:
+        coef = np.random.default_rng(99).integers(1, 2 ** 62, size=3 * p, dtype=np.int64)
+        ph = PhaseHits(p, q, cells, coef)
+        sols = sum(1 for k in range(ph.total) if ph.fetch(k) is not None) if ph.total < 10 ** 6 else None
+        rec['exact_shift_solutions'] = sols
+        rec['hash_hits'] = ph.total
+    return rec
+
+
 def n_param_tuples(p):
     """number of ordered parameter quadruples: row 0: (p-2) * 2 * 8 * (p-1); rows 1..3: sum over seeds of the number
     of negative roots = (p-2) * 2 * (p-1) * sum_mask popcount(mask) = (p-2)(p-1) * 2 * 12"""
@@ -410,7 +496,66 @@ def main():
     e = sub.add_parser('examples'); e.add_argument('--out', required=True)
     s = sub.add_parser('estimate'); s.add_argument('--primes', required=True); s.add_argument('--out', required=True)
     s.add_argument('--N', type=int, default=4000); s.add_argument('--seed', type=int, default=1)
+    f = sub.add_parser('phase-estimate'); f.add_argument('--primes', required=True); f.add_argument('--out', required=True)
+    f.add_argument('--q', default='v4'); f.add_argument('--N', type=int, default=4000)
+    f.add_argument('--seed', type=int, default=1); f.add_argument('--reps', type=int, default=1)
+    f.add_argument('--exact-max-p', type=int, default=13)
+    w = sub.add_parser('collect', help='merge the rebuilt examples and the random cores into the --elliptic input of '
+                       'theory/4p3_review_border.py')
+    w.add_argument('--examples', required=True); w.add_argument('--random', required=True, help='comma list')
+    w.add_argument('--out', required=True)
+    v = sub.add_parser('coverage'); v.add_argument('--out', required=True)
+    v.add_argument('--answer-log', default=os.path.join(ROOT, 'logs/openai_4p3/coverage.json'))
     a = ap.parse_args()
+    if a.cmd == 'collect':
+        L = [dict(name=r['name'] + ' (rebuilt by 4p3_review_elliptic)', p=r['p'], q=r['q'], sequences=r['sequences'],
+                  source="answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py "
+                         "examples", parameters=r['parameters']) for r in json.load(open(a.examples))]
+        for fn in a.random.split(','):
+            for c in json.load(open(fn))['cores']:
+                L.append(dict(name=c['name'], p=c['p'], q=c['q'], sequences=c['sequences'], source=c['source'],
+                              parameters=c['parameters']))
+        with open(a.out, 'w') as fh:
+            json.dump(L, fh)
+        print(len(L), [x['name'] for x in L])
+        return
+    if a.cmd == 'coverage':
+        # the answer's (C) witnesses at the 16 targets (its log, read as data): (C) and attainability by this file's
+        # trace computation, and the cell sums of the parameters rebuilt with this file's seed definition
+        out = []
+        for r in json.load(open(a.answer_log))['records']:
+            p = r['p']; chi = chi_table(p); k = np.arange(p)
+            T = {lam: int(chi[(k * (k - 1) % p) * ((k - lam) % p) % p].sum()) for lam in range(2, p)}
+            ords = {e * t + 3 - 2 * bin(m).count('1') for t in T.values() for e in (1, -1) for m in range(8)}
+            sws = {e * t + 3 - 2 * bin(m).count('1') for t in T.values() for e in (1, -1) for m in range(1, 8)}
+            c = r['witness']
+            ok = c[0] in ords and all(x in sws for x in c[1:]) and c[0] ** 2 + sum(x * (x + 1) for x in c[1:]) == p
+            sums = [int(seed(p, par['lam'], par['sign'], par['mask'], par['scale'], chi).sum()) for par in r['parameters']]
+            out.append(dict(p=p, witness=c, C_holds_and_attainable=ok, rebuilt_seed_sums=sums, rebuilt_match=sums == c))
+            print(p, c, ok, sums == c, flush=True)
+        res = dict(script='theory/4p3_review_elliptic.py coverage', command=' '.join(sys.argv), records=out,
+                   all_ok=all(x['C_holds_and_attainable'] and x['rebuilt_match'] for x in out))
+        with open(a.out, 'w') as fh:
+            json.dump(res, fh, indent=1)
+        print('all', res['all_ok'])
+        return
+    if a.cmd == 'phase-estimate':
+        sys.path.insert(0, HERE)
+        import q523_gauss as QG                               # the repository's lattice Gaussian (estimate only)
+        res = dict(script='theory/4p3_review_elliptic.py phase-estimate', command=' '.join(sys.argv), seed=a.seed,
+                   records=[])
+        for p in map(int, a.primes.split(',')):
+            for r in range(a.reps):
+                t0 = time.time()
+                rng = np.random.default_rng(a.seed + 1000 * p + r)
+                rec = phase_estimate(p, a.q, a.N, rng, QG, exact=p <= a.exact_max_p)
+                rec['rep'] = r
+                rec['secs'] = round(time.time() - t0, 1)
+                res['records'].append(rec)
+                print(json.dumps(rec), flush=True)
+                with open(a.out, 'w') as fh:
+                    json.dump(res, fh, indent=1)
+        return
     if a.cmd == 'gate':
         res = dict(script='theory/4p3_review_elliptic.py', command=' '.join(sys.argv), seed=None, records=[])
         for p in map(int, a.primes.split(',')):

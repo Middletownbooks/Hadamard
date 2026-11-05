@@ -1,0 +1,8 @@
+{"p": 149, "equations": 74, "log2_param_quadruples": 75.39, "gauss": {"bits": 438.28, "rank": 74, "in_lattice": true, "mahal": 1.54}, "log2_expected": -362.89, "secs": 2.8}
+{"p": 257, "equations": 128, "log2_param_quadruples": 81.73, "gauss": {"bits": 810.62, "rank": 128, "in_lattice": true, "mahal": 1.54}, "log2_expected": -728.89, "secs": 5.9}
+{"p": 331, "equations": 165, "log2_param_quadruples": 84.67, "gauss": {"bits": 1073.09, "rank": 165, "in_lattice": true, "mahal": 1.53}, "log2_expected": -988.42, "secs": 11.8}
+{"p": 367, "equations": 183, "log2_param_quadruples": 85.86, "gauss": {"bits": 1202.82, "rank": 183, "in_lattice": true, "mahal": 1.55}, "log2_expected": -1116.96, "secs": 13.5}
+{"p": 457, "equations": 228, "log2_param_quadruples": 88.41, "gauss": {"bits": 1534.82, "rank": 228, "in_lattice": true, "mahal": 1.6}, "log2_expected": -1446.41, "secs": 25.7}
+{"p": 467, "equations": 233, "log2_param_quadruples": 88.66, "gauss": {"bits": 1571.09, "rank": 233, "in_lattice": true, "mahal": 1.61}, "log2_expected": -1482.43, "secs": 26.5}
+{"p": 521, "equations": 260, "log2_param_quadruples": 89.92, "gauss": {"bits": 1772.07, "rank": 260, "in_lattice": true, "mahal": 1.53}, "log2_expected": -1682.15, "secs": 37.3}
+{"p": 571, "equations": 285, "log2_param_quadruples": 90.98, "gauss": {"bits": 1961.72, "rank": 285, "in_lattice": true, "mahal": 1.57}, "log2_expected": -1870.74, "secs": 47.3}

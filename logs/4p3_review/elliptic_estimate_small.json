@@ -1,0 +1,125 @@
+{
+ "script": "theory/4p3_review_elliptic.py estimate",
+ "command": "theory/4p3_review_elliptic.py estimate --primes 5,7,11,13,17,19,23,29,31 --N 4000 --out logs/4p3_review/elliptic_estimate_small.json",
+ "seed": 1,
+ "N": 4000,
+ "records": [
+  {
+   "p": 5,
+   "equations": 2,
+   "log2_param_quadruples": 32.09,
+   "gauss": {
+    "bits": 8.32,
+    "rank": 2,
+    "in_lattice": true,
+    "mahal": 1.48
+   },
+   "log2_expected": 23.77,
+   "secs": 1.2
+  },
+  {
+   "p": 7,
+   "equations": 3,
+   "log2_param_quadruples": 37.38,
+   "gauss": {
+    "bits": 12.15,
+    "rank": 3,
+    "in_lattice": true,
+    "mahal": 1.19
+   },
+   "log2_expected": 25.23,
+   "secs": 1.1
+  },
+  {
+   "p": 11,
+   "equations": 5,
+   "log2_param_quadruples": 43.72,
+   "gauss": {
+    "bits": 20.52,
+    "rank": 5,
+    "in_lattice": true,
+    "mahal": 1.53
+   },
+   "log2_expected": 23.2,
+   "secs": 1.2
+  },
+  {
+   "p": 13,
+   "equations": 6,
+   "log2_param_quadruples": 45.93,
+   "gauss": {
+    "bits": 24.15,
+    "rank": 6,
+    "in_lattice": true,
+    "mahal": 1.28
+   },
+   "log2_expected": 21.78,
+   "secs": 1.1
+  },
+  {
+   "p": 17,
+   "equations": 8,
+   "log2_param_quadruples": 49.38,
+   "gauss": {
+    "bits": 36.98,
+    "rank": 8,
+    "in_lattice": true,
+    "mahal": 1.46
+   },
+   "log2_expected": 12.4,
+   "secs": 1.1
+  },
+  {
+   "p": 19,
+   "equations": 9,
+   "log2_param_quadruples": 50.78,
+   "gauss": {
+    "bits": 41.01,
+    "rank": 9,
+    "in_lattice": true,
+    "mahal": 1.5
+   },
+   "log2_expected": 9.77,
+   "secs": 1.4
+  },
+  {
+   "p": 23,
+   "equations": 11,
+   "log2_param_quadruples": 53.16,
+   "gauss": {
+    "bits": 50.72,
+    "rank": 11,
+    "in_lattice": true,
+    "mahal": 1.27
+   },
+   "log2_expected": 2.44,
+   "secs": 1.2
+  },
+  {
+   "p": 29,
+   "equations": 14,
+   "log2_param_quadruples": 56.0,
+   "gauss": {
+    "bits": 67.69,
+    "rank": 14,
+    "in_lattice": true,
+    "mahal": 1.39
+   },
+   "log2_expected": -11.69,
+   "secs": 1.2
+  },
+  {
+   "p": 31,
+   "equations": 15,
+   "log2_param_quadruples": 56.81,
+   "gauss": {
+    "bits": 72.92,
+    "rank": 15,
+    "in_lattice": true,
+    "mahal": 1.52
+   },
+   "log2_expected": -16.11,
+   "secs": 1.2
+  }
+ ]
+}
