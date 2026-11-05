@@ -255,7 +255,7 @@ def combo_cells(combo):
     return cells, meta
 
 
-def cores(p, q, mode='exist', seconds=540, pick_seed=2026, exclude=()):
+def cores(p, q, mode='exist', seconds=540, pick_seed=2026, exclude=(), worker=(0, 1)):
     """mode 'exist': every gate solution and every realisation in a fixed order, stop at the first core (existence in
     the ansatz is decided when the loop completes or a core is found; a time cap means UNKNOWN).
     mode 'random': seeded uniform choice of a realisation (gate solution weighted by its number of realisations),
@@ -271,7 +271,47 @@ def cores(p, q, mode='exist', seconds=540, pick_seed=2026, exclude=()):
                gate_solutions=len(sols), realisations_per_solution=sizes, realisations_total=int(sum(sizes)),
                combos_tried=0, status=None)
     found = []
-    if mode == 'exist':
+    if mode == 'exist-orbit':
+        # global dilation k -> u k (u in F_p^*) maps cores to cores and realisations to realisations, and the rows
+        # 1..3 may be reordered: one realisation per orbit (canonical key = min over u of (b0, sorted rows)); the
+        # orbit representatives are split between workers by index mod W
+        perms = [np.array([(u * k) % p for k in range(p)]) for u in range(1, p)]
+
+        def key_of(combo, P=None):
+            (b0, _), *rest = combo
+            f = (lambda v: tuple(np.array(v)[P].tolist())) if P is not None else (lambda v: tuple(v))
+            return (f(b0), tuple(sorted(f(b2) + f(b) for (b2, b), _ in rest)))
+        seen = set(); reps = []
+        for s, (r0, rs) in zip(sols, reals):
+            for combo in itertools.product(list(r0.items()), *[list(d.items()) for d in rs]):
+                kc = min(key_of(combo, P) for P in perms)
+                if kc not in seen:
+                    seen.add(kc); reps.append(combo)
+        out['orbits'] = len(reps)
+        part, W = worker
+        mine = reps[part::W]
+        out['orbits_this_worker'] = len(mine)
+        for combo in mine:
+            if time.time() - t0 > seconds:
+                out['status'] = 'capped (unknown)'
+                break
+            out['combos_tried'] += 1
+            cells, meta = combo_cells(combo)
+            ph = PhaseHits(p, q, cells, coef)
+            for k in range(ph.total):
+                sh = ph.fetch(k)
+                if sh is not None:
+                    xs = build_core(p, cells, sh)
+                    assert core_check(xs, p, q), 'phase join returned a non-core'
+                    found.append(dict(rows=meta, shifts=sh, sequences=[x.tolist() for x in xs],
+                                      shift_hits_in_combo=ph.total))
+                    break
+            if found:
+                out['status'] = 'core found'
+                break
+        if out['status'] is None:
+            out['status'] = 'no core among this worker\'s orbit representatives (exhaustive)'
+    elif mode == 'exist':
         for s, (r0, rs) in zip(sols, reals):
             for combo in itertools.product(list(r0.items()), *[list(d.items()) for d in rs]):
                 if time.time() - t0 > seconds:
@@ -489,7 +529,9 @@ def main():
     sub = ap.add_subparsers(dest='cmd', required=True)
     g = sub.add_parser('gate'); g.add_argument('--primes', required=True); g.add_argument('--out', required=True)
     c = sub.add_parser('cores'); c.add_argument('--p', type=int, required=True); c.add_argument('--q', required=True)
-    c.add_argument('--out', required=True); c.add_argument('--mode', choices=('exist', 'random'), default='exist')
+    c.add_argument('--out', required=True)
+    c.add_argument('--mode', choices=('exist', 'exist-orbit', 'random'), default='exist')
+    c.add_argument('--part', default='0/1', help='exist-orbit: worker i/W')
     c.add_argument('--seconds', type=float, default=540)
     c.add_argument('--pick-seed', type=int, default=2026)
     c.add_argument('--exclude', default='', help='JSON core file(s) to exclude from the random pick (comma list)')
@@ -570,7 +612,8 @@ def main():
         for fn in [x for x in a.exclude.split(',') if x]:
             d = json.load(open(fn))
             excl.add(tuple(np.concatenate([np.array(s) for s in d['sequences']]).tolist()))
-        out, found = cores(a.p, a.q, mode=a.mode, seconds=a.seconds, pick_seed=a.pick_seed, exclude=excl)
+        out, found = cores(a.p, a.q, mode=a.mode, seconds=a.seconds, pick_seed=a.pick_seed, exclude=excl,
+                           worker=tuple(int(x) for x in a.part.split('/')))
         out.update(script='theory/4p3_review_elliptic.py', command=' '.join(sys.argv))
         out['cores'] = [dict(name='elliptic p=%d %s (%s)' % (a.p, a.q, a.mode), p=a.p, q=a.q,
                              source='theory/4p3_review_elliptic.py cores --mode %s --pick-seed %d' % (a.mode, a.pick_seed),
