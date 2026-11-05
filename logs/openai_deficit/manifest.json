@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-05",
+  "purpose": "Short exact screens and synthetic estimates, no production searches",
+  "source_branch_merged": "e436db24e3a09b76139f168081669ffac57df1ae",
+  "original_codex_head": "7fb043467fc0fee636ce7419463f324f3446cb39",
+  "runs": [
+    {
+      "command": "python3 theory/openai_deficit_symmetry.py --m 5 > logs/openai_deficit/symmetry_863.json",
+      "seed": null,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/symmetry_863.json",
+      "sha256": "53d956d32337a407ae18d1760b20a1cc395b37edcea00c6accdc0f4780ac6403"
+    },
+    {
+      "command": "python3 theory/openai_deficit_symmetry.py --m 3 > logs/openai_deficit/symmetry_519.json",
+      "seed": null,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/symmetry_519.json",
+      "sha256": "24c074847dca5718dc82b206aed608441e98d005614ae40f536d743ddb58bd2e"
+    },
+    {
+      "command": "python3 theory/openai_deficit_estimate.py --m 5 --N 4000 --seed 863 > logs/openai_deficit/estimate_863.json",
+      "seed": 863,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/estimate_863.json",
+      "sha256": "87a8932cc19f6ffd8ddc71f37e26150cadac8d4798772f6f9e287ec62c6dbc5e"
+    },
+    {
+      "command": "python3 theory/openai_deficit_estimate.py --m 5 --N 4000 --seed 864 > logs/openai_deficit/estimate_863_seed864.json",
+      "seed": 864,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/estimate_863_seed864.json",
+      "sha256": "54fb3714f94658a084675b9515bbe2544a56c882bcd0f32c466021f7a8be1aac"
+    },
+    {
+      "command": "python3 theory/openai_deficit_estimate.py --m 3 --N 4000 --seed 519 > logs/openai_deficit/estimate_519.json",
+      "seed": 519,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/estimate_519.json",
+      "sha256": "b860b6e9a6e95a79bb7e4042cd6ac2910a132b8bf1e9493e7c25679820d61958"
+    },
+    {
+      "command": "python3 theory/openai_deficit_controls.py --m 5 --seed 863 > logs/openai_deficit/control_863.json",
+      "seed": 863,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/control_863.json",
+      "sha256": "b090be33d043048d2eb018ca36e77edb2afb7cf8416768fe9f732430fbe34a87"
+    },
+    {
+      "command": "python3 theory/openai_deficit_controls.py --m 3 --seed 519 > logs/openai_deficit/control_519.json",
+      "seed": 519,
+      "exit_code": 0,
+      "output": "logs/openai_deficit/control_519.json",
+      "sha256": "8a180c42c22fd71905b14c84c73d6da9c51013af8e5924fd95e690cc91ca73af"
+    }
+  ],
+  "conditional_costs": [
+    {
+      "source": "estimate_863",
+      "n": 28,
+      "conditional_exponent": 45.978216014845046,
+      "parent_cost_assumed": 0
+    },
+    {
+      "source": "estimate_863",
+      "n": 29,
+      "conditional_exponent": 45.07611632360675,
+      "parent_cost_assumed": 0
+    },
+    {
+      "source": "estimate_863",
+      "n": 30,
+      "conditional_exponent": 44.25399097959421,
+      "parent_cost_assumed": 0
+    },
+    {
+      "source": "estimate_863_seed864",
+      "n": 28,
+      "conditional_exponent": 46.509268808628434,
+      "parent_cost_assumed": 0
+    },
+    {
+      "source": "estimate_863_seed864",
+      "n": 29,
+      "conditional_exponent": 45.60446531359763,
+      "parent_cost_assumed": 0
+    },
+    {
+      "source": "estimate_863_seed864",
+      "n": 30,
+      "conditional_exponent": 44.7778621203437,
+      "parent_cost_assumed": 0
+    }
+  ],
+  "validation": [
+    "Python compilation passed",
+    "All 512 planted-face class PAFs checked with integer arithmetic at each order",
+    "Independent Cartesian alphabet-row enumeration agrees with joint energy DP at both orders"
+  ],
+  "not_run": [
+    "Full real-target stage-1 gate for new 863 ansatz",
+    "Production S/D joins",
+    "Hadamard matrix construction"
+  ]
+}

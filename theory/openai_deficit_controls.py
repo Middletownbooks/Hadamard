@@ -5,9 +5,41 @@ No true-target core search; no claimed complexity calibration.
 import argparse
 import itertools as it
 import json
+from collections import defaultdict
 import numpy as np
 from h863_analog import Host
 from openai_deficit_symmetry import SW, q_gate, joint_gate, W
+
+
+def independent_joint_check(m, qs):
+    """Cartesian-product row enumeration, independent of the reachable-state DP."""
+    alphabet = (-43,-41,-29,-27,-15,-13,-1,1,13,15,27,29,41,43)
+    cap = 16*m*42-504
+    ordinary = defaultdict(set); reflected = defaultdict(set)
+    for row in it.product(alphabet,repeat=m):
+        en=sum(a*a-1 for a in row)
+        if en<=cap:
+            ordinary[sum(row)].add(en)
+    weights=(1,)+(2,)*((m-1)//2)
+    for row in it.product(alphabet,repeat=len(weights)):
+        en=sum(w*(a*a-1) for w,a in zip(weights,row))
+        if en<=cap:
+            reflected[sum(w*a for w,a in zip(weights,row))].add(en)
+    def convolution(sets):
+        values={0}
+        for s in sets:
+            values={a+b for a in values for b in s if a+b<=cap}
+        return values
+    survivors=[]
+    for zs in qs:
+        terms=[]
+        for z in zs[:2]:
+            terms.extend((reflected[z[0]],reflected[z[3]],{2*e for e in ordinary[z[1]]}))
+        terms.extend({2*e for e in ordinary[a]} for a in zs[2])
+        if cap in convolution(terms):
+            survivors.append(zs)
+    assert survivors==joint_gate(m,qs)
+    return len(survivors)
 
 
 def exact_paf(host, x):
@@ -70,7 +102,8 @@ def main():
     print(json.dumps(dict(m=m,seed=args.seed,face_bits=9,candidates=512,
                          plant=plant,hits=hits,all_exact_paf_agree=True,
                          quadratic_nonzero_pairs=nonzero,pairs=len(quadratic),
-                         q_candidates_checked=len(qs),joint_survivors=len(joint_gate(m,qs)))))
+                         q_candidates_checked=len(qs),joint_survivors=independent_joint_check(m,qs),
+                         independent_cartesian_gate_agrees=True)))
 
 
 if __name__=='__main__':
