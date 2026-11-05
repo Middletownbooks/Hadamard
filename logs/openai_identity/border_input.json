@@ -1,0 +1,236 @@
+[
+  {
+    "name": "answer example p=3 v4 (rebuilt by 4p3_review_elliptic)",
+    "p": 3,
+    "q": "v4",
+    "sequences": [
+      [
+        -1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        -1
+      ],
+      [
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ]
+    ],
+    "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+    "parameters": [
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 1,
+        "scale": 1,
+        "shifts": [
+          0,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 1,
+        "scale": 1,
+        "root": 0,
+        "shifts": [
+          0,
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 3,
+        "scale": 1,
+        "root": 0,
+        "shifts": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 3,
+        "scale": 1,
+        "root": 0,
+        "shifts": [
+          0,
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "name": "answer example p=3 z4 (rebuilt by 4p3_review_elliptic)",
+    "p": 3,
+    "q": "z4",
+    "sequences": [
+      [
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        -1
+      ],
+      [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ]
+    ],
+    "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+    "parameters": [
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 1,
+        "scale": 1,
+        "shifts": [
+          0,
+          0,
+          2,
+          1
+        ]
+      },
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 1,
+        "scale": 1,
+        "root": 0,
+        "shifts": [
+          0,
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 3,
+        "scale": 1,
+        "root": 0,
+        "shifts": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "lam": 2,
+        "sign": -1,
+        "mask": 3,
+        "scale": 1,
+        "root": 0,
+        "shifts": [
+          0,
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  }
+]

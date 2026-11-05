@@ -1,0 +1,248 @@
+{
+  "script": "theory/openai_identity_verify.py",
+  "expectation": "core",
+  "cases": 6,
+  "all_expected": true,
+  "results": [
+    {
+      "name": "answer example p=3 v4 (rebuilt by 4p3_review_elliptic)",
+      "q": "v4",
+      "factors": [
+        3
+      ],
+      "m": 3,
+      "paf": {
+        "ok": true,
+        "lags": 12,
+        "bad_lags": 0,
+        "first_bad": null
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "60",
+        "required": 60,
+        "excess": "0",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "df82b04e2c0b6bdc66eb8eac3bdf9558ce7f16887983cad7964d4aefe19fec6a"
+    },
+    {
+      "name": "answer example p=3 z4 (rebuilt by 4p3_review_elliptic)",
+      "q": "z4",
+      "factors": [
+        3
+      ],
+      "m": 3,
+      "paf": {
+        "ok": true,
+        "lags": 12,
+        "bad_lags": 0,
+        "first_bad": null
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "60",
+        "required": 60,
+        "excess": "0",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "2cdf87b84d4909a6395e470a4243e1160008d2ab98c898ef5fd5279c8651054e"
+    },
+    {
+      "name": "answer example p=5 v4 (rebuilt by 4p3_review_elliptic)",
+      "q": "v4",
+      "factors": [
+        5
+      ],
+      "m": 5,
+      "paf": {
+        "ok": true,
+        "lags": 20,
+        "bad_lags": 0,
+        "first_bad": null
+      },
+      "primitive_energy": {
+        "cells": [
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "4",
+          "6",
+          "6",
+          "6",
+          "4",
+          "6",
+          "6",
+          "6"
+        ],
+        "total": "92",
+        "required": 92,
+        "excess": "0",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "bd9a37091289a77ba8fabb6f876782115576f502cd93d36fd84cb57682c8bd1f"
+    },
+    {
+      "name": "answer example p=5 z4 (rebuilt by 4p3_review_elliptic)",
+      "q": "z4",
+      "factors": [
+        5
+      ],
+      "m": 5,
+      "paf": {
+        "ok": true,
+        "lags": 20,
+        "bad_lags": 0,
+        "first_bad": null
+      },
+      "primitive_energy": {
+        "cells": [
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "4",
+          "6",
+          "6",
+          "6",
+          "4",
+          "6",
+          "6",
+          "6"
+        ],
+        "total": "92",
+        "required": 92,
+        "excess": "0",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "0d270aea826f7b1fe179e9f034cbe23c7cea075ba597ab9d6cff1ef12d14acde"
+    },
+    {
+      "name": "answer example p=7 v4 (rebuilt by 4p3_review_elliptic)",
+      "q": "v4",
+      "factors": [
+        7
+      ],
+      "m": 7,
+      "paf": {
+        "ok": true,
+        "lags": 28,
+        "bad_lags": 0,
+        "first_bad": null
+      },
+      "primitive_energy": {
+        "cells": [
+          "8",
+          "8",
+          "8",
+          "8",
+          "20/3",
+          "8",
+          "8",
+          "8",
+          "20/3",
+          "8",
+          "8",
+          "8",
+          "20/3",
+          "8",
+          "8",
+          "8"
+        ],
+        "total": "124",
+        "required": 124,
+        "excess": "0",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "064d33327dc3673ef14ff5e023f0cc7d02eebefa0efc42a4ac23b48fbee2cab7"
+    },
+    {
+      "name": "elliptic p=7 z4 (random)",
+      "q": "z4",
+      "factors": [
+        7
+      ],
+      "m": 7,
+      "paf": {
+        "ok": true,
+        "lags": 28,
+        "bad_lags": 0,
+        "first_bad": null
+      },
+      "primitive_energy": {
+        "cells": [
+          "8",
+          "8",
+          "8",
+          "8",
+          "20/3",
+          "8",
+          "8",
+          "8",
+          "20/3",
+          "8",
+          "8",
+          "8",
+          "20/3",
+          "8",
+          "8",
+          "8"
+        ],
+        "total": "124",
+        "required": 124,
+        "excess": "0",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "ac99234a7bafc7b5d419554799c9fdd077c910686838ea0f6fa9b0390672b53d"
+    }
+  ]
+}

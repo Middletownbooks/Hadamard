@@ -57,7 +57,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('input')
     ap.add_argument('--out', required=True)
-    ap.add_argument('--expect', choices=['reject-tensor', 'core'], required=True)
+    ap.add_argument('--expect', choices=['reject-tensor', 'reject-candidate', 'core'], required=True)
     a = ap.parse_args()
     data = json.loads(Path(a.input).read_text())
     results = []
@@ -69,6 +69,8 @@ def main():
         if a.expect == 'reject-tensor':
             assert not item['paf']['ok'], item
             assert item['primitive_energy']['bound_16m_plus_16_holds'], item
+        elif a.expect == 'reject-candidate':
+            assert not item['paf']['ok'], item
         else:
             assert item['paf']['ok'], item
             assert item['primitive_energy']['excess'] == '0', item

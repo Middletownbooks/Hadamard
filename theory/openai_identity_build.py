@@ -57,6 +57,25 @@ def tensor_candidate(factors, qtype, filling):
                 class_name='balanced-punctured-tensor', sequences=rows)
 
 
+def three_stratum_candidate(factors, qtype, masks=None):
+    assert len(factors)==2
+    p,r=factors
+    hs=[balanced_factor(d) for d in factors]
+    masks=masks or [(73*i+19*q+37)%512 for i in range(4) for q in range(4)]
+    assert len(masks)==16 and all(0<=v<512 for v in masks)
+    labels=[[0 if x==0 else 1 if h[x]==1 else 2 for x in range(len(h))] for h in hs]
+    rows=[]
+    for i in range(4):
+        row=[]
+        for q in range(4):
+            mask=masks[4*i+q]
+            row.extend(1 if (mask>>(3*labels[0][a]+labels[1][b]))&1 else -1
+                       for a,b in itertools.product(range(p),range(r)))
+        rows.append(row)
+    return dict(name=f'three_stratum_{p}_{r}_{qtype}',q=qtype,factors=factors,m=p*r,
+                class_name='three-stratum-product',table_masks=masks,sequences=rows)
+
+
 def suite():
     out = []
     for m in range(3, 100, 2):
@@ -70,12 +89,20 @@ def suite():
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--suite', action='store_true')
+    ap.add_argument('--kind', choices=['tensor','three-stratum'], default='tensor')
+    ap.add_argument('--table-masks', help='16 comma-separated integers 0..511, row-major in (i,q)')
     ap.add_argument('--factors', default='3,5')
     ap.add_argument('--q', choices=['v4', 'z4'], default='v4')
     ap.add_argument('--filling', choices=['constant', 'varied'], default='constant')
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
-    data = suite() if a.suite else [tensor_candidate([int(v) for v in a.factors.split(',')], a.q, a.filling)]
+    if a.kind=='three-stratum':
+        masks=None if not a.table_masks else [int(v) for v in a.table_masks.split(',')]
+        data=([three_stratum_candidate([p,r],qt,masks) for p in range(3,34,2)
+               for r in range(p,100//p+1,2) for qt in ('v4','z4')] if a.suite else
+              [three_stratum_candidate([int(v) for v in a.factors.split(',')],a.q,masks)])
+    else:
+        data = suite() if a.suite else [tensor_candidate([int(v) for v in a.factors.split(',')], a.q, a.filling)]
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     Path(a.out).write_text(json.dumps(data) + '\n')
     print(json.dumps(dict(candidates=len(data), output=a.out)))

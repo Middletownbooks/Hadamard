@@ -1,0 +1,5650 @@
+{
+  "script": "theory/openai_identity_obstructions.py",
+  "boundary_exhaustions": [
+    {
+      "factors": [
+        3
+      ],
+      "boundary_points": 1,
+      "fillings": 2,
+      "minimum_primitive_boundary_energy": "1",
+      "minimizing_fillings": 2
+    },
+    {
+      "factors": [
+        3,
+        3
+      ],
+      "boundary_points": 5,
+      "fillings": 32,
+      "minimum_primitive_boundary_energy": "1",
+      "minimizing_fillings": 6
+    },
+    {
+      "factors": [
+        3,
+        5
+      ],
+      "boundary_points": 7,
+      "fillings": 128,
+      "minimum_primitive_boundary_energy": "1",
+      "minimizing_fillings": 6
+    },
+    {
+      "factors": [
+        5,
+        5
+      ],
+      "boundary_points": 9,
+      "fillings": 512,
+      "minimum_primitive_boundary_energy": "1",
+      "minimizing_fillings": 6
+    },
+    {
+      "factors": [
+        3,
+        3,
+        3
+      ],
+      "boundary_points": 19,
+      "fillings": 524288,
+      "minimum_primitive_boundary_energy": "1",
+      "minimizing_fillings": 822
+    }
+  ],
+  "scalar_product_first_ten": [
+    {
+      "m1": 1,
+      "m2": 1,
+      "m": 1,
+      "forced_scalar": "1/12",
+      "principal_energy": "196/3",
+      "required": 28,
+      "excess": "112/3",
+      "status": "fails"
+    },
+    {
+      "m1": 1,
+      "m2": 3,
+      "m": 3,
+      "forced_scalar": "1/12",
+      "principal_energy": "140",
+      "required": 60,
+      "excess": "80",
+      "status": "fails"
+    },
+    {
+      "m1": 1,
+      "m2": 5,
+      "m": 5,
+      "forced_scalar": "1/12",
+      "principal_energy": "644/3",
+      "required": 92,
+      "excess": "368/3",
+      "status": "fails"
+    },
+    {
+      "m1": 1,
+      "m2": 7,
+      "m": 7,
+      "forced_scalar": "1/12",
+      "principal_energy": "868/3",
+      "required": 124,
+      "excess": "496/3",
+      "status": "fails"
+    },
+    {
+      "m1": 3,
+      "m2": 3,
+      "m": 9,
+      "forced_scalar": "1/12",
+      "principal_energy": "300",
+      "required": 156,
+      "excess": "144",
+      "status": "fails"
+    },
+    {
+      "m1": 3,
+      "m2": 5,
+      "m": 15,
+      "forced_scalar": "1/12",
+      "principal_energy": "460",
+      "required": 252,
+      "excess": "208",
+      "status": "fails"
+    },
+    {
+      "m1": 3,
+      "m2": 7,
+      "m": 21,
+      "forced_scalar": "1/12",
+      "principal_energy": "620",
+      "required": 348,
+      "excess": "272",
+      "status": "fails"
+    },
+    {
+      "m1": 5,
+      "m2": 5,
+      "m": 25,
+      "forced_scalar": "1/12",
+      "principal_energy": "2116/3",
+      "required": 412,
+      "excess": "880/3",
+      "status": "fails"
+    },
+    {
+      "m1": 5,
+      "m2": 7,
+      "m": 35,
+      "forced_scalar": "1/12",
+      "principal_energy": "2852/3",
+      "required": 572,
+      "excess": "1136/3",
+      "status": "fails"
+    },
+    {
+      "m1": 7,
+      "m2": 7,
+      "m": 49,
+      "forced_scalar": "1/12",
+      "principal_energy": "3844/3",
+      "required": 796,
+      "excess": "1456/3",
+      "status": "fails"
+    }
+  ],
+  "transversal_small": [
+    {
+      "m": 3,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 3,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 5,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 5,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 7,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 7,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 9,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 9,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 11,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 11,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 13,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 13,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 15,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 15,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 17,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 17,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 19,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 19,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 21,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 21,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 23,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 23,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 25,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 25,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 27,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 27,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 29,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 29,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 31,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 31,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 33,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 33,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 35,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 35,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 37,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 37,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 39,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 39,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 41,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 41,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 43,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 43,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 45,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 45,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 47,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 47,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 49,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 49,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 51,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 51,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 53,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 53,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 55,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 55,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 57,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 57,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 59,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 59,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 61,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 61,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 63,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 63,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 65,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 65,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 67,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 67,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 69,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 69,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 71,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 71,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 73,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 73,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 75,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 75,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 77,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 77,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 79,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 79,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 81,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 81,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 83,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 83,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 85,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 85,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 87,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 87,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 89,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 89,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 91,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 91,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 93,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 93,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 95,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 95,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 97,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 97,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 99,
+      "q": "v4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    },
+    {
+      "m": 99,
+      "q": "z4",
+      "row_occupancy_patterns": 16,
+      "multisets": 3876,
+      "passing_multisets": 0
+    }
+  ],
+  "single_field_small": [
+    {
+      "m": 3,
+      "q": 3,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 16,
+      "first": [
+        1,
+        0
+      ],
+      "construction_status": "unknown (necessary gate passes)"
+    },
+    {
+      "m": 5,
+      "q": 5,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 1,
+      "first": [
+        0,
+        2
+      ],
+      "construction_status": "unknown (necessary gate passes)"
+    },
+    {
+      "m": 7,
+      "q": 7,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 1,
+      "first": [
+        0,
+        1
+      ],
+      "construction_status": "unknown (necessary gate passes)"
+    },
+    {
+      "m": 9,
+      "q": 9,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 11,
+      "q": 11,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 13,
+      "q": 13,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 17,
+      "q": 17,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 19,
+      "q": 19,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 23,
+      "q": 23,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 25,
+      "q": 25,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 27,
+      "q": 27,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 29,
+      "q": 29,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 31,
+      "q": 31,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 37,
+      "q": 37,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 41,
+      "q": 41,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 43,
+      "q": 43,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 47,
+      "q": 47,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 49,
+      "q": 49,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 53,
+      "q": 53,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 59,
+      "q": 59,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 61,
+      "q": 61,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 67,
+      "q": 67,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 71,
+      "q": 71,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 73,
+      "q": 73,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 79,
+      "q": 79,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 81,
+      "q": 81,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 83,
+      "q": 83,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 89,
+      "q": 89,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    },
+    {
+      "m": 97,
+      "q": 97,
+      "r": 1,
+      "rhs": 4,
+      "solutions": 0,
+      "first": null,
+      "construction_status": "fails"
+    }
+  ],
+  "coverage": [
+    {
+      "order": 2396,
+      "n": 599,
+      "m": 149,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 149,
+          "q": 149,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 2876,
+      "n": 719,
+      "m": 179,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 179,
+          "q": 179,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 3004,
+      "n": 751,
+      "m": 187,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 187,
+          "q": 11,
+          "r": 17,
+          "rhs": 260,
+          "solutions": 11,
+          "first": [
+            1,
+            31
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 187,
+          "q": 17,
+          "r": 11,
+          "rhs": 164,
+          "solutions": 1,
+          "first": [
+            6,
+            4
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "unknown",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 11,
+          "r": 17,
+          "m": 187,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -27,
+            -25,
+            -17,
+            -15,
+            -11,
+            -9,
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7,
+            9,
+            11,
+            15,
+            17,
+            25,
+            27
+          ],
+          "normal_forms": [
+            [
+              1,
+              -9,
+              -9,
+              -7
+            ],
+            [
+              5,
+              -9,
+              -1,
+              9
+            ],
+            [
+              5,
+              -7,
+              5,
+              9
+            ]
+          ],
+          "fibre_gates": [
+            {
+              "m": 187,
+              "q": 11,
+              "r": 17,
+              "rhs": 260,
+              "solutions": 11,
+              "first": [
+                1,
+                31
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 187,
+              "q": 17,
+              "r": 11,
+              "rhs": 164,
+              "solutions": 1,
+              "first": [
+                6,
+                4
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "unknown",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "order": 3452,
+      "n": 863,
+      "m": 215,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 215,
+          "q": 5,
+          "r": 43,
+          "rhs": 676,
+          "solutions": 113,
+          "first": [
+            0,
+            338
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 215,
+          "q": 43,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 43,
+          "m": 215,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 215,
+              "q": 5,
+              "r": 43,
+              "rhs": 676,
+              "solutions": 113,
+              "first": [
+                0,
+                338
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 215,
+              "q": 43,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4124,
+      "n": 1031,
+      "m": 257,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 257,
+          "q": 257,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 4156,
+      "n": 1039,
+      "m": 259,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 259,
+          "q": 7,
+          "r": 37,
+          "rhs": 580,
+          "solutions": 73,
+          "first": [
+            0,
+            145
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 259,
+          "q": 37,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 7,
+          "r": 37,
+          "m": 259,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -31,
+            -29,
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7,
+            29,
+            31
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 259,
+              "q": 7,
+              "r": 37,
+              "rhs": 580,
+              "solutions": 73,
+              "first": [
+                0,
+                145
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 259,
+              "q": 37,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4348,
+      "n": 1087,
+      "m": 271,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 271,
+          "q": 271,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 4412,
+      "n": 1103,
+      "m": 275,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 275,
+          "q": 5,
+          "r": 55,
+          "rhs": 868,
+          "solutions": 145,
+          "first": [
+            0,
+            434
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 275,
+          "q": 11,
+          "r": 25,
+          "rhs": 388,
+          "solutions": 16,
+          "first": [
+            1,
+            47
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [
+        {
+          "host": "C5 x C5 x C11",
+          "gate": {
+            "m": 275,
+            "q": 25,
+            "r": 11,
+            "rhs": 164,
+            "solutions": 0,
+            "first": null,
+            "construction_status": "fails"
+          }
+        }
+      ],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 55,
+          "m": 275,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 275,
+              "q": 5,
+              "r": 55,
+              "rhs": 868,
+              "solutions": 145,
+              "first": [
+                0,
+                434
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 275,
+              "q": 55,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 11,
+          "r": 25,
+          "m": 275,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -33,
+            -25,
+            -23,
+            -15,
+            -13,
+            -11,
+            -9,
+            -1,
+            1,
+            9,
+            11,
+            13,
+            15,
+            23,
+            25,
+            33
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 275,
+              "q": 11,
+              "r": 25,
+              "rhs": 388,
+              "solutions": 16,
+              "first": [
+                1,
+                47
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 275,
+              "q": 25,
+              "r": 11,
+              "rhs": 164,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4892,
+      "n": 1223,
+      "m": 305,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 305,
+          "q": 5,
+          "r": 61,
+          "rhs": 964,
+          "solutions": 161,
+          "first": [
+            0,
+            482
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 305,
+          "q": 61,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 61,
+          "m": 305,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 305,
+              "q": 5,
+              "r": 61,
+              "rhs": 964,
+              "solutions": 161,
+              "first": [
+                0,
+                482
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 305,
+              "q": 61,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5276,
+      "n": 1319,
+      "m": 329,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 329,
+          "q": 7,
+          "r": 47,
+          "rhs": 740,
+          "solutions": 93,
+          "first": [
+            0,
+            185
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 329,
+          "q": 47,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 7,
+          "r": 47,
+          "m": 329,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 329,
+              "q": 7,
+              "r": 47,
+              "rhs": 740,
+              "solutions": 93,
+              "first": [
+                0,
+                185
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 329,
+              "q": 47,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5308,
+      "n": 1327,
+      "m": 331,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 331,
+          "q": 331,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 5468,
+      "n": 1367,
+      "m": 341,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 341,
+          "q": 11,
+          "r": 31,
+          "rhs": 484,
+          "solutions": 20,
+          "first": [
+            1,
+            59
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 341,
+          "q": 31,
+          "r": 11,
+          "rhs": 164,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 11,
+          "r": 31,
+          "m": 341,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -31,
+            -29,
+            -21,
+            -19,
+            -11,
+            -9,
+            -1,
+            1,
+            9,
+            11,
+            19,
+            21,
+            29,
+            31
+          ],
+          "normal_forms": [
+            [
+              11,
+              -11,
+              -11,
+              -1
+            ]
+          ],
+          "fibre_gates": [
+            {
+              "m": 341,
+              "q": 11,
+              "r": 31,
+              "rhs": 484,
+              "solutions": 20,
+              "first": [
+                1,
+                59
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 341,
+              "q": 31,
+              "r": 11,
+              "rhs": 164,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5692,
+      "n": 1423,
+      "m": 355,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 355,
+          "q": 5,
+          "r": 71,
+          "rhs": 1124,
+          "solutions": 188,
+          "first": [
+            0,
+            562
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 355,
+          "q": 71,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 1,
+          "first": [
+            0,
+            1
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 71,
+          "m": 355,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 355,
+              "q": 5,
+              "r": 71,
+              "rhs": 1124,
+              "solutions": 188,
+              "first": [
+                0,
+                562
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 355,
+              "q": 71,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 1,
+              "first": [
+                0,
+                1
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5756,
+      "n": 1439,
+      "m": 359,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 359,
+          "q": 359,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 5884,
+      "n": 1471,
+      "m": 367,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 367,
+          "q": 367,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 5948,
+      "n": 1487,
+      "m": 371,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 371,
+          "q": 7,
+          "r": 53,
+          "rhs": 836,
+          "solutions": 105,
+          "first": [
+            0,
+            209
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 371,
+          "q": 53,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 1,
+          "first": [
+            0,
+            2
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 7,
+          "r": 53,
+          "m": 371,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 371,
+              "q": 7,
+              "r": 53,
+              "rhs": 836,
+              "solutions": 105,
+              "first": [
+                0,
+                209
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 371,
+              "q": 53,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 1,
+              "first": [
+                0,
+                2
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6172,
+      "n": 1543,
+      "m": 385,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 385,
+          "q": 5,
+          "r": 77,
+          "rhs": 1220,
+          "solutions": 204,
+          "first": [
+            0,
+            610
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 385,
+          "q": 7,
+          "r": 55,
+          "rhs": 868,
+          "solutions": 109,
+          "first": [
+            0,
+            217
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 385,
+          "q": 11,
+          "r": 35,
+          "rhs": 548,
+          "solutions": 23,
+          "first": [
+            1,
+            67
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 77,
+          "m": 385,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 385,
+              "q": 5,
+              "r": 77,
+              "rhs": 1220,
+              "solutions": 204,
+              "first": [
+                0,
+                610
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 385,
+              "q": 77,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 7,
+          "r": 55,
+          "m": 385,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 385,
+              "q": 7,
+              "r": 55,
+              "rhs": 868,
+              "solutions": 109,
+              "first": [
+                0,
+                217
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 385,
+              "q": 55,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 11,
+          "r": 35,
+          "m": 385,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -35,
+            -33,
+            -25,
+            -23,
+            -11,
+            -9,
+            -1,
+            1,
+            9,
+            11,
+            23,
+            25,
+            33,
+            35
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 385,
+              "q": 11,
+              "r": 35,
+              "rhs": 548,
+              "solutions": 23,
+              "first": [
+                1,
+                67
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 385,
+              "q": 35,
+              "r": 11,
+              "rhs": 164,
+              "solutions": 1,
+              "first": [
+                1,
+                4
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6236,
+      "n": 1559,
+      "m": 389,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 389,
+          "q": 389,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 6268,
+      "n": 1567,
+      "m": 391,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 391,
+          "q": 17,
+          "r": 23,
+          "rhs": 356,
+          "solutions": 3,
+          "first": [
+            5,
+            19
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 391,
+          "q": 23,
+          "r": 17,
+          "rhs": 260,
+          "solutions": 3,
+          "first": [
+            0,
+            13
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "unknown",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 17,
+          "r": 23,
+          "m": 391,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -39,
+            -37,
+            -23,
+            -21,
+            -17,
+            -15,
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7,
+            15,
+            17,
+            21,
+            23,
+            37,
+            39
+          ],
+          "normal_forms": [
+            [
+              17,
+              -7,
+              5,
+              5
+            ]
+          ],
+          "fibre_gates": [
+            {
+              "m": 391,
+              "q": 17,
+              "r": 23,
+              "rhs": 356,
+              "solutions": 3,
+              "first": [
+                5,
+                19
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 391,
+              "q": 23,
+              "r": 17,
+              "rhs": 260,
+              "solutions": 3,
+              "first": [
+                0,
+                13
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "unknown",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "order": 6332,
+      "n": 1583,
+      "m": 395,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 395,
+          "q": 5,
+          "r": 79,
+          "rhs": 1252,
+          "solutions": 209,
+          "first": [
+            0,
+            626
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 395,
+          "q": 79,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 79,
+          "m": 395,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 395,
+              "q": 5,
+              "r": 79,
+              "rhs": 1252,
+              "solutions": 209,
+              "first": [
+                0,
+                626
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 395,
+              "q": 79,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6652,
+      "n": 1663,
+      "m": 415,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 415,
+          "q": 5,
+          "r": 83,
+          "rhs": 1316,
+          "solutions": 220,
+          "first": [
+            0,
+            658
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 415,
+          "q": 83,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 83,
+          "m": 415,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 415,
+              "q": 5,
+              "r": 83,
+              "rhs": 1316,
+              "solutions": 220,
+              "first": [
+                0,
+                658
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 415,
+              "q": 83,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6876,
+      "n": 1719,
+      "m": 429,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 429,
+          "q": 3,
+          "r": 143,
+          "rhs": 2276,
+          "solutions": 1720,
+          "first": [
+            569,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 429,
+          "q": 11,
+          "r": 39,
+          "rhs": 612,
+          "solutions": 26,
+          "first": [
+            1,
+            75
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 429,
+          "q": 13,
+          "r": 33,
+          "rhs": 516,
+          "solutions": 7,
+          "first": [
+            4,
+            46
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 3,
+          "r": 143,
+          "m": 429,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -3,
+            -1,
+            1,
+            3
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 429,
+              "q": 3,
+              "r": 143,
+              "rhs": 2276,
+              "solutions": 1720,
+              "first": [
+                569,
+                0
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 429,
+              "q": 143,
+              "r": 3,
+              "rhs": 36,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 11,
+          "r": 39,
+          "m": 429,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -39,
+            -37,
+            -29,
+            -27,
+            -11,
+            -9,
+            -1,
+            1,
+            9,
+            11,
+            27,
+            29,
+            37,
+            39
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 429,
+              "q": 11,
+              "r": 39,
+              "rhs": 612,
+              "solutions": 26,
+              "first": [
+                1,
+                75
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 429,
+              "q": 39,
+              "r": 11,
+              "rhs": 164,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 13,
+          "r": 33,
+          "m": 429,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -33,
+            -31,
+            -21,
+            -19,
+            -13,
+            -11,
+            -1,
+            1,
+            11,
+            13,
+            19,
+            21,
+            31,
+            33
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 429,
+              "q": 13,
+              "r": 33,
+              "rhs": 516,
+              "solutions": 7,
+              "first": [
+                4,
+                46
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 429,
+              "q": 33,
+              "r": 13,
+              "rhs": 196,
+              "solutions": 1,
+              "first": [
+                4,
+                2
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7132,
+      "n": 1783,
+      "m": 445,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 445,
+          "q": 5,
+          "r": 89,
+          "rhs": 1412,
+          "solutions": 236,
+          "first": [
+            0,
+            706
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 445,
+          "q": 89,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 89,
+          "m": 445,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 445,
+              "q": 5,
+              "r": 89,
+              "rhs": 1412,
+              "solutions": 236,
+              "first": [
+                0,
+                706
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 445,
+              "q": 89,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7324,
+      "n": 1831,
+      "m": 457,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 457,
+          "q": 457,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 7388,
+      "n": 1847,
+      "m": 461,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 461,
+          "q": 461,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 7484,
+      "n": 1871,
+      "m": 467,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 467,
+          "q": 467,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 7516,
+      "n": 1879,
+      "m": 469,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 469,
+          "q": 7,
+          "r": 67,
+          "rhs": 1060,
+          "solutions": 133,
+          "first": [
+            0,
+            265
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 469,
+          "q": 67,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 7,
+          "r": 67,
+          "m": 469,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 469,
+              "q": 7,
+              "r": 67,
+              "rhs": 1060,
+              "solutions": 133,
+              "first": [
+                0,
+                265
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 469,
+              "q": 67,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8156,
+      "n": 2039,
+      "m": 509,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 509,
+          "q": 509,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 8252,
+      "n": 2063,
+      "m": 515,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 515,
+          "q": 5,
+          "r": 103,
+          "rhs": 1636,
+          "solutions": 273,
+          "first": [
+            0,
+            818
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 515,
+          "q": 103,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 103,
+          "m": 515,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 515,
+              "q": 5,
+              "r": 103,
+              "rhs": 1636,
+              "solutions": 273,
+              "first": [
+                0,
+                818
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 515,
+              "q": 103,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8348,
+      "n": 2087,
+      "m": 521,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 521,
+          "q": 521,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 8380,
+      "n": 2095,
+      "m": 523,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 523,
+          "q": 523,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 8828,
+      "n": 2207,
+      "m": 551,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 551,
+          "q": 19,
+          "r": 29,
+          "rhs": 452,
+          "solutions": 6,
+          "first": [
+            1,
+            27
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 551,
+          "q": 29,
+          "r": 19,
+          "rhs": 292,
+          "solutions": 1,
+          "first": [
+            8,
+            2
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 19,
+          "r": 29,
+          "m": 551,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -47,
+            -45,
+            -29,
+            -27,
+            -19,
+            -17,
+            -11,
+            -9,
+            -1,
+            1,
+            9,
+            11,
+            17,
+            19,
+            27,
+            29,
+            45,
+            47
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 551,
+              "q": 19,
+              "r": 29,
+              "rhs": 452,
+              "solutions": 6,
+              "first": [
+                1,
+                27
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 551,
+              "q": 29,
+              "r": 19,
+              "rhs": 292,
+              "solutions": 1,
+              "first": [
+                8,
+                2
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8860,
+      "n": 2215,
+      "m": 553,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 553,
+          "q": 7,
+          "r": 79,
+          "rhs": 1252,
+          "solutions": 157,
+          "first": [
+            0,
+            313
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 553,
+          "q": 79,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 7,
+          "r": 79,
+          "m": 553,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 553,
+              "q": 7,
+              "r": 79,
+              "rhs": 1252,
+              "solutions": 157,
+              "first": [
+                0,
+                313
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 553,
+              "q": 79,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9148,
+      "n": 2287,
+      "m": 571,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 571,
+          "q": 571,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 9308,
+      "n": 2327,
+      "m": 581,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 581,
+          "q": 7,
+          "r": 83,
+          "rhs": 1316,
+          "solutions": 165,
+          "first": [
+            0,
+            329
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 581,
+          "q": 83,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 7,
+          "r": 83,
+          "m": 581,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 581,
+              "q": 7,
+              "r": 83,
+              "rhs": 1316,
+              "solutions": 165,
+              "first": [
+                0,
+                329
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 581,
+              "q": 83,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9532,
+      "n": 2383,
+      "m": 595,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 595,
+          "q": 5,
+          "r": 119,
+          "rhs": 1892,
+          "solutions": 316,
+          "first": [
+            0,
+            946
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 595,
+          "q": 7,
+          "r": 85,
+          "rhs": 1348,
+          "solutions": 169,
+          "first": [
+            0,
+            337
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 595,
+          "q": 17,
+          "r": 35,
+          "rhs": 548,
+          "solutions": 4,
+          "first": [
+            4,
+            34
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "unknown",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 119,
+          "m": 595,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 595,
+              "q": 5,
+              "r": 119,
+              "rhs": 1892,
+              "solutions": 316,
+              "first": [
+                0,
+                946
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 595,
+              "q": 119,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 7,
+          "r": 85,
+          "m": 595,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -7,
+            -5,
+            -1,
+            1,
+            5,
+            7
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 595,
+              "q": 7,
+              "r": 85,
+              "rhs": 1348,
+              "solutions": 169,
+              "first": [
+                0,
+                337
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 595,
+              "q": 85,
+              "r": 7,
+              "rhs": 100,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 17,
+          "r": 35,
+          "m": 595,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -35,
+            -33,
+            -19,
+            -17,
+            -15,
+            -1,
+            1,
+            15,
+            17,
+            19,
+            33,
+            35
+          ],
+          "normal_forms": [
+            [
+              17,
+              -1,
+              -1,
+              17
+            ]
+          ],
+          "fibre_gates": [
+            {
+              "m": 595,
+              "q": 17,
+              "r": 35,
+              "rhs": 548,
+              "solutions": 4,
+              "first": [
+                4,
+                34
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 595,
+              "q": 35,
+              "r": 17,
+              "rhs": 260,
+              "solutions": 1,
+              "first": [
+                1,
+                7
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "unknown",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "order": 9596,
+      "n": 2399,
+      "m": 599,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 599,
+          "q": 599,
+          "r": 1,
+          "rhs": 4,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": []
+    },
+    {
+      "order": 9692,
+      "n": 2423,
+      "m": 605,
+      "tensor_class": "fails",
+      "scalar_norm_product_class": "fails",
+      "transversal_class": "fails",
+      "quadratic_fibre_gates": [
+        {
+          "m": 605,
+          "q": 5,
+          "r": 121,
+          "rhs": 1924,
+          "solutions": 321,
+          "first": [
+            0,
+            962
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 605,
+          "q": 11,
+          "r": 55,
+          "rhs": 868,
+          "solutions": 36,
+          "first": [
+            1,
+            107
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "additional_elementary_abelian_hosts": [
+        {
+          "host": "C11 x C11 x C5",
+          "gate": {
+            "m": 605,
+            "q": 121,
+            "r": 5,
+            "rhs": 68,
+            "solutions": 0,
+            "first": null,
+            "construction_status": "fails"
+          }
+        }
+      ],
+      "three_stratum_status": "fails",
+      "all_arithmetic_two_factor_presentations": [
+        {
+          "p": 5,
+          "r": 121,
+          "m": 605,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -5,
+            -3,
+            -1,
+            1,
+            3,
+            5
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 605,
+              "q": 5,
+              "r": 121,
+              "rhs": 1924,
+              "solutions": 321,
+              "first": [
+                0,
+                962
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 605,
+              "q": 121,
+              "r": 5,
+              "rhs": 68,
+              "solutions": 0,
+              "first": null,
+              "construction_status": "fails"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty",
+            "quadratic/three-stratum fibre equation empty"
+          ]
+        },
+        {
+          "p": 11,
+          "r": 55,
+          "m": 605,
+          "cell_tables": 512,
+          "attainable_compressions": [
+            -45,
+            -43,
+            -11,
+            -9,
+            -1,
+            1,
+            9,
+            11,
+            43,
+            45
+          ],
+          "normal_forms": [],
+          "fibre_gates": [
+            {
+              "m": 605,
+              "q": 11,
+              "r": 55,
+              "rhs": 868,
+              "solutions": 36,
+              "first": [
+                1,
+                107
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            },
+            {
+              "m": 605,
+              "q": 55,
+              "r": 11,
+              "rhs": 164,
+              "solutions": 1,
+              "first": [
+                2,
+                1
+              ],
+              "construction_status": "unknown (necessary gate passes)"
+            }
+          ],
+          "status": "fails",
+          "reasons": [
+            "normal-form compression gate empty"
+          ]
+        }
+      ]
+    }
+  ],
+  "three_stratum_small": [
+    {
+      "p": 3,
+      "r": 3,
+      "m": 9,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5
+      ],
+      "normal_forms": [
+        [
+          1,
+          -3,
+          -1,
+          1
+        ],
+        [
+          3,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 9,
+          "q": 3,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 40,
+          "first": [
+            9,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 9,
+          "q": 3,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 40,
+          "first": [
+            9,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 3,
+      "r": 5,
+      "m": 15,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7
+      ],
+      "normal_forms": [
+        [
+          1,
+          -3,
+          -3,
+          1
+        ],
+        [
+          1,
+          -1,
+          1,
+          3
+        ],
+        [
+          3,
+          -3,
+          -1,
+          -1
+        ],
+        [
+          3,
+          1,
+          1,
+          1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 15,
+          "q": 3,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 64,
+          "first": [
+            17,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 15,
+          "q": 5,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 7,
+          "first": [
+            0,
+            18
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 3,
+      "r": 7,
+      "m": 21,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "normal_forms": [
+        [
+          1,
+          -5,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -3,
+          1,
+          3
+        ],
+        [
+          3,
+          -3,
+          -3,
+          -1
+        ],
+        [
+          3,
+          -1,
+          -1,
+          3
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 21,
+          "q": 3,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 88,
+          "first": [
+            25,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 21,
+          "q": 7,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 5,
+          "first": [
+            0,
+            9
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 3,
+      "r": 9,
+      "m": 27,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "normal_forms": [
+        [
+          1,
+          -5,
+          -3,
+          -1
+        ],
+        [
+          1,
+          1,
+          3,
+          3
+        ],
+        [
+          3,
+          -3,
+          -3,
+          -3
+        ],
+        [
+          3,
+          -3,
+          -1,
+          3
+        ],
+        [
+          5,
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 27,
+          "q": 3,
+          "r": 9,
+          "rhs": 132,
+          "solutions": 112,
+          "first": [
+            33,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 27,
+          "q": 9,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 2,
+          "first": [
+            0,
+            6
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 3,
+      "r": 11,
+      "m": 33,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -11,
+        -9,
+        -7,
+        -3,
+        -1,
+        1,
+        3,
+        7,
+        9,
+        11
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 33,
+          "q": 3,
+          "r": 11,
+          "rhs": 164,
+          "solutions": 136,
+          "first": [
+            41,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 33,
+          "q": 11,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 2,
+          "first": [
+            1,
+            3
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 13,
+      "m": 39,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -11,
+        -9,
+        -3,
+        -1,
+        1,
+        3,
+        9,
+        11
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 39,
+          "q": 3,
+          "r": 13,
+          "rhs": 196,
+          "solutions": 160,
+          "first": [
+            49,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 39,
+          "q": 13,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 15,
+      "m": 45,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -13,
+        -11,
+        -3,
+        -1,
+        1,
+        3,
+        11,
+        13
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 45,
+          "q": 3,
+          "r": 15,
+          "rhs": 228,
+          "solutions": 184,
+          "first": [
+            57,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 45,
+          "q": 15,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 1,
+          "first": [
+            0,
+            3
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 17,
+      "m": 51,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -13,
+        -3,
+        -1,
+        1,
+        3,
+        13
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 51,
+          "q": 3,
+          "r": 17,
+          "rhs": 260,
+          "solutions": 208,
+          "first": [
+            65,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 51,
+          "q": 17,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 1,
+          "first": [
+            2,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 19,
+      "m": 57,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -15,
+        -3,
+        -1,
+        1,
+        3,
+        15
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 57,
+          "q": 3,
+          "r": 19,
+          "rhs": 292,
+          "solutions": 232,
+          "first": [
+            73,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 57,
+          "q": 19,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 1,
+          "first": [
+            1,
+            1
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 21,
+      "m": 63,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 63,
+          "q": 3,
+          "r": 21,
+          "rhs": 324,
+          "solutions": 256,
+          "first": [
+            81,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 63,
+          "q": 21,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 1,
+          "first": [
+            0,
+            2
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 23,
+      "m": 69,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 69,
+          "q": 3,
+          "r": 23,
+          "rhs": 356,
+          "solutions": 280,
+          "first": [
+            89,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 69,
+          "q": 23,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 25,
+      "m": 75,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 75,
+          "q": 3,
+          "r": 25,
+          "rhs": 388,
+          "solutions": 304,
+          "first": [
+            97,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 75,
+          "q": 25,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 27,
+      "m": 81,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 81,
+          "q": 3,
+          "r": 27,
+          "rhs": 420,
+          "solutions": 328,
+          "first": [
+            105,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 81,
+          "q": 27,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 29,
+      "m": 87,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 87,
+          "q": 3,
+          "r": 29,
+          "rhs": 452,
+          "solutions": 352,
+          "first": [
+            113,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 87,
+          "q": 29,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 31,
+      "m": 93,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 93,
+          "q": 3,
+          "r": 31,
+          "rhs": 484,
+          "solutions": 376,
+          "first": [
+            121,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 93,
+          "q": 31,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 3,
+      "r": 33,
+      "m": 99,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -3,
+        -1,
+        1,
+        3
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 99,
+          "q": 3,
+          "r": 33,
+          "rhs": 516,
+          "solutions": 400,
+          "first": [
+            129,
+            0
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 99,
+          "q": 33,
+          "r": 3,
+          "rhs": 36,
+          "solutions": 0,
+          "first": null,
+          "construction_status": "fails"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty",
+        "quadratic/three-stratum fibre equation empty"
+      ]
+    },
+    {
+      "p": 5,
+      "r": 5,
+      "m": 25,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "normal_forms": [
+        [
+          1,
+          -5,
+          1,
+          1
+        ],
+        [
+          1,
+          -3,
+          -3,
+          3
+        ],
+        [
+          1,
+          -1,
+          3,
+          3
+        ],
+        [
+          3,
+          1,
+          1,
+          3
+        ],
+        [
+          5,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 25,
+          "q": 5,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 12,
+          "first": [
+            0,
+            34
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 25,
+          "q": 5,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 12,
+          "first": [
+            0,
+            34
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 5,
+      "r": 7,
+      "m": 35,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -11,
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "normal_forms": [
+        [
+          1,
+          -5,
+          1,
+          3
+        ],
+        [
+          1,
+          1,
+          1,
+          5
+        ],
+        [
+          3,
+          -5,
+          -3,
+          -1
+        ],
+        [
+          3,
+          1,
+          3,
+          3
+        ],
+        [
+          5,
+          -3,
+          1,
+          1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 35,
+          "q": 5,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 17,
+          "first": [
+            0,
+            50
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 35,
+          "q": 7,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 9,
+          "first": [
+            0,
+            17
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 5,
+      "r": 9,
+      "m": 45,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -13,
+        -11,
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ],
+      "normal_forms": [
+        [
+          1,
+          -7,
+          -1,
+          1
+        ],
+        [
+          1,
+          -5,
+          3,
+          3
+        ],
+        [
+          1,
+          1,
+          3,
+          5
+        ],
+        [
+          3,
+          -3,
+          -1,
+          5
+        ],
+        [
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          5,
+          -5,
+          -1,
+          -1
+        ],
+        [
+          5,
+          -3,
+          1,
+          3
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 45,
+          "q": 5,
+          "r": 9,
+          "rhs": 132,
+          "solutions": 23,
+          "first": [
+            0,
+            66
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 45,
+          "q": 9,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 2,
+          "first": [
+            2,
+            8
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 5,
+      "r": 11,
+      "m": 55,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -15,
+        -13,
+        -11,
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "normal_forms": [
+        [
+          1,
+          -7,
+          -3,
+          -3
+        ],
+        [
+          1,
+          -7,
+          -1,
+          3
+        ],
+        [
+          1,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          -7,
+          1,
+          1
+        ],
+        [
+          3,
+          -5,
+          -5,
+          -3
+        ],
+        [
+          5,
+          -3,
+          3,
+          3
+        ],
+        [
+          5,
+          -1,
+          -1,
+          5
+        ],
+        [
+          7,
+          -3,
+          -1,
+          -1
+        ],
+        [
+          7,
+          1,
+          1,
+          1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 55,
+          "q": 5,
+          "r": 11,
+          "rhs": 164,
+          "solutions": 28,
+          "first": [
+            0,
+            82
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 55,
+          "q": 11,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 3,
+          "first": [
+            1,
+            7
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 5,
+      "r": 13,
+      "m": 65,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -15,
+        -13,
+        -11,
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "normal_forms": [
+        [
+          1,
+          -7,
+          -5,
+          1
+        ],
+        [
+          1,
+          -3,
+          1,
+          7
+        ],
+        [
+          3,
+          -7,
+          1,
+          3
+        ],
+        [
+          3,
+          -5,
+          -3,
+          5
+        ],
+        [
+          3,
+          -1,
+          -1,
+          7
+        ],
+        [
+          5,
+          -5,
+          -5,
+          -1
+        ],
+        [
+          7,
+          1,
+          1,
+          3
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 65,
+          "q": 5,
+          "r": 13,
+          "rhs": 196,
+          "solutions": 33,
+          "first": [
+            0,
+            98
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 65,
+          "q": 13,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 1,
+          "first": [
+            2,
+            4
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 5,
+      "r": 15,
+      "m": 75,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -17,
+        -15,
+        -13,
+        -11,
+        -9,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        9,
+        11,
+        13,
+        15,
+        17
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 75,
+          "q": 5,
+          "r": 15,
+          "rhs": 228,
+          "solutions": 39,
+          "first": [
+            0,
+            114
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 75,
+          "q": 15,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 1,
+          "first": [
+            2,
+            3
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 5,
+      "r": 17,
+      "m": 85,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -17,
+        -15,
+        -13,
+        -11,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        11,
+        13,
+        15,
+        17
+      ],
+      "normal_forms": [
+        [
+          5,
+          -5,
+          -5,
+          -5
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 85,
+          "q": 5,
+          "r": 17,
+          "rhs": 260,
+          "solutions": 44,
+          "first": [
+            0,
+            130
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 85,
+          "q": 17,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 1,
+          "first": [
+            3,
+            1
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 5,
+      "r": 19,
+      "m": 95,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -19,
+        -17,
+        -15,
+        -13,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        13,
+        15,
+        17,
+        19
+      ],
+      "normal_forms": [],
+      "fibre_gates": [
+        {
+          "m": 95,
+          "q": 5,
+          "r": 19,
+          "rhs": 292,
+          "solutions": 49,
+          "first": [
+            0,
+            146
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 95,
+          "q": 19,
+          "r": 5,
+          "rhs": 68,
+          "solutions": 1,
+          "first": [
+            1,
+            3
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "fails",
+      "reasons": [
+        "normal-form compression gate empty"
+      ]
+    },
+    {
+      "p": 7,
+      "r": 7,
+      "m": 49,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -13,
+        -11,
+        -7,
+        -5,
+        -1,
+        1,
+        5,
+        7,
+        11,
+        13
+      ],
+      "normal_forms": [
+        [
+          7,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 49,
+          "q": 7,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 13,
+          "first": [
+            0,
+            25
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 49,
+          "q": 7,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 13,
+          "first": [
+            0,
+            25
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 7,
+      "r": 9,
+      "m": 63,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -15,
+        -13,
+        -11,
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "normal_forms": [
+        [
+          1,
+          -7,
+          -5,
+          -1
+        ],
+        [
+          1,
+          -5,
+          3,
+          5
+        ],
+        [
+          1,
+          -3,
+          -1,
+          7
+        ],
+        [
+          1,
+          1,
+          5,
+          5
+        ],
+        [
+          3,
+          -7,
+          -3,
+          -3
+        ],
+        [
+          3,
+          -7,
+          -1,
+          3
+        ],
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          5,
+          -5,
+          -3,
+          3
+        ],
+        [
+          5,
+          -3,
+          1,
+          5
+        ],
+        [
+          7,
+          -3,
+          -3,
+          1
+        ],
+        [
+          7,
+          -1,
+          1,
+          3
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 63,
+          "q": 7,
+          "r": 9,
+          "rhs": 132,
+          "solutions": 17,
+          "first": [
+            0,
+            33
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 63,
+          "q": 9,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 4,
+          "first": [
+            1,
+            15
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 7,
+      "r": 11,
+      "m": 77,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -17,
+        -15,
+        -13,
+        -11,
+        -9,
+        -7,
+        -5,
+        -3,
+        -1,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17
+      ],
+      "normal_forms": [
+        [
+          1,
+          -9,
+          1,
+          1
+        ],
+        [
+          1,
+          -5,
+          -1,
+          7
+        ],
+        [
+          3,
+          -7,
+          -5,
+          -3
+        ],
+        [
+          3,
+          -3,
+          -3,
+          7
+        ],
+        [
+          3,
+          -1,
+          3,
+          7
+        ],
+        [
+          5,
+          -5,
+          -5,
+          3
+        ],
+        [
+          5,
+          -5,
+          1,
+          5
+        ],
+        [
+          7,
+          -5,
+          -3,
+          1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 77,
+          "q": 7,
+          "r": 11,
+          "rhs": 164,
+          "solutions": 21,
+          "first": [
+            0,
+            41
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 77,
+          "q": 11,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 4,
+          "first": [
+            1,
+            11
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 7,
+      "r": 13,
+      "m": 91,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -19,
+        -17,
+        -13,
+        -11,
+        -7,
+        -5,
+        -1,
+        1,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "normal_forms": [
+        [
+          1,
+          5,
+          5,
+          5
+        ],
+        [
+          7,
+          -7,
+          -1,
+          -1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 91,
+          "q": 7,
+          "r": 13,
+          "rhs": 196,
+          "solutions": 25,
+          "first": [
+            0,
+            49
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 91,
+          "q": 13,
+          "r": 7,
+          "rhs": 100,
+          "solutions": 2,
+          "first": [
+            0,
+            10
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 9,
+      "r": 9,
+      "m": 81,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -17,
+        -15,
+        -9,
+        -7,
+        -1,
+        1,
+        7,
+        9,
+        15,
+        17
+      ],
+      "normal_forms": [
+        [
+          9,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 81,
+          "q": 9,
+          "r": 9,
+          "rhs": 132,
+          "solutions": 5,
+          "first": [
+            0,
+            22
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 81,
+          "q": 9,
+          "r": 9,
+          "rhs": 132,
+          "solutions": 5,
+          "first": [
+            0,
+            22
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    },
+    {
+      "p": 9,
+      "r": 11,
+      "m": 99,
+      "cell_tables": 512,
+      "attainable_compressions": [
+        -19,
+        -17,
+        -11,
+        -9,
+        -7,
+        -3,
+        -1,
+        1,
+        3,
+        7,
+        9,
+        11,
+        17,
+        19
+      ],
+      "normal_forms": [
+        [
+          1,
+          -3,
+          1,
+          9
+        ],
+        [
+          3,
+          -1,
+          -1,
+          9
+        ],
+        [
+          9,
+          -3,
+          -3,
+          -3
+        ]
+      ],
+      "fibre_gates": [
+        {
+          "m": 99,
+          "q": 9,
+          "r": 11,
+          "rhs": 164,
+          "solutions": 5,
+          "first": [
+            2,
+            24
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        },
+        {
+          "m": 99,
+          "q": 11,
+          "r": 9,
+          "rhs": 132,
+          "solutions": 6,
+          "first": [
+            1,
+            15
+          ],
+          "construction_status": "unknown (necessary gate passes)"
+        }
+      ],
+      "status": "unknown",
+      "reasons": []
+    }
+  ]
+}

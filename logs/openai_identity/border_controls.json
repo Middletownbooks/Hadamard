@@ -1,0 +1,443 @@
+{
+ "script": "theory/4p3_review_border.py",
+ "command": "/workspace/scratch/f0d8efd03c07/Hadamard/theory/4p3_review_border.py --only elliptic --elliptic /workspace/scratch/f0d8efd03c07/Hadamard/logs/openai_identity/border_input.json --scratch /tmp/openai_identity_gc2z3nq7 --out /workspace/scratch/f0d8efd03c07/Hadamard/logs/openai_identity/border_controls.json",
+ "seed": null,
+ "certificates": [
+  {
+   "q": "v4",
+   "frame_index_zero_based": 75,
+   "shapes": [
+    [
+     12,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     12
+    ]
+   ],
+   "entries_pm1": true,
+   "XXt_12I": true,
+   "RhRht_16I": true,
+   "ChCht_I4xGamma": true,
+   "link_zero": true,
+   "Rh_blocks_balanced": true,
+   "own_Mc_equals_stored_Mc": true,
+   "constant_rows_annihilated": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "ok": true
+  },
+  {
+   "q": "z4",
+   "frame_index_zero_based": 75,
+   "shapes": [
+    [
+     12,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     12
+    ]
+   ],
+   "entries_pm1": true,
+   "XXt_12I": true,
+   "RhRht_16I": true,
+   "ChCht_I4xGamma": true,
+   "link_zero": true,
+   "Rh_blocks_balanced": true,
+   "own_Mc_equals_stored_Mc": true,
+   "constant_rows_annihilated": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "ok": true
+  }
+ ],
+ "cores": [
+  {
+   "core": "answer example p=3 v4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    2,
+    2,
+    3
+   ],
+   "Q": "v4",
+   "K_order": 3,
+   "order": 60,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     -1,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "de44f80098bc66750851667b74b94c095205a5929e85ecc19aeb02cac1752e8e",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     60,
+     60
+    ],
+    "N": 60,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "de44f80098bc66750851667b74b94c095205a5929e85ecc19aeb02cac1752e8e",
+    "input": "/tmp/openai_identity_gc2z3nq7/H_answer_example_p=3_v4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      28,
+      30
+     ],
+     "rejected": true
+    },
+    "command": "/workspace/scratch/f0d8efd03c07/Hadamard/theory/4p3_review_hverify.py /tmp/openai_identity_gc2z3nq7/H_answer_example_p=3_v4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/openai_identity_gc2z3nq7/H_answer_example_p=3_v4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "shifts": [
+      0,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "secs": 0.3
+  },
+  {
+   "core": "answer example p=3 z4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    4,
+    3
+   ],
+   "Q": "z4",
+   "K_order": 3,
+   "order": 60,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     -1,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "ec93ad72643009eaed7b85badd85d55cc51f5bd98b30678daee3ec0ab2e5dc29",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     60,
+     60
+    ],
+    "N": 60,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "ec93ad72643009eaed7b85badd85d55cc51f5bd98b30678daee3ec0ab2e5dc29",
+    "input": "/tmp/openai_identity_gc2z3nq7/H_answer_example_p=3_z4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      28,
+      30
+     ],
+     "rejected": true
+    },
+    "command": "/workspace/scratch/f0d8efd03c07/Hadamard/theory/4p3_review_hverify.py /tmp/openai_identity_gc2z3nq7/H_answer_example_p=3_z4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/openai_identity_gc2z3nq7/H_answer_example_p=3_z4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "shifts": [
+      0,
+      0,
+      2,
+      1
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "secs": 0.2
+  }
+ ],
+ "all_certificates_ok": true,
+ "all_cores_hadamard": true,
+ "secs": 0.5
+}

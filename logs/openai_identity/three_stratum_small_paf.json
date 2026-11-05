@@ -1,0 +1,2978 @@
+{
+  "script": "theory/openai_identity_verify.py",
+  "expectation": "reject-candidate",
+  "cases": 60,
+  "all_expected": true,
+  "results": [
+    {
+      "name": "three_stratum_3_3_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        3
+      ],
+      "m": 9,
+      "paf": {
+        "ok": false,
+        "lags": 36,
+        "bad_lags": 25,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": -4,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "6",
+          "0",
+          "4",
+          "16",
+          "16",
+          "10",
+          "12",
+          "10",
+          "6",
+          "10",
+          "12",
+          "10",
+          "4",
+          "16",
+          "4",
+          "10"
+        ],
+        "total": "146",
+        "required": 156,
+        "excess": "-10",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "d26ca4273f2ef570f5eba3797d39a9e3f39ff2e87b0ad437968bded2621f203f"
+    },
+    {
+      "name": "three_stratum_3_3_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        3
+      ],
+      "m": 9,
+      "paf": {
+        "ok": false,
+        "lags": 36,
+        "bad_lags": 23,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": -4,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "6",
+          "0",
+          "4",
+          "16",
+          "16",
+          "10",
+          "12",
+          "10",
+          "6",
+          "10",
+          "12",
+          "10",
+          "4",
+          "16",
+          "4",
+          "10"
+        ],
+        "total": "146",
+        "required": 156,
+        "excess": "-10",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "d26ca4273f2ef570f5eba3797d39a9e3f39ff2e87b0ad437968bded2621f203f"
+    },
+    {
+      "name": "three_stratum_3_5_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        5
+      ],
+      "m": 15,
+      "paf": {
+        "ok": false,
+        "lags": 60,
+        "bad_lags": 55,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 52,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "8",
+          "0",
+          "6",
+          "18",
+          "18",
+          "12",
+          "20",
+          "16",
+          "8",
+          "12",
+          "20",
+          "12",
+          "6",
+          "24",
+          "6",
+          "12"
+        ],
+        "total": "198",
+        "required": 252,
+        "excess": "-54",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "1c6833f659668c83f12502e1bac1068a6bf433bdcbfa6b9ecceb2f9cb0935564"
+    },
+    {
+      "name": "three_stratum_3_5_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        5
+      ],
+      "m": 15,
+      "paf": {
+        "ok": false,
+        "lags": 60,
+        "bad_lags": 39,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 52,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "8",
+          "0",
+          "6",
+          "18",
+          "18",
+          "12",
+          "20",
+          "16",
+          "8",
+          "12",
+          "20",
+          "12",
+          "6",
+          "24",
+          "6",
+          "12"
+        ],
+        "total": "198",
+        "required": 252,
+        "excess": "-54",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "1c6833f659668c83f12502e1bac1068a6bf433bdcbfa6b9ecceb2f9cb0935564"
+    },
+    {
+      "name": "three_stratum_3_7_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        7
+      ],
+      "m": 21,
+      "paf": {
+        "ok": false,
+        "lags": 84,
+        "bad_lags": 65,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 88,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "10",
+          "0",
+          "8",
+          "20",
+          "20",
+          "14",
+          "28",
+          "22",
+          "10",
+          "14",
+          "28",
+          "14",
+          "8",
+          "32",
+          "8",
+          "14"
+        ],
+        "total": "250",
+        "required": 348,
+        "excess": "-98",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "75d01ac2e2ee7cbd1649df121d6ab7d2c93287baca3266c7b146735e5a3ef020"
+    },
+    {
+      "name": "three_stratum_3_7_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        7
+      ],
+      "m": 21,
+      "paf": {
+        "ok": false,
+        "lags": 84,
+        "bad_lags": 65,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 88,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "10",
+          "0",
+          "8",
+          "20",
+          "20",
+          "14",
+          "28",
+          "22",
+          "10",
+          "14",
+          "28",
+          "14",
+          "8",
+          "32",
+          "8",
+          "14"
+        ],
+        "total": "250",
+        "required": 348,
+        "excess": "-98",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "75d01ac2e2ee7cbd1649df121d6ab7d2c93287baca3266c7b146735e5a3ef020"
+    },
+    {
+      "name": "three_stratum_3_9_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        9
+      ],
+      "m": 27,
+      "paf": {
+        "ok": false,
+        "lags": 108,
+        "bad_lags": 89,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 284,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "12",
+          "0",
+          "10",
+          "22",
+          "22",
+          "16",
+          "36",
+          "28",
+          "12",
+          "16",
+          "36",
+          "16",
+          "10",
+          "40",
+          "10",
+          "16"
+        ],
+        "total": "302",
+        "required": 444,
+        "excess": "-142",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "f26f706cbf18dee9064705d11930b9d1630944e0b6cbddb1ecee84e78b44f8e1"
+    },
+    {
+      "name": "three_stratum_3_9_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        9
+      ],
+      "m": 27,
+      "paf": {
+        "ok": false,
+        "lags": 108,
+        "bad_lags": 95,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 284,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "12",
+          "0",
+          "10",
+          "22",
+          "22",
+          "16",
+          "36",
+          "28",
+          "12",
+          "16",
+          "36",
+          "16",
+          "10",
+          "40",
+          "10",
+          "16"
+        ],
+        "total": "302",
+        "required": 444,
+        "excess": "-142",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "f26f706cbf18dee9064705d11930b9d1630944e0b6cbddb1ecee84e78b44f8e1"
+    },
+    {
+      "name": "three_stratum_3_11_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        11
+      ],
+      "m": 33,
+      "paf": {
+        "ok": false,
+        "lags": 132,
+        "bad_lags": 91,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 180,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "14",
+          "0",
+          "12",
+          "24",
+          "24",
+          "18",
+          "44",
+          "34",
+          "14",
+          "18",
+          "44",
+          "18",
+          "12",
+          "48",
+          "12",
+          "18"
+        ],
+        "total": "354",
+        "required": 540,
+        "excess": "-186",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "406c10683ee1394ac7fe815f288c1cf52f7009ea2e4a6fd53df8b28de08c4531"
+    },
+    {
+      "name": "three_stratum_3_11_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        11
+      ],
+      "m": 33,
+      "paf": {
+        "ok": false,
+        "lags": 132,
+        "bad_lags": 101,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 180,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "14",
+          "0",
+          "12",
+          "24",
+          "24",
+          "18",
+          "44",
+          "34",
+          "14",
+          "18",
+          "44",
+          "18",
+          "12",
+          "48",
+          "12",
+          "18"
+        ],
+        "total": "354",
+        "required": 540,
+        "excess": "-186",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "406c10683ee1394ac7fe815f288c1cf52f7009ea2e4a6fd53df8b28de08c4531"
+    },
+    {
+      "name": "three_stratum_3_13_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        13
+      ],
+      "m": 39,
+      "paf": {
+        "ok": false,
+        "lags": 156,
+        "bad_lags": 155,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 236,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "16",
+          "0",
+          "14",
+          "26",
+          "26",
+          "20",
+          "52",
+          "40",
+          "16",
+          "20",
+          "52",
+          "20",
+          "14",
+          "56",
+          "14",
+          "20"
+        ],
+        "total": "406",
+        "required": 636,
+        "excess": "-230",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "7bc8887c4a13431a3055cb62ba40e594c888cc74fa7a5072567a1ff6e24e82d8"
+    },
+    {
+      "name": "three_stratum_3_13_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        13
+      ],
+      "m": 39,
+      "paf": {
+        "ok": false,
+        "lags": 156,
+        "bad_lags": 155,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 236,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "16",
+          "0",
+          "14",
+          "26",
+          "26",
+          "20",
+          "52",
+          "40",
+          "16",
+          "20",
+          "52",
+          "20",
+          "14",
+          "56",
+          "14",
+          "20"
+        ],
+        "total": "406",
+        "required": 636,
+        "excess": "-230",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "7bc8887c4a13431a3055cb62ba40e594c888cc74fa7a5072567a1ff6e24e82d8"
+    },
+    {
+      "name": "three_stratum_3_15_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        15
+      ],
+      "m": 45,
+      "paf": {
+        "ok": false,
+        "lags": 180,
+        "bad_lags": 153,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 572,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "18",
+          "0",
+          "16",
+          "28",
+          "28",
+          "22",
+          "60",
+          "46",
+          "18",
+          "22",
+          "60",
+          "22",
+          "16",
+          "64",
+          "16",
+          "22"
+        ],
+        "total": "458",
+        "required": 732,
+        "excess": "-274",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e8b1c52313c4fa8bcdbb5d69d9aca5059808fc949f4ea96db3bebdd1dd6e4af4"
+    },
+    {
+      "name": "three_stratum_3_15_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        15
+      ],
+      "m": 45,
+      "paf": {
+        "ok": false,
+        "lags": 180,
+        "bad_lags": 163,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 572,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "18",
+          "0",
+          "16",
+          "28",
+          "28",
+          "22",
+          "60",
+          "46",
+          "18",
+          "22",
+          "60",
+          "22",
+          "16",
+          "64",
+          "16",
+          "22"
+        ],
+        "total": "458",
+        "required": 732,
+        "excess": "-274",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e8b1c52313c4fa8bcdbb5d69d9aca5059808fc949f4ea96db3bebdd1dd6e4af4"
+    },
+    {
+      "name": "three_stratum_3_17_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        17
+      ],
+      "m": 51,
+      "paf": {
+        "ok": false,
+        "lags": 204,
+        "bad_lags": 203,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 328,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "20",
+          "0",
+          "18",
+          "30",
+          "30",
+          "24",
+          "68",
+          "52",
+          "20",
+          "24",
+          "68",
+          "24",
+          "18",
+          "72",
+          "18",
+          "24"
+        ],
+        "total": "510",
+        "required": 828,
+        "excess": "-318",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "79ee2024ac8c34ae032bf150e04630409972cd3c544fecba8444273f7a544d7c"
+    },
+    {
+      "name": "three_stratum_3_17_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        17
+      ],
+      "m": 51,
+      "paf": {
+        "ok": false,
+        "lags": 204,
+        "bad_lags": 203,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 328,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "20",
+          "0",
+          "18",
+          "30",
+          "30",
+          "24",
+          "68",
+          "52",
+          "20",
+          "24",
+          "68",
+          "24",
+          "18",
+          "72",
+          "18",
+          "24"
+        ],
+        "total": "510",
+        "required": 828,
+        "excess": "-318",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "79ee2024ac8c34ae032bf150e04630409972cd3c544fecba8444273f7a544d7c"
+    },
+    {
+      "name": "three_stratum_3_19_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        19
+      ],
+      "m": 57,
+      "paf": {
+        "ok": false,
+        "lags": 228,
+        "bad_lags": 173,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 364,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "22",
+          "0",
+          "20",
+          "32",
+          "32",
+          "26",
+          "76",
+          "58",
+          "22",
+          "26",
+          "76",
+          "26",
+          "20",
+          "80",
+          "20",
+          "26"
+        ],
+        "total": "562",
+        "required": 924,
+        "excess": "-362",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e543f0d0304ba3d9a1741316c981ef9eeb809a6246c32bdc05f74309902da526"
+    },
+    {
+      "name": "three_stratum_3_19_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        19
+      ],
+      "m": 57,
+      "paf": {
+        "ok": false,
+        "lags": 228,
+        "bad_lags": 191,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 364,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "22",
+          "0",
+          "20",
+          "32",
+          "32",
+          "26",
+          "76",
+          "58",
+          "22",
+          "26",
+          "76",
+          "26",
+          "20",
+          "80",
+          "20",
+          "26"
+        ],
+        "total": "562",
+        "required": 924,
+        "excess": "-362",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e543f0d0304ba3d9a1741316c981ef9eeb809a6246c32bdc05f74309902da526"
+    },
+    {
+      "name": "three_stratum_3_21_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        21
+      ],
+      "m": 63,
+      "paf": {
+        "ok": false,
+        "lags": 252,
+        "bad_lags": 221,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 860,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "24",
+          "0",
+          "22",
+          "34",
+          "34",
+          "28",
+          "84",
+          "64",
+          "24",
+          "28",
+          "84",
+          "28",
+          "22",
+          "88",
+          "22",
+          "28"
+        ],
+        "total": "614",
+        "required": 1020,
+        "excess": "-406",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "c9a45ede0ce5f6333d9b93ed7fe5a2faea74657c0af747f77ba7a9c490427876"
+    },
+    {
+      "name": "three_stratum_3_21_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        21
+      ],
+      "m": 63,
+      "paf": {
+        "ok": false,
+        "lags": 252,
+        "bad_lags": 241,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 860,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "24",
+          "0",
+          "22",
+          "34",
+          "34",
+          "28",
+          "84",
+          "64",
+          "24",
+          "28",
+          "84",
+          "28",
+          "22",
+          "88",
+          "22",
+          "28"
+        ],
+        "total": "614",
+        "required": 1020,
+        "excess": "-406",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "c9a45ede0ce5f6333d9b93ed7fe5a2faea74657c0af747f77ba7a9c490427876"
+    },
+    {
+      "name": "three_stratum_3_23_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        23
+      ],
+      "m": 69,
+      "paf": {
+        "ok": false,
+        "lags": 276,
+        "bad_lags": 209,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 456,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "26",
+          "0",
+          "24",
+          "36",
+          "36",
+          "30",
+          "92",
+          "70",
+          "26",
+          "30",
+          "92",
+          "30",
+          "24",
+          "96",
+          "24",
+          "30"
+        ],
+        "total": "666",
+        "required": 1116,
+        "excess": "-450",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "104536003542473904aab43d9aed515066bac375ed857cfd21c056f496edc418"
+    },
+    {
+      "name": "three_stratum_3_23_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        23
+      ],
+      "m": 69,
+      "paf": {
+        "ok": false,
+        "lags": 276,
+        "bad_lags": 231,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 456,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "26",
+          "0",
+          "24",
+          "36",
+          "36",
+          "30",
+          "92",
+          "70",
+          "26",
+          "30",
+          "92",
+          "30",
+          "24",
+          "96",
+          "24",
+          "30"
+        ],
+        "total": "666",
+        "required": 1116,
+        "excess": "-450",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "104536003542473904aab43d9aed515066bac375ed857cfd21c056f496edc418"
+    },
+    {
+      "name": "three_stratum_3_25_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        25
+      ],
+      "m": 75,
+      "paf": {
+        "ok": false,
+        "lags": 300,
+        "bad_lags": 269,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 1052,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "28",
+          "0",
+          "26",
+          "38",
+          "38",
+          "32",
+          "100",
+          "76",
+          "28",
+          "32",
+          "100",
+          "32",
+          "26",
+          "104",
+          "26",
+          "32"
+        ],
+        "total": "718",
+        "required": 1212,
+        "excess": "-494",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "bea21ef9710755d10a85d114b730dea06bdfc9f896ba3ce1aceaedf68121068b"
+    },
+    {
+      "name": "three_stratum_3_25_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        25
+      ],
+      "m": 75,
+      "paf": {
+        "ok": false,
+        "lags": 300,
+        "bad_lags": 289,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1052,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "28",
+          "0",
+          "26",
+          "38",
+          "38",
+          "32",
+          "100",
+          "76",
+          "28",
+          "32",
+          "100",
+          "32",
+          "26",
+          "104",
+          "26",
+          "32"
+        ],
+        "total": "718",
+        "required": 1212,
+        "excess": "-494",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "bea21ef9710755d10a85d114b730dea06bdfc9f896ba3ce1aceaedf68121068b"
+    },
+    {
+      "name": "three_stratum_3_27_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        27
+      ],
+      "m": 81,
+      "paf": {
+        "ok": false,
+        "lags": 324,
+        "bad_lags": 285,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 1148,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "30",
+          "0",
+          "28",
+          "40",
+          "40",
+          "34",
+          "108",
+          "82",
+          "30",
+          "34",
+          "108",
+          "34",
+          "28",
+          "112",
+          "28",
+          "34"
+        ],
+        "total": "770",
+        "required": 1308,
+        "excess": "-538",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "7843adc39d31b7b9c4054c5db3b178174512e174174e760ea7e6f86af53152d4"
+    },
+    {
+      "name": "three_stratum_3_27_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        27
+      ],
+      "m": 81,
+      "paf": {
+        "ok": false,
+        "lags": 324,
+        "bad_lags": 305,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1148,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "30",
+          "0",
+          "28",
+          "40",
+          "40",
+          "34",
+          "108",
+          "82",
+          "30",
+          "34",
+          "108",
+          "34",
+          "28",
+          "112",
+          "28",
+          "34"
+        ],
+        "total": "770",
+        "required": 1308,
+        "excess": "-538",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "7843adc39d31b7b9c4054c5db3b178174512e174174e760ea7e6f86af53152d4"
+    },
+    {
+      "name": "three_stratum_3_29_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        29
+      ],
+      "m": 87,
+      "paf": {
+        "ok": false,
+        "lags": 348,
+        "bad_lags": 347,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 604,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "32",
+          "0",
+          "30",
+          "42",
+          "42",
+          "36",
+          "116",
+          "88",
+          "32",
+          "36",
+          "116",
+          "36",
+          "30",
+          "120",
+          "30",
+          "36"
+        ],
+        "total": "822",
+        "required": 1404,
+        "excess": "-582",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "a0518e5f97032e1af80656a23024ffe156a20332ed5a628cdefc5c0c619f1d25"
+    },
+    {
+      "name": "three_stratum_3_29_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        29
+      ],
+      "m": 87,
+      "paf": {
+        "ok": false,
+        "lags": 348,
+        "bad_lags": 347,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 604,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "32",
+          "0",
+          "30",
+          "42",
+          "42",
+          "36",
+          "116",
+          "88",
+          "32",
+          "36",
+          "116",
+          "36",
+          "30",
+          "120",
+          "30",
+          "36"
+        ],
+        "total": "822",
+        "required": 1404,
+        "excess": "-582",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "a0518e5f97032e1af80656a23024ffe156a20332ed5a628cdefc5c0c619f1d25"
+    },
+    {
+      "name": "three_stratum_3_31_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        31
+      ],
+      "m": 93,
+      "paf": {
+        "ok": false,
+        "lags": 372,
+        "bad_lags": 281,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 640,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "34",
+          "0",
+          "32",
+          "44",
+          "44",
+          "38",
+          "124",
+          "94",
+          "34",
+          "38",
+          "124",
+          "38",
+          "32",
+          "128",
+          "32",
+          "38"
+        ],
+        "total": "874",
+        "required": 1500,
+        "excess": "-626",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "b351b69114dca12afac1565f4037bf184ab613aa1c1f175817c62738925e4731"
+    },
+    {
+      "name": "three_stratum_3_31_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        31
+      ],
+      "m": 93,
+      "paf": {
+        "ok": false,
+        "lags": 372,
+        "bad_lags": 281,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 640,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "34",
+          "0",
+          "32",
+          "44",
+          "44",
+          "38",
+          "124",
+          "94",
+          "34",
+          "38",
+          "124",
+          "38",
+          "32",
+          "128",
+          "32",
+          "38"
+        ],
+        "total": "874",
+        "required": 1500,
+        "excess": "-626",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "b351b69114dca12afac1565f4037bf184ab613aa1c1f175817c62738925e4731"
+    },
+    {
+      "name": "three_stratum_3_33_v4",
+      "q": "v4",
+      "factors": [
+        3,
+        33
+      ],
+      "m": 99,
+      "paf": {
+        "ok": false,
+        "lags": 396,
+        "bad_lags": 355,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 1436,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "36",
+          "0",
+          "34",
+          "46",
+          "46",
+          "40",
+          "132",
+          "100",
+          "36",
+          "40",
+          "132",
+          "40",
+          "34",
+          "136",
+          "34",
+          "40"
+        ],
+        "total": "926",
+        "required": 1596,
+        "excess": "-670",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "78fa2c82554afd4f27f3c55e1e5f32c1e3b4d0bef47001d1609c2acae9f6637a"
+    },
+    {
+      "name": "three_stratum_3_33_z4",
+      "q": "z4",
+      "factors": [
+        3,
+        33
+      ],
+      "m": 99,
+      "paf": {
+        "ok": false,
+        "lags": 396,
+        "bad_lags": 385,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1436,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "36",
+          "0",
+          "34",
+          "46",
+          "46",
+          "40",
+          "132",
+          "100",
+          "36",
+          "40",
+          "132",
+          "40",
+          "34",
+          "136",
+          "34",
+          "40"
+        ],
+        "total": "926",
+        "required": 1596,
+        "excess": "-670",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "78fa2c82554afd4f27f3c55e1e5f32c1e3b4d0bef47001d1609c2acae9f6637a"
+    },
+    {
+      "name": "three_stratum_5_5_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        5
+      ],
+      "m": 25,
+      "paf": {
+        "ok": false,
+        "lags": 100,
+        "bad_lags": 99,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 80,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "11",
+          "0",
+          "6",
+          "21",
+          "21",
+          "15",
+          "20",
+          "26",
+          "11",
+          "15",
+          "20",
+          "19",
+          "9",
+          "34",
+          "6",
+          "15"
+        ],
+        "total": "249",
+        "required": 412,
+        "excess": "-163",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4a573f0dc6c8064a680ca75995df513f04a108b0429a623c764c8e27b8e8f8ab"
+    },
+    {
+      "name": "three_stratum_5_5_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        5
+      ],
+      "m": 25,
+      "paf": {
+        "ok": false,
+        "lags": 100,
+        "bad_lags": 91,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 80,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "11",
+          "0",
+          "6",
+          "21",
+          "21",
+          "15",
+          "20",
+          "26",
+          "11",
+          "15",
+          "20",
+          "19",
+          "9",
+          "34",
+          "6",
+          "15"
+        ],
+        "total": "249",
+        "required": 412,
+        "excess": "-163",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4a573f0dc6c8064a680ca75995df513f04a108b0429a623c764c8e27b8e8f8ab"
+    },
+    {
+      "name": "three_stratum_5_7_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        7
+      ],
+      "m": 35,
+      "paf": {
+        "ok": false,
+        "lags": 140,
+        "bad_lags": 127,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 132,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "14",
+          "0",
+          "8",
+          "24",
+          "24",
+          "18",
+          "28",
+          "36",
+          "14",
+          "18",
+          "28",
+          "22",
+          "12",
+          "46",
+          "8",
+          "18"
+        ],
+        "total": "318",
+        "required": 572,
+        "excess": "-254",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4e78037813e664280a96bc5eddea482c03985f6cb8418da800f3ac9a2733e6a1"
+    },
+    {
+      "name": "three_stratum_5_7_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        7
+      ],
+      "m": 35,
+      "paf": {
+        "ok": false,
+        "lags": 140,
+        "bad_lags": 133,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 132,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "14",
+          "0",
+          "8",
+          "24",
+          "24",
+          "18",
+          "28",
+          "36",
+          "14",
+          "18",
+          "28",
+          "22",
+          "12",
+          "46",
+          "8",
+          "18"
+        ],
+        "total": "318",
+        "required": 572,
+        "excess": "-254",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4e78037813e664280a96bc5eddea482c03985f6cb8418da800f3ac9a2733e6a1"
+    },
+    {
+      "name": "three_stratum_5_9_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        9
+      ],
+      "m": 45,
+      "paf": {
+        "ok": false,
+        "lags": 180,
+        "bad_lags": 175,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 468,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "17",
+          "0",
+          "10",
+          "27",
+          "27",
+          "21",
+          "36",
+          "46",
+          "17",
+          "21",
+          "36",
+          "25",
+          "15",
+          "58",
+          "10",
+          "21"
+        ],
+        "total": "387",
+        "required": 732,
+        "excess": "-345",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "2366eb992a6955b3b204391920997a3ab504fa169ee6b15127709f1da019d1e1"
+    },
+    {
+      "name": "three_stratum_5_9_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        9
+      ],
+      "m": 45,
+      "paf": {
+        "ok": false,
+        "lags": 180,
+        "bad_lags": 177,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 468,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "17",
+          "0",
+          "10",
+          "27",
+          "27",
+          "21",
+          "36",
+          "46",
+          "17",
+          "21",
+          "36",
+          "25",
+          "15",
+          "58",
+          "10",
+          "21"
+        ],
+        "total": "387",
+        "required": 732,
+        "excess": "-345",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "2366eb992a6955b3b204391920997a3ab504fa169ee6b15127709f1da019d1e1"
+    },
+    {
+      "name": "three_stratum_5_11_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        11
+      ],
+      "m": 55,
+      "paf": {
+        "ok": false,
+        "lags": 220,
+        "bad_lags": 199,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 276,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "20",
+          "0",
+          "12",
+          "30",
+          "30",
+          "24",
+          "44",
+          "56",
+          "20",
+          "24",
+          "44",
+          "28",
+          "18",
+          "70",
+          "12",
+          "24"
+        ],
+        "total": "456",
+        "required": 892,
+        "excess": "-436",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "21ee046a3e3dbdedfd9a4d5d1f2e4c30b71162c8674b494517e250f528ddc576"
+    },
+    {
+      "name": "three_stratum_5_11_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        11
+      ],
+      "m": 55,
+      "paf": {
+        "ok": false,
+        "lags": 220,
+        "bad_lags": 179,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 276,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "20",
+          "0",
+          "12",
+          "30",
+          "30",
+          "24",
+          "44",
+          "56",
+          "20",
+          "24",
+          "44",
+          "28",
+          "18",
+          "70",
+          "12",
+          "24"
+        ],
+        "total": "456",
+        "required": 892,
+        "excess": "-436",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "21ee046a3e3dbdedfd9a4d5d1f2e4c30b71162c8674b494517e250f528ddc576"
+    },
+    {
+      "name": "three_stratum_5_13_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        13
+      ],
+      "m": 65,
+      "paf": {
+        "ok": false,
+        "lags": 260,
+        "bad_lags": 259,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 368,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "23",
+          "0",
+          "14",
+          "33",
+          "33",
+          "27",
+          "52",
+          "66",
+          "23",
+          "27",
+          "52",
+          "31",
+          "21",
+          "82",
+          "14",
+          "27"
+        ],
+        "total": "525",
+        "required": 1052,
+        "excess": "-527",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "66cc54294e7c9edfe11d048e4c0795f9427e9e6a1141171bcb48b9de3bd33499"
+    },
+    {
+      "name": "three_stratum_5_13_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        13
+      ],
+      "m": 65,
+      "paf": {
+        "ok": false,
+        "lags": 260,
+        "bad_lags": 259,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 368,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "23",
+          "0",
+          "14",
+          "33",
+          "33",
+          "27",
+          "52",
+          "66",
+          "23",
+          "27",
+          "52",
+          "31",
+          "21",
+          "82",
+          "14",
+          "27"
+        ],
+        "total": "525",
+        "required": 1052,
+        "excess": "-527",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "66cc54294e7c9edfe11d048e4c0795f9427e9e6a1141171bcb48b9de3bd33499"
+    },
+    {
+      "name": "three_stratum_5_15_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        15
+      ],
+      "m": 75,
+      "paf": {
+        "ok": false,
+        "lags": 300,
+        "bad_lags": 291,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 948,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "26",
+          "0",
+          "16",
+          "36",
+          "36",
+          "30",
+          "60",
+          "76",
+          "26",
+          "30",
+          "60",
+          "34",
+          "24",
+          "94",
+          "16",
+          "30"
+        ],
+        "total": "594",
+        "required": 1212,
+        "excess": "-618",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "03a0972bca176aaecfcb6d844e476d71e3d516461bfbdc774f58fe7843d521ff"
+    },
+    {
+      "name": "three_stratum_5_15_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        15
+      ],
+      "m": 75,
+      "paf": {
+        "ok": false,
+        "lags": 300,
+        "bad_lags": 295,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 948,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "26",
+          "0",
+          "16",
+          "36",
+          "36",
+          "30",
+          "60",
+          "76",
+          "26",
+          "30",
+          "60",
+          "34",
+          "24",
+          "94",
+          "16",
+          "30"
+        ],
+        "total": "594",
+        "required": 1212,
+        "excess": "-618",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "03a0972bca176aaecfcb6d844e476d71e3d516461bfbdc774f58fe7843d521ff"
+    },
+    {
+      "name": "three_stratum_5_17_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        17
+      ],
+      "m": 85,
+      "paf": {
+        "ok": false,
+        "lags": 340,
+        "bad_lags": 339,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 512,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "29",
+          "0",
+          "18",
+          "39",
+          "39",
+          "33",
+          "68",
+          "86",
+          "29",
+          "33",
+          "68",
+          "37",
+          "27",
+          "106",
+          "18",
+          "33"
+        ],
+        "total": "663",
+        "required": 1372,
+        "excess": "-709",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9de239cca771733a2b4626885199da9a76e5ca3434bd17bc7ac3af9e6813499c"
+    },
+    {
+      "name": "three_stratum_5_17_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        17
+      ],
+      "m": 85,
+      "paf": {
+        "ok": false,
+        "lags": 340,
+        "bad_lags": 323,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 512,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "29",
+          "0",
+          "18",
+          "39",
+          "39",
+          "33",
+          "68",
+          "86",
+          "29",
+          "33",
+          "68",
+          "37",
+          "27",
+          "106",
+          "18",
+          "33"
+        ],
+        "total": "663",
+        "required": 1372,
+        "excess": "-709",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9de239cca771733a2b4626885199da9a76e5ca3434bd17bc7ac3af9e6813499c"
+    },
+    {
+      "name": "three_stratum_5_19_v4",
+      "q": "v4",
+      "factors": [
+        5,
+        19
+      ],
+      "m": 95,
+      "paf": {
+        "ok": false,
+        "lags": 380,
+        "bad_lags": 379,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 564,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "32",
+          "0",
+          "20",
+          "42",
+          "42",
+          "36",
+          "76",
+          "96",
+          "32",
+          "36",
+          "76",
+          "40",
+          "30",
+          "118",
+          "20",
+          "36"
+        ],
+        "total": "732",
+        "required": 1532,
+        "excess": "-800",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3491ff703414dbc05833a669eafd258b85fb6bb8eae098faa5fc3e35e5bddf4c"
+    },
+    {
+      "name": "three_stratum_5_19_z4",
+      "q": "z4",
+      "factors": [
+        5,
+        19
+      ],
+      "m": 95,
+      "paf": {
+        "ok": false,
+        "lags": 380,
+        "bad_lags": 361,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 564,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "32",
+          "0",
+          "20",
+          "42",
+          "42",
+          "36",
+          "76",
+          "96",
+          "32",
+          "36",
+          "76",
+          "40",
+          "30",
+          "118",
+          "20",
+          "36"
+        ],
+        "total": "732",
+        "required": 1532,
+        "excess": "-800",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3491ff703414dbc05833a669eafd258b85fb6bb8eae098faa5fc3e35e5bddf4c"
+    },
+    {
+      "name": "three_stratum_7_7_v4",
+      "q": "v4",
+      "factors": [
+        7,
+        7
+      ],
+      "m": 49,
+      "paf": {
+        "ok": false,
+        "lags": 196,
+        "bad_lags": 195,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 176,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "18",
+          "0",
+          "8",
+          "28",
+          "28",
+          "22",
+          "28",
+          "50",
+          "18",
+          "22",
+          "28",
+          "30",
+          "16",
+          "60",
+          "8",
+          "22"
+        ],
+        "total": "386",
+        "required": 796,
+        "excess": "-410",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "df701b5aee68c9129b6b7493a9fbc3d09e1ce3a1123772932cc81ed9bb9c2f71"
+    },
+    {
+      "name": "three_stratum_7_7_z4",
+      "q": "z4",
+      "factors": [
+        7,
+        7
+      ],
+      "m": 49,
+      "paf": {
+        "ok": false,
+        "lags": 196,
+        "bad_lags": 195,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 176,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "18",
+          "0",
+          "8",
+          "28",
+          "28",
+          "22",
+          "28",
+          "50",
+          "18",
+          "22",
+          "28",
+          "30",
+          "16",
+          "60",
+          "8",
+          "22"
+        ],
+        "total": "386",
+        "required": 796,
+        "excess": "-410",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "df701b5aee68c9129b6b7493a9fbc3d09e1ce3a1123772932cc81ed9bb9c2f71"
+    },
+    {
+      "name": "three_stratum_7_9_v4",
+      "q": "v4",
+      "factors": [
+        7,
+        9
+      ],
+      "m": 63,
+      "paf": {
+        "ok": false,
+        "lags": 252,
+        "bad_lags": 251,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 652,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "22",
+          "0",
+          "10",
+          "32",
+          "32",
+          "26",
+          "36",
+          "64",
+          "22",
+          "26",
+          "36",
+          "34",
+          "20",
+          "76",
+          "10",
+          "26"
+        ],
+        "total": "472",
+        "required": 1020,
+        "excess": "-548",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "8a296b76ce85a1415e47835f6ce5fad2daf04994b1f0cfa2bf52cbc7e32715c3"
+    },
+    {
+      "name": "three_stratum_7_9_z4",
+      "q": "z4",
+      "factors": [
+        7,
+        9
+      ],
+      "m": 63,
+      "paf": {
+        "ok": false,
+        "lags": 252,
+        "bad_lags": 239,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 652,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "22",
+          "0",
+          "10",
+          "32",
+          "32",
+          "26",
+          "36",
+          "64",
+          "22",
+          "26",
+          "36",
+          "34",
+          "20",
+          "76",
+          "10",
+          "26"
+        ],
+        "total": "472",
+        "required": 1020,
+        "excess": "-548",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "8a296b76ce85a1415e47835f6ce5fad2daf04994b1f0cfa2bf52cbc7e32715c3"
+    },
+    {
+      "name": "three_stratum_7_11_v4",
+      "q": "v4",
+      "factors": [
+        7,
+        11
+      ],
+      "m": 77,
+      "paf": {
+        "ok": false,
+        "lags": 308,
+        "bad_lags": 307,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 372,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "26",
+          "0",
+          "12",
+          "36",
+          "36",
+          "30",
+          "44",
+          "78",
+          "26",
+          "30",
+          "44",
+          "38",
+          "24",
+          "92",
+          "12",
+          "30"
+        ],
+        "total": "558",
+        "required": 1244,
+        "excess": "-686",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4157fc0c4c5cf4d978b683cbe4cb6bf04f8d5effcae6ba7afea59e0338c25235"
+    },
+    {
+      "name": "three_stratum_7_11_z4",
+      "q": "z4",
+      "factors": [
+        7,
+        11
+      ],
+      "m": 77,
+      "paf": {
+        "ok": false,
+        "lags": 308,
+        "bad_lags": 307,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 372,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "26",
+          "0",
+          "12",
+          "36",
+          "36",
+          "30",
+          "44",
+          "78",
+          "26",
+          "30",
+          "44",
+          "38",
+          "24",
+          "92",
+          "12",
+          "30"
+        ],
+        "total": "558",
+        "required": 1244,
+        "excess": "-686",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4157fc0c4c5cf4d978b683cbe4cb6bf04f8d5effcae6ba7afea59e0338c25235"
+    },
+    {
+      "name": "three_stratum_7_13_v4",
+      "q": "v4",
+      "factors": [
+        7,
+        13
+      ],
+      "m": 91,
+      "paf": {
+        "ok": false,
+        "lags": 364,
+        "bad_lags": 363,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 500,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "30",
+          "0",
+          "14",
+          "40",
+          "40",
+          "34",
+          "52",
+          "92",
+          "30",
+          "34",
+          "52",
+          "42",
+          "28",
+          "108",
+          "14",
+          "34"
+        ],
+        "total": "644",
+        "required": 1468,
+        "excess": "-824",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "b14ee80d2cb9f4ecae6372431afd56cff8144f2d073d18a77e567b064ae1df2a"
+    },
+    {
+      "name": "three_stratum_7_13_z4",
+      "q": "z4",
+      "factors": [
+        7,
+        13
+      ],
+      "m": 91,
+      "paf": {
+        "ok": false,
+        "lags": 364,
+        "bad_lags": 327,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 500,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "30",
+          "0",
+          "14",
+          "40",
+          "40",
+          "34",
+          "52",
+          "92",
+          "30",
+          "34",
+          "52",
+          "42",
+          "28",
+          "108",
+          "14",
+          "34"
+        ],
+        "total": "644",
+        "required": 1468,
+        "excess": "-824",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "b14ee80d2cb9f4ecae6372431afd56cff8144f2d073d18a77e567b064ae1df2a"
+    },
+    {
+      "name": "three_stratum_9_9_v4",
+      "q": "v4",
+      "factors": [
+        9,
+        9
+      ],
+      "m": 81,
+      "paf": {
+        "ok": false,
+        "lags": 324,
+        "bad_lags": 319,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 836,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "27",
+          "0",
+          "10",
+          "37",
+          "37",
+          "31",
+          "36",
+          "82",
+          "27",
+          "31",
+          "36",
+          "43",
+          "25",
+          "94",
+          "10",
+          "31"
+        ],
+        "total": "557",
+        "required": 1308,
+        "excess": "-751",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3093edc0410c69d72df4d1d6fcd2d2495aeed6f1e8e8196caf92bfe20bc68533"
+    },
+    {
+      "name": "three_stratum_9_9_z4",
+      "q": "z4",
+      "factors": [
+        9,
+        9
+      ],
+      "m": 81,
+      "paf": {
+        "ok": false,
+        "lags": 324,
+        "bad_lags": 309,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 836,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "27",
+          "0",
+          "10",
+          "37",
+          "37",
+          "31",
+          "36",
+          "82",
+          "27",
+          "31",
+          "36",
+          "43",
+          "25",
+          "94",
+          "10",
+          "31"
+        ],
+        "total": "557",
+        "required": 1308,
+        "excess": "-751",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3093edc0410c69d72df4d1d6fcd2d2495aeed6f1e8e8196caf92bfe20bc68533"
+    },
+    {
+      "name": "three_stratum_9_11_v4",
+      "q": "v4",
+      "factors": [
+        9,
+        11
+      ],
+      "m": 99,
+      "paf": {
+        "ok": false,
+        "lags": 396,
+        "bad_lags": 385,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "actual": 468,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "32",
+          "0",
+          "12",
+          "42",
+          "42",
+          "36",
+          "44",
+          "100",
+          "32",
+          "36",
+          "44",
+          "48",
+          "30",
+          "114",
+          "12",
+          "36"
+        ],
+        "total": "660",
+        "required": 1596,
+        "excess": "-936",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9a7734ae624f4aa5c932c07675e68073597b3bbe1a7c47066dcc92c7521d3d40"
+    },
+    {
+      "name": "three_stratum_9_11_z4",
+      "q": "z4",
+      "factors": [
+        9,
+        11
+      ],
+      "m": 99,
+      "paf": {
+        "ok": false,
+        "lags": 396,
+        "bad_lags": 385,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 468,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "32",
+          "0",
+          "12",
+          "42",
+          "42",
+          "36",
+          "44",
+          "100",
+          "32",
+          "36",
+          "44",
+          "48",
+          "30",
+          "114",
+          "12",
+          "36"
+        ],
+        "total": "660",
+        "required": 1596,
+        "excess": "-936",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9a7734ae624f4aa5c932c07675e68073597b3bbe1a7c47066dcc92c7521d3d40"
+    }
+  ]
+}
