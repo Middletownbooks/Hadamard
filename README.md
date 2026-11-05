@@ -112,3 +112,6 @@ Work in progress on the open orders is described in the most recent files of `re
   exactly empty stage 1. All 40 surviving Q tuples were decided by two independent exhaustive methods, so the slice
   holds no core. See [`report/blockswap_answer.md`](report/blockswap_answer.md), which includes a transfer screen of
   the 863-shaped hosts.
+- **k4 border theorem (2026-11-05):** the OpenAI model proved that one finite border certificate per Q completes
+  every valid core of the k4 family with odd |K| (Q = ℤ₂² or ℤ₄); checked independently and on the 1916 and 3964 cores
+  in [`report/openai_4p3_review.md`](report/openai_4p3_review.md).

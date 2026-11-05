@@ -739,6 +739,10 @@ used here only to rank structures that pass every affordable exact gate, never t
   - At k = 8 the classes at ℤ₂³ have one. The ℤ₈ classes, and the k = 6 classes, are open: borders of this size
     exist (1388, 1436), but only template-type frames find them.
   - The cores of those structures are out of reach anyway: their next exact gates cost 2^50 pairs or more (§8.1).
+- **Note (2026-11-05): k = 4 with odd |K| is closed.** The OpenAI model's compression normal form and one certificate
+  per Q (`logs/openai_4p3/border_certificates.json`) give a border for every valid core of the k4 family with odd |K|.
+  This was checked independently, with matrices of orders 1916 and 3964 assembled and verified; see
+  `report/openai_4p3_review.md`, Task 2.
 
 
 ---
