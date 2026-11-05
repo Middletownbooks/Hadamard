@@ -1,0 +1,18 @@
+{
+ "note": "Gate 0 cross-check: theory/blockswap_gate0.py (own code) vs theory/openai_deficit_symmetry.py q_gate/joint_gate (codex); same normalisation (block total > 0, A<->B unordered, C<->tauC not identified)",
+ "m5": {
+  "q_tuples_mine": 48,
+  "q_tuples_codex": 48,
+  "sets_equal": true,
+  "survivors_mine": 40,
+  "survivors_codex": 40,
+  "survivor_sets_equal": true
+ },
+ "m3": {
+  "q_tuples_mine": 24,
+  "q_tuples_codex": 24,
+  "survivors_mine": 0,
+  "survivors_codex": 0
+ },
+ "bug_fixed_during_gate0": "first version of blockswap_gate0.py weighted the row sums of the mirrored A/B row and of C rows by 2 (energy weight); fixed before this comparison"
+}

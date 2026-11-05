@@ -1,0 +1,809 @@
+{
+ "m": 3,
+ "v": 519,
+ "script": "theory/blockswap_gate0.py",
+ "identity": {
+  "tau_automorphism": true,
+  "tau_commutes_with_S": true,
+  "tau_maps_K_to_K": true,
+  "tau_involution": true,
+  "target_tau_invariant": true,
+  "identity_R_tauC_eq_RC_tau_random": true,
+  "identity_trials": 3
+ },
+ "q_target_paf": [
+  528,
+  516,
+  516,
+  516
+ ],
+ "q_target_psd": [
+  2076,
+  12
+ ],
+ "q_tuples": 24,
+ "q_tuples_zero_total_blocks": 0,
+ "excess_energy": 1512,
+ "joint_survivors": 0,
+ "lag0_only": {
+  "cap": 1512,
+  "n_cells": 26,
+  "weights": {
+   "1": 4,
+   "2": 22
+  },
+  "reachable": true
+ },
+ "tuples": [
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     7,
+     7,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     5,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     5,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     5,
+     7
+    ],
+    [
+     7,
+     5,
+     7,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     5,
+     5,
+     7
+    ],
+    [
+     5,
+     5,
+     5,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     5,
+     7,
+     5
+    ],
+    [
+     5,
+     7,
+     5,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     7,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     7,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     3,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     5,
+     5,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     7,
+     7,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     5,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     5,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     5,
+     7
+    ],
+    [
+     7,
+     5,
+     7,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     5
+    ],
+    [
+     7,
+     7,
+     7,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     5,
+     5,
+     7
+    ],
+    [
+     5,
+     5,
+     5,
+     7
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     5,
+     7,
+     5
+    ],
+    [
+     5,
+     7,
+     5,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     7,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     7,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     5,
+     5,
+     5,
+     3
+    ],
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     5,
+     5,
+     5
+    ],
+    [
+     7,
+     5,
+     5,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     9
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     9
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     9
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     9
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     9,
+     7,
+     7,
+     7
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     9,
+     7,
+     7,
+     7
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     9,
+     7,
+     7,
+     7
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     9,
+     7,
+     7,
+     7
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ]
+   ],
+   "minA": null,
+   "minB": null,
+   "minC": null,
+   "survives": false
+  }
+ ],
+ "joint_survivors_mod_C_tauC": 0,
+ "secs": 2.7
+}
