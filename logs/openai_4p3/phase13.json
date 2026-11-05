@@ -1,0 +1,71 @@
+{
+  "command": "theory/openai_4p3_search.py --primes 13 --max-pairs 5000000 --phase-max-p 13 --seconds 540 --out logs/openai_4p3/phase13.json",
+  "seed": null,
+  "arithmetic": "Python integers",
+  "mode": "seed_then_selected_phases",
+  "records": [
+    {
+      "p": 13,
+      "base_vectors": 87,
+      "defect_vectors": 264,
+      "pairs": 34980,
+      "status": "pass_seed_gate",
+      "parameters": [
+        {
+          "lam": 3,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 3,
+          "sign": 1,
+          "mask": 7,
+          "scale": 2,
+          "root": 0
+        },
+        {
+          "lam": 3,
+          "sign": 1,
+          "mask": 7,
+          "scale": 5,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": 1,
+          "mask": 1,
+          "scale": 2,
+          "root": 0
+        }
+      ],
+      "phases": [
+        {
+          "p": 13,
+          "q": "v4",
+          "lists": [
+            343,
+            2197,
+            2197,
+            2197
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "no_shifts_for_selected_seeds"
+        },
+        {
+          "p": 13,
+          "q": "z4",
+          "lists": [
+            322,
+            2197,
+            2197,
+            2197
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "no_shifts_for_selected_seeds"
+        }
+      ]
+    }
+  ],
+  "seconds": 43.528
+}

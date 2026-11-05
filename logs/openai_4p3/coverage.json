@@ -1,0 +1,681 @@
+{
+  "command": "theory/openai_4p3_search.py --coverage --out logs/openai_4p3/coverage.json --seconds 540",
+  "seed": null,
+  "arithmetic": "Python integers",
+  "mode": "compression_only",
+  "records": [
+    {
+      "p": 149,
+      "N": 2396,
+      "status": "pass_compression_only",
+      "traces": 12,
+      "witness": [
+        -11,
+        -5,
+        -3,
+        1
+      ],
+      "parameters": [
+        {
+          "lam": 2,
+          "sign": 1,
+          "mask": 0,
+          "scale": 1
+        },
+        {
+          "lam": 7,
+          "sign": 1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 14,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 14,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 179,
+      "N": 2876,
+      "status": "pass_compression_only",
+      "traces": 13,
+      "witness": [
+        -13,
+        -3,
+        1,
+        1
+      ],
+      "parameters": [
+        {
+          "lam": 3,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 257,
+      "N": 4124,
+      "status": "pass_compression_only",
+      "traces": 16,
+      "witness": [
+        -15,
+        -5,
+        -3,
+        -3
+      ],
+      "parameters": [
+        {
+          "lam": 7,
+          "sign": -1,
+          "mask": 0,
+          "scale": 1
+        },
+        {
+          "lam": 2,
+          "sign": 1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 271,
+      "N": 4348,
+      "status": "pass_compression_only",
+      "traces": 17,
+      "witness": [
+        -15,
+        -7,
+        1,
+        1
+      ],
+      "parameters": [
+        {
+          "lam": 3,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1
+        },
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 331,
+      "N": 5308,
+      "status": "pass_compression_only",
+      "traces": 19,
+      "witness": [
+        -17,
+        -7,
+        -1,
+        -1
+      ],
+      "parameters": [
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 0,
+          "scale": 1
+        },
+        {
+          "lam": 7,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 359,
+      "N": 5756,
+      "status": "pass_compression_only",
+      "traces": 19,
+      "witness": [
+        -17,
+        -5,
+        -5,
+        5
+      ],
+      "parameters": [
+        {
+          "lam": 3,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1
+        },
+        {
+          "lam": 19,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 19,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 12,
+          "sign": 1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 367,
+      "N": 5884,
+      "status": "pass_compression_only",
+      "traces": 19,
+      "witness": [
+        -19,
+        -3,
+        -1,
+        -1
+      ],
+      "parameters": [
+        {
+          "lam": 5,
+          "sign": 1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 389,
+      "N": 6236,
+      "status": "pass_compression_only",
+      "traces": 20,
+      "witness": [
+        -19,
+        -5,
+        -3,
+        1
+      ],
+      "parameters": [
+        {
+          "lam": 15,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1
+        },
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 457,
+      "N": 7324,
+      "status": "pass_compression_only",
+      "traces": 22,
+      "witness": [
+        -21,
+        1,
+        1,
+        3
+      ],
+      "parameters": [
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 23,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 23,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 7,
+          "sign": 1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 461,
+      "N": 7388,
+      "status": "pass_compression_only",
+      "traces": 22,
+      "witness": [
+        -21,
+        -5,
+        -1,
+        -1
+      ],
+      "parameters": [
+        {
+          "lam": 5,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1
+        },
+        {
+          "lam": 3,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 17,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 17,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 467,
+      "N": 7484,
+      "status": "pass_compression_only",
+      "traces": 21,
+      "witness": [
+        -21,
+        -5,
+        -3,
+        -1
+      ],
+      "parameters": [
+        {
+          "lam": 11,
+          "sign": -1,
+          "mask": 0,
+          "scale": 1
+        },
+        {
+          "lam": 6,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 509,
+      "N": 8156,
+      "status": "pass_compression_only",
+      "traces": 22,
+      "witness": [
+        -21,
+        -7,
+        -5,
+        -3
+      ],
+      "parameters": [
+        {
+          "lam": 3,
+          "sign": 1,
+          "mask": 7,
+          "scale": 1
+        },
+        {
+          "lam": 4,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": 1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 5,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 521,
+      "N": 8348,
+      "status": "pass_compression_only",
+      "traces": 22,
+      "witness": [
+        -21,
+        -9,
+        -3,
+        1
+      ],
+      "parameters": [
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 5,
+          "sign": 1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 14,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 14,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 523,
+      "N": 8380,
+      "status": "pass_compression_only",
+      "traces": 23,
+      "witness": [
+        -21,
+        -7,
+        -5,
+        -5
+      ],
+      "parameters": [
+        {
+          "lam": 18,
+          "sign": -1,
+          "mask": 0,
+          "scale": 1
+        },
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 571,
+      "N": 9148,
+      "status": "pass_compression_only",
+      "traces": 23,
+      "witness": [
+        -23,
+        -7,
+        -1,
+        -1
+      ],
+      "parameters": [
+        {
+          "lam": 15,
+          "sign": 1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 5,
+          "sign": 1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    },
+    {
+      "p": 599,
+      "N": 9596,
+      "status": "pass_compression_only",
+      "traces": 25,
+      "witness": [
+        -23,
+        -5,
+        -5,
+        5
+      ],
+      "parameters": [
+        {
+          "lam": 4,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 66,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 66,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 15,
+          "sign": 1,
+          "mask": 7,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "full_core_status": "unknown"
+    }
+  ],
+  "seconds": 0.414
+}

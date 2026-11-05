@@ -1,0 +1,687 @@
+{
+  "command": "theory/openai_4p3_search.py --out logs/openai_4p3/small.json --seconds 540",
+  "seed": null,
+  "arithmetic": "Python integers",
+  "mode": "seed_then_selected_phases",
+  "records": [
+    {
+      "p": 3,
+      "base_vectors": 2,
+      "defect_vectors": 3,
+      "pairs": 6,
+      "status": "pass_seed_gate",
+      "parameters": [
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        }
+      ],
+      "phases": [
+        {
+          "p": 3,
+          "q": "v4",
+          "lists": [
+            8,
+            5,
+            11,
+            11
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "core",
+          "parameters": [
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 1,
+              "shifts": [
+                0,
+                1,
+                1,
+                2
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 3,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 3,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                1,
+                2
+              ]
+            }
+          ],
+          "verification": {
+            "ok": true,
+            "p": 3,
+            "q": "v4",
+            "checked_lags": 12,
+            "totals": [
+              48,
+              -12,
+              -12,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "bad": []
+          },
+          "core_file": "logs/openai_4p3/core_p3_v4.json"
+        },
+        {
+          "p": 3,
+          "q": "z4",
+          "lists": [
+            7,
+            6,
+            14,
+            14
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "core",
+          "parameters": [
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 1,
+              "shifts": [
+                0,
+                0,
+                2,
+                1
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 3,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 3,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                1,
+                2
+              ]
+            }
+          ],
+          "verification": {
+            "ok": true,
+            "p": 3,
+            "q": "z4",
+            "checked_lags": 12,
+            "totals": [
+              48,
+              -12,
+              -12,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "bad": []
+          },
+          "core_file": "logs/openai_4p3/core_p3_z4.json"
+        }
+      ]
+    },
+    {
+      "p": 5,
+      "base_vectors": 4,
+      "defect_vectors": 10,
+      "pairs": 55,
+      "status": "pass_seed_gate",
+      "parameters": [
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 0,
+          "scale": 1
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 2,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": 1,
+          "mask": 3,
+          "scale": 1,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": 1,
+          "mask": 3,
+          "scale": 2,
+          "root": 0
+        }
+      ],
+      "phases": [
+        {
+          "p": 5,
+          "q": "v4",
+          "lists": [
+            27,
+            51,
+            55,
+            55
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "core",
+          "parameters": [
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 0,
+              "scale": 1,
+              "shifts": [
+                0,
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 2,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                4,
+                3
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": 1,
+              "mask": 3,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                1,
+                3
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": 1,
+              "mask": 3,
+              "scale": 2,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ],
+          "verification": {
+            "ok": true,
+            "p": 5,
+            "q": "v4",
+            "checked_lags": 20,
+            "totals": [
+              80,
+              -12,
+              -12,
+              -12,
+              -12,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "bad": []
+          },
+          "core_file": "logs/openai_4p3/core_p5_v4.json"
+        },
+        {
+          "p": 5,
+          "q": "z4",
+          "lists": [
+            24,
+            63,
+            63,
+            63
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "core",
+          "parameters": [
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 0,
+              "scale": 1,
+              "shifts": [
+                0,
+                1,
+                0,
+                3
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 2,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": 1,
+              "mask": 3,
+              "scale": 1,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": 1,
+              "mask": 3,
+              "scale": 2,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                4
+              ]
+            }
+          ],
+          "verification": {
+            "ok": true,
+            "p": 5,
+            "q": "z4",
+            "checked_lags": 20,
+            "totals": [
+              80,
+              -12,
+              -12,
+              -12,
+              -12,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "bad": []
+          },
+          "core_file": "logs/openai_4p3/core_p5_z4.json"
+        }
+      ]
+    },
+    {
+      "p": 7,
+      "base_vectors": 9,
+      "defect_vectors": 35,
+      "pairs": 630,
+      "status": "pass_seed_gate",
+      "parameters": [
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 2,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 1,
+          "scale": 3,
+          "root": 0
+        },
+        {
+          "lam": 2,
+          "sign": -1,
+          "mask": 2,
+          "scale": 2,
+          "root": 4
+        }
+      ],
+      "phases": [
+        {
+          "p": 7,
+          "q": "v4",
+          "lists": [
+            64,
+            158,
+            158,
+            343
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "core",
+          "parameters": [
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 1,
+              "shifts": [
+                0,
+                2,
+                0,
+                5
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 2,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                1,
+                3
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 1,
+              "scale": 3,
+              "root": 0,
+              "shifts": [
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "lam": 2,
+              "sign": -1,
+              "mask": 2,
+              "scale": 2,
+              "root": 4,
+              "shifts": [
+                0,
+                0,
+                6,
+                5
+              ]
+            }
+          ],
+          "verification": {
+            "ok": true,
+            "p": 7,
+            "q": "v4",
+            "checked_lags": 28,
+            "totals": [
+              112,
+              -12,
+              -12,
+              -12,
+              -12,
+              -12,
+              -12,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "bad": []
+          },
+          "core_file": "logs/openai_4p3/core_p7_v4.json"
+        },
+        {
+          "p": 7,
+          "q": "z4",
+          "lists": [
+            58,
+            172,
+            172,
+            343
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "no_shifts_for_selected_seeds"
+        }
+      ]
+    },
+    {
+      "p": 11,
+      "base_vectors": 45,
+      "defect_vectors": 175,
+      "pairs": 15400,
+      "status": "no_seed_quadruple"
+    },
+    {
+      "p": 13,
+      "base_vectors": 87,
+      "defect_vectors": 264,
+      "pairs": 34980,
+      "status": "pass_seed_gate",
+      "parameters": [
+        {
+          "lam": 3,
+          "sign": -1,
+          "mask": 1,
+          "scale": 1
+        },
+        {
+          "lam": 3,
+          "sign": 1,
+          "mask": 7,
+          "scale": 2,
+          "root": 0
+        },
+        {
+          "lam": 3,
+          "sign": 1,
+          "mask": 7,
+          "scale": 5,
+          "root": 0
+        },
+        {
+          "lam": 4,
+          "sign": 1,
+          "mask": 1,
+          "scale": 2,
+          "root": 0
+        }
+      ],
+      "phases": [
+        {
+          "p": 13,
+          "q": "v4",
+          "lists": [
+            343,
+            2197,
+            2197,
+            2197
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "capped",
+          "reason": "pair_limit"
+        },
+        {
+          "p": 13,
+          "q": "z4",
+          "lists": [
+            322,
+            2197,
+            2197,
+            2197
+          ],
+          "scope": "first seed-gate witness only",
+          "status": "capped",
+          "reason": "pair_limit"
+        }
+      ]
+    },
+    {
+      "p": 17,
+      "base_vectors": 156,
+      "defect_vectors": 496,
+      "pairs": 123256,
+      "status": "no_seed_quadruple"
+    },
+    {
+      "p": 19,
+      "base_vectors": 204,
+      "defect_vectors": 612,
+      "pairs": 187578,
+      "status": "no_seed_quadruple"
+    }
+  ],
+  "seconds": 5.366
+}

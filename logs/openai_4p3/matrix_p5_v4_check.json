@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "n": 92,
+  "checked_entries": 8464,
+  "arithmetic": "Python integer row dot products",
+  "command": "theory/openai_4p3_verify.py logs/openai_4p3/matrix_p5_v4.json --out logs/openai_4p3/matrix_p5_v4_check.json",
+  "seed": null
+}

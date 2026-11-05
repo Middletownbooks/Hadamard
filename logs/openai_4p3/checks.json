@@ -1,0 +1,239 @@
+{
+  "command": "theory/openai_4p3_check.py",
+  "seed": null,
+  "records": [
+    {
+      "p": 3,
+      "q": "v4",
+      "core": {
+        "ok": true,
+        "p": 3,
+        "q": "v4",
+        "checked_lags": 12,
+        "totals": [
+          48,
+          -12,
+          -12,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "bad": []
+      },
+      "matrix": {
+        "ok": true,
+        "n": 60,
+        "checked_entries": 3600,
+        "arithmetic": "Python integer row dot products"
+      },
+      "negative_controls_rejected": true
+    },
+    {
+      "p": 3,
+      "q": "z4",
+      "core": {
+        "ok": true,
+        "p": 3,
+        "q": "z4",
+        "checked_lags": 12,
+        "totals": [
+          48,
+          -12,
+          -12,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "bad": []
+      },
+      "matrix": {
+        "ok": true,
+        "n": 60,
+        "checked_entries": 3600,
+        "arithmetic": "Python integer row dot products"
+      },
+      "negative_controls_rejected": true
+    },
+    {
+      "p": 5,
+      "q": "v4",
+      "core": {
+        "ok": true,
+        "p": 5,
+        "q": "v4",
+        "checked_lags": 20,
+        "totals": [
+          80,
+          -12,
+          -12,
+          -12,
+          -12,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "bad": []
+      },
+      "matrix": {
+        "ok": true,
+        "n": 92,
+        "checked_entries": 8464,
+        "arithmetic": "Python integer row dot products"
+      },
+      "negative_controls_rejected": true
+    },
+    {
+      "p": 5,
+      "q": "z4",
+      "core": {
+        "ok": true,
+        "p": 5,
+        "q": "z4",
+        "checked_lags": 20,
+        "totals": [
+          80,
+          -12,
+          -12,
+          -12,
+          -12,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "bad": []
+      },
+      "matrix": {
+        "ok": true,
+        "n": 92,
+        "checked_entries": 8464,
+        "arithmetic": "Python integer row dot products"
+      },
+      "negative_controls_rejected": true
+    },
+    {
+      "p": 7,
+      "q": "v4",
+      "core": {
+        "ok": true,
+        "p": 7,
+        "q": "v4",
+        "checked_lags": 28,
+        "totals": [
+          112,
+          -12,
+          -12,
+          -12,
+          -12,
+          -12,
+          -12,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "bad": []
+      },
+      "matrix": {
+        "ok": true,
+        "n": 124,
+        "checked_entries": 15376,
+        "arithmetic": "Python integer row dot products"
+      },
+      "negative_controls_rejected": true
+    }
+  ],
+  "compression_host_python_agree": true,
+  "all_compression_witnesses_checked": true,
+  "cyclotomic_builder_controls": [
+    [
+      5,
+      2,
+      6
+    ],
+    [
+      5,
+      4,
+      6
+    ],
+    [
+      7,
+      2,
+      8
+    ],
+    [
+      7,
+      6,
+      8
+    ],
+    [
+      13,
+      2,
+      10
+    ],
+    [
+      13,
+      4,
+      14
+    ],
+    [
+      13,
+      6,
+      14
+    ]
+  ],
+  "target_cubic_compressions_checked": 32,
+  "seconds": 0.84
+}
