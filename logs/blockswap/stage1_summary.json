@@ -1,0 +1,1826 @@
+{
+ "n_survivors": 40,
+ "all_empty_both_methods": true,
+ "decided_primary": 40,
+ "decided_second": 40,
+ "total_secs_primary": 347.4,
+ "total_secs_second": 497.6,
+ "max_sizes": [
+  14040,
+  37000,
+  37470000
+ ],
+ "planted_primary": {
+  "n": 14,
+  "recovered": 14
+ },
+ "planted_second": {
+  "n": 14,
+  "recovered": 14,
+  "hit_counts_equal": true
+ },
+ "non_survivors_primary": [
+  {
+   "z": [
+    [
+     5,
+     7,
+     7,
+     7
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     1,
+     1,
+     1,
+     3
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     5,
+     7,
+     7,
+     7
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     1,
+     1,
+     3,
+     1
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     5,
+     7,
+     7,
+     7
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     1,
+     3,
+     1,
+     1
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     5,
+     7,
+     7,
+     7
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     1,
+     1,
+     1
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     5
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     1,
+     1,
+     1,
+     3
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     5
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     1,
+     1,
+     3,
+     1
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     5
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     1,
+     3,
+     1,
+     1
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  },
+  {
+   "z": [
+    [
+     7,
+     7,
+     7,
+     5
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     1,
+     1,
+     1
+    ]
+   ],
+   "status": "EMPTY (Q sums or energy)",
+   "mins": [
+    null,
+    672,
+    0
+   ],
+   "sizes": null,
+   "hits": 0
+  }
+ ],
+ "tuples": [
+  {
+   "index": 0,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     13,
+     15,
+     15,
+     15
+    ],
+    [
+     1,
+     1,
+     1,
+     3
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 41.0,
+   "secs_second": 53.7
+  },
+  {
+   "index": 1,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     13,
+     15,
+     15,
+     15
+    ],
+    [
+     1,
+     1,
+     3,
+     1
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 40.4,
+   "secs_second": 51.2
+  },
+  {
+   "index": 2,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     13,
+     15,
+     15,
+     15
+    ],
+    [
+     1,
+     3,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 40.7,
+   "secs_second": 50.0
+  },
+  {
+   "index": 3,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     13,
+     15,
+     15,
+     15
+    ],
+    [
+     3,
+     1,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 41.4,
+   "secs_second": 46.2
+  },
+  {
+   "index": 4,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     15,
+     15,
+     15,
+     13
+    ],
+    [
+     1,
+     1,
+     1,
+     3
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 40.1,
+   "secs_second": 53.8
+  },
+  {
+   "index": 5,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     15,
+     15,
+     15,
+     13
+    ],
+    [
+     1,
+     1,
+     3,
+     1
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 41.2,
+   "secs_second": 52.1
+  },
+  {
+   "index": 6,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     15,
+     15,
+     15,
+     13
+    ],
+    [
+     1,
+     3,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 40.3,
+   "secs_second": 49.6
+  },
+  {
+   "index": 7,
+   "z": [
+    [
+     1,
+     1,
+     1,
+     1
+    ],
+    [
+     15,
+     15,
+     15,
+     13
+    ],
+    [
+     3,
+     1,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    14040,
+    35400,
+    37470000
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 35.4,
+   "secs_second": 47.0
+  },
+  {
+   "index": 8,
+   "z": [
+    [
+     1,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     5,
+     5,
+     5
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.3,
+   "secs_second": 5.7
+  },
+  {
+   "index": 9,
+   "z": [
+    [
+     1,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     3,
+     5,
+     5
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.2,
+   "secs_second": 5.8
+  },
+  {
+   "index": 10,
+   "z": [
+    [
+     1,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     5,
+     3,
+     5
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.4,
+   "secs_second": 5.5
+  },
+  {
+   "index": 11,
+   "z": [
+    [
+     1,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     5,
+     5,
+     3
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.2,
+   "secs_second": 5.3
+  },
+  {
+   "index": 12,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     1
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     5,
+     5,
+     5
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 5.1
+  },
+  {
+   "index": 13,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     1
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     3,
+     5,
+     5
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 5.3
+  },
+  {
+   "index": 14,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     1
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     5,
+     3,
+     5
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 5.3
+  },
+  {
+   "index": 15,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     1
+    ],
+    [
+     13,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     5,
+     5,
+     3
+    ]
+   ],
+   "sizes": [
+    3510,
+    37000,
+    13035
+   ],
+   "mins": [
+    0,
+    672,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 5.3
+  },
+  {
+   "index": 16,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     15
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.0,
+   "secs_second": 4.7
+  },
+  {
+   "index": 17,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     15
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 5.0
+  },
+  {
+   "index": 18,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     15
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 4.8
+  },
+  {
+   "index": 19,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     13,
+     13,
+     13,
+     15
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 4.5
+  },
+  {
+   "index": 20,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     15,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.5,
+   "secs_second": 4.8
+  },
+  {
+   "index": 21,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     15,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 4.7
+  },
+  {
+   "index": 22,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     15,
+     13,
+     13,
+     13
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 4.7
+  },
+  {
+   "index": 23,
+   "z": [
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     15,
+     13,
+     13,
+     13
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    1585,
+    36080,
+    563375
+   ],
+   "mins": [
+    0,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.1,
+   "secs_second": 4.5
+  },
+  {
+   "index": 24,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     9,
+     11,
+     11,
+     11
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.7
+  },
+  {
+   "index": 25,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     9,
+     11,
+     11,
+     11
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.5
+  },
+  {
+   "index": 26,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     9,
+     11,
+     11,
+     11
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.5
+  },
+  {
+   "index": 27,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     9,
+     11,
+     11,
+     11
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.6
+  },
+  {
+   "index": 28,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     9
+    ],
+    [
+     3,
+     3,
+     3,
+     5
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.6
+  },
+  {
+   "index": 29,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     9
+    ],
+    [
+     3,
+     3,
+     5,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.5
+  },
+  {
+   "index": 30,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     9
+    ],
+    [
+     3,
+     5,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.4,
+   "secs_second": 0.6
+  },
+  {
+   "index": 31,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     9
+    ],
+    [
+     5,
+     3,
+     3,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1795,
+    86625
+   ],
+   "mins": [
+    672,
+    728,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.1,
+   "secs_second": 0.6
+  },
+  {
+   "index": 32,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     11
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     1,
+     1,
+     1,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 1.2,
+   "secs_second": 1.0
+  },
+  {
+   "index": 33,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     11
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     1,
+     1,
+     3,
+     1
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.9,
+   "secs_second": 1.0
+  },
+  {
+   "index": 34,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     11
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     1,
+     3,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.8,
+   "secs_second": 1.0
+  },
+  {
+   "index": 35,
+   "z": [
+    [
+     9,
+     9,
+     9,
+     11
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     3,
+     1,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.9,
+   "secs_second": 1.0
+  },
+  {
+   "index": 36,
+   "z": [
+    [
+     11,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     1,
+     1,
+     1,
+     3
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.9,
+   "secs_second": 1.2
+  },
+  {
+   "index": 37,
+   "z": [
+    [
+     11,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     1,
+     1,
+     3,
+     1
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.8,
+   "secs_second": 1.0
+  },
+  {
+   "index": 38,
+   "z": [
+    [
+     11,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     1,
+     3,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.9,
+   "secs_second": 1.2
+  },
+  {
+   "index": 39,
+   "z": [
+    [
+     11,
+     9,
+     9,
+     9
+    ],
+    [
+     11,
+     11,
+     11,
+     11
+    ],
+    [
+     3,
+     1,
+     1,
+     1
+    ]
+   ],
+   "sizes": [
+    255,
+    1635,
+    1350000
+   ],
+   "mins": [
+    728,
+    784,
+    0
+   ],
+   "primary": "EMPTY (exhaustive join)",
+   "primary_key_matches": 0,
+   "second": "EMPTY (exhaustive join)",
+   "sizes_equal": true,
+   "secs_primary": 0.8,
+   "secs_second": 1.0
+  }
+ ]
+}
