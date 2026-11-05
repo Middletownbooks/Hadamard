@@ -480,8 +480,14 @@ No target prime is worth an exact seed gate for this ansatz.
 ## 5. Supplementary runs
 
 <!-- SUPPLEMENT -->
-**p = 13, exhaustive phase search over the 2,376 dilation orbits:** running at the time of this commit (four
-workers, logs `logs/4p3_review/elliptic_exist_p13_*`); the result is added below when it completes.
+**p = 13, exhaustive phase search over the 2,376 dilation orbits** (`cores --mode exist-orbit`, two workers per Q;
+logs `logs/4p3_review/elliptic_exist_p13_*`).
+- **ℤ₂²: no core in the elliptic ansatz at p = 13 [M].** Both workers finished exhaustively (1,188 orbit
+  representatives each, 3,078 s and 3,089 s): every realisation of every gate solution, every shift.
+- ℤ₄: running at the time of this commit; the result is added below when it completes.
+- The estimate (§3.4) predicted about 2^4 cores in the whole ansatz from 2^14.8 realisations at about 2^−10 each.
+  The exact zero on ℤ₂² is another case of the phase-gate estimate erring high.
+- The answer's own statement (one selected quadruple failed) is therefore strengthened to an exact zero on ℤ₂².
 
 ## 6. Reproduce
 
