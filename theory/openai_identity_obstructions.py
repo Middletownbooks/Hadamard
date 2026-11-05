@@ -58,8 +58,37 @@ def three_stratum_gate(p,r):
         reasons.append('quadratic/three-stratum fibre equation empty')
     if min(p,r)>=37:
         reasons.append('Theorem C forces the forbidden balanced tensor interior')
+    # Keep the association between a cell's compression and its two fibre costs.
+    # Separate attainable-sum and global fibre-count gates lose this information.
+    options={}
+    wp=np.array([1,(p-1)//2,(p-1)//2],np.int64)
+    wr=np.array([1,(r-1)//2,(r-1)//2],np.int64)
+    target=(16*r-12,16*p-12)
+    for signs in itertools.product((-1,1),repeat=9):
+        f=np.array(signs,np.int64).reshape(3,3)
+        z=int(wp@f@wr)
+        cp=(int(((wp@f)**2)@wr)-r)//(p-1)
+        cr=(int(wp@((f@wr)**2))-p)//(r-1)
+        if cp<=target[0] and cr<=target[1]:
+            options.setdefault(z,set()).add((cp,cr))
+    profiles=[]
+    for a,*ts in normal:
+        zs=[a]*4+[v for t in ts for v in [t+2,t,t,t]]
+        dp={(0,0)}
+        layers=[1]
+        for z in zs:
+            dp={(a+c,b+d) for a,b in dp for c,d in options.get(z,set())
+                if a+c<=target[0] and b+d<=target[1]}
+            layers.append(len(dp))
+        profiles.append(dict(normal_form=[a,*ts],cell_compressions=zs,
+                             cell_cost_options={str(z):sorted(options.get(z,set())) for z in sorted(set(zs))},
+                             reachable_layers=layers,final_state_count=len(dp),
+                             final_states_first_16=sorted(dp)[:16],passes=target in dp))
+    if normal and not any(pf['passes'] for pf in profiles):
+        reasons.append('compression-conditioned fibre-cost gate empty')
     return dict(p=p,r=r,m=m,cell_tables=512,attainable_compressions=sorted(sums),
-                normal_forms=normal,fibre_gates=gates,status='fails' if reasons else 'unknown',reasons=reasons)
+                normal_forms=normal,fibre_gates=gates,conditioned_fibre_target=target,
+                conditioned_profiles=profiles,status='fails' if reasons else 'unknown',reasons=reasons)
 
 
 def boundary_enumeration(factors):

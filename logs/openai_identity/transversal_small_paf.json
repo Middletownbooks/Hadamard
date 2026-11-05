@@ -1,0 +1,4663 @@
+{
+  "script": "theory/openai_identity_verify.py",
+  "expectation": "reject-candidate",
+  "cases": 98,
+  "all_expected": true,
+  "results": [
+    {
+      "name": "transversal_3_v4",
+      "q": "v4",
+      "factors": [
+        3
+      ],
+      "m": 3,
+      "paf": {
+        "ok": false,
+        "lags": 12,
+        "bad_lags": 10,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": -4,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 60,
+        "excess": "-8",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "38c9678ebf49225f22318bf81c50d4818c50e65f9ab6b0ed02c69a25f12e21be"
+    },
+    {
+      "name": "transversal_3_z4",
+      "q": "z4",
+      "factors": [
+        3
+      ],
+      "m": 3,
+      "paf": {
+        "ok": false,
+        "lags": 12,
+        "bad_lags": 11,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": -4,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 60,
+        "excess": "-8",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "38c9678ebf49225f22318bf81c50d4818c50e65f9ab6b0ed02c69a25f12e21be"
+    },
+    {
+      "name": "transversal_5_v4",
+      "q": "v4",
+      "factors": [
+        5
+      ],
+      "m": 5,
+      "paf": {
+        "ok": false,
+        "lags": 20,
+        "bad_lags": 19,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 28,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 92,
+        "excess": "-40",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "675515b2be3f618dbc37cb1af6947d68a364a8168777518b735b6245a203d91c"
+    },
+    {
+      "name": "transversal_5_z4",
+      "q": "z4",
+      "factors": [
+        5
+      ],
+      "m": 5,
+      "paf": {
+        "ok": false,
+        "lags": 20,
+        "bad_lags": 19,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 28,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 92,
+        "excess": "-40",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "675515b2be3f618dbc37cb1af6947d68a364a8168777518b735b6245a203d91c"
+    },
+    {
+      "name": "transversal_7_v4",
+      "q": "v4",
+      "factors": [
+        7
+      ],
+      "m": 7,
+      "paf": {
+        "ok": false,
+        "lags": 28,
+        "bad_lags": 27,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 60,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 124,
+        "excess": "-72",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "6a7a52a04796a977661033e9abff00262c45708250dd5781234536a04e8d46ad"
+    },
+    {
+      "name": "transversal_7_z4",
+      "q": "z4",
+      "factors": [
+        7
+      ],
+      "m": 7,
+      "paf": {
+        "ok": false,
+        "lags": 28,
+        "bad_lags": 27,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 60,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 124,
+        "excess": "-72",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "6a7a52a04796a977661033e9abff00262c45708250dd5781234536a04e8d46ad"
+    },
+    {
+      "name": "transversal_9_v4",
+      "q": "v4",
+      "factors": [
+        9
+      ],
+      "m": 9,
+      "paf": {
+        "ok": false,
+        "lags": 36,
+        "bad_lags": 35,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 92,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 156,
+        "excess": "-104",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "95f959bc9abc6c995611156ebac5c90cb93a5323156dd3491bcb5c258ad381c1"
+    },
+    {
+      "name": "transversal_9_z4",
+      "q": "z4",
+      "factors": [
+        9
+      ],
+      "m": 9,
+      "paf": {
+        "ok": false,
+        "lags": 36,
+        "bad_lags": 35,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 92,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 156,
+        "excess": "-104",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "95f959bc9abc6c995611156ebac5c90cb93a5323156dd3491bcb5c258ad381c1"
+    },
+    {
+      "name": "transversal_11_v4",
+      "q": "v4",
+      "factors": [
+        11
+      ],
+      "m": 11,
+      "paf": {
+        "ok": false,
+        "lags": 44,
+        "bad_lags": 43,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 124,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 188,
+        "excess": "-136",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "fa01044acf8937ef5e2fcf3ad006b0652d924f5072e08657023d7a4be0714883"
+    },
+    {
+      "name": "transversal_11_z4",
+      "q": "z4",
+      "factors": [
+        11
+      ],
+      "m": 11,
+      "paf": {
+        "ok": false,
+        "lags": 44,
+        "bad_lags": 43,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 124,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 188,
+        "excess": "-136",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "fa01044acf8937ef5e2fcf3ad006b0652d924f5072e08657023d7a4be0714883"
+    },
+    {
+      "name": "transversal_13_v4",
+      "q": "v4",
+      "factors": [
+        13
+      ],
+      "m": 13,
+      "paf": {
+        "ok": false,
+        "lags": 52,
+        "bad_lags": 51,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 156,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 220,
+        "excess": "-168",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "8164de8f6a9a58206e8d87f50de33ee5fa1cfd293a4d2004efea1e6a29b0ca15"
+    },
+    {
+      "name": "transversal_13_z4",
+      "q": "z4",
+      "factors": [
+        13
+      ],
+      "m": 13,
+      "paf": {
+        "ok": false,
+        "lags": 52,
+        "bad_lags": 51,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 156,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 220,
+        "excess": "-168",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "8164de8f6a9a58206e8d87f50de33ee5fa1cfd293a4d2004efea1e6a29b0ca15"
+    },
+    {
+      "name": "transversal_15_v4",
+      "q": "v4",
+      "factors": [
+        15
+      ],
+      "m": 15,
+      "paf": {
+        "ok": false,
+        "lags": 60,
+        "bad_lags": 59,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 188,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 252,
+        "excess": "-200",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "43f1377c7b0632888e9e858bf83ace09902d828be8a48ae282e8b2773be943a3"
+    },
+    {
+      "name": "transversal_15_z4",
+      "q": "z4",
+      "factors": [
+        15
+      ],
+      "m": 15,
+      "paf": {
+        "ok": false,
+        "lags": 60,
+        "bad_lags": 59,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 188,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 252,
+        "excess": "-200",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "43f1377c7b0632888e9e858bf83ace09902d828be8a48ae282e8b2773be943a3"
+    },
+    {
+      "name": "transversal_17_v4",
+      "q": "v4",
+      "factors": [
+        17
+      ],
+      "m": 17,
+      "paf": {
+        "ok": false,
+        "lags": 68,
+        "bad_lags": 67,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 220,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 284,
+        "excess": "-232",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "b2ab35aca95d48730fdc826d541da2b497cb88d7c6bb21e85950426c85e91129"
+    },
+    {
+      "name": "transversal_17_z4",
+      "q": "z4",
+      "factors": [
+        17
+      ],
+      "m": 17,
+      "paf": {
+        "ok": false,
+        "lags": 68,
+        "bad_lags": 67,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 220,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 284,
+        "excess": "-232",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "b2ab35aca95d48730fdc826d541da2b497cb88d7c6bb21e85950426c85e91129"
+    },
+    {
+      "name": "transversal_19_v4",
+      "q": "v4",
+      "factors": [
+        19
+      ],
+      "m": 19,
+      "paf": {
+        "ok": false,
+        "lags": 76,
+        "bad_lags": 75,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 252,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 316,
+        "excess": "-264",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "d459540726405419fa283b597e64af30d73125b7ff0317a3f9520fdb4389c74d"
+    },
+    {
+      "name": "transversal_19_z4",
+      "q": "z4",
+      "factors": [
+        19
+      ],
+      "m": 19,
+      "paf": {
+        "ok": false,
+        "lags": 76,
+        "bad_lags": 75,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 252,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 316,
+        "excess": "-264",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "d459540726405419fa283b597e64af30d73125b7ff0317a3f9520fdb4389c74d"
+    },
+    {
+      "name": "transversal_21_v4",
+      "q": "v4",
+      "factors": [
+        21
+      ],
+      "m": 21,
+      "paf": {
+        "ok": false,
+        "lags": 84,
+        "bad_lags": 83,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 284,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 348,
+        "excess": "-296",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e47acf79d00c82a5451cd0696801f3e1922f1e47487dfa8241c36b2547748e6e"
+    },
+    {
+      "name": "transversal_21_z4",
+      "q": "z4",
+      "factors": [
+        21
+      ],
+      "m": 21,
+      "paf": {
+        "ok": false,
+        "lags": 84,
+        "bad_lags": 83,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 284,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 348,
+        "excess": "-296",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e47acf79d00c82a5451cd0696801f3e1922f1e47487dfa8241c36b2547748e6e"
+    },
+    {
+      "name": "transversal_23_v4",
+      "q": "v4",
+      "factors": [
+        23
+      ],
+      "m": 23,
+      "paf": {
+        "ok": false,
+        "lags": 92,
+        "bad_lags": 91,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 316,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 380,
+        "excess": "-328",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "116e3a0fc0b17f80c5bf1a7676004192d6982a92ce5d7d08b81123bde64a1efb"
+    },
+    {
+      "name": "transversal_23_z4",
+      "q": "z4",
+      "factors": [
+        23
+      ],
+      "m": 23,
+      "paf": {
+        "ok": false,
+        "lags": 92,
+        "bad_lags": 91,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 316,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 380,
+        "excess": "-328",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "116e3a0fc0b17f80c5bf1a7676004192d6982a92ce5d7d08b81123bde64a1efb"
+    },
+    {
+      "name": "transversal_25_v4",
+      "q": "v4",
+      "factors": [
+        25
+      ],
+      "m": 25,
+      "paf": {
+        "ok": false,
+        "lags": 100,
+        "bad_lags": 99,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 348,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 412,
+        "excess": "-360",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "c9ad1ad30f8cea9c5b297652f8b83e7257321e0597cec85bf5191a27e6dfadca"
+    },
+    {
+      "name": "transversal_25_z4",
+      "q": "z4",
+      "factors": [
+        25
+      ],
+      "m": 25,
+      "paf": {
+        "ok": false,
+        "lags": 100,
+        "bad_lags": 99,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 348,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 412,
+        "excess": "-360",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "c9ad1ad30f8cea9c5b297652f8b83e7257321e0597cec85bf5191a27e6dfadca"
+    },
+    {
+      "name": "transversal_27_v4",
+      "q": "v4",
+      "factors": [
+        27
+      ],
+      "m": 27,
+      "paf": {
+        "ok": false,
+        "lags": 108,
+        "bad_lags": 107,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 380,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 444,
+        "excess": "-392",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "10970cb64d0d0cec6eb7b9ae1d32bf5ef51377c93a9097845ff0a53372266de6"
+    },
+    {
+      "name": "transversal_27_z4",
+      "q": "z4",
+      "factors": [
+        27
+      ],
+      "m": 27,
+      "paf": {
+        "ok": false,
+        "lags": 108,
+        "bad_lags": 107,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 380,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 444,
+        "excess": "-392",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "10970cb64d0d0cec6eb7b9ae1d32bf5ef51377c93a9097845ff0a53372266de6"
+    },
+    {
+      "name": "transversal_29_v4",
+      "q": "v4",
+      "factors": [
+        29
+      ],
+      "m": 29,
+      "paf": {
+        "ok": false,
+        "lags": 116,
+        "bad_lags": 115,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 412,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 476,
+        "excess": "-424",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "f77552033a5f7496776799245ff1df81967987454e417e336116fbd38c158af2"
+    },
+    {
+      "name": "transversal_29_z4",
+      "q": "z4",
+      "factors": [
+        29
+      ],
+      "m": 29,
+      "paf": {
+        "ok": false,
+        "lags": 116,
+        "bad_lags": 115,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 412,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 476,
+        "excess": "-424",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "f77552033a5f7496776799245ff1df81967987454e417e336116fbd38c158af2"
+    },
+    {
+      "name": "transversal_31_v4",
+      "q": "v4",
+      "factors": [
+        31
+      ],
+      "m": 31,
+      "paf": {
+        "ok": false,
+        "lags": 124,
+        "bad_lags": 123,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 444,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 508,
+        "excess": "-456",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9221e624c73c9f614f0458951850d41ffbeb687d8a9d73a1d67373ce594c3cf9"
+    },
+    {
+      "name": "transversal_31_z4",
+      "q": "z4",
+      "factors": [
+        31
+      ],
+      "m": 31,
+      "paf": {
+        "ok": false,
+        "lags": 124,
+        "bad_lags": 123,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 444,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 508,
+        "excess": "-456",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9221e624c73c9f614f0458951850d41ffbeb687d8a9d73a1d67373ce594c3cf9"
+    },
+    {
+      "name": "transversal_33_v4",
+      "q": "v4",
+      "factors": [
+        33
+      ],
+      "m": 33,
+      "paf": {
+        "ok": false,
+        "lags": 132,
+        "bad_lags": 131,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 476,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 540,
+        "excess": "-488",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9afae39b828506b3af1a5861c638ffa11c76828edcd35bb228f9b232daf32eec"
+    },
+    {
+      "name": "transversal_33_z4",
+      "q": "z4",
+      "factors": [
+        33
+      ],
+      "m": 33,
+      "paf": {
+        "ok": false,
+        "lags": 132,
+        "bad_lags": 131,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 476,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 540,
+        "excess": "-488",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9afae39b828506b3af1a5861c638ffa11c76828edcd35bb228f9b232daf32eec"
+    },
+    {
+      "name": "transversal_35_v4",
+      "q": "v4",
+      "factors": [
+        35
+      ],
+      "m": 35,
+      "paf": {
+        "ok": false,
+        "lags": 140,
+        "bad_lags": 139,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 508,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 572,
+        "excess": "-520",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3cce1959930489743e49558a032c1ee398ab74986ab1a2fcc0328c588f09a818"
+    },
+    {
+      "name": "transversal_35_z4",
+      "q": "z4",
+      "factors": [
+        35
+      ],
+      "m": 35,
+      "paf": {
+        "ok": false,
+        "lags": 140,
+        "bad_lags": 139,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 508,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 572,
+        "excess": "-520",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3cce1959930489743e49558a032c1ee398ab74986ab1a2fcc0328c588f09a818"
+    },
+    {
+      "name": "transversal_37_v4",
+      "q": "v4",
+      "factors": [
+        37
+      ],
+      "m": 37,
+      "paf": {
+        "ok": false,
+        "lags": 148,
+        "bad_lags": 147,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 540,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 604,
+        "excess": "-552",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "2dacfbd4f58145ced72ab6246fe19da8edad65c8f19ef4f2b78e20ae8e592a1e"
+    },
+    {
+      "name": "transversal_37_z4",
+      "q": "z4",
+      "factors": [
+        37
+      ],
+      "m": 37,
+      "paf": {
+        "ok": false,
+        "lags": 148,
+        "bad_lags": 147,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 540,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 604,
+        "excess": "-552",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "2dacfbd4f58145ced72ab6246fe19da8edad65c8f19ef4f2b78e20ae8e592a1e"
+    },
+    {
+      "name": "transversal_39_v4",
+      "q": "v4",
+      "factors": [
+        39
+      ],
+      "m": 39,
+      "paf": {
+        "ok": false,
+        "lags": 156,
+        "bad_lags": 155,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 572,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 636,
+        "excess": "-584",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "baceaea1b10d8d5c05b099dc2be0160134967e8b2ad55a0b35e400961dea8501"
+    },
+    {
+      "name": "transversal_39_z4",
+      "q": "z4",
+      "factors": [
+        39
+      ],
+      "m": 39,
+      "paf": {
+        "ok": false,
+        "lags": 156,
+        "bad_lags": 155,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 572,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 636,
+        "excess": "-584",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "baceaea1b10d8d5c05b099dc2be0160134967e8b2ad55a0b35e400961dea8501"
+    },
+    {
+      "name": "transversal_41_v4",
+      "q": "v4",
+      "factors": [
+        41
+      ],
+      "m": 41,
+      "paf": {
+        "ok": false,
+        "lags": 164,
+        "bad_lags": 163,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 604,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 668,
+        "excess": "-616",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9f07ce1c9e10d01d900037481e3dbf0b2932cebe83912191541a4c4397ee487a"
+    },
+    {
+      "name": "transversal_41_z4",
+      "q": "z4",
+      "factors": [
+        41
+      ],
+      "m": 41,
+      "paf": {
+        "ok": false,
+        "lags": 164,
+        "bad_lags": 163,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 604,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 668,
+        "excess": "-616",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9f07ce1c9e10d01d900037481e3dbf0b2932cebe83912191541a4c4397ee487a"
+    },
+    {
+      "name": "transversal_43_v4",
+      "q": "v4",
+      "factors": [
+        43
+      ],
+      "m": 43,
+      "paf": {
+        "ok": false,
+        "lags": 172,
+        "bad_lags": 171,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 636,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 700,
+        "excess": "-648",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "ef630edc98aa2ee97c43d2f60edb18e471d02141b1f951c5d6f53792903a622d"
+    },
+    {
+      "name": "transversal_43_z4",
+      "q": "z4",
+      "factors": [
+        43
+      ],
+      "m": 43,
+      "paf": {
+        "ok": false,
+        "lags": 172,
+        "bad_lags": 171,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 636,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 700,
+        "excess": "-648",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "ef630edc98aa2ee97c43d2f60edb18e471d02141b1f951c5d6f53792903a622d"
+    },
+    {
+      "name": "transversal_45_v4",
+      "q": "v4",
+      "factors": [
+        45
+      ],
+      "m": 45,
+      "paf": {
+        "ok": false,
+        "lags": 180,
+        "bad_lags": 179,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 668,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 732,
+        "excess": "-680",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "815a7aafd12e2287135e75d8790947128e6a8599c0fb51aac39c542f0a1dfc44"
+    },
+    {
+      "name": "transversal_45_z4",
+      "q": "z4",
+      "factors": [
+        45
+      ],
+      "m": 45,
+      "paf": {
+        "ok": false,
+        "lags": 180,
+        "bad_lags": 179,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 668,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 732,
+        "excess": "-680",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "815a7aafd12e2287135e75d8790947128e6a8599c0fb51aac39c542f0a1dfc44"
+    },
+    {
+      "name": "transversal_47_v4",
+      "q": "v4",
+      "factors": [
+        47
+      ],
+      "m": 47,
+      "paf": {
+        "ok": false,
+        "lags": 188,
+        "bad_lags": 187,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 700,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 764,
+        "excess": "-712",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "a9d9be659a3e92ac2fe7d86775e7d12832849538a56ccd67606a54bbb0a3f231"
+    },
+    {
+      "name": "transversal_47_z4",
+      "q": "z4",
+      "factors": [
+        47
+      ],
+      "m": 47,
+      "paf": {
+        "ok": false,
+        "lags": 188,
+        "bad_lags": 187,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 700,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 764,
+        "excess": "-712",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "a9d9be659a3e92ac2fe7d86775e7d12832849538a56ccd67606a54bbb0a3f231"
+    },
+    {
+      "name": "transversal_49_v4",
+      "q": "v4",
+      "factors": [
+        49
+      ],
+      "m": 49,
+      "paf": {
+        "ok": false,
+        "lags": 196,
+        "bad_lags": 195,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 732,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 796,
+        "excess": "-744",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "ecb823648e948fb0cb0ecebebcb3b3f5ca4d4aef343184748b1b24b845c89ac8"
+    },
+    {
+      "name": "transversal_49_z4",
+      "q": "z4",
+      "factors": [
+        49
+      ],
+      "m": 49,
+      "paf": {
+        "ok": false,
+        "lags": 196,
+        "bad_lags": 195,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 732,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 796,
+        "excess": "-744",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "ecb823648e948fb0cb0ecebebcb3b3f5ca4d4aef343184748b1b24b845c89ac8"
+    },
+    {
+      "name": "transversal_51_v4",
+      "q": "v4",
+      "factors": [
+        51
+      ],
+      "m": 51,
+      "paf": {
+        "ok": false,
+        "lags": 204,
+        "bad_lags": 203,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 764,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 828,
+        "excess": "-776",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "7cc953e6d5ee82220cfc6af899572684131f993f16b4381be5b2d1b1e4c658f9"
+    },
+    {
+      "name": "transversal_51_z4",
+      "q": "z4",
+      "factors": [
+        51
+      ],
+      "m": 51,
+      "paf": {
+        "ok": false,
+        "lags": 204,
+        "bad_lags": 203,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 764,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 828,
+        "excess": "-776",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "7cc953e6d5ee82220cfc6af899572684131f993f16b4381be5b2d1b1e4c658f9"
+    },
+    {
+      "name": "transversal_53_v4",
+      "q": "v4",
+      "factors": [
+        53
+      ],
+      "m": 53,
+      "paf": {
+        "ok": false,
+        "lags": 212,
+        "bad_lags": 211,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 796,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 860,
+        "excess": "-808",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "f22c5bf4bb062c7bbe602ab0eb25e11dee63fc703f36c587149c25f40ea7134b"
+    },
+    {
+      "name": "transversal_53_z4",
+      "q": "z4",
+      "factors": [
+        53
+      ],
+      "m": 53,
+      "paf": {
+        "ok": false,
+        "lags": 212,
+        "bad_lags": 211,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 796,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 860,
+        "excess": "-808",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "f22c5bf4bb062c7bbe602ab0eb25e11dee63fc703f36c587149c25f40ea7134b"
+    },
+    {
+      "name": "transversal_55_v4",
+      "q": "v4",
+      "factors": [
+        55
+      ],
+      "m": 55,
+      "paf": {
+        "ok": false,
+        "lags": 220,
+        "bad_lags": 219,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 828,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 892,
+        "excess": "-840",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3114ea4ca0497209ed211546c93c0deba31afa516ac45e65bd46d7f20c299c2b"
+    },
+    {
+      "name": "transversal_55_z4",
+      "q": "z4",
+      "factors": [
+        55
+      ],
+      "m": 55,
+      "paf": {
+        "ok": false,
+        "lags": 220,
+        "bad_lags": 219,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 828,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 892,
+        "excess": "-840",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "3114ea4ca0497209ed211546c93c0deba31afa516ac45e65bd46d7f20c299c2b"
+    },
+    {
+      "name": "transversal_57_v4",
+      "q": "v4",
+      "factors": [
+        57
+      ],
+      "m": 57,
+      "paf": {
+        "ok": false,
+        "lags": 228,
+        "bad_lags": 227,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 860,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 924,
+        "excess": "-872",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "389f59f63376fe8dff6580d0d9aca32ec9a54fb1819bb379bdf01107cfa2cbc8"
+    },
+    {
+      "name": "transversal_57_z4",
+      "q": "z4",
+      "factors": [
+        57
+      ],
+      "m": 57,
+      "paf": {
+        "ok": false,
+        "lags": 228,
+        "bad_lags": 227,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 860,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 924,
+        "excess": "-872",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "389f59f63376fe8dff6580d0d9aca32ec9a54fb1819bb379bdf01107cfa2cbc8"
+    },
+    {
+      "name": "transversal_59_v4",
+      "q": "v4",
+      "factors": [
+        59
+      ],
+      "m": 59,
+      "paf": {
+        "ok": false,
+        "lags": 236,
+        "bad_lags": 235,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 892,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 956,
+        "excess": "-904",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "34554d48f00dc4cec502402969c10445cd0a5f8facf4b2fadb152df6ee9af5cd"
+    },
+    {
+      "name": "transversal_59_z4",
+      "q": "z4",
+      "factors": [
+        59
+      ],
+      "m": 59,
+      "paf": {
+        "ok": false,
+        "lags": 236,
+        "bad_lags": 235,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 892,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 956,
+        "excess": "-904",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "34554d48f00dc4cec502402969c10445cd0a5f8facf4b2fadb152df6ee9af5cd"
+    },
+    {
+      "name": "transversal_61_v4",
+      "q": "v4",
+      "factors": [
+        61
+      ],
+      "m": 61,
+      "paf": {
+        "ok": false,
+        "lags": 244,
+        "bad_lags": 243,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 924,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 988,
+        "excess": "-936",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "702923bcbf9cc1a78b7bc7bdc0fcd0cd9df50d8f6417e079dbb0b05d580014d3"
+    },
+    {
+      "name": "transversal_61_z4",
+      "q": "z4",
+      "factors": [
+        61
+      ],
+      "m": 61,
+      "paf": {
+        "ok": false,
+        "lags": 244,
+        "bad_lags": 243,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 924,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 988,
+        "excess": "-936",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "702923bcbf9cc1a78b7bc7bdc0fcd0cd9df50d8f6417e079dbb0b05d580014d3"
+    },
+    {
+      "name": "transversal_63_v4",
+      "q": "v4",
+      "factors": [
+        63
+      ],
+      "m": 63,
+      "paf": {
+        "ok": false,
+        "lags": 252,
+        "bad_lags": 251,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 956,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1020,
+        "excess": "-968",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "abec3fa0a2f28013ed3abef6d411d709ccd6a6713c334563dfb7977ba36c6d2d"
+    },
+    {
+      "name": "transversal_63_z4",
+      "q": "z4",
+      "factors": [
+        63
+      ],
+      "m": 63,
+      "paf": {
+        "ok": false,
+        "lags": 252,
+        "bad_lags": 251,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 956,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1020,
+        "excess": "-968",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "abec3fa0a2f28013ed3abef6d411d709ccd6a6713c334563dfb7977ba36c6d2d"
+    },
+    {
+      "name": "transversal_65_v4",
+      "q": "v4",
+      "factors": [
+        65
+      ],
+      "m": 65,
+      "paf": {
+        "ok": false,
+        "lags": 260,
+        "bad_lags": 259,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 988,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1052,
+        "excess": "-1000",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "90997881081bcb8d4ad3d5adcccd1273d3a73c8467b812a02f1ac10342667406"
+    },
+    {
+      "name": "transversal_65_z4",
+      "q": "z4",
+      "factors": [
+        65
+      ],
+      "m": 65,
+      "paf": {
+        "ok": false,
+        "lags": 260,
+        "bad_lags": 259,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 988,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1052,
+        "excess": "-1000",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "90997881081bcb8d4ad3d5adcccd1273d3a73c8467b812a02f1ac10342667406"
+    },
+    {
+      "name": "transversal_67_v4",
+      "q": "v4",
+      "factors": [
+        67
+      ],
+      "m": 67,
+      "paf": {
+        "ok": false,
+        "lags": 268,
+        "bad_lags": 267,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1020,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1084,
+        "excess": "-1032",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "adf2013db5243ccf40f02dfd6f7255a55e273f8ed1e098335e7defd771d45fcc"
+    },
+    {
+      "name": "transversal_67_z4",
+      "q": "z4",
+      "factors": [
+        67
+      ],
+      "m": 67,
+      "paf": {
+        "ok": false,
+        "lags": 268,
+        "bad_lags": 267,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1020,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1084,
+        "excess": "-1032",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "adf2013db5243ccf40f02dfd6f7255a55e273f8ed1e098335e7defd771d45fcc"
+    },
+    {
+      "name": "transversal_69_v4",
+      "q": "v4",
+      "factors": [
+        69
+      ],
+      "m": 69,
+      "paf": {
+        "ok": false,
+        "lags": 276,
+        "bad_lags": 275,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1052,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1116,
+        "excess": "-1064",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "6731bde78f845516c1fd3e1dfc3b802179e9915b3e25c2dd4997c637f86713a0"
+    },
+    {
+      "name": "transversal_69_z4",
+      "q": "z4",
+      "factors": [
+        69
+      ],
+      "m": 69,
+      "paf": {
+        "ok": false,
+        "lags": 276,
+        "bad_lags": 275,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1052,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1116,
+        "excess": "-1064",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "6731bde78f845516c1fd3e1dfc3b802179e9915b3e25c2dd4997c637f86713a0"
+    },
+    {
+      "name": "transversal_71_v4",
+      "q": "v4",
+      "factors": [
+        71
+      ],
+      "m": 71,
+      "paf": {
+        "ok": false,
+        "lags": 284,
+        "bad_lags": 283,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1084,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1148,
+        "excess": "-1096",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9452ae303fab54da1e22db1465efcda499362344c2ab01a044ec634c7720b965"
+    },
+    {
+      "name": "transversal_71_z4",
+      "q": "z4",
+      "factors": [
+        71
+      ],
+      "m": 71,
+      "paf": {
+        "ok": false,
+        "lags": 284,
+        "bad_lags": 283,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1084,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1148,
+        "excess": "-1096",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9452ae303fab54da1e22db1465efcda499362344c2ab01a044ec634c7720b965"
+    },
+    {
+      "name": "transversal_73_v4",
+      "q": "v4",
+      "factors": [
+        73
+      ],
+      "m": 73,
+      "paf": {
+        "ok": false,
+        "lags": 292,
+        "bad_lags": 291,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1116,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1180,
+        "excess": "-1128",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e54851646359dc3dda1706861389c442c103bea96dce5021b8ac4809c418187c"
+    },
+    {
+      "name": "transversal_73_z4",
+      "q": "z4",
+      "factors": [
+        73
+      ],
+      "m": 73,
+      "paf": {
+        "ok": false,
+        "lags": 292,
+        "bad_lags": 291,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1116,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1180,
+        "excess": "-1128",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "e54851646359dc3dda1706861389c442c103bea96dce5021b8ac4809c418187c"
+    },
+    {
+      "name": "transversal_75_v4",
+      "q": "v4",
+      "factors": [
+        75
+      ],
+      "m": 75,
+      "paf": {
+        "ok": false,
+        "lags": 300,
+        "bad_lags": 299,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1148,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1212,
+        "excess": "-1160",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9756ec27dd744e9a742ea99ad0c503a851e4e19f4face29c0908cf003e678586"
+    },
+    {
+      "name": "transversal_75_z4",
+      "q": "z4",
+      "factors": [
+        75
+      ],
+      "m": 75,
+      "paf": {
+        "ok": false,
+        "lags": 300,
+        "bad_lags": 299,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1148,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1212,
+        "excess": "-1160",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9756ec27dd744e9a742ea99ad0c503a851e4e19f4face29c0908cf003e678586"
+    },
+    {
+      "name": "transversal_77_v4",
+      "q": "v4",
+      "factors": [
+        77
+      ],
+      "m": 77,
+      "paf": {
+        "ok": false,
+        "lags": 308,
+        "bad_lags": 307,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1180,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1244,
+        "excess": "-1192",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9277447c62a18ff6a27a5525f49ee7e6000f260a212690b724545d970966621d"
+    },
+    {
+      "name": "transversal_77_z4",
+      "q": "z4",
+      "factors": [
+        77
+      ],
+      "m": 77,
+      "paf": {
+        "ok": false,
+        "lags": 308,
+        "bad_lags": 307,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1180,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1244,
+        "excess": "-1192",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9277447c62a18ff6a27a5525f49ee7e6000f260a212690b724545d970966621d"
+    },
+    {
+      "name": "transversal_79_v4",
+      "q": "v4",
+      "factors": [
+        79
+      ],
+      "m": 79,
+      "paf": {
+        "ok": false,
+        "lags": 316,
+        "bad_lags": 315,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1212,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1276,
+        "excess": "-1224",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9e34e1954a96e3729b9c1c0394ea2c94526150ffd88e89a63b27586d9e2fdfd4"
+    },
+    {
+      "name": "transversal_79_z4",
+      "q": "z4",
+      "factors": [
+        79
+      ],
+      "m": 79,
+      "paf": {
+        "ok": false,
+        "lags": 316,
+        "bad_lags": 315,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1212,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1276,
+        "excess": "-1224",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "9e34e1954a96e3729b9c1c0394ea2c94526150ffd88e89a63b27586d9e2fdfd4"
+    },
+    {
+      "name": "transversal_81_v4",
+      "q": "v4",
+      "factors": [
+        81
+      ],
+      "m": 81,
+      "paf": {
+        "ok": false,
+        "lags": 324,
+        "bad_lags": 323,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1244,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1308,
+        "excess": "-1256",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "612749ffb51a37a9d130b847b61769099156cce23341dda843762a27247a92b5"
+    },
+    {
+      "name": "transversal_81_z4",
+      "q": "z4",
+      "factors": [
+        81
+      ],
+      "m": 81,
+      "paf": {
+        "ok": false,
+        "lags": 324,
+        "bad_lags": 323,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1244,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1308,
+        "excess": "-1256",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "612749ffb51a37a9d130b847b61769099156cce23341dda843762a27247a92b5"
+    },
+    {
+      "name": "transversal_83_v4",
+      "q": "v4",
+      "factors": [
+        83
+      ],
+      "m": 83,
+      "paf": {
+        "ok": false,
+        "lags": 332,
+        "bad_lags": 331,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1276,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1340,
+        "excess": "-1288",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "00e5848ac1e50e5bf2445e5c75b4873f48a58d56fef020f86f79d56f4477744e"
+    },
+    {
+      "name": "transversal_83_z4",
+      "q": "z4",
+      "factors": [
+        83
+      ],
+      "m": 83,
+      "paf": {
+        "ok": false,
+        "lags": 332,
+        "bad_lags": 331,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1276,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1340,
+        "excess": "-1288",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "00e5848ac1e50e5bf2445e5c75b4873f48a58d56fef020f86f79d56f4477744e"
+    },
+    {
+      "name": "transversal_85_v4",
+      "q": "v4",
+      "factors": [
+        85
+      ],
+      "m": 85,
+      "paf": {
+        "ok": false,
+        "lags": 340,
+        "bad_lags": 339,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1308,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1372,
+        "excess": "-1320",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "d7bd20d2ab716f2431c5dfaee8c00b89e14dd8a5d32063e1496253a96c35b8d5"
+    },
+    {
+      "name": "transversal_85_z4",
+      "q": "z4",
+      "factors": [
+        85
+      ],
+      "m": 85,
+      "paf": {
+        "ok": false,
+        "lags": 340,
+        "bad_lags": 339,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1308,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1372,
+        "excess": "-1320",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "d7bd20d2ab716f2431c5dfaee8c00b89e14dd8a5d32063e1496253a96c35b8d5"
+    },
+    {
+      "name": "transversal_87_v4",
+      "q": "v4",
+      "factors": [
+        87
+      ],
+      "m": 87,
+      "paf": {
+        "ok": false,
+        "lags": 348,
+        "bad_lags": 347,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1340,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1404,
+        "excess": "-1352",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "243a09f0eb3a3788ccad4e299a7d2ef96b256126aacf959b0f11eb13adb008b2"
+    },
+    {
+      "name": "transversal_87_z4",
+      "q": "z4",
+      "factors": [
+        87
+      ],
+      "m": 87,
+      "paf": {
+        "ok": false,
+        "lags": 348,
+        "bad_lags": 347,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1340,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1404,
+        "excess": "-1352",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "243a09f0eb3a3788ccad4e299a7d2ef96b256126aacf959b0f11eb13adb008b2"
+    },
+    {
+      "name": "transversal_89_v4",
+      "q": "v4",
+      "factors": [
+        89
+      ],
+      "m": 89,
+      "paf": {
+        "ok": false,
+        "lags": 356,
+        "bad_lags": 355,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1372,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1436,
+        "excess": "-1384",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4c9169db54c00f3b72ca1dd3da698f343ecfc987d00859d7aac97089b317bd04"
+    },
+    {
+      "name": "transversal_89_z4",
+      "q": "z4",
+      "factors": [
+        89
+      ],
+      "m": 89,
+      "paf": {
+        "ok": false,
+        "lags": 356,
+        "bad_lags": 355,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1372,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1436,
+        "excess": "-1384",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "4c9169db54c00f3b72ca1dd3da698f343ecfc987d00859d7aac97089b317bd04"
+    },
+    {
+      "name": "transversal_91_v4",
+      "q": "v4",
+      "factors": [
+        91
+      ],
+      "m": 91,
+      "paf": {
+        "ok": false,
+        "lags": 364,
+        "bad_lags": 363,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1404,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1468,
+        "excess": "-1416",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "adf7b7c139f7224c2e60150f428cc6d9686bc3f849a1c71c529170fb39af1c9a"
+    },
+    {
+      "name": "transversal_91_z4",
+      "q": "z4",
+      "factors": [
+        91
+      ],
+      "m": 91,
+      "paf": {
+        "ok": false,
+        "lags": 364,
+        "bad_lags": 363,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1404,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1468,
+        "excess": "-1416",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "adf7b7c139f7224c2e60150f428cc6d9686bc3f849a1c71c529170fb39af1c9a"
+    },
+    {
+      "name": "transversal_93_v4",
+      "q": "v4",
+      "factors": [
+        93
+      ],
+      "m": 93,
+      "paf": {
+        "ok": false,
+        "lags": 372,
+        "bad_lags": 371,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1436,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1500,
+        "excess": "-1448",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "c64751aa08627a7ea0d554729798ee810ef258b891e290cd154ad18f67b70fe5"
+    },
+    {
+      "name": "transversal_93_z4",
+      "q": "z4",
+      "factors": [
+        93
+      ],
+      "m": 93,
+      "paf": {
+        "ok": false,
+        "lags": 372,
+        "bad_lags": 371,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1436,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1500,
+        "excess": "-1448",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "c64751aa08627a7ea0d554729798ee810ef258b891e290cd154ad18f67b70fe5"
+    },
+    {
+      "name": "transversal_95_v4",
+      "q": "v4",
+      "factors": [
+        95
+      ],
+      "m": 95,
+      "paf": {
+        "ok": false,
+        "lags": 380,
+        "bad_lags": 379,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1468,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1532,
+        "excess": "-1480",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "a9ec25aef9ebbaf309c2b49bee40b52e565b1c3ef56cbe7b9f9dd898ef6a5f5e"
+    },
+    {
+      "name": "transversal_95_z4",
+      "q": "z4",
+      "factors": [
+        95
+      ],
+      "m": 95,
+      "paf": {
+        "ok": false,
+        "lags": 380,
+        "bad_lags": 379,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1468,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1532,
+        "excess": "-1480",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "a9ec25aef9ebbaf309c2b49bee40b52e565b1c3ef56cbe7b9f9dd898ef6a5f5e"
+    },
+    {
+      "name": "transversal_97_v4",
+      "q": "v4",
+      "factors": [
+        97
+      ],
+      "m": 97,
+      "paf": {
+        "ok": false,
+        "lags": 388,
+        "bad_lags": 387,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1500,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1564,
+        "excess": "-1512",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "78f4e2639b51e9a2026da481935b12ffb3b3d6269ff760c1a4470cffb9f06594"
+    },
+    {
+      "name": "transversal_97_z4",
+      "q": "z4",
+      "factors": [
+        97
+      ],
+      "m": 97,
+      "paf": {
+        "ok": false,
+        "lags": 388,
+        "bad_lags": 387,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1500,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1564,
+        "excess": "-1512",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "78f4e2639b51e9a2026da481935b12ffb3b3d6269ff760c1a4470cffb9f06594"
+    },
+    {
+      "name": "transversal_99_v4",
+      "q": "v4",
+      "factors": [
+        99
+      ],
+      "m": 99,
+      "paf": {
+        "ok": false,
+        "lags": 396,
+        "bad_lags": 395,
+        "first_bad": {
+          "lag": [
+            0,
+            0,
+            1
+          ],
+          "actual": 1532,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1596,
+        "excess": "-1544",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "163cd1d1641074ac6f37a3aebf4356936f1075f4cf5e7daf48adcd219f78f948"
+    },
+    {
+      "name": "transversal_99_z4",
+      "q": "z4",
+      "factors": [
+        99
+      ],
+      "m": 99,
+      "paf": {
+        "ok": false,
+        "lags": 396,
+        "bad_lags": 395,
+        "first_bad": {
+          "lag": [
+            0,
+            1
+          ],
+          "actual": 1532,
+          "wanted": -12
+        }
+      },
+      "primitive_energy": {
+        "cells": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4",
+          "0",
+          "4",
+          "4",
+          "4"
+        ],
+        "total": "52",
+        "required": 1596,
+        "excess": "-1544",
+        "bound_16m_plus_16_holds": false,
+        "equality": false
+      },
+      "sequence_sha256_int8": "163cd1d1641074ac6f37a3aebf4356936f1075f4cf5e7daf48adcd219f78f948"
+    }
+  ]
+}

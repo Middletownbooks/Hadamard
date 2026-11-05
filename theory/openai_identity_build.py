@@ -76,6 +76,18 @@ def three_stratum_candidate(factors, qtype, masks=None):
                 class_name='three-stratum-product',table_masks=masks,sequences=rows)
 
 
+def transversal_candidate(m,qtype):
+    rows=[]
+    for i in range(4):
+        row=[1]*(4*m)
+        for q in range(4):
+            if i==0 or q!=0:
+                row[q*m+(3*i+q)%m]=-1
+        rows.append(row)
+    return dict(name=f'transversal_{m}_{qtype}',q=qtype,factors=[m],m=m,
+                class_name='relative-transversal',sequences=rows)
+
+
 def suite():
     out = []
     for m in range(3, 100, 2):
@@ -89,14 +101,17 @@ def suite():
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--suite', action='store_true')
-    ap.add_argument('--kind', choices=['tensor','three-stratum'], default='tensor')
+    ap.add_argument('--kind', choices=['tensor','three-stratum','transversal'], default='tensor')
     ap.add_argument('--table-masks', help='16 comma-separated integers 0..511, row-major in (i,q)')
     ap.add_argument('--factors', default='3,5')
     ap.add_argument('--q', choices=['v4', 'z4'], default='v4')
     ap.add_argument('--filling', choices=['constant', 'varied'], default='constant')
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
-    if a.kind=='three-stratum':
+    if a.kind=='transversal':
+        data=([transversal_candidate(m,qt) for m in range(3,100,2) for qt in ('v4','z4')] if a.suite else
+              [transversal_candidate(math.prod(int(v) for v in a.factors.split(',')),a.q)])
+    elif a.kind=='three-stratum':
         masks=None if not a.table_masks else [int(v) for v in a.table_masks.split(',')]
         data=([three_stratum_candidate([p,r],qt,masks) for p in range(3,34,2)
                for r in range(p,100//p+1,2) for qt in ('v4','z4')] if a.suite else

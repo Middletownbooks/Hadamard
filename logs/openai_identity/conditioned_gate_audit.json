@@ -1,0 +1,543 @@
+{
+  "script": "theory/openai_identity_gatecheck.py",
+  "results": [
+    {
+      "p": 3,
+      "r": 3,
+      "m": 9,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -3,
+            -1,
+            1
+          ],
+          "left_states": 100,
+          "right_states": 99,
+          "matching_sums": 99
+        },
+        {
+          "normal_form": [
+            3,
+            -1,
+            -1,
+            -1
+          ],
+          "left_states": 100,
+          "right_states": 97,
+          "matching_sums": 97
+        }
+      ],
+      "passing_profiles": 2
+    },
+    {
+      "p": 3,
+      "r": 5,
+      "m": 15,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -3,
+            -3,
+            1
+          ],
+          "left_states": 165,
+          "right_states": 164,
+          "matching_sums": 158
+        },
+        {
+          "normal_form": [
+            1,
+            -1,
+            1,
+            3
+          ],
+          "left_states": 167,
+          "right_states": 158,
+          "matching_sums": 154
+        },
+        {
+          "normal_form": [
+            3,
+            -3,
+            -1,
+            -1
+          ],
+          "left_states": 156,
+          "right_states": 167,
+          "matching_sums": 152
+        },
+        {
+          "normal_form": [
+            3,
+            1,
+            1,
+            1
+          ],
+          "left_states": 162,
+          "right_states": 166,
+          "matching_sums": 157
+        }
+      ],
+      "passing_profiles": 4
+    },
+    {
+      "p": 3,
+      "r": 7,
+      "m": 21,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -5,
+            -1,
+            -1
+          ],
+          "left_states": 63,
+          "right_states": 45,
+          "matching_sums": 30
+        },
+        {
+          "normal_form": [
+            1,
+            -3,
+            1,
+            3
+          ],
+          "left_states": 76,
+          "right_states": 72,
+          "matching_sums": 60
+        },
+        {
+          "normal_form": [
+            3,
+            -3,
+            -3,
+            -1
+          ],
+          "left_states": 67,
+          "right_states": 76,
+          "matching_sums": 54
+        },
+        {
+          "normal_form": [
+            3,
+            -1,
+            -1,
+            3
+          ],
+          "left_states": 76,
+          "right_states": 72,
+          "matching_sums": 60
+        }
+      ],
+      "passing_profiles": 4
+    },
+    {
+      "p": 5,
+      "r": 5,
+      "m": 25,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -5,
+            1,
+            1
+          ],
+          "left_states": 561,
+          "right_states": 579,
+          "matching_sums": 527
+        },
+        {
+          "normal_form": [
+            1,
+            -3,
+            -3,
+            3
+          ],
+          "left_states": 576,
+          "right_states": 566,
+          "matching_sums": 532
+        },
+        {
+          "normal_form": [
+            1,
+            -1,
+            3,
+            3
+          ],
+          "left_states": 561,
+          "right_states": 553,
+          "matching_sums": 505
+        },
+        {
+          "normal_form": [
+            3,
+            1,
+            1,
+            3
+          ],
+          "left_states": 572,
+          "right_states": 572,
+          "matching_sums": 534
+        },
+        {
+          "normal_form": [
+            5,
+            -1,
+            -1,
+            -1
+          ],
+          "left_states": 540,
+          "right_states": 561,
+          "matching_sums": 492
+        }
+      ],
+      "passing_profiles": 5
+    },
+    {
+      "p": 3,
+      "r": 11,
+      "m": 33,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [],
+      "passing_profiles": 0
+    },
+    {
+      "p": 5,
+      "r": 7,
+      "m": 35,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -5,
+            1,
+            3
+          ],
+          "left_states": 151,
+          "right_states": 144,
+          "matching_sums": 142
+        },
+        {
+          "normal_form": [
+            1,
+            1,
+            1,
+            5
+          ],
+          "left_states": 153,
+          "right_states": 134,
+          "matching_sums": 134
+        },
+        {
+          "normal_form": [
+            3,
+            -5,
+            -3,
+            -1
+          ],
+          "left_states": 142,
+          "right_states": 144,
+          "matching_sums": 133
+        },
+        {
+          "normal_form": [
+            3,
+            1,
+            3,
+            3
+          ],
+          "left_states": 144,
+          "right_states": 134,
+          "matching_sums": 125
+        },
+        {
+          "normal_form": [
+            5,
+            -3,
+            1,
+            1
+          ],
+          "left_states": 140,
+          "right_states": 153,
+          "matching_sums": 140
+        }
+      ],
+      "passing_profiles": 5
+    },
+    {
+      "p": 3,
+      "r": 13,
+      "m": 39,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [],
+      "passing_profiles": 0
+    },
+    {
+      "p": 7,
+      "r": 7,
+      "m": 49,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            7,
+            -1,
+            -1,
+            -1
+          ],
+          "left_states": 204,
+          "right_states": 215,
+          "matching_sums": 194
+        }
+      ],
+      "passing_profiles": 1
+    },
+    {
+      "p": 3,
+      "r": 17,
+      "m": 51,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [],
+      "passing_profiles": 0
+    },
+    {
+      "p": 5,
+      "r": 11,
+      "m": 55,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -7,
+            -3,
+            -3
+          ],
+          "left_states": 55,
+          "right_states": 40,
+          "matching_sums": 16
+        },
+        {
+          "normal_form": [
+            1,
+            -7,
+            -1,
+            3
+          ],
+          "left_states": 55,
+          "right_states": 80,
+          "matching_sums": 23
+        },
+        {
+          "normal_form": [
+            1,
+            3,
+            3,
+            5
+          ],
+          "left_states": 80,
+          "right_states": 98,
+          "matching_sums": 48
+        },
+        {
+          "normal_form": [
+            3,
+            -7,
+            1,
+            1
+          ],
+          "left_states": 51,
+          "right_states": 45,
+          "matching_sums": 15
+        },
+        {
+          "normal_form": [
+            3,
+            -5,
+            -5,
+            -3
+          ],
+          "left_states": 84,
+          "right_states": 98,
+          "matching_sums": 48
+        },
+        {
+          "normal_form": [
+            5,
+            -3,
+            3,
+            3
+          ],
+          "left_states": 105,
+          "right_states": 69,
+          "matching_sums": 42
+        },
+        {
+          "normal_form": [
+            5,
+            -1,
+            -1,
+            5
+          ],
+          "left_states": 114,
+          "right_states": 106,
+          "matching_sums": 74
+        },
+        {
+          "normal_form": [
+            7,
+            -3,
+            -1,
+            -1
+          ],
+          "left_states": 16,
+          "right_states": 36,
+          "matching_sums": 0
+        },
+        {
+          "normal_form": [
+            7,
+            1,
+            1,
+            1
+          ],
+          "left_states": 16,
+          "right_states": 45,
+          "matching_sums": 0
+        }
+      ],
+      "passing_profiles": 7
+    },
+    {
+      "p": 11,
+      "r": 17,
+      "m": 187,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            1,
+            -9,
+            -9,
+            -7
+          ],
+          "left_states": 8,
+          "right_states": 4,
+          "matching_sums": 0
+        },
+        {
+          "normal_form": [
+            5,
+            -9,
+            -1,
+            9
+          ],
+          "left_states": 3,
+          "right_states": 9,
+          "matching_sums": 0
+        },
+        {
+          "normal_form": [
+            5,
+            -7,
+            5,
+            9
+          ],
+          "left_states": 2,
+          "right_states": 3,
+          "matching_sums": 0
+        }
+      ],
+      "passing_profiles": 0
+    },
+    {
+      "p": 17,
+      "r": 23,
+      "m": 391,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            17,
+            -7,
+            5,
+            5
+          ],
+          "left_states": 1,
+          "right_states": 1,
+          "matching_sums": 0
+        }
+      ],
+      "passing_profiles": 0
+    },
+    {
+      "p": 17,
+      "r": 35,
+      "m": 595,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            17,
+            -1,
+            -1,
+            17
+          ],
+          "left_states": 10,
+          "right_states": 8,
+          "matching_sums": 0
+        }
+      ],
+      "passing_profiles": 0
+    },
+    {
+      "p": 7,
+      "r": 17,
+      "m": 119,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [],
+      "passing_profiles": 0
+    },
+    {
+      "p": 13,
+      "r": 19,
+      "m": 247,
+      "all_512_tables_integer_subgroup_paf_checked": true,
+      "normal_forms": [
+        {
+          "normal_form": [
+            7,
+            -13,
+            -7,
+            -1
+          ],
+          "left_states": 2,
+          "right_states": 3,
+          "matching_sums": 0
+        },
+        {
+          "normal_form": [
+            11,
+            -7,
+            -7,
+            -7
+          ],
+          "left_states": 2,
+          "right_states": 1,
+          "matching_sums": 0
+        }
+      ],
+      "passing_profiles": 0
+    }
+  ]
+}

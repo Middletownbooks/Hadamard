@@ -16,9 +16,14 @@ No new family or new Hadamard matrix is claimed.
 [P, M] The broader **three-stratum product class** (arbitrary signs on all nine
 rectangles, not necessarily a character product) cannot give an infinite family:
 its two factor orders satisfy min(p,r)<=35 and max(p,r)<=16 min(p,r)-9,
-so m<=19285. Exact necessary screens rule out this class at **35/38** targets.
-Only 3004, 6268 and 9532 remain undecided **within that class**. This is not a
-claim that those three admit cores, nor that the other orders have no cores.
+so m<=19285. Exact necessary screens, including compression-conditioned subgroup
+energies, rule out this one- or two-factor class at **38/38** targets. This is not
+a nonexistence claim for unrestricted cores.
+
+[P] Two additional direct approaches fail for every m>1: a character-independent
+scalar norm product of two cores, and taking the four negative sets to be relative
+transversals of K (even allowing complements). Confidence is proof-level for the
+stated classes, with independent exact checks described below. No claim relies on [E].
 
 ## Analysis of the known cores
 
@@ -143,7 +148,7 @@ interior gives E(B)=1. It still exceeds the available **total** energy by four.
 The classical twin-prime-power difference set uses a quadratic-character product
 on nonzero pairs with prescribed axes: see O Cathain and Stafford, *On twin prime
 power Hadamard matrices*, Definition 14,
-https://maths.nuigalway.ie/~padraig/Docs/OCathainStafford.pdf.
+[paper](https://maths.nuigalway.ie/~padraig/Docs/OCathainStafford.pdf).
 Theorem T concerns placing such sign templates in this k4 core; it does not deny
 the classical difference-set construction at its own parameters.
 
@@ -260,7 +265,8 @@ gate is F2 for each factor.
 [M] `theory/openai_identity_obstructions.py` checks all arithmetic two-factor
 presentations of every target, including presentations that might not occur for
 a particular abelian K; this only enlarges the class being screened. For prime m
-it uses the single-factor F2. Exactly 35 targets are excluded. The survivors are:
+it uses the single-factor F2. The separate gates exclude 35 targets. Their three
+remaining cases, before the stronger gate below, are:
 
 | order | m | surviving factor orders | possible (a;t1,t2,t3), up to t permutations |
 |---|---:|---|---|
@@ -272,6 +278,41 @@ The 17 x 35 presentation uses an arbitrary balanced partition of a group of orde
 35; it is not a pair of finite fields. C says nothing about a full 27-rectangle
 model on three factors (5,7,17). Similar higher-factor table classes must not be
 confused with the balanced tensors already excluded by T.
+
+### Compression-conditioned subgroup gate: all 38 targets excluded [P, M]
+
+The separate gates discard which cell sums and fibre energies can occur together.
+Retain that association. For each 3x3 sign table F put
+
+    w=(1,(p-1)/2,(p-1)/2), v=(1,(r-1)/2,(r-1)/2),
+    z = w F v^T,
+    c_p = [sum_b v_b (sum_a w_a F_ab)^2 - r]/(p-1),
+    c_r = [sum_a w_a (sum_b v_b F_ab)^2 - p]/(r-1).
+
+These are nonnegative integers. For any core, its 16 cells must have total costs
+(16r-12,16p-12). Enumerate all 512 tables, group their (c_p,c_r) pairs by z, and
+for each normal form join the 16 required lists on that target. The dynamic program
+keeps every attainable pair and discards only coordinates exceeding the nonnegative
+target. It is an **exact necessary gate**, not an estimate or a restricted seed search.
+
+[M] All profiles for the last three cases are empty at the target. Small explicit
+certificates, from the table lists after each cell's nonnegative cost caps, are:
+
+| order | normal-form profile | incompatible cost |
+|---|---|---|
+| 3004 | (1;-9,-9,-7) | total c_r has minimum 104; any increase is at least 140, but 164 is required |
+| 3004 | (5;-9,-1,9) | total c_r has minimum 74; any increase is at least 140, but 164 is required |
+| 3004 | (5;-7,5,9) | total c_r is at least 184, but 164 is required |
+| 6268 | (17;-7,5,5) | total c_p is 268+308j, j>=0, never the required 356 |
+| 9532 | (17;-1,-1,17) | total c_p is 140+476j, j>=0, never the required 548 |
+
+[M] An independent implementation, `theory/openai_identity_gatecheck.py`, imports
+neither the builder nor the screen. It expands the tables on the full groups and
+checks the subgroup PAF sums by literal integer shifts; it uses an 8+8 join with
+divide-and-conquer sum sets rather than the main screen's 16-step dynamic program.
+It audits 7680 tables: ten small presentations, these three final cases, and both
+known-core sizes. It confirms all five latter sizes have no table core. Its output
+is `logs/openai_identity/conditioned_gate_audit.json`.
 
 ### Small checks and Claude test
 
@@ -293,31 +334,231 @@ python theory/openai_identity_verify.py /tmp/openai_identity_tables.json \
 ```
 
 **Pass:** reproduce F2 from subgroup sums, reproduce the 512-table sum sets and
-35/38 exclusions, and verify the C1-to-T implication. **Kill:** any genuine core
+38/38 exclusions, and verify the C1-to-T implication. **Kill:** any genuine core
 in this class with p,r>=37, or max(p,r)>16min(p,r)-9; or a table core at a target
-marked `fails`. A valid core at one of the three `unknown` targets would not
-contradict the theorem. No long search is requested.
+marked `fails`. Small cases labelled `unknown` by the necessary gates are not
+excluded; a positive example there would not contradict the general finite bound.
+No long search is requested.
 
-## Proposal 3: norm products and genuine relative-difference-set blocks
+## Proposal 3: character-independent scalar norm products
 
-Unfinished: record the two short obstructions, their exact checks, and their scope.
+### Definition and theorem N [P]
+
+Suppose cores on Q x K1 and Q x K2, of odd subgroup sizes a,b, are combined into
+four sequences on Q x K1 x K2 by a rule with the exact Fourier norm identity
+
+    N_out(eta,chi1,chi2) = c N_a(eta,chi1) N_b(eta,chi2),     (N1)
+
+where c is independent of the character (it may depend on a,b), and the same
+quotient character eta is used in both factors. This includes a proposed norm
+composition **only if it actually has N1**; no blanket assertion is made about
+all quaternion or Turyn constructions.
+
+For eta!=1, chi1=chi2=1, each input norm is 12 and the output must be 12, forcing
+c=1/12. At the principal character the input norms are 16a+12 and 16b+12, whereas
+the required output is 16ab+12. The excess is
+
+    (16a+12)(16b+12)/12 - (16ab+12)
+       = 16ab/3 + 16(a+b) > 0.                             (N2)
+
+Thus no such rule works, even before imposing binary output coefficients. This
+does not exclude character-dependent projections, auxiliary sequences, or a
+product that changes how quotient characters are identified. Such a rule needs
+a different norm identity and an explicit binaryness proof.
+
+### Computation, coverage and Claude test
+
+[M] `theory/openai_identity_obstructions.py` evaluates N2 as an exact rational
+number on the ten unordered pairs with repetition from a,b in {1,3,5,7}.
+All ten fail. This checks the algebraic norm obstruction, not PAFs of nonexistent
+output sequences. No binary reference builder can satisfy N1, by N2; the norm
+reference implementation is `norm_product(a,b)` in that script.
+
+[P] Coverage: **fails for the stated product rule at all 38 targets**, for every
+factorization. At prime subgroup orders there is no nontrivial factorization,
+and allowing a factor of size 1 still gives the contradiction.
+
+**Pass:** the special quotient norm forces c=1/12 and the principal excess equals
+N2. **Kill:** a valid output core satisfying N1. A different product identity is
+outside this theorem and remains open.
+
+## Proposal 4: genuine relative-difference-set blocks
+
+### Definition, dictionary and theorem RDS [P]
+
+Allow each x_i, up to negation, to be G-2D_i, where D_i has no nonzero differences
+in K. Equivalently D_i meets every K-coset at most once. Ordinary relative
+difference sets with forbidden subgroup K are a special case; uniformity of their
+differences outside K is not assumed. Complements are covered by the allowed
+negation of the whole sequence. Write v=4m, k_i=|D_i| and use group sums G,K.
+
+Expanding the exact PAF identity gives the useful general difference-family dictionary
+
+    sum_i D_i D_i^(-1) = (v+3)e - 4K + lambda G,
+    lambda = sum_i k_i - v + 1.                            (R1)
+
+This dictionary holds for every binary core, not only the transversal class.
+If m>1, a nonzero element of K exists; its left coefficient is zero in the
+transversal class, forcing lambda=4. Therefore sum_i k_i=v+3=4m+3.
+
+But a transversal cell has compression m or m-2. The reviewed normal form has
+exactly one constant row and three singleton rows. A constant row has 0 or 4
+occupied K-cosets; a singleton row has 1 or 3 occupied K-cosets. Hence
+
+    sum_i k_i <= 4 + 3*3 = 13 < 4m+3  (odd m>=3),          (R2)
+
+a contradiction. Row negations used to reach normal form do not alter the number
+of equal entries, so the singleton/constant classification applies to the original
+transversal rows too. It follows that four genuine relative-transversal blocks
+cannot be the core at any odd m>1.
+
+### Computation, coverage and Claude test
+
+[M] `transversal_q_gate` in `theory/openai_identity_obstructions.py` enumerates
+all 16 occupancy vectors and all 3876 four-row multisets, for every odd m=3,...,99
+and both Q. All 98 cases have zero solutions to the necessary quotient PAF equations.
+This is exhaustive for the quotient of the stated class; it is not a full-core
+search. Arbitrary signs within occupied cosets do not arise for indicator sets,
+and their point locations cannot change these quotient vectors.
+
+[M] `theory/openai_identity_build.py --kind transversal --suite` also builds an
+explicit diagnostic quadruple at every odd m<=99 on each Q: one negative set of
+size 4 and three of size 3, each a transversal. All 98 examples fail full integer
+PAF under the independent checker (`transversal_small_paf.json`). This is a
+reference builder for the rejected proposal, not a positive family.
+
+[P] Coverage: **fails at all 38 targets**. This does not rule out relative
+difference sets used as auxiliary pieces of a more elaborate construction, or
+supplementary divisible difference families with nonzero K-differences in R1.
+
+**Pass:** verify R1 and the size contradiction R2; reproduce 98 empty quotient
+enumerations. **Kill:** a core whose negative sets, after optional row negations,
+all meet each K-coset at most once. The enumeration is the reference implementation;
+there is no successful binary builder for this class.
+
+## Coverage of all 38 supplied targets
+
+[P, M] `fails` means the **defined construction class** cannot supply a core, not that the Hadamard order is impossible. T, N and RDS are universal proofs; C combines the proof and the exact necessary gates in `theory/openai_identity_obstructions.py`. Both Q are covered. Arithmetic two-factor presentations over-enumerate the possibilities for noncyclic groups as well. No unrestricted target is solved.
+
+| order | n | m | T: balanced tensor | C: one/two-factor table | N: scalar norm | RDS: transversal |
+|---|---:|---:|---|---|---|---|
+| 2396 | 599 | 149 | fails | fails | fails | fails |
+| 2876 | 719 | 179 | fails | fails | fails | fails |
+| 3004 | 751 | 187 | fails | fails | fails | fails |
+| 3452 | 863 | 215 | fails | fails | fails | fails |
+| 4124 | 1031 | 257 | fails | fails | fails | fails |
+| 4156 | 1039 | 259 | fails | fails | fails | fails |
+| 4348 | 1087 | 271 | fails | fails | fails | fails |
+| 4412 | 1103 | 275 | fails | fails | fails | fails |
+| 4892 | 1223 | 305 | fails | fails | fails | fails |
+| 5276 | 1319 | 329 | fails | fails | fails | fails |
+| 5308 | 1327 | 331 | fails | fails | fails | fails |
+| 5468 | 1367 | 341 | fails | fails | fails | fails |
+| 5692 | 1423 | 355 | fails | fails | fails | fails |
+| 5756 | 1439 | 359 | fails | fails | fails | fails |
+| 5884 | 1471 | 367 | fails | fails | fails | fails |
+| 5948 | 1487 | 371 | fails | fails | fails | fails |
+| 6172 | 1543 | 385 | fails | fails | fails | fails |
+| 6236 | 1559 | 389 | fails | fails | fails | fails |
+| 6268 | 1567 | 391 | fails | fails | fails | fails |
+| 6332 | 1583 | 395 | fails | fails | fails | fails |
+| 6652 | 1663 | 415 | fails | fails | fails | fails |
+| 6876 | 1719 | 429 | fails | fails | fails | fails |
+| 7132 | 1783 | 445 | fails | fails | fails | fails |
+| 7324 | 1831 | 457 | fails | fails | fails | fails |
+| 7388 | 1847 | 461 | fails | fails | fails | fails |
+| 7484 | 1871 | 467 | fails | fails | fails | fails |
+| 7516 | 1879 | 469 | fails | fails | fails | fails |
+| 8156 | 2039 | 509 | fails | fails | fails | fails |
+| 8252 | 2063 | 515 | fails | fails | fails | fails |
+| 8348 | 2087 | 521 | fails | fails | fails | fails |
+| 8380 | 2095 | 523 | fails | fails | fails | fails |
+| 8828 | 2207 | 551 | fails | fails | fails | fails |
+| 8860 | 2215 | 553 | fails | fails | fails | fails |
+| 9148 | 2287 | 571 | fails | fails | fails | fails |
+| 9308 | 2327 | 581 | fails | fails | fails | fails |
+| 9532 | 2383 | 595 | fails | fails | fails | fails |
+| 9596 | 2399 | 599 | fails | fails | fails | fails |
+| 9692 | 2423 | 605 | fails | fails | fails | fails |
 
 ## Ideas considered and rejected
 
-The previously reviewed small cyclotomic-repair and elliptic search families remain closed, as specified in the prompt.
+- [P] Tensor Paley products with arbitrary coordinate-hyperplane fillings: T gives a four-unit spectral excess.
+- [P, M] One- or two-factor three-stratum tables: C gives a finite bound; the exact gates exclude all 38 targets.
+- [P] Character-independent scalar norm multiplication on a shared Q: special and principal spectra require incompatible scalings.
+- [P] Four genuine relative-transversal negative sets: the difference-family and compression size counts conflict.
+- [M] Explaining the two known cores as translated independent quadratic sign tables: every cell requires changes; the 512-table gates exclude those two sizes as well.
+- Previously reviewed small cyclotomic-repair and elliptic search families: remain closed as specified in the prompt; not rerun here.
 
 ## What a Claude instance should run first
 
-Unfinished. Exact scripts, commands, input formats, and pass/kill criteria will be added with each completed result. Any successful small core must also pass independent integer bordered-matrix verification.
+Run from the repository root with Python 3 and NumPy (the existing independent
+matrix verifier uses NumPy's `bitwise_count`). Each invocation is a short exact
+check, not a search campaign. The output JSON files are committed.
+
+```bash
+# 1. Audit the crucial finite gate with independently expanded subgroup PAFs.
+python theory/openai_identity_gatecheck.py
+
+# 2. Reproduce the 38-target coverage, boundary exhaustions and elementary obstructions.
+python theory/openai_identity_obstructions.py
+
+# 3. Reject the tensor candidates at every odd m through 99, both Q.
+python theory/openai_identity_build.py --suite --out /tmp/openai_identity_tensor_suite.json
+python theory/openai_identity_verify.py /tmp/openai_identity_tensor_suite.json \
+  --expect reject-tensor --out logs/openai_identity/tensor_small.json
+
+# 4. Check all 60 small diagnostic three-stratum candidates by full integer PAF.
+python theory/openai_identity_build.py --kind three-stratum --suite --out /tmp/openai_identity_tables.json
+python theory/openai_identity_verify.py /tmp/openai_identity_tables.json \
+  --expect reject-candidate --out logs/openai_identity/three_stratum_small_paf.json
+
+# 5. Positive controls: six known cores, then two independent order-60 matrix checks.
+python theory/openai_identity_controls.py
+
+# Explicit relative-transversal diagnostic candidates (98 full PAF checks).
+python theory/openai_identity_build.py --kind transversal --suite --out /tmp/openai_identity_transversals.json
+python theory/openai_identity_verify.py /tmp/openai_identity_transversals.json \
+  --expect reject-candidate --out logs/openai_identity/transversal_small_paf.json
+
+# 6. Optional reproduction of the real-core structural analysis.
+curl -L --fail https://raw.githubusercontent.com/vatskishan03/hadamard/main/hadamard/3964/certificate.json \
+  -o /tmp/openai_identity_3964.json
+python theory/openai_identity_known.py --kumar /tmp/openai_identity_3964.json
+```
+
+[M] Expected counts: 15 independent table-audit cases (7680 tables), 38 excluded
+targets for T/C/N/RDS, 296 rejected tensor examples, 60 rejected diagnostic tables,
+98 rejected explicit transversal examples,
+6 passing old cores, and 2 passing independently verified order-60 matrices.
+The matrix checks include corrupted negative controls. The source 3964 certificate
+used here has Git blob SHA `414fec749756d5cf597cb22a161cc16ff3be9314`; a later file
+should be checked against that provenance before comparing detailed fingerprints.
+
+Before attempting any new identity, check its cells against T and C and its norm
+against N. A promising escape must change nonzero interiors, use more than two
+independent sign-table factors, use genuinely coupled character classes, or employ
+a norm identity with auxiliary/projected pieces. These are scope boundaries, not
+positive proposals. Do not spend time searching the classes proved empty here.
 
 ## Unfinished items
 
-- All new mathematical conclusions and computations.
-- Known-core structural analysis, small-instance tables, and 38-target coverage.
-- Independent matrix verification for any constructed control.
+- No positive algebraic identity producing a new core has been found.
+- General coupled cyclotomy (including the index-eight symmetry seen in the controls),
+  higher-order characters, general three-or-more-factor sign tables, Galois-ring
+  constructions, and product identities outside N1 remain unresolved.
+- C's finite bound is not a classification of all smaller sizes: the committed
+  small-size gates deliberately retain `unknown` where necessary conditions pass.
+- The mathematical proofs and new scripts await the requested external Claude review;
+  they have not been labelled as already reviewed by Claude.
 
 ## Provenance and setup
 
 The bordered construction is Theorem 7 of Egan–Kotsireas–London–Ó Catháin, in Kumar's form. Theorem B and the compression normal form are the prior OpenAI results reviewed in `report/openai_4p3_review.md`.
 
-The two requested branches were fetched. A normal merge preserving both branch histories is being used. No pull request will be opened; only the authorized Codex branch will be pushed.
+[M] The two requested branches were fetched and merged cleanly. Direct Git pushing
+lacked credentials, so the commits were published through the GitHub connector.
+The initial published checkpoint `9ec96bea` is a two-parent merge of the prior
+Codex head `27cfc29c` and Claude head `9ae002e8`, with the answer skeleton added;
+both histories are preserved. All updates are descendants of that commit and
+target only `codex/order-3452-compression`. No pull request was opened.
