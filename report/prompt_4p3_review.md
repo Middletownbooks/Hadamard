@@ -92,7 +92,7 @@ The converse holds too.
 - Implement your own brute force and run it to the largest odd m that fits in about 20 minutes per Q (aim for m ≤ 99).
   Report the counts per m.
 - Cross-check against the repository's Q-level solution lists for a few census structures with odd |K|, e.g. the 863
-  S7 host (`theory/bt_engine.py`, `Gates.q_level`).
+  S7 host (`theory/bt_gates.py`, `Gates.q_level`).
 - Reproduce the answer's minimum-change table for the 16 targets with your own code. Mismatch kills the table until
   resolved.
 
