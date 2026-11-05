@@ -1,0 +1,279 @@
+{
+ "script": "theory/4p3_review_elliptic.py coverage",
+ "command": "theory/4p3_review_elliptic.py coverage --out logs/4p3_review/elliptic_coverage_check.json",
+ "records": [
+  {
+   "p": 149,
+   "witness": [
+    -11,
+    -5,
+    -3,
+    1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -11,
+    -5,
+    -3,
+    1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 179,
+   "witness": [
+    -13,
+    -3,
+    1,
+    1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -13,
+    -3,
+    1,
+    1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 257,
+   "witness": [
+    -15,
+    -5,
+    -3,
+    -3
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -15,
+    -5,
+    -3,
+    -3
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 271,
+   "witness": [
+    -15,
+    -7,
+    1,
+    1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -15,
+    -7,
+    1,
+    1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 331,
+   "witness": [
+    -17,
+    -7,
+    -1,
+    -1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -17,
+    -7,
+    -1,
+    -1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 359,
+   "witness": [
+    -17,
+    -5,
+    -5,
+    5
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -17,
+    -5,
+    -5,
+    5
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 367,
+   "witness": [
+    -19,
+    -3,
+    -1,
+    -1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -19,
+    -3,
+    -1,
+    -1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 389,
+   "witness": [
+    -19,
+    -5,
+    -3,
+    1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -19,
+    -5,
+    -3,
+    1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 457,
+   "witness": [
+    -21,
+    1,
+    1,
+    3
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -21,
+    1,
+    1,
+    3
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 461,
+   "witness": [
+    -21,
+    -5,
+    -1,
+    -1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -21,
+    -5,
+    -1,
+    -1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 467,
+   "witness": [
+    -21,
+    -5,
+    -3,
+    -1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -21,
+    -5,
+    -3,
+    -1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 509,
+   "witness": [
+    -21,
+    -7,
+    -5,
+    -3
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -21,
+    -7,
+    -5,
+    -3
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 521,
+   "witness": [
+    -21,
+    -9,
+    -3,
+    1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -21,
+    -9,
+    -3,
+    1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 523,
+   "witness": [
+    -21,
+    -7,
+    -5,
+    -5
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -21,
+    -7,
+    -5,
+    -5
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 571,
+   "witness": [
+    -23,
+    -7,
+    -1,
+    -1
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -23,
+    -7,
+    -1,
+    -1
+   ],
+   "rebuilt_match": true
+  },
+  {
+   "p": 599,
+   "witness": [
+    -23,
+    -5,
+    -5,
+    5
+   ],
+   "C_holds_and_attainable": true,
+   "rebuilt_seed_sums": [
+    -23,
+    -5,
+    -5,
+    5
+   ],
+   "rebuilt_match": true
+  }
+ ],
+ "all_ok": true
+}

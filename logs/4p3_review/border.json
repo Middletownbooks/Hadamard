@@ -1,0 +1,3040 @@
+{
+ "script": "theory/4p3_review_border.py",
+ "command": "theory/4p3_review_border.py --out logs/4p3_review/border.json --scratch /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad --scramble 3 --elliptic logs/4p3_review/elliptic_cores_for_border.json",
+ "seed": null,
+ "certificates": [
+  {
+   "q": "v4",
+   "frame_index_zero_based": 75,
+   "shapes": [
+    [
+     12,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     12
+    ]
+   ],
+   "entries_pm1": true,
+   "XXt_12I": true,
+   "RhRht_16I": true,
+   "ChCht_I4xGamma": true,
+   "link_zero": true,
+   "Rh_blocks_balanced": true,
+   "own_Mc_equals_stored_Mc": true,
+   "constant_rows_annihilated": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "ok": true
+  },
+  {
+   "q": "z4",
+   "frame_index_zero_based": 75,
+   "shapes": [
+    [
+     12,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     12
+    ]
+   ],
+   "entries_pm1": true,
+   "XXt_12I": true,
+   "RhRht_16I": true,
+   "ChCht_I4xGamma": true,
+   "link_zero": true,
+   "Rh_blocks_balanced": true,
+   "own_Mc_equals_stored_Mc": true,
+   "constant_rows_annihilated": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "ok": true
+  }
+ ],
+ "cores": [
+  {
+   "core": "1916",
+   "G": [
+    2,
+    2,
+    119
+   ],
+   "Q": "v4",
+   "K_order": 119,
+   "order": 1916,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      1,
+      1,
+      3
+     ],
+     [
+      9,
+      11,
+      9,
+      9
+     ],
+     [
+      5,
+      5,
+      5,
+      5
+     ]
+    ],
+    "operations": [
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 3
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 1
+     }
+    ],
+    "normalised_compressions": [
+     [
+      5,
+      5,
+      5,
+      5
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      11,
+      9,
+      9,
+      9
+     ]
+    ],
+    "constants": [
+     5,
+     1,
+     1,
+     9
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "a9c9abcdc57ab5d450835d909b6855b3413fb69c81a2e2292308d05276cf9fe2",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     1916,
+     1916
+    ],
+    "N": 1916,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "a9c9abcdc57ab5d450835d909b6855b3413fb69c81a2e2292308d05276cf9fe2",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916.npy",
+    "negative_control": {
+     "flipped": [
+      906,
+      980
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "secs": 1.3
+  },
+  {
+   "core": "3964",
+   "G": [
+    2,
+    2,
+    247
+   ],
+   "Q": "v4",
+   "K_order": 247,
+   "order": 3964,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      -11,
+      -13,
+      -13,
+      -13
+     ],
+     [
+      -5,
+      -7,
+      -7,
+      -7
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      7,
+      7,
+      7,
+      7
+     ]
+    ],
+    "operations": [
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      7,
+      7,
+      7,
+      7
+     ],
+     [
+      -11,
+      -13,
+      -13,
+      -13
+     ],
+     [
+      -5,
+      -7,
+      -7,
+      -7
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     7,
+     -13,
+     -7,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "8fedf214123dac1f7aa907faf03f7929d1985f66498e191e071da035bae91efa",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     3964,
+     3964
+    ],
+    "N": 3964,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "8fedf214123dac1f7aa907faf03f7929d1985f66498e191e071da035bae91efa",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964.npy",
+    "negative_control": {
+     "flipped": [
+      1875,
+      2028
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "kumar_sha256_field": "abf81a80370d4808a41d1b8ea79f1d9c8e44a1e0ce27b5cfbf689cdf1b83b158",
+   "kumar_reported_coset_sums": "a0: -11,-13,-13,-13; a1: -5,-7,-7,-7; a2: 1,-1,-1,-1; a3: 7,7,7,7",
+   "secs": 4.9
+  },
+  {
+   "core": "1916 scrambled 0",
+   "G": [
+    2,
+    2,
+    119
+   ],
+   "Q": "v4",
+   "K_order": 119,
+   "order": 1916,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      -5,
+      -5,
+      -5,
+      -5
+     ],
+     [
+      -1,
+      -3,
+      -1,
+      -1
+     ],
+     [
+      -3,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      9,
+      9,
+      9,
+      11
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": -1,
+      "q_translation": 1
+     },
+     {
+      "row": 2,
+      "sign": -1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 3
+     }
+    ],
+    "normalised_compressions": [
+     [
+      -5,
+      -5,
+      -5,
+      -5
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      11,
+      9,
+      9,
+      9
+     ]
+    ],
+    "constants": [
+     -5,
+     1,
+     1,
+     9
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "8ff5ec340cec73722084caa74be28a9d1deb38565b7c070d813762b5a50397d0",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     1916,
+     1916
+    ],
+    "N": 1916,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "8ff5ec340cec73722084caa74be28a9d1deb38565b7c070d813762b5a50397d0",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_0.npy",
+    "negative_control": {
+     "flipped": [
+      906,
+      980
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_0.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_0.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "scramble": {
+    "phi": [
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      61
+     ]
+    ],
+    "perm": [
+     3,
+     1,
+     0,
+     2
+    ],
+    "signs": [
+     -1,
+     -1,
+     -1,
+     1
+    ],
+    "translations": [
+     194,
+     62,
+     21,
+     0
+    ]
+   },
+   "secs": 0.7
+  },
+  {
+   "core": "1916 scrambled 1",
+   "G": [
+    2,
+    2,
+    119
+   ],
+   "Q": "v4",
+   "K_order": 119,
+   "order": 1916,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      9,
+      9,
+      11,
+      9
+     ],
+     [
+      1,
+      1,
+      3,
+      1
+     ],
+     [
+      -1,
+      -3,
+      -1,
+      -1
+     ],
+     [
+      5,
+      5,
+      5,
+      5
+     ]
+    ],
+    "operations": [
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 2
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 2
+     },
+     {
+      "row": 2,
+      "sign": -1,
+      "q_translation": 1
+     }
+    ],
+    "normalised_compressions": [
+     [
+      5,
+      5,
+      5,
+      5
+     ],
+     [
+      11,
+      9,
+      9,
+      9
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "constants": [
+     5,
+     9,
+     1,
+     1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "e40333deac65c8e510f60c1f24008406b0938edce6cac2f2ae4a3577ba349599",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     1916,
+     1916
+    ],
+    "N": 1916,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "e40333deac65c8e510f60c1f24008406b0938edce6cac2f2ae4a3577ba349599",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_1.npy",
+    "negative_control": {
+     "flipped": [
+      906,
+      980
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_1.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_1.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "scramble": {
+    "phi": [
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      47
+     ]
+    ],
+    "perm": [
+     2,
+     0,
+     1,
+     3
+    ],
+    "signs": [
+     1,
+     1,
+     -1,
+     1
+    ],
+    "translations": [
+     264,
+     430,
+     129,
+     172
+    ]
+   },
+   "secs": 0.9
+  },
+  {
+   "core": "1916 scrambled 2",
+   "G": [
+    2,
+    2,
+    119
+   ],
+   "Q": "v4",
+   "K_order": 119,
+   "order": 1916,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      3,
+      1
+     ],
+     [
+      5,
+      5,
+      5,
+      5
+     ],
+     [
+      -1,
+      -1,
+      -3,
+      -1
+     ],
+     [
+      -9,
+      -9,
+      -9,
+      -11
+     ]
+    ],
+    "operations": [
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 2
+     },
+     {
+      "row": 2,
+      "sign": -1,
+      "q_translation": 2
+     },
+     {
+      "row": 3,
+      "sign": -1,
+      "q_translation": 3
+     }
+    ],
+    "normalised_compressions": [
+     [
+      5,
+      5,
+      5,
+      5
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      11,
+      9,
+      9,
+      9
+     ]
+    ],
+    "constants": [
+     5,
+     1,
+     1,
+     9
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 476,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "9f2ef7f9e0759679782866a539803c1baa36e13fd3275da4b3604c0d9eb9f099",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     1916,
+     1916
+    ],
+    "N": 1916,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "9f2ef7f9e0759679782866a539803c1baa36e13fd3275da4b3604c0d9eb9f099",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_2.npy",
+    "negative_control": {
+     "flipped": [
+      906,
+      980
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_2.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_1916_scrambled_2.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "scramble": {
+    "phi": [
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      103
+     ]
+    ],
+    "perm": [
+     1,
+     3,
+     0,
+     2
+    ],
+    "signs": [
+     1,
+     1,
+     -1,
+     -1
+    ],
+    "translations": [
+     239,
+     159,
+     207,
+     443
+    ]
+   },
+   "secs": 0.8
+  },
+  {
+   "core": "3964 scrambled 0",
+   "G": [
+    2,
+    2,
+    247
+   ],
+   "Q": "v4",
+   "K_order": 247,
+   "order": 3964,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      5,
+      7,
+      7,
+      7
+     ],
+     [
+      1,
+      1,
+      -1,
+      1
+     ],
+     [
+      7,
+      7,
+      7,
+      7
+     ],
+     [
+      -13,
+      -13,
+      -13,
+      -11
+     ]
+    ],
+    "operations": [
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 0,
+      "sign": -1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": -1,
+      "q_translation": 2
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 3
+     }
+    ],
+    "normalised_compressions": [
+     [
+      7,
+      7,
+      7,
+      7
+     ],
+     [
+      -5,
+      -7,
+      -7,
+      -7
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      -11,
+      -13,
+      -13,
+      -13
+     ]
+    ],
+    "constants": [
+     7,
+     -7,
+     -1,
+     -13
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "06e7fe1dc25104bb5755c03d9e25adbc46e7b98e8b2897923f6d37639d3d6dff",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     3964,
+     3964
+    ],
+    "N": 3964,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "06e7fe1dc25104bb5755c03d9e25adbc46e7b98e8b2897923f6d37639d3d6dff",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_0.npy",
+    "negative_control": {
+     "flipped": [
+      1875,
+      2028
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_0.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_0.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "scramble": {
+    "phi": [
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      125
+     ]
+    ],
+    "perm": [
+     1,
+     2,
+     3,
+     0
+    ],
+    "signs": [
+     -1,
+     -1,
+     1,
+     1
+    ],
+    "translations": [
+     84,
+     832,
+     834,
+     447
+    ]
+   },
+   "secs": 4.2
+  },
+  {
+   "core": "3964 scrambled 1",
+   "G": [
+    2,
+    2,
+    247
+   ],
+   "Q": "v4",
+   "K_order": 247,
+   "order": 3964,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      7,
+      7,
+      7,
+      7
+     ],
+     [
+      -11,
+      -13,
+      -13,
+      -13
+     ],
+     [
+      1,
+      1,
+      1,
+      -1
+     ],
+     [
+      7,
+      5,
+      7,
+      7
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": -1,
+      "q_translation": 3
+     },
+     {
+      "row": 3,
+      "sign": -1,
+      "q_translation": 1
+     }
+    ],
+    "normalised_compressions": [
+     [
+      7,
+      7,
+      7,
+      7
+     ],
+     [
+      -11,
+      -13,
+      -13,
+      -13
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      -5,
+      -7,
+      -7,
+      -7
+     ]
+    ],
+    "constants": [
+     7,
+     -13,
+     -1,
+     -7
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "0736ef4e73e67db505efb7bface1dd789c94b85980aa17fd2876999e348901cb",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     3964,
+     3964
+    ],
+    "N": 3964,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "0736ef4e73e67db505efb7bface1dd789c94b85980aa17fd2876999e348901cb",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_1.npy",
+    "negative_control": {
+     "flipped": [
+      1875,
+      2028
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_1.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_1.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "scramble": {
+    "phi": [
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      99
+     ]
+    ],
+    "perm": [
+     3,
+     0,
+     2,
+     1
+    ],
+    "signs": [
+     1,
+     1,
+     -1,
+     -1
+    ],
+    "translations": [
+     732,
+     195,
+     666,
+     933
+    ]
+   },
+   "secs": 4.5
+  },
+  {
+   "core": "3964 scrambled 2",
+   "G": [
+    2,
+    2,
+    247
+   ],
+   "Q": "v4",
+   "K_order": 247,
+   "order": 3964,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      7,
+      7,
+      5,
+      7
+     ],
+     [
+      13,
+      11,
+      13,
+      13
+     ],
+     [
+      -1,
+      -1,
+      -1,
+      1
+     ],
+     [
+      7,
+      7,
+      7,
+      7
+     ]
+    ],
+    "operations": [
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 0,
+      "sign": -1,
+      "q_translation": 2
+     },
+     {
+      "row": 1,
+      "sign": -1,
+      "q_translation": 1
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 3
+     }
+    ],
+    "normalised_compressions": [
+     [
+      7,
+      7,
+      7,
+      7
+     ],
+     [
+      -5,
+      -7,
+      -7,
+      -7
+     ],
+     [
+      -11,
+      -13,
+      -13,
+      -13
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     7,
+     -7,
+     -13,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 988,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "09a105230946599446fd9cb57c537ed188da4f36a4302df936645b558bfa987d",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     3964,
+     3964
+    ],
+    "N": 3964,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "09a105230946599446fd9cb57c537ed188da4f36a4302df936645b558bfa987d",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_2.npy",
+    "negative_control": {
+     "flipped": [
+      1875,
+      2028
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_2.npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_3964_scrambled_2.npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "scramble": {
+    "phi": [
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      0,
+      55
+     ]
+    ],
+    "perm": [
+     1,
+     0,
+     2,
+     3
+    ],
+    "signs": [
+     -1,
+     -1,
+     1,
+     1
+    ],
+    "translations": [
+     627,
+     922,
+     371,
+     325
+    ]
+   },
+   "secs": 4.0
+  },
+  {
+   "core": "answer example p=3 v4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    2,
+    2,
+    3
+   ],
+   "Q": "v4",
+   "K_order": 3,
+   "order": 60,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     -1,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "de44f80098bc66750851667b74b94c095205a5929e85ecc19aeb02cac1752e8e",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     60,
+     60
+    ],
+    "N": 60,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "de44f80098bc66750851667b74b94c095205a5929e85ecc19aeb02cac1752e8e",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=3_v4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      28,
+      30
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=3_v4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=3_v4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "shifts": [
+      0,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "secs": 0.3
+  },
+  {
+   "core": "answer example p=3 z4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    4,
+    3
+   ],
+   "Q": "z4",
+   "K_order": 3,
+   "order": 60,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     -1,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 12,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "ec93ad72643009eaed7b85badd85d55cc51f5bd98b30678daee3ec0ab2e5dc29",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     60,
+     60
+    ],
+    "N": 60,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "ec93ad72643009eaed7b85badd85d55cc51f5bd98b30678daee3ec0ab2e5dc29",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=3_z4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      28,
+      30
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=3_z4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=3_z4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "shifts": [
+      0,
+      0,
+      2,
+      1
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "secs": 0.3
+  },
+  {
+   "core": "answer example p=5 v4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    2,
+    2,
+    5
+   ],
+   "Q": "v4",
+   "K_order": 5,
+   "order": 92,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "constants": [
+     1,
+     -1,
+     1,
+     1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "a3f5e43ec709a7b69c685cb50c88607573d1ece4d8b03e070a0f420312e118dd",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     92,
+     92
+    ],
+    "N": 92,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "a3f5e43ec709a7b69c685cb50c88607573d1ece4d8b03e070a0f420312e118dd",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=5_v4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      43,
+      47
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=5_v4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=5_v4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 0,
+     "scale": 1,
+     "shifts": [
+      0,
+      0,
+      0,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 2,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      4,
+      3
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": 1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      3
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": 1,
+     "mask": 3,
+     "scale": 2,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      1
+     ]
+    }
+   ],
+   "secs": 0.2
+  },
+  {
+   "core": "answer example p=5 z4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    4,
+    5
+   ],
+   "Q": "z4",
+   "K_order": 5,
+   "order": 92,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "constants": [
+     1,
+     -1,
+     1,
+     1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "e6378196ef56526f282ff14a2206d0be2d9638f65cac114c3bd1b7af9ba7e63d",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     92,
+     92
+    ],
+    "N": 92,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "e6378196ef56526f282ff14a2206d0be2d9638f65cac114c3bd1b7af9ba7e63d",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=5_z4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      43,
+      47
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=5_z4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=5_z4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 0,
+     "scale": 1,
+     "shifts": [
+      0,
+      1,
+      0,
+      3
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 2,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      1
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": 1,
+     "mask": 3,
+     "scale": 1,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      2
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": 1,
+     "mask": 3,
+     "scale": 2,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      4
+     ]
+    }
+   ],
+   "secs": 0.3
+  },
+  {
+   "core": "answer example p=7 v4 (rebuilt by 4p3_review_elliptic)",
+   "G": [
+    2,
+    2,
+    7
+   ],
+   "Q": "v4",
+   "K_order": 7,
+   "order": 124,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 28,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     1,
+     1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 28,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "b6eabacfcfdbf5aea4af07a83df70164a678dde40d1fc60068df2ec9df3c4dd4",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     124,
+     124
+    ],
+    "N": 124,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "b6eabacfcfdbf5aea4af07a83df70164a678dde40d1fc60068df2ec9df3c4dd4",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=7_v4_(rebuilt_by_4p3_review_elliptic).npy",
+    "negative_control": {
+     "flipped": [
+      58,
+      63
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=7_v4_(rebuilt_by_4p3_review_elliptic).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_answer_example_p=7_v4_(rebuilt_by_4p3_review_elliptic).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "answer's parameters (logs/openai_4p3/core_p*_*.json), rebuilt by theory/4p3_review_elliptic.py examples",
+   "parameters": [
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 1,
+     "shifts": [
+      0,
+      2,
+      0,
+      5
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 2,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      1,
+      3
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 1,
+     "scale": 3,
+     "root": 0,
+     "shifts": [
+      0,
+      0,
+      0,
+      1
+     ]
+    },
+    {
+     "lam": 2,
+     "sign": -1,
+     "mask": 2,
+     "scale": 2,
+     "root": 4,
+     "shifts": [
+      0,
+      0,
+      6,
+      5
+     ]
+    }
+   ],
+   "secs": 0.3
+  },
+  {
+   "core": "elliptic p=5 v4 (random)",
+   "G": [
+    2,
+    2,
+    5
+   ],
+   "Q": "v4",
+   "K_order": 5,
+   "order": 92,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     1,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "db1bf7ffb5335f77d374ad7ed93055773927df4035ffef20120399aacb1488f9",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     92,
+     92
+    ],
+    "N": 92,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "db1bf7ffb5335f77d374ad7ed93055773927df4035ffef20120399aacb1488f9",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=5_v4_(random).npy",
+    "negative_control": {
+     "flipped": [
+      43,
+      47
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=5_v4_(random).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=5_v4_(random).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "theory/4p3_review_elliptic.py cores --mode random --pick-seed 2026",
+   "parameters": {
+    "rows": [
+     {
+      "params": [
+       2,
+       1,
+       3,
+       1
+      ]
+     },
+     {
+      "params": [
+       2,
+       1,
+       6,
+       4
+      ],
+      "root": 3
+     },
+     {
+      "params": [
+       2,
+       1,
+       3,
+       3
+      ],
+      "root": 2
+     },
+     {
+      "params": [
+       2,
+       -1,
+       4,
+       2
+      ],
+      "root": 1
+     }
+    ],
+    "shifts": [
+     [
+      0,
+      0,
+      0,
+      3
+     ],
+     [
+      0,
+      0,
+      1,
+      3
+     ],
+     [
+      0,
+      4,
+      2,
+      4
+     ],
+     [
+      0,
+      3,
+      1,
+      2
+     ]
+    ]
+   },
+   "secs": 0.2
+  },
+  {
+   "core": "elliptic p=5 z4 (random)",
+   "G": [
+    4,
+    5
+   ],
+   "Q": "z4",
+   "K_order": 5,
+   "order": 92,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      1,
+      -1,
+      -1,
+      -1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     1,
+     -1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 20,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "1737dadeea15bfbf86c1a9d49c63562694f0766589fefb0fba33f5a7a321b8fa",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     92,
+     92
+    ],
+    "N": 92,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "1737dadeea15bfbf86c1a9d49c63562694f0766589fefb0fba33f5a7a321b8fa",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=5_z4_(random).npy",
+    "negative_control": {
+     "flipped": [
+      43,
+      47
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=5_z4_(random).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=5_z4_(random).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "theory/4p3_review_elliptic.py cores --mode random --pick-seed 2026",
+   "parameters": {
+    "rows": [
+     {
+      "params": [
+       2,
+       1,
+       3,
+       1
+      ]
+     },
+     {
+      "params": [
+       2,
+       1,
+       6,
+       4
+      ],
+      "root": 3
+     },
+     {
+      "params": [
+       2,
+       1,
+       3,
+       3
+      ],
+      "root": 2
+     },
+     {
+      "params": [
+       2,
+       -1,
+       4,
+       2
+      ],
+      "root": 1
+     }
+    ],
+    "shifts": [
+     [
+      0,
+      0,
+      2,
+      0
+     ],
+     [
+      0,
+      4,
+      1,
+      2
+     ],
+     [
+      0,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      4,
+      3,
+      3
+     ]
+    ]
+   },
+   "secs": 0.2
+  },
+  {
+   "core": "elliptic p=7 v4 (random)",
+   "G": [
+    2,
+    2,
+    7
+   ],
+   "Q": "v4",
+   "K_order": 7,
+   "order": 124,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 28,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     1,
+     1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 28,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "52ce00dc6511005c53ec429a29178c134c00b9071969a5d169879f6cc11ccd4e",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     124,
+     124
+    ],
+    "N": 124,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "52ce00dc6511005c53ec429a29178c134c00b9071969a5d169879f6cc11ccd4e",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=7_v4_(random).npy",
+    "negative_control": {
+     "flipped": [
+      58,
+      63
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=7_v4_(random).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=7_v4_(random).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "theory/4p3_review_elliptic.py cores --mode random --pick-seed 2026",
+   "parameters": {
+    "rows": [
+     {
+      "params": [
+       2,
+       1,
+       1,
+       2
+      ]
+     },
+     {
+      "params": [
+       6,
+       1,
+       4,
+       1
+      ],
+      "root": 6
+     },
+     {
+      "params": [
+       2,
+       -1,
+       2,
+       5
+      ],
+      "root": 3
+     },
+     {
+      "params": [
+       2,
+       -1,
+       1,
+       1
+      ],
+      "root": 0
+     }
+    ],
+    "shifts": [
+     [
+      0,
+      0,
+      3,
+      2
+     ],
+     [
+      0,
+      5,
+      4,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      2
+     ],
+     [
+      0,
+      4,
+      3,
+      4
+     ]
+    ]
+   },
+   "secs": 0.2
+  },
+  {
+   "core": "elliptic p=7 z4 (random)",
+   "G": [
+    4,
+    7
+   ],
+   "Q": "z4",
+   "K_order": 7,
+   "order": 124,
+   "core_check": {
+    "ok": true,
+    "lags_checked": 28,
+    "bad_lags": 0
+   },
+   "core_negative_control_rejected": true,
+   "normalisation": {
+    "original_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "operations": [
+     {
+      "row": 0,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 1,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 2,
+      "sign": 1,
+      "q_translation": 0
+     },
+     {
+      "row": 3,
+      "sign": 1,
+      "q_translation": 0
+     }
+    ],
+    "normalised_compressions": [
+     [
+      1,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1,
+      1
+     ]
+    ],
+    "constants": [
+     1,
+     1,
+     1,
+     1
+    ]
+   },
+   "normalised_core_check": {
+    "ok": true,
+    "lags_checked": 28,
+    "bad_lags": 0
+   },
+   "H_sha256_int8": "991d8bb08507efa76f9c86cd8cd3465a4d8c964976d86f0d2abbaac1c300f9bf",
+   "verifier_exit": 0,
+   "verifier": {
+    "shape": [
+     124,
+     124
+    ],
+    "N": 124,
+    "popcount_gram_ok": true,
+    "first_bad": null,
+    "blas_gram_ok": true,
+    "ok": true,
+    "sha256_int8": "991d8bb08507efa76f9c86cd8cd3465a4d8c964976d86f0d2abbaac1c300f9bf",
+    "input": "/tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=7_z4_(random).npy",
+    "negative_control": {
+     "flipped": [
+      58,
+      63
+     ],
+     "rejected": true
+    },
+    "command": "/home/user/Hadamard/theory/4p3_review_hverify.py /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=7_z4_(random).npy --out /tmp/claude-0/-home-user-Hadamard/b104feda-a239-5def-afc5-5d0278347aa0/scratchpad/H_elliptic_p=7_z4_(random).npy.verify.json"
+   },
+   "corrupted_matrix_rejected": true,
+   "status": "Hadamard",
+   "source": "theory/4p3_review_elliptic.py cores --mode random --pick-seed 2026",
+   "parameters": {
+    "rows": [
+     {
+      "params": [
+       2,
+       1,
+       1,
+       2
+      ]
+     },
+     {
+      "params": [
+       6,
+       1,
+       4,
+       1
+      ],
+      "root": 6
+     },
+     {
+      "params": [
+       2,
+       -1,
+       2,
+       5
+      ],
+      "root": 3
+     },
+     {
+      "params": [
+       2,
+       -1,
+       1,
+       1
+      ],
+      "root": 0
+     }
+    ],
+    "shifts": [
+     [
+      0,
+      1,
+      6,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      5
+     ],
+     [
+      0,
+      2,
+      4,
+      0
+     ],
+     [
+      0,
+      3,
+      0,
+      0
+     ]
+    ]
+   },
+   "secs": 0.2
+  }
+ ],
+ "all_certificates_ok": true,
+ "all_cores_hadamard": true,
+ "secs": 23.7
+}

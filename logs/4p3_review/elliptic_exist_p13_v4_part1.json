@@ -1,0 +1,42 @@
+{
+ "p": 13,
+ "q": "v4",
+ "mode": "exist-orbit",
+ "gate": {
+  "p": 13,
+  "half_lags": 6,
+  "parameter_seeds": 2112,
+  "switched_parameter_seeds": 3168,
+  "ordinary_vectors": 87,
+  "switched_vectors": 264,
+  "switched_pairs": 34980,
+  "gate_solutions_distinct_vector_multisets": 12,
+  "gate_solutions_ordered_parameter_tuples": 2985984,
+  "status": "nonempty",
+  "secs": 0.1
+ },
+ "gate_solutions": 12,
+ "realisations_per_solution": [
+  2160,
+  2160,
+  2160,
+  2160,
+  2160,
+  2160,
+  2592,
+  2592,
+  2592,
+  2592,
+  2592,
+  2592
+ ],
+ "realisations_total": 28512,
+ "combos_tried": 1188,
+ "status": "no core among this worker's orbit representatives (exhaustive)",
+ "orbits": 2376,
+ "orbits_this_worker": 1188,
+ "secs": 3088.9,
+ "script": "theory/4p3_review_elliptic.py",
+ "command": "theory/4p3_review_elliptic.py cores --mode exist-orbit --p 13 --q v4 --part 1/2 --seconds 3300 --out logs/4p3_review/elliptic_exist_p13_v4_part1.json",
+ "cores": []
+}

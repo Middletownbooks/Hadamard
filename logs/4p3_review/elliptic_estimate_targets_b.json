@@ -1,0 +1,112 @@
+{
+ "script": "theory/4p3_review_elliptic.py estimate",
+ "command": "theory/4p3_review_elliptic.py estimate --primes 179,271,359,389,461,509,523,599 --N 4000 --out logs/4p3_review/elliptic_estimate_targets_b.json",
+ "seed": 1,
+ "N": 4000,
+ "records": [
+  {
+   "p": 179,
+   "equations": 89,
+   "log2_param_quadruples": 77.53,
+   "gauss": {
+    "bits": 540.7,
+    "rank": 89,
+    "in_lattice": true,
+    "mahal": 1.6
+   },
+   "log2_expected": -463.17,
+   "secs": 3.3
+  },
+  {
+   "p": 271,
+   "equations": 135,
+   "log2_param_quadruples": 82.35,
+   "gauss": {
+    "bits": 858.91,
+    "rank": 135,
+    "in_lattice": true,
+    "mahal": 1.5
+   },
+   "log2_expected": -776.56,
+   "secs": 6.8
+  },
+  {
+   "p": 359,
+   "equations": 179,
+   "log2_param_quadruples": 85.61,
+   "gauss": {
+    "bits": 1174.38,
+    "rank": 179,
+    "in_lattice": true,
+    "mahal": 1.61
+   },
+   "log2_expected": -1088.77,
+   "secs": 14.2
+  },
+  {
+   "p": 389,
+   "equations": 194,
+   "log2_param_quadruples": 86.54,
+   "gauss": {
+    "bits": 1282.28,
+    "rank": 194,
+    "in_lattice": true,
+    "mahal": 1.53
+   },
+   "log2_expected": -1195.74,
+   "secs": 15.5
+  },
+  {
+   "p": 461,
+   "equations": 230,
+   "log2_param_quadruples": 88.51,
+   "gauss": {
+    "bits": 1547.72,
+    "rank": 230,
+    "in_lattice": true,
+    "mahal": 1.62
+   },
+   "log2_expected": -1459.21,
+   "secs": 26.3
+  },
+  {
+   "p": 509,
+   "equations": 254,
+   "log2_param_quadruples": 89.65,
+   "gauss": {
+    "bits": 1728.61,
+    "rank": 254,
+    "in_lattice": true,
+    "mahal": 1.6
+   },
+   "log2_expected": -1638.96,
+   "secs": 35.0
+  },
+  {
+   "p": 523,
+   "equations": 261,
+   "log2_param_quadruples": 89.97,
+   "gauss": {
+    "bits": 1780.05,
+    "rank": 261,
+    "in_lattice": true,
+    "mahal": 1.54
+   },
+   "log2_expected": -1690.08,
+   "secs": 36.1
+  },
+  {
+   "p": 599,
+   "equations": 299,
+   "log2_param_quadruples": 91.54,
+   "gauss": {
+    "bits": 2067.47,
+    "rank": 299,
+    "in_lattice": true,
+    "mahal": 1.54
+   },
+   "log2_expected": -1975.93,
+   "secs": 53.6
+  }
+ ]
+}

@@ -1,0 +1,239 @@
+{
+ "p": 7,
+ "q": "v4",
+ "mode": "random",
+ "gate": {
+  "p": 7,
+  "half_lags": 3,
+  "parameter_seeds": 480,
+  "switched_parameter_seeds": 720,
+  "ordinary_vectors": 9,
+  "switched_vectors": 35,
+  "switched_pairs": 630,
+  "gate_solutions_distinct_vector_multisets": 15,
+  "gate_solutions_ordered_parameter_tuples": 27869184,
+  "status": "nonempty",
+  "secs": 0.0
+ },
+ "gate_solutions": 15,
+ "realisations_per_solution": [
+  4200,
+  5040,
+  8400,
+  4200,
+  5040,
+  8400,
+  4200,
+  5040,
+  8400,
+  3000,
+  24000,
+  5184,
+  12000,
+  12000,
+  12000
+ ],
+ "realisations_total": 121104,
+ "combos_tried": 1,
+ "status": "core picked",
+ "secs": 0.1,
+ "script": "theory/4p3_review_elliptic.py",
+ "command": "theory/4p3_review_elliptic.py cores --mode random --p 7 --q v4 --seconds 300 --pick-seed 2026 --exclude logs/openai_4p3/core_p7_v4.json --out logs/4p3_review/elliptic_random_p7_v4.json",
+ "cores": [
+  {
+   "name": "elliptic p=7 v4 (random)",
+   "p": 7,
+   "q": "v4",
+   "source": "theory/4p3_review_elliptic.py cores --mode random --pick-seed 2026",
+   "parameters": {
+    "rows": [
+     {
+      "params": [
+       2,
+       1,
+       1,
+       2
+      ]
+     },
+     {
+      "params": [
+       6,
+       1,
+       4,
+       1
+      ],
+      "root": 6
+     },
+     {
+      "params": [
+       2,
+       -1,
+       2,
+       5
+      ],
+      "root": 3
+     },
+     {
+      "params": [
+       2,
+       -1,
+       1,
+       1
+      ],
+      "root": 0
+     }
+    ],
+    "shifts": [
+     [
+      0,
+      0,
+      3,
+      2
+     ],
+     [
+      0,
+      5,
+      4,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      2
+     ],
+     [
+      0,
+      4,
+      3,
+      4
+     ]
+    ]
+   },
+   "sequences": [
+    [
+     -1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     -1,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     -1,
+     -1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     -1,
+     1,
+     1,
+     -1
+    ],
+    [
+     1,
+     -1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     1,
+     -1,
+     -1,
+     1,
+     -1,
+     -1,
+     1,
+     1,
+     1,
+     -1,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     1,
+     -1,
+     -1
+    ],
+    [
+     1,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     1,
+     1
+    ]
+   ],
+   "shift_hits_in_combo": 192,
+   "equals_excluded": false
+  }
+ ]
+}

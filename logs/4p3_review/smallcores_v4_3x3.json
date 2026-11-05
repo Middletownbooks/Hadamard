@@ -1,0 +1,16 @@
+{
+ "script": "theory/4p3_review_smallcores.py",
+ "command": "theory/4p3_review_smallcores.py --mods 2,2,3,3 --q v4 --seconds 600 --tmin 6 --seed 11 --out logs/4p3_review/smallcores_v4_3x3.json",
+ "seed": 11,
+ "mods": [
+  2,
+  2,
+  3,
+  3
+ ],
+ "q": "v4",
+ "restarts": 29,
+ "found": 0,
+ "secs": 605.9,
+ "cores": []
+}
