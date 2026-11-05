@@ -1,0 +1,11 @@
+{"q": 3, "mods": [3], "n_auts": 2, "n_patterns": 1, "classes_only": true}
+{"q": 5, "mods": [5], "n_auts": 4, "n_patterns": 5, "classes_only": true}
+{"q": 7, "mods": [7], "n_auts": 6, "n_patterns": 4, "classes_only": true}
+{"q": 9, "mods": [9], "n_auts": 6, "n_patterns": 136, "classes_only": true}
+{"q": 9, "mods": [3, 3], "n_auts": 48, "n_patterns": 147, "classes_only": true}
+{"q": 11, "mods": [11], "n_auts": 10, "n_patterns": 756, "classes_only": true}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/zq_patterns.py", line 188, in <module>
+    print(json.dumps(p))
+    ~~~~~^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
