@@ -30,7 +30,7 @@ estimates call the repository's lattice Gaussian `theory/q523_gauss.gauss_bits`,
 | **1. Compression normal form** [P] | **holds** | The proof is correct for both Q. It has no gap; three terse steps are written out in §1.1. An exhaustive brute force for every odd m ≤ 199 on both Q finds every solution in normal form: the ordered counts equal the normal-form prediction 4096·R(m) exactly [M]. All 2,742 census Q-level solutions in 11 structures are in normal form [M]. |
 | **1′. Small-repair obstruction** [P, M] | **holds** | The minimum-change table is reproduced exactly at all 16 targets, both columns [M]. The per-index gate (e ∈ {2, 4, 6, 8, 12, 16}) gives the same caps [M]. The fixed-budget inequalities are correct [P] and agree with the exact gate for e ∈ {1, 2, 3, 4, 6, 8}, c ≤ 4 and every prime p ≤ 1200 [M]. |
 | **2. Universal border** [P, M] | **holds; recorded as a repository result (Theorem B, §2.1)** | Both certificates pass every identity under independent integer code [M]. Matrices of orders **1916** and **3964** were assembled from real cores with only the universal certificate and verified [M]. So were 6 randomly scrambled copies of those cores and 9 elliptic cores (orders 60–124). Every corrupted core or matrix was rejected. |
-| **3. Elliptic seeds** [M] | **reproduced; ansatz closed [M + E]** | The five controls rebuild identically and border to Hadamard matrices [M]. The seed gate is exactly empty at p = 11, 17, 19, 23, 29, 31 (two implementations, no shared code) and at every prime 37–97 (one implementation) [M]. The calibrated expectation of seed-gate solutions is at most **2^−363** at every target prime, against the closing threshold 2^−10 [E]. The phase gate alone would also need ≈ 2^−1000 luck at p = 149 [E]. |
+| **3. Elliptic seeds** [M] | **reproduced; ansatz closed [M + E]** | The five controls rebuild identically and border to Hadamard matrices [M]. The seed gate is exactly empty at p = 11, 17, 19, 23, 29, 31 (two implementations, no shared code) and at every prime 37–97 (one implementation) [M]. The calibrated expectation of seed-gate solutions is at most **2^−363** at every target prime, against the closing threshold 2^−10 [E]. The phase gate alone would also need ≈ 2^−1000 luck at p = 149 [E]. At p = 13, where the seed gate holds, an exhaustive phase search finds no core on either Q [M], so among primes up to 97 the ansatz has cores only at 3, 5 and 7. |
 
 **What changes in the repository.**
 1. **Theorem B (k4 border theorem, OpenAI model, verified here).** Every valid core of the k4 family with odd |K|
@@ -427,7 +427,8 @@ The answer leaves this open. The estimate is a second, independent reason the an
 
 The prompt's closing rule is met.
 - The seed gate is exactly empty at p = 23, 29 and 31 [M], by two implementations. It is also empty at every prime
-  from 37 to 97, at 11, 17 and 19, and nonempty only at 3, 5, 7 and 13.
+  from 37 to 97, at 11, 17 and 19, and nonempty only at 3, 5, 7 and 13. At 13 the phase gate is exactly empty on
+  both Q (§5), so cores exist only at 3, 5 and 7.
 - The calibrated expectation is at most 2^−363 at every target prime [E], about 350 bits below the threshold 2^−10.
 - The model's largest underestimate at p ≤ 97 was 0.6 bits (p = 5). Its large error (p = 11) was an overestimate.
 - The phase gate adds a further factor of about 2^−1000 per realisation at p = 149 [E].
@@ -482,12 +483,13 @@ No target prime is worth an exact seed gate for this ansatz.
 <!-- SUPPLEMENT -->
 **p = 13, exhaustive phase search over the 2,376 dilation orbits** (`cores --mode exist-orbit`, two workers per Q;
 logs `logs/4p3_review/elliptic_exist_p13_*`).
-- **ℤ₂²: no core in the elliptic ansatz at p = 13 [M].** Both workers finished exhaustively (1,188 orbit
-  representatives each, 3,078 s and 3,089 s): every realisation of every gate solution, every shift.
-- ℤ₄: running at the time of this commit; the result is added below when it completes.
+- **No core in the elliptic ansatz at p = 13, on either Q [M].** All four workers finished exhaustively (1,188 orbit
+  representatives each; 3,078 s and 3,089 s for ℤ₂², 3,150 s and 3,155 s for ℤ₄). That is every realisation of every
+  gate solution and every shift.
 - The estimate (§3.4) predicted about 2^4 cores in the whole ansatz from 2^14.8 realisations at about 2^−10 each.
   The exact zero on ℤ₂² is another case of the phase-gate estimate erring high.
-- The answer's own statement (one selected quadruple failed) is therefore strengthened to an exact zero on ℤ₂².
+- The answer's own statement (one selected quadruple failed) is therefore strengthened to an exact zero on both Q.
+- So the ansatz yields cores at p = 3, 5 and 7 only, among all primes up to 97 [M].
 
 ## 6. Reproduce
 
