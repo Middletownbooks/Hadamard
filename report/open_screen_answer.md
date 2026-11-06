@@ -28,6 +28,8 @@ named). A cap or a timeout is never a zero.
    - The calibrated cost model reproduces the two production runs (933: 2^24.5 against 2^25.7 measured; 523: 2^44.3
      against 2^44.2) [E, §2.3].
    - The tier-0 costs run from 2^27 to 2^41 per core, all inside the 2^46 budget [E].
+   - Two of the ten tier-0 slices listed in §3 (1451 and 863 k4) have since been found empty at stage 1, each by one
+     exhaustive method.
 3. **Step 5: every candidate decided so far is exactly empty at stage 1 [M]** (§4). In cost order:
    - **6876 (v = 1719 = 9·191), b0, the H(3732) shape:** ℤ₉ × ℤ₁₉₁ (s = 10, f = 19, U = −1), estimated cost 2^42.8 and
      D_def 25.6, and both of its ℤ₃ × ℤ₃ variants. All three are empty by two methods each, with every planted
@@ -38,7 +40,7 @@ named). A cap or a timeout is never a zero.
      the complete bucketed join over all 402,884 pruned blocks with planted 3/3. CP-SAT is UNKNOWN at 1 h, so this
      is a single-method decision.
    - **3452 (v = 863), k4:** ℤ₄ × ℤ₅ × ℤ₄₃, s = 6, U = −1 on ℤ₄ × ℤ₅ (cost 2^35.1; border by Theorem B):
-     <!-- K863 -->see §4<!-- /K863 -->.
+     empty by one exhaustive method [M]. Method B joins all 950,772 blocks left by the energy, row and normal-form pruning, over 9 row patterns, and finds 0 solutions (planted 2/3, one undecided); CP-SAT is UNKNOWN at 1 h.
    - Earlier exact screens had already emptied the two cheapest-looking slices, the Paley slices of 3788
      (cost 2^17.2) and 2396 (2^24.7). Their estimates were 2^33 and 2^52 expected cores, so this is again "positive
      estimate, exact zero".
@@ -187,7 +189,7 @@ fallback, which is optimistic):
 | 5804 | 1451 | b1 | ℤ₂₅ × ℤ₂ × ℤ₂₉, s = 4, U order 10 | 0.9† | 11.8 | 83.4 | 15.6 | 18.5 | 27.0 | 12.7 | **empty, method B only** (§4) |
 | 4156 | 1039 | k4 | ℤ₄ × ℤ₇ × ℤ₃₇, s = 4, U = −1 | −22.0† | 31.3 | 119.7 | 17.5 | 28.9 | 32.2 | 9.3 | not run |
 | 5708 | 1427 | b1 | ℤ₂₃ × ℤ₂ × ℤ₃₁, s = 10, U order 22 | 7.9† | 13.3 | 99.3 | 20.4 | 21.2 | 32.9 | 21.2 | not run |
-| 3452 | 863 | k4 | ℤ₄ × ℤ₅ × ℤ₄₃, s = 6, U = −1 | −3.9 | 47.9 | 138.6 | 17.8 | 34.5 | 35.1 | 43.9 | <!-- K863T -->see §4<!-- /K863T --> |
+| 3452 | 863 | k4 | ℤ₄ × ℤ₅ × ℤ₄₃, s = 6, U = −1 | −3.9 | 47.9 | 138.6 | 17.8 | 34.5 | 35.1 | 43.9 | **empty, method B only** (§4) |
 | 5036 | 1259 | b1 | ℤ₁₇ × ℤ₂ × ℤ₃₇, s = 12, U order 16 | 15.6† | 23.0 | 120.4 | 24.2 | 27.4 | 38.1 | 38.5 | not run (its s = 4 slice is empty, §4) |
 | 7572 | 1893 | b1 | ℤ₁₁ × ℤ₂² × ℤ₄₃, s = 6, U order 10 | 5.5† | 13.7 | 117.0 | 24.2 | 25.9 | 39.1 | 19.1 | not run |
 | 5692 | 1423 | b1 | ℤ₃² × ℤ₂ × ℤ₇₉, s = 6, U = −1 | −19.6† | 38.2 | 132.6 | 21.6 | 35.5 | 39.4 | 18.5 | not run |
@@ -408,7 +410,7 @@ listed in the order decided. Logs: `logs/open_screen/stage1_exact.jsonl` (1719) 
 | 2 | 3788 (947) | b1 ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 6, U order 5 | 26.0 | – | 0 (832 blocks) | INFEASIBLE (1.9 s, strong model) | B 3/3 (and 3/5), C 3/3 | **empty [M]** |
 | 3 | 5036 (1259) | b1 ℤ₁₇ × ℤ₂ × ℤ₃₇, s = 4, U order 4 | 24.8 | – | 0 (45,318 blocks; join 1.4·10⁷ × 3.2·10⁷) | INFEASIBLE (121 s, strong model) | B 2/3, C 2/3 (rest undecided) | **empty [M]** |
 | 4 | 5804 (1451) | b1 ℤ₂₅ × ℤ₂ × ℤ₂₉, s = 4, U order 10 | 27.0 | – | 0 (402,884 blocks; join 1.9·10⁷ × 3.7·10⁷) | UNKNOWN at 3600 s | B 3/3 | **empty by one exhaustive method [M]**; second method undecided |
-| 5 | 3452 (863) | k4 ℤ₄ × ℤ₅ × ℤ₄₃, s = 6, U = −1 on ℤ₄ × ℤ₅ | 35.1 | – | <!-- K863B -->see below<!-- /K863B --> | UNKNOWN at 3600 s (planted also UNKNOWN) | <!-- K863P -->–<!-- /K863P --> | <!-- K863V -->see below<!-- /K863V --> |
+| 5 | 3452 (863) | k4 ℤ₄ × ℤ₅ × ℤ₄₃, s = 6, U = −1 on ℤ₄ × ℤ₅ | 35.1 | – | 0 (950,772 normal-form blocks; 9 row patterns; 420 s) | UNKNOWN at 3600 s (planted also UNKNOWN) | B 2/3 (one undecided); C UNKNOWN | **empty by one exhaustive method [M]**; second method undecided |
 
 **Pruning by exact consequences [P]** (`--strong`). Each is necessary for a stage-1 solution, so it cannot lose
 solutions:
@@ -469,8 +471,9 @@ solution.
 
 <!-- VERDICT -->
 - **No named target for a staged stage-2 solver comes out of this screen.**
-  - The five cheapest tier-0 candidates were taken to an exact stage-1 decision. Four are empty, one of them (1451)
-    by a single exhaustive method. The fifth (863 k4) is <!-- K863W -->as recorded in §4<!-- /K863W -->.
+  - The five cheapest tier-0 candidates were taken to an exact stage-1 decision. All five are empty at stage 1.
+    Three (1719, 947 s = 6 and 1259) are decided by two methods; 1451 and 863 k4 each by one exhaustive method (for 863, the
+    normal-form-pruned join), with CP-SAT undecided.
   - Together with the earlier kills of 2396 and 3788 s = 2, every candidate decided so far has a positive estimate
     and an empty stage 1. This matches the repository's calibration warning.
 - **What remains alive [E only]:**
@@ -492,7 +495,7 @@ solution.
 ## 7. Cut-off and what was not covered
 
 <!-- CUTOFF -->
-- **Run time.** 2026-11-05 22:20 to 2026-11-06 (see the last commit); about 13 hours of the 30-hour box. It stopped
+- **Run time.** 2026-11-05 22:20 to 2026-11-06 (see the last commit); about 15 hours (to 13:10 UTC on 2026-11-06) of the 30-hour box. It stopped
   because the prompt's step 5 has a cap of 5 candidates, and those were taken to a decision or to an exact undecided
   state.
 - **Not covered:**
