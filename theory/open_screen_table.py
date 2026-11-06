@@ -172,15 +172,22 @@ def main():
 
 
 def md(rows):
-    out = ['| 4v | v | family | slices (enumerated / gates) | best slice | stage-1 log2E | E/y | C2 | split | D_def | h_D | cost | log2 E_tot | regime |',
+    ab = {'A dead': 'A', 'B dead': 'B', 'Z2 dead': 'Z2', 'w-screen dead': 'w', 'stage 1 empty [M]': 'S1',
+          'alive (B pass)': 'alive', 'alive (B capped)': 'alive*', 'not run': 'not run', 'A undecided': 'A?'}
+    out = ['| 4v | v | fam | slices: dead by gate / alive | best slice (tier) | s1 log2E | E/y | C2 | split | D_def | h_D | cost | log2 E_tot | exact stage 1 |',
            '|---|---|---|---|---|---|---|---|---|---|---|---|---|---|']
     for r in rows:
         if r['fam'] not in ('b0', 'b1', 'k4'): continue
-        g = ', '.join(f'{k} {n}' for k, n in sorted(r['gates'].items()))
+        if r['fam'] == 'b0' and not r['enumerated'] and r['v'] % 2 and all(r['v'] % p for p in range(3, int(r['v'] ** 0.5) + 1, 2)):
+            continue                                            # prime v: b0 has no staged slice (see b0direct)
+        g = ', '.join(f"{ab.get(k, k)} {n}" for k, n in sorted(r['gates'].items()))
         if 'slice' not in r:
-            out.append(f"| {r['N']} | {r['v']} | {r['fam']} | {r['enumerated']} / {g or '-'} | {r.get('note') or 'none estimated'} | | | | | | | | | |"); continue
-        rg = 'yes' if r['in_regime'] else 'no: ' + ','.join(k for k, ok in r['regime'].items() if not ok)
-        out.append(f"| {r['N']} | {r['v']} | {r['fam']} | {r['enumerated']} / {g} | {r['slice']} | {r['stage1_log2E']} | {r['E_per_y']} | {r['C2']} | {r['split']} | {r['D_def']} | {r['h_D']} | {r['cost']} | {r['log2E_tot']} | {rg} |")
+            alive = any(k.startswith('alive') or k in ('A undecided', 'not run') for k in r['gates'])
+            note = r.get('note') or ('alive slices not estimated (sGeff > 101 [E: C2 > 150], or an estimator cap)' if alive
+                                     else '**every slice dead at an exact gate [P, M]**')
+            out.append(f"| {r['N']} | {r['v']} | {r['fam']} | {r['enumerated']}: {g or '-'} | {note} | | | | | | | | | |"); continue
+        m = '†' if r.get('stage1_method') == 'energy-only' else ''
+        out.append(f"| {r['N']} | {r['v']} | {r['fam']} | {r['enumerated']}: {g} | {r['slice']} ({r['tier']}) | {r['stage1_log2E']}{m} | {r['E_per_y']} | {r['C2']} | {r['split']} | {r['D_def']} | {r['h_D']} | {r['cost']} | {r['log2E_tot']} | {r.get('stage1_exact') or '-'} |")
     return "\n".join(out)
 
 

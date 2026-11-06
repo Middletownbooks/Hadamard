@@ -45,6 +45,7 @@ def cfg_from_key(key):
     Ul = []
     for g in U:
         if g[0] == 'neg': Ul.append(('neg', tuple(g[1])))
+        elif len(g) == 3: Ul.append(tuple(g))                    # generator given (non-unique subgroup)
         else:
             ai, o = g; axes = list(Q) + list(H1)
             u = next(uu for (oo, uu) in SW.unit_subgroup_gens(axes[ai]) if oo == o)

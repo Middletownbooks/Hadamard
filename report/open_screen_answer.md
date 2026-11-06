@@ -20,7 +20,38 @@ named). A cap or a timeout is never a zero.
 ## 0. Bottom line
 
 <!-- BOTTOM -->
-(filled at the cutoff)
+1. **No open order has a staged slice that is in the regime with a stage 1 shown non-empty.** No core and no
+   Hadamard matrix was found, and none was sought (step 6).
+2. **The estimates put 13 slices at 10 orders in the regime** (tier 0: D_def ≤ 26, h_D ≤ 40, E per y ≥ 2^10,
+   C₂ ≤ 150, and log₂ E_tot ≥ 0) [E]. The orders are 3452, 3788, 4156, 4748, 5036, 5692, 5708, 5804, 7572 and 9260.
+   - Earlier, 6876 (1719 b0) had a tier-0 slice. Its stage 1 is now exactly empty, so it is no longer tier 0.
+   - The calibrated cost model reproduces the two production runs (933: 2^24.5 against 2^25.7 measured; 523: 2^44.3
+     against 2^44.2) [E, §2.3].
+   - The tier-0 costs run from 2^27 to 2^41 per core, all inside the 2^46 budget [E].
+3. **Step 5: every candidate decided so far is exactly empty at stage 1 [M]** (§4). In cost order:
+   - **6876 (v = 1719 = 9·191), b0, the H(3732) shape:** ℤ₉ × ℤ₁₉₁ (s = 10, f = 19, U = −1), estimated cost 2^42.8 and
+     D_def 25.6, and both of its ℤ₃ × ℤ₃ variants. All three are empty by two methods each, with every planted
+     control recovered.
+   - **3788 (v = 947), b1:** ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 6, U of order 5 (cost 2^26.0). Empty by two methods.
+   - **5036 (v = 1259), b1:** ℤ₁₇ × ℤ₂ × ℤ₃₇, s = 4, U of order 4 (cost 2^24.8). Empty by two methods.
+   - **5804 (v = 1451), b1:** ℤ₂₅ × ℤ₂ × ℤ₂₉, s = 4, U of order 10 (cost 2^27.0). Empty by one exhaustive method,
+     the complete bucketed join over all 402,884 pruned blocks with planted 3/3. CP-SAT is UNKNOWN at 1 h, so this
+     is a single-method decision.
+   - **3452 (v = 863), k4:** ℤ₄ × ℤ₅ × ℤ₄₃, s = 6, U = −1 on ℤ₄ × ℤ₅ (cost 2^35.1; border by Theorem B):
+     <!-- K863 -->see §4<!-- /K863 -->.
+   - Earlier exact screens had already emptied the two cheapest-looking slices, the Paley slices of 3788
+     (cost 2^17.2) and 2396 (2^24.7). Their estimates were 2^33 and 2^52 expected cores, so this is again "positive
+     estimate, exact zero".
+4. **Calibration warning, confirmed again.** Every slice decided exactly here had a positive estimate, from
+   log₂ E_tot = 3.5 (1259) to 32 (1719), and every decided one is empty.
+   - Several tier-0 estimates use the energy-only stage-1 fallback, which is optimistic (6.6 bits at its one check).
+   - The remaining tier-0 slices are targets for exact stage 1, not for a solver (§6).
+5. **The other families have no route within budget [P, M, E]** (§5):
+   - direct b0 at prime v: the cheapest is n = 157.5 bits (1103, d = 19), against n = 111.9 for the slice that built
+     H(3532);
+   - Cooper–Wallis: the cheapest T-slice is T(463) with k = 11 (n = 101.5), the route to H(9260), at about 2^63
+     operations by the T-route scale of `report/tmat_routes.md` §10.5;
+   - ℤ_q all-character: no survivor beyond the census.
 <!-- /BOTTOM -->
 
 ---
@@ -28,7 +59,30 @@ named). A cap or a timeout is never a zero.
 ## 1. What was screened
 
 <!-- SCOPE -->
-(filled at the cutoff)
+- **Orders.** All 85 open orders of `data/open_orders_lt10000.json`, v = 599 … 2459.
+- **Staged families, 3242 slices** (`logs/open_screen/screens_s*.jsonl`):
+
+| family | orders with ≥ 1 slice | slices | A dead | B dead | ℤ₂ dead | w-screen dead | stage 1 empty [M] | alive | costed (sGeff ≤ 101) |
+|---|---|---|---|---|---|---|---|---|---|
+| b0 (composite v) | 14 of 19 | 145 | 95 | 2 | – | – | 3 | 45 | 24 |
+| b1 | 68 of 85 | 1475 | 614 | 121 | 11 | 4 | 2 | 723 | 509 |
+| k4 (v ≡ 3 mod 4) | 63 of 72 | 1622 | 1104 | 23 | – | – | – | 495 | 342 |
+
+  - "alive" counts slices that pass every exact gate run on them. 334 of the 1273 alive slices have B undecided
+    (the α-keys exceed the cap); a cap is never a zero.
+  - The other 22 slices (2 in b1, 20 in k4) have screen A undecided (a timeout or the memory cap).
+- **The ℤ₂ and w-screens** (`theory/open_screen_z2gate.py`, `logs/open_screen/z2gate.jsonl`) apply to b1 slices with
+  U = 1 (ℤ₂), and to b1 and k4 slices with s = 2 and U = 1 (w-screen). They reproduce the earlier kills of 947 s = 2
+  (`logs/gp_screen/gp_z2screen_positive.jsonl`) and 599 s = 2 (Theorem 5, `report/paley_design_answer.md` §4).
+- **Costs** were estimated for every alive slice with sGeff ≤ 101.
+  - Rows: 918 (`logs/open_screen/deficit_s*.jsonl`); 15 are errors (memory) and 26 are 900 s timeouts, all undecided.
+  - Why sGeff ≤ 101: the measured ratio C₂/sGeff is at least 1.48 for every costed slice with sGeff ≥ 60, so sGeff >
+    101 means C₂ > 150, outside the regime [E].
+  - Check: no costed slice with sGeff > 80 has C₂ ≤ 150 [E].
+- **Other families:**
+  - direct (unstaged) b0 multiplier slices at the 64 prime v (`scripts/b0_open_screen.py`);
+  - Cooper–Wallis T(t) at the 15 prime cofactors t ≥ 167 of the composite v (`scripts/tmat_primev.py`);
+  - the ℤ_q all-character family, from its census (`report/zq_census_answer.md` §3).
 <!-- /SCOPE -->
 
 ## 2. Method

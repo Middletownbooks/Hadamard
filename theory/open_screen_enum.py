@@ -102,12 +102,26 @@ def all_configs(fams=('b0', 'b1', 'k4')):
     return out
 
 
-def ukey(U): return [list(g) if g[0] == 'neg' else [g[0], g[1]] for g in U]
+def _unique_order(n, o):
+    """True if (Z/n)^* has exactly one cyclic subgroup of order o"""
+    return sum(1 for (oo, _) in SW.unit_subgroup_gens(n) if oo == o) == 1
+
+
+def ukey(U, axes=None):
+    """U as stored in the key: ['neg', axes] or [axis, order], plus the generator when the cyclic subgroup of that
+    order on that axis is not unique (2-power axes of order >= 8)"""
+    out = []
+    for g in U:
+        if g[0] == 'neg': out.append(list(g))
+        elif axes is not None and not _unique_order(axes[g[0]], g[1]): out.append([g[0], g[1], g[2]])
+        else: out.append([g[0], g[1]])
+    return out
 
 
 def cfgkey(c):
+    axes = list(c['Q']) + list(c['H1'])
     return json.dumps([c['fam'], c['v'], list(c['Q']), list(c['H1']), c['q'], c['s'],
-                       [[x if not isinstance(x, tuple) else list(x) for x in g] for g in ukey(c['U'])]])
+                       [[x if not isinstance(x, tuple) else list(x) for x in g] for g in ukey(c['U'], axes)]])
 
 
 def screen_B_fast(sl, cfg, row_quads, max_bits=22, max_keys=4000):
@@ -184,7 +198,7 @@ def _alarm(*a): raise TO()
 def run_one(c, secs):
     t0 = time.time()
     rec = dict(key=cfgkey(c), fam=c['fam'], v=c['v'], N=4 * c['v'], Q=list(c['Q']), H1=list(c['H1']), q=c['q'],
-               s=c['s'], f=c['f'], U=ukey(c['U']), Ugen=[None if g[0] == 'neg' else g[2] for g in c['U']],
+               s=c['s'], f=c['f'], U=ukey(c['U'], list(c['Q']) + list(c['H1'])), Ugen=[None if g[0] == 'neg' else g[2] for g in c['U']],
                r=c['r'], nB=c['nB'], sGeff=c['sGeff'])
     signal.signal(signal.SIGALRM, _alarm); signal.alarm(secs)
     try:
