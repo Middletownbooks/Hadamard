@@ -161,7 +161,69 @@ decided before.
 ## 3. Step 4: the 4892 neighbourhood
 
 <!-- NEIGH -->
-(being filled)
+**Same group, q = 13.** G = (ℤ₄₇ × ℤ₂) × ℤ₁₃ throughout. U ranges over the subgroups of ℤ₄₇^* of order 23 and 46
+(order 2 gives 48 U-orbits; it fits 24 ≤ r ≤ 160 only at s = 2). s ranges over {2, 3, 4, 6, 12}.
+
+**Inclusion [P].** If U ⊆ U′ and M ⊆ M′, every (U′, M′)-invariant core is (U, M)-invariant. So slice(U′, s′) is
+contained in slice(U, s) when U′ ⊇ U and s′ | s with the same q (M′ ⊇ M).
+
+**Stage-1 methods.**
+- **A, B:** `theory/open_screen_stage1_exact.py --strong --planted 2`, with logs in `logs/h4892/part2/4892_*.jsonl`.
+- **G:** `theory/h4892_stage1_gen.py d s`, the q = 13 generalisation of the step-1 enumerator, with logs in
+  `logs/h4892/stage1_gen_d*_s*.json`.
+- **Y:** `theory/h4892_stage1_any.py`, the generic independent enumerator, with logs in
+  `logs/h4892/part2/any_4892.jsonl`.
+
+The control (23, 4) is reproduced by G and by Y: 384 classes and 147,456 ordered quadruples.
+
+| U order | s | r | stage 1 | stage 2 | verdict |
+|---|---|---|---|---|---|
+| 23 | 4 | 30 | 384 (A ✗ mem; B, own; sets equal) | 0 for all 384 (§2) | **empty [M]** |
+| 23 | 2 | 18 | 0 (G, planted 2/2) | – | **empty [M]**; also ⊂ (23, 4) [P] |
+| 46 | 2 | 12 | 0 (G, planted 2/2) | – | **empty [M]** |
+| 46 | 4 | 20 | 0 (G, planted 2/2) | – | **empty [M]**; also ⊂ (23, 4) [P] |
+| 23 | 3 | 24 | 0 (A, B, agree; planted 2/2 each, after the odd-s plant fix; G, Y, planted 2/2) | – | **empty [M]** |
+| 46 | 3 | 16 | 0 (G, planted 2/2) | – | **empty [M]**; also ⊂ (23, 3) [P] |
+| 46 | 6 | 28 | 0 (B, planted 2/2; G, Y, planted 2/2; A ✗ mem) | – | **empty [M]** |
+| 23 | 6 | 42 | **58,048 classes** (Y, planted 2/2; B: <!-- S6B -->running<!-- /S6B -->) | **0 at the ℤ₁₃ compression [M]** (below) | **empty [M]** |
+| 46 | 12 | 52 | same stage-1 problem as (46, 6) (identical letters and T₁): 0 | – | **empty [M]** |
+| 23 | 12 | 78 | same stage-1 problem as (23, 6): 58,048 classes | f = 1, so α is not fixed by y; the energy bound kills none | **undecided**; f = 1 is outside the screen's menu |
+| 2 | 2 | 144 | <!-- S2U2 -->queued<!-- /S2U2 --> | – | – |
+
+**The ℤ₁₃ compression decides (23, 6) [M].** The real-y re-read [E] (`theory/h4892_reread.py`,
+`logs/h4892/reread.jsonl`, 5 real y) gives:
+- E per y ≈ −111, C₂ ≈ 192;
+- S-level (L = G′) solutions per y ≈ 2^−37;
+- cost ≈ 2^136 per core.
+
+That is far outside the 2^40 rule, so no stage-2 search was run. Two cheap necessary tests at the ℤ₁₃ compression
+decide it exactly anyway:
+1. **The energy bound** (`theory/h4892_energybound.py` [P + M]).
+   - At lag 0, Σ_k E(w_k) = Σ r_k² + 4(q − 1)|G′| = 4516.
+   - Here E(w) = w(0)² + f Σ_j W_j². The value w(0) = Σ_O |O| α(O) and the sum Σ_j W_j = Σ_O |O| σ(O) are both fixed
+     by y, and every W_j ≡ Σ_O |O| (mod 2).
+   - Minimising Σ_j W_j² under these constraints gives a closed-form lower bound per block.
+   - **47,232 of the 58,048 classes** exceed 4516.
+2. **The exact reachable-set test** (`theory/h4892_zqnp.py`): numpy reachable sets of the compression, a range test
+   per lag class, and the window filter.
+   - The window filter keeps a block value only if it lies in [T − Σ_others max, T − Σ_others min], iterated to a
+     fixed point [P].
+   - It kills **all 10,816 remaining classes** (`logs/h4892/zqnp_4892_s6_survivors.json`).
+   - The window filter never rejected a planted target (4/4).
+   - On the s = 4 control it again gives 0 of 384, with planted 4/4 found by its join.
+
+**q = 47** (G′ = ℤ₁₃ × ℤ₂, s = 23, f = 2):
+
+| U on ℤ₁₃ | r | stage 1 | verdict |
+|---|---|---|---|
+| order 12 | 96 | 0 (B, planted 2/2; Y, planted 2/2; A ✗ mem) | **empty [M]** |
+| order 6 | 144 | <!-- Q47U6 -->running (A, B); Y capped at 3·10⁶ partial blocks<!-- /Q47U6 --> | – |
+
+**The other v = 1223 rows of the screen.**
+- The four other b1 keys, with q = 47, s = 2 and U of order 4, 3, 2 or 1, all died at screen A.
+- The k4 slices (G′ ∋ ℤ₆₁ or ℤ₅, q = 61 or 5) are A-dead or have C₂ ≥ 165 with negative E per y. The cheapest k4 row
+  has cost 2^73.6 [E]. None was run.
+- There is no b0 slice.
 <!-- /NEIGH -->
 
 ## 4. Second part: the remaining cheap and tier-0 slices
