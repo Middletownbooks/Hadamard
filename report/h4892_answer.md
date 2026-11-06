@@ -301,5 +301,6 @@ decide it exactly anyway:
    - Running them is cheap only once item 2 exists.
 4. **(U₂₃, s = 12) at 4892** (f = 1, outside the screen's menu) has the same 58,048-class stage 1 as s = 6.
    - Its lift needs the f = 1 form of the ℤ₁₃ test, where α is free in every orbit.
-   - It is a small extension of `h4892_zqnp.py`: carry both decodings into the reachable set.
+   - Carrying both decodings into the reachable set is easy. But with 12 cosets the reachable sets can reach about
+     10⁸ vectors per block, so the energy window has to be applied while the sets are built, not after.
 <!-- /NEXT -->
