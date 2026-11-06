@@ -361,7 +361,7 @@ def controls():
             print(json.dumps(dict(key=key, **r)), flush=True)
 
 
-MAXSG = int(os.environ.get('OS_MAXSGEFF', '80'))    # sGeff > 80 => C2 > 160 at every measured ratio C2/sGeff >= 2
+MAXSG = int(os.environ.get("OS_MAXSGEFF", "101"))  # C2/sGeff >= 1.48 measured at sGeff >= 60, so sGeff > 101 => C2 > 150 [E]
 
 
 class TO(Exception): pass
