@@ -185,7 +185,7 @@ The control (23, 4) is reproduced by G and by Y: 384 classes and 147,456 ordered
 | 23 | 3 | 24 | 0 (A, B, agree; planted 2/2 each, after the odd-s plant fix; G, Y, planted 2/2) | – | **empty [M]** |
 | 46 | 3 | 16 | 0 (G, planted 2/2) | – | **empty [M]**; also ⊂ (23, 3) [P] |
 | 46 | 6 | 28 | 0 (B, planted 2/2; G, Y, planted 2/2; A ✗ mem) | – | **empty [M]** |
-| 23 | 6 | 42 | **58,048 classes** (Y, planted 2/2; B: <!-- S6B -->running<!-- /S6B -->) | **0 at the ℤ₁₃ compression [M]** (below) | **empty [M]** |
+| 23 | 6 | 42 | **58,048 classes** (Y, planted 2/2; G `--canonical`; the two sets are equal, `logs/h4892/stage1_s6_compare.json`; B timed out at 3600 s, and so did A) | **0 at the ℤ₁₃ compression [M]** (below) | **empty [M]** |
 | 46 | 12 | 52 | same stage-1 problem as (46, 6) (identical letters and T₁): 0 | – | **empty [M]** |
 | 23 | 12 | 78 | same stage-1 problem as (23, 6): 58,048 classes | f = 1, so α is not fixed by y; the energy bound kills none | **undecided**; f = 1 is outside the screen's menu |
 | 2 | 2 | 144 | <!-- S2U2 -->queued<!-- /S2U2 --> | – | – |

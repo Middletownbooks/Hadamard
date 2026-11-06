@@ -8,7 +8,8 @@ join on the PAF vector over the U-orbit lag classes, every solution re-checked o
 T1 = 4*1222 - 4*12 = 4840 at 0 and -4*13 = -52 elsewhere (it does not depend on s).
 Planted: one row-2 and three row-0 enumerated blocks of total energy <= 4840 (so the list is complete for the
 planted target); recovery of the exact ordered quadruple.
-usage: python3 theory/h4892_stage1_gen.py d s [--planted N] [--out FILE]"""
+usage: python3 theory/h4892_stage1_gen.py d s [--planted N] [--out FILE] [--canonical]
+(--canonical: only the classes up to block order and sign, as orbit-value 6-vectors; no plants, no ordered list)"""
 import sys, json, time, itertools
 from collections import defaultdict
 import numpy as np
@@ -68,6 +69,27 @@ def main():
                             for q in dd[keys[u]]:
                                 for l in dd[keys[w]]: out.append((i, j, q, l))
         return out, len(keys)
+    if '--canonical' in a:                                    # unordered join over sign-normalised blocks
+        keep = V[:, 0] > 0; V = V[keep]; P = P[keep]
+        dd = defaultdict(list)
+        for i, pv in enumerate(map(tuple, P)): dd[pv].append(i)
+        keys = list(dd); K = np.array(keys, np.int64).reshape(len(keys), k); nk = len(keys)
+        pair = defaultdict(list)
+        for x in range(nk):
+            Ssum = K[x] + K[x:]
+            for y, sm in enumerate(map(tuple, Ssum)): pair[sm].append((x, x + y))
+        can = set(); Tt = tuple(int(t) for t in T)
+        for sm, L in pair.items():
+            R = pair.get(tuple(t - z for t, z in zip(Tt, sm)))
+            if not R: continue
+            for x, y in L:
+                for u, w in R:
+                    for t4 in itertools.product(dd[keys[x]], dd[keys[y]], dd[keys[u]], dd[keys[w]]):
+                        can.add(tuple(sorted(tuple(int(z) for z in V[i]) for i in t4)))
+        rec = dict(script='theory/h4892_stage1_gen.py --canonical', d=d, s=s, U_orbits=k, orbit_sizes=W.tolist(),
+                   letters=S['let'], blocks_signnorm=int(len(V)), distinct_block_paf=nk, canonical_classes=len(can),
+                   secs=round(time.time() - t0, 1), canonical=sorted(map(list, can)))
+        json.dump(rec, open(outp, 'w')); print(json.dumps({x: v for x, v in rec.items() if x != 'canonical'})); return
     sols, nk = join(T)
     add = S['add']
     def exp(v):
