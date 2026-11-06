@@ -277,5 +277,29 @@ decide it exactly anyway:
 ## 5. Next computation
 
 <!-- NEXT -->
-(being filled)
+1. **Gate every staged slice at the ℤ_q compression before costing it.**
+   - Every non-empty stage 1 met here has died at the coarsest stage-2 level, the compression along G′ to ℤ_q:
+     4892 s = 4 by the ℤ₁₃ join (and by mod 23), 4892 s = 6 by the energy bound plus the window filter, 7572 by the
+     energy bound.
+   - That level is cheap: reachable sets of ≤ 2·10⁶ vectors per block, and the closed-form bound
+     `theory/h4892_energybound.py` needs only y.
+   - The screen's Gaussian estimate saw these levels as costly but feasible: S-level solutions per y of 2^3.3 at
+     4892 s = 4 and 2^−37 at s = 6. The real counts were 0.
+   - **Proposal:** add to `theory/open_screen_stage1_exact.py` a stage "1½", run on every stage-1 solution found:
+     `h4892_energybound` first, then `h4892_zqnp` (range test, window filter, join). Treat a slice as alive only if
+     some y passes.
+2. **A joint (y, w) enumeration for the slices whose stage 1 is too large for B** (5892, 5164, 7916, 4792, 4156,
+   4748).
+   - The energy identity Σ_k [w_k(0)² + f Σ_j W_{kj}²] = Σ r_k² + 4(q − 1)|G′| is a strong extra row condition, but
+     it is useless as a per-block prune while y is dominated by ±1 letters (there the bound is ≈ r²).
+   - So the remaining route is a memory-lean method B: a streaming pair join by bucket, written to disk, instead of
+     materialising all pair arrays. Alternatively, CP-SAT (`--methods C --strong`) with the ℤ_q-level energy equation
+     added as a redundant constraint.
+   - Budget: up to 1 h per slice on 4 cores.
+3. **The two 4892 neighbours left undecided** are (U₂, s = 2), with 48 U-orbits, and (q = 47, U₆).
+   - Both have C₂ > 150 or negative E per y at the screen [E], so even a non-empty stage 1 would not be searched.
+   - Running them is cheap only once item 2 exists.
+4. **(U₂₃, s = 12) at 4892** (f = 1, outside the screen's menu) has the same 58,048-class stage 1 as s = 6.
+   - Its lift needs the f = 1 form of the ℤ₁₃ test, where α is free in every orbit.
+   - It is a small extension of `h4892_zqnp.py`: carry both decodings into the reachable set.
 <!-- /NEXT -->
