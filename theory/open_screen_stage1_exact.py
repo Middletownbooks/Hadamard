@@ -14,7 +14,8 @@ Method B (this file, shares no code with ab_lib/ab_b0_stage1): G', the U-orbits,
 Planted: a random U-invariant y-quadruple from the letters; the target T1 is replaced by its PAF sum; both methods
           must return it.  A method that hits a size cap reports UNDECIDED (never zero).
 Method C (this file): CP-SAT on the integer model (ortools); INFEASIBLE decides, UNKNOWN does not.
-usage: python3 theory/open_screen_stage1_exact.py 'KEY' [--methods A,B,C] [--planted 4] [--cap 2e7] [--csecs 600]
+--strong adds to C the redundant row and real-character equations and the block symmetry breaking [P].
+usage: python3 theory/open_screen_stage1_exact.py 'KEY' [--methods A,B,C] [--strong] [--planted 4] [--cap 2e7] [--csecs 600]
        [--out FILE]"""
 import sys, os, json, time, itertools, math
 from collections import defaultdict
@@ -175,7 +176,17 @@ def planted_y(st, rng):
     return Y
 
 
-def c_solve(st, T1, secs=600, workers=4, seed=0):
+def real_characters(st):
+    """the nontrivial characters of G' with values +-1 (products of e -> (-1)^e on the even-order axes)"""
+    axes = st['axes']; els = st['els']; out = []
+    ev = [a for a, n in enumerate(axes) if n % 2 == 0]
+    for mask in itertools.product((0, 1), repeat=len(ev)):
+        if not any(mask): continue
+        out.append([(-1) ** sum(e[a] for m, a in zip(mask, ev) if m) for e in els])
+    return out
+
+
+def c_solve(st, T1, secs=600, workers=4, seed=0, strong=False):
     """method C: CP-SAT on the integer stage-1 model (y per block and U-orbit in the letter domain, lag products by
     AddMultiplicationEquality, one equation per lag); returns 'INFEASIBLE', 'FEASIBLE' (with a verified quadruple) or
     'UNKNOWN' (undecided).  Symmetry breaking: block 0 cell 0 > 0 is not imposed (sound and simple)."""
@@ -197,6 +208,27 @@ def c_solve(st, T1, secs=600, workers=4, seed=0):
     for h in range(n):
         terms = [pv(k, cell[g], cell[lm[h][g]]) for k in range(4) for g in range(n)]
         M.Add(sum(terms) == T1[h])
+    if strong:
+        # redundant exact consequences [P]: rows r_k (trivial character) and every real (order-2) character chi of G'
+        # constant on U-orbits: sum_k (sum_g chi(g) y_k(g))^2 = sum_h chi(h) T1(h).  Symmetry: negating a block or
+        # permuting blocks maps solutions to solutions, so impose r_k >= 0 and r_0 >= r_1 >= r_2 >= r_3.
+        w = [len(o) for o in orbits]; R = int(sum(T1))
+        rk = [M.NewIntVar(0, 10 ** 6, f"r{k}") for k in range(4)]
+        for k in range(4): M.Add(rk[k] == sum(w[j] * Y[k][j] for j in range(len(orbits))))
+        for k in range(3): M.Add(rk[k] >= rk[k + 1])
+        sq = [M.NewIntVar(0, 10 ** 9, f"rs{k}") for k in range(4)]
+        for k in range(4): M.AddMultiplicationEquality(sq[k], [rk[k], rk[k]])
+        M.Add(sum(sq) == R)
+        for chi in real_characters(st):
+            vals = [chi[o[0]] for o in orbits]
+            if any(chi[g] != vals[j] for j, o in enumerate(orbits) for g in o): continue
+            tgt = int(sum(chi[h] * T1[h] for h in range(n)))
+            Ak = [M.NewIntVar(-10 ** 6, 10 ** 6, f"A{k}") for k in range(4)]
+            Aq = [M.NewIntVar(0, 10 ** 9, f"Aq{k}") for k in range(4)]
+            for k in range(4):
+                M.Add(Ak[k] == sum(vals[j] * w[j] * Y[k][j] for j in range(len(orbits))))
+                M.AddMultiplicationEquality(Aq[k], [Ak[k], Ak[k]])
+            M.Add(sum(Aq) == tgt)
     sol = cp_model.CpSolver(); sol.parameters.max_time_in_seconds = secs
     sol.parameters.num_search_workers = workers; sol.parameters.random_seed = seed
     r = sol.Solve(M)
@@ -231,8 +263,9 @@ def main():
     methods = a[a.index('--methods') + 1].split(',') if '--methods' in a else ['A', 'B']
     csecs = int(a[a.index('--csecs') + 1]) if '--csecs' in a else 600
     t0 = time.time()
+    strong = '--strong' in a
     if 'C' in methods:
-        r_, Yc = c_solve(st, st['T1'], csecs); rec['C'] = dict(status=r_, secs=round(time.time() - t0, 1))
+        r_, Yc = c_solve(st, st['T1'], csecs, strong=strong); rec['C'] = dict(status=r_, secs=round(time.time() - t0, 1))
         if Yc: rec['C']['solution'] = [list(y) for y in Yc]
     t0 = time.time()
     try:
@@ -267,7 +300,7 @@ def main():
                 sA, _, _ = a_solve(key, Tp, cap); r['A'] = canon(Y) in {canon(Z) for Z in sA}
             except Exception: r['A'] = None
         if 'C' in methods:
-            r['C'] = c_solve(st, Tp, csecs)[0]
+            r['C'] = c_solve(st, Tp, csecs, strong=strong)[0]
         pl.append(r)
     rec['planted'] = pl
     print(json.dumps(rec), flush=True)
