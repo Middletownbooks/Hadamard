@@ -9,7 +9,7 @@ Inputs (all restart-safe logs of this screen):
   report/zq_census_answer.md section 3 (Z_q all-character survivors; transcribed below)
 Per staged slice:  E_tot = stage-1 log2E + E per y  (log2 expected cores in the slice);  cost = best split's
   D_def + log2(2^S-step + 2^(h_D/2)).  Regime (report/h863_lift_answer.md section 5): D_def <= 26, h_D <= 40,
-  E per y >= 10, C2 <= 150.  Best slice per (order, family): regime first, then E_tot >= 0, then lowest cost.
+  E per y >= 10, C2 <= 150.  Best slice per (order, family): tier 0 = in regime and E_tot >= 0, 1 = in regime, 2 = E_tot >= 0, 3 = rest; then lowest cost.
 usage: python3 theory/open_screen_table.py [--md FILE]"""
 import sys, os, json, glob, math
 from collections import defaultdict, Counter
@@ -61,7 +61,9 @@ def slice_desc(s):
 
 def main():
     scr = {r['key']: r for r in load('screens_s*.jsonl')}
-    dfc = {r['key']: r for r in load('deficit_s*.jsonl')}
+    dfc = {}
+    for r in load('deficit_s*.jsonl'):
+        if r['key'] not in dfc or 'error' in dfc[r['key']] or 'timeout' in dfc[r['key']]: dfc[r['key']] = r
     from open_screen_enum import all_configs, cfgkey
     enum = defaultdict(list)
     for c in all_configs(): enum[(c['v'], c['fam'])].append(cfgkey(c))
@@ -87,7 +89,8 @@ def main():
                 s1 = -math.inf if s1 is None else s1
                 Et = s1 + d['E_per_y'] if d.get('E_per_y') is not None else -math.inf
                 rg = regime(d); ok = all(rg.values()) if rg else False
-                cand.append((not ok, not (Et >= 0), d['best']['cost'], k, d, Et, rg))
+                tier = 0 if (ok and Et >= 0) else 1 if ok else 2 if Et >= 0 else 3
+                cand.append((tier, 0, d['best']['cost'], k, d, Et, rg))
             rec = dict(N=N, v=v, fam=fam, enumerated=len(keys), gates=dict(st),
                        estimated=len(cand), note=None if keys else 'no GP slice with 24 <= r <= 160')
             if cand:
@@ -99,8 +102,9 @@ def main():
                            H2=d['H2'], C2=d['C2'], E_per_y=d['E_per_y'], log2E_tot=None if not math.isfinite(Et) else round(Et, 2),
                            split=b['L'], C_S=b['C_S'], H_S=b['H_S'], D_def=b['D_def'], h_D=b['h_D'], Sstep=b['Sstep'],
                            cost=b['cost'], regime=rg, in_regime=bool(rg and all(rg.values())),
-                           n_in_regime=sum(1 for c in cand if not c[0]),
-                           n_Etot_pos=sum(1 for c in cand if not c[1]),
+                           tier=cand[0][0], n_tier0=sum(1 for c in cand if c[0] == 0),
+                           n_in_regime=sum(1 for c in cand if c[0] in (0, 1)),
+                           n_Etot_pos=sum(1 for c in cand if c[0] in (0, 2)),
                            next_gate='exact stage 1 (2+2 join over the lag-0/row-feasible y lists)',
                            next_gate_log2cost=None if st1.get('log2Ny') is None else round(st1['log2Ny'] / 2, 1))
             rows.append(rec)

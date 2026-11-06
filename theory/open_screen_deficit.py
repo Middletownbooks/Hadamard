@@ -285,6 +285,53 @@ def analyse(sl, Y, N=6000, seed=1, real=False, Lmasks=None, verbose=False):
     return out
 
 
+def s1_energy_only(sl, N=3000, seed=1):
+    """fallback stage-1 estimate and sampler when ab_gauss.stage1's (E, r) tables do not fit: exact count (float)
+    of U-invariant y-quadruples with the stage-1 lag-0 energy (per-block energy DP, 4-fold convolution), y sampled
+    uniformly among them, lattice Gaussian of every lag class except 0 (the row condition is the sum over all lags,
+    so it is inside the Gaussian) [E]"""
+    rng = np.random.default_rng(seed); T0 = int(sl.T1[0]); w = sl.bsz.astype(np.int64); L = sl.letters; nb = len(L)
+    back = [None] * (nb + 1); back[nb] = np.zeros(T0 + 1); back[nb][0] = 1.0
+    for j in range(nb - 1, -1, -1):
+        a = np.zeros(T0 + 1)
+        for y in set(abs(x) for x in L[j]):
+            sh = int(w[j]) * y * y; mult = sum(1 for x in L[j] if abs(x) == y)
+            if sh <= T0: a[sh:] += mult * back[j + 1][:T0 + 1 - sh]
+        back[j] = a
+    P1 = back[0]
+    conv = lambda a, b: np.convolve(a, b)[:T0 + 1]
+    P2 = conv(P1, P1); P3 = conv(P2, P1); P4 = conv(P3, P1)
+    if P4[T0] <= 0: return None, dict(log2Ny_E=None, stage1_log2E=-math.inf, stage1_method='energy-only')
+    def pick(p):
+        p = np.clip(p, 0, None); p = p / p.sum(); return int(rng.choice(len(p), p=p))
+    def sample_block(E):
+        vals = np.zeros(nb, np.int64)
+        for j in range(nb):
+            opts = []; wts = []
+            for y in L[j]:
+                e2 = E - int(w[j]) * y * y
+                if e2 >= 0 and back[j + 1][e2] > 0: opts.append(y); wts.append(back[j + 1][e2])
+            p = np.array(wts); p /= p.sum(); y = opts[rng.choice(len(opts), p=p)]
+            vals[j] = y; E -= int(w[j]) * y * y
+        return vals[sl.borb]
+    def draw():
+        E1 = pick(P1 * P3[::-1]); R = T0 - E1
+        E2 = pick(P1[:R + 1] * P2[:R + 1][::-1]); R -= E2
+        E3 = pick(P1[:R + 1] * P1[:R + 1][::-1]); E4 = R - E3
+        return np.array([sample_block(E) for E in (E1, E2, E3, E4)])
+    Gp = sl.Gp
+    Up = [Gp.act(u) for u in sl.Sp] if len(Gp.mods) else [np.zeros(1, np.int64)]
+    reps, _ = AGs.lag_reps(Gp, Up) if len(Gp.mods) else ([0], None)
+    reps = [h for h in reps if h != 0]
+    out = dict(log2Ny_E=round(math.log2(P4[T0]), 2), stage1_method='energy-only')
+    if not reps: out['stage1_log2E'] = out['log2Ny_E']; return draw, out
+    V = np.array([Gp.paf(draw()).sum(0)[reps] for _ in range(N)], np.int64)
+    gb = gauss_bits(V, sl.T1[reps])
+    out.update(bits=gb.get('bits'), rank=gb.get('rank'), in_lattice=gb.get('in_lattice'),
+               stage1_log2E=round(out['log2Ny_E'] - gb['bits'], 2) if gb.get('in_lattice') and gb.get('bits') is not None else -math.inf)
+    return draw, out
+
+
 def synthetic_ys(sl, n, seed=1):
     draw, info = AGs.stage1_sampler(sl, seed=seed)
     if draw is None: return [], info
@@ -314,41 +361,73 @@ def controls():
             print(json.dumps(dict(key=key, **r)), flush=True)
 
 
+MAXSG = int(os.environ.get('OS_MAXSGEFF', '80'))    # sGeff > 80 => C2 > 160 at every measured ratio C2/sGeff >= 2
+
+
 class TO(Exception): pass
 
 
 def _alarm(*a): raise TO()
 
 
+def one_slice(r, secs, N, maxL):
+    rec = dict(key=r['key'], fam=r['fam'], v=r['v'], r=r['r'], sGeff=r['sGeff'])
+    signal.signal(signal.SIGALRM, _alarm); signal.alarm(secs)
+    try:
+        cfg = cfg_from_key(r['key']); sl = SW.build(cfg)
+        nbT = len(sl.breps) * int(sl.T1[0])
+        st = None
+        if nbT <= 40000:
+            try:
+                st = AGs.stage1(sl, N=4000)
+                rec['stage1'] = {k: st.get(k) for k in ('log2Ny', 'log2Nx', 'bits', 'rank', 'in_lattice', 'stage1_log2E')}
+                Ys, _ = synthetic_ys(sl, 1)
+            except MemoryError: st = None
+        if st is None:
+            draw, st = s1_energy_only(sl)
+            rec['stage1'] = st; Ys = [draw()] if draw else []
+        if Ys:
+            Ls = subgroups_Gp(sl)
+            Ls = Ls[:maxL] + ([Ls[-1]] if len(Ls) > maxL and Ls[-1].all() else [])
+            rec.update(analyse(sl, Ys[0], N=N, Lmasks=Ls))
+        signal.alarm(0)
+    except TO: rec['timeout'] = secs
+    except (Exception, MemoryError) as e:
+        signal.alarm(0); rec['error'] = repr(e)[:200]
+    return rec
+
+
 def batch(inp, outp, si=0, sn=1, secs=900, N=6000, maxL=10):
     import open_screen_enum as E
     done = set()
-    if os.path.exists(outp):
-        for l in open(outp):
-            try: done.add(json.loads(l)['key'])
+    import glob
+    for fn in glob.glob(os.path.join(os.path.dirname(os.path.abspath(outp)), 'deficit_s*.jsonl')):
+        for l in open(fn):
+            try:
+                d_ = json.loads(l)
+                if 'error' not in d_: done.add(d_['key'])
             except Exception: pass
     rows = [json.loads(l) for f in inp for l in open(f)]
-    rows = [r for r in rows if r.get('A') and r.get('B') is not False]
+    rows = [r for r in rows if r.get('A') and r.get('B') is not False and r['sGeff'] <= MAXSG]
     rows.sort(key=lambda r: (r['sGeff'], r['r']))
     fo = open(outp, 'a')
-    signal.signal(signal.SIGALRM, _alarm)
     for i, r in enumerate(rows):
         if i % sn != si or r['key'] in done: continue
-        t0 = time.time(); rec = dict(key=r['key'], fam=r['fam'], v=r['v'], r=r['r'], sGeff=r['sGeff'])
-        signal.alarm(secs)
-        try:
-            cfg = cfg_from_key(r['key']); sl = SW.build(cfg)
-            st = AGs.stage1(sl, N=4000)
-            rec['stage1'] = {k: st.get(k) for k in ('log2Ny', 'log2Nx', 'bits', 'rank', 'in_lattice', 'stage1_log2E')}
-            Ys, _ = synthetic_ys(sl, 1)
-            if Ys:
-                Ls = subgroups_Gp(sl)
-                Ls = Ls[:maxL] + ([Ls[-1]] if len(Ls) > maxL and Ls[-1].all() else [])
-                rec.update(analyse(sl, Ys[0], N=N, Lmasks=Ls))
-            signal.alarm(0)
-        except TO: rec['timeout'] = secs
-        except (Exception, MemoryError) as e:
-            signal.alarm(0); rec['error'] = repr(e)[:200]
+        t0 = time.time()
+        rd, wr = os.pipe(); pid = os.fork()
+        if pid == 0:                                  # child: one slice, isolated (memory failures stay here)
+            os.close(rd)
+            rec = one_slice(r, secs, N, maxL)
+            os.write(wr, json.dumps(rec, default=float).encode()); os._exit(0)
+        os.close(wr); buf = b''
+        while True:
+            chunk = os.read(rd, 1 << 16)
+            if not chunk: break
+            buf += chunk
+        os.close(rd); os.waitpid(pid, 0)
+        try: rec = json.loads(buf.decode())
+        except Exception: rec = dict(key=r['key'], fam=r['fam'], v=r['v'], r=r['r'], sGeff=r['sGeff'],
+                                     error='child died (memory cap)')
         rec['secs'] = round(time.time() - t0, 1)
         fo.write(json.dumps(rec, default=float) + "\n"); fo.flush()
 

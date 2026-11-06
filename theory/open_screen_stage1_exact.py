@@ -13,7 +13,9 @@ Method B (this file, shares no code with ab_lib/ab_b0_stage1): G', the U-orbits,
           definition (double sum over G'); the join is a dictionary of pair sums of PAF tuples split by pair energy.
 Planted: a random U-invariant y-quadruple from the letters; the target T1 is replaced by its PAF sum; both methods
           must return it.  A method that hits a size cap reports UNDECIDED (never zero).
-usage: python3 theory/open_screen_stage1_exact.py 'KEY' [--planted 4] [--cap 2e7] [--out FILE]"""
+Method C (this file): CP-SAT on the integer model (ortools); INFEASIBLE decides, UNKNOWN does not.
+usage: python3 theory/open_screen_stage1_exact.py 'KEY' [--methods A,B,C] [--planted 4] [--cap 2e7] [--csecs 600]
+       [--out FILE]"""
 import sys, os, json, time, itertools, math
 from collections import defaultdict
 import numpy as np
@@ -173,6 +175,44 @@ def planted_y(st, rng):
     return Y
 
 
+def c_solve(st, T1, secs=600, workers=4, seed=0):
+    """method C: CP-SAT on the integer stage-1 model (y per block and U-orbit in the letter domain, lag products by
+    AddMultiplicationEquality, one equation per lag); returns 'INFEASIBLE', 'FEASIBLE' (with a verified quadruple) or
+    'UNKNOWN' (undecided).  Symmetry breaking: block 0 cell 0 > 0 is not imposed (sound and simple)."""
+    from ortools.sat.python import cp_model
+    M = cp_model.CpModel(); orbits = st['orbits']; L = st['letters']; n = st['n']; lm = st['lagmap']
+    dom = cp_model.Domain.FromValues(L)
+    Y = [[M.NewIntVarFromDomain(dom, f"y{k}_{j}") for j in range(len(orbits))] for k in range(4)]
+    cell = st['orb']
+    bound = max(abs(x) for x in L) ** 2
+    prod = {}
+    def pv(k, a, b):
+        a, b = min(a, b), max(a, b)
+        if (k, a, b) not in prod:
+            z = M.NewIntVar(-bound, bound, f"p{k}_{a}_{b}")
+            if a == b: M.AddMultiplicationEquality(z, [Y[k][a], Y[k][a]])
+            else: M.AddMultiplicationEquality(z, [Y[k][a], Y[k][b]])
+            prod[(k, a, b)] = z
+        return prod[(k, a, b)]
+    for h in range(n):
+        terms = [pv(k, cell[g], cell[lm[h][g]]) for k in range(4) for g in range(n)]
+        M.Add(sum(terms) == T1[h])
+    sol = cp_model.CpSolver(); sol.parameters.max_time_in_seconds = secs
+    sol.parameters.num_search_workers = workers; sol.parameters.random_seed = seed
+    r = sol.Solve(M)
+    if r == cp_model.INFEASIBLE: return 'INFEASIBLE', None
+    if r in (cp_model.FEASIBLE, cp_model.OPTIMAL):
+        Yv = []
+        for k in range(4):
+            y = [0] * n
+            for j, o in enumerate(orbits):
+                for g in o: y[g] = sol.Value(Y[k][j])
+            Yv.append(tuple(y))
+        assert [sum(b_paf(st, y)[h] for y in Yv) for h in range(n)] == list(T1)
+        return 'FEASIBLE', Yv
+    return 'UNKNOWN', None
+
+
 def canon(Y):
     """quadruple up to block order and block sign"""
     return tuple(sorted(tuple(y) if y[0] > 0 else tuple(-x for x in y) for y in Y))
@@ -188,8 +228,15 @@ def main():
     rec = dict(key=key)
     st = b_setup(key)
     # consistency of the independent set-up with ab_lib (orbit partition of G', letters, T1)
+    methods = a[a.index('--methods') + 1].split(',') if '--methods' in a else ['A', 'B']
+    csecs = int(a[a.index('--csecs') + 1]) if '--csecs' in a else 600
+    t0 = time.time()
+    if 'C' in methods:
+        r_, Yc = c_solve(st, st['T1'], csecs); rec['C'] = dict(status=r_, secs=round(time.time() - t0, 1))
+        if Yc: rec['C']['solution'] = [list(y) for y in Yc]
     t0 = time.time()
     try:
+        if 'A' not in methods: raise RuntimeError('method A not run')
         solsA, nbA, sl = a_solve(key, cap=cap); rec['A'] = dict(solutions=len(solsA), blocks=nbA, secs=round(time.time() - t0, 1))
     except Exception as e:
         rec['A'] = dict(undecided=repr(e)[:120]); sl = None
@@ -198,6 +245,7 @@ def main():
                                and set(st['letters']) == {x for L in sl.letters for x in L} and list(sl.T1) == st['T1'])
     t0 = time.time()
     try:
+        if 'B' not in methods: raise OverflowError('method B not run')
         solsB, nbB = b_solve(st, st['T1'], cap); rec['B'] = dict(solutions=len(solsB), blocks=nbB, secs=round(time.time() - t0, 1))
     except (OverflowError, MemoryError) as e:
         rec['B'] = dict(undecided=repr(e)[:120]); solsB = None
@@ -210,12 +258,16 @@ def main():
         Y = planted_y(st, rng)
         Tp = [sum(b_paf(st, y)[h] for y in Y) for h in range(st['n'])]
         r = dict(T0=Tp[0])
-        try:
-            sB, _ = b_solve(st, Tp, cap); r['B'] = canon(Y) in {canon(Z) for Z in sB}
-        except (OverflowError, MemoryError): r['B'] = None
-        try:
-            sA, _, _ = a_solve(key, Tp, cap); r['A'] = canon(Y) in {canon(Z) for Z in sA}
-        except Exception: r['A'] = None
+        if 'B' in methods:
+            try:
+                sB, _ = b_solve(st, Tp, cap); r['B'] = canon(Y) in {canon(Z) for Z in sB}
+            except (OverflowError, MemoryError): r['B'] = None
+        if 'A' in methods:
+            try:
+                sA, _, _ = a_solve(key, Tp, cap); r['A'] = canon(Y) in {canon(Z) for Z in sA}
+            except Exception: r['A'] = None
+        if 'C' in methods:
+            r['C'] = c_solve(st, Tp, csecs)[0]
         pl.append(r)
     rec['planted'] = pl
     print(json.dumps(rec), flush=True)
