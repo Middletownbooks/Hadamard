@@ -17,7 +17,7 @@ Method C (this file): CP-SAT on the integer model (ortools); INFEASIBLE decides,
 --strong adds to C the redundant row and real-character equations and the block symmetry breaking, and to B the
 per-block row and real-character pruning [P].
 usage: python3 theory/open_screen_stage1_exact.py 'KEY' [--methods A,B,C] [--strong] [--planted 4] [--cap 2e7] [--csecs 600]
-       [--out FILE]"""
+       [--out FILE] [--aslimit GB]"""
 import sys, os, json, time, itertools, math
 from collections import defaultdict
 import numpy as np
@@ -391,8 +391,9 @@ def canon(Y):
 
 def main():
     import resource
-    resource.setrlimit(resource.RLIMIT_AS, (6 << 30, 6 << 30))
     a = sys.argv[1:]
+    gb = int(a[a.index('--aslimit') + 1]) if '--aslimit' in a else 6      # address-space cap in GB (default 6)
+    resource.setrlimit(resource.RLIMIT_AS, (gb << 30, gb << 30))
     key = json.loads(a[0]); npl = int(a[a.index('--planted') + 1]) if '--planted' in a else 4
     cap = int(float(a[a.index('--cap') + 1])) if '--cap' in a else 2 * 10 ** 7
     outp = a[a.index('--out') + 1] if '--out' in a else None
