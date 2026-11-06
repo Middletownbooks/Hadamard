@@ -190,12 +190,19 @@ def main():
     print(json.dumps({x: y for x, y in rec.items() if x != 'canonical'}), flush=True)
     pl = []
     if V is not None and len(V):
-        rng = np.random.default_rng(99); rows = V @ st['W']; EE = (V * V) @ st['W']
+        rng = np.random.default_rng(99); rows = np.abs(V @ st['W']); EE = (V * V) @ st['W']
+        rcls = {r_: np.nonzero(rows == r_)[0] for r_ in set(rows.tolist())}
+        rc = sorted({tuple(sorted(c)) for c in itertools.product(rcls, repeat=4) if sum(x * x for x in c) == R})
         for t in range(npl):
-            got = None
-            for _ in range(200000):
-                ix = rng.integers(len(V), size=4)
-                if int((rows[ix] ** 2).sum()) == R and int(EE[ix].sum()) <= st['lagT'][0]: got = ix; break
+            got = None                                        # a feasible row multiset, then blocks from its classes
+            for _ in range(200000 if rc else 0):
+                c = list(rc[int(rng.integers(len(rc)))]); rng.shuffle(c); left = int(st['lagT'][0]); ix = []
+                for u, x in enumerate(c):                     # sequential draw leaving room for the rest
+                    room = left - sum(int(EE[rcls[z]].min()) for z in c[u + 1:])
+                    pool = rcls[x][EE[rcls[x]] <= room]
+                    if len(pool) == 0: break
+                    ix.append(int(pool[int(rng.integers(len(pool)))])); left -= int(EE[ix[-1]])
+                if len(ix) == 4: got = np.array(ix); break
             if got is None: pl.append(dict(skipped='no plant with sum r^2 = sum T1 and energy <= T1(0) found')); continue
             Y = [V[i] * (1 if rng.random() < .5 else -1) for i in got]
             Pp = sum(np.einsum('i,j,lij->l', y, y, st['N']) for y in Y)
