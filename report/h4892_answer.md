@@ -83,8 +83,8 @@ ab_b0_stage1:
   and Σ r² = 4.
 - In each case the planted ordered quadruple is among the returned solutions.
 
-**Method B** with `--planted 4` (`logs/h4892/stage1_methodB.jsonl`): <!-- PLB -->still running at the time of
-writing<!-- /PLB -->.
+**Method B** with `--planted 4` (`logs/h4892/stage1_methodB.jsonl`): **4/4 recovered**, and 384 solutions again.
+This completes the run that did not finish within 900 s on 2026-11-06.
 
 `data/h4892_stage1.json` contains:
 - the 384 canonical classes as 94-vectors;
