@@ -429,7 +429,11 @@ def main():
     if 'solutions' in rec['A'] and solsB is not None:
         rec['agree'] = {canon(Y) for Y in solsA} == {canon(Y) for Y in solsB}
     rec['solutions'] = [list(map(list, Y)) for Y in (solsB or [])[:20]]
-    if outp: open(outp, 'a').write(json.dumps(dict(rec, phase='decision')) + "\n")
+    import gc; gc.collect()                  # the decision is printed before any file is opened: near the address-space
+    print(json.dumps(dict(rec, phase='decision')), flush=True)   # cap, open() itself has raised MemoryError
+    if outp:
+        try: open(outp, 'a').write(json.dumps(dict(rec, phase='decision')) + "\n")
+        except MemoryError: print('decision not written to file (MemoryError); see stdout', file=sys.stderr)
     csecs = min(csecs, int(a[a.index('--plsecs') + 1]) if '--plsecs' in a else 600)
     # planted controls
     rng = np.random.default_rng(11); pl = []
