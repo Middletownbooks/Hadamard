@@ -40,6 +40,10 @@ def b_setup(key):
         mult = [1] * len(axes)
         if g[0] == 'neg':
             for a in g[1]: mult[a] = axes[a] - 1
+        elif len(g) == 3:                        # [axis, order, generator]: the generator is given (keys on 2-power
+            a, o, u = g; n = axes[a]               # axes, where cyclic unit subgroups of one order are not unique)
+            assert math.gcd(u, n) == 1 and _ordmod(u, n) == o, (g, n)
+            mult[a] = u
         else:
             a, o = g; n = axes[a]
             u = next(u for u in range(2, n) if math.gcd(u, n) == 1 and _ordmod(u, n) == o and
@@ -293,8 +297,11 @@ def planted_y(st, rng):
     enumeration has the size of the real one): start from +-1 letters, then raise random orbits to random larger
     letters while the energy stays within the bound"""
     T0 = st['T1'][0]; w = [len(o) for o in st['orbits']]; L = st['letters']
-    vals = [[int(rng.choice([-1, 1])) for _ in w] for _ in range(4)]
-    E = sum(w) * 4
+    # start from the letters of least modulus (+-1 for even s; for odd s, sigma is odd and +-1 is not a letter --
+    # fixed 2026-11-06: the plants of odd-s slices were not letter vectors; for even s the draws are unchanged)
+    m0 = min(abs(x) for x in L); low = [x for x in (-m0, m0) if x in L]
+    vals = [[int(rng.choice(low)) for _ in w] for _ in range(4)]
+    E = sum(w) * 4 * m0 * m0
     for t in range(200):
         k = int(rng.integers(4)); j = int(rng.integers(len(w))); a = int(rng.choice(L))
         e2 = E - w[j] * vals[k][j] ** 2 + w[j] * a * a
