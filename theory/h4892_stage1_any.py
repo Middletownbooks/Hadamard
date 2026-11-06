@@ -12,6 +12,8 @@ Enumeration: level-wise over the U-orbits (largest first), keeping partial vecto
 possible rest is <= T1(0) - 3 E_min and whose |row| minus the largest possible rest is <= isqrt(sum T1); at the end
 r^2 <= sum T1.  [P: each block of a solution has energy T1(0) minus the other three energies, each >= E_min, and
 r_k^2 <= sum_k r_k^2 = sum_h T1(h).]  Block sign normalised (y[0] > 0).
+k4 with Q = Z4 and |K| odd: the compression normal form of the OpenAI model (report/openai_4p3_review.md section 1,
+[P]) prunes every level (some normal-form Q-compression must stay reachable) and filters the final blocks.
 PAF on one lag per U-orbit (PAF is constant on U-orbits of lags): sum_{i,j} v_i v_j N_ij(h), N counted on G'.
 Join: for every row multiset {|r_a|, |r_b|, |r_c|, |r_d|} with sum of squares = sum T1 and every split of the lag-0
 energy T1(0) = e_left + e_right (bucket by bucket), unordered pairs of distinct block-PAF vectors, a 64-bit linear hash (exact mod 2^64) sorted on the right, the left searched, hits re-checked on
@@ -75,8 +77,24 @@ def setup(key):
     N = np.zeros((k, k, k), np.int64)
     for l, h in enumerate(lag):
         for g in range(n): N[l, oid[g], oid[addi[h][g]]] += 1
+    nf = None
+    if fam == 'k4' and list(Q) == [4] and (m // 4) % 2 == 1:
+        # compression normal form (OpenAI model, report/openai_4p3_review.md section 1 [P]) for Q = Z4, |K| = m/4 odd:
+        # z = +-(a,a,a,a), a odd, a^2 <= |K|;  or +-(t 1 + 2 delta_s), t odd, t(t+1) <= |K|  (z(i) = sum over Q-coset i)
+        K_ = m // 4; S_ = set()
+        for a_ in range(1, math.isqrt(K_) + 1, 2):
+            for sg in (1, -1): S_.add((sg * a_,) * 4)
+        for t_ in range(-math.isqrt(K_) - 2, math.isqrt(K_) + 3):
+            if t_ % 2 == 0 or t_ * (t_ + 1) > K_: continue
+            for p_ in range(4):
+                z_ = [t_] * 4; z_[p_] += 2
+                for sg in (1, -1): S_.add(tuple(sg * x for x in z_))
+        cq = np.zeros((k, 4), np.int64)                          # elements of each orbit in each Q-coset
+        for j, o in enumerate(orbs):
+            for g in o: cq[j, els[g][0]] += 1
+        nf = dict(S=np.array(sorted(S_), np.int64), cq=cq)
     return dict(n=n, orbs=orbs, oid=oid, let=let, T1=T1, addi=addi, N=N, W=np.array([len(o) for o in orbs]), k=k,
-                lagT=np.array([T1[h] for h in lag], np.int64))
+                lagT=np.array([T1[h] for h in lag], np.int64), nf=nf)
 
 
 def blocks(st, T0, R, cap):
@@ -93,12 +111,24 @@ def blocks(st, T0, R, cap):
             v2 = np.concatenate([np.repeat(v_, len(L), 0), np.tile(L, len(v_))[:, None]], 1)
             e2 = np.repeat(e_, len(L)) + w * np.tile(L * L, len(e_)); r2 = np.repeat(r_, len(L)) + w * np.tile(L, len(r_))
             keep = (e2 + m0 * rest[t] <= Emax) & (np.abs(r2) - big * rest[t] <= Rb)
+            if st['nf'] is not None and keep.any():
+                # partial Q-compression; some normal-form vector must stay reachable with the remaining orbits
+                cq = st['nf']['cq'][order[:t + 1]]; capq = big * st['nf']['cq'][order[t + 1:]].sum(0)
+                idx = np.nonzero(keep)[0]; zc = v2[idx] @ cq
+                ok = np.zeros(len(idx), bool); NF = st['nf']['S']
+                for c1 in range(0, len(idx), 1 << 14):
+                    d = np.abs(NF[None, :, :] - zc[c1:c1 + (1 << 14), None, :]) <= capq[None, None, :]
+                    ok[c1:c1 + (1 << 14)] = d.all(2).any(1)
+                keep[idx[~ok]] = False
             nV.append(v2[keep]); nE.append(e2[keep]); nr.append(r2[keep]); tot += int(keep.sum())
             if tot > cap: raise OverflowError(f'more than {cap} partial blocks at level {t}')
         V, E, r = np.concatenate(nV), np.concatenate(nE), np.concatenate(nr)
     keep = r * r <= R
     V = V[keep]; r = r[keep]
     out = np.zeros_like(V); out[:, order] = V
+    if st['nf'] is not None:                                  # exact normal-form membership at the end
+        zc = out @ st['nf']['cq']; NFs = {tuple(x) for x in st['nf']['S'].tolist()}
+        out = out[np.array([tuple(x) in NFs for x in zc.tolist()], bool)] if len(out) else out
     out = out[out[:, st['oid'][0]] > 0]                                  # block sign: y[0] > 0
     return out
 
