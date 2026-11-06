@@ -1,0 +1,344 @@
+{"N": 2396, "v": 599, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 2396, "v": 599, "fam": "b1", "enumerated": 16, "gates": {"alive (B capped)": 6, "alive (B pass)": 10}, "estimated": 3, "note": null, "slice": "G'=Z13xZ2, q=23, s=2, f=11 U=<3> (order 3) on axis 0, r=30", "key": "[\"b1\", 599, [], [13, 2], 23, 2, [[0, 3]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 30.67, "stage1_log2E": 1.63, "H2": 35.0, "C2": 29.51, "E_per_y": 5.49, "log2E_tot": 7.12, "split": "L2<(0, 1)>", "C_S": 18.2, "H_S": 27.38, "D_def": 3.69, "h_D": 7.62, "Sstep": 4.51, "cost": 8.89, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 1, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 15.3}
+{"N": 2396, "v": 599, "fam": "k4", "enumerated": 3, "gates": {"not run": 2, "A dead": 1}, "estimated": 0, "note": null}
+{"N": 2676, "v": 669, "fam": "b0", "enumerated": 3, "gates": {"alive (B pass)": 1, "A dead": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 2676, "v": 669, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 2876, "v": 719, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 2876, "v": 719, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 2876, "v": 719, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 2956, "v": 739, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 2956, "v": 739, "fam": "b1", "enumerated": 36, "gates": {"A dead": 23, "alive (B pass)": 11, "B dead": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 2956, "v": 739, "fam": "k4", "enumerated": 19, "gates": {"A dead": 19}, "estimated": 0, "note": null}
+{"N": 3004, "v": 751, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 3004, "v": 751, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 3004, "v": 751, "fam": "k4", "enumerated": 37, "gates": {"alive (B capped)": 15, "alive (B pass)": 12, "A dead": 10}, "estimated": 0, "note": null}
+{"N": 3452, "v": 863, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 3452, "v": 863, "fam": "b1", "enumerated": 1, "gates": {"A dead": 1}, "estimated": 0, "note": null}
+{"N": 3452, "v": 863, "fam": "k4", "enumerated": 44, "gates": {"alive (B capped)": 5, "A dead": 26, "not run": 3, "alive (B pass)": 10}, "estimated": 0, "note": null}
+{"N": 3628, "v": 907, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 3628, "v": 907, "fam": "b1", "enumerated": 12, "gates": {"A dead": 7, "alive (B pass)": 2, "B dead": 1, "not run": 2}, "estimated": 0, "note": null}
+{"N": 3628, "v": 907, "fam": "k4", "enumerated": 17, "gates": {"A dead": 17}, "estimated": 0, "note": null}
+{"N": 3788, "v": 947, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 3788, "v": 947, "fam": "b1", "enumerated": 26, "gates": {"alive (B capped)": 4, "alive (B pass)": 15, "B dead": 3, "A dead": 3, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z43xZ2, q=11, s=5, f=2 U=<3> (order 42) on axis 0, r=24", "key": "[\"b1\", 947, [], [43, 2], 11, 5, [[0, 42]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 17.23, "stage1_log2E": -Infinity, "H2": 31.22, "C2": 85.63, "E_per_y": -54.41, "log2E_tot": null, "split": "L2<(0, 1)>", "C_S": 53.6, "H_S": 26.59, "D_def": 27.4, "h_D": 4.63, "Sstep": 40.31, "cost": 67.71, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 8.6}
+{"N": 3788, "v": 947, "fam": "k4", "enumerated": 9, "gates": {"A dead": 9}, "estimated": 0, "note": null}
+{"N": 3884, "v": 971, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 3884, "v": 971, "fam": "b1", "enumerated": 26, "gates": {"alive (B capped)": 3, "alive (B pass)": 10, "A dead": 8, "B dead": 3, "not run": 2}, "estimated": 2, "note": null, "slice": "G'=Z97xZ2, q=5, s=2, f=2 U=<19> (order 32) on axis 0, r=24", "key": "[\"b1\", 971, [], [97, 2], 5, 2, [[0, 32]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 45.55, "stage1_log2E": 9.64, "H2": 18.0, "C2": 60.34, "E_per_y": -42.34, "log2E_tot": -32.7, "split": "L2<(0, 1)>", "C_S": 35.26, "H_S": 15.6, "D_def": 22.68, "h_D": 2.4, "Sstep": 27.46, "cost": 50.14, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 22.8}
+{"N": 3884, "v": 971, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4076, "v": 1019, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4076, "v": 1019, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4076, "v": 1019, "fam": "k4", "enumerated": 21, "gates": {"A dead": 18, "not run": 3}, "estimated": 0, "note": null}
+{"N": 4124, "v": 1031, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4124, "v": 1031, "fam": "b1", "enumerated": 12, "gates": {"alive (B capped)": 1, "alive (B pass)": 4, "A dead": 6, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z103xZ2, q=5, s=2, f=2 U=<3> (order 34) on axis 0, r=24", "key": "[\"b1\", 1031, [], [103, 2], 5, 2, [[0, 34]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 45.55, "stage1_log2E": 9.38, "H2": 18.0, "C2": 60.94, "E_per_y": -42.94, "log2E_tot": -33.56, "split": "L2<(0, 1)>", "C_S": 35.68, "H_S": 15.6, "D_def": 22.86, "h_D": 2.4, "Sstep": 27.88, "cost": 50.74, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 22.8}
+{"N": 4124, "v": 1031, "fam": "k4", "enumerated": 9, "gates": {"A dead": 8, "not run": 1}, "estimated": 0, "note": null}
+{"N": 4156, "v": 1039, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4156, "v": 1039, "fam": "b1", "enumerated": 1, "gates": {"A dead": 1}, "estimated": 0, "note": null}
+{"N": 4156, "v": 1039, "fam": "k4", "enumerated": 77, "gates": {"alive (B capped)": 21, "A dead": 36, "alive (B pass)": 12, "not run": 8}, "estimated": 0, "note": null}
+{"N": 4348, "v": 1087, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4348, "v": 1087, "fam": "b1", "enumerated": 20, "gates": {"A dead": 10, "alive (B pass)": 3, "B dead": 4, "not run": 3}, "estimated": 0, "note": null}
+{"N": 4348, "v": 1087, "fam": "k4", "enumerated": 23, "gates": {"A dead": 22, "not run": 1}, "estimated": 0, "note": null}
+{"N": 4412, "v": 1103, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4412, "v": 1103, "fam": "b1", "enumerated": 31, "gates": {"alive (B capped)": 4, "A dead": 9, "alive (B pass)": 15, "not run": 2, "B dead": 1}, "estimated": 1, "note": null, "slice": "G'=Z29xZ2, q=19, s=6, f=3 U=<2> (order 28) on axis 0, r=28", "key": "[\"b1\", 1103, [], [29, 2], 19, 6, [[0, 28]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 18.61, "stage1_log2E": -Infinity, "H2": 48.54, "C2": 49.95, "E_per_y": -1.41, "log2E_tot": null, "split": "L2<(0, 1)>", "C_S": 30.42, "H_S": 40.89, "D_def": 11.88, "h_D": 7.65, "Sstep": 9.98, "cost": 21.87, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 9.3}
+{"N": 4412, "v": 1103, "fam": "k4", "enumerated": 22, "gates": {"alive (B capped)": 16, "A dead": 2, "alive (B pass)": 4}, "estimated": 0, "note": null}
+{"N": 4460, "v": 1115, "fam": "b0", "enumerated": 5, "gates": {"alive (B capped)": 1, "A dead": 2, "alive (B pass)": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 4460, "v": 1115, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4460, "v": 1115, "fam": "k4", "enumerated": 9, "gates": {"A dead": 8, "not run": 1}, "estimated": 0, "note": null}
+{"N": 4676, "v": 1169, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4676, "v": 1169, "fam": "b1", "enumerated": 115, "gates": {"A dead": 50, "alive (B pass)": 26, "B dead": 26, "not run": 12, "alive (B capped)": 1}, "estimated": 0, "note": null}
+{"N": 4748, "v": 1187, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4748, "v": 1187, "fam": "b1", "enumerated": 3, "gates": {"A dead": 2, "not run": 1}, "estimated": 0, "note": null}
+{"N": 4748, "v": 1187, "fam": "k4", "enumerated": 63, "gates": {"A dead": 38, "not run": 6, "alive (B capped)": 19}, "estimated": 0, "note": null}
+{"N": 4792, "v": 1198, "fam": "b1", "enumerated": 45, "gates": {"alive (B capped)": 27, "alive (B pass)": 4, "A dead": 14}, "estimated": 0, "note": null}
+{"N": 4892, "v": 1223, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 4892, "v": 1223, "fam": "b1", "enumerated": 11, "gates": {"alive (B capped)": 1, "alive (B pass)": 5, "A dead": 4, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z47xZ2, q=13, s=3, f=4 U=<2> (order 23) on axis 0, r=24", "key": "[\"b1\", 1223, [], [47, 2], 13, 3, [[0, 23]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 22.92, "stage1_log2E": 7.66, "H2": 28.53, "C2": 71.69, "E_per_y": -43.16, "log2E_tot": -35.5, "split": "G'", "C_S": 37.27, "H_S": 23.93, "D_def": 29.82, "h_D": 4.6, "Sstep": 25.31, "cost": 55.12, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 11.5}
+{"N": 4892, "v": 1223, "fam": "k4", "enumerated": 68, "gates": {"alive (B capped)": 8, "A dead": 44, "not run": 6, "alive (B pass)": 10}, "estimated": 0, "note": null}
+{"N": 5028, "v": 1257, "fam": "b0", "enumerated": 8, "gates": {"A dead": 6, "alive (B pass)": 2}, "estimated": 0, "note": null}
+{"N": 5028, "v": 1257, "fam": "b1", "enumerated": 38, "gates": {"A dead": 22, "alive (B pass)": 6, "B dead": 8, "not run": 2}, "estimated": 0, "note": null}
+{"N": 5036, "v": 1259, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5036, "v": 1259, "fam": "b1", "enumerated": 39, "gates": {"alive (B capped)": 9, "A dead": 9, "alive (B pass)": 18, "B dead": 2, "not run": 1}, "estimated": 0, "note": null}
+{"N": 5036, "v": 1259, "fam": "k4", "enumerated": 17, "gates": {"A dead": 17}, "estimated": 0, "note": null}
+{"N": 5132, "v": 1283, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5132, "v": 1283, "fam": "b1", "enumerated": 5, "gates": {"A dead": 4, "not run": 1}, "estimated": 0, "note": null}
+{"N": 5132, "v": 1283, "fam": "k4", "enumerated": 4, "gates": {"alive (B capped)": 4}, "estimated": 0, "note": null}
+{"N": 5164, "v": 1291, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5164, "v": 1291, "fam": "b1", "enumerated": 23, "gates": {"alive (B capped)": 7, "alive (B pass)": 4, "A dead": 10, "not run": 2}, "estimated": 0, "note": null}
+{"N": 5164, "v": 1291, "fam": "k4", "enumerated": 16, "gates": {"alive (B capped)": 12, "A dead": 2, "alive (B pass)": 2}, "estimated": 0, "note": null}
+{"N": 5276, "v": 1319, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5276, "v": 1319, "fam": "b1", "enumerated": 2, "gates": {"A dead": 2}, "estimated": 0, "note": null}
+{"N": 5276, "v": 1319, "fam": "k4", "enumerated": 18, "gates": {"A dead": 18}, "estimated": 0, "note": null}
+{"N": 5308, "v": 1327, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5308, "v": 1327, "fam": "b1", "enumerated": 24, "gates": {"alive (B capped)": 13, "alive (B pass)": 8, "not run": 2, "B dead": 1}, "estimated": 0, "note": null}
+{"N": 5308, "v": 1327, "fam": "k4", "enumerated": 22, "gates": {"A dead": 18, "not run": 4}, "estimated": 0, "note": null}
+{"N": 5468, "v": 1367, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5468, "v": 1367, "fam": "b1", "enumerated": 4, "gates": {"A dead": 3, "alive (B pass)": 1}, "estimated": 0, "note": null}
+{"N": 5468, "v": 1367, "fam": "k4", "enumerated": 55, "gates": {"alive (B capped)": 11, "A dead": 32, "not run": 5, "alive (B pass)": 7}, "estimated": 0, "note": null}
+{"N": 5692, "v": 1423, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5692, "v": 1423, "fam": "b1", "enumerated": 27, "gates": {"A dead": 15, "alive (B capped)": 2, "alive (B pass)": 5, "B dead": 2, "not run": 3}, "estimated": 0, "note": null}
+{"N": 5692, "v": 1423, "fam": "k4", "enumerated": 41, "gates": {"alive (B capped)": 4, "A dead": 30, "not run": 3, "alive (B pass)": 4}, "estimated": 0, "note": null}
+{"N": 5708, "v": 1427, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5708, "v": 1427, "fam": "b1", "enumerated": 22, "gates": {"alive (B capped)": 4, "alive (B pass)": 9, "A dead": 6, "not run": 2, "B dead": 1}, "estimated": 0, "note": null}
+{"N": 5708, "v": 1427, "fam": "k4", "enumerated": 32, "gates": {"A dead": 18, "not run": 7, "B dead": 6, "alive (B pass)": 1}, "estimated": 0, "note": null}
+{"N": 5748, "v": 1437, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5748, "v": 1437, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5752, "v": 1438, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5756, "v": 1439, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5756, "v": 1439, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5756, "v": 1439, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5804, "v": 1451, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5804, "v": 1451, "fam": "b1", "enumerated": 29, "gates": {"A dead": 11, "alive (B capped)": 8, "alive (B pass)": 5, "B dead": 1, "not run": 4}, "estimated": 0, "note": null}
+{"N": 5804, "v": 1451, "fam": "k4", "enumerated": 30, "gates": {"A dead": 27, "not run": 3}, "estimated": 0, "note": null}
+{"N": 5884, "v": 1471, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5884, "v": 1471, "fam": "b1", "enumerated": 3, "gates": {"alive (B capped)": 2, "alive (B pass)": 1}, "estimated": 0, "note": null}
+{"N": 5884, "v": 1471, "fam": "k4", "enumerated": 2, "gates": {"A dead": 2}, "estimated": 0, "note": null}
+{"N": 5892, "v": 1473, "fam": "b0", "enumerated": 9, "gates": {"A dead": 6, "alive (B pass)": 1, "not run": 2}, "estimated": 0, "note": null}
+{"N": 5892, "v": 1473, "fam": "b1", "enumerated": 56, "gates": {"alive (B capped)": 52, "B dead": 2, "not run": 2}, "estimated": 0, "note": null}
+{"N": 5948, "v": 1487, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5948, "v": 1487, "fam": "b1", "enumerated": 2, "gates": {"A dead": 2}, "estimated": 0, "note": null}
+{"N": 5948, "v": 1487, "fam": "k4", "enumerated": 34, "gates": {"A dead": 24, "alive (B pass)": 4, "alive (B capped)": 5, "not run": 1}, "estimated": 0, "note": null}
+{"N": 5996, "v": 1499, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 5996, "v": 1499, "fam": "b1", "enumerated": 3, "gates": {"alive (B pass)": 1, "A dead": 2}, "estimated": 1, "note": null, "slice": "G'=Z107xZ2, q=7, s=3, f=2 U=<3> (order 53) on axis 0, r=24", "key": "[\"b1\", 1499, [], [107, 2], 7, 3, [[0, 53]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 32.72, "stage1_log2E": 17.44, "H2": 34.87, "C2": 83.15, "E_per_y": -48.28, "log2E_tot": -30.84, "split": "L2<(0, 1)>", "C_S": 47.94, "H_S": 30.53, "D_def": 30.87, "h_D": 4.34, "Sstep": 32.68, "cost": 63.54, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 16.4}
+{"N": 5996, "v": 1499, "fam": "k4", "enumerated": 23, "gates": {"alive (B capped)": 16, "alive (B pass)": 6, "not run": 1}, "estimated": 0, "note": null}
+{"N": 6172, "v": 1543, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6172, "v": 1543, "fam": "b1", "enumerated": 6, "gates": {"A dead": 5, "not run": 1}, "estimated": 0, "note": null}
+{"N": 6172, "v": 1543, "fam": "k4", "enumerated": 6, "gates": {"alive (B capped)": 4, "not run": 2}, "estimated": 0, "note": null}
+{"N": 6236, "v": 1559, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6236, "v": 1559, "fam": "b1", "enumerated": 43, "gates": {"alive (B capped)": 5, "B dead": 4, "A dead": 15, "not run": 3, "alive (B pass)": 16}, "estimated": 0, "note": null}
+{"N": 6236, "v": 1559, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6268, "v": 1567, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6268, "v": 1567, "fam": "b1", "enumerated": 35, "gates": {"alive (B capped)": 22, "B dead": 3, "not run": 4, "alive (B pass)": 6}, "estimated": 0, "note": null}
+{"N": 6268, "v": 1567, "fam": "k4", "enumerated": 29, "gates": {"alive (B capped)": 9, "A dead": 8, "alive (B pass)": 8, "not run": 2, "B dead": 2}, "estimated": 1, "note": null, "slice": "G'=Z4xZ17, q=23, s=2, f=11 U=<3> (order 16) on axis 1, r=24", "key": "[\"k4\", 1567, [4], [17], 23, 2, [[1, 16]]]", "A": true, "B": true, "row_quads": [[22, 22, 26, 68]], "stage1_log2Ny": 40.36, "stage1_log2E": 5.77, "H2": 20.0, "C2": 19.9, "E_per_y": 0.1, "log2E_tot": 5.87, "split": "L4<(1, 0),(2, 0)>", "C_S": 8.97, "H_S": 11.81, "D_def": 2.74, "h_D": 8.19, "Sstep": 3.06, "cost": 7.41, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 1, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 20.2}
+{"N": 6284, "v": 1571, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6284, "v": 1571, "fam": "b1", "enumerated": 21, "gates": {"alive (B capped)": 2, "alive (B pass)": 8, "A dead": 5, "B dead": 4, "not run": 2}, "estimated": 2, "note": null, "slice": "G'=Z157xZ2, q=5, s=2, f=2 U=<9> (order 39) on axis 0, r=30", "key": "[\"b1\", 1571, [], [157, 2], 5, 2, [[0, 39]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 62.2, "stage1_log2E": 35.56, "H2": 30.0, "C2": 60.62, "E_per_y": -30.62, "log2E_tot": 4.94, "split": "L2<(0, 1)>", "C_S": 32.19, "H_S": 24.86, "D_def": 23.29, "h_D": 5.14, "Sstep": 19.76, "cost": 43.05, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 1, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 31.1}
+{"N": 6284, "v": 1571, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6316, "v": 1579, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6316, "v": 1579, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6316, "v": 1579, "fam": "k4", "enumerated": 11, "gates": {"A dead": 11}, "estimated": 0, "note": null}
+{"N": 6332, "v": 1583, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6332, "v": 1583, "fam": "b1", "enumerated": 31, "gates": {"alive (B capped)": 5, "A dead": 12, "alive (B pass)": 9, "B dead": 4, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z113xZ2, q=7, s=3, f=2 U=<9> (order 56) on axis 0, r=24", "key": "[\"b1\", 1583, [], [113, 2], 7, 3, [[0, 56]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 32.72, "stage1_log2E": 12.22, "H2": 34.87, "C2": 97.14, "E_per_y": -62.27, "log2E_tot": -50.05, "split": "L2<(0, 1)>", "C_S": 58.19, "H_S": 30.53, "D_def": 34.61, "h_D": 4.34, "Sstep": 42.93, "cost": 77.53, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 16.4}
+{"N": 6332, "v": 1583, "fam": "k4", "enumerated": 35, "gates": {"A dead": 33, "not run": 2}, "estimated": 0, "note": null}
+{"N": 6476, "v": 1619, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6476, "v": 1619, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6476, "v": 1619, "fam": "k4", "enumerated": 32, "gates": {"A dead": 27, "B dead": 3, "not run": 2}, "estimated": 0, "note": null}
+{"N": 6652, "v": 1663, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6652, "v": 1663, "fam": "b1", "enumerated": 8, "gates": {"A dead": 6, "not run": 1, "B dead": 1}, "estimated": 0, "note": null}
+{"N": 6652, "v": 1663, "fam": "k4", "enumerated": 12, "gates": {"A dead": 12}, "estimated": 0, "note": null}
+{"N": 6668, "v": 1667, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6668, "v": 1667, "fam": "b1", "enumerated": 21, "gates": {"alive (B capped)": 14, "alive (B pass)": 6, "not run": 1}, "estimated": 0, "note": null}
+{"N": 6668, "v": 1667, "fam": "k4", "enumerated": 10, "gates": {"alive (B capped)": 10}, "estimated": 0, "note": null}
+{"N": 6852, "v": 1713, "fam": "b0", "enumerated": 10, "gates": {"A dead": 8, "alive (B pass)": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 6852, "v": 1713, "fam": "b1", "enumerated": 16, "gates": {"A dead": 16}, "estimated": 0, "note": null}
+{"N": 6876, "v": 1719, "fam": "b0", "enumerated": 21, "gates": {"A dead": 9, "alive (B pass)": 7, "B dead": 2, "not run": 3}, "estimated": 0, "note": null}
+{"N": 6876, "v": 1719, "fam": "b1", "enumerated": 8, "gates": {"A dead": 6, "not run": 2}, "estimated": 0, "note": null}
+{"N": 6876, "v": 1719, "fam": "k4", "enumerated": 18, "gates": {"alive (B capped)": 16, "not run": 2}, "estimated": 0, "note": null}
+{"N": 6988, "v": 1747, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 6988, "v": 1747, "fam": "b1", "enumerated": 45, "gates": {"A dead": 23, "alive (B capped)": 2, "alive (B pass)": 10, "B dead": 5, "not run": 5}, "estimated": 0, "note": null}
+{"N": 6988, "v": 1747, "fam": "k4", "enumerated": 50, "gates": {"A dead": 41, "not run": 8, "alive (B pass)": 1}, "estimated": 0, "note": null}
+{"N": 7132, "v": 1783, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7132, "v": 1783, "fam": "b1", "enumerated": 12, "gates": {"alive (B capped)": 9, "alive (B pass)": 3}, "estimated": 0, "note": null}
+{"N": 7132, "v": 1783, "fam": "k4", "enumerated": 37, "gates": {"alive (B capped)": 4, "A dead": 26, "not run": 4, "B dead": 2, "alive (B pass)": 1}, "estimated": 0, "note": null}
+{"N": 7148, "v": 1787, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7148, "v": 1787, "fam": "b1", "enumerated": 12, "gates": {"alive (B capped)": 1, "A dead": 5, "alive (B pass)": 5, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z47xZ2, q=19, s=6, f=3 U=<5> (order 46) on axis 0, r=28", "key": "[\"b1\", 1787, [], [47, 2], 19, 6, [[0, 46]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 17.25, "stage1_log2E": -Infinity, "H2": 38.09, "C2": 49.09, "E_per_y": -11.0, "log2E_tot": null, "split": "L2<(0, 1)>", "C_S": 30.05, "H_S": 32.55, "D_def": 13.5, "h_D": 5.54, "Sstep": 13.78, "cost": 27.28, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 8.6}
+{"N": 7148, "v": 1787, "fam": "k4", "enumerated": 8, "gates": {"A dead": 8}, "estimated": 0, "note": null}
+{"N": 7180, "v": 1795, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7180, "v": 1795, "fam": "b1", "enumerated": 16, "gates": {"alive (B capped)": 8, "alive (B pass)": 7, "not run": 1}, "estimated": 0, "note": null}
+{"N": 7180, "v": 1795, "fam": "k4", "enumerated": 4, "gates": {"alive (B capped)": 4}, "estimated": 0, "note": null}
+{"N": 7324, "v": 1831, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7324, "v": 1831, "fam": "b1", "enumerated": 31, "gates": {"alive (B capped)": 14, "alive (B pass)": 5, "B dead": 1, "A dead": 9, "not run": 2}, "estimated": 0, "note": null}
+{"N": 7324, "v": 1831, "fam": "k4", "enumerated": 17, "gates": {"A dead": 14, "not run": 3}, "estimated": 0, "note": null}
+{"N": 7388, "v": 1847, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7388, "v": 1847, "fam": "b1", "enumerated": 44, "gates": {"alive (B capped)": 7, "alive (B pass)": 12, "A dead": 15, "not run": 5, "B dead": 5}, "estimated": 1, "note": null, "slice": "G'=Z71xZ2, q=13, s=4, f=3 U=<2> (order 35) on axis 0, r=30", "key": "[\"b1\", 1847, [], [71, 2], 13, 4, [[0, 35]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 30.03, "stage1_log2E": 13.66, "H2": 41.85, "C2": 61.46, "E_per_y": -19.61, "log2E_tot": -5.95, "split": "L2<(0, 1)>", "C_S": 36.36, "H_S": 36.01, "D_def": 19.26, "h_D": 5.84, "Sstep": 18.35, "cost": 37.62, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 15.0}
+{"N": 7388, "v": 1847, "fam": "k4", "enumerated": 12, "gates": {"A dead": 11, "not run": 1}, "estimated": 0, "note": null}
+{"N": 7484, "v": 1871, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7484, "v": 1871, "fam": "b1", "enumerated": 10, "gates": {"alive (B capped)": 8, "alive (B pass)": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 7484, "v": 1871, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7516, "v": 1879, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7516, "v": 1879, "fam": "b1", "enumerated": 14, "gates": {"A dead": 10, "not run": 2, "B dead": 2}, "estimated": 0, "note": null}
+{"N": 7516, "v": 1879, "fam": "k4", "enumerated": 50, "gates": {"alive (B capped)": 8, "A dead": 40, "not run": 2}, "estimated": 0, "note": null}
+{"N": 7572, "v": 1893, "fam": "b0", "enumerated": 21, "gates": {"A dead": 17, "not run": 4}, "estimated": 0, "note": null}
+{"N": 7572, "v": 1893, "fam": "b1", "enumerated": 44, "gates": {"alive (B capped)": 12, "alive (B pass)": 22, "A dead": 10}, "estimated": 2, "note": null, "slice": "G'=Z11xZ2xZ2, q=43, s=2, f=21 U=<2> (order 10) on axis 0, r=24", "key": "[\"b1\", 1893, [], [11, 2, 2], 43, 2, [[0, 10]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 30.97, "stage1_log2E": -31.92, "H2": 28.0, "C2": 22.54, "E_per_y": 5.46, "log2E_tot": -26.46, "split": "L2<(0, 1, 0)>", "C_S": 16.34, "H_S": 22.71, "D_def": 0.91, "h_D": 5.29, "Sstep": 4.99, "cost": 6.15, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 15.5}
+{"N": 7628, "v": 1907, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7628, "v": 1907, "fam": "b1", "enumerated": 6, "gates": {"A dead": 5, "not run": 1}, "estimated": 0, "note": null}
+{"N": 7628, "v": 1907, "fam": "k4", "enumerated": 24, "gates": {"alive (B capped)": 21, "not run": 3}, "estimated": 0, "note": null}
+{"N": 7716, "v": 1929, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7716, "v": 1929, "fam": "b1", "enumerated": 74, "gates": {"A dead": 48, "alive (B pass)": 5, "B dead": 14, "not run": 7}, "estimated": 0, "note": null}
+{"N": 7876, "v": 1969, "fam": "b0", "enumerated": 1, "gates": {"A dead": 1}, "estimated": 0, "note": null}
+{"N": 7876, "v": 1969, "fam": "b1", "enumerated": 51, "gates": {"A dead": 31, "alive (B capped)": 14, "not run": 6}, "estimated": 0, "note": null}
+{"N": 7916, "v": 1979, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7916, "v": 1979, "fam": "b1", "enumerated": 20, "gates": {"alive (B capped)": 3, "A dead": 6, "alive (B pass)": 10, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z23xZ2, q=43, s=6, f=7 U=<5> (order 22) on axis 0, r=28", "key": "[\"b1\", 1979, [], [23, 2], 43, 6, [[0, 22]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 16.11, "stage1_log2E": -1.77, "H2": 51.88, "C2": 52.68, "E_per_y": -0.8, "log2E_tot": -2.57, "split": "L2<(0, 1)>", "C_S": 32.11, "H_S": 44.8, "D_def": 13.49, "h_D": 7.08, "Sstep": 9.71, "cost": 23.22, "regime": {"D_def": true, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 8.1}
+{"N": 7916, "v": 1979, "fam": "k4", "enumerated": 40, "gates": {"alive (B capped)": 21, "alive (B pass)": 7, "not run": 6, "A dead": 6}, "estimated": 0, "note": null}
+{"N": 7924, "v": 1981, "fam": "b0", "enumerated": 7, "gates": {"alive (B capped)": 1, "alive (B pass)": 2, "A dead": 3, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z283, q=7, s=3, f=2 U=<4> (order 47) on axis 0, r=28", "key": "[\"b0\", 1981, [], [283], 7, 3, [[0, 47]]]", "A": true, "B": true, "row_quads": [[1, 1, 1, 89]], "stage1_log2Ny": 48.34, "stage1_log2E": 34.98, "H2": 38.04, "C2": 68.54, "E_per_y": -30.5, "log2E_tot": 4.48, "split": "G'", "C_S": 39.78, "H_S": 49.71, "D_def": 40.43, "h_D": -11.67, "Sstep": 14.93, "cost": 55.35, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 1, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 24.2}
+{"N": 7924, "v": 1981, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7948, "v": 1987, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 7948, "v": 1987, "fam": "b1", "enumerated": 15, "gates": {"A dead": 12, "not run": 2, "B dead": 1}, "estimated": 0, "note": null}
+{"N": 7948, "v": 1987, "fam": "k4", "enumerated": 55, "gates": {"alive (B capped)": 35, "A dead": 16, "not run": 4}, "estimated": 0, "note": null}
+{"N": 8108, "v": 2027, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8108, "v": 2027, "fam": "b1", "enumerated": 5, "gates": {"A dead": 3, "alive (B pass)": 2}, "estimated": 0, "note": null}
+{"N": 8108, "v": 2027, "fam": "k4", "enumerated": 15, "gates": {"alive (B capped)": 11, "not run": 2, "alive (B pass)": 2}, "estimated": 0, "note": null}
+{"N": 8156, "v": 2039, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8156, "v": 2039, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8156, "v": 2039, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8252, "v": 2063, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8252, "v": 2063, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8252, "v": 2063, "fam": "k4", "enumerated": 34, "gates": {"A dead": 32, "not run": 2}, "estimated": 0, "note": null}
+{"N": 8332, "v": 2083, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8332, "v": 2083, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8332, "v": 2083, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8348, "v": 2087, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8348, "v": 2087, "fam": "b1", "enumerated": 9, "gates": {"A dead": 6, "alive (B pass)": 2, "not run": 1}, "estimated": 1, "note": null, "slice": "G'=Z149xZ2, q=7, s=3, f=2 U=<4> (order 74) on axis 0, r=24", "key": "[\"b1\", 2087, [], [149, 2], 7, 3, [[0, 74]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 32.72, "stage1_log2E": 11.8, "H2": 34.87, "C2": 101.6, "E_per_y": -66.73, "log2E_tot": -54.93, "split": "L2<(0, 1)>", "C_S": 60.61, "H_S": 30.53, "D_def": 36.65, "h_D": 4.34, "Sstep": 45.35, "cost": 81.99, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 16.4}
+{"N": 8348, "v": 2087, "fam": "k4", "enumerated": 19, "gates": {"A dead": 18, "not run": 1}, "estimated": 0, "note": null}
+{"N": 8380, "v": 2095, "fam": "b0", "enumerated": 15, "gates": {"alive (B capped)": 2, "A dead": 10, "alive (B pass)": 3}, "estimated": 0, "note": null}
+{"N": 8380, "v": 2095, "fam": "b1", "enumerated": 7, "gates": {"A dead": 4, "alive (B pass)": 1, "B dead": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 8380, "v": 2095, "fam": "k4", "enumerated": 11, "gates": {"A dead": 10, "not run": 1}, "estimated": 0, "note": null}
+{"N": 8396, "v": 2099, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8396, "v": 2099, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8396, "v": 2099, "fam": "k4", "enumerated": 24, "gates": {"A dead": 18, "not run": 3, "B dead": 3}, "estimated": 0, "note": null}
+{"N": 8684, "v": 2171, "fam": "b0", "enumerated": 1, "gates": {"A dead": 1}, "estimated": 0, "note": null}
+{"N": 8684, "v": 2171, "fam": "b1", "enumerated": 21, "gates": {"alive (B capped)": 14, "alive (B pass)": 1, "not run": 2, "A dead": 4}, "estimated": 0, "note": null}
+{"N": 8684, "v": 2171, "fam": "k4", "enumerated": 23, "gates": {"A dead": 20, "not run": 3}, "estimated": 0, "note": null}
+{"N": 8812, "v": 2203, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8812, "v": 2203, "fam": "b1", "enumerated": 3, "gates": {"A dead": 3}, "estimated": 0, "note": null}
+{"N": 8812, "v": 2203, "fam": "k4", "enumerated": 6, "gates": {"alive (B capped)": 6}, "estimated": 0, "note": null}
+{"N": 8828, "v": 2207, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 8828, "v": 2207, "fam": "b1", "enumerated": 4, "gates": {"A dead": 4}, "estimated": 0, "note": null}
+{"N": 8828, "v": 2207, "fam": "k4", "enumerated": 53, "gates": {"alive (B capped)": 14, "A dead": 28, "not run": 2, "alive (B pass)": 9}, "estimated": 0, "note": null}
+{"N": 8860, "v": 2215, "fam": "b0", "enumerated": 15, "gates": {"alive (B capped)": 3, "A dead": 10, "not run": 1, "alive (B pass)": 1}, "estimated": 0, "note": null}
+{"N": 8860, "v": 2215, "fam": "b1", "enumerated": 39, "gates": {"A dead": 21, "alive (B capped)": 6, "not run": 7, "alive (B pass)": 5}, "estimated": 0, "note": null}
+{"N": 8860, "v": 2215, "fam": "k4", "enumerated": 46, "gates": {"alive (B capped)": 7, "A dead": 38, "not run": 1}, "estimated": 0, "note": null}
+{"N": 9004, "v": 2251, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9004, "v": 2251, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9004, "v": 2251, "fam": "k4", "enumerated": 21, "gates": {"A dead": 20, "not run": 1}, "estimated": 0, "note": null}
+{"N": 9148, "v": 2287, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9148, "v": 2287, "fam": "b1", "enumerated": 43, "gates": {"A dead": 36, "not run": 4, "alive (B pass)": 3}, "estimated": 0, "note": null}
+{"N": 9148, "v": 2287, "fam": "k4", "enumerated": 19, "gates": {"A dead": 16, "not run": 3}, "estimated": 0, "note": null}
+{"N": 9260, "v": 2315, "fam": "b0", "enumerated": 28, "gates": {"alive (B capped)": 4, "alive (B pass)": 7, "A dead": 15, "not run": 2}, "estimated": 0, "note": null}
+{"N": 9260, "v": 2315, "fam": "b1", "enumerated": 36, "gates": {"alive (B capped)": 6, "alive (B pass)": 18, "A dead": 10, "not run": 2}, "estimated": 1, "note": null, "slice": "G'=Z89xZ2, q=13, s=6, f=2 U=<3> (order 88) on axis 0, r=28", "key": "[\"b1\", 2315, [], [89, 2], 13, 6, [[0, 88]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 17.13, "stage1_log2E": -Infinity, "H2": 65.83, "C2": 133.11, "E_per_y": -67.28, "log2E_tot": null, "split": "L2<(0, 1)>", "C_S": 80.15, "H_S": 55.12, "D_def": 42.25, "h_D": 10.71, "Sstep": 52.59, "cost": 94.84, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 8.6}
+{"N": 9260, "v": 2315, "fam": "k4", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9308, "v": 2327, "fam": "b0", "enumerated": 1, "gates": {"A dead": 1}, "estimated": 0, "note": null}
+{"N": 9308, "v": 2327, "fam": "b1", "enumerated": 1, "gates": {"A dead": 1}, "estimated": 0, "note": null}
+{"N": 9308, "v": 2327, "fam": "k4", "enumerated": 18, "gates": {"A dead": 18}, "estimated": 0, "note": null}
+{"N": 9356, "v": 2339, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9356, "v": 2339, "fam": "b1", "enumerated": 3, "gates": {"alive (B pass)": 1, "A dead": 2}, "estimated": 1, "note": null, "slice": "G'=Z167xZ2, q=7, s=3, f=2 U=<2> (order 83) on axis 0, r=24", "key": "[\"b1\", 2339, [], [167, 2], 7, 3, [[0, 83]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 32.72, "stage1_log2E": 16.77, "H2": 34.87, "C2": 90.28, "E_per_y": -55.41, "log2E_tot": -38.64, "split": "L2<(0, 1)>", "C_S": 51.81, "H_S": 30.53, "D_def": 34.13, "h_D": 4.34, "Sstep": 36.55, "cost": 70.67, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 16.4}
+{"N": 9356, "v": 2339, "fam": "k4", "enumerated": 63, "gates": {"A dead": 51, "not run": 7, "alive (B capped)": 5}, "estimated": 0, "note": null}
+{"N": 9388, "v": 2347, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9388, "v": 2347, "fam": "b1", "enumerated": 10, "gates": {"alive (B capped)": 5, "A dead": 1, "alive (B pass)": 2, "B dead": 1, "not run": 1}, "estimated": 0, "note": null}
+{"N": 9388, "v": 2347, "fam": "k4", "enumerated": 5, "gates": {"A dead": 5}, "estimated": 0, "note": null}
+{"N": 9484, "v": 2371, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9484, "v": 2371, "fam": "b1", "enumerated": 18, "gates": {"alive (B capped)": 4, "alive (B pass)": 3, "A dead": 10, "not run": 1}, "estimated": 0, "note": null}
+{"N": 9484, "v": 2371, "fam": "k4", "enumerated": 59, "gates": {"A dead": 52, "alive (B capped)": 2, "not run": 5}, "estimated": 0, "note": null}
+{"N": 9532, "v": 2383, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9532, "v": 2383, "fam": "b1", "enumerated": 16, "gates": {"A dead": 10, "alive (B pass)": 1, "B dead": 2, "not run": 3}, "estimated": 0, "note": null}
+{"N": 9532, "v": 2383, "fam": "k4", "enumerated": 6, "gates": {"alive (B capped)": 6}, "estimated": 0, "note": null}
+{"N": 9596, "v": 2399, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9596, "v": 2399, "fam": "b1", "enumerated": 35, "gates": {"alive (B capped)": 4, "A dead": 16, "not run": 4, "alive (B pass)": 9, "B dead": 2}, "estimated": 1, "note": null, "slice": "G'=Z109xZ2, q=11, s=5, f=2 U=<6> (order 108) on axis 0, r=24", "key": "[\"b1\", 2399, [], [109, 2], 11, 5, [[0, 108]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 16.17, "stage1_log2E": -Infinity, "H2": 51.15, "C2": 108.57, "E_per_y": -57.42, "log2E_tot": null, "split": "L2<(0, 1)>", "C_S": 65.71, "H_S": 43.23, "D_def": 34.94, "h_D": 7.92, "Sstep": 44.09, "cost": 79.04, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 8.1}
+{"N": 9596, "v": 2399, "fam": "k4", "enumerated": 10, "gates": {"A dead": 9, "not run": 1}, "estimated": 0, "note": null}
+{"N": 9692, "v": 2423, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9692, "v": 2423, "fam": "b1", "enumerated": 8, "gates": {"A dead": 6, "alive (B pass)": 2}, "estimated": 1, "note": null, "slice": "G'=Z173xZ2, q=7, s=3, f=2 U=<4> (order 86) on axis 0, r=24", "key": "[\"b1\", 2423, [], [173, 2], 7, 3, [[0, 86]]]", "A": true, "B": true, "row_quads": [[0, 0, 0, 2]], "stage1_log2Ny": 32.72, "stage1_log2E": 11.57, "H2": 34.87, "C2": 103.98, "E_per_y": -69.11, "log2E_tot": -57.54, "split": "L2<(0, 1)>", "C_S": 61.9, "H_S": 30.53, "D_def": 37.74, "h_D": 4.34, "Sstep": 46.64, "cost": 84.37, "regime": {"D_def": false, "h_D": true, "E_per_y": false, "C2": true}, "in_regime": false, "n_in_regime": 0, "n_Etot_pos": 0, "next_gate": "exact stage 1 (2+2 join over the lag-0/row-feasible y lists)", "next_gate_log2cost": 16.4}
+{"N": 9692, "v": 2423, "fam": "k4", "enumerated": 8, "gates": {"alive (B capped)": 4, "alive (B pass)": 2, "A dead": 2}, "estimated": 0, "note": null}
+{"N": 9716, "v": 2429, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9716, "v": 2429, "fam": "b1", "enumerated": 2, "gates": {"A dead": 2}, "estimated": 0, "note": null}
+{"N": 9836, "v": 2459, "fam": "b0", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9836, "v": 2459, "fam": "b1", "enumerated": 0, "gates": {}, "estimated": 0, "note": "no GP slice with 24 <= r <= 160"}
+{"N": 9836, "v": 2459, "fam": "k4", "enumerated": 17, "gates": {"A dead": 13, "not run": 4}, "estimated": 0, "note": null}
+{"N": 2396, "v": 599, "fam": "b0direct", "slices_screened": 2, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 2876, "v": 719, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 2956, "v": 739, "fam": "b0direct", "slices_screened": 3, "slice": "d=9 (3-cycle), orbits=83", "n_bits": 209.5, "log2E": 120.5, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 3004, "v": 751, "fam": "b0direct", "slices_screened": 3, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 3452, "v": 863, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 3628, "v": 907, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 3788, "v": 947, "fam": "b0direct", "slices_screened": 2, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 3884, "v": 971, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4076, "v": 1019, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4124, "v": 1031, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4156, "v": 1039, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4348, "v": 1087, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4412, "v": 1103, "fam": "b0direct", "slices_screened": 1, "slice": "d=19 (id), orbits=59", "n_bits": 157.5, "log2E": 78.5, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4748, "v": 1187, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 4892, "v": 1223, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5036, "v": 1259, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5132, "v": 1283, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5164, "v": 1291, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5276, "v": 1319, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5308, "v": 1327, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5468, "v": 1367, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5692, "v": 1423, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5708, "v": 1427, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5756, "v": 1439, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5804, "v": 1451, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5884, "v": 1471, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5948, "v": 1487, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 5996, "v": 1499, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6172, "v": 1543, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6236, "v": 1559, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6268, "v": 1567, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6284, "v": 1571, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6316, "v": 1579, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6332, "v": 1583, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6476, "v": 1619, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6652, "v": 1663, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6668, "v": 1667, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 6988, "v": 1747, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7132, "v": 1783, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7148, "v": 1787, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7324, "v": 1831, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7388, "v": 1847, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7484, "v": 1871, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7516, "v": 1879, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7628, "v": 1907, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7916, "v": 1979, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 7948, "v": 1987, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8108, "v": 2027, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8156, "v": 2039, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8252, "v": 2063, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8332, "v": 2083, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8348, "v": 2087, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8396, "v": 2099, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8812, "v": 2203, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 8828, "v": 2207, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9004, "v": 2251, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9148, "v": 2287, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9356, "v": 2339, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9388, "v": 2347, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9484, "v": 2371, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9532, "v": 2383, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9596, "v": 2399, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9692, "v": 2423, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 9836, "v": 2459, "fam": "b0direct", "slices_screened": 0, "slice": null, "n_bits": null, "log2E": null, "note": "unstaged multiplier slice; 883 was built at n = 111.9 (k-tree), 919 at 91.1 (3-cycle)"}
+{"N": 2676, "v": 669, "fam": "cw", "routes": [{"t": 223, "w": 3, "T_slices": 2, "best_T": {"k": 3, "orbits": 75, "n_bits": 156.8, "log2E": 68.2}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 4460, "v": 1115, "fam": "cw", "routes": [{"t": 223, "w": 5, "T_slices": 2, "best_T": {"k": 3, "orbits": 75, "n_bits": 156.8, "log2E": 68.2}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 4676, "v": 1169, "fam": "cw", "routes": [{"t": 167, "w": 7, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 4792, "v": 1198, "fam": "cw", "routes": [{"t": 599, "w": 2, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 5028, "v": 1257, "fam": "cw", "routes": [{"t": 419, "w": 3, "T_slices": 2, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 5748, "v": 1437, "fam": "cw", "routes": [{"t": 479, "w": 3, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 5752, "v": 1438, "fam": "cw", "routes": [{"t": 719, "w": 2, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 5892, "v": 1473, "fam": "cw", "routes": [{"t": 491, "w": 3, "T_slices": 4, "best_T": {"k": 7, "orbits": 71, "n_bits": 169.1, "log2E": 43.9}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 6852, "v": 1713, "fam": "cw", "routes": [{"t": 571, "w": 3, "T_slices": 6, "best_T": {"k": 5, "orbits": 115, "n_bits": 280.5, "log2E": 64.5}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 6876, "v": 1719, "fam": "cw", "routes": [{"t": 191, "w": 9, "T_slices": 2, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 7180, "v": 1795, "fam": "cw", "routes": [{"t": 359, "w": 5, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 7572, "v": 1893, "fam": "cw", "routes": [{"t": 631, "w": 3, "T_slices": 10, "best_T": {"k": 7, "orbits": 91, "n_bits": 225.2, "log2E": 47.8}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 7716, "v": 1929, "fam": "cw", "routes": [{"t": 643, "w": 3, "T_slices": 2, "best_T": {"k": 3, "orbits": 215, "n_bits": 534.2, "log2E": 110.8}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 7876, "v": 1969, "fam": "cw", "routes": [{"t": 179, "w": 11, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 7924, "v": 1981, "fam": "cw", "routes": [{"t": 283, "w": 7, "T_slices": 2, "best_T": {"k": 3, "orbits": 95, "n_bits": 207.1, "log2E": 77.9}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 8380, "v": 2095, "fam": "cw", "routes": [{"t": 419, "w": 5, "T_slices": 2, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 8684, "v": 2171, "fam": "cw", "routes": [{"t": 167, "w": 13, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 8860, "v": 2215, "fam": "cw", "routes": [{"t": 443, "w": 5, "T_slices": 2, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 9260, "v": 2315, "fam": "cw", "routes": [{"t": 463, "w": 5, "T_slices": 6, "best_T": {"k": 11, "orbits": 43, "n_bits": 101.5, "log2E": 27.5}}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 9308, "v": 2327, "fam": "cw", "routes": [{"t": 179, "w": 13, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 9716, "v": 2429, "fam": "cw", "routes": [{"t": 347, "w": 7, "T_slices": 0, "best_T": null}], "note": "T(t) with Williamson-type of order w = v/t; the split with a large Williamson order is not screened"}
+{"N": 2676, "v": 669, "fam": "zq", "zq_family": "z3all", "best_alive": "S6 r118", "log2E_Q": 111.41, "alive": 9, "status": "N37/N6/N3/N2 over list or time caps", "source": "report/zq_census_answer.md section 3"}
+{"N": 4460, "v": 1115, "fam": "zq", "zq_family": "z5all", "best_alive": "S18 r90", "log2E_Q": 1.58, "alive": 3, "status": "N74, N37, N6, N3, N2 over caps; CP-SAT 60 s undecided", "source": "report/zq_census_answer.md section 3"}
+{"N": 4676, "v": 1169, "fam": "zq", "zq_family": "z7all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 5028, "v": 1257, "fam": "zq", "zq_family": "z3all", "best_alive": "S45 r54", "log2E_Q": -31.43, "alive": 2, "status": "alive, estimate < 0", "source": "report/zq_census_answer.md section 3"}
+{"N": 5748, "v": 1437, "fam": "zq", "zq_family": "z3all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 5892, "v": 1473, "fam": "zq", "zq_family": "z3all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [P, M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 6852, "v": 1713, "fam": "zq", "zq_family": "z3all", "best_alive": "S36 r90", "log2E_Q": -108.76, "alive": 9, "status": "alive, estimate < 0", "source": "report/zq_census_answer.md section 3"}
+{"N": 6876, "v": 1719, "fam": "zq", "zq_family": "z3all", "best_alive": "S30 r105", "log2E_Q": -31.96, "alive": 361, "status": "alive, estimates < 0 (z9all, z9x3all: no finite estimate)", "source": "report/zq_census_answer.md section 3"}
+{"N": 7180, "v": 1795, "fam": "zq", "zq_family": "z5all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 7572, "v": 1893, "fam": "zq", "zq_family": "z3all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [P, M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 7716, "v": 1929, "fam": "zq", "zq_family": "z3all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [P, M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 7876, "v": 1969, "fam": "zq", "zq_family": "z11all", "best_alive": "S22 r110", "log2E_Q": 23.73, "alive": 1, "status": "Q-level join capped; CP-SAT 600 s undecided", "source": "report/zq_census_answer.md section 3"}
+{"N": 7924, "v": 1981, "fam": "zq", "zq_family": "z7all", "best_alive": "S69 r54", "log2E_Q": -36.95, "alive": 3, "status": "alive, estimate < 0", "source": "report/zq_census_answer.md section 3"}
+{"N": 8380, "v": 2095, "fam": "zq", "zq_family": "z5all", "best_alive": "S45 r90", "log2E_Q": -68.86, "alive": 3, "status": "alive, estimate < 0", "source": "report/zq_census_answer.md section 3"}
+{"N": 8684, "v": 2171, "fam": "zq", "zq_family": "z13all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [M]", "source": "report/zq_census_answer.md section 3"}
+{"N": 8860, "v": 2215, "fam": "zq", "zq_family": "z5all", "best_alive": "S48 r90", "log2E_Q": -115.09, "alive": 6, "status": "alive, estimate < 0", "source": "report/zq_census_answer.md section 3"}
+{"N": 9260, "v": 2315, "fam": "zq", "zq_family": "z5all", "best_alive": "S60 r108", "log2E_Q": null, "alive": 3, "status": "alive, no finite estimate", "source": "report/zq_census_answer.md section 3"}
+{"N": 9308, "v": 2327, "fam": "zq", "zq_family": "z13all", "best_alive": "S33 r90", "log2E_Q": 34.95, "alive": 1, "status": "N89, N2 undecided at 600 s CP-SAT", "source": "report/zq_census_answer.md section 3"}
+{"N": 9716, "v": 2429, "fam": "zq", "zq_family": "z7all", "best_alive": null, "log2E_Q": null, "alive": 0, "status": "closed [M]", "source": "report/zq_census_answer.md section 3"}
