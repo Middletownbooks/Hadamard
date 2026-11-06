@@ -1,0 +1,2 @@
+{"key": ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "phase": "decision"}
+{"key": ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "planted": [{"T0": 3944, "R": 4748, "B": null}, {"T0": 4304, "R": 4748, "B": null}], "phase": "final"}

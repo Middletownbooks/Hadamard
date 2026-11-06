@@ -9,20 +9,46 @@ Date: 2026-11-06. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_
 ## 0. Bottom line
 
 <!-- BOTTOM -->
-1. **4892: the slice `["b1", 1223, [], [47, 2], 13, 4, [[0, 23]]]` has no core [M].** No H(4892) comes out of it.
-   - **Stage 1 is complete and confirmed** by two enumerators that share no code. Each finds **384 solutions up to
-     block order and block sign**, which is **147,456 ordered quadruples**. The two sets agree as sets of explicit
-     (y₀, y₁, y₂, y₃) (§1).
-   - **Stage 2 is exactly empty for all 384 classes** (§2). Every stage-2 lift already fails at the ℤ₁₃
-     compression, before the full 15-class join. Two independent codes show this:
+1. **4892: the slice `["b1", 1223, [], [47, 2], 13, 4, [[0, 23]]]` has no core [M]. No H(4892) was built.**
+   - **Stage 1 is complete and confirmed by two enumerators that share no code.** Each finds **384 classes up to block
+     order and block sign**, which is **147,456 ordered quadruples**. The two sets agree as sets of explicit
+     (y₀, y₁, y₂, y₃) (§1). The 384 found on 2026-11-06 was the complete count.
+   - **Stage 2 is exactly empty for all 384 classes** (§2). Every lift already fails at the ℤ₁₃ compression, which is
+     two equations. Three independent codes show this:
      - the bucketed stage-2 join (`theory/h4892_stage2_run.py`): 0 matched S-buckets for every y;
-     - a direct check on explicit length-13 compressed sequences (`theory/h4892_z13check.py`): 0 of 384.
-   - Planted controls were recovered in every case: stage 1 4/4 (and method B's own plants, §1.3); the stage-2 join
-     4/4 in production (6/6 in the trial run); the ℤ₁₃ check 6/6.
-2. **The measured fibre was larger than the estimate.** Each y has block lists of sizes 9216, 20736, 20736 and 576.
-   That makes the fibre 2^51.0 per y against the screen's 2^45.9 [E], so the plain 2+2 join would have cost
-   2^36 in all. The ℤ₁₃ S-level bucketing made the real cost about 80 s for all 384 y.
-3. **The 4892 neighbourhood** (§3) and **the remaining cheap and tier-0 slices** (§4): table in §4.
+     - the explicit length-13 check (`theory/h4892_z13check.py`): 0 of 384;
+     - the reduction mod 23 alone (`theory/h4892_zqmod.py`): 0 of 384.
+   - Planted controls:
+     - stage 1: 4/4 for my enumerator, and 4/4 for method B (the run that had not finished in 900 s);
+     - stage 2: 4/4 in production and 6/6 in the trial;
+     - the ℤ₁₃ check: 6/6.
+   - **Calibration.** The measured fibre is 2^51.0 per y, against 2^45.9 [E]. The real-y re-read gives E per y =
+     −24.4 [E], against −12.5 for a synthetic y. The screen expected 2^3.3–2^4.8 S-level solutions per y; the real
+     number is 0.
+2. **The 4892 neighbourhood** (§3), on the same group with q = 13, all (U, s) with U of order 23 or 46:
+   - **empty [M]** at s = 2, 3, 4 and 6, and at s = 12 for U₄₆;
+   - one of them, **(U₂₃, s = 6), has a non-empty stage 1**: 58,048 classes by two enumerators, sets equal. Its
+     estimated cost is 2^136 per core [E], yet it is **decided empty at the ℤ₁₃ compression**: a closed-form energy
+     bound kills 47,232 classes and an exact window filter kills the other 10,816 [M];
+   - with q = 47 and U₁₂: **empty [M]**;
+   - **undecided**: (U₂, s = 2), (q = 47, U₆), and (U₂₃, s = 12), which has f = 1 and lies outside the screen's menu.
+3. **Second part** (§4): 20 keys run.
+   - **Empty by two methods [M]:** 3004 (k4, so a core would have completed by Theorem B), 3788 (s = 14), 5036
+     (s = 12), 5692, 5708, 7180 and 9260.
+   - **7572 (tier 0) has a non-empty stage 1**: 1360 classes by two methods, sets equal. It is **empty [P + M]**: in
+     every class the lag-0 energy of the ℤ₄₃ compression is forced above its target (7564 > 7396).
+   - **Empty by one method [M]:** 5164 (k4; B over 1.2·10⁷ blocks, with no plant run).
+   - **Undecided** (a cap or timeout, never a zero): 5892, 7916, 4792, 4156 and 4748.
+   - Tool fixes, each with a regression check:
+     - `b_setup` accepts `[axis, order, gen]` U keys (5892);
+     - `planted_y` was invalid for odd s;
+     - a finished decision is now printed before the log is opened;
+     - `--aslimit` sets the address-space cap.
+4. **Across the open orders, nothing new is in reach.**
+   - Every slice decided in this session is empty, including the three whose stage 1 was non-empty.
+   - In all three the obstruction sits at the coarsest stage-2 level, the ℤ_q compression. Two of them fall to a
+     one-line energy identity, Σ_k [w_k(0)² + f Σ_j W_kj²] = 4 + 4(q − 1)|G′|.
+   - §5 proposes this as a gate for every staged slice.
 <!-- /BOTTOM -->
 
 ---
@@ -187,7 +213,7 @@ The control (23, 4) is reproduced by G and by Y: 384 classes and 147,456 ordered
 | 23 | 6 | 42 | **58,048 classes** (Y, planted 2/2; G `--canonical`; the two sets are equal, `logs/h4892/stage1_s6_compare.json`; B timed out at 3600 s, and so did A) | **0 at the ℤ₁₃ compression [M]** (below) | **empty [M]** |
 | 46 | 12 | 52 | same stage-1 problem as (46, 6) (identical letters and T₁): 0 | – | **empty [M]** |
 | 23 | 12 | 78 | same stage-1 problem as (23, 6): 58,048 classes | f = 1, so α is not fixed by y; the energy bound kills none | **undecided**; f = 1 is outside the screen's menu |
-| 2 | 2 | 144 | <!-- S2U2 -->queued<!-- /S2U2 --> | – | – |
+| 2 | 2 | 144 | A and B time out at 3600 s each | – | **undecided** |
 
 **The ℤ₁₃ compression decides (23, 6) [M].** The real-y re-read [E] (`theory/h4892_reread.py`,
 `logs/h4892/reread.jsonl`, 5 real y) gives:
@@ -216,7 +242,7 @@ decide it exactly anyway:
 | U on ℤ₁₃ | r | stage 1 | verdict |
 |---|---|---|---|
 | order 12 | 96 | 0 (B, planted 2/2; Y, planted 2/2; A ✗ mem) | **empty [M]** |
-| order 6 | 144 | <!-- Q47U6 -->running (A, B); Y capped at 3·10⁶ partial blocks<!-- /Q47U6 --> | – |
+| order 6 | 144 | A and B time out at 3600 s each; Y capped at 3·10⁶ partial blocks | **undecided** |
 
 **The other v = 1223 rows of the screen.**
 - The four other b1 keys, with q = 47, s = 2 and U of order 4, 3, 2 or 1, all died at screen A.
@@ -255,6 +281,30 @@ decide it exactly anyway:
 - Every slice decided in `logs/open_screen/` has even s, so no earlier result is affected.
 
 <!-- TABLE2 -->
+| 4v | key | A | B | independent (h4892_stage1_any) | verdict |
+|---|---|---|---|---|---|
+| 4892 | `["b1", 1223, [], [47, 2], 13, 3, [[0, 23]]]` | 0 (7680 blocks, 8.3 s, planted 2/2) | 0 (280 blocks, 0.1 s, planted 2/2) | – | **empty [M]** (A, B; G, Y) |
+| 4892 | `["b1", 1223, [], [47, 2], 13, 6, [[0, 23]]]` | timeout 3600 s | timeout 3600 s | – | stage 1: 58,048 (Y, G; sets equal); **empty at the ℤ₁₃ compression [M]** (§3) |
+| 4892 | `["b1", 1223, [], [47, 2], 13, 6, [[0, 46]]]` | undecided: MemoryError | 0 (6 blocks, 0.0 s, planted 2/2) | – | **empty [M]** (B; G, Y) |
+| 4892 | `["b1", 1223, [], [13, 2], 47, 23, [[0, 12]]]` | undecided: MemoryError | 0 (1650 blocks, 0.2 s, planted 2/2) | – | **empty [M]** (B; Y) |
+| 4892 | `["b1", 1223, [], [13, 2], 47, 23, [[0, 6]]]` | timeout 3600 s | timeout 3600 s | – | undecided (A, B time out; Y capped) |
+| 4892 | `["b1", 1223, [], [47, 2], 13, 2, [[0, 2]]]` | timeout 3600 s | timeout 3600 s | – | undecided (A, B time out) |
+| 5892 | `["b1", 1473, [], [32, 2], 23, 2, [[0, 8, 3]]]` | timeout 3600 s | MemoryError (11 GB cap) | capped (OverflowError) | undecided (B exhausts 11 GB; Y capped) |
+| 7180 | `["b1", 1795, [], [13, 3, 2], 23, 2, [[0, 12]]]` | undecided: MemoryError | 0 (289596 blocks, 47.2 s) | 0 (160220 blocks, planted 2/2) | **empty [M]** (B; Y with planted 2/2; B's own plants cut by the 3600 s limit) |
+| 3004 | `["k4", 751, [4], [17], 11, 2, [[1, 8]]]` | undecided: MemoryError | 0 (6180 blocks, 1.6 s, planted 2/2) | 0 (3090 blocks, planted 2/2) | **empty [M]** (B, Y with normal form; planted 2/2 each) |
+| 5164 | `["k4", 1291, [4], [7, 2], 23, 2, [[1, 6]]]` | – | 0 (12383588 blocks, 1209.2 s) | capped (OverflowError) | **empty by one method [M]** (B, 1.2·10⁷ blocks; its plants cut by the limit); Y capped |
+| 7916 | `["k4", 1979, [4], [13, 2], 19, 2, [[1, 12]]]` | – | MemoryError (11 GB cap) | capped (OverflowError) | undecided (B exhausts 11 GB; Y capped) |
+| 4792 | `["b1", 1198, [], [9, 7], 19, 2, [[1, 6]]]` | – | MemoryError (11 GB cap) | capped (OverflowError) | undecided (B exhausts 11 GB; Y capped) |
+| 3788 | `["b1", 947, [], [11, 2], 43, 14, [[0, 10]]]` | – | 0 (354 blocks, 0.0 s, planted 2/2) | 0 (625 blocks, planted 2/2) | **empty [M]** (B, Y) |
+| 4156 | `["k4", 1039, [4], [7], 37, 4, [["neg", [0, 1]]]]` | – | timeout 3600 s | capped (OverflowError) | undecided (B times out; Y capped, even with the normal form) |
+| 4748 | `["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]]` | – | undecided: OverflowError | capped (OverflowError) | undecided (B at its 2·10⁷ block cap; Y capped) |
+| 5036 | `["b1", 1259, [], [17, 2], 37, 12, [[0, 16]]]` | – | 0 (142 blocks, 0.0 s, planted 2/2) | 0 (305 blocks, planted 2/2) | **empty [M]** (B, Y) |
+| 5692 | `["b1", 1423, [], [3, 3, 2], 79, 6, [["neg", [0, 1]]]]` | – | 0 (109832 blocks, 4.0 s, planted 2/2) | 0 (94234 blocks, planted 2/2) | **empty [M]** (B, Y) |
+| 5708 | `["b1", 1427, [], [23, 2], 31, 10, [[0, 22]]]` | – | 0 (94 blocks, 0.0 s, planted 2/2) | 0 (189 blocks, planted 2/2) | **empty [M]** (B, Y) |
+| 7572 | `["b1", 1893, [], [11, 2, 2], 43, 6, [[0, 10]]]` | – | 1360 (12532 blocks, 25.4 s, planted 2/2) | 1360 (114242 blocks, planted 2/2) | stage 1: 1360 (B, Y; sets equal); **empty at the ℤ₄₃ compression [P + M]** (energy) |
+| 9260 | `["b1", 2315, [], [13, 2], 89, 8, [[0, 6]]]` | – | 0 (520 blocks, 0.0 s, planted 2/2) | 0 (680 blocks, planted 2/2) | **empty [M]** (B, Y) |
+
+Notes. For the 4892 rows the independent column is in §3 (enumerators G and Y). The 7180 A,B run timed out during its planted phase, after B had decided. "Y capped" means more than 5·10⁶ partial blocks; "B exhausts 11 GB" means the run died with MemoryError under `--aslimit 11`. Every capped or timed-out entry is undecided, never a zero.
 <!-- /TABLE2 -->
 
 **7572 (v = 1893, b1, ℤ₁₁ × ℤ₂² × ℤ₄₃, s = 6, U of order 10) is the one non-empty stage 1 among them.**
@@ -271,7 +321,7 @@ decide it exactly anyway:
   - Small-modulus tests (w mod 3, …, 9; `theory/h4892_zqmod.py`) pass every class. Only the integer energy decides
     it.
 
-**k4 slices with odd |K|** (3004 and 4156): a core would have completed by Theorem B. 3004 is empty by two methods.
+**k4 slices with odd |K|** (3004 and 4156): a core would have completed by Theorem B. 3004 is empty by two methods; 4156 is undecided.
 <!-- /PART2 -->
 
 ## 5. Next computation

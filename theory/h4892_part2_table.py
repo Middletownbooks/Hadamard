@@ -43,5 +43,5 @@ for name, key in keys:
     if B is None:
         st = next((done[p_ + name]['rc'] for p_ in ('M_', 'B_', '') if p_ + name in done), None)
         B = {124: 'timeout 3600 s', 1: 'MemoryError (6 GB cap)'}.get(st, 'not reached')
-        if st == 1 and 'M_' + name in done: B = 'MemoryError (13 GB cap)'
+        if st == 1 and 'M_' + name in done: B = 'MemoryError (11 GB cap)'
     print(f"| {name.split('_')[0]} | `{key}` | {A} | {B} | {anyres(name) or '–'} |")
