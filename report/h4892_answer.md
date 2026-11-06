@@ -1,7 +1,6 @@
 # The 4892 slice decided exactly (v = 1223, b = 1), and the remaining cheap slices
 
-Date: 2026-11-06. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_h4892.md` (the prompt of commit
-2e41933). Scripts: `theory/h4892_*.py`. Logs: `logs/h4892/`. Data: `data/h4892_stage1.json`.
+Date: 2026-11-06. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_4892.md` (commit 2e41933). Scripts: `theory/h4892_*.py`. Logs: `logs/h4892/`. Data: `data/h4892_stage1.json`.
 
 **Tags.** [P] proved; [M] exact computation (script named); [E] estimate. A cap or a timeout is never a zero.
 
@@ -229,7 +228,50 @@ decide it exactly anyway:
 ## 4. Second part: the remaining cheap and tier-0 slices
 
 <!-- PART2 -->
-(being filled)
+**Methods.**
+- **A and B:** `theory/open_screen_stage1_exact.py KEY --strong --planted 2`, at 3600 s per key.
+  - Keys where method A used the whole hour (A runs before B) were rerun with `--methods B` (logs `B_*.jsonl`).
+  - Keys where B ran into the tool's 6 GB address-space cap were rerun one at a time with `--aslimit 13`
+    (`M_*.jsonl`).
+- **Second method:** `theory/h4892_stage1_any.py`, which shares no code with the tool.
+  - It is a level-wise numpy enumeration under the energy and row bounds, with the k4 compression normal form where
+    it applies (Q = ℤ₄, |K| odd).
+  - The join is bucketed by pair energy and keyed on a 64-bit linear hash with exact recheck. Every solution is
+    re-checked on all lags by the definition.
+  - Plants are drawn by row class, with total energy ≤ T₁(0), so the list is complete for the planted target.
+  - Before each run its set-up (orbits, T₁) was compared with the tool's: all equal
+    (`logs/h4892/part2/any_setup_check.jsonl`).
+- The table is rebuilt by `python3 theory/h4892_part2_table.py`.
+
+**Two tool fixes** (prompt §4, with regression):
+- `b_setup` now accepts `[axis, order, generator]` U entries, which fixes the 5892 key. The regression test
+  `theory/h4892_test_bsetup.py` compares 1295 screen keys against the previous version: 1223 identical set-ups,
+  0 differences, and the 72 previously failing keys are exactly the 3-entry ones. The 5892 orbits also agree with
+  `ab_sweep.build`.
+- `planted_y` seeded every orbit with ±1. For odd s, σ is odd, so ±1 is not a letter and the plants were not letter
+  vectors. Both A and B then "missed" them on 4892 s = 3 (log kept as
+  `4892_q13_s3_U23.invalid_plants.jsonl`). The plants now start from the least letters; for even s the random draws
+  are unchanged.
+- Every slice decided in `logs/open_screen/` has even s, so no earlier result is affected.
+
+<!-- TABLE2 -->
+<!-- /TABLE2 -->
+
+**7572 (v = 1893, b1, ℤ₁₁ × ℤ₂² × ℤ₄₃, s = 6, U of order 10) is the one non-empty stage 1 among them.**
+- **Stage 1** has **1360 classes**. B and the second method agree as sets of explicit quadruples
+  (`logs/h4892/part2/7572_stage1_compare.json`; data `data/h7572_stage1.json`).
+- **Re-read at 6 real y [E]:** E per y ≈ −1620 and mahal² ≈ 47, giving a cost of about 2^1650. This is far beyond
+  the 2^40 rule.
+- **It is decided exactly anyway, at the ℤ₄₃ compression:**
+  - `theory/h4892_zqnp.py` finds that, for every one of the 1360 classes, the sum of the four blocks' least
+    reachable compression energies exceeds the required Σ_k E(w_k) = 4 + 42 · 4 · 44 = 7396.
+  - The closed-form bound of `theory/h4892_energybound.py` gives the same: every class has lower bound 7564 > 7396.
+  - The cause is w(0) = Σ_O |O| α(O) ≈ ±42 in every block.
+  - So **7572's slice is empty [P + M]**.
+  - Small-modulus tests (w mod 3, …, 9; `theory/h4892_zqmod.py`) pass every class. Only the integer energy decides
+    it.
+
+**k4 slices with odd |K|** (3004 and 4156): a core would have completed by Theorem B. 3004 is empty by two methods.
 <!-- /PART2 -->
 
 ## 5. Next computation
