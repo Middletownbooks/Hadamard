@@ -198,7 +198,7 @@ def b_solve(st, T1, cap=2 * 10 ** 7, prune=False):
     return sorted(sols), len(blocks)
 
 
-def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, maxpairs=6 * 10 ** 7):
+def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, maxpairs=6 * 10 ** 7, blocks=None):
     """method B with a vectorised, bucketed join (same blocks as b_solve).  Distinct block PAF vectors are grouped by
     |row sum| and by the invariants e = PAF(0) (lag-0 energy) and a_chi = sum_h chi(h) PAF(h) (= A_chi^2) for every
     real character chi constant on the U-orbits.  A quadruple solves stage 1 only if these invariants of its two pairs
@@ -207,7 +207,7 @@ def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, maxpairs=6 * 10 ** 7):
     pair sums are hashed with a random 64-bit linear hash (exact under wrap-around), sorted, the left pairs streamed
     against them, and every hash match re-checked on the exact PAF vectors."""
     minE = st['n']; T0 = T1[0]; n = st['n']
-    blocks = b_blocks(st, T0 - 3 * minE, cap, T1, prune)
+    if blocks is None: blocks = b_blocks(st, T0 - 3 * minE, cap, T1, prune)
     by = defaultdict(lambda: defaultdict(list))
     for E, y in blocks:
         if y[0] < 0: continue
@@ -447,7 +447,11 @@ def main():
         r = dict(T0=Tp[0], R=int(sum(Tp)))
         if 'B' in methods:
             try:
-                sB = b_solve_np(st, Tp, cap)[0] if strong else b_solve(st, Tp, cap)[0]
+                if strong and nf_set(st):
+                    # the planted blocks are real enumerated blocks: join over that same list with the planted target
+                    sB = b_solve_np(st, Tp, cap, blocks=BL)[0]
+                else:
+                    sB = b_solve_np(st, Tp, cap)[0] if strong else b_solve(st, Tp, cap)[0]
                 r['B'] = canon(Y) in {canon(Z) for Z in sB}
             except (OverflowError, MemoryError): r['B'] = None
         if 'A' in methods:
