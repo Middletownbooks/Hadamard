@@ -37,8 +37,11 @@ def anyres(name):
 print('| 4v | key | A | B | independent (h4892_stage1_any) |')
 print('|---|---|---|---|---|')
 for name, key in keys:
-    r1 = tool(f'{D}/{name}.jsonl'); r2 = tool(f'{D}/B_{name}.jsonl') or tool(f'{D}/{name}_toolB.jsonl')
+    r1 = tool(f'{D}/{name}.jsonl'); r2 = tool(f'{D}/M_{name}.jsonl') or tool(f'{D}/B_{name}.jsonl') or tool(f'{D}/{name}_toolB.jsonl')
     A = fmt_m(r1, 'A') or ('timeout 3600 s' if done.get(name, {}).get('rc') == 124 else '–')
-    B = fmt_m(r1, 'B') or fmt_m(r2, 'B') or ('timeout 3600 s' if done.get('B_' + name, {}).get('rc') == 124 else
-                                              ('not reached' if 'B_' + name not in done and r2 is None else '–'))
+    B = fmt_m(r2, 'B') or fmt_m(r1, 'B')
+    if B is None:
+        st = next((done[p_ + name]['rc'] for p_ in ('M_', 'B_', '') if p_ + name in done), None)
+        B = {124: 'timeout 3600 s', 1: 'MemoryError (6 GB cap)'}.get(st, 'not reached')
+        if st == 1 and 'M_' + name in done: B = 'MemoryError (13 GB cap)'
     print(f"| {name.split('_')[0]} | `{key}` | {A} | {B} | {anyres(name) or '–'} |")
