@@ -14,7 +14,8 @@ Method B (this file, shares no code with ab_lib/ab_b0_stage1): G', the U-orbits,
 Planted: a random U-invariant y-quadruple from the letters; the target T1 is replaced by its PAF sum; both methods
           must return it.  A method that hits a size cap reports UNDECIDED (never zero).
 Method C (this file): CP-SAT on the integer model (ortools); INFEASIBLE decides, UNKNOWN does not.
---strong adds to C the redundant row and real-character equations and the block symmetry breaking [P].
+--strong adds to C the redundant row and real-character equations and the block symmetry breaking, and to B the
+per-block row and real-character pruning [P].
 usage: python3 theory/open_screen_stage1_exact.py 'KEY' [--methods A,B,C] [--strong] [--planted 4] [--cap 2e7] [--csecs 600]
        [--out FILE]"""
 import sys, os, json, time, itertools, math
@@ -92,31 +93,43 @@ def b_paf(st, y):
     return tuple(sum(y[g] * y[lm[h][g]] for g in range(st['n'])) for h in range(st['n']))
 
 
-def b_blocks(st, Emax, cap):
+def b_blocks(st, Emax, cap, T1=None, prune=False):
+    """all U-invariant blocks with lag-0 energy <= Emax; with prune, also r^2 <= sum T1 and, for every real character
+    chi constant on the U-orbits, (sum_g chi(g) y(g))^2 <= sum_h chi(h) T1(h) (each of the four nonnegative squares
+    is at most their sum, which stage 1 fixes [P])"""
     orbits = st['orbits']; L = st['letters']; w = [len(o) for o in orbits]
     order = sorted(range(len(orbits)), key=lambda j: -w[j])
     out = []
     vals = [0] * len(orbits)
-    def dfs(t, E):
+    T1 = st['T1'] if T1 is None else T1; n = st['n']
+    chis = [c for c in real_characters(st) if all(c[g] == c[o[0]] for o in orbits for g in o)] if prune else []
+    Rb = math.isqrt(int(sum(T1))) if prune else None
+    Ab = [math.isqrt(max(0, int(sum(c[h] * T1[h] for h in range(n))))) for c in chis]
+    W = [[c[o[0]] * len(o) for o in orbits] for c in chis]
+    big = max(abs(x) for x in L)
+    restw = [sum(w[order[u]] for u in range(t + 1, len(order))) for t in range(len(order))]
+    def dfs(t, E, r, A):
         if len(out) > cap: raise OverflowError
         if t == len(order):
+            if prune and (r * r > Rb * Rb or any(a * a > b * b for a, b in zip(A, Ab))): return
             y = [0] * st['n']
             for j, o in enumerate(orbits):
                 for g in o: y[g] = vals[j]
             out.append((E, tuple(y))); return
-        j = order[t]
-        rest = sum(w[order[u]] for u in range(t + 1, len(order)))       # every letter has |y| >= 1
+        j = order[t]; rest = restw[t]                                    # every letter has |y| >= 1
         for a in L:
             e2 = E + w[j] * a * a
             if e2 + rest > Emax: continue
-            vals[j] = a; dfs(t + 1, e2)
-    dfs(0, 0)
+            r2 = r + w[j] * a; A2 = [x + Wc[j] * a for x, Wc in zip(A, W)]
+            if prune and (abs(r2) - big * rest > Rb or any(abs(x) - big * rest > b for x, b in zip(A2, Ab))): continue
+            vals[j] = a; dfs(t + 1, e2, r2, A2)
+    dfs(0, 0, 0, [0] * len(chis))
     return out
 
 
-def b_solve(st, T1, cap=2 * 10 ** 7):
+def b_solve(st, T1, cap=2 * 10 ** 7, prune=False):
     minE = st['n']; T0 = T1[0]
-    blocks = b_blocks(st, T0 - 3 * minE, cap)
+    blocks = b_blocks(st, T0 - 3 * minE, cap, T1, prune)
     # normalise sign: a block and its negative have the same PAF; keep y[0] > 0
     keyed = defaultdict(list)
     for E, y in blocks:
@@ -144,6 +157,55 @@ def b_solve(st, T1, cap=2 * 10 ** 7):
         tot = [sum(b_paf(st, y)[h] for y in Y) for h in range(st['n'])]
         assert tot == list(T1)
     return sorted(sols), len(blocks)
+
+
+def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, chunk=1 << 22):
+    """method B with a vectorised join (same blocks as b_solve): distinct block PAF vectors grouped by |row sum|; for
+    every row multiset (r_a, r_b, r_c, r_d) with sum r^2 = sum T1, the right pair sums (c, d) are hashed with a random
+    64-bit linear hash (exact under wrap-around: H(P + Q) = H(P) + H(Q) mod 2^64) and sorted, the left pairs (a, b)
+    are streamed against them, and every hash match is re-checked on the exact PAF vectors.  Returns the solutions."""
+    minE = st['n']; T0 = T1[0]
+    blocks = b_blocks(st, T0 - 3 * minE, cap, T1, prune)
+    by = defaultdict(lambda: defaultdict(list))                  # |r| -> PAF -> blocks (y[0] > 0 normal form)
+    for E, y in blocks:
+        if y[0] < 0: continue
+        by[abs(sum(y))][b_paf(st, y)].append(y)
+    R = int(sum(T1)); rows = sorted(by)
+    rng = np.random.default_rng(12345); n = st['n']
+    hv = rng.integers(-2 ** 62, 2 ** 62, size=n, dtype=np.int64)
+    K = {r: list(by[r]) for r in rows}
+    P = {r: np.array(K[r], np.int64) for r in rows}
+    H = {r: (P[r] * hv).sum(1) for r in rows}                    # wraps mod 2^64
+    tH = np.int64((np.array(T1, np.int64) * hv).sum())
+    sols = set(); stats = []
+    combos = {tuple(sorted(c)) for c in itertools.product(rows, repeat=4) if sum(x * x for x in c) == R}
+    for c in sorted(combos):
+        ra, rb, rc, rd = c                                         # left (a, b), right (c, d)
+        I, J = (np.triu_indices(len(K[rc])) if rc == rd else np.meshgrid(np.arange(len(K[rc])), np.arange(len(K[rd])), indexing='ij'))
+        I = I.ravel(); J = J.ravel()
+        right = H[rc][I] + H[rd][J]; o = np.argsort(right, kind='stable'); rs = right[o]
+        nL = 0
+        ia_all = np.arange(len(K[ra]))
+        for a0 in range(0, len(K[ra]), max(1, chunk // max(1, len(K[rb])))):
+            ia = ia_all[a0:a0 + max(1, chunk // max(1, len(K[rb])))]
+            A_, B_ = np.meshgrid(ia, np.arange(len(K[rb])), indexing='ij'); A_ = A_.ravel(); B_ = B_.ravel()
+            if ra == rb: m = A_ <= B_; A_ = A_[m]; B_ = B_[m]
+            need = tH - (H[ra][A_] + H[rb][B_]); nL += len(need)
+            pos = np.searchsorted(rs, need); pos[pos >= len(rs)] = len(rs) - 1
+            hit = np.nonzero(rs[pos] == need)[0]
+            for h in hit:
+                lo = np.searchsorted(rs, need[h], 'left'); hi = np.searchsorted(rs, need[h], 'right')
+                for q in o[lo:hi]:
+                    ka, kb, kc, kd = K[ra][A_[h]], K[rb][B_[h]], K[rc][I[q]], K[rd][J[q]]
+                    if [x + y_ + z + t for x, y_, z, t in zip(ka, kb, kc, kd)] != list(T1): continue
+                    for ya in by[ra][ka]:
+                        for yb in by[rb][kb]:
+                            for yc in by[rc][kc]:
+                                for yd in by[rd][kd]: sols.add(tuple(sorted((ya, yb, yc, yd))))
+        stats.append(dict(rows=c, left_pairs=int(nL), right_pairs=int(len(rs))))
+    for Y in sols:
+        assert [sum(b_paf(st, y)[h] for y in Y) for h in range(n)] == list(T1)
+    return sorted(sols), len(blocks), stats
 
 
 # ---------------------------------------------------------------- method A (repository) and the driver
@@ -261,9 +323,9 @@ def main():
     st = b_setup(key)
     # consistency of the independent set-up with ab_lib (orbit partition of G', letters, T1)
     methods = a[a.index('--methods') + 1].split(',') if '--methods' in a else ['A', 'B']
+    strong = '--strong' in a
     csecs = int(a[a.index('--csecs') + 1]) if '--csecs' in a else 600
     t0 = time.time()
-    strong = '--strong' in a
     if 'C' in methods:
         r_, Yc = c_solve(st, st['T1'], csecs, strong=strong); rec['C'] = dict(status=r_, secs=round(time.time() - t0, 1))
         if Yc: rec['C']['solution'] = [list(y) for y in Yc]
@@ -279,7 +341,11 @@ def main():
     t0 = time.time()
     try:
         if 'B' not in methods: raise OverflowError('method B not run')
-        solsB, nbB = b_solve(st, st['T1'], cap); rec['B'] = dict(solutions=len(solsB), blocks=nbB, secs=round(time.time() - t0, 1))
+        if strong:
+            solsB, nbB, stB = b_solve_np(st, st['T1'], cap)
+            rec['B'] = dict(solutions=len(solsB), blocks=nbB, join=stB, secs=round(time.time() - t0, 1))
+        else:
+            solsB, nbB = b_solve(st, st['T1'], cap); rec['B'] = dict(solutions=len(solsB), blocks=nbB, secs=round(time.time() - t0, 1))
     except (OverflowError, MemoryError) as e:
         rec['B'] = dict(undecided=repr(e)[:120]); solsB = None
     if 'solutions' in rec['A'] and solsB is not None:
@@ -288,12 +354,20 @@ def main():
     # planted controls
     rng = np.random.default_rng(11); pl = []
     for t in range(npl):
-        Y = planted_y(st, rng)
+        # planted quadruples drawn with sum_k r_k^2 as small as found in 4000 draws (the real target has
+        # sum T1 = sum r_k^2, e.g. 4 for b = 1), so the pruned enumeration is of the real problem's size
+        best = None
+        for _ in range(4000 if strong else 1):
+            Yc = planted_y(st, rng); R_ = sum(sum(y) ** 2 for y in Yc)
+            if best is None or abs(R_ - sum(st['T1'])) < best[0]: best = (abs(R_ - sum(st['T1'])), Yc)
+            if best[0] == 0: break
+        Y = best[1]
         Tp = [sum(b_paf(st, y)[h] for y in Y) for h in range(st['n'])]
-        r = dict(T0=Tp[0])
+        r = dict(T0=Tp[0], R=int(sum(Tp)))
         if 'B' in methods:
             try:
-                sB, _ = b_solve(st, Tp, cap); r['B'] = canon(Y) in {canon(Z) for Z in sB}
+                sB = b_solve_np(st, Tp, cap)[0] if strong else b_solve(st, Tp, cap)[0]
+                r['B'] = canon(Y) in {canon(Z) for Z in sB}
             except (OverflowError, MemoryError): r['B'] = None
         if 'A' in methods:
             try:

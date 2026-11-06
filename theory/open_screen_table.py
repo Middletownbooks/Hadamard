@@ -65,16 +65,22 @@ def main():
     for r in load('deficit_s*.jsonl'):
         if r['key'] not in dfc or 'error' in dfc[r['key']] or 'timeout' in dfc[r['key']]: dfc[r['key']] = r
     z2 = {r['key']: r for r in load('z2gate.jsonl')}
-    s1x = {}
+    # exact stage-1 evidence per slice, aggregated over runs: a method counts when it reports zero solutions
+    # (A, B) or INFEASIBLE (C) and its planted controls have no failure and at least one success
+    ev = defaultdict(dict)
     for r in load('stage1_exact*.jsonl'):
         k = json.dumps(r['key']).replace(' ', '')
-        A, B, C = r.get('A', {}), r.get('B', {}), r.get('C', {})
-        nsol = [x.get('solutions') for x in (A, B) if 'solutions' in x]
-        empty = (len(nsol) >= 1 and all(n == 0 for n in nsol) and (len(nsol) == 2 or C.get('status') == 'INFEASIBLE'))
-        pl_ok = all(all(v in (True, 'FEASIBLE') for kk, v in p_.items() if kk != 'T0') for p_ in r.get('planted', []))
-        if any(n and n > 0 for n in nsol) or C.get('status') == 'FEASIBLE': s1x[k] = 'stage 1 non-empty [M]'
-        elif empty and pl_ok: s1x[k] = 'stage 1 empty [M]'
-        else: s1x.setdefault(k, 'stage 1 undecided')
+        for m in ('A', 'B', 'C'):
+            x = r.get(m) or {}
+            pl = [p_.get(m) for p_ in r.get('planted', []) if m in p_]
+            okp = bool(pl) and not any(v_ in (False, 'INFEASIBLE') for v_ in pl) and any(v_ in (True, 'FEASIBLE') for v_ in pl)
+            if x.get('solutions', 0) > 0 or x.get('status') == 'FEASIBLE': ev[k]['nonempty'] = True
+            elif (x.get('solutions') == 0 or x.get('status') == 'INFEASIBLE') and okp: ev[k][m] = True
+    s1x = {}
+    for k, e in ev.items():
+        if e.get('nonempty'): s1x[k] = 'stage 1 non-empty [M]'
+        elif sum(1 for m in ('A', 'B', 'C') if e.get(m)) >= 2: s1x[k] = 'stage 1 empty [M]'
+        else: s1x[k] = 'stage 1: one method only'
     norm = lambda k: json.dumps(json.loads(k)).replace(' ', '')
     from open_screen_enum import all_configs, cfgkey
     enum = defaultdict(list)
