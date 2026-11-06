@@ -74,7 +74,8 @@ def b_setup(key):
             T1[i] += t
     sub = lambda a, c: tuple((x - y) % nn for x, y, nn in zip(a, c, axes))
     lagmap = [[idx[tuple((x + y) % nn for x, y, nn in zip(e, h, axes))] for e in els] for h in els]
-    return dict(axes=axes, els=els, orbits=orbits, orb=orb, letters=letters, T1=T1, lagmap=lagmap, n=n)
+    return dict(axes=axes, els=els, orbits=orbits, orb=orb, letters=letters, T1=T1, lagmap=lagmap, n=n,
+                fam=fam, nQ=len(Q), q=q)
 
 
 def _ordmod(u, n):
@@ -93,6 +94,27 @@ def b_paf(st, y):
     return tuple(sum(y[g] * y[lm[h][g]] for g in range(st['n'])) for h in range(st['n']))
 
 
+def nf_set(st):
+    """k4 with Q of order 4 and |K| = m odd: the allowed Q-compressions of a block by the compression normal form
+    (OpenAI model, report/openai_4p3_review.md section 1, [P]): +-(a, a, a, a), a odd, a^2 <= m, or
+    +-(t 1 + 2 delta_s), t odd, t(t + 1) <= m, any position s; returns (Q-index of every element of G', list of
+    allowed z vectors, number of Q elements) or None when the theorem does not apply"""
+    nQ = st.get('nQ', 0)
+    if st.get('fam') != 'k4' or nQ == 0: return None
+    Qax = st['axes'][:nQ]; Qn = int(np.prod(Qax)); m = st['n'] * st['q'] // Qn
+    if Qn != 4 or m % 2 == 0: return None
+    qidx = [int(np.ravel_multi_index(e[:nQ], Qax)) for e in st['els']]
+    S = set()
+    for a in range(1, math.isqrt(m) + 1, 2):
+        for sg in (1, -1): S.add(tuple([sg * a] * 4))
+    for t in range(-math.isqrt(m) - 2, math.isqrt(m) + 2):
+        if t % 2 == 0 or t * (t + 1) > m: continue
+        for pos in range(4):
+            z = [t] * 4; z[pos] += 2
+            for sg in (1, -1): S.add(tuple(sg * x for x in z))
+    return qidx, sorted(S), 4
+
+
 def b_blocks(st, Emax, cap, T1=None, prune=False):
     """all U-invariant blocks with lag-0 energy <= Emax; with prune, also r^2 <= sum T1 and, for every real character
     chi constant on the U-orbits, (sum_g chi(g) y(g))^2 <= sum_h chi(h) T1(h) (each of the four nonnegative squares
@@ -108,10 +130,21 @@ def b_blocks(st, Emax, cap, T1=None, prune=False):
     W = [[c[o[0]] * len(o) for o in orbits] for c in chis]
     big = max(abs(x) for x in L)
     restw = [sum(w[order[u]] for u in range(t + 1, len(order))) for t in range(len(order))]
+    nf = nf_set(st) if prune else None
+    if nf:
+        qidx, NF, nq_ = nf; NFa = np.array(NF, np.int64)
+        cq = [[sum(1 for g in orbits[j] if qidx[g] == q) for q in range(nq_)] for j in range(len(orbits))]
+        capq = [[big * sum(cq[order[u]][q] for u in range(t + 1, len(order))) for q in range(nq_)] for t in range(len(order))]
+    zc = [0] * (nf[2] if nf else 0)
+    def nf_ok(t):
+        if not nf: return True
+        lo = np.array([zc[q] - capq[t][q] for q in range(nf[2])]); hi = np.array([zc[q] + capq[t][q] for q in range(nf[2])])
+        return bool(((NFa >= lo) & (NFa <= hi)).all(1).any())
     def dfs(t, E, r, A):
         if len(out) > cap: raise OverflowError
         if t == len(order):
             if prune and (r * r > Rb * Rb or any(a * a > b * b for a, b in zip(A, Ab))): return
+            if nf and tuple(zc) not in set(NF): return
             y = [0] * st['n']
             for j, o in enumerate(orbits):
                 for g in o: y[g] = vals[j]
@@ -122,6 +155,12 @@ def b_blocks(st, Emax, cap, T1=None, prune=False):
             if e2 + rest > Emax: continue
             r2 = r + w[j] * a; A2 = [x + Wc[j] * a for x, Wc in zip(A, W)]
             if prune and (abs(r2) - big * rest > Rb or any(abs(x) - big * rest > b for x, b in zip(A2, Ab))): continue
+            if nf:
+                for q in range(nf[2]): zc[q] += cq[j][q] * a
+                ok = nf_ok(t)
+                if ok: vals[j] = a; dfs(t + 1, e2, r2, A2)
+                for q in range(nf[2]): zc[q] -= cq[j][q] * a
+                continue
             vals[j] = a; dfs(t + 1, e2, r2, A2)
     dfs(0, 0, 0, [0] * len(chis))
     return out
@@ -174,7 +213,13 @@ def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, maxpairs=6 * 10 ** 7):
         if y[0] < 0: continue
         by[abs(sum(y))][b_paf(st, y)].append(y)
     chis = [c for c in real_characters(st) if all(c[g] == c[o[0]] for o in st['orbits'] for g in o)]
-    inv = lambda P: (P[0],) + tuple(sum(c[h] * P[h] for h in range(n)) for c in chis)
+    nf = nf_set(st)
+    if nf:                                                       # Q-level PAF (sum over the cosets of H'): linear
+        qidx = nf[0]
+        inv = lambda P: (P[0],) + tuple(sum(c[h] * P[h] for h in range(n)) for c in chis) + \
+            tuple(sum(P[h] for h in range(n) if qidx[h] == q) for q in range(nf[2]))
+    else:
+        inv = lambda P: (P[0],) + tuple(sum(c[h] * P[h] for h in range(n)) for c in chis)
     tinv = inv(T1)
     R = int(sum(T1)); rows = sorted(by)
     rng = np.random.default_rng(12345)
@@ -384,7 +429,16 @@ def main():
         # planted quadruples drawn with sum_k r_k^2 as small as found in 4000 draws (the real target has
         # sum T1 = sum r_k^2, e.g. 4 for b = 1), so the pruned enumeration is of the real problem's size
         best = None
-        for _ in range(4000 if strong else 1):
+        if strong and nf_set(st) and 'B' in methods:
+            # k4 normal form: plant four real enumerated blocks (one constant Q-compression, three singletons)
+            if t == 0:
+                BL = b_blocks(st, st['T1'][0] - 3 * st['n'], cap, st['T1'], True)
+                qidx_ = nf_set(st)[0]
+                zof = lambda y: tuple(sum(y[g] for g in range(st['n']) if qidx_[g] == q) for q in range(4))
+                const = [y for E, y in BL if len(set(zof(y))) == 1]; single = [y for E, y in BL if len(set(zof(y))) > 1]
+            Y = [const[int(rng.integers(len(const)))]] + [single[int(rng.integers(len(single)))] for _ in range(3)]
+            best = (0, Y)
+        for _ in range(4000 if (strong and best is None) else (1 if best is None else 0)):
             Yc = planted_y(st, rng); R_ = sum(sum(y) ** 2 for y in Yc)
             if best is None or abs(R_ - sum(st['T1'])) < best[0]: best = (abs(R_ - sum(st['T1'])), Yc)
             if best[0] == 0: break
