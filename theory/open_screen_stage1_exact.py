@@ -159,50 +159,75 @@ def b_solve(st, T1, cap=2 * 10 ** 7, prune=False):
     return sorted(sols), len(blocks)
 
 
-def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, chunk=1 << 22):
-    """method B with a vectorised join (same blocks as b_solve): distinct block PAF vectors grouped by |row sum|; for
-    every row multiset (r_a, r_b, r_c, r_d) with sum r^2 = sum T1, the right pair sums (c, d) are hashed with a random
-    64-bit linear hash (exact under wrap-around: H(P + Q) = H(P) + H(Q) mod 2^64) and sorted, the left pairs (a, b)
-    are streamed against them, and every hash match is re-checked on the exact PAF vectors.  Returns the solutions."""
-    minE = st['n']; T0 = T1[0]
+def b_solve_np(st, T1, cap=2 * 10 ** 7, prune=True, maxpairs=6 * 10 ** 7):
+    """method B with a vectorised, bucketed join (same blocks as b_solve).  Distinct block PAF vectors are grouped by
+    |row sum| and by the invariants e = PAF(0) (lag-0 energy) and a_chi = sum_h chi(h) PAF(h) (= A_chi^2) for every
+    real character chi constant on the U-orbits.  A quadruple solves stage 1 only if these invariants of its two pairs
+    add up to those of T1, so for every row multiset (r_a, r_b | r_c, r_d) with sum r^2 = sum T1 the pairs are formed
+    group pair by group pair and joined bucket by bucket on the pair-sum invariants [P]; inside a bucket the right
+    pair sums are hashed with a random 64-bit linear hash (exact under wrap-around), sorted, the left pairs streamed
+    against them, and every hash match re-checked on the exact PAF vectors."""
+    minE = st['n']; T0 = T1[0]; n = st['n']
     blocks = b_blocks(st, T0 - 3 * minE, cap, T1, prune)
-    by = defaultdict(lambda: defaultdict(list))                  # |r| -> PAF -> blocks (y[0] > 0 normal form)
+    by = defaultdict(lambda: defaultdict(list))
     for E, y in blocks:
         if y[0] < 0: continue
         by[abs(sum(y))][b_paf(st, y)].append(y)
+    chis = [c for c in real_characters(st) if all(c[g] == c[o[0]] for o in st['orbits'] for g in o)]
+    inv = lambda P: (P[0],) + tuple(sum(c[h] * P[h] for h in range(n)) for c in chis)
+    tinv = inv(T1)
     R = int(sum(T1)); rows = sorted(by)
-    rng = np.random.default_rng(12345); n = st['n']
+    rng = np.random.default_rng(12345)
     hv = rng.integers(-2 ** 62, 2 ** 62, size=n, dtype=np.int64)
     K = {r: list(by[r]) for r in rows}
-    P = {r: np.array(K[r], np.int64) for r in rows}
-    H = {r: (P[r] * hv).sum(1) for r in rows}                    # wraps mod 2^64
+    H = {r: (np.array(K[r], np.int64) * hv).sum(1) if K[r] else np.zeros(0, np.int64) for r in rows}
+    grp = {r: defaultdict(list) for r in rows}
+    for r in rows:
+        for i_, P in enumerate(K[r]): grp[r][inv(P)].append(i_)
+    for r in rows:
+        for g in grp[r]: grp[r][g] = np.array(grp[r][g], np.int64)
     tH = np.int64((np.array(T1, np.int64) * hv).sum())
+    def pair_buckets(ra, rb):
+        out = defaultdict(list); ga = list(grp[ra]); gb = list(grp[rb])
+        for x in ga:
+            for y in gb:
+                if ra == rb and x > y: continue
+                out[tuple(p + q for p, q in zip(x, y))].append((x, y))
+        return out
+    def pairs(ra, rb, lst):
+        I = []; J = []
+        for x, y in lst:
+            a, b = grp[ra][x], grp[rb][y]
+            A_, B_ = np.meshgrid(a, b, indexing='ij'); A_ = A_.ravel(); B_ = B_.ravel()
+            if ra == rb and x == y: m = A_ <= B_; A_ = A_[m]; B_ = B_[m]
+            I.append(A_); J.append(B_)
+        return (np.concatenate(I), np.concatenate(J)) if I else (np.zeros(0, np.int64), np.zeros(0, np.int64))
     sols = set(); stats = []
     combos = {tuple(sorted(c)) for c in itertools.product(rows, repeat=4) if sum(x * x for x in c) == R}
     for c in sorted(combos):
-        ra, rb, rc, rd = c                                         # left (a, b), right (c, d)
-        I, J = (np.triu_indices(len(K[rc])) if rc == rd else np.meshgrid(np.arange(len(K[rc])), np.arange(len(K[rd])), indexing='ij'))
-        I = I.ravel(); J = J.ravel()
-        right = H[rc][I] + H[rd][J]; o = np.argsort(right, kind='stable'); rs = right[o]
-        nL = 0
-        ia_all = np.arange(len(K[ra]))
-        for a0 in range(0, len(K[ra]), max(1, chunk // max(1, len(K[rb])))):
-            ia = ia_all[a0:a0 + max(1, chunk // max(1, len(K[rb])))]
-            A_, B_ = np.meshgrid(ia, np.arange(len(K[rb])), indexing='ij'); A_ = A_.ravel(); B_ = B_.ravel()
-            if ra == rb: m = A_ <= B_; A_ = A_[m]; B_ = B_[m]
-            need = tH - (H[ra][A_] + H[rb][B_]); nL += len(need)
-            pos = np.searchsorted(rs, need); pos[pos >= len(rs)] = len(rs) - 1
-            hit = np.nonzero(rs[pos] == need)[0]
-            for h in hit:
-                lo = np.searchsorted(rs, need[h], 'left'); hi = np.searchsorted(rs, need[h], 'right')
-                for q in o[lo:hi]:
-                    ka, kb, kc, kd = K[ra][A_[h]], K[rb][B_[h]], K[rc][I[q]], K[rd][J[q]]
-                    if [x + y_ + z + t for x, y_, z, t in zip(ka, kb, kc, kd)] != list(T1): continue
-                    for ya in by[ra][ka]:
-                        for yb in by[rb][kb]:
-                            for yc in by[rc][kc]:
-                                for yd in by[rd][kd]: sols.add(tuple(sorted((ya, yb, yc, yd))))
-        stats.append(dict(rows=c, left_pairs=int(nL), right_pairs=int(len(rs))))
+        ra, rb, rc, rd = c
+        BL = pair_buckets(ra, rb); BR = pair_buckets(rc, rd); nL = nR = 0
+        for key, lstR in BR.items():
+            need_key = tuple(t - k for t, k in zip(tinv, key))
+            if need_key not in BL: continue
+            I, J = pairs(rc, rd, lstR)
+            if len(I) > maxpairs: raise OverflowError(f"bucket of {len(I)} right pairs")
+            right = H[rc][I] + H[rd][J]; o = np.argsort(right, kind='stable'); rs = right[o]; nR += len(rs)
+            A_, B_ = pairs(ra, rb, BL[need_key])
+            for c0 in range(0, len(A_), 1 << 22):
+                a_, b_ = A_[c0:c0 + (1 << 22)], B_[c0:c0 + (1 << 22)]
+                need = tH - (H[ra][a_] + H[rb][b_]); nL += len(need)
+                pos = np.searchsorted(rs, need); pos[pos >= len(rs)] = len(rs) - 1
+                for h in np.nonzero(rs[pos] == need)[0]:
+                    lo = np.searchsorted(rs, need[h], 'left'); hi = np.searchsorted(rs, need[h], 'right')
+                    for q in o[lo:hi]:
+                        ka, kb, kc, kd = K[ra][a_[h]], K[rb][b_[h]], K[rc][I[q]], K[rd][J[q]]
+                        if [x + y_ + z + t for x, y_, z, t in zip(ka, kb, kc, kd)] != list(T1): continue
+                        for ya in by[ra][ka]:
+                            for yb in by[rb][kb]:
+                                for yc in by[rc][kc]:
+                                    for yd in by[rd][kd]: sols.add(tuple(sorted((ya, yb, yc, yd))))
+        stats.append(dict(rows=c, left_pairs=int(nL), right_pairs=int(nR)))
     for Y in sols:
         assert [sum(b_paf(st, y)[h] for y in Y) for h in range(n)] == list(T1)
     return sorted(sols), len(blocks), stats
@@ -351,6 +376,8 @@ def main():
     if 'solutions' in rec['A'] and solsB is not None:
         rec['agree'] = {canon(Y) for Y in solsA} == {canon(Y) for Y in solsB}
     rec['solutions'] = [list(map(list, Y)) for Y in (solsB or [])[:20]]
+    if outp: open(outp, 'a').write(json.dumps(dict(rec, phase='decision')) + "\n")
+    csecs = min(csecs, int(a[a.index('--plsecs') + 1]) if '--plsecs' in a else 600)
     # planted controls
     rng = np.random.default_rng(11); pl = []
     for t in range(npl):
@@ -377,6 +404,7 @@ def main():
             r['C'] = c_solve(st, Tp, csecs, strong=strong)[0]
         pl.append(r)
     rec['planted'] = pl
+    rec['phase'] = 'final'
     print(json.dumps(rec), flush=True)
     if outp: open(outp, 'a').write(json.dumps(rec) + "\n")
 
