@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_deficit.py", line 445, in <module>
+    batch(inp, outp, si, sn, secs)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_deficit.py", line 421, in batch
+    os.write(wr, json.dumps(rec, default=float).encode()); os._exit(0)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe

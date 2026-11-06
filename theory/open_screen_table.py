@@ -64,6 +64,18 @@ def main():
     dfc = {}
     for r in load('deficit_s*.jsonl'):
         if r['key'] not in dfc or 'error' in dfc[r['key']] or 'timeout' in dfc[r['key']]: dfc[r['key']] = r
+    z2 = {r['key']: r for r in load('z2gate.jsonl')}
+    s1x = {}
+    for r in load('stage1_exact*.jsonl'):
+        k = json.dumps(r['key']).replace(' ', '')
+        A, B, C = r.get('A', {}), r.get('B', {}), r.get('C', {})
+        nsol = [x.get('solutions') for x in (A, B) if 'solutions' in x]
+        empty = (len(nsol) >= 1 and all(n == 0 for n in nsol) and (len(nsol) == 2 or C.get('status') == 'INFEASIBLE'))
+        pl_ok = all(all(v in (True, 'FEASIBLE') for kk, v in p_.items() if kk != 'T0') for p_ in r.get('planted', []))
+        if any(n and n > 0 for n in nsol) or C.get('status') == 'FEASIBLE': s1x[k] = 'stage 1 non-empty [M]'
+        elif empty and pl_ok: s1x[k] = 'stage 1 empty [M]'
+        else: s1x.setdefault(k, 'stage 1 undecided')
+    norm = lambda k: json.dumps(json.loads(k)).replace(' ', '')
     from open_screen_enum import all_configs, cfgkey
     enum = defaultdict(list)
     for c in all_configs(): enum[(c['v'], c['fam'])].append(cfgkey(c))
@@ -80,6 +92,9 @@ def main():
                 if s.get('A') is False: st['A dead'] += 1
                 elif s.get('A') is None: st['A undecided' if 'A_reason' in s or 'timeout' in s or 'error' in s else 'A undecided'] += 1; alive.append(k)
                 elif s.get('B') is False: st['B dead'] += 1
+                elif z2.get(k, {}).get('Z2') is False: st['Z2 dead'] += 1
+                elif z2.get(k, {}).get('wscreen') is False: st['w-screen dead'] += 1
+                elif s1x.get(norm(k)) == 'stage 1 empty [M]': st['stage 1 empty [M]'] += 1
                 else: st['alive (B pass)' if s.get('B') else 'alive (B capped)'] += 1; alive.append(k)
             cand = []
             for k in alive:
@@ -97,7 +112,9 @@ def main():
                 cand.sort(key=lambda t: t[:3])
                 _, _, _, k, d, Et, rg = cand[0]; s = scr[k]; b = d['best']
                 st1 = d.get('stage1') or {}
-                rec.update(slice=slice_desc(s), key=k, A=s.get('A'), B=s.get('B'), row_quads=s.get('A_row_quads', [])[:3],
+                rec.update(slice=slice_desc(s), key=k, A=s.get('A'), B=s.get('B'), Z2=z2.get(k, {}).get('Z2'),
+                           wscreen=z2.get(k, {}).get('wscreen'), stage1_exact=s1x.get(norm(k)),
+                           stage1_method=st1.get('stage1_method', 'ab_gauss'), row_quads=s.get('A_row_quads', [])[:3],
                            stage1_log2Ny=st1.get('log2Ny'), stage1_log2E=st1.get('stage1_log2E'),
                            H2=d['H2'], C2=d['C2'], E_per_y=d['E_per_y'], log2E_tot=None if not math.isfinite(Et) else round(Et, 2),
                            split=b['L'], C_S=b['C_S'], H_S=b['H_S'], D_def=b['D_def'], h_D=b['h_D'], Sstep=b['Sstep'],
