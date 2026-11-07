@@ -62,14 +62,15 @@ if __name__ == "__main__":
         g = G.get(n, {}); x = X.get(n, {}); s = S.get(n, [])
         rows.append(dict(n=n, v=13 * n + 1, allocations=allocs(n), gauss_stage1_log2E=g.get('s1'), gauss_E_per_y=g.get('Ey'),
                          gauss_total_log2E=g.get('tot'), exact_stage1_ordered=x.get('s1'), exact_cores=x.get('cores'),
-                         sampled_instances=len(s), sampled_completions=sum(c for c in s if c is not None) if s else None))
+                         sampled_instances=len(s), sampled_completions=sum(c for c in s if c is not None) if s else None,
+                         sampled_list=s))
     if '--md' in sys.argv:
-        print('| n = \\|K\\| | v | allocations (e+, e-) | Gaussian stage 1 (log2) | Gaussian E per y | Gaussian total (log2) | exact stage 1 (ordered) | exact cores | sampled y: completions |')
+        print('| n = \\|K\\| | v | allocations (e+, e-) | Gaussian stage 1 (log2) | Gaussian E per y | Gaussian total (log2) | exact stage 1 (ordered) | exact cores | sampled y: completions each |')
         print('|---|---|---|---|---|---|---|---|---|')
         for r in rows:
             f = lambda v: '–' if v is None else v
             st1 = r['exact_stage1_ordered']; st1 = '–' if st1 is None else (f"{st1} (2^{math.log2(st1):.1f})" if st1 else '0')
-            smp = '–' if not r['sampled_instances'] else f"{r['sampled_instances']} y: {r['sampled_completions']}"
+            smp = '–' if not r['sampled_instances'] else f"{r['sampled_instances']} y: " + ", ".join(str(c) for c in r['sampled_list'])
             print(f"| {r['n']} | {r['v']} | {r['allocations'] or 'none'} | {f(r['gauss_stage1_log2E'])} | {f(r['gauss_E_per_y'])} | {f(r['gauss_total_log2E'])} | {st1} | {f(r['exact_cores'])} | {smp} |")
     else:
         for r in rows: print(json.dumps(r))

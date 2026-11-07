@@ -20,28 +20,33 @@ Scripts: `theory/h2396_*`. Logs: `logs/h2396/`.
 ## 0. Bottom line
 
 <!-- BOTTOM -->
-1. **Part A (599 by a Paley plug-in over ℤ₄₆ × F₁₃): killed at gate A2, the go/no-go. No H(2396) was built; A4 was
-   not run.**
+1. **Part A (599 by a Paley plug-in over ℤ₄₆ × F₁₃): killed at gate A2 on the cost prong. No H(2396) was built;
+   A4 was not run.**
    - **A1 passes [P, M].** The plug-in system for Legendre quadruples (b = 1, q ≡ 1 mod 4) is derived and checked
      against direct G-level PAF (66/66 random cases, q = 3 … 17, cyclic and non-cyclic K). The defect identity
      14e₊ + 10e₋ = 4(|K| − 1) has three allocations at |K| = 46: (e₊, e₋) = (0, 18), (5, 11), (10, 4).
-   - **No analogue has a plug-in core where it was decided [M].** At |K| = 6 and 8 stage 1 is empty (three methods).
-     At |K| = 12 stage 1 has exactly 1,327,104 ordered solutions, all "spikes" (each block a constant plus one big
-     letter), and every one dies at the ℤ₁₃ level. At |K| = 14 no stage-1 solution lies in a profile that survives
-     the ℤ₁₃ level, so there is no core either. The Gaussian predicted 2^25 to 2^44 cores at these four analogues.
-   - **Both non-spike stage-1 solutions found (two distinct ones at |K| = 18, by CP-SAT) die at the coarsest stage-2
-     level**, the ℤ₁₃ compression. For the first, the estimator predicted 2^10.2 completions and 2^14.2 S-level
-     solutions.
-     - At |K| = 18 every profile that survives the ℤ₁₃ level has all four defect counts even.
-     - The sampler restricted to such instances (`--zq`) produced none (<!-- SAMPLER -->3 CP-SAT runs of 60 minutes<!-- /SAMPLER -->).
-     - At the target |K| = 46 no level-1 instance was produced (<!-- N46 -->CP-SAT with the ℤ₁₃ and ψ levels: about 2 h for
-       allocation (10, 4), and 1.5 h each for (10, 4) and (0, 18) so far<!-- /N46 -->). A cap is never a zero.
-   - So the plug-in class is **not rich** here. Kumar's undercounting (§81, Szöllősi targets) does not carry over to
-     q = 13 Legendre quadruples; they behave like this repository's q = 11 Paley-coset controls (exact zeros
-     against +23 to +40 bits).
-   - **The cost prong fails too, even under the Gaussian [E].** At |K| = 46 the staged route needs 2^35.3 S-level
-     solutions per core: 2^72.2 operations with plain joins, and at least 2^54 even with free S-solutions (each needs
-     a 2^19 D-check). Both exceed 2^46 by more than one bit; the calibration says the Gaussian is optimistic.
+   - **The small analogues have no core [M].**
+     - |K| = 6 and 8: stage 1 is empty (three methods).
+     - |K| = 12: stage 1 has exactly 1,327,104 ordered solutions, all "spikes" (each block a constant plus one big
+       letter), and every one dies at the ℤ₁₃ level.
+     - |K| = 14: no stage-1 solution lies in a profile that survives the ℤ₁₃ level.
+     - The Gaussian predicted 2^25 to 2^44 cores at these four analogues.
+   - **Cores exist at |K| = 18 [M].** A CP-SAT instance that survives the ℤ₁₃ and ψ levels has **1,920 completions**.
+     - One of them, rebuilt as a b = 1 core on ℤ₂₃₄ and checked by `scripts/verify_h2092.py` (no shared code), gives
+       **H(940) with H Hᵀ = 940·I**. 940 is a known order, so this is a positive control of the whole 2396 chain,
+       not a new matrix.
+     - So the "solutions vanish" prong of the kill is **not** met.
+   - **On a surviving instance the estimator is accurate [M against E].**
+     - For that y it predicts 2^11.4 completions (exact 2^10.9), 2^18.4 S-level solutions (exact 2^17.9) and a
+       D-deficit of 7.02 bits (exact 6.99).
+     - Every other instance met dies at the ℤ₁₃ level, which no Gaussian sees: the spikes at |K| = 12 and 14, and two
+       non-spike instances at |K| = 18 (for one of them 2^10.2 completions predicted, 0 exact).
+     - So there is no §81-type undercount here; the class is rigid at its coarsest level, and otherwise Gaussian.
+   - **The cost prong decides [E, calibrated as above].**
+     - At |K| = 46 the same model needs 2^35.3 S-level solutions per core: 2^72.2 operations with plain joins, and
+       ≥ 2^54 even with free S-solutions (each needs a 2^19 D-check). That is 8 bits over the 2^46 bar.
+     - Level 1 is a second wall: no instance surviving the ℤ₁₃ level was produced at |K| = 46 in about 8 CPU-hours
+       of CP-SAT. At |K| = 18 one took about 4 CPU-hours.
    - At |K| = 46 the ℤ₁₃ level alone does not decide the slice: 153,392 of the 1,617,624 stage-1 profiles survive it
      [M].
 2. **Part B (599 over ℤ₄² × ℤ₃₇, t = 7): killed at B1/B2. The structure has no core at all [M].**
@@ -56,8 +61,8 @@ Scripts: `theory/h2396_*`. Logs: `logs/h2396/`.
      basis function per block, and the border problem reduces to a ±1 condition on Z M_Tᵀ Z′/4 (§2.4).
 3. **Part C (1291, index-4 Szöllősi plug-in on ℤ₁₉ × F₁₇): stopped at C3 on cost; C2 is undecided.**
    - C2 [M where decided]: CP-SAT on stage 1 and the ℤ₁₇ level jointly ended UNKNOWN at 2 h 20 min. Stage-1-only
-     sampling produced no ℤ₁₉ instance (<!-- C2RUNS -->4 runs of 20 minutes<!-- /C2RUNS -->), so no stage-1 solution
-     could be tested at the ℤ₁₇ level.
+     sampling produced no ℤ₁₉ instance in 6 runs of 20 minutes, so no stage-1 solution could be tested at the ℤ₁₇
+     level.
    - The exact ℤ₁₇-level test itself is built and validated: it passes instances at K = ℤ₃ and ℤ₅.
    - A cap is not a zero, so Part C is not killed at C2. It stops at C3, which does not depend on C2.
    - The repository's estimator, written for this family, reproduces Kumar's numbers: K = ℤ₅ gives 10^5.97 against his
@@ -161,21 +166,22 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 - Exact stage 2 for every stage-1 class: `theory/h2396_stage2.c` (§1.3).
 - Table: `theory/h2396_a2_table.py --md`.
 
-| n = \|K\| | v | allocations (e+, e-) | Gaussian stage 1 (log2) | Gaussian E per y | Gaussian total (log2) | exact stage 1 (ordered) | exact cores | sampled y: completions |
+| n = \|K\| | v | allocations (e+, e-) | Gaussian stage 1 (log2) | Gaussian E per y | Gaussian total (log2) | exact stage 1 (ordered) | exact cores | sampled y: completions each |
 |---|---|---|---|---|---|---|---|---|
 | 6 | 79 | [(0, 2)] | 14.83 | 10.28 | 25.1 | 0 | 0 | – |
 | 8 | 105 | [(2, 0)] | 16.92 | 11.42 | 28.3 | 0 | 0 | – |
 | 12 | 157 | [(1, 3)] | 29.23 | 10.46 | 39.7 | 1327104 (2^20.3) | 0 | – |
 | 14 | 183 | [(3, 1)] | 31.26 | 12.48 | 43.7 | – | 0 | – |
 | 16 | 209 | [(0, 6)] | 37.85 | 10.37 | 48.2 | – | – | – |
-| 18 | 235 | [(2, 4)] | 43.57 | 12.61 | 56.2 | – | – | 2 y: 0 |
+| 18 | 235 | [(2, 4)] | 43.57 | 12.61 | 56.2 | – | – | 3 y: 0, 0, 1920 |
 | 20 | 261 | [(4, 2)] | 45.54 | 12.93 | 58.5 | – | – | – |
 | 22 | 287 | [(1, 7), (6, 0)] | 53.09 | 9.14 | 62.2 | – | – | – |
 | 26 | 339 | [(0, 10), (5, 3)] | 60.91 | 7.21 | 68.1 | – | – | – |
 | 46 | 599 | [(0, 18), (5, 11), (10, 4)] | 114.69 | -7.18 | 107.5 | – | – | – |
 
 - "Gaussian" is the repository estimator for a synthetic y. "–" means not decided; a cap is not a zero.
-- "Sampled y" counts distinct stage-1 instances from CP-SAT, each completed exactly by `h2396_stage2`.
+- "Sampled y" lists the exact completion count of each distinct CP-SAT stage-1 instance (`h2396_stage2`); at
+  |K| = 18 the third instance survives the ℤ₁₃ level and gives cores (H(940), §1.2).
 
 **Notes.**
 - **|K| = 6, 8 [M].** Stage 1 is empty: repository tool (A and B, planted 2/2 each), `h2396_s1enum` and CP-SAT
@@ -197,11 +203,30 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
     by the prefiltered run.
   - The prefilter is sound: the ℤ₁₃ level is a necessary condition [P], and at q = 5 it leaves the exact core count
     unchanged (§1.1).
-- **|K| = 18.**
-  - CP-SAT found one non-spike stage-1 solution after 40 minutes (`logs/h2396/s1cp/n18_y0.txt`), with defects
-    D = (1, 2, 2, 1).
-  - The exact counter gives 0 completions and 0 S-level solutions. The quotient ladder (`theory/h2396_s2ladder.py`)
-    shows it is already dead at ℤ₁, the ℤ₁₃ level.
+- **|K| = 18: cores exist [M].**
+  - The --zq sampler (CP-SAT with the ℤ₁₃ and ψ levels) found, in its fourth one-hour seed, an instance with
+    D = (2, 2, 2, 0) and ê = 0 (`logs/h2396/sampler_n18zq/inst_2fdef4b04ca7.txt`).
+  - The exact counter finds **1,920 completions** (243,636 S-level solutions, 33 s). Each completion is re-checked
+    against (I′) and (Q) from scratch.
+  - One completion was rebuilt as four ±1 sequences on ℤ₂₃₄ ≅ ℤ₁₈ × F₁₃ by the CRT (`theory/h2396_core_build.py`,
+    `data/core_v235_b1_h2396plugin.txt`).
+  - `scripts/verify_h2092.py` (shares no code with `theory/`) checks Σ PAF = 936 at 0 and −4 elsewhere and rows
+    (2, 0, 0, 0). It then assembles the bordered Goethals–Seidel matrix: **H(940), H Hᵀ = 940·I**
+    (`data/H940_h2396plugin_packed.npz`, SHA-256 of packed rows 27f9b383…).
+  - 940 = 4·235 is a known order. The matrix is a positive control of the construction chain that would give H(2396).
+  - **Calibration on this real y** (`logs/h2396/realy_n18_zq.json`):
+
+| quantity | estimator | exact |
+|---|---|---|
+| completions per y (E per y) | 2^11.4 | 2^10.9 |
+| S-level solutions per y | 2^18.4 | 2^17.9 |
+| D-deficit (log₂ S-solutions per completion) | 7.02 | 6.99 |
+
+- **|K| = 18: the instances that die.**
+  - CP-SAT on stage 1 alone found two other, distinct instances: the first after 40 minutes
+    (`logs/h2396/s1cp/n18_y0.txt`) and one in the seeded loop. Both have D = (1, 2, 2, 1).
+  - Both have 0 completions and 0 S-level solutions. The quotient ladder (`theory/h2396_s2ladder.py`) shows the first
+    is already dead at ℤ₁, the ℤ₁₃ level.
   - By hand: ŝ = r − 13ê = (−11, 0, 0, 13), so Σ ŝ_i t̂_i = 0 forces (t̂₀, t̂₃) = j(13, 11). j = 0 violates the
     parity of t̂₀, and j = ±1 violates Σ t̂² = 50.
   - The estimator, read at this real y, predicted E per y = +10.18 bits and 14.21 bits of S-level solutions
@@ -219,35 +244,42 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
   At |K| = 14 and 18 a core needs an even number of defects in every block. At |K| = 46 the level leaves 9.5% of the
   profiles and does not decide the slice (`logs/h2396/zq_profiles_n46.json`).
 - **Sampled instances (A3 at a fixed budget; level 1 CP-SAT, level 2 exact).**
-  - **|K| = 18, plain stage 1:** two distinct instances, from the first 40-minute run and from 4 seeded runs of 40
+  - **|K| = 18, plain stage 1:** two distinct instances, from the first 40-minute run and from 5 seeded runs of 40
     minutes in the loop (`logs/h2396/s1cp/n18_y0.txt`, `logs/h2396/sampler_n18/`). They are not equivalent under
     per-block translation, reflection, sign and block order.
     - Both have D = (1, 2, 2, 1). Both have **0 completions** (`h2396_stage2`), and both die at the ℤ₁₃ level.
     - At |K| = 18 that level admits only all-even defect counts (the profile table below).
-  - **|K| = 18, `--zq`** (only instances that survive the ℤ₁₃ and ψ levels): <!-- ZQRUNS -->none in 3 runs of
-    60 minutes<!-- /ZQRUNS --> (`logs/h2396/sampler_n18zq/`).
+  - **|K| = 18, `--zq`** (only instances that survive the ℤ₁₃ and ψ levels): **one instance in 5 runs of 60 minutes**
+    (seed 304, 37 minutes), with 1,920 completions (`logs/h2396/sampler_n18zq/`).
   - **|K| = 22:** no instance in one 17-minute stage-1 run (stopped to free the core).
   - **|K| = 46:** see §1.3. No instance.
-  - Completions per instance are therefore **0 of 2** at |K| = 18 (one-sided 95% bound 1.5 per instance by Poisson;
-    the instances themselves are rare: 2 in about 4 CPU-hours).
+  - So at |K| = 18: 3 instances, completions 0, 0 and 1,920. The two that die fail a coarse congruence-and-inequality
+    test, and the one that survives is Gaussian.
 
 **The trend and its extrapolation.**
-- No non-zero count was found at any analogue: exact zeros at |K| = 6, 8, 12, 14, and zero completions
-  for every sampled instance. So log(count) cannot be fitted.
-- What can be said honestly:
-  - the estimator over-predicts by at least 25 to 40 bits where the count is exact;
-  - it over-predicts by at least 10 bits per y at the one real y beyond the spike regime;
-  - in every case the instances die at the coarsest stage-2 level, as at 4892 and 7572.
-- Kumar's concentration near the Paley point does not appear: the defects are forced (14 to 18 at |K| = 46), and
-  the small analogues are empty or rigid.
+- **Existence.** Exact zeros at |K| = 6, 8, 12 and 14, then cores at |K| = 18. So the solutions do not vanish below
+  46: **the first kill prong is not met.**
+- **What the zeros are.** Every dead instance (and every stage-1 solution at |K| ≤ 14) dies at the ℤ₁₃ level. That
+  level is a small integer system in the defect counts, defect sums and row sums (§1.1); at |K| ≤ 21 it forces
+  |ê_i| ≤ 1 and, at |K| = 14 and 18, even defect counts in every block.
+  - At |K| = 46 it is much looser (|ê_i| ≤ 4; 9.5% of the profiles survive).
+  - So the zeros of the small analogues say little about 46, beyond the warning that real stage-1 solutions must be
+    filtered at the ℤ₁₃ level before any stage-2 work.
+- **What survives is Gaussian.** On the surviving |K| = 18 instance the estimator is right to 0.5 bit at all three
+  levels (y, S, D). This is the regime of 523 and 940 (`report/paley_523_answer.md` §3.5), not Kumar's §81.
+- **Hence the extrapolation to |K| = 46 is the estimator's**, read for surviving y: E per y ≈ −7.2 bits (synthetic y),
+  D-deficit 35.3 bits for the ℤ₂ split (§1.4), with an uncertainty of about ±1 bit from this calibration. Real-y values
+  at 46 can be worse: at 4892 the real-y E per y was 12 bits below the synthetic value.
+- **Kumar's concentration near the Paley point does not appear:** the defects are forced (14 to 18 at |K| = 46), and
+  the per-y yield is the Gaussian one.
 - This agrees with Kumar's own real plug-in censuses.
   - §86: "the estimator gave up to 10^6.9 solutions on exactly empty small shapes".
   - §92 (Spence shapes of odd |G|): "it gives up to 10⁷ on exactly empty small shapes".
   - The undercount of §81 was a property of the Szöllősi (complex) classes. For Legendre quadruples (Spence's
-    array) both his data and ours show over-prediction.
+    array) both his data and ours show over-prediction where the coarse level is rigid, and agreement elsewhere.
   - His §92 also kills the other U = 1 Paley slice of 599 (ℤ₂ × ℤ₁₃ × F₂₃), as `report/paley_design_answer.md`
     Theorem 5 does.
-- **Kill on the first prong: no solution appears at any |K| decided, well below 46.**
+- **Kill on the cost prong (§1.4).**
 
 ### 1.3 A3: the sampler [M]
 
@@ -270,17 +302,19 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 - The stage-1 enumerator is validated by the brute force and the repository tool (§1.1, |K| = 12).
 
 **Time per instance.**
-- At |K| = 18: level 1 about 40 CPU-minutes (CP-SAT), level 2 14 s.
+- At |K| = 18: level 1 about 40 CPU-minutes per plain instance and about 4 CPU-hours per instance that survives the
+  ℤ₁₃ level (1 in 5 one-hour `--zq` runs); level 2 14 s (dead) to 33 s (1,920 completions).
 - At |K| = 46: level 2 is out of reach by this design. A block has about 19 clean-clean pairs and 4 clean-defect
   pairs, so 3¹⁹·2⁴ ≈ 1.9·10¹⁰ ≈ 2^34 S-configurations, 1–2 TB per list (keys of 24 lag values) before the join.
 - The deficit model's own per-instance cost at |K| = 46 is ≥ 2^47 (2^28 S-solutions, each a 2^19 D-check).
-- No level-1 instance was produced at |K| ≥ 22 within the budget (<!-- N22 -->|K| = 22: one 17-minute run; |K| = 46: CP-SAT
-  with the ℤ₁₃ and ψ levels, about 2 h for allocation (10, 4) before a container restart, then 1.5 h each for (10, 4)
-  and (0, 18) so far, `logs/h2396/s1cp46/`<!-- /N22 -->). A cap is not a zero.
+- No level-1 instance was produced at |K| ≥ 22 within the budget. At |K| = 22 there was one 17-minute run. At |K| = 46,
+  CP-SAT with the ℤ₁₃ and ψ levels ran about 2 h for allocation (10, 4) before a container restart, then 3 h each
+  for (10, 4) and (0, 18), all UNKNOWN (`logs/h2396/s1cp46/`). A cap is not a zero.
 
 ### 1.4 The cost at |K| = 46 [E]
 
-From `logs/open_screen/deficit_s*.jsonl` (synthetic y; Gaussian, so optimistic by the calibration above):
+From `logs/open_screen/deficit_s*.jsonl` (synthetic y). The model is the one calibrated to about 0.5 bit on the
+surviving |K| = 18 instance (§1.2), and to about 1 bit at 523 and 933 (`report/open_screen_answer.md` §2.3):
 
 | split | C_S | H_S | h_D | D_def | S-step | cost (log₂ per core) |
 |---|---|---|---|---|---|---|
@@ -292,12 +326,23 @@ From `logs/open_screen/deficit_s*.jsonl` (synthetic y; Gaussian, so optimistic b
 - Even if S-solutions were free, a core needs 2^35.3 D-checks of at least 2^19 each, so ≥ 2^54.
 - The 523-style two-level Wagner tree needs a subgroup inside ℤ₂₃, and there is none.
 - The Kumar-style per-instance join is worse: per-block fibres of 2^42, against 2^20 at 643.
-- **Kill on the second prong as well:** ≥ 2^54 against 2^46 + 1 bit.
+- About 2^7.2 surviving stage-1 solutions are needed per core (E per y = −7.2), and level 1 has not produced one at
+  |K| = 46.
+- At the 523 pipeline's measured rates (about 4 ms per S-solution, `report/paley_523_answer.md` §3.6), 2^35.3
+  S-solutions take about 1.6·10⁸ core-seconds, roughly 45,000 core-hours, against about 300 for four cores for a few
+  days.
+- An idealised D-check that only touches the 2^9.5 D-options per block would bring the floor to about 2^45.5. No such
+  D-check exists here or at 523, so this is not claimed as reachable.
+- **Kill:** ≥ 2^54 by the calibrated model against 2^46 + 1 bit; 2^72 with plain joins.
 
 ### 1.5 Verdict
 
-**Part A stops at A2.** It is killed on both prongs: no solutions at any decided analogue, and a Gaussian cost at
-|K| = 46 that is 8 to 26 bits over budget. A4 (production) was not run, and no matrix is claimed.
+**Part A stops at A2, on the cost prong.**
+- Plug-in cores exist at |K| = 18 (H(940) assembled and verified as a control), and given survival of the ℤ₁₃ level
+  the estimator is accurate.
+- At |K| = 46 that estimator puts a core at ≥ 2^54 operations (2^72 with plain joins), 8 to 26 bits over budget.
+- Level 1 did not produce one surviving instance at |K| = 46.
+- A4 (production) was not run, and no matrix of order 2396 is claimed.
 
 ---
 
@@ -406,7 +451,7 @@ solutions [E, §3.3].
 variable, so both levels describe the same blocks. Every answer is re-checked by direct PAF on ℤ₁₉ and on F₁₇.
 - Controls: FEASIBLE at K = ℤ₃ and ℤ₅ (q = 17) in 1 s and 20 s.
 - **1291, stage 1 and the ℤ₁₇ level jointly:** UNKNOWN at 8400 s, 1 worker (`logs/h2396/partC/z19_s1zq.jsonl`).
-- **1291, stage 1 alone** (`theory/h2396_c_loop.sh`): no instance in <!-- C2RUNS2 -->4 runs of 1200 s<!-- /C2RUNS2 -->
+- **1291, stage 1 alone** (`theory/h2396_c_loop.sh`): no instance in 6 runs of 1200 s
   (`logs/h2396/partC/z19_sampler/`). So no stage-1 solution was available for the exact ℤ₁₇-level test
   (`theory/h2396_c_zqtest.py`).
 - That test is validated: on the K = ℤ₃ and ℤ₅ instances it finds 16, 24, 24, 32 and 149 ℤ₁₇-level quadruples.
@@ -462,8 +507,14 @@ Not run: 1291 was not decided early.
      builds it into level 1.
    - For a slice with |ê| unrestricted (larger |K|) the profile table is the cheap first gate. It does not decide 599
      (9.5% of profiles survive).
-2. **599 b = 1 plug-in at |K| = 46:** only if a level-1 method produces ℤ₁₃-surviving stage-1 solutions at |K| ≥ 22.
-   Then read the estimator at those real y's. None was produced here.
+2. **599 b = 1 plug-in at |K| = 46: not recommended as a search.** The estimator is calibrated on surviving instances
+   (0.5 bit at |K| = 18) and puts a core at ≥ 2^54.
+   - What would change that is engineering, not new data. Two things are needed: a D-check that costs well under the
+     2^19 of a 2+2 join, and an S-step that costs well under one operation per S-solution. Neither exists, here or at
+     523.
+   - A cheap check first: a level-1 method that produces ℤ₁₃-surviving stage-1 solutions at |K| = 22 to 30, read with
+     `theory/h2396_realy_estimate.py`, would show whether real-y E per y at |K| = 46 is better or worse than the
+     synthetic −7.2.
 3. **The ℤ₄² × ℤ_p border family (Part B):** before any border search, run the four-equation Q-level join
    (`theory/h2396_b_qlevel.py`) on the other members (669 ℤ₄₁, 719 and 739 ℤ₄³ × ℤ₁₁). It takes seconds.
 <!-- /NEXT -->
@@ -488,4 +539,11 @@ python3 theory/h2396_b_qcheck.py && python3 theory/h2396_b_qplant.py 3 7
 python3 theory/h2396_b_alternatives.py && python3 theory/h2396_b_gauss.py
 python3 theory/h2396_c_s1cp.py 19 17 --secs 8400 --workers 1
 python3 theory/h2396_c_estimate.py 19 17 2000 2
+python3 theory/h2396_gbrute.py 4 5                    # end-to-end G-level control, 1,572,864 cores
+theory/h2396_s1cp_loop.sh 18 2 4 301 5 3600 ./h2396_stage2 OUTDIR --zq
+python3 theory/h2396_realy_estimate.py 18 logs/h2396/sampler_n18zq/inst_2fdef4b04ca7.txt
+python3 theory/h2396_core_build.py 18 13 logs/h2396/sampler_n18zq/inst_2fdef4b04ca7.txt T_LINE_FILE data/core_v235_b1_h2396plugin.txt
+python3 scripts/verify_h2092.py data/core_v235_b1_h2396plugin.txt data/H940_h2396plugin_packed.npz
 ```
+(`T_LINE_FILE` holds one `T ...` line of `ST2_PRINT=1 ./h2396_stage2 18 13 < inst_2fdef4b04ca7.txt`, as in
+`logs/h2396/sampler_n18zq/completions_2fdef4b04ca7.txt`.)
