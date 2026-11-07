@@ -10,7 +10,9 @@
 // phi != 1; then a 2+2 join on (PAF_u(d))_{d=0..n/2}.  Ordered stage-1 count = sum over tuples of prod_i |orbit(e_i)|
 // x #(x0 solutions) [P: the count is constant on orbits].  Solutions are written (canonical e-tuple, x0, weight) for
 // stage 2.  Each solution is re-checked by a direct PAF.
-// usage: h2396_s1enum n q e_plus e_minus [outfile]
+// usage: h2396_s1enum n q e_plus e_minus [outfile] [--zqpre]
+// --zqpre: only (tuple, row placement) whose profile (D_i, e^_i, r_i) passes the Z_q level (theory/h2396_zq_profiles.py)
+//          are joined; the count is then of the stage-1 solutions that can still complete [P: the Z_q level is necessary].
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -107,50 +109,76 @@ static uint64_t fpk(const int32_t *a, const int32_t *b, int sign) {
     return h | 1;
 }
 
-static long double total_count = 0; static long nsol_written = 0, ntuples = 0, njoins = 0;
+static int zqpre = 0;                 // --zqpre: skip (tuple, rows) whose (D_i, e^_i, r_i) profile fails the Z_q level
+static int zq_profile_ok(Pat *Pt[4], int rr[4]) {
+    // exists t^_i, |t^_i| <= n - D_i, t^_i = n - D_i (mod 2): sum (s^_i^2 + q t^_i^2) = 4qn + 4, sum s^_i t^_i = 0
+    long sh[4], rest = 4L * q * n + 4;
+    for (int b = 0; b < 4; b++) { sh[b] = rr[b] - (long)q * Pt[b]->esum; rest -= sh[b] * sh[b]; }
+    if (rest < 0 || rest % q) return 0;
+    long R2 = rest / q; int c[4]; for (int b = 0; b < 4; b++) c[b] = n - Pt[b]->D;
+    for (int t0 = -c[0]; t0 <= c[0]; t0 += 2) { long q0 = R2 - (long)t0 * t0; if (q0 < 0) continue;
+    for (int t1 = -c[1]; t1 <= c[1]; t1 += 2) { long q1 = q0 - (long)t1 * t1; if (q1 < 0) continue;
+    for (int t2 = -c[2]; t2 <= c[2]; t2 += 2) { long q2 = q1 - (long)t2 * t2; if (q2 < 0) continue;
+    for (int t3 = -c[3]; t3 <= c[3]; t3 += 2) { if ((long)t3 * t3 != q2) continue;
+        if (((q - 1) / 2) % 2 || sh[0] * t0 + sh[1] * t1 + sh[2] * t2 + sh[3] * t3 == 0) return 1; } } } }   // sum s^ t^ = 0 only for eps = +1
+    return 0;
+}
+static long double total_count = 0; static long nsol_written = 0, ntuples = 0, njoins = 0, nzqskip = 0;
 static FILE *fo = NULL;
 
-static void join_tuple(Pat *Pt[4], int rr[4]) {
-    XL L[4]; for (int b = 0; b < 4; b++) { build_xl(Pt[b], rr[b], &L[b]); if (!L[b].n) { for (int c = 0; c <= b; c++) { free(L[c].key); free(L[c].x); } return; } }
+#define HLIM (1L << 26)                 // max hashed pairs per chunk (memory: 2 x HLIM x 16 bytes)
+static void join_tuple(Pat *Pt0[4], int rr0[4]) {
+    // order the blocks so that the two smallest x0 lists are hashed; the sum over blocks is symmetric
+    XL L0[4]; int perm[4] = {0, 1, 2, 3};
+    for (int b = 0; b < 4; b++) { build_xl(Pt0[b], rr0[b], &L0[b]); if (!L0[b].n) { for (int c = 0; c <= b; c++) { free(L0[c].key); free(L0[c].x); } return; } }
+    for (int i = 0; i < 4; i++) for (int j = i + 1; j < 4; j++) if (L0[perm[j]].n < L0[perm[i]].n) { int t = perm[i]; perm[i] = perm[j]; perm[j] = t; }
+    XL L[4]; Pat *Pt[4];
+    for (int b = 0; b < 4; b++) { L[b] = L0[perm[b]]; Pt[b] = Pt0[perm[b]]; }
     njoins++;
-    long NAB = L[0].n * L[1].n; long cap = 1; while (cap < 2 * NAB) cap <<= 1;
-    Ent *H = calloc(cap, sizeof(Ent));
-    if (!H) { fprintf(stderr, "oom join %ld\n", cap); exit(3); }
-    for (long a = 0; a < L[0].n; a++) for (long b = 0; b < L[1].n; b++) {
-        uint64_t h = fpk(L[0].key + a * (hK + 1), L[1].key + b * (hK + 1), 1); long p = h & (cap - 1);
-        while (H[p].fp) p = (p + 1) & (cap - 1);
-        H[p].fp = h; H[p].a = (uint32_t)a; H[p].b = (uint32_t)b;
-    }
+    long chunk = L[0].n; while (chunk > 1 && chunk * L[1].n > HLIM) chunk = (chunk + 1) / 2;
     long nsol = 0;
-    for (long c = 0; c < L[2].n; c++) for (long d = 0; d < L[3].n; d++) {
-        uint64_t h = fpk(L[2].key + c * (hK + 1), L[3].key + d * (hK + 1), -1); long p = h & (cap - 1);
-        while (H[p].fp) {
-            if (H[p].fp == h) {
-                long a = H[p].a, b = H[p].b; int ok = 1;
-                for (int z = 0; z <= hK && ok; z++) if ((long)L[0].key[a * (hK + 1) + z] + L[1].key[b * (hK + 1) + z] + L[2].key[c * (hK + 1) + z] + L[3].key[d * (hK + 1) + z] != T[z]) ok = 0;
-                if (ok) {
-                    uint32_t xs[4] = {L[0].x[a], L[1].x[b], L[2].x[c], L[3].x[d]};
-                    int u[4][MAXN];
-                    for (int i = 0; i < 4; i++) for (int x = 0; x < n; x++) u[i][x] = ((xs[i] >> x) & 1 ? -1 : 1) + (q - 1) * Pt[i]->e[x];
-                    // direct re-check over all lags and the allocation
-                    int good = 1, cp = 0, cd = 0;
-                    for (int h2 = 0; h2 < n && good; h2++) { long s = 0; for (int i = 0; i < 4; i++) for (int x = 0; x < n; x++) s += (long)u[i][x] * u[i][(x + h2) % n]; if (s != (h2 ? -4 * q : 4L * q * n + 4 - 4 * q)) good = 0; }
-                    for (int i = 0; i < 4; i++) for (int x = 0; x < n; x++) if (Pt[i]->e[x]) { cd++; if (((xs[i] >> x) & 1 ? -1 : 1) == Pt[i]->e[x]) cp++; }
-                    if (!good || cd != E || cp != ep) { fprintf(stderr, "RECHECK FAILED\n"); exit(5); }
-                    nsol++;
-                    if (fo) {
-                        long double w = 1; for (int i = 0; i < 4; i++) w *= Pt[i]->orb;
-                        fprintf(fo, "%.0Lf", w);
-                        for (int i = 0; i < 4; i++) { fprintf(fo, " |"); for (int x = 0; x < n; x++) fprintf(fo, " %d", u[i][x]); }
-                        fprintf(fo, "\n"); nsol_written++;
+    for (long a0 = 0; a0 < L[0].n; a0 += chunk) {
+        long a1 = a0 + chunk < L[0].n ? a0 + chunk : L[0].n;
+        long NAB = (a1 - a0) * L[1].n; long cap = 1; while (cap < 2 * NAB) cap <<= 1;
+        Ent *H = calloc(cap, sizeof(Ent));
+        if (!H) { fprintf(stderr, "oom join %ld\n", cap); exit(3); }
+        for (long a = a0; a < a1; a++) for (long b = 0; b < L[1].n; b++) {
+            uint64_t h = fpk(L[0].key + a * (hK + 1), L[1].key + b * (hK + 1), 1); long p = h & (cap - 1);
+            while (H[p].fp) p = (p + 1) & (cap - 1);
+            H[p].fp = h; H[p].a = (uint32_t)a; H[p].b = (uint32_t)b;
+        }
+        for (long c = 0; c < L[2].n; c++) for (long d = 0; d < L[3].n; d++) {
+            uint64_t h = fpk(L[2].key + c * (hK + 1), L[3].key + d * (hK + 1), -1); long p = h & (cap - 1);
+            while (H[p].fp) {
+                if (H[p].fp == h) {
+                    long a = H[p].a, b = H[p].b; int ok = 1;
+                    for (int z = 0; z <= hK && ok; z++) if ((long)L[0].key[a * (hK + 1) + z] + L[1].key[b * (hK + 1) + z] + L[2].key[c * (hK + 1) + z] + L[3].key[d * (hK + 1) + z] != T[z]) ok = 0;
+                    if (ok) {
+                        uint32_t xs[4] = {L[0].x[a], L[1].x[b], L[2].x[c], L[3].x[d]};
+                        int u[4][MAXN];
+                        for (int i = 0; i < 4; i++) for (int x = 0; x < n; x++) u[i][x] = ((xs[i] >> x) & 1 ? -1 : 1) + (q - 1) * Pt[i]->e[x];
+                        int good = 1, cp = 0, cd = 0;
+                        for (int h2 = 0; h2 < n && good; h2++) { long s = 0; for (int i = 0; i < 4; i++) for (int x = 0; x < n; x++) s += (long)u[i][x] * u[i][(x + h2) % n]; if (s != (h2 ? -4 * q : 4L * q * n + 4 - 4 * q)) good = 0; }
+                        for (int i = 0; i < 4; i++) for (int x = 0; x < n; x++) if (Pt[i]->e[x]) { cd++; if (((xs[i] >> x) & 1 ? -1 : 1) == Pt[i]->e[x]) cp++; }
+                        if (!good || cd != E || cp != ep) { fprintf(stderr, "RECHECK FAILED\n"); exit(5); }
+                        nsol++;
+                        if (fo) {
+                            long double w = 1; for (int i = 0; i < 4; i++) w *= Pt[i]->orb;
+                            fprintf(fo, "%.0Lf", w);
+                            // write the blocks in their original order (block 0 carries the row sum as placed)
+                            int inv[4]; for (int b2 = 0; b2 < 4; b2++) inv[perm[b2]] = b2;
+                            for (int i = 0; i < 4; i++) { fprintf(fo, " |"); for (int x = 0; x < n; x++) fprintf(fo, " %d", u[inv[i]][x]); }
+                            fprintf(fo, "\n"); nsol_written++;
+                        }
                     }
                 }
+                p = (p + 1) & (cap - 1);
             }
-            p = (p + 1) & (cap - 1);
         }
+        free(H);
     }
     if (nsol) { long double w = 1; for (int i = 0; i < 4; i++) w *= Pt[i]->orb; total_count += w * nsol; }
-    free(H); for (int b = 0; b < 4; b++) { free(L[b].key); free(L[b].x); }
+    for (int b = 0; b < 4; b++) { free(L0[b].key); free(L0[b].x); }
 }
 
 int main(int argc, char **argv) {
@@ -158,7 +186,8 @@ int main(int argc, char **argv) {
     n = atoi(argv[1]); q = atoi(argv[2]); ep = atoi(argv[3]); em = atoi(argv[4]); E = ep + em; hK = n / 2;
     if (n % 2 || n > 32) { fprintf(stderr, "n even <= 32\n"); return 1; }
     if ((q + 1) * ep + (q - 3) * em != 4 * (n - 1)) { fprintf(stderr, "allocation violates the defect identity\n"); return 2; }
-    if (argc > 5) fo = fopen(argv[5], "w");
+    if (argc > 5 && strcmp(argv[5], "--zqpre")) fo = fopen(argv[5], "w");
+    for (int a = 5; a < argc; a++) if (!strcmp(argv[a], "--zqpre")) zqpre = 1;
     for (int d = 0; d < n; d++) T[d] = d ? -4 * q : 4L * q * n + 4 - 4 * q;
     for (int l = 0; l < n; l++) for (int x = 0; x < n; x++) { cs[l][x] = cos(2 * M_PI * l * x / n); sn[l][x] = sin(2 * M_PI * l * x / n); }
     double t0 = now();
@@ -185,12 +214,13 @@ int main(int argc, char **argv) {
                 int rr[4]; int ok = 1;
                 for (int b = 0; b < 4; b++) { rr[b] = b == big ? 2 * sg : 0; if (!okr[b][rr[b] / 2 + 1]) ok = 0; }
                 if (!ok) continue;
+                if (zqpre && !zq_profile_ok(Pt, rr)) { nzqskip++; continue; }
                 ntuples++;
                 join_tuple(Pt, rr);
             }
         }
     }
-    printf("n=%d q=%d alloc=(%d,%d) stage1_ordered_count=%.0Lf tuples=%ld joins=%ld written=%ld secs=%.1f\n", n, q, ep, em, total_count, ntuples, njoins, nsol_written, now() - t0);
+    printf("n=%d q=%d alloc=(%d,%d) %s=%.0Lf tuples=%ld joins=%ld written=%ld zq_skipped=%ld secs=%.1f\n", n, q, ep, em, zqpre ? "stage1_ordered_count_in_Zq_alive_profiles" : "stage1_ordered_count", total_count, ntuples, njoins, nsol_written, nzqskip, now() - t0);
     if (fo) fclose(fo);
     return 0;
 }
