@@ -1,0 +1,22 @@
+{
+  "algorithm": "fixed-coupled-sphere-RRR",
+  "kind": "k4_863",
+  "p": 61,
+  "d": 3,
+  "profile": null,
+  "beta": 0.5,
+  "seed": 0,
+  "trials": 4,
+  "iterations": 10000,
+  "stop": "iterations",
+  "seconds": 28.729815282999994,
+  "best_integer_paf_energy": [
+    331296,
+    303744,
+    296352,
+    295904
+  ],
+  "solved": 0,
+  "hits": [],
+  "certificate": "direct integer PAF only; no matrix claim"
+}

@@ -1,0 +1,36 @@
+{
+  "algorithm": "fixed-coupled-sphere-RRR",
+  "direction": "Afirst",
+  "kind": "b0",
+  "p": 131,
+  "d": 5,
+  "profile": [
+    21,
+    9,
+    1,
+    1
+  ],
+  "beta": 0.5,
+  "seed": 0,
+  "trials": 12,
+  "iterations": 20000,
+  "stop": "iterations",
+  "seconds": 10.635308419000012,
+  "best_integer_paf_energy": [
+    1280,
+    1280,
+    1280,
+    960,
+    1920,
+    1280,
+    640,
+    1280,
+    1600,
+    1280,
+    1280,
+    1920
+  ],
+  "solved": 0,
+  "hits": [],
+  "certificate": "direct integer PAF only; no matrix claim"
+}

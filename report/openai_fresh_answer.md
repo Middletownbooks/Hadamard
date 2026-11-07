@@ -1,6 +1,6 @@
 # Fresh-method proposals for open Hadamard orders
 
-Status: early checkpoint, 2026-11-06 (user-local date). Work in progress.
+Status: second checkpoint, 2026-11-06 (user-local date). Work in progress.
 No new Hadamard matrix is claimed. Rankings and cost estimates below are pending
 the repository audit and short experiments.
 
@@ -26,6 +26,28 @@ At most three proposals will survive review. Each will specify:
 Candidate directions under audit: an exact reformulation of the half-shift
 template; spectral constraints with discrete recovery; and ingredients or rich
 hosts with a substantively different search state. These are not yet proposals.
+
+### Audit and experimental checkpoint
+
+- Read the original forensics, gap analysis, open-order screening, k4 review,
+  block-exchange closure, and lift-deficit reports. A larger flat-pool k-tree and
+  a fixed half-shift template would repeat earlier work.
+- Implemented a **fixed joint spectral sphere**, distinct from the moving
+  per-block targets of `scripts/s4_rrr.py`, with exact finite-fibre projection for
+  the existing 863 compression. Script: `theory/openai_fresh_sphere.py`.
+- [M] Initial B-first trials: 0/12 at v=61 (20,000 iterations); 0/12 at v=43
+  with a fixed row profile; 0/4 at the 863 fibre (10,000 iterations). A-first
+  trials: 8/12 at v=43, 0/12 at v=61, 0/12 at v=131. Every hit passed a direct
+  integer PAF check. These are **core tests, not matrix claims**. The direction
+  was B-first for the initial logs lacking a `direction` field.
+- No evidence yet justifies scaling this projection heuristic to open orders.
+- Read Kumar's primary conference-construction descriptions at 2572, 4204 and
+  6796, and the current `search/NOTES.md`. A plain repetition of his conference
+  search will not count as a fresh proposal.
+
+Unfinished: selection of final proposals, independent projection controls,
+cost models, calibration protocols, and final ranking. The attached scripts and
+logs preserve the negative results as well as the small positive control.
 
 ## Reconstruction of the August methods (unfinished)
 
