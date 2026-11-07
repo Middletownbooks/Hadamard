@@ -11,7 +11,7 @@ Each trial took about 19 s, four processes at a time.
 
 **Result [M]: 0 of 32 trials found a core.** The pass criterion was at least 16 of 32.
 `theory/openai_fresh_verify.py` verified 0 matrices, and no core outside the requested row sums was recorded.
-The best integer PAF energy per trial was 96 in the best trial; the other 31 trials ended at 288.
+The best integer PAF energy reached per trial was 96 in 2 trials, 192 in 27 and 288 in 3. Zero is a core.
 
 **Decision:** by the proposal's own rule ("stop at the first failed gate"), the outer iteration is not scaled.
 Gates B and C, and the 4412 pilot, were not run. The exact per-lag cycle oracle (§1.2 of the answer) remains a
