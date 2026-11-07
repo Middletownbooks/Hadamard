@@ -12,7 +12,9 @@ e in {-1, 0, 1} (Booleans P, M with P + M <= 1, e = P - M).  u = x0 + (q - 1) e.
   - symmetry breaking (solutions map to solutions under block negation and block permutation): r_0 = 2 (n even) or
     r_i = 1 (n odd) and the blocks 1..3 ordered by their number of defects.
 INFEASIBLE decides emptiness [M]; FEASIBLE returns a quadruple, re-checked from scratch; UNKNOWN decides nothing.
-usage: python3 theory/h2396_s1cp.py n q e_plus e_minus [--secs S] [--workers W] [--seed s] [--nsol K] [--out FILE]"""
+--zq adds the stage-2 real-character levels (trivial and, for even n, order-2 character of K: integers t^_i, t'_i with
+the exact parity and range links) as constraints [P], so only instances that survive the Z_q level are produced.
+usage: python3 theory/h2396_s1cp.py n q e_plus e_minus [--secs S] [--workers W] [--seed s] [--nsol K] [--zq] [--out FILE]"""
 import sys, json, time, itertools
 
 
@@ -28,7 +30,7 @@ def check(us, n, q):
     return True
 
 
-def solve(n, q, ep, em, secs=600, workers=4, seed=0, exclude=()):
+def solve(n, q, ep, em, secs=600, workers=4, seed=0, exclude=(), zq=False):
     from ortools.sat.python import cp_model
     assert (q + 1) * ep + (q - 3) * em == 4 * (n - 1), "allocation violates the defect identity"
     E = ep + em; L = sorted({a + (q - 1) * e for a in (1, -1) for e in (-1, 0, 1)})
@@ -82,6 +84,43 @@ def solve(n, q, ep, em, secs=600, workers=4, seed=0, exclude=()):
     # blocks 1..3 have equal rows: order them by defect count
     Dc = [sum(P[i][k] + Mi[i][k] for k in range(n)) for i in range(4)]
     for i in (1, 2): M.Add(Dc[i] >= Dc[i + 1])
+    if zq:
+        # stage-2 real-character levels as constraints on stage 1 [P]: there must be integers t^_i (trivial character)
+        # and t'_i (order-2 character, n even), sums of +-1 over the clean positions, with
+        #   sum_i (s^_i^2 + q t^_i^2) = 4m + 4,  sum_i s^_i t^_i = 0  (eps = +1),  s^_i = sum_k s_i(k),
+        # and the same at the order-2 character; t^ +- t' = 2 x (sum of t over the even / odd clean positions).
+        eps = 1 if ((q - 1) // 2) % 2 == 0 else -1
+        m4 = 4 * q * n + 4
+        Sv = [[M.NewIntVar(-2, 2, "") for k in range(n)] for i in range(4)]
+        for i in range(4):
+            for k in range(n):
+                # s = x0 - e = (2b - 1) - (P - M)
+                M.Add(Sv[i][k] == 2 * B[i][k] - 1 - P[i][k] + Mi[i][k])
+        def sq_(v, lo, hi):
+            z = M.NewIntVar(0, max(lo * lo, hi * hi), ""); M.AddMultiplicationEquality(z, [v, v]); return z
+        def pr_(a_, b_, bound):
+            z = M.NewIntVar(-bound, bound, ""); M.AddMultiplicationEquality(z, [a_, b_]); return z
+        chars = [[1] * n] + ([[(-1) ** k for k in range(n)]] if n % 2 == 0 else [])
+        Tv = []
+        for ci, ch in enumerate(chars):
+            sh = [M.NewIntVar(-2 * n, 2 * n, "") for i in range(4)]
+            th = [M.NewIntVar(-n, n, "") for i in range(4)]
+            for i in range(4):
+                M.Add(sh[i] == sum(ch[k] * Sv[i][k] for k in range(n)))
+                w = M.NewIntVar(-n, n, ""); M.Add(th[i] + Dc[i] - n == 2 * w)          # parity of a sum of n - D signs
+                M.Add(th[i] <= n - Dc[i]); M.Add(-th[i] <= n - Dc[i])
+            M.Add(sum(sq_(sh[i], -2 * n, 2 * n) for i in range(4)) + q * sum(sq_(th[i], -n, n) for i in range(4)) == m4)
+            if eps == 1: M.Add(sum(pr_(sh[i], th[i], 2 * n * n) for i in range(4)) == 0)
+            Tv.append(th)
+        if n % 2 == 0:
+            for i in range(4):
+                for par in (0, 1):
+                    # (t^ + sgn t')/2 = sum of t over the clean positions k = par (mod 2)
+                    ce = sum(1 - P[i][k] - Mi[i][k] for k in range(par, n, 2))
+                    half = M.NewIntVar(-n, n, "")
+                    M.Add(2 * half == Tv[0][i] + (1 if par == 0 else -1) * Tv[1][i])
+                    M.Add(half <= ce); M.Add(-half <= ce)
+                    w2 = M.NewIntVar(-n, n, ""); M.Add(half - ce == 2 * w2)
     for ex in exclude:                         # forbid earlier solutions (for --nsol)
         lits = []
         for i in range(4):
@@ -112,8 +151,8 @@ if __name__ == "__main__":
     found = []
     t0 = time.time()
     while len(found) < nsol:
-        st, us, wt = solve(n, q, ep, em, secs, workers, seed, exclude=found)
-        rec = dict(n=n, q=q, alloc=[ep, em], status=st, wall=round(wt, 1), index=len(found))
+        st, us, wt = solve(n, q, ep, em, secs, workers, seed, exclude=found, zq='--zq' in a)
+        rec = dict(n=n, q=q, alloc=[ep, em], status=st, wall=round(wt, 1), index=len(found), zq='--zq' in a)
         if us: rec['u'] = us; found.append(us)
         print(json.dumps(rec), flush=True)
         if outp: open(outp, 'a').write(json.dumps(rec) + "\n")
