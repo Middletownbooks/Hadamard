@@ -33,8 +33,9 @@ Scripts: `theory/h2396_*`. Logs: `logs/h2396/`.
      level**, the ℤ₁₃ compression. For the first, the estimator predicted 2^10.2 completions and 2^14.2 S-level
      solutions.
      - At |K| = 18 every profile that survives the ℤ₁₃ level has all four defect counts even.
-     - The sampler restricted to such instances (`--zq`) produced none (<!-- SAMPLER -->).
-     - At the target |K| = 46 no level-1 instance was produced (<!-- N46 -->). A cap is never a zero.
+     - The sampler restricted to such instances (`--zq`) produced none (<!-- SAMPLER -->3 CP-SAT runs of 60 minutes<!-- /SAMPLER -->).
+     - At the target |K| = 46 no level-1 instance was produced (<!-- N46 -->CP-SAT with the ℤ₁₃ and ψ levels: about 2 h for
+       allocation (10, 4), and 1.5 h each for (10, 4) and (0, 18) so far<!-- /N46 -->). A cap is never a zero.
    - So the plug-in class is **not rich** here. Kumar's undercounting (§81, Szöllősi targets) does not carry over to
      q = 13 Legendre quadruples; they behave like this repository's q = 11 Paley-coset controls (exact zeros
      against +23 to +40 bits).
@@ -53,7 +54,12 @@ Scripts: `theory/h2396_*`. Logs: `logs/h2396/`.
      obstruction: the first quotient is empty. Gaussian estimate here: 10^29.3 (his 10^24.6) against an exact zero.
    - Side result [P, M]: only 14 ±1 functions on GR(4, 2) have Fourier support in T. So every frame row is one signed
      basis function per block, and the border problem reduces to a ±1 condition on Z M_Tᵀ Z′/4 (§2.4).
-3. **Part C (1291, index-4 Szöllősi plug-in on ℤ₁₉ × F₁₇): stopped at C3 on cost.** <!-- C2 -->
+3. **Part C (1291, index-4 Szöllősi plug-in on ℤ₁₉ × F₁₇): stopped at C3 on cost; C2 is undecided.**
+   - C2 [M where decided]: CP-SAT on stage 1 and the ℤ₁₇ level jointly ended UNKNOWN at 2 h 20 min. Stage-1-only
+     sampling produced no ℤ₁₉ instance (<!-- C2RUNS -->4 runs of 20 minutes<!-- /C2RUNS -->), so no stage-1 solution
+     could be tested at the ℤ₁₇ level.
+   - The exact ℤ₁₇-level test itself is built and validated: it passes instances at K = ℤ₃ and ℤ₅.
+   - A cap is not a zero, so Part C is not killed at C2. It stops at C3, which does not depend on C2.
    - The repository's estimator, written for this family, reproduces Kumar's numbers: K = ℤ₅ gives 10^5.97 against his
      exact 742,400 = 10^5.87; K = ℤ₁₉ gives 10^9.1 against his 10^8.8 [E].
    - In the staged model the deficit is 26.3 bits per stage-1 solution, and ℤ₁₉ has no subgroup for an S/D split.
@@ -212,7 +218,18 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 
   At |K| = 14 and 18 a core needs an even number of defects in every block. At |K| = 46 the level leaves 9.5% of the
   profiles and does not decide the slice (`logs/h2396/zq_profiles_n46.json`).
-- <!-- SAMPLERNOTE -->
+- **Sampled instances (A3 at a fixed budget; level 1 CP-SAT, level 2 exact).**
+  - **|K| = 18, plain stage 1:** two distinct instances, from the first 40-minute run and from 4 seeded runs of 40
+    minutes in the loop (`logs/h2396/s1cp/n18_y0.txt`, `logs/h2396/sampler_n18/`). They are not equivalent under
+    per-block translation, reflection, sign and block order.
+    - Both have D = (1, 2, 2, 1). Both have **0 completions** (`h2396_stage2`), and both die at the ℤ₁₃ level.
+    - At |K| = 18 that level admits only all-even defect counts (the profile table below).
+  - **|K| = 18, `--zq`** (only instances that survive the ℤ₁₃ and ψ levels): <!-- ZQRUNS -->none in 3 runs of
+    60 minutes<!-- /ZQRUNS --> (`logs/h2396/sampler_n18zq/`).
+  - **|K| = 22:** no instance in one 17-minute stage-1 run (stopped to free the core).
+  - **|K| = 46:** see §1.3. No instance.
+  - Completions per instance are therefore **0 of 2** at |K| = 18 (one-sided 95% bound 1.5 per instance by Poisson;
+    the instances themselves are rare: 2 in about 4 CPU-hours).
 
 **The trend and its extrapolation.**
 - No non-zero count was found at any analogue: exact zeros at |K| = 6, 8, 12, 14, and zero completions
@@ -257,7 +274,9 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 - At |K| = 46: level 2 is out of reach by this design. A block has about 19 clean-clean pairs and 4 clean-defect
   pairs, so 3¹⁹·2⁴ ≈ 1.9·10¹⁰ ≈ 2^34 S-configurations, 1–2 TB per list (keys of 24 lag values) before the join.
 - The deficit model's own per-instance cost at |K| = 46 is ≥ 2^47 (2^28 S-solutions, each a 2^19 D-check).
-- No level-1 instance was produced at |K| ≥ 22 within the budget (<!-- N22 -->). A cap is not a zero.
+- No level-1 instance was produced at |K| ≥ 22 within the budget (<!-- N22 -->|K| = 22: one 17-minute run; |K| = 46: CP-SAT
+  with the ℤ₁₃ and ψ levels, about 2 h for allocation (10, 4) before a container restart, then 1.5 h each for (10, 4)
+  and (0, 18) so far, `logs/h2396/s1cp46/`<!-- /N22 -->). A cap is not a zero.
 
 ### 1.4 The cost at |K| = 46 [E]
 
@@ -386,7 +405,15 @@ solutions [E, §3.3].
 **Instead, CP-SAT on stage 1 and the ℤ₁₇ level jointly** (`theory/h2396_c_s1cp.py`). Each (k, class) value is a
 variable, so both levels describe the same blocks. Every answer is re-checked by direct PAF on ℤ₁₉ and on F₁₇.
 - Controls: FEASIBLE at K = ℤ₃ and ℤ₅ (q = 17) in 1 s and 20 s.
-- <!-- C2RESULT -->
+- **1291, stage 1 and the ℤ₁₇ level jointly:** UNKNOWN at 8400 s, 1 worker (`logs/h2396/partC/z19_s1zq.jsonl`).
+- **1291, stage 1 alone** (`theory/h2396_c_loop.sh`): no instance in <!-- C2RUNS2 -->4 runs of 1200 s<!-- /C2RUNS2 -->
+  (`logs/h2396/partC/z19_sampler/`). So no stage-1 solution was available for the exact ℤ₁₇-level test
+  (`theory/h2396_c_zqtest.py`).
+- That test is validated: on the K = ℤ₃ and ℤ₅ instances it finds 16, 24, 24, 32 and 149 ℤ₁₇-level quadruples.
+- **C2 is undecided [cap, not zero].** The stage-1 estimate is 2^56.6 solutions (§3.3); the failures are search
+  failures, not evidence of emptiness.
+- The h4892 question ("does every stage-1 solution fail the ℤ_q level?") therefore stays open for 1291. It matters
+  only if C3's cost were in reach, and it is not.
 
 ### 3.3 C3: cost [E]
 
