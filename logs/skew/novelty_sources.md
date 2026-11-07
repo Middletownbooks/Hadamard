@@ -1,0 +1,6 @@
+# Novelty sources checked (2026-11-07, Step 1)
+
+- Kumar's repository, commit d885022 (2026-11-06): skew/README.md and NOVELTY.md read. Recomputed open list: 630 (theory/skew_census_recompute.py, logs/skew/census_recompute.txt), equal to data/skew_open_census.json.
+- EKLO arXiv:2610.27175: NOT fetched. arxiv.org and export.arxiv.org are refused by this session's egress proxy (curl: CONNECT 403). Kumar's NOVELTY.md (read here) records v1 (19 Oct 2026) with smallest open skew order 356; v2 not seen.
+- Schumer's Zenodo deposit (doi:10.5281/zenodo.22820997, 2026-09-17): NOT fetched (zenodo.org refused). Kumar's NOVELTY.md says it has orders 3676, 5436, 6644 and 7852. 3676 = 4·919 is skew and settles 919 (already removed). 5436 is listed by Kumar as a New skew order, so Schumer's 5436 is presumably not skew. **6644 = 4·1661 and 7852 = 4·1963 are on our open list; whether Schumer's matrices are skew is not determined here.** We treat 1661 and 1963 as possibly settled and do not search them.
+- Web search (one standard query, "skew-Hadamard matrices new orders 2026 arXiv"): Karoui, arXiv:2602.16089 (Feb 2026), skew order 1252 = 4·313 (313 is not on the census list); Kharaghani–Zaitsev arXiv:2510.06489 (quaternary, not real skew). No other 2025–2026 skew order found.
