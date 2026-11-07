@@ -27,11 +27,14 @@ Scripts: `theory/h2396_*`. Logs: `logs/h2396/`.
      14e₊ + 10e₋ = 4(|K| − 1) has three allocations at |K| = 46: (e₊, e₋) = (0, 18), (5, 11), (10, 4).
    - **No analogue has a plug-in core where it was decided [M].** At |K| = 6 and 8 stage 1 is empty (three methods).
      At |K| = 12 stage 1 has exactly 1,327,104 ordered solutions, all "spikes" (each block a constant plus one big
-     letter), and every one dies at the ℤ₁₃ level. At |K| = 14 no stage-1 solution lies in a profile that survives the ℤ₁₃ level, so
-     there is no core either. The Gaussian predicted 2^25 to 2^44 cores at these four analogues.
-   - **The one non-spike stage-1 solution found (|K| = 18, CP-SAT) dies at the coarsest stage-2 level**, the ℤ₁₃
-     compression, where the estimator predicted 2^10.2 completions and 2^14.2 S-level solutions for that very y.
-     <!-- SAMPLER -->
+     letter), and every one dies at the ℤ₁₃ level. At |K| = 14 no stage-1 solution lies in a profile that survives
+     the ℤ₁₃ level, so there is no core either. The Gaussian predicted 2^25 to 2^44 cores at these four analogues.
+   - **Both non-spike stage-1 solutions found (two distinct ones at |K| = 18, by CP-SAT) die at the coarsest stage-2
+     level**, the ℤ₁₃ compression. For the first, the estimator predicted 2^10.2 completions and 2^14.2 S-level
+     solutions.
+     - At |K| = 18 every profile that survives the ℤ₁₃ level has all four defect counts even.
+     - The sampler restricted to such instances (`--zq`) produced none (<!-- SAMPLER -->).
+     - At the target |K| = 46 no level-1 instance was produced (<!-- N46 -->). A cap is never a zero.
    - So the plug-in class is **not rich** here. Kumar's undercounting (§81, Szöllősi targets) does not carry over to
      q = 13 Legendre quadruples; they behave like this repository's q = 11 Paley-coset controls (exact zeros
      against +23 to +40 bits).
@@ -376,7 +379,9 @@ F-side level. Stage 2 is the cyclotomic remainder (49 nonzero G-lag classes in a
 
 ### 3.2 C2: stage 1 and the ℤ₁₇ level
 
-**Exact enumeration is out of reach.** A C-block has about 10^13 letter sequences inside the PSD and energy bounds.
+**Exact enumeration is out of reach.** A C-block has about 10^13 letter sequences inside the PSD and energy bounds
+[E: 6^19 sequences of the small letters times a PSD pass rate of about 5%], and stage 1 itself has about 2^56.6
+solutions [E, §3.3].
 
 **Instead, CP-SAT on stage 1 and the ℤ₁₇ level jointly** (`theory/h2396_c_s1cp.py`). Each (k, class) value is a
 variable, so both levels describe the same blocks. Every answer is re-checked by direct PAF on ℤ₁₉ and on F₁₇.
