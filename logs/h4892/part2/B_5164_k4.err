@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 423, in main
+    solsB, nbB, stB = b_solve_np(st, st['T1'], cap)
+                      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 214, in b_solve_np
+    if blocks is None: blocks = b_blocks(st, T0 - 3 * minE, cap, T1, prune)
+                                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 169, in b_blocks
+    dfs(0, 0, 0, [0] * len(chis))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 168, in dfs
+    vals[j] = a; dfs(t + 1, e2, r2, A2)
+                 ~~~^^^^^^^^^^^^^^^^^^^
+SystemError: error return without exception set
+
+During handling of the above exception, another exception occurred:
+
+MemoryError

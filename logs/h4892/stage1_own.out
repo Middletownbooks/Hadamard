@@ -1,0 +1,8 @@
+blocks 2964 secs 0.5
+distinct PAF vectors 421 ordered solutions 147456 secs 0.9
+canonical classes (block order, block sign) 384 secs 9.4
+planted 0 {'blocks': [1029, 2675, 735, 2223], 'T': [2536, -508, 916, -960, 916, -960], 'list_complete_for_target': True, 'recovered': True, 'solutions': 86016}
+planted 1 {'blocks': [2909, 1566, 685, 898], 'T': [4120, -1724, 1316, -1368, 1316, -1368], 'list_complete_for_target': True, 'recovered': True, 'solutions': 221184}
+planted 2 {'blocks': [1922, 711, 2797, 2124], 'T': [4792, -2212, 1384, -1440, 1384, -1440], 'list_complete_for_target': True, 'recovered': True, 'solutions': 172032}
+planted 3 {'blocks': [2219, 1901, 1408, 2247], 'T': [4504, -1004, 1564, -1640, 1564, -1640], 'list_complete_for_target': True, 'recovered': True, 'solutions': 983040}
+written data/h4892_stage1.json

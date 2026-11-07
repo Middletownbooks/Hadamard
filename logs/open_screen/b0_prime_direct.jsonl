@@ -1,0 +1,93 @@
+{"t": 599, "d": 13, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 47, "classes": 23, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 599, "d": 23, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 739, "d": 9, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 83, "classes": 41, "fix0": 16, "example_rowsums": [-35, 1, 19, 37], "feasible": true, "log2E": 121.9, "n_bits": 210.1, "per_class": 106.9, "twist": "id"}
+{"t": 739, "d": 9, "g": [[1, 1], [3, 1]], "orbits": 83, "classes": 41, "fix0": 4, "example_rowsums": [-53, 7, 7, 7], "feasible": true, "log2E": 120.5, "n_bits": 209.5, "per_class": 110.5, "twist": "3-cycle"}
+{"t": 739, "d": 41, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 751, "d": 15, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 51, "classes": 25, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 751, "d": 15, "g": [[1, 1], [3, 1]], "orbits": 51, "classes": 25, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 751, "d": 25, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 31, "classes": 15, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 947, "d": 11, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 87, "classes": 43, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 947, "d": 43, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 23, "classes": 11, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1103, "d": 19, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 59, "classes": 29, "fix0": 16, "example_rowsums": [-37, 1, 39, 39], "feasible": true, "log2E": 78.5, "n_bits": 157.5, "per_class": 64.0, "twist": "id"}
+{"t": 1103, "d": 29, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 39, "classes": 19, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1223, "d": 13, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 95, "classes": 47, "fix0": 16, "example_rowsums": [-25, 27, 27, 53], "feasible": true, "log2E": 121.9, "n_bits": 258.1, "per_class": 106.7, "twist": "id"}
+{"t": 1223, "d": 47, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1259, "d": 17, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 75, "classes": 37, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1259, "d": 37, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 35, "classes": 17, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1291, "d": 15, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 87, "classes": 43, "fix0": 16, "example_rowsums": [-59, -29, -29, 1], "feasible": true, "log2E": 109.9, "n_bits": 238.1, "per_class": 94.8, "twist": "id"}
+{"t": 1223, "d": 13, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 95, "classes": 47, "fix0": 16, "example_rowsums": [-25, 27, 27, 53], "feasible": true, "log2E": 121.9, "n_bits": 258.1, "per_class": 106.7, "twist": "id"}
+{"t": 1223, "d": 47, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1259, "d": 17, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 75, "classes": 37, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1259, "d": 37, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 35, "classes": 17, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1291, "d": 15, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 87, "classes": 43, "fix0": 16, "example_rowsums": [-59, -29, -29, 1], "feasible": true, "log2E": 109.9, "n_bits": 238.1, "per_class": 94.8, "twist": "id"}
+{"t": 1291, "d": 15, "g": [[1, 1], [3, 1]], "orbits": 87, "classes": 43, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1291, "d": 43, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 31, "classes": 15, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1327, "d": 13, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 103, "classes": 51, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1327, "d": 17, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 79, "classes": 39, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1327, "d": 39, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 35, "classes": 17, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1327, "d": 39, "g": [[1, 1], [3, 1]], "orbits": 35, "classes": 17, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1327, "d": 51, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1327, "d": 51, "g": [[1, 1], [3, 1]], "orbits": 27, "classes": 13, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1423, "d": 79, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1427, "d": 23, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 63, "classes": 31, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1427, "d": 23, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 63, "classes": 31, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1427, "d": 31, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 47, "classes": 23, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1451, "d": 25, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 59, "classes": 29, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1451, "d": 29, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 51, "classes": 25, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1471, "d": 15, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 99, "classes": 49, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1471, "d": 15, "g": [[1, 1], [3, 1]], "orbits": 99, "classes": 49, "fix0": 4, "example_rowsums": [-29, 41, 41, 41], "feasible": true, "log2E": 118.9, "n_bits": 275.1, "per_class": 108.7, "twist": "3-cycle"}
+{"t": 1471, "d": 21, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 71, "classes": 35, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1471, "d": 21, "g": [[1, 1], [3, 1]], "orbits": 71, "classes": 35, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1471, "d": 35, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 43, "classes": 21, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1471, "d": 49, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 31, "classes": 15, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1471, "d": 105, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1471, "d": 105, "g": [[1, 1], [3, 1]], "orbits": 15, "classes": 7, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1499, "d": 107, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1559, "d": 19, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 83, "classes": 41, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1559, "d": 41, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 39, "classes": 19, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1567, "d": 27, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 59, "classes": 29, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1567, "d": 27, "g": [[1, 1], [3, 1]], "orbits": 59, "classes": 29, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1567, "d": 29, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 55, "classes": 27, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1567, "d": 87, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1567, "d": 87, "g": [[1, 1], [3, 1]], "orbits": 19, "classes": 9, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1583, "d": 113, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1667, "d": 17, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 99, "classes": 49, "fix0": 16, "example_rowsums": [-67, -33, -33, 1], "feasible": true, "log2E": 115.8, "n_bits": 280.2, "per_class": 100.6, "twist": "id"}
+{"t": 1667, "d": 49, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 35, "classes": 17, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1667, "d": 119, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1747, "d": 97, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1783, "d": 27, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 67, "classes": 33, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1783, "d": 27, "g": [[1, 1], [3, 1]], "orbits": 67, "classes": 33, "fix0": 4, "example_rowsums": [55, 37, 37, 37], "feasible": true, "log2E": 75.2, "n_bits": 190.8, "per_class": 65.6, "twist": "3-cycle"}
+{"t": 1783, "d": 33, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 55, "classes": 27, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1783, "d": 33, "g": [[1, 1], [3, 1]], "orbits": 55, "classes": 27, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1783, "d": 81, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 23, "classes": 11, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1783, "d": 81, "g": [[1, 1], [3, 1]], "orbits": 23, "classes": 11, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1783, "d": 99, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1783, "d": 99, "g": [[1, 1], [3, 1]], "orbits": 19, "classes": 9, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1787, "d": 19, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 95, "classes": 47, "fix0": 16, "example_rowsums": [-75, 1, 1, 39], "feasible": true, "log2E": 108.9, "n_bits": 271.1, "per_class": 93.8, "twist": "id"}
+{"t": 1787, "d": 47, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 39, "classes": 19, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1831, "d": 15, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 123, "classes": 61, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1831, "d": 15, "g": [[1, 1], [3, 1]], "orbits": 123, "classes": 61, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 1831, "d": 61, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 31, "classes": 15, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1847, "d": 71, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 27, "classes": 13, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1871, "d": 17, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 111, "classes": 55, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1871, "d": 55, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 35, "classes": 17, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1871, "d": 85, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 23, "classes": 11, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1979, "d": 23, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 87, "classes": 43, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 1979, "d": 43, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 47, "classes": 23, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2087, "d": 149, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2251, "d": 25, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 91, "classes": 45, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2251, "d": 45, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 51, "classes": 25, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2251, "d": 45, "g": [[1, 1], [3, 1]], "orbits": 51, "classes": 25, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 2251, "d": 75, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 31, "classes": 15, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2251, "d": 75, "g": [[1, 1], [3, 1]], "orbits": 31, "classes": 15, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 2251, "d": 125, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2287, "d": 127, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 19, "classes": 9, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2339, "d": 167, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2347, "d": 23, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 103, "classes": 51, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2347, "d": 51, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 47, "classes": 23, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2347, "d": 51, "g": [[1, 1], [3, 1]], "orbits": 47, "classes": 23, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 2347, "d": 69, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 35, "classes": 17, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2347, "d": 69, "g": [[1, 1], [3, 1]], "orbits": 35, "classes": 17, "fix0": 4, "feasible": false, "why": "row sums", "twist": "3-cycle"}
+{"t": 2371, "d": 79, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 31, "classes": 15, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2399, "d": 109, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 23, "classes": 11, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
+{"t": 2423, "d": 173, "g": [[1, 1], [1, 1], [1, 1], [1, 1]], "orbits": 15, "classes": 7, "fix0": 16, "feasible": false, "why": "row sums", "twist": "id"}
