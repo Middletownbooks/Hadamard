@@ -32,20 +32,27 @@ def exact():
         n = int(re.search(r'stage2_n(\d+)', f).group(1))
         for line in open(f):
             if line.startswith('WEIGHTED_TOTAL'): ex.setdefault(n, {})['cores'] = int(line.split()[1])
+    # --zqpre runs: a zero count of stage-1 solutions in the Z_q-alive profiles means no core [P + M]
+    for f in glob.glob(L('s1enum', 'run_n*_zq*.log')):
+        for line in open(f):
+            m = re.search(r'n=(\d+) .*stage1_ordered_count_in_Zq_alive_profiles=(\d+)', line)
+            if m and int(m.group(2)) == 0: ex.setdefault(int(m.group(1)), {})['cores'] = 0
     return ex
 
 def sampled():
-    out = {}
-    for f in [L('s1cp', 'n18.jsonl')] + glob.glob(L('sampler_n*', 'inst.jsonl')):
-        if not os.path.exists(f): continue
-        n = int(re.search(r'n(\d+)', os.path.basename(os.path.dirname(f)) if 'sampler' in f else os.path.basename(f)).group(1))
+    """distinct sampled stage-1 instances per n with their exact completion counts"""
+    out = {}; seen = set()
+    first = L('s1cp', 'n18_y0.txt')                     # the first CP-SAT instance: COUNT 0 (h2396_stage2)
+    if os.path.exists(first):
+        seen.add(open(first).read().strip()); out.setdefault(18, []).append(0)
+    for f in glob.glob(L('sampler_n*', 'inst.jsonl')):
+        n = int(re.search(r'sampler_n(\d+)', f).group(1))
         for line in open(f):
             d = json.loads(line)
-            if 'stage2' in d:
-                c = int(d['stage2'].split()[1]) if d['stage2'] else None
-                out.setdefault(n, []).append(c)
-            elif d.get('status') == 'FEASIBLE' and n == 18 and 'sampler' not in f:
-                out.setdefault(n, []).append(0)          # logs/h2396/s1cp/n18_y0.txt: COUNT 0 (h2396_stage2)
+            if 'stage2' in d and d['stage2']:
+                txt = open(os.path.join(os.path.dirname(f), f"inst_{d['key']}.txt")).read().strip()
+                if txt in seen: continue
+                seen.add(txt); out.setdefault(n, []).append(int(d['stage2'].split()[1]))
     return out
 
 if __name__ == "__main__":

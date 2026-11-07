@@ -27,7 +27,8 @@ Scripts: `theory/h2396_*`. Logs: `logs/h2396/`.
      14e₊ + 10e₋ = 4(|K| − 1) has three allocations at |K| = 46: (e₊, e₋) = (0, 18), (5, 11), (10, 4).
    - **No analogue has a plug-in core where it was decided [M].** At |K| = 6 and 8 stage 1 is empty (three methods).
      At |K| = 12 stage 1 has exactly 1,327,104 ordered solutions, all "spikes" (each block a constant plus one big
-     letter), and every one dies at the ℤ₁₃ level. <!-- N14 --> The Gaussian predicted 2^25 to 2^40 cores there.
+     letter), and every one dies at the ℤ₁₃ level. At |K| = 14 no stage-1 solution lies in a profile that survives the ℤ₁₃ level, so
+     there is no core either. The Gaussian predicted 2^25 to 2^44 cores at these four analogues.
    - **The one non-spike stage-1 solution found (|K| = 18, CP-SAT) dies at the coarsest stage-2 level**, the ℤ₁₃
      compression, where the estimator predicted 2^10.2 completions and 2^14.2 S-level solutions for that very y.
      <!-- SAMPLER -->
@@ -151,7 +152,21 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 - Exact stage 2 for every stage-1 class: `theory/h2396_stage2.c` (§1.3).
 - Table: `theory/h2396_a2_table.py --md`.
 
-<!-- A2TABLE -->
+| n = \|K\| | v | allocations (e+, e-) | Gaussian stage 1 (log2) | Gaussian E per y | Gaussian total (log2) | exact stage 1 (ordered) | exact cores | sampled y: completions |
+|---|---|---|---|---|---|---|---|---|
+| 6 | 79 | [(0, 2)] | 14.83 | 10.28 | 25.1 | 0 | 0 | – |
+| 8 | 105 | [(2, 0)] | 16.92 | 11.42 | 28.3 | 0 | 0 | – |
+| 12 | 157 | [(1, 3)] | 29.23 | 10.46 | 39.7 | 1327104 (2^20.3) | 0 | – |
+| 14 | 183 | [(3, 1)] | 31.26 | 12.48 | 43.7 | – | 0 | – |
+| 16 | 209 | [(0, 6)] | 37.85 | 10.37 | 48.2 | – | – | – |
+| 18 | 235 | [(2, 4)] | 43.57 | 12.61 | 56.2 | – | – | 2 y: 0 |
+| 20 | 261 | [(4, 2)] | 45.54 | 12.93 | 58.5 | – | – | – |
+| 22 | 287 | [(1, 7), (6, 0)] | 53.09 | 9.14 | 62.2 | – | – | – |
+| 26 | 339 | [(0, 10), (5, 3)] | 60.91 | 7.21 | 68.1 | – | – | – |
+| 46 | 599 | [(0, 18), (5, 11), (10, 4)] | 114.69 | -7.18 | 107.5 | – | – | – |
+
+- "Gaussian" is the repository estimator for a synthetic y. "–" means not decided; a cap is not a zero.
+- "Sampled y" counts distinct stage-1 instances from CP-SAT, each completed exactly by `h2396_stage2`.
 
 **Notes.**
 - **|K| = 6, 8 [M].** Stage 1 is empty: repository tool (A and B, planted 2/2 each), `h2396_s1enum` and CP-SAT
@@ -163,7 +178,16 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 - **The spike family [P].** If every block is c_i·1 + β_i δ_{p_i} (one defect each), stage 1 holds iff
   Σ c_i b_i = −2|K| − 22, with b_i the big letters. Since |c_i b_i| ≤ 13, this needs |K| ≤ 15. The family fills
   stage 1 at |K| = 12 and is all CP-SAT finds in seconds at |K| = 12 and 14; it is always dead by the parity lemma.
-- <!-- N14NOTE -->
+- **|K| = 14 [M].**
+  - CP-SAT finds spike stage-1 solutions at once; the parity lemma kills all of them.
+  - The ℤ₁₃ profile table (below) leaves 80 of 976 profiles, all with every D_i even, hence ê_i = 0.
+  - The prefiltered exact enumeration (`h2396_s1enum --zqpre`: canonical defect patterns in those profiles, exact x₀
+    joins) finds **no stage-1 solution in them**: 6,768 tuples, 2,520 joins, 3,022 s
+    (`logs/h2396/s1enum/run_n14_zq.log`). **No core.**
+  - The unfiltered stage-1 count at |K| = 14 was not completed: it was stopped after about 40 CPU-minutes, superseded
+    by the prefiltered run.
+  - The prefilter is sound: the ℤ₁₃ level is a necessary condition [P], and at q = 5 it leaves the exact core count
+    unchanged (§1.1).
 - **|K| = 18.**
   - CP-SAT found one non-spike stage-1 solution after 40 minutes (`logs/h2396/s1cp/n18_y0.txt`), with defects
     D = (1, 2, 2, 1).
@@ -188,7 +212,7 @@ a = Σ PAF_{x₀}, c = Σ [CCF(x₀, e) + CCF(e, x₀)] and w = Σ PAF_e. So:
 - <!-- SAMPLERNOTE -->
 
 **The trend and its extrapolation.**
-- No non-zero count was found at any analogue: exact zeros at |K| = 6, 8, 12 <!-- N14SHORT -->, and zero completions
+- No non-zero count was found at any analogue: exact zeros at |K| = 6, 8, 12, 14, and zero completions
   for every sampled instance. So log(count) cannot be fitted.
 - What can be said honestly:
   - the estimator over-predicts by at least 25 to 40 bits where the count is exact;
