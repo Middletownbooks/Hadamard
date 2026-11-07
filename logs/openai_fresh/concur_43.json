@@ -1,0 +1,30 @@
+{
+  "algorithm": "binary-product-replicas",
+  "kind": "b0",
+  "p": 43,
+  "d": 3,
+  "profile": [
+    11,
+    5,
+    5,
+    1
+  ],
+  "beta": 0.5,
+  "trials": 4,
+  "seed": 0,
+  "variables": 60,
+  "copies": 2468,
+  "lag_factors": 7,
+  "iterations": 20000,
+  "seconds": 5.512122008999995,
+  "stop": "iterations",
+  "solved": 0,
+  "best_integer_paf_energy": [
+    96,
+    192,
+    0,
+    0
+  ],
+  "hits": [],
+  "certificate": "direct integer PAF only; no matrix claim"
+}

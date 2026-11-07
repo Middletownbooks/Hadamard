@@ -1,0 +1,20 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "final_checks": {
+    "six_scripts_compile": true,
+    "all_experiment_logs_parse": true,
+    "integer_matrices_verified": 11,
+    "orders": [
+      172,
+      244
+    ],
+    "k4_compression_target_exact": true,
+    "k4_local_wall_counts_exact": true,
+    "k4_spectral_projection_max_error_below": 1e-07,
+    "k4_compression_projection_max_error_below": 1e-09
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 2,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "6eb0242430e49bf6ea02d529caf721718afbb9ce550210b888b1834b506db965"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 0,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "d573b42abfc04e6c3ecea5221d083e9baa2a5565419237411220502fb6bcdd25"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 9,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "4af6f5b1ab7a653a3455c6082a6e8a8160ccb902f686394ee627f62a6bcde7c5"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 3,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "fe42c718a4903ccb167bd5af220af9fc26fd45f05530256d859fc4e97c49a41a"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 4,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "02401c2374195b02b80c609c3e77b84b3818068434957390e0860149cc1ff78d"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 11,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "f679c3bc19c093d44d6e4b767c1705bf311a5386480cfd5ccfeeb92fb1332658"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 5,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "466fd35a01b6ac579b1e05e2edb4634c62ce7ad25e7972fe05897c09bd7d3c45"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_43.json",
+    "trial": 10,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "a756b1abc3dbff577048a66ffddedb375a4e230e5a1b2126263e5b3743c14354"
+  },
+  {
+    "source": "logs/openai_fresh/sphere_Afirst_61_profile.json",
+    "trial": 7,
+    "order": 244,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "4dbf4fdae3af082ca48d271a61b3b0a6034e093746ad877f3d7f60f88fd94f99"
+  },
+  {
+    "source": "logs/openai_fresh/parametric_43_recorded.json",
+    "trial": 0,
+    "outside_requested_sums": true,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "a9cda4e8bc95a8083260a9cb9b8819dcf71f085425221964aa32bfe8debe55aa"
+  },
+  {
+    "source": "logs/openai_fresh/parametric_43_recorded.json",
+    "trial": 1,
+    "outside_requested_sums": true,
+    "order": 172,
+    "integer_Gram_passed": true,
+    "corrupted_matrix_rejected": true,
+    "sha256_int8": "2016ebe0cc15e636de66a492cf7335094aeb266ff9dd7a23eb6ccdb3a3063c88"
+  }
+]

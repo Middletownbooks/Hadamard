@@ -1,0 +1,10 @@
+{
+  "exhaustive_integer_projections": 300,
+  "integer_concavity_tables": 84,
+  "independent_quadratic_DP_cases": 60,
+  "maximum_oracle_calls": 36,
+  "unsafe_range_rejected": true,
+  "passed": true,
+  "seed": 19,
+  "seconds": 1.1505870710000181
+}

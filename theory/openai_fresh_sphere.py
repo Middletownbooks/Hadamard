@@ -84,6 +84,7 @@ class Model:
             self.target = np.full(self.mods, 4, np.int64)
             self.target[0, 0, :, :] = -12
             self.target[0, 0, 0, 0] = 3440
+            assert np.array_equal(exact_paf(y,self.mods[:-1]),self.target.sum(axis=-1))
         else:
             raise ValueError(kind)
         self.axes = tuple(range(-len(self.mods), 0))

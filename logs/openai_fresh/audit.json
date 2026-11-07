@@ -1,0 +1,388 @@
+{
+  "sources": {
+    "flatness": [
+      {
+        "p": 223,
+        "integer_core_verified": true,
+        "rowsums": [
+          11,
+          11,
+          11,
+          23
+        ],
+        "phi_numerator": [
+          991758,
+          991758,
+          991758,
+          1047678
+        ],
+        "phi_denominator": 11039838,
+        "phi": [
+          0.08983447039711996,
+          0.08983447039711996,
+          0.08983447039711996,
+          0.09489976211607452
+        ]
+      },
+      {
+        "p": 283,
+        "integer_core_verified": true,
+        "rowsums": [
+          19,
+          19,
+          19,
+          7
+        ],
+        "phi_numerator": [
+          1907562,
+          2016234,
+          1853226,
+          1845306
+        ],
+        "phi_denominator": 22585098,
+        "phi": [
+          0.08446109022861004,
+          0.0892727585242269,
+          0.0820552560808016,
+          0.0817045823755115
+        ]
+      },
+      {
+        "p": 311,
+        "integer_core_verified": true,
+        "rowsums": [
+          21,
+          19,
+          21,
+          1
+        ],
+        "phi_numerator": [
+          3139750,
+          2805830,
+          3139750,
+          2886390
+        ],
+        "phi_denominator": 29983510,
+        "phi": [
+          0.10471589216872874,
+          0.09357910398082146,
+          0.10471589216872874,
+          0.09626591416415223
+        ]
+      },
+      {
+        "p": 487,
+        "integer_core_verified": true,
+        "rowsums": [
+          17,
+          1,
+          17,
+          37
+        ],
+        "phi_numerator": [
+          15625638,
+          15709158,
+          14223078,
+          13694742
+        ],
+        "phi_denominator": 115264134,
+        "phi": [
+          0.13556374786974065,
+          0.1362883444732253,
+          0.12339552214915353,
+          0.11881182397986871
+        ]
+      },
+      {
+        "p": 491,
+        "integer_core_verified": true,
+        "rowsums": [
+          29,
+          27,
+          15,
+          13
+        ],
+        "phi_numerator": [
+          14800954,
+          13437018,
+          14907690,
+          11300282
+        ],
+        "phi_denominator": 118129690,
+        "phi": [
+          0.12529410684138764,
+          0.11374801711576489,
+          0.1261976561523187,
+          0.09565996490805995
+        ]
+      }
+    ],
+    "halfshift": [
+      {
+        "p": 167,
+        "sign_changes": [
+          4,
+          6,
+          4,
+          4
+        ],
+        "anchored_arc_fits": [
+          [
+            1,
+            43,
+            [
+              61
+            ]
+          ],
+          [
+            2,
+            39,
+            [
+              19,
+              41
+            ]
+          ],
+          [
+            1,
+            42,
+            [
+              39
+            ]
+          ],
+          [
+            1,
+            42,
+            [
+              60
+            ]
+          ]
+        ],
+        "exceptions": 5,
+        "periodic_and_negacyclic_integer_checks": true
+      },
+      {
+        "p": 179,
+        "sign_changes": [
+          6,
+          4,
+          4,
+          4
+        ],
+        "anchored_arc_fits": [
+          [
+            2,
+            46,
+            [
+              23,
+              66
+            ]
+          ],
+          [
+            1,
+            44,
+            [
+              23
+            ]
+          ],
+          [
+            1,
+            46,
+            [
+              43
+            ]
+          ],
+          [
+            1,
+            44,
+            [
+              46
+            ]
+          ]
+        ],
+        "exceptions": 5,
+        "periodic_and_negacyclic_integer_checks": true
+      }
+    ]
+  },
+  "row_gates": [
+    {
+      "p": 599,
+      "d": 13,
+      "allowed_absolute_rowsums": [
+        1,
+        25,
+        27
+      ],
+      "profiles": []
+    },
+    {
+      "p": 599,
+      "d": 23,
+      "allowed_absolute_rowsums": [
+        1,
+        45,
+        47
+      ],
+      "profiles": []
+    },
+    {
+      "p": 1103,
+      "d": 19,
+      "allowed_absolute_rowsums": [
+        1,
+        37,
+        39
+      ],
+      "profiles": [
+        [
+          1,
+          37,
+          39,
+          39
+        ]
+      ]
+    }
+  ],
+  "benchmark": [
+    {
+      "kind": "b0",
+      "p": 1103,
+      "d": 19,
+      "profile": [
+        1,
+        37,
+        39,
+        39
+      ],
+      "variables": 236,
+      "copies": 132360,
+      "lag_factors": 29,
+      "quadratic_DP_state_updates": 1128500896,
+      "parametric_state_updates": 20876288,
+      "integer_field_oracle_calls": [
+        46,
+        46,
+        42,
+        44,
+        42,
+        2,
+        46,
+        42,
+        46,
+        48,
+        2,
+        40,
+        48,
+        42,
+        42,
+        46,
+        44,
+        44,
+        38,
+        42,
+        42,
+        40,
+        40,
+        48,
+        44,
+        42,
+        42,
+        48,
+        46
+      ],
+      "quadratic_projection_seconds": 1.7060522030001266,
+      "parametric_projection_seconds": 0.20339865699997972,
+      "quantized_iteration_seconds": 0.2386671463333793,
+      "every_factor_optimum_agrees": true
+    },
+    {
+      "kind": "k4_863",
+      "p": 863,
+      "d": 7,
+      "profile": null,
+      "variables": 560,
+      "copies": 247680,
+      "lag_factors": 71,
+      "quadratic_DP_state_updates": 1614648064,
+      "parametric_state_updates": 37089280,
+      "integer_field_oracle_calls": [
+        40,
+        36,
+        2,
+        36,
+        38,
+        40,
+        44,
+        36,
+        42,
+        2,
+        44,
+        38,
+        38,
+        2,
+        46,
+        42,
+        44,
+        40,
+        40,
+        38,
+        40,
+        42,
+        44,
+        46,
+        44,
+        46,
+        42,
+        44,
+        48,
+        42,
+        40,
+        42,
+        42,
+        46,
+        42,
+        46,
+        44,
+        42,
+        40,
+        42,
+        40,
+        42,
+        40,
+        42,
+        42,
+        44,
+        42,
+        2,
+        44,
+        42,
+        42,
+        42,
+        44,
+        44,
+        46,
+        44,
+        44,
+        44,
+        48,
+        46,
+        42,
+        44,
+        48,
+        42,
+        42,
+        46,
+        44,
+        44,
+        2,
+        44,
+        40
+      ],
+      "quadratic_projection_seconds": 2.1342625709999083,
+      "parametric_projection_seconds": 0.3656240949999301,
+      "quantized_iteration_seconds": 0.3819715586667674,
+      "every_factor_optimum_agrees": true
+    }
+  ],
+  "seconds": 7.859173891999944
+}

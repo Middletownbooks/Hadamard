@@ -1,0 +1,56 @@
+{
+  "algorithm": "cycle-exact-lag-projection",
+  "affine_sums": true,
+  "kind": "b0",
+  "p": 61,
+  "d": 3,
+  "profile": [
+    11,
+    11,
+    1,
+    1
+  ],
+  "beta": 1.0,
+  "seed": 0,
+  "trials_requested": 4,
+  "variables": 84,
+  "copies": 2684,
+  "lag_factors": 10,
+  "seconds": 68.86859416800007,
+  "solved": 0,
+  "trials": [
+    {
+      "trial": 0,
+      "iterations": 10000,
+      "seconds": 17.571999560999984,
+      "best_integer_paf_energy": 384,
+      "solved": false,
+      "sequences": null
+    },
+    {
+      "trial": 1,
+      "iterations": 10000,
+      "seconds": 17.08296109899993,
+      "best_integer_paf_energy": 384,
+      "solved": false,
+      "sequences": null
+    },
+    {
+      "trial": 2,
+      "iterations": 10000,
+      "seconds": 16.933175548999998,
+      "best_integer_paf_energy": 288,
+      "solved": false,
+      "sequences": null
+    },
+    {
+      "trial": 3,
+      "iterations": 10000,
+      "seconds": 17.272699619999912,
+      "best_integer_paf_energy": 192,
+      "solved": false,
+      "sequences": null
+    }
+  ],
+  "certificate": "direct integer PAF only; no matrix claim"
+}
