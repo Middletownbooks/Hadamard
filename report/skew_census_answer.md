@@ -18,7 +18,30 @@ re-implemented; the forced-lag gate L, the quotient gate and the exact stage-1 c
 <!-- BOTTOM -->
 ## 0. Bottom line
 
-PLACEHOLDER
+1. **No new skew-Hadamard order was found.** No matrix of a census order 4v was built in production, so nothing was
+   published and `pub/skew/` was not created.
+2. **The open list is 630 values** (227 prime, 82 at most 600), recomputed against Kumar's d885022 and unchanged [M].
+   1661 and 1963 were left out as possibly settled by Schumer (6644, 7852); arXiv and Zenodo were unreachable here.
+3. **Coverage map** (`logs/skew/coverage.jsonl`): 430 values appear in Kumar's notes or shape tables, 200 never do.
+   His leads (1951, 2269, 2437, 661, 883) were not touched.
+4. **Screen of all 630 values** (24–130 orbits per block, cyclic and ℤ_p² × ℤ_m groups) [M + E]:
+   - exact gates (row sums, a new forced-lag gate L, ℤ_d and ℤ_p² compressions) leave 286 values with a live slice;
+   - a calibrated k-tree cost model (pair work per solution in lists of 3–5·10⁷) leaves **exactly two slices within
+     reach of 4 cores**: 361 = 19² over ℤ₁₉ × ℤ₁₉ with the split torus ⟨diag(4, 7)⟩ (a group–subgroup pair none of
+     Kumar's tools covers), and 325 = 5² · 13 with Singer-3 × ⟨3⟩, both at 10^12.3 pairs per solution, between Kumar's
+     solved 1123 (10^11.4) and 761 (10^12.9);
+   - the best-ranked slice of all, 549 = 9 · 61 (estimate 10^8.3 solutions), and its non-cyclic variant are exactly
+     dead at the ℤ₃ compression [M] — positive estimate, exact zero, again;
+   - every other slice costs 10^14.4 or more, including every open prime structure screened (best: 433, 1483).
+5. **Calibration** [M]: four of Kumar's orders were rebuilt blind from his structures only — 1204, 1412, 3052 and 4492
+   (the comparable-cost control) — and verified by an independent checker (H Hᵀ = 4v I, H + Hᵀ = 2I). The final
+   pipeline (general-group low-energy lists, Kumar's kt4 join and split ranking, reversal-twin reduction) found 4492
+   in 446 s of join, so it was used in production.
+6. **Production** [heuristic; nothing excluded]: 325 — all 14,194 ranked split values, no solution (in-list estimate
+   10^0.09); 361 — 10,000 of 33,600 ranked split values in the 12 h budget, no solution (in-list estimate 10^0.84,
+   about 0.5 expected twin classes after Kumar's Metropolis correction).
+7. **Next:** 361-torus with lists of 3·10⁷ or more per block (or on a larger machine), and the ℤ_p² torus slices above
+   v = 999 (§7).
 <!-- /BOTTOM -->
 
 ---
@@ -228,7 +251,7 @@ reversal-twin reduction, Kumar's split-value ranking, `kt4.c`), budget fixed in 
 | candidate | rows | lists (A; B, C, D) after twin reduction | E in lists [E] | split values | pairs | result |
 |---|---|---|---|---|---|---|
 | 325 Singer | (1, 7, 17, 31) | 4,194,304; 6,311,844, 6,222,074, 6,121,921 (from 1.2–1.3·10⁷) | 10^0.09 | all 14,194 seen on both sides | 7.3·10⁹ AB, 2.0·10¹¹ CD | **no solution** (52 min join, 2 threads; lists 1.5 h) |
-| 361 torus | (1, 17, 23, 25) | 4,194,304; 9,157,446, 9,940,573, 10,026,076 (from 1.8–2.0·10⁷) | 10^0.84 | INSERT361SIG of 33,600 | INSERT361PAIRS | INSERT361RESULT |
+| 361 torus | (1, 17, 23, 25) | 4,194,304; 9,157,446, 9,940,573, 10,026,076 (from 1.8–2.0·10⁷) | 10^0.84 | 10,000 of 33,600 (the top-ranked; stopped at the 12 h budget) | 1.3·10¹¹ AB, 2.9·10¹² CD | **no solution** (join 03:15–15:05 UTC: 2 threads to 05:00, then 4; lists 2.2 h) |
 
 - The lists are below their targets (3·10⁷ for 361, 2·10⁷ for 325) because each block stopped at the cap of 2·10¹⁰
   Metropolis moves (about 30–45 min per block on 2 threads); exact enumeration of 7·10¹¹-member blocks was measured
@@ -237,16 +260,36 @@ reversal-twin reduction, Kumar's split-value ranking, `kt4.c`), budget fixed in 
   candidate sets.
 - A container restart at 02:42 UTC stopped both runs; they resumed from the cached lists. 361's first driver had been
   started with the earlier (Gaussian) split ranking and no twin reduction; it was stopped after its lists, before
-  its join, and the join was rerun with the final code.
+  its join, and the join was rerun with the final code. A second restart at 15:16 UTC coincided with the budget stop
+  (the last complete chunk ended at split value 10,000, 15:05 UTC); the run was not resumed.
+- **Reading** [E]. The share of a solution's split distribution held by the first 10,000 of the 33,600 ranked values is
+  not known exactly; on the controls the hits came in the first 1–3 % of the ranked values. With an expectation of
+  order 0.5 twin classes in 361's whole lists, a miss is the likeliest single outcome and says nothing about the slice.
+  Neither run excludes anything: the lists hold 10⁻⁴·⁵ of each block.
 
 
 ## 6. Matrices
 
-INSERT_MATRICES
+None. No skew-Hadamard matrix of a census order was found in production. The verified matrices of this session are
+calibration rebuilds of known orders (1204, 1412, 3052, 4492; `logs/skew/calib/HITS.jsonl`), not published:
+`pub/skew/` was not created. `theory/skew_publish.py` is ready for a hit (bundle with certificate, sequences,
+standalone `verify.py`, README).
 
 ## 7. Next computation
 
-INSERT_NEXT
+1. **361-torus, the remaining 23,600 split values** of the same lists (`skew_kt.py` resumes from
+   `sigmas_done.txt` and the cached lists; about 12 more hours on 4 cores at the measured rate), or, better, **larger
+   lists**: the Metropolis lists stopped at 2·10¹⁰ moves with 1.8–2.0·10⁷ members against a target of 3·10⁷; at
+   3·10⁷ per block (after twin reduction 1.5·10⁷) the in-list estimate rises by about 10^0.5. On Kumar's 32-core
+   machine (lists of 6·10⁸ as for 761) this slice is in the regime where 761 and 841 were solved.
+2. **325-Singer with larger lists** (it had 1.2–1.3·10⁷ per block, estimate 10^0.09); and decide its ℤ₅² compression
+   exactly (the gate needs more than 2·10⁶ compressed vectors per block: a C version of `quotient_gate`).
+3. **The other split-torus and mixed slices of ℤ_p² × ℤ_m above v = 999** (1083, 1175, 1225, 1369, 1681, 1849, 2209, …):
+   the screen ran them only with 24–130 orbits and gates for at most 65 orbits; none reached the cost table, but the
+   in-list ranking used C ≤ 30 only. A ranking with C ≤ 36 and lists of 10⁸ is the cheap next screen.
+4. **Exact gates for the undecided screen entries** (4405 alive records include every 'some gate undecided' and every
+   slice above 65 orbits, whose gates were not run): a C join for the Z_d level would decide them; on this session's
+   evidence (549, 153, 201, 265, 301) a large share would die there.
 
 ## 8. Reproduce
 
