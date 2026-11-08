@@ -204,7 +204,41 @@ All four controls were run blind: only the structure (group, H, row sums) was ta
 
 ## 5. Step 4: decisions and runs
 
-INSERT_STEP4
+### 5.1 Exact stage 1 and gates of the two candidates [M]
+
+For each candidate the stage-1 level (the compressions to the quotients that H acts on) was decided exactly before
+any list was built (`logs/skew/gates_candidates.jsonl`):
+- **361, ℤ₁₉ × ℤ₁₉, H = ⟨diag(4, 7)⟩** (row patterns (1; 5, 7, 37), (1; 7, 13, 35), (1; 11, 19, 31), (1; 17, 23, 25)):
+  the compression along the first axis (H acts by 4, order 9: 3 coordinates) has 43–45 PAF-classes of solutions per
+  pattern, by two codes (`zp_gate` and the independent `quotient_gate`, equal counts); along the second axis (7, order
+  3: 7 coordinates) 2.1–2.3·10⁶. The exact weighted stage-1 classes (`stage1_classes`): 1356 compression quadruples
+  for (5, 7, 37), the heaviest holding 0.4 % of the weight. Staging along the first axis would shrink the blocks only
+  3–6×, so the slice was searched unstaged. Gate L passes. Alive.
+- **325, ℤ₅ × ℤ₅ × ℤ₁₃, H = ⟨Singer of order 3⟩ × ⟨3⟩** (5 patterns): the ℤ₁₃ compression passes (4.2–4.7·10⁴ classes);
+  the ℤ₅² compression exceeds its cap of 2·10⁶ vectors per block (undecided, not a zero); Singer-3 has no invariant
+  line, so there is no ℤ₅ compression. Alive as far as decided.
+- Planted controls of the gates: the slice of Kumar's 1100 (ℤ₅² × ℤ₁₁, a known solution) passes both the ℤ₅² and the
+  ℤ₁₁ gate; the known solutions of 209, 469 and 763 pass theirs.
+
+### 5.2 Searches [heuristic: a finished search without a hit excludes nothing]
+
+Both with `theory/skew_kt.py` (lists by the whitened-energy Metropolis generator `skew_lg2.c`, 2·10¹⁰ moves per block,
+reversal-twin reduction, Kumar's split-value ranking, `kt4.c`), budget fixed in advance at 12 h per candidate.
+
+| candidate | rows | lists (A; B, C, D) after twin reduction | E in lists [E] | split values | pairs | result |
+|---|---|---|---|---|---|---|
+| 325 Singer | (1, 7, 17, 31) | 4,194,304; 6,311,844, 6,222,074, 6,121,921 (from 1.2–1.3·10⁷) | 10^0.09 | all 14,194 seen on both sides | 7.3·10⁹ AB, 2.0·10¹¹ CD | **no solution** (52 min join, 2 threads; lists 1.5 h) |
+| 361 torus | (1, 17, 23, 25) | 4,194,304; 9,157,446, 9,940,573, 10,026,076 (from 1.8–2.0·10⁷) | 10^0.84 | INSERT361SIG of 33,600 | INSERT361PAIRS | INSERT361RESULT |
+
+- The lists are below their targets (3·10⁷ for 361, 2·10⁷ for 325) because each block stopped at the cap of 2·10¹⁰
+  Metropolis moves (about 30–45 min per block on 2 threads); exact enumeration of 7·10¹¹-member blocks was measured
+  at about 7 h per block and abandoned. Kumar measured, for Metropolis lists at 251, a yield of 0.07 of the Gaussian
+  count inside them; with that factor the expectations are about 0.1 (325) and 0.5 (361) twin classes in the whole
+  candidate sets.
+- A container restart at 02:42 UTC stopped both runs; they resumed from the cached lists. 361's first driver had been
+  started with the earlier (Gaussian) split ranking and no twin reduction; it was stopped after its lists, before
+  its join, and the join was rerun with the final code.
+
 
 ## 6. Matrices
 
