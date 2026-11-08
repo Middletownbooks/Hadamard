@@ -15,3 +15,10 @@ enum: visited 2203961430 kept 35390667
 00:55:16 Gaussian estimate inside the lists [131072, 40000000, 20000000, 20000000]: 10^3.24 [E]
 00:55:29 split values: 100000 of 1524782 sampled, ranked by solutions per pair work
 00:55:29 kt4: merge classes [2, 9, 12, 14, 15], 100000 split values, 0 done before
+01:08:17 kt4 split values 1..200: TOTAL 0 46514176 67824726626 [769s]
+01:22:05 kt4 split values 201..400: TOTAL 0 45953566 66252928292 [1596s]
+01:41:20 kt4 split values 401..600: TOTAL 0 45841680 65517844350 [2751s]
+01:51:23 kt4 split values 601..800: TOTAL 16 27032444 38400619458 [3354s]
+01:51:23 SOL 0: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib1123_s3/cert_calib1123_0.json", "v": 1123, "mods": [1123], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 1, "C": 1, "D": 67}}
+{"N": 4492, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "b30aa0797955fd9cdd98aac4591f13e5a46b9932f859aca55c9bba5b5e1902b5"}

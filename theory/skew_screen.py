@@ -11,7 +11,7 @@ RMIN..RMAX orbits per block:
 Output: logs/skew/screen.jsonl (appended; resumes by skipping values already done).
   python3 theory/skew_screen.py WORKERS [v ...]
 """
-import json, math, os, sys, time, traceback
+import json, math, os, signal, sys, time, traceback
 from multiprocessing import Pool
 import numpy as np
 from sympy import divisors, isprime
@@ -19,7 +19,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from skew_lib import *
 from skew_enum import all_slices
 
-RMIN, RMAX, DMAX, TBUDGET, RGATE = 24, 130, 60, 150, 65
+RMIN, RMAX, DMAX, TBUDGET, RGATE, GATESECS = 24, 130, 60, 150, 65, 30
+class GateTimeout(Exception): pass
+def _alarm(sig, frm): raise GateTimeout()
+signal.signal(signal.SIGALRM, _alarm)
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'logs', 'skew', 'screen.jsonl')
 SKIP = {1951: 'Kumar lead (spin, §14)', 2269: 'Kumar lead (spin, §14)', 2437: 'Kumar lead (spin, §14)',
@@ -52,9 +55,13 @@ def screen_v(v):
                 if st.r > RGATE: gates[str(d)] = ['not run (r > %d)' % RGATE, None]; continue
                 if time.time() - t0 > TBUDGET: gates[str(d)] = ['skipped (time)', None]; continue
                 try:
-                    stt, n, sz = zp_gate(st, d, axis, pat)
+                    signal.alarm(GATESECS)
+                    stt, n, sz = zp_gate(st, d, axis, pat, cap=200_000, joincap=3 * 10 ** 6)
+                    signal.alarm(0)
+                except GateTimeout:
+                    stt, n, sz = 'undecided (gate time %ds)' % GATESECS, None, []
                 except Exception as e:
-                    stt, n, sz = 'error', None, [repr(e)]
+                    signal.alarm(0); stt, n, sz = 'error', None, [repr(e)]
                 gates[str(d)] = [stt, n]
                 if stt == 'dead': dead = True; break
             rec['gates'] = gates

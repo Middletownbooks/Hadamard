@@ -652,3 +652,106 @@ class ClassSampler:
                 else: S[:, items[i]] = val
             assert np.all(rem == 0)
         return st.skew_signs(P) if self.skew else S
+
+# ---------------------------------------------------------------- exact compression gate onto a product of axes
+def quotient_gate(st, axes, pattern, cap=2_000_000, joincap=3 * 10 ** 7):
+    """Compression of every block onto Q = prod_{i in axes} Z_{n_i} (sum over the other coordinates), when H induces
+    an action on Q. Exact join of the compressed PAFs on Q with lag-0 energy 4v [M]. Returns (status, n, sizes)."""
+    G = st.G; v = st.v
+    qmods = [G.mods[i] for i in axes]; Q = Group(qmods)
+    proj = Q.index(G.coords[:, axes])
+    # induced action
+    qperm = []
+    for g in st.gens:
+        img = np.full(Q.v, -1)
+        pg = proj[g]
+        for x in range(v):
+            q = proj[x]
+            if img[q] < 0: img[q] = pg[x]
+            elif img[q] != pg[x]: return 'n/a', None, ['no induced action']
+        qperm.append(img)
+    seen = {}; porb = []
+    for x in range(Q.v):
+        if x in seen: continue
+        o = {x}; fr = [x]
+        while fr:
+            y = fr.pop()
+            for pm in qperm:
+                z = int(pm[y])
+                if z not in o: o.add(z); fr.append(z)
+        for y in o: seen[y] = len(porb)
+        porb.append(sorted(o))
+    k = len(porb); psz = np.array([len(o) for o in porb])
+    qneg = Q.neg(); pneg = [seen[int(qneg[o[0]])] for o in porb]; z0 = seen[0]
+    if (k - 1) // 2 > 16: return 'undecided', None, ['too many coordinates %d' % k]
+    contrib = {}
+    for O in range(st.r):
+        x = int(np.flatnonzero(st.orb == O)[0]); o = seen[int(proj[x])]
+        contrib.setdefault(o, []).append(int(st.osize[O] // psz[o]))
+    def sets(skew):
+        out = []
+        for o in range(k):
+            if skew and o == z0: out.append({1}); continue
+            if skew and pneg[o] < o: out.append(None); continue
+            s = {0}
+            for w in contrib.get(o, []): s = {a + w for a in s} | {a - w for a in s}
+            out.append(s)
+        return out
+    E4 = 4 * v
+    def enum(skew, rsum, emax):
+        S = sets(skew); free = [o for o in range(k) if S[o] is not None]
+        vals = [sorted(S[o], key=abs) for o in free]
+        wt = [int(psz[o]) * (2 if (skew and o != z0) else 1) for o in free]
+        rw = [int(psz[o]) * (0 if skew else 1) for o in free]
+        nf = len(free); smin = [0] * (nf + 1); smax = [0] * (nf + 1)
+        for i in range(nf - 1, -1, -1):
+            smin[i] = smin[i + 1] + min(rw[i] * a for a in vals[i]); smax[i] = smax[i + 1] + max(rw[i] * a for a in vals[i])
+        out = []; y = [0] * nf
+        def rec(i, en, rs):
+            if len(out) > cap: return
+            if not skew and not (smin[i] <= rsum - rs <= smax[i]): return
+            if i == nf:
+                if (skew or rs == rsum) and en <= emax:
+                    full = [0] * k
+                    for j, o in enumerate(free):
+                        full[o] = y[j]
+                        if skew and o != z0: full[pneg[o]] = -y[j]
+                    out.append(tuple(full))
+                return
+            for a in vals[i]:
+                e2 = en + wt[i] * a * a
+                if e2 > emax: break
+                y[i] = a; rec(i + 1, e2, rs + rw[i] * a)
+        rec(0, 0, 0)
+        return out
+    lagcls = sorted(set(min(o, pneg[o]) for o in range(k) if o != z0))
+    tshift = [Q.index(Q.coords + Q.coords[porb[c][0]]) for c in lagcls]   # q -> q + t
+    full_idx = np.array([seen[x] for x in range(Q.v)])
+    def pafs(L):
+        Y = np.array(L, dtype=np.int64)[:, full_idx]
+        return np.column_stack([(Y * Y).sum(1)] + [(Y * Y[:, ts]).sum(1) for ts in tshift])
+    rows = [1] + list(pattern); lbs = [(r * r + Q.v - 1) // Q.v for r in rows]
+    lists = []
+    for i, r in enumerate(rows):
+        L = enum(i == 0, r, E4 - (sum(lbs) - lbs[i]))
+        if len(L) > cap: return 'undecided', None, [len(x) for x in lists] + ['cap']
+        if not L: return 'dead', 0, [len(x) for x in lists] + [0]
+        lists.append(L)
+    P = [np.unique(pafs(L), axis=0) for L in lists]
+    tgt = np.zeros(P[0].shape[1], dtype=np.int64); tgt[0] = E4
+    nab, ncd = len(P[0]) * len(P[1]), len(P[2]) * len(P[3])
+    if min(nab, ncd) > joincap or max(nab, ncd) > 100 * joincap: return 'undecided', None, [len(x) for x in P] + ['joincap']
+    D = P[0].shape[1]; R = np.random.default_rng(12345).integers(1, 2 ** 61, size=D, dtype=np.uint64)
+    hsh = lambda X: (X.astype(np.uint64) * R).sum(1)
+    if nab > ncd: P = [P[2], P[3], P[0], P[1]]
+    small = (P[0][:, None, :] + P[1][None, :, :]).reshape(-1, D)
+    h0 = hsh(small); order = np.argsort(h0); hs = h0[order]; hD = hsh(P[3]); n = 0
+    for i in range(len(P[2])):
+        need = hsh((tgt - P[2][i])[None, :])[0] - hD
+        pos = np.searchsorted(hs, need); pos[pos >= len(hs)] = len(hs) - 1
+        for j in np.flatnonzero(hs[pos] == need):
+            row = tgt - P[2][i] - P[3][j]; p0 = pos[j]
+            while p0 < len(hs) and hs[p0] == need[j]:
+                if np.array_equal(small[order[p0]], row): n += 1; break
+                p0 += 1
+    return ('pass' if n else 'dead'), n, [len(x) for x in P]

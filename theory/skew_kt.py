@@ -72,7 +72,7 @@ def main():
     ap.add_argument('--seed', type=int, default=1); ap.add_argument('--K', type=int, default=1)
     ap.add_argument('--samples', type=int, default=20000); ap.add_argument('--T', type=float, default=0.5)
     ap.add_argument('--maxmoves', type=float, default=2e10); ap.add_argument('--gensecs', type=float, default=1800); ap.add_argument('--restart', type=int, default=200000)
-    ap.add_argument('--S', default=''); ap.add_argument('--enummax', type=float, default=5e11); ap.add_argument('--gsize', type=int, default=9); ap.add_argument('--estimate-only', action='store_true')
+    ap.add_argument('--S', default=''); ap.add_argument('--enummax', type=float, default=5e11); ap.add_argument('--gen', default='skew_lg2'); ap.add_argument('--dedup', action='store_true', help='keep one of each reversal twin in B, C, D (after K. Kumar, NOTES 111)'); ap.add_argument('--gsize', type=int, default=9); ap.add_argument('--estimate-only', action='store_true')
     ap.add_argument('--maxpairs', type=float, default=3e8); ap.add_argument('--work', default='')
     a = ap.parse_args()
     spec = json.load(open(a.spec)); v = spec['v']; pat = spec['pattern']; tag = spec.get('tag', f'v{v}')
@@ -103,7 +103,9 @@ def main():
     for k in range(4):
         cache = os.path.join(work, f'list{k}.npz')
         if os.path.exists(cache):
-            z = np.load(cache); lists_keys.append(z['keys']); lists_S.append(z['S']); log(f'block {k}: cached {len(z["keys"])}'); continue
+            z = np.load(cache); Sz = z['S']
+            if Sz.dtype != np.uint8: Sz = np.packbits(Sz < 0, axis=1)     # lists cached before the packed format
+            lists_keys.append(z['keys'].astype(np.int16)); lists_S.append(Sz); log(f'block {k}: cached {len(z["keys"])}'); continue
         skew = (k == 0)
         if skew and sizes[0] <= a.AFULL and Ls[0] >= sizes[0]:
             npairs = len(st.pairs)
@@ -171,7 +173,7 @@ def main():
             f.write(uo.astype(np.int32).tobytes()); f.write(su.astype(np.int32).tobytes()); f.write(wt.astype(np.int32).tobytes())
             f.write(st_units.astype(np.int8).tobytes())
         t0 = time.time()
-        cmd = [os.path.join(BIN, 'skew_lg'), fin, fout, str(int(Ls[k])), repr(tau), repr(a.T), str(int(a.maxmoves)),
+        cmd = [os.path.join(BIN, a.gen), fin, fout, str(int(Ls[k])), repr(tau), repr(a.T), str(int(a.maxmoves)),
                str(a.seed * 10 + k), str(a.threads), str(a.restart), str(a.gensecs)]
         log(f'block {k}: generating {int(Ls[k])} of {sizes[k]:.3g} below tau {tau:.3f} (rank {rank}, lambda {lam:.2f})')
         subprocess.run(cmd, check=True)
@@ -191,6 +193,19 @@ def main():
         if not skew: assert np.all(S[:1000000].astype(np.int64) @ st.osize == pat[k])
         keys = keys.astype(np.int16); S = np.packbits(S < 0, axis=1); lists_keys.append(keys); lists_S.append(S); np.savez(cache, keys=keys, S=S)
         log(f'block {k}: kept {n} in {time.time() - t0:.0f}s')
+    if a.dedup:
+        # reversal x(g) -> x(-g) maps orbit O to -O and keeps every PAF: keep a member iff its packed sign mask is
+        # lexicographically <= that of its reversal (members equal to their reversal are kept once)
+        for k in (1, 2, 3):
+            Pk = lists_S[k]; keep = np.zeros(len(Pk), bool)
+            for c0 in range(0, len(Pk), 1_000_000):
+                blk = Pk[c0:c0 + 1_000_000]
+                neg = np.unpackbits(blk, axis=1)[:, :r].astype(bool)
+                Rv = np.packbits(neg[:, st.onegate], axis=1)
+                diff = blk != Rv; first = np.where(diff.any(1), diff.argmax(1), 0); rows = np.arange(len(blk))
+                keep[c0:c0 + len(blk)] = ~diff.any(1) | (blk[rows, first] < Rv[rows, first])
+            log(f'block {k}: reversal-twin reduction keeps {int(keep.sum())} of {len(Pk)}')
+            lists_S[k] = Pk[keep]; lists_keys[k] = lists_keys[k][keep]
     # ---- Gaussian estimate inside the lists [E]
     sub = [k[np.random.default_rng(7).choice(len(k), min(len(k), 500000), replace=False)].astype(float) for k in lists_keys]
     m_in = [k.mean(0) for k in sub]; S_in = sum(np.cov(k, rowvar=False) for k in sub)
@@ -217,33 +232,28 @@ def main():
     # ---- split values: sampled from the in-list Gaussian of a solution's split, ranked by solutions per pair work
     sigf = os.path.join(work, 'sigmas.txt')
     if not os.path.exists(sigf):
-        cov_in = [np.cov(k, rowvar=False) for k in sub]
-        mAB, mCD = m_in[0] + m_in[1], m_in[2] + m_in[3]; SAB, SCD = cov_in[0] + cov_in[1], cov_in[2] + cov_in[3]
-        Kg = SAB @ np.linalg.pinv(SAB + SCD, rcond=1e-9)
-        msol = mAB + Kg @ (tgt - mAB - mCD); Ssol = SAB - Kg @ SAB
+        # Kumar's ranking (cp_lowe.py): AB(sigma) and CD(T - sigma) estimated from random pairs of the actual lists,
+        # score AB CD / (AB + CD + |A| + |C|); only values seen on both sides are candidates
+        rs = np.random.default_rng(a.seed + 99); M = 4_000_000
         Ix = np.array(Ssel)
-        ms, Ss = msol[Ix], Ssol[np.ix_(Ix, Ix)]
-        # lattice of each merge class on the AB side: offset and step from the lists
-        lat = []
-        for c in Ssel:
-            vals = (sub[0][:20000, c][:, None] + sub[1][:2000, c][None, :]).ravel().astype(np.int64)
-            step = int(np.gcd.reduce(np.abs(vals - vals[0]))) or 1
-            lat.append((int(vals[0] % step), step))
-        rs = np.random.default_rng(a.seed + 99)
-        X = rs.multivariate_normal(ms, Ss, size=2_000_000)
-        Y = np.stack([np.round((X[:, i] - lat[i][0]) / lat[i][1]) * lat[i][1] + lat[i][0] for i in range(len(Ssel))], 1).astype(np.int64)
-        Y = np.unique(Y, axis=0)
-        def lgauss(Z, m, S_):
-            Si = np.linalg.pinv(S_); dz = Z - m
-            return -0.5 * np.einsum('ni,ij,nj->n', dz, Si, dz)
-        lsol = lgauss(Y.astype(float), ms, Ss)
-        lab = lgauss(Y.astype(float), mAB[Ix], SAB[np.ix_(Ix, Ix)]) + math.log(len(lists_keys[0]) * len(lists_keys[1]))
-        lcd = lgauss((tgt[Ix] - Y).astype(float), mCD[Ix], SCD[np.ix_(Ix, Ix)]) + math.log(len(lists_keys[2]) * len(lists_keys[3]))
-        score = lsol - np.logaddexp(lab, lcd)
+        def enc(X): return ((np.clip(X, -2047, 2047) + 2048) * (4096 ** np.arange(len(Ssel), dtype=np.int64))).sum(1)
+        def pairhist(K1, K2, flip):
+            i = rs.integers(0, len(K1), M); j = rs.integers(0, len(K2), M)
+            X = K1[i][:, Ix].astype(np.int64) + K2[j][:, Ix].astype(np.int64)
+            if flip: X = tgt[Ix].astype(np.int64) - X
+            u, c = np.unique(enc(X), return_counts=True); return u, c
+        ua, ca = pairhist(lists_keys[0], lists_keys[1], False)
+        uc, cc_ = pairhist(lists_keys[2], lists_keys[3], True)
+        common, ia, ic = np.intersect1d(ua, uc, return_indices=True)
+        nab = ca[ia].astype(float); ncd = cc_[ic].astype(float)
+        LAB = len(lists_keys[0]) * len(lists_keys[1]); LCD = len(lists_keys[2]) * len(lists_keys[3])
+        eab = nab / M * LAB; ecd = ncd / M * LCD
+        score = np.log(eab) + np.log(ecd) - np.log(eab + ecd + len(lists_keys[0]) + len(lists_keys[2]))
         order = np.argsort(-score)[:a.nsig]
+        Y = np.stack([(common[order] // (4096 ** k)) % 4096 - 2048 for k in range(len(Ssel))], 1)
         with open(sigf, 'w') as f:
-            for y in Y[order]: f.write(' '.join(map(str, y.tolist())) + '\n')
-        log(f'split values: {len(order)} of {len(Y)} sampled, ranked by solutions per pair work')
+            for y in Y: f.write(' '.join(map(str, y.tolist())) + '\n')
+        log(f'split values: {len(order)} of {len(common)} seen on both sides ({M} random pairs per side), ranked by AB CD / (AB + CD + |A| + |C|)')
     allsig = [l.split() for l in open(sigf)]
     klog = os.path.join(work, 'kt4.log'); kout = os.path.join(work, 'kt4.out')
     donef = os.path.join(work, 'sigmas_done.txt')

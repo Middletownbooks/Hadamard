@@ -15,3 +15,28 @@
 {"name": "325singer3x3", "v": 325, "r": 45, "C": 22, "pattern": [1, 7, 25, 25], "gates": {"ax0:Z5": ["n/a", null, 0.0], "ax1:Z5": ["n/a", null, 0.0], "ax2:Z13": ["pass", 46888, 0.3]}}
 {"name": "325singer3x3", "v": 325, "r": 45, "C": 22, "pattern": [1, 13, 13, 31], "gates": {"ax0:Z5": ["n/a", null, 0.0], "ax1:Z5": ["n/a", null, 0.0], "ax2:Z13": ["pass", 42050, 0.3]}}
 {"name": "325singer3x3", "v": 325, "r": 45, "C": 22, "pattern": [1, 13, 17, 29], "gates": {"ax0:Z5": ["n/a", null, 0.0], "ax1:Z5": ["n/a", null, 0.0], "ax2:Z13": ["pass", 45359, 0.3]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 1, 13, 45], "gates": {"ax0:Z3": ["n/a", null], "ax1:Z3": ["dead", 0], "ax2:Z61": ["undecided", null]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 1, 13, 45], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 3, 31, 35], "gates": {"ax1:Z3": ["pass", 1, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 84, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 7, 11, 45], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 7, 25, 39], "gates": {"ax1:Z3": ["pass", 1, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 81, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 11, 15, 43], "gates": {"ax1:Z3": ["pass", 1, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 85, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 15, 17, 41], "gates": {"ax1:Z3": ["pass", 1, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 88, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 21, 23, 35], "gates": {"ax1:Z3": ["pass", 1, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 144, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 9)]", "pattern": [1, 25, 27, 29], "gates": {"ax1:Z3": ["pass", 1, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 81, 0.1]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 12)]", "pattern": [1, 3, 31, 35], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 12)]", "pattern": [1, 7, 25, 39], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 12)]", "pattern": [1, 21, 23, 35], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 12)]", "pattern": [1, 25, 27, 29], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 12)]", "pattern": [1, 3, 31, 35], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 12)]", "pattern": [1, 7, 25, 39], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 12)]", "pattern": [1, 21, 23, 35], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 12)]", "pattern": [1, 25, 27, 29], "gates": {"ax1:Z3": ["dead", 0, 0.0], "Z3^2": ["dead", 0, 0.0]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 1, 13, 45], "gates": {"ax1:Z3": ["pass", 48, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.5], "Z3^2": ["pass", 16797, 0.8]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 3, 31, 35], "gates": {"ax1:Z3": ["pass", 38, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.5], "Z3^2": ["pass", 20763, 0.7]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 7, 11, 45], "gates": {"ax1:Z3": ["pass", 47, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.5], "Z3^2": ["pass", 17014, 0.8]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 7, 25, 39], "gates": {"ax1:Z3": ["pass", 44, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.5], "Z3^2": ["pass", 16237, 0.8]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 11, 15, 43], "gates": {"ax1:Z3": ["pass", 43, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 14776, 0.8]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 15, 17, 41], "gates": {"ax1:Z3": ["pass", 30, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.5], "Z3^2": ["pass", 16458, 0.8]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 21, 23, 35], "gates": {"ax1:Z3": ["pass", 38, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.5], "Z3^2": ["pass", 21313, 0.7]}}
+{"name": "549 unip [('unip', [[1, 1], [0, 1]], 1), ('id', None, 13)]", "pattern": [1, 25, 27, 29], "gates": {"ax1:Z3": ["pass", 36, 0.0], "ax0:Z3": ["n/a", null, 0.0], "ax2:Z61": ["undecided", null, 0.4], "Z3^2": ["pass", 11169, 0.7]}}
