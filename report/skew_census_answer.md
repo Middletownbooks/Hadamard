@@ -1,15 +1,177 @@
 # New skew-Hadamard orders 4v from the Đoković–Seberry census: coverage, exact screen, calibrated search
 
 Date: 2026-11-07/08. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_skew_census.md`.
-Scripts: `theory/skew_*.py`, `theory/skew_*.c`, `scripts/verify_skew.py`. Logs: `logs/skew/`.
+Scripts: `theory/skew_*.py`, `theory/skew_*.c`, `scripts/verify_skew.py`. Logs: `logs/skew/`. Tables: `logs/skew/report_tables.md`
+(written by `theory/skew_report_tables.py` from the logs).
 
 **Tags.** [P] proved; [M] exact computation (script named); [E] estimate (estimator named). A cap or a timeout is never
 a zero.
 
-**Credit.** The low-energy k-tree is K. Kumar's method (`search/cp_lowe.py`, `search/cp_enum.c`, `search/kt4.c`,
-`search/listgen`, Apache-2.0, github.com/vatskishan03/hadamard at d885022). `kt4.c` is compiled and run unchanged;
-the list generators `theory/skew_enum_lowe*.c` and `theory/skew_lg*.c` are re-implementations for arbitrary abelian
-groups and say so in their headers. `cp_lowe.py` and `cp_hunt.py` were run unchanged from the read-only clone.
+**Credit.** The low-energy four-list k-tree, the split-value ranking AB·CD/(AB + CD + |A| + |C|) and the reversal-twin
+reduction are K. Kumar's (`search/cp_lowe.py`, `search/cp_enum.c`, `search/kt4.c`, `search/listgen`, NOTES §20, §110,
+§111; Apache-2.0, github.com/vatskishan03/hadamard at d885022). `kt4.c` was compiled and run unchanged;
+`cp_lowe.py` and `cp_hunt.py` were run unchanged from the read-only clone. The list generators `theory/skew_enum_lowe*.c`
+and `theory/skew_lg*.c` are re-implementations for arbitrary abelian groups and say so in their headers. The
+compression test of the screen is the integer test of his `skew_compress.py` / `census_screen.py` (NOTES §10, §14),
+re-implemented; the forced-lag gate L, the quotient gate and the exact stage-1 class weights are new here.
 
 <!-- BOTTOM -->
+## 0. Bottom line
+
+PLACEHOLDER
 <!-- /BOTTOM -->
+
+---
+
+## 1. The open list, and what was checked for novelty
+
+- **Recomputed** (`theory/skew_census_recompute.py`, `logs/skew/census_recompute.txt`) against Kumar's commit d885022
+  (2026-11-06; `git log -1` of the clone, unchanged during the session): census 737; settled 107 (every `skew/<4v>`
+  with v odd in the census, `hadamard/3732`, and Schumer's 919); **open 630, 227 prime, 82 at most 600**, identical to
+  `data/skew_open_census.json`. The 14 orders of `skew/` that are 8v or 16v (1528, 1800, 2216, 2392, 4344, 4632, 4712,
+  7272, 7656, 9424, 9776, 13072, 14352, 14384) are not counted.
+- **Sources** (`logs/skew/novelty_sources.md`):
+  - arXiv (EKLO arXiv:2610.27175v2) and Zenodo (Schumer's record) are **refused by this session's egress proxy**
+    (CONNECT 403); neither could be read. Kumar's NOVELTY.md (read here) records EKLO v1 (19 October 2026; smallest open
+    skew order 356) and Schumer's deposit with orders 3676, 5436, 6644 and 7852.
+  - **6644 = 4 · 1661 and 7852 = 4 · 1963 are on the open list.** Whether Schumer's matrices of those orders are skew
+    could not be checked; both values were excluded from every search here (treated as possibly settled).
+  - One web search (2025–2026 skew constructions): Karoui, arXiv:2602.16089, skew order 1252 = 4 · 313 (313 is not a
+    census value); Kharaghani–Zaitsev arXiv:2510.06489 (quaternary). Nothing else.
+
+## 2. Coverage map (step 1)
+
+`theory/skew_coverage.py` → `logs/skew/coverage.jsonl`: for each of the 630 values, every paragraph of Kumar's
+`search/NOTES.md` (skew sections and every paragraph that mentions skew), `skew/NEGACYCLIC.md`, `skew/PALEY_SKEW.md`, the
+`skewplug`, `negaskew` and `listgen` READMEs, and his Paley-product shape table `scan38/data/shapes38.json`, with a
+keyword label per paragraph. It is a text map: a match is evidence of contact, not of a decision.
+
+- 430 of the 630 values are mentioned somewhere; 200 never are (the smallest: 229, 459, 485, 527, 565, 569, 595, 709).
+- 230 values have Paley-product shapes in his table; for 99 of them every shape is decided there.
+- 158 values occur in a paragraph with an exact-negative keyword, 154 with a heuristic-negative one.
+- **Leads and running targets (excluded here):** the spin primes 1951, 2269, 2437 (§14), and 661 and 883 (k-trees with
+  30 h and 44 h budgets, §115). 1661 and 1963 were also excluded (§1).
+- **What his tools do not cover** (from the notes): the plain Goethals–Seidel array over ℤ_p² × ℤ_m with an odd-order
+  subgroup of GL(2, p) that is not a field multiplication (his `cp_field` handles only GF(p²)-cyclotomy, i.e. Singer-type
+  subgroups; his §12 survey used a capped model and stopped at v ≤ 999); cyclic slices with more than about 46 orbits
+  for the exact chain; prime fibres with e > 42 except 251 (`listgen`).
+
+## 3. The screen (step 2)
+
+### 3.1 Slices and gates
+
+`theory/skew_enum.py`, `theory/skew_lib.py`, `theory/skew_screen.py` → `logs/skew/screen.jsonl` (all 630 values).
+
+- **Slices.** G = ℤ_v with every subgroup of ℤ_v^* of odd order generated by at most two elements; and, for p² ∥ v,
+  G = ℤ_p × ℤ_p × ℤ_{v/p²} with H generated by (M, u) or by (M, 1) and (1, u), M an odd-order representative of
+  GL(2, p) (scalar, split torus, unipotent, Singer) and u an odd-order unit (deduplicated by orbit signature). Kept:
+  24 ≤ orbits ≤ 130. Odd |H| gives −1 ∉ H, so a skew block exists unless an orbit is closed under negation [P].
+- **Gate R** [P/M]: the skew block has row sum 1; 4v − 1 = b² + c² + d² with each sum attainable by an H-invariant
+  block (exact subset-sum DP over orbit sizes).
+- **Gate L** [P] (new): if some lag s has f(s) = #{g : g + s ∈ Hg} > v/2, every H-invariant block (the skew one too)
+  has PAF(s) ≥ 2f(s) − v > 0, so Σ PAF(s) ≠ 0. Example: v = 153 = 9 · 17, H = ⟨52⟩ (52 ≡ 1 mod 51): f(51) = 102 > 76.5.
+- **Gate Z_d** [M]: the compression to ℤ_d along a cyclic factor, for every divisor d of that factor (all primes,
+  composite d ≤ 60): each block's compressed vector is a sum over H_d-orbit coordinates, the skew block's is
+  (1, y, −y)-antisymmetric; the four lists are joined exactly on the lag-0 energy 4v and every lag class of
+  ⟨H_d, −1⟩ on ℤ_d. Validated: Kumar's exact verdicts (201/⟨22⟩ dead at ℤ₃, 265/⟨16⟩ at ℤ₅, 301/⟨4⟩ at ℤ₇; 469/⟨9⟩
+  passes with one combination at ℤ₇; 209/⟨26⟩ passes). For d = v/q it is the stage-1 level of the staged slice.
+  `quotient_gate` does the same onto a product of axes (ℤ_p²); it agrees with the axis gate on 361 and passes on the
+  slice of Kumar's 1100.
+- **Caps.** 2·10⁵ compressed vectors per block and a 30 s alarm per gate in the screen; gates were not run for slices
+  with more than 65 orbits (beyond any k-tree budget, §3.3). Every cap is recorded as undecided.
+- **Estimate** [E]: the lattice Gaussian of the class vector of the sum of the four blocks (uniform samples, exact
+  uniform sampling at the row sum), on the hyperplane Σ_c n_c P(c) = 0 with lattice 4ℤ. On Kumar's exact counts:
+  209/⟨26⟩ 10^2.26 against 288; 469/⟨9⟩ 10^1.84 against 192 (his model: 3 and 0.2). Replacing the Gaussian's stage-1
+  factor by the exact weighted stage-1 count (`stage1_ratio`) changes these by +0.3 and +0.6 decades (toward the truth)
+  and leaves 763 unchanged (`logs/skew/` command in §8).
+
+### 3.2 Totals
+
+INSERT_SCREEN_TOTALS
+
+### 3.3 The k-tree cost model and the ranked table
+
+`skew_lib.inlist_estimate` [E]: block k's kept list is modelled as uniform in the whitened ellipsoid |W_k(P − c_k)|² ≤ τ_k
+(c_k the conditional mean given the target, τ_k the noncentral χ² quantile of L_k/N_k); the estimate inside the lists is
+the lattice Gaussian of the sum. Checked against lists actually built: 353 10^4.44 (lists 10^4.42), 1123 10^3.16 (10^3.24);
+against Kumar's printed in-list values it is 0.5–0.6 decades higher (1123, 761, 613), consistently. The cost is
+log₁₀(L_A L_B + L_C L_D) − log₁₀ E_in, the pair work per solution of one pass of the k-tree. On this scale the solved
+controls are 613: 10.2, 1123: 11.4, 761: 12.9.
+
+INSERT_RANKED_TABLE
+
+**Reading.**
+- After the exact gates **only two slices are within budget: 361 = 19² over ℤ₁₉ × ℤ₁₉ with the split torus
+  H = ⟨diag(4, 7)⟩ (order 9; 45 orbits, 22 lag classes) and 325 = 5² · 13 over ℤ₅ × ℤ₅ × ℤ₁₃ with H = ⟨Singer of order 3⟩ ×
+  ⟨3⟩ (order 9; 45 orbits, 22 classes)**, both at cost ≈ 10^12.3, between 1123 and 761.
+- The best-ranked slice of all, 549 = 9 · 61 with ⟨22⟩ or ⟨16⟩ (|H| = 15, 20 classes, estimate 10^8.3), and the
+  non-cyclic 549 slice ℤ₃² × ℤ₆₁ with ⟨(u, 12)⟩, u unipotent, are **exactly dead at the ℤ₃ compression for every row
+  pattern** [M] (`logs/skew/gates_candidates.jsonl`): positive estimate, exact zero, at the coarsest quotient — the
+  calibration warning of the prompt, again.
+- Everything else costs at least 10^14.4 (433, 1483, 589, …), 100 times 1123 or more: beyond 4 cores.
+- 361's torus slice is in no tool of Kumar's: `cp_sweep.structures` skips q | m (ℤ₁₉ × GF(19)), and `cp_field` has only
+  field multiplications. 325's Singer slice is a GF(25)-fibre structure that his `cp_hunt` can estimate (its sampled
+  stage-1 class: 10^−0.03 for the class, 10^−1.97 in lists of 3·10⁷); it was never searched.
+
+### 3.4 Kumar's own estimate pass (cp_hunt, nontrivial K_m)
+
+`cp_hunt.py skew <401 composite values> --estimate-only --L 3e7` (unchanged, `logs/skew/cp_hunt_est.jsonl`): stopped after
+30 structures (225 … 695) to free a core. No structure has a positive in-list estimate (best: 623, 10^−0.83; 325
+GF(25), 10^−1.97), consistent with his notes; the run is incomplete and decides nothing.
+
+### 3.5 Primes
+
+`theory/skew_prime_pass.py` (`logs/skew/prime_pass.jsonl`): for the open primes, every odd |H| with 30 ≤ e ≤ 80 classes:
+20 structures pass gate R. Their k-tree costs (`logs/skew/prime_inlist.jsonl`) are 14.4 (433, |H| = 9) and 14.6 (1483,
+|H| = 39) at best, and 19.6 to 33 for the rest (1201, 1301, 1103, 1303, 859, 1741, 2113, 2381). No open prime is
+within reach of this method on this machine.
+
+## 4. Calibration (step 3)
+
+All four controls were run blind: only the structure (group, H, row sums) was taken from Kumar; no signs.
+
+| control | structure | tool | lists (A; B, C, D) | E in lists [E] | result | time |
+|---|---|---|---|---|---|---|
+| 1204 (v = 301) | ℤ₇ × GF(43), e = 6, H = ⟨127⟩ | Kumar's cp_lowe.py, seed 2 (his: seed 1) | 64,000; 1.0·10⁷ ×3 | 10^2.53 (his 10^2.52) | 1 solution at split value 292 | 534 s, 2 threads |
+| 1412 (v = 353) | ℤ₃₅₃, H = ⟨22⟩, rows 1, 21, 21, 23 | this pipeline (exact enumeration) | 65,536; 10⁶ ×3 | 10^4.42 | 16 tuples in the first 200 split values; 4 matrices verified | ~1 min lists, 2 s join |
+| 3052 (v = 763) | ℤ₇₆₃, H = ⟨9⟩, rows 1, 1, 5, 55 | this pipeline | 32,768; 2·10⁷, 1.5·10⁷, 2·10⁷ | 10^5.38 | 16 tuples at split value 27 (kt4 order); with dedup + ranking: 2 in the first 200 | ~1.5 min lists, 7–10 s join |
+| 4492 (v = 1123) | ℤ₁₁₂₃, H = ⟨691⟩, rows 1, 1, 1, 67 | this pipeline, comparable cost (11.4) | 131,072; 4·10⁷, 2·10⁷, 2·10⁷ | 10^3.24 | first version: 16 tuples at split value 718 after 2.4·10¹¹ CD pairs (3354 s join); **final version** (twin reduction, sampled-pair ranking): 2 solutions within 1000 split values, 3.0·10¹⁰ CD pairs | 7 min lists + 446 s join, 2–3 threads |
+
+- Every hit was rebuilt and checked by `scripts/verify_skew.py` (integer PAF on every lag, skew first block,
+  invariance, H Hᵀ = 4v I, H + Hᵀ = 2I); hits in `logs/skew/calib/HITS.jsonl`. The verifier also passes Kumar's
+  certificate of 1100 (ℤ₅ × ℤ₅ × ℤ₁₁) and fails a copy with one sign flipped.
+- Kumar's runs of the same controls: 1204 ≈ 6 min; 1412 16 solutions in 80 s; 3052 found by the exact chain (his
+  sampled k-tree had missed it); 4492 2.7 thread-hours with lists 1e8, 3e7, 3e7.
+- **Kill rule.** The method reproduced a control of comparable estimated cost (1123, 11.4, against 12.3 for the
+  candidates), in its final form, so it was used in production.
+- **Bugs found by the controls and fixed before production** (each re-validated): the enumerator's output buffer
+  (overflow → τ retry), memory (int16 keys, packed signs, chunked twin reduction; one container OOM kill), the
+  Gaussian split ranking (unnormalised; it starved one side on 763) replaced by Kumar's sampled-pair ranking, an int64
+  overflow in its split encoding, the Metropolis generator's saturation (stop rules) and speed (whitened incremental
+  energy, `skew_lg2.c`).
+
+## 5. Step 4: decisions and runs
+
+INSERT_STEP4
+
+## 6. Matrices
+
+INSERT_MATRICES
+
+## 7. Next computation
+
+INSERT_NEXT
+
+## 8. Reproduce
+
+```
+python3 theory/skew_census_recompute.py /home/user/vatskishan03/hadamard
+python3 theory/skew_coverage.py /home/user/vatskishan03/hadamard
+python3 theory/skew_screen.py 2                     # logs/skew/screen.jsonl (resumable; a few hours on 2 cores)
+python3 theory/skew_inlist_rank.py 30 3             # logs/skew/inlist_rank.jsonl
+python3 theory/skew_report_tables.py > logs/skew/report_tables.md
+# k-tree (binaries: cc -O3 -march=native -fopenmp {skew_enum_lowe2,skew_lg2}.c -lm; kt4.c from Kumar's search/)
+SKEW_WORK=<dir with bin/> python3 theory/skew_kt.py theory/specs/calib_1123.json --L 4e7,2e7,2e7 --nsig 100000 --threads 2 --K 1 --seed 3 --dedup
+SKEW_WORK=<dir> python3 theory/skew_kt.py theory/specs/p361_torus_a.json --L 3e7,3e7,3e7 --enummax 0 --gensecs 5400 --T 0.6 --dedup --nsig 200000 --K 4
+python3 scripts/verify_skew.py CERT.json
+```

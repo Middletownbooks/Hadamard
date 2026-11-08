@@ -10,3 +10,11 @@
 02:17:50 Gaussian estimate inside the lists [131072, 20000002, 9999999, 10000001]: 10^2.33 [E]
 02:17:54 split values: 100000 of 252751 seen on both sides (4000000 random pairs per side), ranked by AB CD / (AB + CD + |A| + |C|)
 02:17:54 kt4: merge classes [2, 9, 12, 14, 15], 100000 split values, 0 done before
+02:19:35 kt4 split values 1..200: TOTAL 0 17364310 7078891589 [101s]
+02:20:37 kt4 split values 201..400: TOTAL 0 14198332 3726170301 [163s]
+02:22:27 kt4 split values 401..600: TOTAL 0 17421946 7655996429 [273s]
+02:24:36 kt4 split values 601..800: TOTAL 0 18946586 9222694263 [401s]
+02:25:20 kt4 split values 801..1000: TOTAL 2 5664446 2733464122 [446s]
+02:25:20 SOL 0: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib1123_dd/cert_calib1123_0.json", "v": 1123, "mods": [1123], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 1, "C": 1, "D": 67}}
+{"N": 4492, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "ea4a65fa9aad9548862310ffe2288f5495f9d55a8acaffbad95120d8384407e2"}

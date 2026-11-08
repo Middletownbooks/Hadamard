@@ -1,0 +1,20 @@
+02:26:08 v=325 mods=[5, 5, 13] |H|=9 r=45 C=22 pattern=[1, 7, 17, 31] pairs=22
+02:26:10 block sizes ['4.19e+06', '7.99e+11', '7.6e+11', '6.84e+11'] target lists ['4.19e+06', '2e+07', '2e+07', '2e+07']
+02:28:26 block 0: all 4194304 skew blocks
+02:28:26 block 1: generating 20000000 of 7.99e+11 below tau 4.532 (rank 21, lambda 2.08)
+moves 400000000 kept 1618110 (40s)
+moves 800000000 kept 2963036 (74s)
+moves 1200000000 kept 4096209 (109s)
+moves 1600000000 kept 5063573 (144s)
+moves 2001000000 kept 5895376 (179s)
+moves 2401000000 kept 6615589 (213s)
+moves 2802000000 kept 7245593 (248s)
+moves 3203000000 kept 7800166 (283s)
+moves 3604000000 kept 8288013 (316s)
+moves 4004000000 kept 8717028 (352s)
+moves 4404000000 kept 9098736 (387s)
+moves 4805000000 kept 9439932 (423s)
+moves 5205000000 kept 9744493 (457s)
+moves 5606000000 kept 10018603 (493s)
+moves 6006000000 kept 10264336 (528s)
+moves 6407000000 kept 10486532 (564s)
