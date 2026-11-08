@@ -87,7 +87,26 @@ keyword label per paragraph. It is a text map: a match is evidence of contact, n
 
 ### 3.2 Totals
 
-INSERT_SCREEN_TOTALS
+| values | count |
+|---|---:|
+| some slice alive | 286 |
+| every slice dead (exact gates) | 179 |
+| no slice with 24-130 orbits | 158 |
+| skipped (Kumar lead / Schumer) | 7 |
+
+| (slice, pattern) records | count |
+|---|---:|
+| alive | 4405 |
+| dead Z_d | 612 |
+| dead R | 425 |
+| dead L | 257 |
+| no slice in range | 158 |
+| skipped: Kumar lead | 3 |
+| skipped: Kumar running | 2 |
+| skipped: Schumer 6644? | 1 |
+| skipped: Schumer 7852? | 1 |
+
+"dead Z_d" counts every exact compression kill (ℤ₃ 62, ℤ₅ 60, ℤ₇ 98, ℤ₁₃ 97, ℤ₁₉ 68, ℤ₃₁ 58, …; `logs/skew/screen.jsonl`). The 158 values with no slice in range are mostly primes whose odd |H| give fewer than 24 or more than 130 orbits.
 
 ### 3.3 The k-tree cost model and the ranked table
 
@@ -98,7 +117,40 @@ against Kumar's printed in-list values it is 0.5–0.6 decades higher (1123, 761
 log₁₀(L_A L_B + L_C L_D) − log₁₀ E_in, the pair work per solution of one pass of the k-tree. On this scale the solved
 controls are 613: 10.2, 1123: 11.4, 761: 12.9.
 
-INSERT_RANKED_TABLE
+One row per (v, classes, row pattern); slices with C ≤ 30 and slice estimate ≥ 10³ (45 slices) plus the prime pass.
+
+| # | v | slice | \|H\| | orbits | classes | rows | log10 E (slice) | log10 E in lists | cost | gates | next step |
+|---:|---:|---|---:|---:|---:|---|---:|---:|---:|---|---|
+| 1 | 549 | G=Z549, H=[[22]] | 15 | 41 | 20 | [1, 3, 31, 35] | 8.31 | 2.76 | 12.22 | dead at Z3 [M] (all patterns) | none (dead) |
+| 2 | 361 | G=Z19xZ19, H=[('torus', [[4, 0], [0, 7]])] | 9 | 45 | 22 | [1, 5, 7, 37] | 11.86 | 2.8 | 12.25 | alive: both Z19 compressions pass [M] | searched (§5) |
+| 3 | 325 | G=Z5xZ5xZ13, H=[('singer', [[1, 1], [2, 3]], 1), ('id', None | 9 | 45 | 22 | [1, 7, 17, 31] | 11.1 | 2.72 | 12.33 | alive: Z13 passes; Z5^2 undecided (cap) | searched (§5) |
+| 4 | 433 | G=Z433, H=[[27]] | 9 | 49 | 24 | [1, 1, 19, 37] | 14.91 | 0.83 | 14.41 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 5 | 1483 | G=Z1483, H=[[28]] | 39 | 39 | 19 | [1, 1, 1, 77] | 6.97 | 0.38 | 14.58 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 6 | 589 | G=Z589, H=[[102]] | 15 | 45 | 22 | [1, 5, 31, 37] | 8.53 | 0.17 | 14.88 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 7 | 549 | G=Z3xZ3xZ61, H=[('torus', [[1, 0], [0, 1]], 12)] | 15 | 45 | 22 | [1, 3, 31, 35] | 5.98 | -1.5 | 16.55 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 8 | 487 | G=Z487, H=[[41]] | 9 | 55 | 27 | [1, 17, 17, 37] | 16.17 | -1.44 | 16.68 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 9 | 817 | G=Z817, H=[[68]] | 21 | 45 | 22 | [1, 7, 37, 43] | 6.54 | -1.7 | 16.75 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 10 | 725 | G=Z5xZ5xZ29, H=[('singer', [[1, 1], [2, 3]], 7)] | 21 | 45 | 22 | [1, 21, 33, 37] | 4.46 | -1.79 | 16.84 | gates pass | k-tree beyond budget (cost >= 14) |
+| 11 | 589 | G=Z589, H=[[64]] | 15 | 49 | 24 | [1, 5, 11, 47] | 8.17 | -1.95 | 17.19 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 12 | 489 | G=Z489, H=[[40]] | 9 | 57 | 28 | [1, 15, 19, 37] | 15.66 | -2.09 | 17.33 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 13 | 481 | G=Z481, H=[[9]] | 9 | 57 | 28 | [1, 1, 31, 31] | 14.83 | -2.35 | 17.59 | gates pass | k-tree beyond budget (cost >= 14) |
+| 14 | 723 | G=Z723, H=[[94]] | 15 | 51 | 25 | [1, 29, 31, 33] | 11.82 | -2.45 | 17.69 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 15 | 481 | G=Z481, H=[[16]] | 9 | 57 | 28 | [1, 5, 23, 37] | 14.77 | -2.47 | 17.71 | gates pass | k-tree beyond budget (cost >= 14) |
+| 16 | 949 | G=Z949, H=[[16], [74]] | 27 | 45 | 22 | [1, 19, 25, 53] | 3.89 | -3.04 | 18.09 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 17 | 523 | G=Z523, H=[[19]] | 9 | 59 | 29 | [1, 19, 19, 37] | 16.95 | -3.24 | 18.48 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 18 | 597 | G=Z597, H=[[61]] | 11 | 57 | 28 | [1, 1, 19, 45] | 14.53 | -3.3 | 18.54 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 19 | 817 | G=Z817, H=[[11]] | 21 | 49 | 24 | [1, 7, 37, 43] | 6.15 | -3.65 | 18.89 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 20 | 655 | G=Z655, H=[[176]] | 13 | 55 | 27 | [1, 3, 3, 51] | 11.68 | -4.09 | 19.33 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 21 | 1565 | G=Z1565, H=[[16]] | 39 | 45 | 22 | [1, 3, 3, 79] | 4.58 | -4.41 | 19.45 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 22 | 1201 | G=Z1201, H=[[96]] | 25 | 49 | 24 | [1, 1, 49, 49] | 9.86 | -4.35 | 19.59 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 23 | 1203 | G=Z1203, H=[[25]] | 25 | 51 | 25 | [1, 1, 47, 51] | 9.15 | -5.09 | 20.33 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 24 | 793 | G=Z793, H=[[22]] | 15 | 57 | 28 | [1, 29, 31, 37] | 11.43 | -5.58 | 20.82 | gates pass | k-tree beyond budget (cost >= 14) |
+| 25 | 921 | G=Z921, H=[[64]] | 17 | 57 | 28 | [1, 33, 35, 37] | 11.93 | -5.82 | 21.06 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 26 | 361 | G=Z19xZ19, H=[('torus', [[1, 0], [0, 4]])] | 9 | 57 | 28 | [1, 5, 7, 37] | 4.56 | -6.3 | 21.54 | gates pass | k-tree beyond budget (cost >= 14) |
+| 27 | 1301 | G=Z1301, H=[[44]] | 25 | 53 | 26 | [1, 1, 51, 51] | 10.25 | -6.33 | 21.57 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 28 | 1103 | G=Z1103, H=[[17]] | 19 | 59 | 29 | [1, 37, 39, 39] | 12.72 | -7.37 | 22.61 | prime: no Z_d gate | k-tree beyond budget (cost >= 14) |
+| 29 | 899 | G=Z899, H=[[25]] | 21 | 55 | 27 | [1, 15, 39, 43] | 4.58 | -7.59 | 22.83 | gates undecided/none | k-tree beyond budget (cost >= 14) |
+| 30 | 1255 | G=Z1255, H=[[16]] | 25 | 55 | 27 | [1, 1, 47, 53] | 7.6 | -8.06 | 23.3 | gates undecided/none | k-tree beyond budget (cost >= 14) |
 
 **Reading.**
 - After the exact gates **only two slices are within budget: 361 = 19² over ℤ₁₉ × ℤ₁₉ with the split torus
