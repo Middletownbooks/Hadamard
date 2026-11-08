@@ -179,3 +179,5 @@ done: kept 20050779 moves 20000000000 in 1778s
 03:15:26 Gaussian estimate inside the lists [4194304, 9157446, 9940573, 10026076]: 10^0.84 [E]
 03:15:31 split values: 33600 of 33600 seen on both sides (4000000 random pairs per side), ranked by AB CD / (AB + CD + |A| + |C|)
 03:15:31 kt4: merge classes [0, 1, 2, 3, 18], 33600 split values, 0 done before
+03:44:18 kt4 split values 1..200: TOTAL 0 3942083936 73328639184 [1727s]
+04:00:42 kt4 split values 201..400: TOTAL 0 4157597810 34481250454 [2711s]
