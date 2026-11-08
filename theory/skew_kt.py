@@ -72,7 +72,7 @@ def main():
     ap.add_argument('--seed', type=int, default=1); ap.add_argument('--K', type=int, default=1)
     ap.add_argument('--samples', type=int, default=20000); ap.add_argument('--T', type=float, default=0.5)
     ap.add_argument('--maxmoves', type=float, default=2e10); ap.add_argument('--gensecs', type=float, default=1800); ap.add_argument('--restart', type=int, default=200000)
-    ap.add_argument('--S', default=''); ap.add_argument('--estimate-only', action='store_true')
+    ap.add_argument('--S', default=''); ap.add_argument('--enummax', type=float, default=5e11); ap.add_argument('--gsize', type=int, default=9); ap.add_argument('--estimate-only', action='store_true')
     ap.add_argument('--maxpairs', type=float, default=3e8); ap.add_argument('--work', default='')
     a = ap.parse_args()
     spec = json.load(open(a.spec)); v = spec['v']; pat = spec['pattern']; tag = spec.get('tag', f'v{v}')
@@ -111,7 +111,7 @@ def main():
             P = (1 - 2 * ((idx[:, None] >> np.arange(npairs)) & 1)).astype(np.int8)
             S = st.skew_signs(P)
             keys = np.concatenate([keys_of_orbit_signs(st, N, S[i:i + 50000]) for i in range(0, len(S), 50000)])
-            lists_keys.append(keys); lists_S.append(S); np.savez(cache, keys=keys, S=S)
+            keys = keys.astype(np.int16); S = np.packbits(S < 0, axis=1); lists_keys.append(keys); lists_S.append(S); np.savez(cache, keys=keys, S=S)
             log(f'block 0: all {len(keys)} skew blocks'); continue
         Wk, rank = whiten(Sg[k])
         lam = float(np.sum((Wk @ (mu[k] - cen[k])) ** 2))
@@ -124,6 +124,47 @@ def main():
         else:
             st_units = samplers[k].sample(nstart, rng)
         fin = os.path.join(work, f'gen{k}.bin'); fout = os.path.join(work, f'gen{k}.out')
+        if sizes[k] <= a.enummax:
+            # exhaustive enumeration with the energy filter (theory/skew_enum_lowe.c); keep the Ls[k] lowest
+            U = len(wt); G = max(2, -(-U // a.gsize))
+            gu = np.array([u * G // U for u in range(U)], np.int32)
+            uo_e = uo.copy(); su_e = su.copy()
+            tau_e = float(ncx2.ppf(1.5 * frac, rank, lam)) if 1.5 * frac < 1 else 1e30
+            lin = (np.zeros((r, 1)) if skew else st.osize.reshape(r, 1)).astype(np.int32)
+            tg = np.array([0 if skew else int(pat[k])], np.int32)
+            with open(fin, 'wb') as f:
+                f.write(np.array([r, C, U, G, int(skew), lin.shape[1]], np.int32).tobytes())
+                f.write(N.astype(np.int32).tobytes()); f.write(Wk.astype(np.float64).tobytes()); f.write(cen[k].astype(np.float64).tobytes())
+                f.write(uo_e.astype(np.int32).tobytes()); f.write(su_e.astype(np.int32).tobytes())
+                f.write(lin.tobytes()); f.write(tg.tobytes()); f.write(gu.tobytes())
+            t0 = time.time()
+            log(f'block {k}: enumerating {sizes[k]:.3g} members, tau {tau_e:.3f} (1.5x the target fraction), groups {G}')
+            for attempt in range(8):
+                subprocess.run([os.path.join(BIN, 'skew_enum_lowe2'), fin, fout, repr(tau_e), str(int(min(1.8 * Ls[k], sizes[k] + 1))), str(a.threads)], check=True)
+                hdr = np.fromfile(fout, np.int64, 2); n, vis = int(hdr[0]), int(hdr[1])
+                if vis > 0: break
+                tau_e *= 0.9; log(f'block {k}: overflow, tau lowered to {tau_e:.3f}')
+            Cc = int(np.fromfile(fout, np.int32, 1, offset=16)[0])
+            keys = np.memmap(fout, np.int16, 'r', offset=20, shape=(n, Cc))
+            masks = np.memmap(fout, np.uint64, 'r', offset=20 + 2 * n * Cc, shape=(n, 2))
+            Ev = np.memmap(fout, np.float32, 'r', offset=20 + 2 * n * Cc + 16 * n, shape=(n,))
+            assert vis > 0, 'enumeration output overflow'
+            keep = np.sort(np.argpartition(Ev, int(Ls[k]) - 1)[:int(Ls[k])]) if n > Ls[k] else np.arange(n)
+            cut = float(Ev[keep].max()) if len(keep) else 0.0; keys = np.array(keys[keep]); masks = np.array(masks[keep]); del Ev
+            log(f'block {k}: visited {vis:.4g} (block size {sizes[k]:.4g}), {n} below tau, kept {len(keep)} (cut {cut:.3f}) in {time.time() - t0:.0f}s')
+            if not skew: assert abs(vis - sizes[k]) <= 1e-6 * sizes[k] + 1, 'visited count differs from the block size'
+            nn = len(keys)
+            bits = np.zeros((nn, U), np.int8)
+            for u in range(U):
+                w_, b_ = (0, u) if u < 64 else (1, u - 64)
+                bits[:, u] = ((masks[:, w_] >> np.uint64(b_)) & np.uint64(1)).astype(np.int8)
+            us = (1 - 2 * bits).astype(np.int8)
+            S = (st.skew_signs(us) if skew else us)
+            assert np.array_equal(keys_of_orbit_signs(st, N, S[:2000]), keys[:2000]), 'enumerator keys mismatch'
+            if not skew: assert np.all(S[:1000000].astype(np.int64) @ st.osize == pat[k])
+            keys = keys.astype(np.int16); S = np.packbits(S < 0, axis=1); lists_keys.append(keys); lists_S.append(S); np.savez(cache, keys=keys, S=S)
+            os.remove(fout)
+            continue
         with open(fin, 'wb') as f:
             f.write(np.array([r, C, len(wt), int(skew), nstart], np.int32).tobytes())
             f.write(N.astype(np.int32).tobytes()); f.write(Wk.astype(np.float64).tobytes()); f.write(cen[k].astype(np.float64).tobytes())
@@ -136,7 +177,7 @@ def main():
         subprocess.run(cmd, check=True)
         with open(fout, 'rb') as f:
             n = int(np.frombuffer(f.read(8), np.int64)[0]); Cc = int(np.frombuffer(f.read(4), np.int32)[0])
-            keys = np.frombuffer(f.read(2 * n * Cc), np.int16).reshape(n, Cc).astype(np.int64)
+            keys = np.frombuffer(f.read(2 * n * Cc), np.int16).reshape(n, Cc)
             masks = np.frombuffer(f.read(16 * n), np.uint64).reshape(n, 2)
         U = len(wt)
         bits = np.zeros((n, U), np.int8)
@@ -147,11 +188,12 @@ def main():
         S = (st.skew_signs(us) if skew else us)
         chk = keys_of_orbit_signs(st, N, S[:2000])
         assert np.array_equal(chk, keys[:2000]), 'generator keys mismatch'
-        if not skew: assert np.all(S.astype(np.int64) @ st.osize == pat[k])
-        lists_keys.append(keys); lists_S.append(S); np.savez(cache, keys=keys, S=S)
+        if not skew: assert np.all(S[:1000000].astype(np.int64) @ st.osize == pat[k])
+        keys = keys.astype(np.int16); S = np.packbits(S < 0, axis=1); lists_keys.append(keys); lists_S.append(S); np.savez(cache, keys=keys, S=S)
         log(f'block {k}: kept {n} in {time.time() - t0:.0f}s')
     # ---- Gaussian estimate inside the lists [E]
-    m_in = [k.mean(0) for k in lists_keys]; S_in = sum(np.cov(k.astype(float), rowvar=False) for k in lists_keys)
+    sub = [k[np.random.default_rng(7).choice(len(k), min(len(k), 500000), replace=False)].astype(float) for k in lists_keys]
+    m_in = [k.mean(0) for k in sub]; S_in = sum(np.cov(k, rowvar=False) for k in sub)
     nvec = st.csize.astype(float)
     Q, _ = np.linalg.qr(np.column_stack([nvec] + [np.eye(C)[:, i] for i in range(C)])); B = Q[:, 1:C]
     S2 = B.T @ S_in @ B; z = B.T @ (tgt - sum(m_in))
@@ -163,38 +205,79 @@ def main():
     json.dump(dict(logE_in=logE_in, lists=[len(k) for k in lists_keys]), open(os.path.join(work, 'estimate.json'), 'w'))
     if a.estimate_only: return
     # ---- kt4
-    spread = sum(k.astype(float).var(0) for k in lists_keys)
+    spread = sum(k.var(0) for k in sub)
     Ssel = [int(x) for x in a.S.split(',')] if a.S else sorted(np.argsort(-spread)[:5].tolist())
-    assert max(abs(k).max() for k in lists_keys) < 32767
+
     kin = os.path.join(work, 'kt4_in.bin')
     if not os.path.exists(kin):
         with open(kin, 'wb') as f:
             f.write(np.array([len(k) for k in lists_keys] + [C], np.int32).tobytes())
             f.write(tgt.astype(np.int16).tobytes())
             for k in lists_keys: f.write(k.astype(np.int16).tobytes())
-    klog = os.path.join(work, 'kt4.log')
+    # ---- split values: sampled from the in-list Gaussian of a solution's split, ranked by solutions per pair work
+    sigf = os.path.join(work, 'sigmas.txt')
+    if not os.path.exists(sigf):
+        cov_in = [np.cov(k, rowvar=False) for k in sub]
+        mAB, mCD = m_in[0] + m_in[1], m_in[2] + m_in[3]; SAB, SCD = cov_in[0] + cov_in[1], cov_in[2] + cov_in[3]
+        Kg = SAB @ np.linalg.pinv(SAB + SCD, rcond=1e-9)
+        msol = mAB + Kg @ (tgt - mAB - mCD); Ssol = SAB - Kg @ SAB
+        Ix = np.array(Ssel)
+        ms, Ss = msol[Ix], Ssol[np.ix_(Ix, Ix)]
+        # lattice of each merge class on the AB side: offset and step from the lists
+        lat = []
+        for c in Ssel:
+            vals = (sub[0][:20000, c][:, None] + sub[1][:2000, c][None, :]).ravel().astype(np.int64)
+            step = int(np.gcd.reduce(np.abs(vals - vals[0]))) or 1
+            lat.append((int(vals[0] % step), step))
+        rs = np.random.default_rng(a.seed + 99)
+        X = rs.multivariate_normal(ms, Ss, size=2_000_000)
+        Y = np.stack([np.round((X[:, i] - lat[i][0]) / lat[i][1]) * lat[i][1] + lat[i][0] for i in range(len(Ssel))], 1).astype(np.int64)
+        Y = np.unique(Y, axis=0)
+        def lgauss(Z, m, S_):
+            Si = np.linalg.pinv(S_); dz = Z - m
+            return -0.5 * np.einsum('ni,ij,nj->n', dz, Si, dz)
+        lsol = lgauss(Y.astype(float), ms, Ss)
+        lab = lgauss(Y.astype(float), mAB[Ix], SAB[np.ix_(Ix, Ix)]) + math.log(len(lists_keys[0]) * len(lists_keys[1]))
+        lcd = lgauss((tgt[Ix] - Y).astype(float), mCD[Ix], SCD[np.ix_(Ix, Ix)]) + math.log(len(lists_keys[2]) * len(lists_keys[3]))
+        score = lsol - np.logaddexp(lab, lcd)
+        order = np.argsort(-score)[:a.nsig]
+        with open(sigf, 'w') as f:
+            for y in Y[order]: f.write(' '.join(map(str, y.tolist())) + '\n')
+        log(f'split values: {len(order)} of {len(Y)} sampled, ranked by solutions per pair work')
+    allsig = [l.split() for l in open(sigf)]
+    klog = os.path.join(work, 'kt4.log'); kout = os.path.join(work, 'kt4.out')
+    donef = os.path.join(work, 'sigmas_done.txt')
+    ndone = sum(1 for _ in open(donef)) if os.path.exists(donef) else 0
+    del lists_keys, sub
     env = dict(os.environ, OMP_NUM_THREADS=str(a.threads))
-    log(f'kt4: merge classes {Ssel}, {a.nsig} split values')
-    t0 = time.time()
-    with open(klog, 'a') as fh:
-        p = subprocess.run([os.path.join(BIN, 'kt4'), kin, ','.join(map(str, Ssel)), str(a.nsig), str(a.K)],
-                           stdout=subprocess.PIPE, stderr=fh, text=True, env=env)
-    out = p.stdout
-    open(os.path.join(work, 'kt4.out'), 'a').write(out)
-    log(f'kt4 done in {time.time() - t0:.0f}s: {out.strip().splitlines()[-1] if out.strip() else ""}')
+    log(f'kt4: merge classes {Ssel}, {len(allsig)} split values, {ndone} done before')
+    t0 = time.time(); out = ''
+    CH = 200
+    for c0 in range(ndone, len(allsig), CH):
+        chunk = os.path.join(work, 'chunk.txt')
+        open(chunk, 'w').write('\n'.join(' '.join(x) for x in allsig[c0:c0 + CH]) + '\n')
+        with open(klog, 'a') as fh:
+            p = subprocess.run([os.path.join(BIN, 'kt4'), kin, ','.join(map(str, Ssel)), '@' + chunk, str(a.K), str(int(a.maxpairs))],
+                               stdout=subprocess.PIPE, stderr=fh, text=True, env=env)
+        out += p.stdout; open(kout, 'a').write(p.stdout)
+        with open(donef, 'a') as f: f.write(''.join(' '.join(x) + '\n' for x in allsig[c0:c0 + CH]))
+        tot = [l for l in p.stdout.splitlines() if l.startswith('TOTAL')]
+        log(f'kt4 split values {c0 + 1}..{min(c0 + CH, len(allsig))}: {tot[-1] if tot else p.stdout[-200:]} [{time.time() - t0:.0f}s]')
+        if any(l.startswith('SOL') for l in p.stdout.splitlines()): break
+    lists_S = [np.load(os.path.join(work, f'list{k}.npz'))['S'] for k in range(4)] if not lists_S else lists_S
     sols = [list(map(int, l.split()[1:5])) for l in out.splitlines() if l.startswith('SOL')]
     for i, (ia, ib, ic, idd) in enumerate(sols):
-        X = [st.expand(lists_S[j][[ix]])[0].astype(np.int64) for j, ix in enumerate((ia, ib, ic, idd))]
+        X = [st.expand((1 - 2 * np.unpackbits(lists_S[j][[ix]], axis=1)[:, :r].astype(np.int8)))[0].astype(np.int64) for j, ix in enumerate((ia, ib, ic, idd))]
         Ptot = sum(st.paf_classes(x[None, :])[0] for x in X)
         sh = st.G.mods
-        full = sum(np.rint(np.fft.irfftn(np.abs(np.fft.rfftn(x.reshape(sh).astype(float))) ** 2, s=sh)).astype(np.int64).ravel() for x in X)
+        ax = tuple(range(len(sh))); full = sum(np.rint(np.fft.irfftn(np.abs(np.fft.rfftn(x.reshape(sh).astype(float), axes=ax)) ** 2, s=sh, axes=ax)).astype(np.int64).ravel() for x in X)
         ok = bool(full[0] == 4 * v and np.all(full[1:] == 0))
         log(f'SOL {i}: classes {Ptot.tolist()[:6]}... full PAF ok = {ok}')
         if ok:
             cert = dict(v=v, mods=spec['mods'], gens=spec['gens'],
                         **{n: ''.join('+' if t > 0 else '-' for t in x) for n, x in zip('ABCD', X)})
             cp = os.path.join(work, f'cert_{tag}_{i}.json'); json.dump(cert, open(cp, 'w'))
-            hp = os.path.join(ROOT, 'logs', 'skew', 'HITS.jsonl')
+            hp = os.path.join(ROOT, 'logs', 'skew', 'calib' if tag.startswith('calib') else '', 'HITS.jsonl')
             with open(hp, 'a') as f:
                 f.write(json.dumps(dict(utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), tag=tag, v=v, cert=cp)) + '\n')
             subprocess.run([sys.executable, os.path.join(ROOT, 'scripts', 'verify_skew.py'), cp])

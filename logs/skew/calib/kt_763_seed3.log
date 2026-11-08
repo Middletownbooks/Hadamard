@@ -1,0 +1,20 @@
+00:39:02 v=763 mods=[763] |H|=27 r=31 C=15 pattern=[1, 1, 5, 55] pairs=15
+00:39:03 block sizes ['3.28e+04', '8.02e+07', '4.01e+07', '7.49e+07'] target lists ['3.28e+04', '2e+07', '1.5e+07', '2e+07']
+00:39:03 block 0: cached 32768
+00:39:05 block 1: cached 20000000
+00:39:06 block 2: cached 15000000
+00:39:06 block 3: enumerating 7.49e+07 members, tau 14.371 (2x the target fraction), groups 4
+enum: visited 74884320 kept 43619134
+00:39:23 block 3: visited 7.488e+07 (block size 7.488e+07), 43619134 below tau, kept 20000000 (cut 10.112) in 17s
+00:39:32 Gaussian estimate inside the lists [32768, 20000000, 15000000, 20000000]: 10^5.38 [E]
+00:39:35 kt4: merge classes [5, 6, 8, 12, 14], 20000 split values
+00:40:02 kt4 done in 28s: TOTAL 16 4378320 1538325814
+00:40:02 SOL 0: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib763_s3/cert_calib763_0.json", "v": 763, "mods": [763], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 1, "C": 5, "D": 55}}
+{"N": 3052, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "24726e6e0903820a91c1e69fd36f0dc950afa3afd2dd36aad4fca14eef25da0c"}
+00:40:12 SOL 1: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib763_s3/cert_calib763_1.json", "v": 763, "mods": [763], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 1, "C": 5, "D": 55}}
+{"N": 3052, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "8da6e44c9617d19022856f13a81e890613efdf6c468ce954cdb7b309b895cdf6"}
+00:40:22 SOL 2: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib763_s3/cert_calib763_2.json", "v": 763, "mods": [763], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 1, "C": 5, "D": 55}}
+{"N": 3052, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "6f4667c8c1b3840be874c7083ccdc0038b622731bfba803b3110fb71dc457b4b"}

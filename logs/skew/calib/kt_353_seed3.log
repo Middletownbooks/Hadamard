@@ -1,4 +1,29 @@
-00:08:40 v=353 mods=[353] |H|=11 r=33 C=16 pattern=[1, 21, 21, 23] pairs=16
-00:08:41 block sizes ['6.55e+04', '5.66e+08', '5.66e+08', '5.66e+08'] target lists ['6.55e+04', '1e+06', '1e+06', '1e+06']
-00:08:41 block 0: cached 65536
-00:08:41 block 1: generating 1000000 of 5.66e+08 below tau 3.834 (rank 15, lambda 0.00)
+00:11:24 v=353 mods=[353] |H|=11 r=33 C=16 pattern=[1, 21, 21, 23] pairs=16
+00:11:25 block sizes ['6.55e+04', '5.66e+08', '5.66e+08', '5.66e+08'] target lists ['6.55e+04', '1e+06', '1e+06', '1e+06']
+00:11:25 block 0: cached 65536
+00:11:25 block 1: enumerating 5.66e+08 members, tau 4.325 (2x the target fraction), groups 4
+enum: visited 565722720 kept 1859820
+00:11:46 block 1: visited 5.657e+08 (block size 5.657e+08), 1859820 below tau, kept 1000000 (cut 3.936) in 21s
+00:11:47 block 2: enumerating 5.66e+08 members, tau 4.325 (2x the target fraction), groups 4
+enum: visited 565722720 kept 1823392
+00:12:05 block 2: visited 5.657e+08 (block size 5.657e+08), 1823392 below tau, kept 1000000 (cut 3.948) in 18s
+00:12:05 block 3: enumerating 5.66e+08 members, tau 4.325 (2x the target fraction), groups 4
+enum: visited 565722720 kept 1784574
+00:12:25 block 3: visited 5.657e+08 (block size 5.657e+08), 1784574 below tau, kept 1000000 (cut 3.963) in 20s
+00:12:26 Gaussian estimate inside the lists [65536, 1000000, 1000000, 1000000]: 10^4.42 [E]
+00:12:26 kt4: merge classes [0, 5, 7, 8, 14], 3000 split values
+00:12:29 kt4 done in 3s: TOTAL 16 540184 277790880
+/home/user/Hadamard/theory/skew_kt.py:226: DeprecationWarning: `axes` should not be `None` if `s` is not `None` (Deprecated in NumPy 2.0). In a future version of NumPy, this will raise an error and `s[i]` will correspond to the size along the transformed axis specified by `axes[i]`. To retain current behaviour, pass a sequence [0, ..., k-1] to `axes` for an array of dimension k.
+  full = sum(np.rint(np.fft.irfftn(np.abs(np.fft.rfftn(x.reshape(sh).astype(float))) ** 2, s=sh)).astype(np.int64).ravel() for x in X)
+00:12:29 SOL 0: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib353_s3/cert_calib353_0.json", "v": 353, "mods": [353], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 21, "C": 21, "D": 23}}
+{"N": 1412, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "52ded527ff47cf4bb4e9622260ca98419a7f76422ea746ae95cbf19a6a6512fc"}
+00:12:30 SOL 1: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib353_s3/cert_calib353_1.json", "v": 353, "mods": [353], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 21, "C": 21, "D": 23}}
+{"N": 1412, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "39202688bd317cba8aaaefa280823404568924b992c7677e7d2a5850d113c2c2"}
+00:12:31 SOL 2: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib353_s3/cert_calib353_2.json", "v": 353, "mods": [353], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 21, "C": 21, "D": 23}}
+{"N": 1412, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "9ba439f4a4882053f402b8547112ad4c1e96e898c025b4f8260a6ca151207012"}
+00:12:31 SOL 3: classes [0, 0, 0, 0, 0, 0]... full PAF ok = True
+{"cert": "/tmp/claude-0/-home-user-Hadamard/8cc2c61a-3960-598d-a6cb-a4666d54fa5e/scratchpad/kt/calib353_s3/cert_calib353_3.json", "v": 353, "mods": [353], "paf_ok": true, "skew_first_block": true, "invariant": true, "rowsums": {"A": 1, "B": 21, "C": 21, "D": 23}}
+{"N": 1412, "HHt_eq_NI": true, "H_plus_Ht_eq_2I": true, "sha256_of_packed_rows": "2d1643f5687928ee2505e9f5c1af62e61d1c7596ef29182d11f067f215ce1adc"}

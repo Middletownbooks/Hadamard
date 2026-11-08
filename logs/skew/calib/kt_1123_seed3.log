@@ -1,0 +1,17 @@
+00:48:22 v=1123 mods=[1123] |H|=33 r=35 C=17 pattern=[1, 1, 1, 67] pairs=17
+00:48:23 block sizes ['1.31e+05', '2.33e+09', '2.33e+09', '2.2e+09'] target lists ['1.31e+05', '4e+07', '2e+07', '2e+07']
+00:48:23 block 0: cached 131072
+00:48:23 block 1: enumerating 2.33e+09 members, tau 6.946 (1.5x the target fraction), groups 4
+enum: visited 2276398550 kept 72000000 (OVERFLOW)
+00:50:00 block 1: overflow, tau lowered to 6.251
+enum: visited 2333606220 kept 40783533
+00:51:50 block 1: visited 2.334e+09 (block size 2.334e+09), 40783533 below tau, kept 40000000 (cut 6.231) in 206s
+00:52:10 block 2: enumerating 2.33e+09 members, tau 6.086 (1.5x the target fraction), groups 4
+enum: visited 2333606220 kept 34379565
+00:53:31 block 2: visited 2.334e+09 (block size 2.334e+09), 34379565 below tau, kept 20000000 (cut 5.574) in 81s
+00:53:40 block 3: enumerating 2.2e+09 members, tau 6.150 (1.5x the target fraction), groups 4
+enum: visited 2203961430 kept 35390667
+00:55:05 block 3: visited 2.204e+09 (block size 2.204e+09), 35390667 below tau, kept 20000000 (cut 5.602) in 85s
+00:55:16 Gaussian estimate inside the lists [131072, 40000000, 20000000, 20000000]: 10^3.24 [E]
+00:55:29 split values: 100000 of 1524782 sampled, ranked by solutions per pair work
+00:55:29 kt4: merge classes [2, 9, 12, 14, 15], 100000 split values, 0 done before

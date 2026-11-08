@@ -316,11 +316,339 @@ def zp_gate(st, p, axis, pattern, cap=300_000, joincap=3 * 10 ** 7):
     P = [np.unique(pafs(L), axis=0) for L in lists]
     tgt = np.zeros(P[0].shape[1], dtype=np.int64); tgt[0] = E
     # 2+2 join on (A,B) vs (C,D) by hashing
-    if len(P[0]) * len(P[1]) > joincap or len(P[2]) * len(P[3]) > joincap:
+    nab, ncd = len(P[0]) * len(P[1]), len(P[2]) * len(P[3])
+    if min(nab, ncd) > joincap or max(nab, ncd) > 100 * joincap:
         return 'undecided', None, [len(x) for x in P] + ['joincap']
-    AB = (P[0][:, None, :] + P[1][None, :, :]).reshape(-1, P[0].shape[1])
-    CD = (P[2][:, None, :] + P[3][None, :, :]).reshape(-1, P[0].shape[1])
-    sAB = set(map(tuple, AB)); n = 0
-    for row in map(tuple, tgt - CD):
-        if row in sAB: n += 1
+    # chunked hash join: 64-bit random linear hash of the vectors, exact re-check of every hash match
+    D = P[0].shape[1]
+    R = np.random.default_rng(12345).integers(1, 2 ** 61, size=D, dtype=np.uint64)
+    hsh = lambda X: (X.astype(np.uint64) * R).sum(1)
+    if nab > ncd: P = [P[2], P[3], P[0], P[1]]
+    small = (P[0][:, None, :] + P[1][None, :, :]).reshape(-1, D)
+    h0 = hsh(small); order = np.argsort(h0); hs = h0[order]
+    hD = hsh(P[3]); n = 0
+    for i in range(len(P[2])):
+        need = hsh((tgt - P[2][i])[None, :])[0] - hD          # hash of tgt - C_i - D_j (linear, mod 2^64)
+        pos = np.searchsorted(hs, need); pos[pos >= len(hs)] = len(hs) - 1
+        hit = np.flatnonzero(hs[pos] == need)
+        for j in hit:                                        # exact re-check on the rows with an equal hash
+            row = tgt - P[2][i] - P[3][j]; p0 = pos[j]
+            while p0 < len(hs) and hs[p0] == need[j]:
+                if np.array_equal(small[order[p0]], row): n += 1; break
+                p0 += 1
     return ('pass' if n else 'dead'), n, [len(x) for x in P]
+
+# ---------------------------------------------------------------- analytic in-list estimate (k-tree cost model)
+def inlist_estimate(st, pattern, Ls, nsamp=4000, rng=None, samplers=None):
+    """log10 expected solutions inside low-energy lists of sizes Ls = (L_A, L_B, L_C, L_D) [E].
+    Model: block k's keys ~ N(mu_k, S_k) (uniform samples); a list keeps the members with |W_k (P - c_k)|^2 <= tau_k,
+    c_k = mu_k + S_k S^+ (0 - sum mu) and tau_k the noncentral chi^2 quantile of L_k / N_k; the kept keys are taken as
+    uniform in that ellipsoid (mean c_k, covariance S_k tau_k / (d + 2)); a complete list keeps N(mu_k, S_k).
+    Returns (log10 E_in, log10 pair work L_A L_B + L_C L_D (best pairing), details)."""
+    from scipy.stats import ncx2
+    rng = rng or np.random.default_rng(1)
+    C = st.C
+    if samplers is not None:
+        Ns = [s.count for s in samplers]; Xs = [st.expand(s.sample(nsamp, rng)) for s in samplers]
+    else:
+        PA = rng.choice(np.array([-1, 1], dtype=np.int8), size=(nsamp, len(st.pairs)))
+        Xs = [st.expand(st.skew_signs(PA))]
+        Ns = [2.0 ** len(st.pairs)]
+        for r in pattern:
+            smp = RowSampler(st, r)
+            Ns.append(smp.count); Xs.append(st.expand(smp.sample(nsamp, rng)))
+    stats = [class_stats(st, X) for X in Xs]
+    mu = [s[0] for s in stats]; Sg = [s[1] for s in stats]
+    Sp = np.linalg.pinv(sum(Sg), rcond=1e-9)
+    cen = [mu[k] + Sg[k] @ Sp @ (0 - sum(mu)) for k in range(4)]
+    means, covs, used = [], [], []
+    for k in range(4):
+        L = min(Ls[k], Ns[k]); used.append(L)
+        if L >= Ns[k]:
+            means.append(mu[k]); covs.append(Sg[k]); continue
+        w, V = np.linalg.eigh(Sg[k]); keep = w > 1e-6 * w.max(); d = int(keep.sum())
+        Wk = (V[:, keep] / np.sqrt(w[keep])) @ V[:, keep].T
+        lam = float(np.sum((Wk @ (mu[k] - cen[k])) ** 2))
+        tau = float(ncx2.ppf(L / Ns[k], d, lam))
+        means.append(cen[k]); covs.append(Sg[k] * tau / (d + 2))
+    n = st.csize.astype(np.float64)
+    Q, _ = np.linalg.qr(np.column_stack([n] + [np.eye(C)[:, i] for i in range(C)])); B = Q[:, 1:C]
+    S2 = B.T @ sum(covs) @ B; z = B.T @ (0 - sum(means))
+    sign, logdet = np.linalg.slogdet(S2)
+    logd = -0.5 * float(z @ np.linalg.solve(S2, z)) - 0.5 * (logdet + (C - 1) * math.log(2 * math.pi))
+    g = np.gcd.reduce(st.csize.astype(np.int64))
+    logE = (sum(math.log(L) for L in used) + logd + (C - 1) * math.log(4) + math.log(np.linalg.norm(n) / g)) / math.log(10)
+    a, b, c, d_ = [math.log10(L) for L in used]
+    W = min(math.log10(10 ** (a + b - 30) + 10 ** (c + d_ - 30)) + 30, math.log10(10 ** (a + c - 30) + 10 ** (b + d_ - 30)) + 30,
+            math.log10(10 ** (a + d_ - 30) + 10 ** (b + c - 30)) + 30)
+    return logE, W, dict(N=[math.log10(x) for x in Ns], L=[math.log10(x) for x in used])
+
+# ---------------------------------------------------------------- stage-1 (Z_d compression) correction of the estimate
+def stage1_ratio(st, d, axis, pattern, nsamp=20000, rng=None, cap=2_000_000):
+    """R = (exact weighted number of stage-1 quadruples) / (Gaussian prediction of the same number) at the compression
+    to Z_d along `axis` [M numerator / E denominator]. Exact: sum over compressed quadruples (y_A, y_B, y_C, y_D) with
+    sum_X PAF_{y_X} = 4v delta on Z_d of prod_X N_X(y_X) (N_X(y) = number of H-invariant blocks with compression y and
+    the row sum). Gaussian: the same lattice-Gaussian count applied to the compressed PAF vectors of uniform blocks.
+    E_gauss * R is the staged estimate (stage 1 exact, the rest Gaussian), assuming the Gaussian is right given y."""
+    from collections import defaultdict
+    rng = rng or np.random.default_rng(1)
+    G = st.G; v = st.v
+    res = G.coords[:, axis] % d
+    e = np.zeros(len(G.mods), dtype=np.int64); e[axis] = 1
+    hp = []
+    for g in st.gens:
+        img = G.coords[g][:, axis] % d; u = int(img[G.index(e)])
+        if not np.all(img == (u * res) % d): return None
+        hp.append(u)
+    seen = {}; porb = []
+    for x in range(d):
+        if x in seen: continue
+        o = {x}; fr = [x]
+        while fr:
+            y = fr.pop()
+            for u in hp:
+                z = (u * y) % d
+                if z not in o: o.add(z); fr.append(z)
+        for y in o: seen[y] = len(porb)
+        porb.append(sorted(o))
+    k = len(porb); psz = np.array([len(o) for o in porb]); pneg = [seen[(-o[0]) % d] for o in porb]
+    z0 = seen[0]
+    contrib = defaultdict(list)
+    for O in range(st.r):
+        x = int(np.flatnonzero(st.orb == O)[0]); o = seen[int(res[x])]
+        contrib[o].append(int(st.osize[O] // psz[o]))
+    def counts(ws):
+        c = {0: 1}
+        for w in ws:
+            n = defaultdict(int)
+            for a, m in c.items(): n[a + w] += m; n[a - w] += m
+            c = dict(n)
+        return c
+    # per-coordinate value distributions
+    free_c = [counts(contrib[o]) for o in range(k)]
+    def block_dist(skew, rsum):
+        """dict y (tuple over coordinates) -> multiplicity, with the row sum (free) or skew structure; capped."""
+        if skew:
+            coords = [o for o in range(k) if o != z0 and o < pneg[o]]
+            items = [(None, {(): 1})]
+            dist = {(): 1}
+            for o in coords:
+                nd = {}
+                for y, m in dist.items():
+                    for a, ma in free_c[o].items():
+                        nd[y + (a,)] = m * ma
+                dist = nd
+                if len(dist) > cap: return None
+            out = {}
+            for y, m in dist.items():
+                full = [0] * k; full[z0] = 1
+                for o, a in zip(coords, y): full[o] = a; full[pneg[o]] = -a
+                out[tuple(full)] = m
+            return out
+        dist = {(): (0, 1)}
+        dist = {((), 0): 1}
+        for o in range(k):
+            nd = defaultdict(int)
+            for (y, rs), m in dist.items():
+                for a, ma in free_c[o].items():
+                    nd[(y + (a,), rs + psz[o] * a)] += m * ma
+            dist = nd
+            if len(dist) > cap: return None
+        return {y: m for (y, rs), m in dist.items() if rs == rsum}
+    lagcls = sorted(set(min(o, pneg[o]) for o in range(k) if o != z0))
+    full_idx = [seen[x] for x in range(d)]
+    def cpaf(Y):
+        F = Y[:, full_idx]
+        return np.column_stack([(F * F).sum(1)] + [(F * np.roll(F, -porb[c][0], axis=1)).sum(1) for c in lagcls])
+    dists = [block_dist(True, 1)] + [block_dist(False, r) for r in pattern]
+    if any(x is None for x in dists): return None
+    P, M = [], []
+    for D_ in dists:
+        ys = np.array(list(D_.keys()), dtype=np.int64); ms = np.array([float(m) for m in D_.values()])
+        pv = cpaf(ys)
+        # merge equal PAF vectors
+        u, inv = np.unique(pv, axis=0, return_inverse=True)
+        w = np.zeros(len(u)); np.add.at(w, inv.ravel(), ms)
+        P.append(u); M.append(w)
+    tgt = np.zeros(P[0].shape[1], dtype=np.int64); tgt[0] = 4 * v
+    # exact weighted join
+    from collections import Counter
+    AB = defaultdict(float)
+    for i in range(len(P[0])):
+        for j in range(len(P[1])): AB[tuple(P[0][i] + P[1][j])] += M[0][i] * M[1][j]
+    if len(AB) > 5 * 10 ** 7: return None
+    exact = 0.0
+    for i in range(len(P[2])):
+        for j in range(len(P[3])):
+            key = tuple(tgt - P[2][i] - P[3][j])
+            if key in AB: exact += AB[key] * M[2][i] * M[3][j]
+    # Gaussian on the compressed PAF vectors of uniform blocks (same estimator as gauss_estimate, on Z_d)
+    Xs = [st.expand(st.skew_signs(rng.choice(np.array([-1, 1], np.int8), size=(nsamp, len(st.pairs)))))]
+    for r in pattern: Xs.append(st.expand(RowSampler(st, r).sample(nsamp, rng)))
+    Ys = []
+    for X in Xs:
+        Y = np.zeros((len(X), k), dtype=np.int64)
+        for o in range(k):
+            x = porb[o][0]; Y[:, o] = X[:, res == x].sum(1)
+        Ys.append(cpaf(Y).astype(float))
+    mu = sum(y.mean(0) for y in Ys); cov = sum(np.cov(y, rowvar=False) for y in Ys)
+    Ntot = sum(math.log(sum(m)) for m in M)
+    # hyperplane: n . P = sum r^2 with n = (1, |class sizes| ...): lag 0 counts once, class c counts 2|o|
+    n = np.array([1.0] + [float(2 * psz[c]) for c in lagcls])
+    Cd = len(n)
+    Q, _ = np.linalg.qr(np.column_stack([n] + [np.eye(Cd)[:, i] for i in range(Cd)])); B = Q[:, 1:Cd]
+    S2 = B.T @ cov @ B; z = B.T @ (tgt - mu)
+    sgn, ld = np.linalg.slogdet(S2)
+    if sgn <= 0: return None
+    # lattice of the summed compressed PAF vectors: gcd of differences per coordinate (empirical), projected
+    tot = sum(y for y in Ys); diffs = (tot - tot[0]).astype(np.int64)
+    gs = [int(np.gcd.reduce(np.abs(diffs[:, i]))) or 1 for i in range(Cd)]
+    logd = -0.5 * float(z @ np.linalg.solve(S2, z)) - 0.5 * (ld + (Cd - 1) * math.log(2 * math.pi))
+    logcov = sum(math.log(g) for g in gs) - math.log(gs[0]) + math.log(np.linalg.norm(n) / np.gcd.reduce(n.astype(np.int64)))
+    gauss = Ntot + logd + logcov
+    return (math.log10(exact) if exact > 0 else -np.inf) - gauss / math.log(10), dict(exact_log10=math.log10(exact) if exact else None,
+                                                                              gauss_log10=gauss / math.log(10), k=k, lattice=gs)
+
+# ---------------------------------------------------------------- stage-1 classes (exact) and class-conditional sampling
+def compression_map(st, d, axis):
+    """Coordinates of the compression to Z_d along `axis`: returns (k, coord_of_orbit[r], weight_of_orbit[r], z0, pneg)
+    with y_o = sum_{O -> o} e_O w_O; None if H does not act on that coordinate."""
+    G = st.G
+    res = G.coords[:, axis] % d
+    e = np.zeros(len(G.mods), dtype=np.int64); e[axis] = 1
+    hp = []
+    for g in st.gens:
+        img = G.coords[g][:, axis] % d; u = int(img[G.index(e)])
+        if not np.all(img == (u * res) % d): return None
+        hp.append(u)
+    seen = {}; porb = []
+    for x in range(d):
+        if x in seen: continue
+        o = {x}; fr = [x]
+        while fr:
+            y = fr.pop()
+            for u in hp:
+                z = (u * y) % d
+                if z not in o: o.add(z); fr.append(z)
+        for y in o: seen[y] = len(porb)
+        porb.append(sorted(o))
+    k = len(porb); psz = np.array([len(o) for o in porb]); pneg = [seen[(-o[0]) % d] for o in porb]
+    co = np.zeros(st.r, dtype=np.int64); wo = np.zeros(st.r, dtype=np.int64)
+    for O in range(st.r):
+        x = int(np.flatnonzero(st.orb == O)[0]); co[O] = seen[int(res[x])]; wo[O] = st.osize[O] // psz[co[O]]
+    return dict(k=k, co=co, wo=wo, z0=seen[0], pneg=pneg, psz=psz, porb=porb, seen=seen, d=d)
+
+def _sumdist(ws):
+    from collections import defaultdict
+    c = {0: 1}
+    for w in ws:
+        n = defaultdict(int)
+        for a, m in c.items(): n[a + w] += m; n[a - w] += m
+        c = dict(n)
+    return c
+
+def stage1_classes(st, d, axis, pattern, cap=2_000_000):
+    """All stage-1 classes (y_A, y_B, y_C, y_D) at the compression to Z_d along `axis` with sum PAF_y = 4v delta,
+    each with its exact weight prod_X N_X(y_X) (number of block quadruples in the class) [M]. Sorted by weight."""
+    from collections import defaultdict
+    cm = compression_map(st, d, axis)
+    if cm is None: return None
+    k, co, wo, z0, pneg, psz = cm['k'], cm['co'], cm['wo'], cm['z0'], cm['pneg'], cm['psz']
+    fc = [_sumdist([int(wo[O]) for O in range(st.r) if co[O] == o]) for o in range(k)]
+    def dist(skew, rsum):
+        if skew:
+            coords = [o for o in range(k) if o != z0 and o < pneg[o]]
+            D = {(): 1}
+            for o in coords:
+                D = {y + (a,): m * ma for y, m in D.items() for a, ma in fc[o].items()}
+                if len(D) > cap: return None
+            out = {}
+            for y, m in D.items():
+                full = [0] * k; full[z0] = 1
+                for o, a in zip(coords, y): full[o] = a; full[pneg[o]] = -a
+                out[tuple(full)] = m
+            return out
+        D = {((), 0): 1}
+        for o in range(k):
+            nd = defaultdict(int)
+            for (y, rs), m in D.items():
+                for a, ma in fc[o].items(): nd[(y + (a,), rs + int(psz[o]) * a)] += m * ma
+            D = nd
+            if len(D) > cap: return None
+        return {y: m for (y, rs), m in D.items() if rs == rsum}
+    dists = [dist(True, 1)] + [dist(False, r) for r in pattern]
+    if any(x is None for x in dists): return None
+    lagcls = sorted(set(min(o, pneg[o]) for o in range(k) if o != z0))
+    full_idx = [cm['seen'][x] for x in range(d)]
+    def cpaf(y):
+        F = np.array(y)[full_idx]
+        return tuple([int((F * F).sum())] + [int((F * np.roll(F, -cm['porb'][c][0])).sum()) for c in lagcls])
+    byp = []
+    for D in dists:
+        g = defaultdict(list)
+        for y, m in D.items(): g[cpaf(y)].append((y, m))
+        byp.append(g)
+    tgt = np.zeros(len(lagcls) + 1, dtype=np.int64); tgt[0] = 4 * st.v
+    AB = defaultdict(list)
+    for pa in byp[0]:
+        for pb in byp[1]: AB[tuple(np.array(pa) + np.array(pb))].append((pa, pb))
+    out = []
+    for pc in byp[2]:
+        for pd in byp[3]:
+            key = tuple(tgt - np.array(pc) - np.array(pd))
+            for pa, pb in AB.get(key, []):
+                for ya, ma in byp[0][pa]:
+                    for yb, mb in byp[1][pb]:
+                        for yc, mc in byp[2][pc]:
+                            for yd, md in byp[3][pd]:
+                                out.append((math.log10(ma) + math.log10(mb) + math.log10(mc) + math.log10(md), [ya, yb, yc, yd]))
+    out.sort(key=lambda t: -t[0])
+    return out, cm
+
+class ClassSampler:
+    """Uniform sampling of a block (orbit signs) with prescribed compression y (and hence row sum): per coordinate o,
+    exact DP over the orbits mapping to o (skew block: over the pairs {O, -O} with O -> o, o < -o)."""
+    def __init__(self, st, cm, y, skew):
+        self.st, self.skew = st, skew
+        k, co, wo, z0, pneg = cm['k'], cm['co'], cm['wo'], cm['z0'], cm['pneg']
+        self.parts = []
+        for o in range(k):
+            if skew:
+                if o == z0 or o > pneg[o]: continue
+                units = [O for O in st.pairs if co[O] == o] + [int(st.onegate[O]) for O in st.pairs if co[st.onegate[O]] == o]
+                # each pair contributes to o through exactly one of its two orbits
+                sg = [1] * sum(1 for O in st.pairs if co[O] == o) + [-1] * sum(1 for O in st.pairs if co[st.onegate[O]] == o)
+                pr = [O for O in st.pairs if co[O] == o] + [O for O in st.pairs if co[st.onegate[O]] == o]
+                ws = [int(wo[u]) for u in units]
+                self.parts.append((pr, sg, ws, y[o]))
+            else:
+                orbs = [O for O in range(st.r) if co[O] == o]
+                self.parts.append((orbs, [1] * len(orbs), [int(wo[O]) for O in orbs], y[o]))
+        self.tabs = []
+        self.count = 1.0
+        for items, sg, ws, t in self.parts:
+            M = int(sum(ws)); n = len(ws)
+            T = np.zeros((n + 1, 2 * M + 1)); T[n, M] = 1.0
+            for i in range(n - 1, -1, -1):
+                s = ws[i]; T[i, s:] += T[i + 1, :2 * M + 1 - s]; T[i, :2 * M + 1 - s] += T[i + 1, s:]
+            self.tabs.append((T, M))
+            self.count *= T[0, M + t] if abs(t) <= M else 0.0
+    def sample(self, n, rng):
+        st = self.st
+        if self.skew:
+            P = np.zeros((n, len(st.pairs)), dtype=np.int8); pidx = {O: i for i, O in enumerate(st.pairs)}
+        else:
+            S = np.zeros((n, st.r), dtype=np.int8)
+        for (items, sg, ws, t), (T, M) in zip(self.parts, self.tabs):
+            rem = np.full(n, t)
+            for i, s in enumerate(ws):
+                ia = rem - s + M; ib = rem + s + M
+                a = np.where((ia >= 0) & (ia <= 2 * M), T[i + 1, np.clip(ia, 0, 2 * M)], 0.0)
+                b = np.where((ib >= 0) & (ib <= 2 * M), T[i + 1, np.clip(ib, 0, 2 * M)], 0.0)
+                up = rng.random(n) < a / (a + b)
+                val = np.where(up, 1, -1).astype(np.int8)     # contribution sign of this orbit to coordinate o
+                rem = rem - np.where(up, s, -s)
+                if self.skew: P[:, pidx[items[i]]] = val * sg[i]
+                else: S[:, items[i]] = val
+            assert np.all(rem == 0)
+        return st.skew_signs(P) if self.skew else S

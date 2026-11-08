@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from skew_lib import *
 from skew_enum import all_slices
 
-RMIN, RMAX, DMAX, TBUDGET = 24, 130, 60, 150
+RMIN, RMAX, DMAX, TBUDGET, RGATE = 24, 130, 60, 150, 65
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'logs', 'skew', 'screen.jsonl')
 SKIP = {1951: 'Kumar lead (spin, §14)', 2269: 'Kumar lead (spin, §14)', 2437: 'Kumar lead (spin, §14)',
@@ -49,6 +49,7 @@ def screen_v(v):
             rec = dict(base, pattern=[1] + list(pat))
             gates = {}; dead = False
             for d in ds:
+                if st.r > RGATE: gates[str(d)] = ['not run (r > %d)' % RGATE, None]; continue
                 if time.time() - t0 > TBUDGET: gates[str(d)] = ['skipped (time)', None]; continue
                 try:
                     stt, n, sz = zp_gate(st, d, axis, pat)
