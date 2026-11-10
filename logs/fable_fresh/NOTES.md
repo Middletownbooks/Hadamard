@@ -75,3 +75,16 @@ t = 3), fable_cod4.py (monomial complex orthogonal designs of order 4), fable_tm
   cc -O3 -march=native -fopenmp theory/{skew_enum_lowe2,skew_lg2,skew_lg,skew_enum_lowe}.c -lm; kt4.c from Kumar.
 - Expectation [E]: 0.5 (Metropolis yield 0.07) to 7 (Gaussian) twin classes in the whole lists; the earlier run
   (seed 1, 10,000 of 33,600 split values) found none.
+
+## 2026-11-10 22:05 UTC: octonion-type product GS(t) x GS(v) -> GS(tv) decided (negative) [M + P]
+
+theory/fable_octo.py, logs/fable_fresh/octo.log.
+- Z_j = (1/2) sum_i eps V_i(e tau) W_{pi_j(i)}(f g): PSD sum 4tv whenever z = composition with
+  sum |z_j|^2 = |v|^2 |w|^2. Exhaustive: 2048 monomial compositions, all on the Klein Latin square; their
+  conjugation-pattern sets are, for each factor, either O = {+---, +-++, ++-+, +++-} or
+  E = {++++, ++--, +-+-, +--+}.
+- Z_j is +-1 valued iff prod_i V_i(e_ji tau) and prod_k W_k(f_jk g) are constant for every row pattern.
+  E  <=>  T-matrices with symmetric supports.  O  <=>  8 disjoint ternary sequences, 4 symmetric + 4 skew, all
+  supports symmetric, zero total PAF. Both impossible for odd order > 1: at lag s the pair {-s/2, s/2} lies in
+  one support and every other pair is matched by g -> -g-s, so sum PAF(s) is odd [P].
+- So no product theorem of this monomial kind for two GS quadruples of odd orders > 1.

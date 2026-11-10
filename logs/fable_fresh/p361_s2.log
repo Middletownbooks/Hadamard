@@ -4,3 +4,15 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'scipy'
 21:41:45 v=361 mods=[19, 19] |H|=9 r=45 C=22 pattern=[1, 17, 23, 25] pairs=22
 21:41:49 block sizes ['4.19e+06', '7.36e+11', '6.76e+11', '6.76e+11'] target lists ['4.19e+06', '3e+07', '3e+07', '3e+07']
+21:44:57 block 0: all 4194304 skew blocks
+21:44:57 block 1: generating 30000000 of 7.36e+11 below tau 4.567 (rank 21, lambda 1.04)
+moves 401000000 kept 1119164 (51s)
+moves 801000000 kept 2152572 (93s)
+moves 1201000000 kept 3114532 (134s)
+moves 1601000000 kept 4012732 (176s)
+moves 2001000000 kept 4852657 (218s)
+moves 2402000000 kept 5638969 (259s)
+moves 2802000000 kept 6375451 (300s)
+moves 3202000000 kept 7064499 (342s)
+moves 3602000000 kept 7711182 (384s)
+moves 4002000000 kept 8319805 (427s)
