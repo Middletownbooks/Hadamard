@@ -88,3 +88,30 @@ theory/fable_octo.py, logs/fable_fresh/octo.log.
   supports symmetric, zero total PAF. Both impossible for odd order > 1: at lag s the pair {-s/2, s/2} lies in
   one support and every other pair is matched by g -> -g-s, so sum PAF(s) is odd [P].
 - So no product theorem of this monomial kind for two GS quadruples of odd orders > 1.
+
+## 2026-11-10 22:10 UTC: typed multiplication closed at t = 5 as well [M]
+
+theory/fable_tmult_h.py (hashed MITM, exact re-check; reproduces t = 3 counts 384 / 576 / 0 / 0).
+- t = 5: the four minimal classes of real dimension 5, (f,s,s,s), (f,f,s,=2), (f,f,s,=0), (f,f,s,*0): 0 solutions
+  each (5.0e7 pairs of block classes). Every type of dimension >= 5 specialises to one of them (an assignment
+  for a type restricts to its specialisations), so none has a formal multiplication at t = 5.
+  Williamson type at t = 5: 18,432.  CP-SAT on (f,f,s,s) had been UNKNOWN at 1500 s; superseded.
+- Correction of an earlier line: at t = 3, 59 types have a multiplication, all of dimension <= 4; not every type
+  of dimension <= 4 has one (28 of dimension 4 and 20 of dimension 3 have none).
+
+## Large index k with a tiny subgroup S in EKLO's Theorem 7 (worked by hand; [P] where marked)
+
+- Cell-energy identity [P]: with S = Z_3 exactly one of the 4k cells is constant; with Paley-type cells on F_5 two
+  cells, on F_7 one cell, must be 'constant with a flipped zero'; larger q impossible (Theorem T flavour).
+- S = Z_3, p = 4k - 1: the core is equivalent to (z, y): z = four sequences on Q over {0} u mu_6 with a single
+  zero and Hermitian PAF sum 0 (a 4-block conference matrix over sixth roots of unity of order p + 1), and
+  y = -z^3 (+-3 at the zero) with PAF sum 12 off 0. More generally an automorphism of order 3 of H(4p) with f
+  fixed points gives a Butson weighing matrix over mu_6 of order (4p - f)/3 and weight p.
+- Algebraic point: z = chi_6(det) on PG(1,p) (p = 1 mod 6; e.g. 751, 1039, 1087): z satisfies its equations
+  exactly, but then y = 3I - (Paley skew conference), PAF sum 0 instead of 12, and no rescaling changes y
+  (cubing kills mu_3). Fails by a constant.
+- Border for large k [P for the reformulation, E for the conclusion]: the border exists iff there are two +-1
+  orthogonal bases E, Z of the block-balanced space W (dim 4k - 4) with all entries of E M^T Z^T equal to
+  +-4k (M the compressed core): the bases M E and Z are 'Hadamard-unbiased'. For a generic M that is
+  (4k-4)^2 exact conditions against 2 (4k)^2 signs: no solution expected for large k unless M is a scalar
+  matrix plus a spike (Kumar's case, which needs |S| >= about sqrt(k)). So large k with |S| <= 7 is closed.

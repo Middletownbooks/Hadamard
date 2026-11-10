@@ -1,0 +1,15 @@
+t=5 type=s s s s dim=4: 8 signed letters, 3280 block classes, 5380840 pairs, solutions=18432 (1s)
+     +A  +A  -B  +B  -C 
+     +A  +B  -D  -D  -A 
+     +A  +C  +C  +D  -D 
+     +B  +B  +C  -C  +D 
+     --
+     +A  +A  -B  +B  -C 
+     +A  +B  -D  -D  -A 
+     +A  +C  +C  +D  -D 
+     +B  +B  +D  -C  +C 
+     --
+t=5 type=f s s s dim=5: 10 signed letters, 10004 block classes, 50045010 pairs, solutions=0 (15s)
+t=5 type=f f s =2 dim=5: 10 signed letters, 10004 block classes, 50045010 pairs, solutions=0 (14s)
+t=5 type=f f s =0 dim=5: 10 signed letters, 10004 block classes, 50045010 pairs, solutions=0 (14s)
+t=5 type=f f s *0 dim=5: 10 signed letters, 10004 block classes, 50045010 pairs, solutions=0 (14s)

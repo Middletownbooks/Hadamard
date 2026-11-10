@@ -4,3 +4,4 @@ t=5 type=all_sym: OPTIMAL in 0.6s
     +D  -B  +D  -C  +B 
     -A  -D  -C  -C  +A 
 t=5 type=generic: INFEASIBLE in 37.2s
+t=5 type=AB_sym: UNKNOWN in 1500.4s
