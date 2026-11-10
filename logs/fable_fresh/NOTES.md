@@ -51,3 +51,27 @@ Facts so far [P unless marked]:
   blocks, or D = C^*, or skew A + ...
 - TODO: brute-force which types admit a monomial design (theory/fable_tmult.py), then cost the search for
   that type at 223 / 491 / 571 / 283.
+
+## 2026-11-10 22:00 UTC: T-multiplication idea decided (negative) [M]
+
+Scripts: theory/fable_tmult.py (exhaustive MITM, t = 3), fable_tmult_types.py (all 164 letter-relation types at
+t = 3), fable_cod4.py (monomial complex orthogonal designs of order 4), fable_tmult_sat.py / fable_tmult_scan.py
+(CP-SAT, agrees with the exhaustive code at t = 3). Logs: logs/fable_fresh/tmult_*.
+- t = 3: a formal multiplication (every fibre carries +-X or +-X*, any assignment) exists exactly for the 59
+  types of real dimension <= 4 (Williamson s,s,s,s; "propus-like" (A, A or A*, B sym, C sym); "Golay-like"
+  (A, A*, C, C*) etc.), and for NO type of real dimension 5, 6 or 8 (105 types, incl. generic, two symmetric
+  blocks, one repeated block).
+- t = 5 generic: INFEASIBLE (CP-SAT proof, 37 s). AB_sym at t = 5: running.
+- Order-4 monomial complex ODs (T (x) W form, any T-matrices): only the all-symmetric type has one.
+- Consequence: the multiplied types have 2v sign bits (or fewer), so by the usual count they stop existing near
+  v ~ 160; none at 223, 283, 491, 571. Route closed. (Side remark: propus-type x Z_3 gives a GS quadruple of
+  order 3v; not checked against the literature; only reaches known orders.)
+- Bordered variant (identity only at rho != 1) gives n = 4v(t+1): product orders only.
+
+## Background run (idle cores): skew 361 split torus, fresh lists, seed 2
+- Launcher: /home/user/skew_work/run361.sh [threads] (copy: scripts/fable_run361.sh). Work dir
+  /home/user/skew_work/p361_s2 (lists cached; kt4 resumes). Log logs/fable_fresh/p361_s2.log.
+- Needs: pip install scipy numba ortools; binaries in /home/user/skew_work/bin:
+  cc -O3 -march=native -fopenmp theory/{skew_enum_lowe2,skew_lg2,skew_lg,skew_enum_lowe}.c -lm; kt4.c from Kumar.
+- Expectation [E]: 0.5 (Metropolis yield 0.07) to 7 (Gaussian) twin classes in the whole lists; the earlier run
+  (seed 1, 10,000 of 33,600 split values) found none.

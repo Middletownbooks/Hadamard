@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/skew_kt.py", line 19, in <module>
+    from scipy.stats import ncx2
+ModuleNotFoundError: No module named 'scipy'
+21:41:45 v=361 mods=[19, 19] |H|=9 r=45 C=22 pattern=[1, 17, 23, 25] pairs=22
+21:41:49 block sizes ['4.19e+06', '7.36e+11', '6.76e+11', '6.76e+11'] target lists ['4.19e+06', '3e+07', '3e+07', '3e+07']
