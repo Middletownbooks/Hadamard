@@ -163,3 +163,24 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
   dead by hand; too weak, a dedicated enumerator is needed.
 - Next session TODO: dedicated exact Q-level gate (big-cell configurations x +-1 remainder, Walsh MITM);
   border library per Walsh-quadruple type for |T| = 7, 11 (b = 28, 44).
+
+## 2026-11-11 16:30 UTC: a live Q-level at 599 in an unused shape  (window 4; restarts at 11:55->16:19)
+
+- theory/fable_tcensus2.py: Z_2^4 x Z_s with H = <sigma> x U, sigma of odd order in GL(4,2) acting on Q, T a union of
+  sigma-orbits of characters, non-classical; exact Q-level gate.  Partial (599, 907, 971 done; resumes per prime):
+  66 dead, 65 alive, rest capped.
+- **599 = 16*37 + 7, G = Z_2^4 x Z_37, sigma of order 3 without nonzero fixed points, U = <10> of order 3 on Z_37
+  (|H| = 9 odd, 78 orbits per block), T = two 2-flats of characters through 1 (7 characters, e.g.
+  {0,1,2,3,4,8,12}; 10 such T): 2688 Q-level solutions [M, theory/fable_q599.py, re-checked from scratch;
+  logs/fable_fresh/q599_solutions.json].**  Cell sums are small (1, 5, 7, 11, 13, 17).  At every character of T
+  the four Walsh values are (+-2, +-2, +-2, +-4); in 2592 of the 2688 each block's Walsh value is constant on T,
+  so the compressed core acts on the border space as Gamma (x) I_7 with Gamma = GS(4,2,2,2) up to signs/order.
+- Border (b = 28) for this shape: NOT found yet.  Block functions with Walsh support in T: 30 (the +-1 functions
+  of the two coordinates dual to one 2-flat, or to the other).  Tensor bases E = H_4 (x) (7 orthogonal block
+  functions) give 0 admissible Z-rows (expected: 7 is not a square); CP-SAT with tables was killed for memory.
+  theory/fable_border5.py, fable_border6.py.  Kumar has Singer-invariant borders for the same Gamma with the
+  classical T (k = 8); here a sigma-invariant search (order 3) is the analogue to try.
+- If a border exists, the slice has the shape of the repository's staged slices (G' x Z_q with q = 37, classes of
+  index 12, n_B = 6 orbits of G' = Z_2^4 under sigma, sGeff = 72): cost it with theory/open_screen_deficit.py after
+  changing the target, then stage 2.  Fibre per Q-level solution about 2^230, 36 class equations (degree-6 real
+  field) [E, rough].

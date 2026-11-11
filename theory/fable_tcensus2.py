@@ -115,8 +115,16 @@ def main():
     primes = [n // 4 for n in op if n % 4 == 0 and isprime(n // 4) and (n // 4) % 16 in (7, 11)]
     sig = gl_odd_classes()
     print('sigma classes (order, fixed points):', [(o, f) for o, f, _, _ in sig], flush=True)
-    out = open('logs/fable_fresh/tcensus2.jsonl', 'w')
+    done = set()
+    import os
+    if os.path.exists('logs/fable_fresh/tcensus2.jsonl'):
+        ps = [json.loads(l)['p'] for l in open('logs/fable_fresh/tcensus2.jsonl')]
+        done = set(ps) - ({ps[-1]} if ps else set())            # the last prime may be incomplete
+        keep = [l for l in open('logs/fable_fresh/tcensus2.jsonl') if json.loads(l)['p'] in done]
+        open('logs/fable_fresh/tcensus2.jsonl', 'w').writelines(keep)
+    out = open('logs/fable_fresh/tcensus2.jsonl', 'a')
     for p in primes:
+        if p in done: continue
         t = p % K; s = (p - t) // K
         for o, fix, img, dual in sig:
             qorb = perm_orbits(img); corb = perm_orbits(dual)
