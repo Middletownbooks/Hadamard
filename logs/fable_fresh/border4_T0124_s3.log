@@ -1,0 +1,3 @@
+Q = Z_2^3, S = Z_3, T = [0, 1, 2, 4], |G| = 24, b = 16, n = 112
+core 0: found in 116s; Walsh values on T: [[-2, -2, -2, 2], [2, -2, -2, 2], [-2, 2, 2, -2], [-2, 2, 2, -2]]; sequences: --+++---+-+---+--++++-+- +---+++-++--++-+-----++- +--+++--++---+---+++--+- +-+----++-+++-++-+--+++-
+   single-character border: OPTIMAL (323s); K Hadamard True; assembled H(112): H H^T = n I is True

@@ -128,3 +128,25 @@ theory/fable_tmult_h.py (hashed MITM, exact re-check; reproduces t = 3 counts 38
   copy scripts/fable_run361_loop.sh to /home/user/skew_work/loop361.sh and scripts/fable_run361.sh to run361.sh).
 - T-matrices with three half-amicability relations: none for t = 3..11 [M] (theory/fable_tamic.py); relation set
   verified numerically.
+
+## 2026-11-11 11:40 UTC: partial character borders (new family) -- first verified instance
+
+(Container was down 03:55 -> 11:09; uptime windows are about 55 minutes; long runs only progress in cached pieces.)
+- Framework [P, in report 6.4]: a coset-constant border of a GS core forces PSD sum = n at the characters of G
+  outside a set T of characters of Q = G/S and = 4|T| on T, n = 4|G| + 4|T|.  T = {1}: Theorem 5; T = nontrivial:
+  EKLO Thm 7; T = all: Kumar's all-character family.  For Q = Z_2^a every character is a +-1 vector, so ANY subset T
+  is a candidate shape, and the border depends only on the 4 x 4 integer blocks Gamma_rho (rho in T) of the
+  compressed core (Walsh values of the compressions on T), not on S.
+- Verified [M]: theory/fable_border4.py 3 3 0,1,2,4 1 380 1 -> Q = Z_2^3, S = Z_3, T = four affinely independent
+  characters (not a flat, not a flat minus a point): core by annealing, single-character border by CP-SAT (323 s),
+  H(112) assembled, H H^T = 112 I.  Controls: T = nontrivial of Z_2^2 (H(60)), T = {1} (H(52)), T = three
+  characters of Z_2^3 = twisted k4 with even |K| (H(108), fable_border2.py).
+- Undecided (CP-SAT timeouts, not zeros): general (non single-character) borders for T = 5 characters of Z_2^3
+  (b = 20) and for S = Z_3 with Q = Z_6 (k = 6, EKLO shape, non-spike compressions).
+- For prime p = 3 mod 4 the new shapes need |T| = 3 mod 4 and start at Q = Z_2^4: p = 16 s + 7 (|T| = 7 not a
+  3-flat minus a point) or 16 s + 11; 599 = 16*37 + 7, 907 = 16*56 + 11, 971 = 16*60 + 11, 1019 = 16*63 + 11.
+  At 599 with the multiplier group of order 9 on Z_37 the Q-level forces exactly two cells of size 17 and two of
+  size 19 (Parseval), and a block with one big cell cannot have 7 small Walsh values (7*12^2 > 16*15): dead for
+  every T unless T lies in an affine hyperplane, and then the 8th character of the hyperplane fails.  [P, by hand]
+- TODO next window: (1) T of size 7 in Z_2^4 (not flat minus point), S = Z_3: core + border, order 220;
+  (2) affine classes of T for k = 16, 32 and the list of (a, |T|, s) per open prime; (3) report section.
