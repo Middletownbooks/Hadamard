@@ -115,3 +115,16 @@ theory/fable_tmult_h.py (hashed MITM, exact re-check; reproduces t = 3 counts 38
   +-4k (M the compressed core): the bases M E and Z are 'Hadamard-unbiased'. For a generic M that is
   (4k-4)^2 exact conditions against 2 (4k)^2 signs: no solution expected for large k unless M is a scalar
   matrix plus a spike (Kumar's case, which needs |S| >= about sqrt(k)). So large k with |S| <= 7 is closed.
+
+## 2026-11-11 03:05 UTC: state after a container restart (22:1x -> 02:55, nothing ran in between)
+
+- Report draft committed: report/fable_fresh_answer.md (update the RUN361 block and section 7 at the end).
+- 361 run is now a multi-seed loop: scripts/fable_run361_loop.sh (installed copy /home/user/skew_work/loop361.sh;
+  /home/user/skew_work/run361.sh starts it; flock prevents doubles). Per seed: fresh lists (about 25 min per block
+  on 4 threads), then the top 2000 ranked split values. Logs logs/fable_fresh/p361_s<seed>.log and p361_loop.log.
+  A hit writes cert_p361torus_*.json in the seed's work dir, a line in logs/skew/HITS.jsonl, and runs
+  scripts/verify_skew.py; then publish with theory/skew_publish.py (format of pub/).
+- After a restart: `/home/user/skew_work/run361.sh 4` (if /home/user/skew_work vanished: rebuild bin as noted above,
+  copy scripts/fable_run361_loop.sh to /home/user/skew_work/loop361.sh and scripts/fable_run361.sh to run361.sh).
+- T-matrices with three half-amicability relations: none for t = 3..11 [M] (theory/fable_tamic.py); relation set
+  verified numerically.
