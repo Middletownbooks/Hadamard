@@ -125,7 +125,8 @@ dimension 5 or 6, which the same count allows up to v ≈ 600 and v ≈ 2500, do
 core × small T-matrices" is closed for t = 3 and 5, and in product form for every t.**
 
 Side remark, not checked against the literature: the propus-like type gives a GS quadruple of order 3v from one of
-order v. It reaches only known orders.
+order v. It reaches only known orders, and none of its 576 assignments returns a propus-like quadruple
+(`theory/fable_propus3.py`) [M], so it does not multiply symmetric Hadamard matrices either.
 
 ### 3.4 A relation-restricted variant [M]
 
