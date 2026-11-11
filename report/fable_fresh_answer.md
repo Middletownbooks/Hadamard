@@ -76,7 +76,7 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
 |---|---|---|---|
 | 1 | Multiply a GS quadruple of order v by ℤ_t (reach 4·t·v from the cores at 223, 283, 491, 571) | exhaustive formal search, t = 3, 5 | closed [M], §3 |
 | 2 | Octonion-type product of two GS quadruples | classification of all monomial compositions + parity lemma | closed [M, P], §4 |
-| 3 | Williamson pattern with T-matrices that satisfy three "half-amicability" relations (one free block, three symmetric) | exhaustive over cyclic T-matrices, t ≤ 11 | none exist [M], §3.4 |
+| 3 | Williamson pattern with T-matrices that satisfy three "half-amicability" relations (one free block, three symmetric) | exhaustive over cyclic T-matrices, t ≤ 13 | none exist [M], §3.4 |
 | 4 | Theorem 7 with large k, S = ℤ₃, F₅ or F₇ (p = 4k − 1, 6k − 1, 8k − 1) | cell-energy identity, sixth-root reformulation, border analysis | closed [P, E], §6 |
 | 4a | Which borders can exist at all (shape analysis of coset-constant borders) | Gram matrices of the border | Kumar's character borders only; none for skew 4v, v odd [P], §6.4 |
 | 4b | Character borders with a set T of characters of ℤ₂^a outside the three classical shapes | cores by annealing, borders by CP-SAT, full matrix checked | **works**: H(112) from a non-classical T [M]; two open-order gates negative [P]; no census, §7 |
@@ -156,8 +156,8 @@ Z₄ = T₄A + T₃B − T₂C − T₁D fails for a free A and symmetric B, C, 
 random points, residual 7·10⁻¹⁴]. So it would work for T-matrices with I₁₂ = I₃₄, I₁₃ = −I₂₄, I₁₄ = I₂₃ at every
 character. `theory/fable_tamic.py` enumerates all cyclic T-matrices (every assignment of block and sign to the
 positions, the block of position 0 fixed): 24, 480, 4704, 64,800 and 644,160 of them for t = 3, 5, 7, 9, 11, and
-**none** has the three relations. t = 13: 58 of 64 chunks done, 5,148,848 T-matrices, none with the relations (`theory/fable_tamic13.py`,
-`logs/fable_fresh/tamic13.jsonl`; the rest was still running). Not run: non-cyclic groups; assignments outside this
+**none** has the three relations. t = 13: all 64 chunks, 5,710,848 T-matrices, **none** with the relations (`theory/fable_tamic13.py`,
+`logs/fable_fresh/tamic13.jsonl`). Not run: non-cyclic groups; assignments outside this
 pattern for t ≥ 7.
 
 ---
