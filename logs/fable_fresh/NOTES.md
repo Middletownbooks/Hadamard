@@ -199,3 +199,5 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
   4. CP-SAT single-character border for the 599 slice, when memory allows (kill the census first):
      nice python3 theory/fable_border7.py logs/fable_fresh/q599_solutions.json 0 37 7200 2
 - After a reset, open questions for new thinking: sigma-invariant borders for the 599 slice; costing its stage 2.
+- 2026-11-11 20:05 UTC check-in: container had restarted again (6th); nothing finished since 18:30. Relaunched the
+  361 loop (block 3 of seed 2 regenerating), the t = 13 search (58/64) and the CP-SAT border job (no verdict yet).
