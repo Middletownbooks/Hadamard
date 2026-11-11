@@ -397,6 +397,14 @@ and so on. Every open prime gets new shapes on groups ℤ₂^a × S that the cen
   the 32 characters of Q (no cross term, because the Walsh values are real). But the three special cells have sums
   ±23, ±23, ±21 and cannot cancel at 15 characters by the same Parseval count. **Dead for every T.**
 
+**A first table [M].** `theory/fable_tcensus.py` lists, for every open prime, a = 4, 5, 6, cyclic S and every cyclic
+multiplier group on S with 24 to 130 orbits per block, whether the Parseval sum Σ y² can be written with the available
+cell sums at all: 188 slices, 142 dead at this level, 46 pass (`logs/fable_fresh/tcensus.log`). The table does not
+separate classical from new T (|T| = 7, 11 at a = 4 and most |T| at a ≥ 5 have new classes), and passing it is weak
+evidence: the slices with two to five large cells die like 599 above. The ones with a real choice are few, for
+example 599 over ℤ₂⁴ × ℤ₃₇ with the group of order 6 (112 orbits, cell sums 1, 11, 13, 23, 25), 1499 and 1579 with
+|T| = 11, 1847 and 1223 with |T| = 7. None was decided at the Q-level.
+
 So the family is real, it is unexplored, and its cheapest instances at the two smallest orders tried die at the
 same kind of gate as the classical shapes. A census (shapes × groups × multiplier groups with the exact Q-level
 gate, then a border for the surviving Walsh quadruples) is the natural next computation; it was not done here.
