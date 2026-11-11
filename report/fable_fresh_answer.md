@@ -411,12 +411,19 @@ and so on. Every open prime gets such shapes on groups ℤ₂^a × S that the ce
 
 **A first table [M].** `theory/fable_tcensus.py` lists, for every open prime, a = 4, 5, 6, cyclic S and every cyclic
 multiplier group on S with 24 to 130 orbits per block, whether the Parseval sum Σ y² can be written with the available
-cell sums at all: 188 slices, 142 dead at this level, 46 pass (`logs/fable_fresh/tcensus.log`). The table does not
-separate classical from other T (|T| = 7, 11 at a = 4 and most |T| at a ≥ 5 have non-classical classes), and passing it is weak
-evidence: the slices with two to five large cells die like 599 above. The ones with a real choice are few, for
-example 599 over ℤ₂⁴ × ℤ₃₇ with the group of order 6 (112 orbits, cell sums 1, 11, 13, 23, 25), 1499 and 1579 with
-|T| = 11, 1847 and 1223 with |T| = 7. None was decided at the Q-level. (The group of order 6 on ℤ₃₇ contains −1, which halves the sign bits per equation,
-so that slice is unfavourable by count even if its Q-level lives.)
+cell sums at all: 188 slices, 142 dead at this level, 46 pass (`logs/fable_fresh/tcensus.log`).
+- Of the 46, eight have a multiplier group of odd order, the case with eight sign bits per equation. Five of them
+  admit only a classical T (|T| = 3 at 739, 1619 and 1747; |T| = 15 over ℤ₂⁴ at 751). The other three are 599 with
+  the group of order 9 and 751 over ℤ₂⁵ × ℤ₂₃ (both dead above) and 2287 over ℤ₂⁵ × ℤ₇₁, which has a single cell of
+  size 69 or 71 and is dead by the same Parseval count. **So no slice with cyclic S, a multiplier group of odd
+  order acting on S alone, at most 130 orbits and a non-classical T survives.**
+- The other 38 have a group of even order (it contains −1 on ℤ_s when s is an odd prime, which halves the sign
+  bits per equation) or an even s. A few have a real choice of cell sums, for example 599 with the group of order
+  6 (112 orbits, cell sums 1, 11, 13, 23, 25), 1499 and 1579 with |T| = 11, 1847 and 1223 with |T| = 7. None was
+  decided at the Q-level (`theory/fable_qlevel.py`, a CP-SAT gate for all T at once, is too weak: UNKNOWN at 300 s
+  even on the 599 slice that is dead by hand).
+- Not covered: non-cyclic S, multipliers that act on Q as well, non-split 2-parts (Galois rings), products of
+  multiplier groups on several prime factors.
 
 So these shapes exist, they are unexplored, and their cheapest instances at the two smallest orders tried die at the
 same kind of gate as the classical shapes. A census (shapes × groups × multiplier groups with the exact Q-level
