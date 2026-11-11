@@ -340,3 +340,9 @@ moves 6432000000 kept 12126231 (344s)
 moves 6832000000 kept 12566725 (364s)
 moves 7232000000 kept 12985884 (385s)
 moves 7635000000 kept 13383855 (405s)
+22:10:59 v=361 mods=[19, 19] |H|=9 r=45 C=22 pattern=[1, 17, 23, 25] pairs=22
+22:11:02 block sizes ['4.19e+06', '7.36e+11', '6.76e+11', '6.76e+11'] target lists ['4.19e+06', '3e+07', '3e+07', '3e+07']
+22:11:03 block 0: cached 4194304
+22:11:08 block 1: cached 17999137
+22:11:13 block 2: cached 20394075
+22:11:13 block 3: generating 30000000 of 6.76e+11 below tau 4.609 (rank 21, lambda 1.02)
