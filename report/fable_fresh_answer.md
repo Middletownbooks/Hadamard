@@ -36,9 +36,13 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    condition [P]; and the border exists exactly when two ±1 bases are "Hadamard-unbiased" through the compressed
    core [P], which a ±1-valued compression has no reason to allow [E]. This explains why borders are
    known only for spike compressions.
-4. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
+4. **Bordered arrays cannot reach the skew census** (§6.4) [P]. From the shape alone, a coset-constant border of a
+   Goethals–Seidel core is one of Kumar's character borders, and when the group has odd order (as a skew-type block
+   requires) its width is 4·odd, so the order is ≡ 0 (mod 8). The 630 open values 4v, v odd, can only come from
+   unbordered arrays over a group of order v or from a different kind of array.
+5. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
    over ℤ₁₉²) with fresh lists. Status in §7.
-5. **Reading.** Every structure cheap enough for 4 cores is now either searched or closed by a theorem of the kind
+6. **Reading.** Every structure cheap enough for 4 cores is now either searched or closed by a theorem of the kind
    above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours (4792 = 8·599 by a Spence
    plug-in; skew 661, 883, 1483). §8 says what I would run with that much compute.
 <!-- /BOTTOM -->
@@ -62,7 +66,7 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
 | 4 | Theorem 7 with large k, S = ℤ₃, F₅ or F₇ (p = 4k − 1, 6k − 1, 8k − 1) | cell-energy identity, sixth-root reformulation, border analysis | closed [P, E], §6 |
 | 5 | The torus base point: G = F_p\* (the Theorem 5 group of order p − 1), blocks χ(x + c) | exact autocorrelation, energy count | no nearby solution [P, E], §5.2 |
 | 6 | Norm-equation form over the fixed field of the multiplier group | reformulation only | no algorithm gained [P], §5.1 |
-| 7 | Uniform cyclotomy (punctured lines of F_q²) in the fibres of Theorem 7 | energy identity | impossible for q ≥ 7 [P], §6.4 |
+| 7 | Uniform cyclotomy (punctured lines of F_q²) in the fibres of Theorem 7 | energy identity | impossible for q ≥ 7 [P], §6.5 |
 | 8 | Ito / dicyclic matrices (negaperiodic Golay pairs of length 2p) | sign count | negative for p > about 160 [E]; dropped |
 | 9 | Legendre pairs over a group of order 2p − 1 | sign count; Kumar screened the four-block form | dropped |
 | 10 | 10012 = 4·2503 over ℤ₂² × F₆₂₅ (the EKLO family at q = 25) | Kumar's notes | already examined by Kumar (F₂₅ × F₂₅ exactly empty; "2 % per run" otherwise); dropped |
@@ -293,7 +297,33 @@ are related by a real Hadamard matrix.
 **So large k with |S| ≤ 7 is closed as a route**: the core would be cheap to state, but its border is a
 Hadamard-type object of order 2p − 2 that nobody knows how to build.
 
-### 6.4 Uniform cyclotomy in the fibres [P]
+### 6.4 Which borders are possible at all, and why none serves the skew census [P]
+
+Let G be abelian of order ks, S ≤ G of index k and order s > 1, Q = G/S, and suppose
+H = [[K, E′], [F′, C]] is a Hadamard matrix of order n = 4ks + b with C the Goethals–Seidel array of four ±1
+sequences on G, K of order b > 0, and E′, F′ constant on the cosets of S inside each of the four blocks (E, F their
+quotients, of sizes b × 4k and 4k × b). Write P = Σ PAF.
+
+1. P = −b on S ∖ 0, and P is constant on every other coset: P = β(q), β(−q) = β(q).
+   *Proof.* C Cᵀ = I₄ ⊗ Dev(P), so F′F′ᵀ = I₄ ⊗ (nI − Dev(P)) must depend on cosets only. ∎
+2. F Fᵀ = EᵀE = I₄ ⊗ B with B = bI − Circ_Q(β); its eigenvalues are b − β̂(ρ), ρ ∈ Q̂. (CᵀC = I₄ ⊗ Dev(P) as well,
+   because Σ XᵢXᵢᵀ commutes with every block and with the inversion matrix.)
+3. Let T = {ρ : β̂(ρ) ≠ b}. Then 4|T| = rank E ≤ b, and T is closed under complex conjugation. If n > b² then
+   b = 4|T|. *Proof.* KᵀK = nI − sFᵀF has the eigenvalue n on the kernel of F, and ‖K‖² ≤ b². ∎
+4. If k is odd, the trivial character lies in T. *Proof.* Otherwise B·1 = 0, so every row of E sums to 0 over a
+   block of odd length k. ∎
+
+These are Kumar's (Q, T) character borders, recovered from the shape alone: T = Q̂ ∖ {1} with β = 4 is EKLO's
+Theorem 7 (so k must be even there), T = Q̂ with β = 0 is the all-character family.
+
+**Consequence for skew matrices.** A skew-Hadamard H of this shape has a skew-type first block, so |G| is odd, so k
+is odd. Then 1 ∈ T, the other characters of T pair off under conjugation, and |T| is odd. With n > b² this gives
+n = 4(|G| + |T|) ≡ 0 (mod 8). **No bordered Goethals–Seidel array with a coset-constant border of width
+0 < b < √n is a skew-Hadamard matrix of an order 4v with v odd.** The census values can only come from unbordered
+arrays over a group of order exactly v, or from arrays of another kind (Kumar's negacyclic arrays give 8v for the
+same reason).
+
+### 6.5 Uniform cyclotomy in the fibres [P]
 
 In EKLO's family over Q × F_{q²} (S = F_{q²}), let every cell be constant on the q + 1 punctured lines through 0:
 f = f₀δ₀ + Σ_i c_i·1_{L_i}, so f̂(ψ) = (f₀ − σ) + q·c_{i(ψ)}, σ = Σ c_i. Summing over Q̂ for one line i gives
