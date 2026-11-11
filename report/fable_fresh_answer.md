@@ -1,6 +1,6 @@
 # A fresh look at the open Hadamard and skew-Hadamard orders: what was tried, what is now closed
 
-Date: 2026-11-09 to 2026-11-12. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_fable_fresh.md`.
+Date: 2026-11-09 to 2026-11-11. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_fable_fresh.md`.
 Scripts: `theory/fable_*.py`. Logs and working notes: `logs/fable_fresh/` (`NOTES.md` is the session's state file).
 
 **Tags.** [P] proved here (proof in the text); [M] exact computation (script named); [E] estimate. A cap or a timeout
@@ -48,8 +48,11 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    admissible, the shapes are the affine classes of subsets of F₂^a, and the border depends only on |T| integer
    quadruples [P]. One instance outside the three classical shapes was built and verified: four affinely
    independent characters of ℤ₂³ over ℤ₂³ × ℤ₃, a Hadamard matrix of the (known) order 112 [M]. For 4p such shapes
-   start at ℤ₂⁴ (|T| = 7 or 11) and exist at every open prime. Two first instances (599 and 751) die at the Q-level
-   for every T [P]; no census was run.
+   start at ℤ₂⁴ (|T| = 7 or 11) and exist at every open prime. With a multiplier acting on S alone, the first
+   instances (599, 751) die at the Q-level for every T [P]. **With a multiplier of order 3 acting on Q as well, the
+   Q-level of 4·599 = 2396 is alive** (§7.1): G = ℤ₂⁴ × ℤ₃₇, |H| = 9, 78 orbits per block, ten non-classical T,
+   2688 exact Q-level solutions [M]. No border was found for them (a cyclic single-character ansatz is exactly
+   empty [M]; general borders are undecided), and no core was sought.
 6. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
    over ℤ₁₉²) with fresh lists. Status in §8.
 7. **Reading.** Among the classical structures, everything cheap enough for 4 cores is now either searched or
@@ -153,7 +156,9 @@ Z₄ = T₄A + T₃B − T₂C − T₁D fails for a free A and symmetric B, C, 
 random points, residual 7·10⁻¹⁴]. So it would work for T-matrices with I₁₂ = I₃₄, I₁₃ = −I₂₄, I₁₄ = I₂₃ at every
 character. `theory/fable_tamic.py` enumerates all cyclic T-matrices (every assignment of block and sign to the
 positions, the block of position 0 fixed): 24, 480, 4704, 64,800 and 644,160 of them for t = 3, 5, 7, 9, 11, and
-**none** has the three relations. Not run: t = 13; non-cyclic groups; assignments outside this pattern for t ≥ 7.
+**none** has the three relations. t = 13: 58 of 64 chunks done, 5,148,848 T-matrices, none with the relations (`theory/fable_tamic13.py`,
+`logs/fable_fresh/tamic13.jsonl`; the rest was still running). Not run: non-cyclic groups; assignments outside this
+pattern for t ≥ 7.
 
 ---
 
@@ -429,6 +434,37 @@ So these shapes exist, they are unexplored, and their cheapest instances at the 
 same kind of gate as the classical shapes. A census (shapes × groups × multiplier groups with the exact Q-level
 gate, then a border for the surviving Walsh quadruples) is the natural next computation; it was not done here.
 
+### 7.1 A live Q-level at 2396 with a non-classical character set [M]
+
+`theory/fable_tcensus2.py` repeats the gate with multiplier groups ⟨σ⟩ × U, σ an element of odd order of GL(4, 2)
+acting on Q = ℤ₂⁴ (cells and characters), U a cyclic group of units of ℤ_s, T a union of σ-orbits of characters, not
+classical. It is exact (block enumeration by a meet in the middle with the bound |ŷ| ≤ √(4|T|) on T, then a 2 + 2
+join on energy vectors) and restart-safe per prime. Done for 599, 907, 971 and 1019 (`logs/fable_fresh/tcensus2.jsonl`,
+331 records): 66 dead, 65 alive, 200 not decided (caps; not zeros).
+
+- **The slice.** 4·599 = 2396 = 4(16·37 + 7). G = ℤ₂⁴ × ℤ₃₇, H = ⟨σ⟩ × ⟨10⟩ with σ of order 3 fixing only 0 of
+  ℤ₂⁴ and 10 of order 3 in ℤ₃₇\* (|H| = 9, odd; 6 σ-orbits of Q times 13 U-orbits of ℤ₃₇ = 78 orbits per block).
+  T = the union of two σ-invariant 2-flats of characters through the trivial one, e.g. {0, 1, 2, 3, 4, 8, 12} (ten
+  such T, one affine class, not classical).
+- **Q-level: 2688 solutions** for T = {0, 1, 2, 3, 4, 8, 12} (`theory/fable_q599.py`, every solution re-checked
+  from scratch; `logs/fable_fresh/q599_solutions.json`). Cell sums are small (1, 5, 7, 11, 13, 17). At every
+  character of T the four Walsh values are (±2, ±2, ±2, ±4), and in 2592 of the 2688 each block's Walsh value is
+  constant on T, so the compressed core acts on the border space as Γ ⊗ I₇ with Γ a 4 × 4 matrix of entries ±2, ±4,
+  ΓΓᵀ = 28I. This is the same Γ as for Kumar's spike compressions at index 8 (his d = (4, 2, 2, 2)).
+- **Border: not found.** The admissible block functions (±1 functions on Q with Walsh support in T) are 30: the
+  functions of the two coordinates dual to one 2-flat or to the other. Kumar's index-8 border for 3356 cannot be
+  transplanted: its block rows are balanced but mostly not single characters, and its four-point Walsh supports
+  meet in two points where ours meet in one. Single-character borders with the cyclic symmetry l ↦ l + 1 on the 7
+  labels: **exactly none** (`theory/fable_border9.py`: 2744 orbit representatives per side, 576 compatible pairs,
+  all 13,034 orthogonal E-quadruples tried). Tensor bases H₄ ⊗ (7 block functions): 0 admissible Z-rows. General
+  single-character borders by CP-SAT (`theory/fable_border7.py`) and general borders (`theory/fable_border5.py`):
+  not decided (memory and restarts). **Not a zero.**
+- **If a border exists**, the slice is a staged slice of the repository's usual shape: G′ = ℤ₂⁴ with 6 orbits,
+  staging prime 37 with classes of index 12. Its stage 2 was not costed; with 78 orbits per block (312 sign bits)
+  against 36 class equations of the degree-6 fixed field it is in the "rich" regime of `report/open_screen_answer.md`
+  [E, rough], so even a border would leave a large search.
+- 907 and 971 (|T| = 11) also have alive Q-levels with σ of order 5 (`tcensus2.jsonl`); their U have even order.
+
 ## 8. The production run: skew 361 over ℤ₁₉ × ℤ₁₉ [E; a finished run without a hit excludes nothing]
 
 `report/skew_census_answer.md` left one calibrated slice unfinished: v = 361, H = ⟨diag(4, 7)⟩, pattern
@@ -439,12 +475,11 @@ classes in the whole lists, depending on whether Kumar's measured Metropolis yie
 applies.
 
 <!-- RUN361 -->
-**Status (2026-11-11 11:30 UTC): no split value searched yet.** The container was restarted after about an hour of
-activity three times and stayed down for four to seven hours each time; a restart costs the Metropolis block in
-progress (about 25 minutes on 4 threads). Blocks 0 and 1 of seed 2 are cached; the run is now a multi-seed loop
-(`scripts/fable_run361_loop.sh`: fresh lists, then the top 2000 ranked split values per seed, since the calibration
-hits came in the first 1–3 % of the ranked values) and resumes from its cache. Any later progress is in
-`logs/fable_fresh/p361_loop.log` and at the end of `logs/fable_fresh/NOTES.md`. No hit is claimed.
+**Status (2026-11-11 18:40 UTC): no split value searched yet; no result.** The container was restarted after about
+an hour of activity five times and stayed down for two to seven hours each time; each restart costs the Metropolis
+block in progress (about 25 minutes on 4 threads). Blocks 0–2 of seed 2 are cached and block 3 was being generated.
+The loop (`scripts/fable_run361_loop.sh`: fresh lists, then the top 2000 ranked split values per seed) resumes from
+its cache; later progress is in `logs/fable_fresh/p361_loop.log`. No hit is claimed.
 <!-- /RUN361 -->
 
 ---
@@ -454,16 +489,18 @@ hits came in the first 1–3 % of the ranked values) and resumes from its cache.
 1. **With about 10³ core-hours:** Kumar's Spence plug-in for 4792 = 8·599 over ℤ₇ × ℤ₁₉ × F₉ (his `search/eightp/gs`,
    calibrated on 5912 within a factor of two), then the skew slices he ranks at 10³ (661, 883, 1483). These are the
    only live targets with a measured rate.
-2. **A census of character borders with general T over ℤ₂^a** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
+2. **The 2396 slice of §7.1**: decide the border (a general CP-SAT run with more memory, or σ-invariant borders,
+   the analogue of Kumar's Singer search); if one exists, cost stage 2 with `theory/open_screen_deficit.py`.
+3. **A census of character borders with general T over ℤ₂^a** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
    ℤ₂^a × S (and the non-split 2-parts) of order p − |T|, every multiplier group, the exact Q-level gate, and a
    border library per Walsh-quadruple type. This is the one set of structures found here that is both unscreened
    and cheap to screen with the repository's existing gates.
-3. **Borders.** §6.3 turns "does a border exist for this compression" into a concrete question about pairs of ±1
+4. **Borders.** §6.3 turns "does a border exist for this compression" into a concrete question about pairs of ±1
    bases. A theorem for a class of non-spike compressions at k = 6, 8 or 10 would open the mid-range indices
    (k = 10–60 with |S| = 11–59 at 599 and 719), which no census has touched because no border is known there.
-4. **Formal multiplications at t ≥ 7** for the dimension-5 types outside the Williamson pattern. The count does not
+5. **Formal multiplications at t ≥ 7** for the dimension-5 types outside the Williamson pattern. The count does not
    exclude a sporadic identity; t = 7 needs a three-level join (7·10⁵ block classes).
-5. **Not worth repeating:** product theorems of the two kinds closed in §3 and §4; Theorem 7 with |S| ≤ 7.
+6. **Not worth repeating:** product theorems of the two kinds closed in §3 and §4; Theorem 7 with |S| ≤ 7.
 
 ## 10. Reproduce
 

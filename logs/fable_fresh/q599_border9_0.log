@@ -1,0 +1,4 @@
+Gamma = [[-2, 2, -4, -2], [-2, -2, -2, 4], [4, 2, -2, 2], [2, -4, -2, -2]]  Gamma Gamma^T = [[28, 0, 0, 0], [0, 28, 0, 0], [0, 0, 28, 0], [0, 0, 0, 28]]
+2744 orbit representatives per side
+orthogonal rep pairs: 53508  compatible (e, z) pairs: 576
+done: 0 borders; 13034 E-quadruples tried (0s)

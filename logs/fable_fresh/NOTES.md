@@ -184,3 +184,18 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
   index 12, n_B = 6 orbits of G' = Z_2^4 under sigma, sGeff = 72): cost it with theory/open_screen_deficit.py after
   changing the target, then stage 2.  Fibre per Q-level solution about 2^230, 36 class equations (degree-6 real
   field) [E, rough].
+
+## 2026-11-11 18:45 UTC: wrap-up of the idea phase (user asked to summarise and push; no new ideas until reset)
+
+- 599 slice (report 7.1): Gamma = GS(+-2,+-2,+-2,+-4), constant on T for 2592/2688 Q-level solutions.
+  Kumar's 3356 border is not single-character (blocks balanced, mostly not characters): no transplant.
+  Cyclic (order 7) single-character borders: exactly none (theory/fable_border9.py).  General border undecided.
+- Background, mechanical (safe to continue without new ideas):
+  1. 361 skew loop: /home/user/skew_work/run361.sh 4  (resumes; log p361_loop.log, p361_s<seed>.log).
+  2. t = 13 relation search: nohup nice -n 19 python3 theory/fable_tamic13.py 13 logs/fable_fresh/tamic13.jsonl &
+     (58/64 chunks, 0 so far).
+  3. Q-level census: nohup nice -n 10 python3 theory/fable_tcensus2.py 30 120 >> logs/fable_fresh/tcensus2.log &
+     (resumes per prime; RAM: do not run together with a CP-SAT border job).
+  4. CP-SAT single-character border for the 599 slice, when memory allows (kill the census first):
+     nice python3 theory/fable_border7.py logs/fable_fresh/q599_solutions.json 0 37 7200 2
+- After a reset, open questions for new thinking: sigma-invariant borders for the 599 slice; costing its stage 2.
