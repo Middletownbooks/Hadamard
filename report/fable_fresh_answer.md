@@ -40,11 +40,17 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    Goethals–Seidel core is one of Kumar's character borders, and when the group has odd order (as a skew-type block
    requires) its width is 4·odd, so the order is ≡ 0 (mod 8). The 630 open values 4v, v odd, can only come from
    unbordered arrays over a group of order v or from a different kind of array.
-5. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
-   over ℤ₁₉²) with fresh lists. Status in §7.
-6. **Reading.** Every structure cheap enough for 4 cores is now either searched or closed by a theorem of the kind
+5. **A family of bordered arrays that the censuses have not used** (§7). The same shape analysis shows that over
+   Q = ℤ₂^a *any* set T of characters may carry the border, not only T = {1} (Theorem 5), all nontrivial characters
+   (Theorem 7) or all characters; the border then depends only on |T| integer quadruples [P]. One instance outside
+   the classical shapes was built and verified: four affinely independent characters of ℤ₂³ over ℤ₂³ × ℤ₃, a
+   Hadamard matrix of the (known) order 112 [M]. For 4p the new shapes start at ℤ₂⁴ (|T| = 7 or 11) and exist at
+   every open prime. Two first instances (599 and 751) die at the Q-level for every T [P]; no census was run.
+6. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
+   over ℤ₁₉²) with fresh lists. Status in §8.
+7. **Reading.** Every structure cheap enough for 4 cores is now either searched or closed by a theorem of the kind
    above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours (4792 = 8·599 by a Spence
-   plug-in; skew 661, 883, 1483). §8 says what I would run with that much compute.
+   plug-in; skew 661, 883, 1483). §9 says what I would run with that much compute.
 <!-- /BOTTOM -->
 
 ---
@@ -333,7 +339,69 @@ The cores EKLO found over F₁₉² and F₂₃² necessarily use finer classes.
 
 ---
 
-## 7. The production run: skew 361 over ℤ₁₉ × ℤ₁₉ [E; a finished run without a hit excludes nothing]
+## 7. Partial character borders: a family of bordered arrays that no census has used
+
+§6.4 shows that a coset-constant border forces a core with
+
+  Σ_k |x̂_k(χ)|² = n at every character χ of G outside T,  = 4|T| at χ ∈ T,  n = 4|G| + 4|T|,
+
+for a set T of characters of Q = G/S. Equivalently Σ PAF(g) = −4 Σ_{ρ∈T} ρ(g) for g ≠ 0. The known cases are
+T = {1} (Theorem 5), T = Q̂ ∖ {1} (EKLO's Theorem 7) and T = Q̂ (Kumar's all-character family); Kumar's censuses also
+take T defined by character orders.
+
+**Observation.** When Q = ℤ₂^a every character of Q is itself a ±1 vector, so **every subset T ⊂ Q̂ is a candidate
+shape**, and:
+- [P] the compressed core acts on the border space as a direct sum of 4 × 4 integer blocks: M(e_a ⊗ ρ) = Γ_ρ(e_a) ⊗ ρ
+  for ρ ∈ T, with Γ_ρ the Goethals–Seidel matrix of the four Walsh values ŷ_k(ρ) of the compressions (the characters
+  are real and inversion is trivial on Q), Γ_ρΓ_ρᵀ = 4|T|·I. So the existence of a border depends only on T and on
+  these |T| integer quadruples, not on S or on the rest of the core. Theorem B is the case T = Q̂ ∖ {1}, Q = ℤ₂²,
+  where the normal form leaves one quadruple type.
+- Translating T by a character (twisting every block by it) and applying GL(a, 2) give equivalent shapes, so shapes
+  are affine classes of subsets of F₂^a. A point is Theorem 5; a flat is the all-character family on a quotient; a
+  flat minus a point is EKLO's family. **Every other class is new.** There are, for instance, 2 classes of 4-subsets
+  of F₂³ (one new), 3 classes of 7-subsets of F₂⁴ (two new) and 2 classes of 11-subsets of F₂⁴ (both new) [M:
+  `theory/fable_tclasses.py`, which also lists the open primes per residue class].
+
+**Verified instances [M]** (cores by simulated annealing on Q × ℤ₃, borders by CP-SAT, the full matrix assembled and
+H Hᵀ = nI checked; `theory/fable_border2.py`, `theory/fable_border4.py`, logs `logs/fable_fresh/border*`):
+
+| Q | T | shape | n | result |
+|---|---|---|---|---|
+| ℤ₂² | {1} | point (Theorem 5) | 52 | border found, H(52) verified (control) |
+| ℤ₂² | three nontrivial | flat minus point (EKLO k = 4) | 60 | border found, H(60) verified (control; several cores) |
+| ℤ₂³ | three independent | flat minus point after a twist (k = 4 with even \|K\|) | 108 | border found for 2 of 2 random cores, H(108) verified |
+| ℤ₂³ | {1, χ₁, χ₂, χ₄}: four affinely independent | **new** | 112 | single-character border found (323 s), **H(112) verified** |
+| ℤ₂³ | five characters | new | 116 | general border: CP-SAT UNKNOWN at 600 s (not a zero) |
+| ℤ₂⁴ | seven characters not in a 3-flat | new, the shape of 599 | 220 | <!-- T7 -->running at the time of writing<!-- /T7 --> |
+
+The orders 112 and 116 are of course known; the point is that a border exists for a character set outside the three
+classical shapes, for a core with unstructured compressions.
+
+**Where the new shapes sit.** For n = 4p one needs p = 2^a·s + |T|, so |T| ≡ p (mod 2^a) is determined by a. For
+a ≤ 3 the shape is classical. New shapes start at a = 4: |T| = 7 for p ≡ 7 (mod 16) (599, 1031, 1223, 1319, 1367,
+1543, 1559, 1783, 1831, 1847, 1879, …) and |T| = 11 for p ≡ 11 (mod 16) (907, 971, 1019, 1259, 1291, 1451, 1499,
+1579, 1787, 1979, 2027, …); at a = 5, |T| = 15 for p ≡ 15 (mod 32) (719, 751, 1039, 1103, 1327, 1423, 1487, 1583, 1871, …),
+and so on. Every open prime gets new shapes on groups ℤ₂^a × S that the censuses ran only with T = Q̂ ∖ {1}.
+
+**Two first gates, both negative [P].** The Q-level rigidity of the classical shapes is not lifted automatically:
+- 599 = 16·37 + 7 over ℤ₂⁴ × ℤ₃₇ with the multiplier group of order 9 on ℤ₃₇ (5 orbits per coset, 80 per block).
+  Cell sums are ≡ ±1 (mod 18); Parseval at the Q-level gives Σ y² = 1360 over 64 cells, so exactly two cells of
+  size 17, two of size 19 and sixty of size 1. A block containing one big cell B would need its sixteen-point Walsh
+  transform to be at most 5 in absolute value at the seven characters of T, so its ±1 part needs |Walsh| ≥ 12 there:
+  7·12² > 16·15. Two big cells in one block cancel only where ρ(q₁ + q₂) is constant, which puts T inside an affine
+  hyperplane, and then the eighth character of that hyperplane cannot reach 2396. All four big cells in one block:
+  their signed Walsh sum ±17 ± 17 ± 19 ± 19 either takes the value ±72 at some character (72² > 2396) or is never
+  below 34, so it cannot be small on T. **Dead for every T.**
+- 751 = 32·23 + 15 over ℤ₂⁵ × F₂₃ with Paley-type cells. The cell-energy identity forces 125 Paley cells, 2 constant
+  cells and 1 constant with a flipped zero; the S-nontrivial equations become Σ_k (ŝ_k(ρ)² + 23 t̂_k(ρ)²) = 3004 for
+  the 32 characters of Q (no cross term, because the Walsh values are real). But the three special cells have sums
+  ±23, ±23, ±21 and cannot cancel at 15 characters by the same Parseval count. **Dead for every T.**
+
+So the family is real, it is unexplored, and its cheapest instances at the two smallest orders tried die at the
+same kind of gate as the classical shapes. A census (shapes × groups × multiplier groups with the exact Q-level
+gate, then a border for the surviving Walsh quadruples) is the natural next computation; it was not done here.
+
+## 8. The production run: skew 361 over ℤ₁₉ × ℤ₁₉ [E; a finished run without a hit excludes nothing]
 
 `report/skew_census_answer.md` left one calibrated slice unfinished: v = 361, H = ⟨diag(4, 7)⟩, pattern
 (1; 17, 23, 25), searched to 10,000 of 33,600 ranked split values. Its lists were not kept, so the run was restarted
@@ -349,19 +417,23 @@ each time. Result: see the final lines of `logs/fable_fresh/NOTES.md`.
 
 ---
 
-## 8. What I would do next
+## 9. What I would do next
 
 1. **With about 10³ core-hours:** Kumar's Spence plug-in for 4792 = 8·599 over ℤ₇ × ℤ₁₉ × F₉ (his `search/eightp/gs`,
    calibrated on 5912 within a factor of two), then the skew slices he ranks at 10³ (661, 883, 1483). These are the
    only live targets with a measured rate.
-2. **Borders.** §6.3 turns "does a border exist for this compression" into a concrete question about pairs of ±1
+2. **A census of partial character borders** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
+   ℤ₂^a × S (and the non-split 2-parts) of order p − |T|, every multiplier group, the exact Q-level gate, and a
+   border library per Walsh-quadruple type. This is the one structural family found here that is both new and
+   cheap to screen with the repository's existing gates.
+3. **Borders.** §6.3 turns "does a border exist for this compression" into a concrete question about pairs of ±1
    bases. A theorem for a class of non-spike compressions at k = 6, 8 or 10 would open the mid-range indices
    (k = 10–60 with |S| = 11–59 at 599 and 719), which no census has touched because no border is known there.
-3. **Formal multiplications at t ≥ 7** for the dimension-5 types outside the Williamson pattern. The count does not
+4. **Formal multiplications at t ≥ 7** for the dimension-5 types outside the Williamson pattern. The count does not
    exclude a sporadic identity; t = 7 needs a three-level join (7·10⁵ block classes).
-4. **Not worth repeating:** product theorems of the two kinds closed in §3 and §4; Theorem 7 with |S| ≤ 7.
+5. **Not worth repeating:** product theorems of the two kinds closed in §3 and §4; Theorem 7 with |S| ≤ 7.
 
-## 9. Reproduce
+## 10. Reproduce
 
 ```
 python3 theory/fable_tmult_types.py 3            # all 164 types at t = 3
@@ -370,5 +442,7 @@ python3 theory/fable_tmult_sat.py 5 generic 600  # CP-SAT, INFEASIBLE
 python3 theory/fable_cod4.py all_sym AB_sym A_sym D_eq_Cstar generic
 python3 theory/fable_octo.py                     # 2048 compositions, pattern sets E / O
 python3 theory/fable_tamic.py 3 5 7 9 11
+python3 theory/fable_border4.py 3 3 0,1,2,4 1 380 1   # the new border shape, H(112)
+python3 theory/fable_border2.py 3 3 1,2,4 2 300 1       # twisted k4 with even |K|, H(108)
 scripts/fable_run361.sh 4                        # needs /home/user/skew_work/bin (see logs/fable_fresh/NOTES.md)
 ```
