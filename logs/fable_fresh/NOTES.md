@@ -201,3 +201,9 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
 - After a reset, open questions for new thinking: sigma-invariant borders for the 599 slice; costing its stage 2.
 - 2026-11-11 20:05 UTC check-in: container had restarted again (6th); nothing finished since 18:30. Relaunched the
   361 loop (block 3 of seed 2 regenerating), the t = 13 search (58/64) and the CP-SAT border job (no verdict yet).
+- 2026-11-11 21:35 UTC check-in: the container had restarted again. Pattern over the last three windows: jobs
+  launched at a check-in die about 7 minutes later (361 block 3 reached 405-452 s each time), i.e. the container is
+  reclaimed soon after the session goes idle; background jobs do not keep it alive. Relaunching at timed check-ins
+  therefore makes no progress. Stopped re-arming check-ins. To make progress the jobs need an active session (or a
+  machine that persists): 361 block 3 needs ~25 min, then kt4 over 2000 split values ~1 h on 4 cores; the CP-SAT
+  border job needs up to 2 h; t = 13 needs ~10 min for the last 6 chunks.
