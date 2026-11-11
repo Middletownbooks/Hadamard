@@ -36,10 +36,11 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    condition [P]; and the border exists exactly when two ±1 bases are "Hadamard-unbiased" through the compressed
    core [P], which a ±1-valued compression has no reason to allow [E]. This explains why borders are
    known only for spike compressions.
-4. **Bordered arrays cannot reach the skew census** (§6.4) [P]. From the shape alone, a coset-constant border of a
-   Goethals–Seidel core is one of Kumar's character borders, and when the group has odd order (as a skew-type block
-   requires) its width is 4·odd, so the order is ≡ 0 (mod 8). The 630 open values 4v, v odd, can only come from
-   unbordered arrays over a group of order v or from a different kind of array.
+4. **Bordered arrays cannot reach the skew census** (§6.4) [P]. From the shape alone, a coset-constant border (of
+   width below √n) of a Goethals–Seidel core is a character border: it is carried by a set T of characters of the
+   quotient and has width 4|T|. When the group has odd order, as a skew-type block requires, |T| is odd, so the
+   order is ≡ 0 (mod 8). The 630 open values 4v, v odd, can only come from unbordered arrays over a group of
+   order v or from a different kind of array.
 5. **A family of bordered arrays that the censuses have not used** (§7). The same shape analysis shows that over
    Q = ℤ₂^a *any* set T of characters may carry the border, not only T = {1} (Theorem 5), all nontrivial characters
    (Theorem 7) or all characters; the border then depends only on |T| integer quadruples [P]. One instance outside
@@ -48,9 +49,10 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    every open prime. Two first instances (599 and 751) die at the Q-level for every T [P]; no census was run.
 6. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
    over ℤ₁₉²) with fresh lists. Status in §8.
-7. **Reading.** Every structure cheap enough for 4 cores is now either searched or closed by a theorem of the kind
-   above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours (4792 = 8·599 by a Spence
-   plug-in; skew 661, 883, 1483). §9 says what I would run with that much compute.
+7. **Reading.** Among the classical structures, everything cheap enough for 4 cores is now either searched or
+   closed by a theorem of the kind above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours
+   (4792 = 8·599 by a Spence plug-in; skew 661, 883, 1483). The family of item 5 is the one place where unscreened
+   cheap structures remain. §9 says what I would run next.
 <!-- /BOTTOM -->
 
 ---
@@ -70,6 +72,8 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
 | 2 | Octonion-type product of two GS quadruples | classification of all monomial compositions + parity lemma | closed [M, P], §4 |
 | 3 | Williamson pattern with T-matrices that satisfy three "half-amicability" relations (one free block, three symmetric) | exhaustive over cyclic T-matrices, t ≤ 11 | none exist [M], §3.4 |
 | 4 | Theorem 7 with large k, S = ℤ₃, F₅ or F₇ (p = 4k − 1, 6k − 1, 8k − 1) | cell-energy identity, sixth-root reformulation, border analysis | closed [P, E], §6 |
+| 4a | Which borders can exist at all (shape analysis of coset-constant borders) | Gram matrices of the border | character borders only; none for skew 4v, v odd [P], §6.4 |
+| 4b | Partial character borders: any set T of characters of ℤ₂^a | cores by annealing, borders by CP-SAT, full matrix checked | **works**: H(112) from a non-classical T [M]; two open-order gates negative [P]; no census, §7 |
 | 5 | The torus base point: G = F_p\* (the Theorem 5 group of order p − 1), blocks χ(x + c) | exact autocorrelation, energy count | no nearby solution [P, E], §5.2 |
 | 6 | Norm-equation form over the fixed field of the multiplier group | reformulation only | no algorithm gained [P], §5.1 |
 | 7 | Uniform cyclotomy (punctured lines of F_q²) in the fibres of Theorem 7 | energy identity | impossible for q ≥ 7 [P], §6.5 |
@@ -403,7 +407,8 @@ cell sums at all: 188 slices, 142 dead at this level, 46 pass (`logs/fable_fresh
 separate classical from new T (|T| = 7, 11 at a = 4 and most |T| at a ≥ 5 have new classes), and passing it is weak
 evidence: the slices with two to five large cells die like 599 above. The ones with a real choice are few, for
 example 599 over ℤ₂⁴ × ℤ₃₇ with the group of order 6 (112 orbits, cell sums 1, 11, 13, 23, 25), 1499 and 1579 with
-|T| = 11, 1847 and 1223 with |T| = 7. None was decided at the Q-level.
+|T| = 11, 1847 and 1223 with |T| = 7. None was decided at the Q-level. (The group of order 6 on ℤ₃₇ contains −1, which halves the sign bits per equation,
+so that slice is unfavourable by count even if its Q-level lives.)
 
 So the family is real, it is unexplored, and its cheapest instances at the two smallest orders tried die at the
 same kind of gate as the classical shapes. A census (shapes × groups × multiplier groups with the exact Q-level
@@ -419,8 +424,12 @@ classes in the whole lists, depending on whether Kumar's measured Metropolis yie
 applies.
 
 <!-- RUN361 -->
-Status at the time of writing: lists being generated; container restarts every few hours cost the unfinished block
-each time. Result: see the final lines of `logs/fable_fresh/NOTES.md`.
+**Status (2026-11-11 11:30 UTC): no split value searched yet.** The container was restarted after about an hour of
+activity three times and stayed down for four to seven hours each time; a restart costs the Metropolis block in
+progress (about 25 minutes on 4 threads). Blocks 0 and 1 of seed 2 are cached; the run is now a multi-seed loop
+(`scripts/fable_run361_loop.sh`: fresh lists, then the top 2000 ranked split values per seed, since the calibration
+hits came in the first 1–3 % of the ranked values) and resumes from its cache. Any later progress is in
+`logs/fable_fresh/p361_loop.log` and at the end of `logs/fable_fresh/NOTES.md`. No hit is claimed.
 <!-- /RUN361 -->
 
 ---
