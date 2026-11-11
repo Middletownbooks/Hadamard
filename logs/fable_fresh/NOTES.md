@@ -150,3 +150,16 @@ theory/fable_tmult_h.py (hashed MITM, exact re-check; reproduces t = 3 counts 38
   every T unless T lies in an affine hyperplane, and then the 8th character of the hyperplane fails.  [P, by hand]
 - TODO next window: (1) T of size 7 in Z_2^4 (not flat minus point), S = Z_3: core + border, order 220;
   (2) affine classes of T for k = 16, 32 and the list of (a, |T|, s) per open prime; (3) report section.
+
+## 2026-11-11 11:45 UTC: correction of attribution
+
+Kumar's search/NOTES.md section 18 already states the bordered GS arrays with a character set T (any Galois-stable
+T), the orthogonal-matrix form of the border problem, and "for odd q the trivial character must lie in T".  So the
+framework in report 6.3/6.4/7 is his.  What this session adds: the converse (a coset-constant border must have that
+shape), the corollary for skew 4v (v odd), the affine classification of T in Z_2^a and the observation that only
+three classes were ever used, the block-diagonal remark, one verified instance with a non-classical T (H(112)), the
+Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordingly.
+- theory/fable_qlevel.py (CP-SAT Q-level gate, all T at once): UNKNOWN at 300 s on the case 599 / |U| = 9 that is
+  dead by hand; too weak, a dedicated enumerator is needed.
+- Next session TODO: dedicated exact Q-level gate (big-cell configurations x +-1 remainder, Walsh MITM);
+  border library per Walsh-quadruple type for |T| = 7, 11 (b = 28, 44).

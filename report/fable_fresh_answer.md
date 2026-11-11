@@ -7,8 +7,8 @@ Scripts: `theory/fable_*.py`. Logs and working notes: `logs/fable_fresh/` (`NOTE
 is not a zero.
 
 **Credit.** Egan, Kotsireas, London and Ó Catháin (EKLO) for the survey and Theorem 7; Alpöge, Voinov and
-Reynolds-Haertle for the twelve matrices of August 2026; K. Kumar for his constructions, his border formulation
-(`search/NOTES.md` §102 of his repository) and `kt4.c`; the OpenAI model for Theorem B and the compression normal
+Reynolds-Haertle for the twelve matrices of August 2026; K. Kumar for his constructions, his bordered arrays with a character set T and
+their border problem (`search/NOTES.md` §18 and §102 of his repository) and `kt4.c`; the OpenAI model for Theorem B and the compression normal
 form; this repository's earlier sessions for the skew k-tree pipeline that §5 reuses.
 
 ---
@@ -36,23 +36,26 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    condition [P]; and the border exists exactly when two ±1 bases are "Hadamard-unbiased" through the compressed
    core [P], which a ±1-valued compression has no reason to allow [E]. This explains why borders are
    known only for spike compressions.
-4. **Bordered arrays cannot reach the skew census** (§6.4) [P]. From the shape alone, a coset-constant border (of
-   width below √n) of a Goethals–Seidel core is a character border: it is carried by a set T of characters of the
-   quotient and has width 4|T|. When the group has odd order, as a skew-type block requires, |T| is odd, so the
-   order is ≡ 0 (mod 8). The 630 open values 4v, v odd, can only come from unbordered arrays over a group of
-   order v or from a different kind of array.
-5. **A family of bordered arrays that the censuses have not used** (§7). The same shape analysis shows that over
-   Q = ℤ₂^a *any* set T of characters may carry the border, not only T = {1} (Theorem 5), all nontrivial characters
-   (Theorem 7) or all characters; the border then depends only on |T| integer quadruples [P]. One instance outside
-   the classical shapes was built and verified: four affinely independent characters of ℤ₂³ over ℤ₂³ × ℤ₃, a
-   Hadamard matrix of the (known) order 112 [M]. For 4p the new shapes start at ℤ₂⁴ (|T| = 7 or 11) and exist at
-   every open prime. Two first instances (599 and 751) die at the Q-level for every T [P]; no census was run.
+4. **Bordered arrays cannot reach the skew census** (§6.4) [P]. A coset-constant border (of width below √n) of a
+   Goethals–Seidel core is necessarily one of Kumar's character borders (his `search/NOTES.md` §18): it is carried
+   by a set T of characters of the quotient and has width 4|T|. Kumar notes that for a quotient of odd order the
+   trivial character must lie in T; it follows that |T| is odd whenever the group has odd order, as a skew-type
+   block requires, so the order is ≡ 0 (mod 8). The 630 open values 4v, v odd, can only come from unbordered arrays
+   over a group of order v or from a different kind of array.
+5. **An unused part of Kumar's character-border family** (§7). His construction allows any Galois-stable set T of
+   characters of the quotient Q; the censuses (his and this repository's) take T = {1} (Theorem 5), all nontrivial
+   characters (Theorem 7), all characters, or sets defined by character orders. Over Q = ℤ₂^a every subset is
+   admissible, the shapes are the affine classes of subsets of F₂^a, and the border depends only on |T| integer
+   quadruples [P]. One instance outside the three classical shapes was built and verified: four affinely
+   independent characters of ℤ₂³ over ℤ₂³ × ℤ₃, a Hadamard matrix of the (known) order 112 [M]. For 4p such shapes
+   start at ℤ₂⁴ (|T| = 7 or 11) and exist at every open prime. Two first instances (599 and 751) die at the Q-level
+   for every T [P]; no census was run.
 6. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
    over ℤ₁₉²) with fresh lists. Status in §8.
 7. **Reading.** Among the classical structures, everything cheap enough for 4 cores is now either searched or
    closed by a theorem of the kind above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours
-   (4792 = 8·599 by a Spence plug-in; skew 661, 883, 1483). The family of item 5 is the one place where unscreened
-   cheap structures remain. §9 says what I would run next.
+   (4792 = 8·599 by a Spence plug-in; skew 661, 883, 1483). The character sets of item 5 are the one place where
+   unscreened cheap structures remain. §9 says what I would run next.
 <!-- /BOTTOM -->
 
 ---
@@ -72,8 +75,8 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
 | 2 | Octonion-type product of two GS quadruples | classification of all monomial compositions + parity lemma | closed [M, P], §4 |
 | 3 | Williamson pattern with T-matrices that satisfy three "half-amicability" relations (one free block, three symmetric) | exhaustive over cyclic T-matrices, t ≤ 11 | none exist [M], §3.4 |
 | 4 | Theorem 7 with large k, S = ℤ₃, F₅ or F₇ (p = 4k − 1, 6k − 1, 8k − 1) | cell-energy identity, sixth-root reformulation, border analysis | closed [P, E], §6 |
-| 4a | Which borders can exist at all (shape analysis of coset-constant borders) | Gram matrices of the border | character borders only; none for skew 4v, v odd [P], §6.4 |
-| 4b | Partial character borders: any set T of characters of ℤ₂^a | cores by annealing, borders by CP-SAT, full matrix checked | **works**: H(112) from a non-classical T [M]; two open-order gates negative [P]; no census, §7 |
+| 4a | Which borders can exist at all (shape analysis of coset-constant borders) | Gram matrices of the border | Kumar's character borders only; none for skew 4v, v odd [P], §6.4 |
+| 4b | Character borders with a set T of characters of ℤ₂^a outside the three classical shapes | cores by annealing, borders by CP-SAT, full matrix checked | **works**: H(112) from a non-classical T [M]; two open-order gates negative [P]; no census, §7 |
 | 5 | The torus base point: G = F_p\* (the Theorem 5 group of order p − 1), blocks χ(x + c) | exact autocorrelation, energy count | no nearby solution [P, E], §5.2 |
 | 6 | Norm-equation form over the fixed field of the multiplier group | reformulation only | no algorithm gained [P], §5.1 |
 | 7 | Uniform cyclotomy (punctured lines of F_q²) in the fibres of Theorem 7 | energy identity | impossible for q ≥ 7 [P], §6.5 |
@@ -292,8 +295,8 @@ blocks. For borders whose E has rows in W (every known one):
 Then K = E Mᵀ Zᵀ / 4k and F = −Zᵀ. *Proof.* The off-diagonal block of H Hᵀ is the lift of K Fᵀ + E Mᵀ, so
 F = −M Eᵀ K / b. With M Mᵀ = I₄ ⊗ (bI + 4|S|J), M(I₄ ⊗ J)Mᵀ = n(I₄ ⊗ J) and EᵀE = 4kI − 4(I₄ ⊗ J) one gets
 F Fᵀ = 4kI − 4(I₄ ⊗ J), the required Gram matrix, automatically; Z = −Fᵀ has rows in W and Z Zᵀ = 4kI; and
-E Mᵀ Zᵀ = 4kK. The converse is the same computation read backwards. ∎ This is Kumar's formulation with M in place
-of his Γ ⊗ I. On W the matrix M/√b is orthogonal, and the condition says that the orthonormal bases M·E and Z of W
+E Mᵀ Zᵀ = 4kK. The converse is the same computation read backwards. ∎ This is Kumar's formulation (his `search/NOTES.md` §18 and §102) with a general M in
+place of his Γ ⊗ I. On W the matrix M/√b is orthogonal, and the condition says that the orthonormal bases M·E and Z of W
 are related by a real Hadamard matrix.
 
 - For a spike compression (constant plus a multiple of δ₀, Kumar's case, and the k = 4 normal form behind
@@ -323,8 +326,10 @@ quotients, of sizes b × 4k and 4k × b). Write P = Σ PAF.
 4. If k is odd, the trivial character lies in T. *Proof.* Otherwise B·1 = 0, so every row of E sums to 0 over a
    block of odd length k. ∎
 
-These are Kumar's (Q, T) character borders, recovered from the shape alone: T = Q̂ ∖ {1} with β = 4 is EKLO's
-Theorem 7 (so k must be even there), T = Q̂ with β = 0 is the all-character family.
+These are exactly Kumar's bordered arrays with a character set T (his `search/NOTES.md` §18, which states the
+construction, the orthogonal-matrix form of the border problem, and item 4). What the computation above adds is the
+converse: a coset-constant border cannot have any other shape. T = Q̂ ∖ {1} with β = 4 is EKLO's Theorem 7 (so k must
+be even there), T = Q̂ with β = 0 is the all-character family.
 
 **Consequence for skew matrices.** A skew-Hadamard H of this shape has a skew-type first block, so |G| is odd, so k
 is odd. Then 1 ∈ T, the other characters of T pair off under conjugation, and |T| is odd. With n > b² this gives
@@ -343,15 +348,18 @@ The cores EKLO found over F₁₉² and F₂₃² necessarily use finer classes.
 
 ---
 
-## 7. Partial character borders: a family of bordered arrays that no census has used
+## 7. Character borders over ℤ₂^a with a general character set: an unused part of Kumar's family
 
 §6.4 shows that a coset-constant border forces a core with
 
   Σ_k |x̂_k(χ)|² = n at every character χ of G outside T,  = 4|T| at χ ∈ T,  n = 4|G| + 4|T|,
 
-for a set T of characters of Q = G/S. Equivalently Σ PAF(g) = −4 Σ_{ρ∈T} ρ(g) for g ≠ 0. The known cases are
-T = {1} (Theorem 5), T = Q̂ ∖ {1} (EKLO's Theorem 7) and T = Q̂ (Kumar's all-character family); Kumar's censuses also
-take T defined by character orders.
+for a set T of characters of Q = G/S. Equivalently Σ PAF(g) = −4 Σ_{ρ∈T} ρ(g) for g ≠ 0. This is Kumar's
+construction (`search/NOTES.md` §18 of his repository), stated there for any Galois-stable T. The cases that have
+been used are T = {1} (Theorem 5), T = Q̂ ∖ {1} (EKLO's Theorem 7), T = Q̂ (the all-character family), products of
+these, and, in his censuses, T defined by character orders; on ℤ₂² he notes that {1, χ₁, χ₂} is the nontrivial set
+after a twist. I found no use of other subsets of the characters of ℤ₂^a, a ≥ 3, in his notes or in this repository;
+the wider literature was not checked.
 
 **Observation.** When Q = ℤ₂^a every character of Q is itself a ±1 vector, so **every subset T ⊂ Q̂ is a candidate
 shape**, and:
@@ -362,8 +370,8 @@ shape**, and:
   where the normal form leaves one quadruple type.
 - Translating T by a character (twisting every block by it) and applying GL(a, 2) give equivalent shapes, so shapes
   are affine classes of subsets of F₂^a. A point is Theorem 5; a flat is the all-character family on a quotient; a
-  flat minus a point is EKLO's family. **Every other class is new.** There are, for instance, 2 classes of 4-subsets
-  of F₂³ (one new), 3 classes of 7-subsets of F₂⁴ (two new) and 2 classes of 11-subsets of F₂⁴ (both new) [M:
+  flat minus a point is EKLO's family. **Every other class is unused.** There are, for instance, 2 classes of 4-subsets
+  of F₂³ (one unused), 3 classes of 7-subsets of F₂⁴ (two unused) and 2 classes of 11-subsets of F₂⁴ (both unused) [M:
   `theory/fable_tclasses.py`, which also lists the open primes per residue class].
 
 **Verified instances [M]** (cores by simulated annealing on Q × ℤ₃, borders by CP-SAT, the full matrix assembled and
@@ -374,18 +382,18 @@ H Hᵀ = nI checked; `theory/fable_border2.py`, `theory/fable_border4.py`, logs 
 | ℤ₂² | {1} | point (Theorem 5) | 52 | border found, H(52) verified (control) |
 | ℤ₂² | three nontrivial | flat minus point (EKLO k = 4) | 60 | border found, H(60) verified (control; several cores) |
 | ℤ₂³ | three independent | flat minus point after a twist (k = 4 with even \|K\|) | 108 | border found for 2 of 2 random cores, H(108) verified |
-| ℤ₂³ | {1, χ₁, χ₂, χ₄}: four affinely independent | **new** | 112 | single-character border found (323 s), **H(112) verified** |
-| ℤ₂³ | five characters | new | 116 | general border: CP-SAT UNKNOWN at 600 s (not a zero) |
-| ℤ₂⁴ | seven characters not in a 3-flat | new, the shape of 599 | 220 | <!-- T7 -->running at the time of writing<!-- /T7 --> |
+| ℤ₂³ | {1, χ₁, χ₂, χ₄}: four affinely independent | **not classical** | 112 | single-character border found (323 s), **H(112) verified** |
+| ℤ₂³ | five characters | not classical | 116 | general border: CP-SAT UNKNOWN at 600 s (not a zero) |
+| ℤ₂⁴ | seven characters not in a 3-flat | not classical, the shape of 599 | 220 | <!-- T7 -->running at the time of writing<!-- /T7 --> |
 
 The orders 112 and 116 are of course known; the point is that a border exists for a character set outside the three
 classical shapes, for a core with unstructured compressions.
 
-**Where the new shapes sit.** For n = 4p one needs p = 2^a·s + |T|, so |T| ≡ p (mod 2^a) is determined by a. For
-a ≤ 3 the shape is classical. New shapes start at a = 4: |T| = 7 for p ≡ 7 (mod 16) (599, 1031, 1223, 1319, 1367,
+**Where the unused shapes sit.** For n = 4p one needs p = 2^a·s + |T|, so |T| ≡ p (mod 2^a) is determined by a. For
+a ≤ 3 the shape is classical. Unused shapes start at a = 4: |T| = 7 for p ≡ 7 (mod 16) (599, 1031, 1223, 1319, 1367,
 1543, 1559, 1783, 1831, 1847, 1879, …) and |T| = 11 for p ≡ 11 (mod 16) (907, 971, 1019, 1259, 1291, 1451, 1499,
 1579, 1787, 1979, 2027, …); at a = 5, |T| = 15 for p ≡ 15 (mod 32) (719, 751, 1039, 1103, 1327, 1423, 1487, 1583, 1871, …),
-and so on. Every open prime gets new shapes on groups ℤ₂^a × S that the censuses ran only with T = Q̂ ∖ {1}.
+and so on. Every open prime gets such shapes on groups ℤ₂^a × S that the censuses ran only with T = Q̂ ∖ {1}.
 
 **Two first gates, both negative [P].** The Q-level rigidity of the classical shapes is not lifted automatically:
 - 599 = 16·37 + 7 over ℤ₂⁴ × ℤ₃₇ with the multiplier group of order 9 on ℤ₃₇ (5 orbits per coset, 80 per block).
@@ -404,13 +412,13 @@ and so on. Every open prime gets new shapes on groups ℤ₂^a × S that the cen
 **A first table [M].** `theory/fable_tcensus.py` lists, for every open prime, a = 4, 5, 6, cyclic S and every cyclic
 multiplier group on S with 24 to 130 orbits per block, whether the Parseval sum Σ y² can be written with the available
 cell sums at all: 188 slices, 142 dead at this level, 46 pass (`logs/fable_fresh/tcensus.log`). The table does not
-separate classical from new T (|T| = 7, 11 at a = 4 and most |T| at a ≥ 5 have new classes), and passing it is weak
+separate classical from other T (|T| = 7, 11 at a = 4 and most |T| at a ≥ 5 have non-classical classes), and passing it is weak
 evidence: the slices with two to five large cells die like 599 above. The ones with a real choice are few, for
 example 599 over ℤ₂⁴ × ℤ₃₇ with the group of order 6 (112 orbits, cell sums 1, 11, 13, 23, 25), 1499 and 1579 with
 |T| = 11, 1847 and 1223 with |T| = 7. None was decided at the Q-level. (The group of order 6 on ℤ₃₇ contains −1, which halves the sign bits per equation,
 so that slice is unfavourable by count even if its Q-level lives.)
 
-So the family is real, it is unexplored, and its cheapest instances at the two smallest orders tried die at the
+So these shapes exist, they are unexplored, and their cheapest instances at the two smallest orders tried die at the
 same kind of gate as the classical shapes. A census (shapes × groups × multiplier groups with the exact Q-level
 gate, then a border for the surviving Walsh quadruples) is the natural next computation; it was not done here.
 
@@ -439,10 +447,10 @@ hits came in the first 1–3 % of the ranked values) and resumes from its cache.
 1. **With about 10³ core-hours:** Kumar's Spence plug-in for 4792 = 8·599 over ℤ₇ × ℤ₁₉ × F₉ (his `search/eightp/gs`,
    calibrated on 5912 within a factor of two), then the skew slices he ranks at 10³ (661, 883, 1483). These are the
    only live targets with a measured rate.
-2. **A census of partial character borders** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
+2. **A census of character borders with general T over ℤ₂^a** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
    ℤ₂^a × S (and the non-split 2-parts) of order p − |T|, every multiplier group, the exact Q-level gate, and a
-   border library per Walsh-quadruple type. This is the one structural family found here that is both new and
-   cheap to screen with the repository's existing gates.
+   border library per Walsh-quadruple type. This is the one set of structures found here that is both unscreened
+   and cheap to screen with the repository's existing gates.
 3. **Borders.** §6.3 turns "does a border exist for this compression" into a concrete question about pairs of ±1
    bases. A theorem for a class of non-spike compressions at k = 6, 8 or 10 would open the mid-range indices
    (k = 10–60 with |S| = 11–59 at 599 and 719), which no census has touched because no border is known there.
@@ -459,7 +467,7 @@ python3 theory/fable_tmult_sat.py 5 generic 600  # CP-SAT, INFEASIBLE
 python3 theory/fable_cod4.py all_sym AB_sym A_sym D_eq_Cstar generic
 python3 theory/fable_octo.py                     # 2048 compositions, pattern sets E / O
 python3 theory/fable_tamic.py 3 5 7 9 11
-python3 theory/fable_border4.py 3 3 0,1,2,4 1 380 1   # the new border shape, H(112)
+python3 theory/fable_border4.py 3 3 0,1,2,4 1 380 1   # a non-classical character set, H(112)
 python3 theory/fable_border2.py 3 3 1,2,4 2 300 1       # twisted k4 with even |K|, H(108)
 scripts/fable_run361.sh 4                        # needs /home/user/skew_work/bin (see logs/fable_fresh/NOTES.md)
 ```
