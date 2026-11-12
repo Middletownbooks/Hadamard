@@ -64,11 +64,14 @@ def main():
     lo = min(min(v) for v in tabs.values()); hi = max(max(v) for v in tabs.values())
     m = cp_model.CpModel()
     def side(name):
-        reps = [[m.NewIntVar(0, no - 1, f'{name}r{i}_{c}') for c in range(4)] for i in range(norb)]
+        # [P] <z, sigma z> = sum_c <f_c, f_c o sigma>, each term 16 for a sigma-fixed block function and 0 otherwise,
+        # so the rows of a 3-orbit use only non-fixed block functions (domain reduction, exact)
+        nonfix = cp_model.Domain.FromValues([o for o in range(no) if pi[o] != o])
+        reps = [[m.NewIntVarFromDomain(nonfix, f'{name}r{i}_{c}') for c in range(4)] for i in range(norb)]
         rows = []
         for r in reps:
-            r1 = [m.NewIntVar(0, no - 1, '') for c in range(4)]
-            r2 = [m.NewIntVar(0, no - 1, '') for c in range(4)]
+            r1 = [m.NewIntVarFromDomain(nonfix, '') for c in range(4)]
+            r2 = [m.NewIntVarFromDomain(nonfix, '') for c in range(4)]
             for c in range(4):
                 m.AddElement(r[c], pi, r1[c]); m.AddElement(r1[c], pi, r2[c])
             rows += [r, r1, r2]
