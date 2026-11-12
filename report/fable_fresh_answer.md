@@ -472,7 +472,7 @@ join on energy vectors) and restart-safe per prime. Done for 599, 907, 971 and 1
   - [M] For general block functions this gate does not close: all 331,776 admissible orbit rows are compatible with
     some σ-fixed row (`theory/fable_border12.py`). CP-SAT with the exact domain reduction (9.5 GB on 1 worker) runs
     with 1, 4 and 7 fixed rows, 2 h each; results in `logs/fable_fresh/sigma_queue.log`.
-    <!-- SIGMA -->NFIX = 1: **UNKNOWN at 7200 s** (12.6 GB, 1 worker). NFIX = 4: **UNKNOWN at 7200 s** (11.7 GB). NFIX = 7: running.<!-- /SIGMA -->
+    <!-- SIGMA -->NFIX = 1: **UNKNOWN at 7200 s** (12.6 GB, 1 worker). NFIX = 4: **UNKNOWN at 7200 s** (11.7 GB). NFIX = 7: **INFEASIBLE** (CP-SAT proof, 2803 s): no σ-invariant border with exactly seven fixed rows exists for case 0 [M]. Fixed rows lie in the 12-dimensional σ-invariant part of the border space, so NFIX ∈ {1, 4, 7, 10}; NFIX = 10: running.<!-- /SIGMA -->
 - **If a border exists**, the slice is a staged slice of the repository's usual shape: G′ = ℤ₂⁴ with 6 orbits,
   staging prime 37 with classes of index 12. Its stage 2 was not costed; with 78 orbits per block (312 sign bits)
   against 36 class equations of the degree-6 fixed field it is in the "rich" regime of `report/open_screen_answer.md`
