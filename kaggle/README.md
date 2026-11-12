@@ -120,3 +120,24 @@ Exact search, pre-registered in `williamson/PREREGISTRATION.md`. The total is ab
    `logs/wil_n65_cost.json`, and it re-verifies any solution.
 
 Shards differ in size: each takes every 32nd Z5 representative. Expect roughly 2–4 hours per shard per core.
+
+---
+
+# Kaggle: border search for the 2396 slice (`border2396_cpsat.py`)
+
+Self-contained (numpy + ortools; the data, 44 compression quadruples, are inside the file). Context:
+`report/fable_fresh_answer.md` §7.1.
+
+1. New notebook, CPU, **Internet ON** (settings panel; needs a phone-verified account). First cell: `!pip install ortools`.
+2. Second cell: paste the whole file (or upload it and run `!python border2396_cpsat.py`).
+3. Edit `CONFIG` at the top: `CASES_TO_RUN` (default `['control', 0]`), `MODE` (`'single'` first), `WORKERS = 2`,
+   `TIME_LIMIT_S` (≤ 11 h per session).
+
+What it prints: the control (an order-60 instance, about 20 s) must end with `ok: True`; then each case ends with
+`OPTIMAL`/`FEASIBLE` (border found, checked with integers, saved as `border_case<i>.json`), `INFEASIBLE` (no border of
+that kind for that case: a proof), or `UNKNOWN` (time limit: not a zero). Results accumulate in
+`/kaggle/working/border2396/progress.jsonl`; to continue in a new session, attach the previous output as a dataset and
+set `RESUME_FROM`. Several notebooks can run different cases (0–43) or the two modes in parallel.
+
+A border is not yet a Hadamard matrix: with one, the next step is the core search on ℤ₂⁴ × ℤ₃₇ (312 signs per block).
+Memory: about 6.7 GB per CP-SAT worker in `'single'` mode (measured); `'general'` is larger.
