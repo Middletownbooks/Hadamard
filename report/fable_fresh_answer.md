@@ -459,6 +459,20 @@ join on energy vectors) and restart-safe per prime. Done for 599, 907, 971 and 1
   all 13,034 orthogonal E-quadruples tried). Tensor bases H₄ ⊗ (7 block functions): 0 admissible Z-rows. General
   single-character borders by CP-SAT (`theory/fable_border7.py`, one worker, run alone): **UNKNOWN at the 7200 s
   limit** (2026-11-12, 7.3 GB). General borders (`theory/fable_border5.py`): not run to a verdict (memory). **Not a zero.**
+- **σ-invariant borders** (σ the order-3 element that defines the slice; the compressions are σ-invariant, so M
+  commutes with σ and a border may be sought whose row sets are unions of σ-orbits; `theory/fable_border10.py`,
+  CP-SAT on orbit representatives, validated on a ℤ₂² Singer control where it finds and verifies a border in 9 s):
+  - [P] ⟨z, σz⟩ = Σ_c ⟨f_c, f_c∘σ⟩, and each term is 16 for the six σ-fixed block functions and 0 for the other 24.
+    So rows in σ-orbits of size 3 use only non-fixed block functions, and since 28 ≡ 1 (mod 3) every σ-invariant
+    border has at least one σ-fixed row.
+  - [P] **No σ-invariant single-character border exists.** A single-character orbit row avoids the trivial
+    character entirely, while a σ-fixed single-character row uses it in every block. Each block where both carry the
+    same character adds a term ≡ 2 (mod 4) to 4K(f, z) (Γ's entries are ±2, ±4), so |K| = 1 needs exactly two such
+    blocks, and there are none. (`theory/fable_border11.py` confirms: no compatible pair.)
+  - [M] For general block functions this gate does not close: all 331,776 admissible orbit rows are compatible with
+    some σ-fixed row (`theory/fable_border12.py`). CP-SAT with the exact domain reduction (9.5 GB on 1 worker) runs
+    with 1, 4 and 7 fixed rows, 2 h each; results in `logs/fable_fresh/sigma_queue.log`.
+    <!-- SIGMA -->running<!-- /SIGMA -->
 - **If a border exists**, the slice is a staged slice of the repository's usual shape: G′ = ℤ₂⁴ with 6 orbits,
   staging prime 37 with classes of index 12. Its stage 2 was not costed; with 78 orbits per block (312 sign bits)
   against 36 class equations of the degree-6 fixed field it is in the "rich" regime of `report/open_screen_answer.md`
