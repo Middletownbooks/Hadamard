@@ -457,8 +457,8 @@ join on energy vectors) and restart-safe per prime. Done for 599, 907, 971 and 1
   meet in two points where ours meet in one. Single-character borders with the cyclic symmetry l ↦ l + 1 on the 7
   labels: **exactly none** (`theory/fable_border9.py`: 2744 orbit representatives per side, 576 compatible pairs,
   all 13,034 orthogonal E-quadruples tried). Tensor bases H₄ ⊗ (7 block functions): 0 admissible Z-rows. General
-  single-character borders by CP-SAT (`theory/fable_border7.py`) and general borders (`theory/fable_border5.py`):
-  not decided (memory and restarts). **Not a zero.**
+  single-character borders by CP-SAT (`theory/fable_border7.py`, one worker, run alone): **UNKNOWN at the 7200 s
+  limit** (2026-11-12, 7.3 GB). General borders (`theory/fable_border5.py`): not run to a verdict (memory). **Not a zero.**
 - **If a border exists**, the slice is a staged slice of the repository's usual shape: G′ = ℤ₂⁴ with 6 orbits,
   staging prime 37 with classes of index 12. Its stage 2 was not costed; with 78 orbits per block (312 sign bits)
   against 36 class equations of the degree-6 fixed field it is in the "rich" regime of `report/open_screen_answer.md`

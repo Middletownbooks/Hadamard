@@ -210,3 +210,5 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
 - 2026-11-12 01:07 UTC: 361 seed 2 finished: top 2000 of 32,916 split values, 3.4e10 AB / 6.0e11 CD pairs, 0 SOL.
   Lists deleted by the loop (no hit). after361.sh stops the loop and starts the 599 border job alone.
 - 2026-11-11 22:40 UTC: t = 13 relation search finished: 64 chunks, 5,710,848 T-matrices, none with the relations.
+- 2026-11-12 03:07 UTC: 599 single-character border, CP-SAT alone with 1 worker: UNKNOWN at 7200 s (RSS 7.3 GB).
+  All queued jobs are now finished: 361 seed 2 (no solution), t = 13 (none), border (undecided).
