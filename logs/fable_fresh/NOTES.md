@@ -212,3 +212,6 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
 - 2026-11-11 22:40 UTC: t = 13 relation search finished: 64 chunks, 5,710,848 T-matrices, none with the relations.
 - 2026-11-12 03:07 UTC: 599 single-character border, CP-SAT alone with 1 worker: UNKNOWN at 7200 s (RSS 7.3 GB).
   All queued jobs are now finished: 361 seed 2 (no solution), t = 13 (none), border (undecided).
+- 2026-11-12 22:55 UTC: sigma-invariant general borders, case 0, 1 worker, 7200 s each: NFIX 1 UNKNOWN, 4 UNKNOWN,
+  7 INFEASIBLE (CP-SAT proof, 2803 s), 10 UNKNOWN. Single-character sigma-invariant borders impossible [P].
+  Nothing is running now.
