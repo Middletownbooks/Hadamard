@@ -207,3 +207,6 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
   therefore makes no progress. Stopped re-arming check-ins. To make progress the jobs need an active session (or a
   machine that persists): 361 block 3 needs ~25 min, then kt4 over 2000 split values ~1 h on 4 cores; the CP-SAT
   border job needs up to 2 h; t = 13 needs ~10 min for the last 6 chunks.
+- 2026-11-12 01:07 UTC: 361 seed 2 finished: top 2000 of 32,916 split values, 3.4e10 AB / 6.0e11 CD pairs, 0 SOL.
+  Lists deleted by the loop (no hit). after361.sh stops the loop and starts the 599 border job alone.
+- 2026-11-11 22:40 UTC: t = 13 relation search finished: 64 chunks, 5,710,848 T-matrices, none with the relations.

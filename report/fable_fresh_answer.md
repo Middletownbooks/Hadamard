@@ -54,7 +54,7 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    2688 exact Q-level solutions [M]. No border was found for them (a cyclic single-character ansatz is exactly
    empty [M]; general borders are undecided), and no core was sought.
 6. **The idle cores reran the one calibrated slice this repository had left unfinished** (skew 361, split torus
-   over ℤ₁₉²) with fresh lists. Status in §8.
+   over ℤ₁₉²) with fresh lists: top 2000 split values joined, no solution (§8).
 7. **Reading.** Among the classical structures, everything cheap enough for 4 cores is now either searched or
    closed by a theorem of the kind above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours
    (4792 = 8·599 by a Spence plug-in; skew 661, 883, 1483). The character sets of item 5 are the one place where
@@ -475,11 +475,13 @@ classes in the whole lists, depending on whether Kumar's measured Metropolis yie
 applies.
 
 <!-- RUN361 -->
-**Status (2026-11-11 18:40 UTC): no split value searched yet; no result.** The container was restarted after about
-an hour of activity five times and stayed down for two to seven hours each time; each restart costs the Metropolis
-block in progress (about 25 minutes on 4 threads). Blocks 0–2 of seed 2 are cached and block 3 was being generated.
-The loop (`scripts/fable_run361_loop.sh`: fresh lists, then the top 2000 ranked split values per seed) resumes from
-its cache; later progress is in `logs/fable_fresh/p361_loop.log`. No hit is claimed.
+**Result (2026-11-12 01:07 UTC): no solution.** Seed 2: fresh Metropolis lists of 4,194,304 (block A, complete);
+8,997,706, 10,196,987 and 9,818,064 (B, C, D after twin reduction); Gaussian estimate inside the lists 10^0.83 [E].
+32,916 split values seen on both sides; the top 2000 by Kumar's ranking were joined by `kt4` (3.4·10¹⁰ AB pairs,
+6.0·10¹¹ CD pairs, 2.6 h on 4 cores): **0 solutions**. With the previous run (seed 1, other lists, 10,000 of 33,600
+split values, no solution) this is the second miss on a slice whose expectation inside the lists is 0.5 to 7 twin
+classes. A miss excludes nothing [heuristic], but two independent list draws without a hit move this slice
+towards the expensive end; it is no longer the natural next run on 4 cores.
 <!-- /RUN361 -->
 
 ---
