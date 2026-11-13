@@ -642,7 +642,7 @@ x(a, g) = X⁰(g) for a = 0 and X¹(g) for a ≠ 0, with g in G₂ = ℤ₂² ×
 It is the Parseval identity for the compression to G/ℤ_ℓ, whose alphabet is {±ℓ, ±(ℓ − 2)}. Of the 81 slices the
 screen placed in tiers 0–3, **18 have a full unit group on a prime axis ℓ ≥ 5 and are dead by this gate without any
 enumeration**: 4 of the 10 in tier 0 (947, 1259, 1427, 1893, all four also decided by enumeration), 1 of 5 in tier 1
-and 13 of 53 in tier 2 [M: key scan of `logs/open_screen/table.jsonl`].
+and 13 of 53 in tier 2 [M: key scan of `logs/open_screen/table.jsonl`]. Over the whole screen, 214 of the 1283 slices that pass its gates A and B have such an axis (b0: 2 of 48; b1: 111 of 740; k4: 101 of 495) [M: key scan of `logs/open_screen/screens_s*.jsonl`].
 
 **Tier 1 and tier 2.** The 44 slices of tiers 1 and 2 that survive the gate are being rerun the same way
 (`scripts/fable_tier12_queue.sh`, 45 minutes and 7 GB each at most; `logs/fable_fresh/tier12_stage1.jsonl`). Several
