@@ -67,12 +67,13 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
      signed block permutations. Searching for borders invariant under Q₈, or under one of its cyclic subgroups of
      order 4, is an exact clique problem that takes seconds where a generic CP-SAT model took minutes or gave up.
      Verified instances: H(112), H(108), and H(116) from a five-character set that CP-SAT had left undecided [M].
-   - **The 2396 slice of item 5 has no border in any natural symmetric class** (§7.1, §7.2) [M, exhaustive]:
+   - **The 2396 slice of item 5 has no border in any of the symmetric classes tested** (§7.1, §7.2) [M, exhaustive]:
      <!-- BL8 -->none invariant under Q₈ or under any of its three cyclic subgroups of order 4; none invariant under the
      slice's own symmetry σ of order 3 (CP-SAT had been undecided); and none invariant under any other subgroup of
      order 3 of the problem's symmetry group (five classes in all). So a border, if there is one, has no symmetry
      of order 3. The Q-level solutions with a non-constant profile have no Q₈-invariant border either; their other
-     classes are running.<!-- /BL8 --> A border without symmetry is not excluded.
+     classes are running.<!-- /BL8 --> Not excluded: a border whose only symmetries are involutions that move the
+     quotient Q, or one with no symmetry at all.
    - **The tier-0 slices of the earlier screen** (§8a) [M, P]: I reran them before noticing that
      `report/h4892_answer.md` had already decided most; the reruns reproduce its counts, including the 1360 stage-1
      solutions of the 7572 slice and its emptiness. New here: the slice of 4156 = 4·1039 (undecided there) is empty
