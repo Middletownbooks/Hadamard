@@ -1,2 +1,6 @@
 2026-11-13 12:07:21 start ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]]
 {"key": ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 428692, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 98082, "right_pairs": 484776}], "secs": 17.3}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 428692, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 98082, "right_pairs": 484776}], "secs": 17.3}, "solutions": [], "planted": [{"T0": 2040, "R": 20, "B": true}], "phase": "final"}
+2026-11-13 12:08:02 end ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]] rc=0
+2026-11-13 12:08:02 start ["k4", 1487, [4], [7], 53, 4, [["neg", [0, 1]]]]
+{"key": ["k4", 1487, [4], [7], 53, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 1450382, "join": [{"rows": [6, 6, 10, 76], "left_pairs": 2232720, "right_pairs": 44226}], "secs": 673.7}, "solutions": [], "phase": "decision"}

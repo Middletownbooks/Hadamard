@@ -138,7 +138,43 @@ def main():
             print(f'  first row {cnt}/{len(firsts)}: complete Z so far {nz}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
         xv = FV[x1] if nfix > 0 else OV[0][x1]
         co, cfx = comp_from_E(xv)
-        for Zo, Zf in complete_sides(co, cfx, n3, nfix):
+        if nfix > 0:
+            # Z's fixed rows first; then the E-orbit candidates (orthogonal to x1, compatible with those fixed rows)
+            # are few, and a coupled search returns only the orbit parts of Z that leave room for n3 E-orbits.
+            zlist = []
+            eo_base = (OV[0] @ xv) == 0
+            ifx = np.nonzero(cfx)[0]
+            for fc in (fixed_cliques(ifx, nfix) if len(ifx) >= nfix else []):
+                eo = eo_base.copy()
+                for f in fc: eo &= comp_from_Z(FV[f])[0]
+                if int(eo.sum()) < n3: continue
+                zo = co.copy()
+                for f in fc: zo &= ((OV[0] @ FV[f]) == 0)
+                if int(zo.sum()) < n3: continue
+                iz = np.nonzero(zo)[0]; ie = np.nonzero(eo)[0]
+                AZ = np.ones((len(iz), len(iz)), dtype=bool); AE = np.ones((len(ie), len(ie)), dtype=bool)
+                CM = np.ones((len(iz), len(ie)), dtype=bool); XM = OV[0][ie] @ MT
+                for j in range(3):
+                    AZ &= ((OV[0][iz] @ OV[j][iz].T) == 0); AE &= ((OV[0][ie] @ OV[j][ie].T) == 0)
+                    CM &= (np.abs(OV[j][iz] @ XM.T) == fk)
+                np.fill_diagonal(AZ, False); np.fill_diagonal(AE, False)
+                az = np.ones(len(iz), dtype=bool); ae = np.ones(len(ie), dtype=bool)
+                while True:
+                    az2 = az & ((AZ & az[None, :]).sum(axis=1) >= n3 - 1) & ((CM & ae[None, :]).sum(axis=1) >= n3)
+                    ae2 = ae & ((AE & ae[None, :]).sum(axis=1) >= n3 - 1) & ((CM & az2[:, None]).sum(axis=0) >= n3)
+                    if az2.sum() == az.sum() and ae2.sum() == ae.sum(): break
+                    az, ae = az2, ae2
+                    if az.sum() < n3 or ae.sum() < n3: break
+                if az.sum() < n3 or ae.sum() < n3: continue
+                got, _, nn, tr, zc = FC.coupled(AZ, CM, AE, n3, n3, candz=np.nonzero(az)[0].tolist(), cande=np.nonzero(ae)[0].tolist(),
+                                                maxnodes=max(1, nodecap - nodes[0]), collect=100000)
+                nodes[0] += nn
+                if tr: trunc[0] = True
+                zlist += [([int(iz[c]) for c in cl], fc) for cl in got]
+                if trunc[0] or nodes[0] > nodecap: break
+        else:
+            zlist = complete_sides(co, cfx, n3, nfix)
+        for Zo, Zf in zlist:
             nz += 1
             eo = np.ones(NO, dtype=bool); ef = np.ones(NF, dtype=bool)
             for o in Zo:

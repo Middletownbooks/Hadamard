@@ -33,7 +33,7 @@ static void rec(int depth, uint64_t *P){
 /* ---- coupled search: a need_z-clique Z in graph adjZ such that the set E(Z) = AND of cm[z] over z in Z (a bitset
    over ne vertices) contains a need_e-clique of graph adjE.  Stops at the first solution.  ---- */
 static int Wz, We, needz, neede, solz[128], sole[128], foundb; static uint64_t *adjZ, *adjE, *cmz; static long long nodesb, maxnodesb, zcl; static int truncb;
-static int cure[128];
+static int cure[128]; static int collect, maxcol, ncol; static int *outall;
 static int rec_e(int depth, uint64_t *P){
   nodesb++;
   if (depth == neede){ memcpy(sole, cure, neede*sizeof(int)); return 1; }
@@ -59,7 +59,11 @@ static int rec_e(int depth, uint64_t *P){
 static uint64_t *ework;
 static int rec_z(int depth, uint64_t *P, uint64_t *E){
   nodesb++;
-  if (depth == needz){ zcl++; if (neede == 0) return 1; return rec_e(0, E); }
+  if (depth == needz){ zcl++; int ok = (neede == 0) ? 1 : rec_e(0, E);
+    if (!ok) return 0;
+    if (!collect) return 1;
+    if (ncol < maxcol){ memcpy(outall + (long)ncol*needz, solz, needz*sizeof(int)); ncol++; } else truncb = 1;
+    return 0; }
   int cnt = 0; for (int w = 0; w < Wz; w++) cnt += __builtin_popcountll(P[w]);
   if (cnt < needz - depth) return 0;
   if (nodesb > maxnodesb){ truncb = 1; return 0; }
@@ -83,13 +87,15 @@ static int rec_z(int depth, uint64_t *P, uint64_t *E){
 }
 long long coupled(int nz, int ne, int needz_, int neede_, uint64_t *adjZ_, uint64_t *cm_, uint64_t *adjE_,
                   uint64_t *startz, uint64_t *starte, uint64_t *workz, uint64_t *worke, long long maxnodes_,
-                  int *outz, int *oute, int *found, int *trunc, long long *zcliques){
+                  int *outz, int *oute, int *found, int *trunc, long long *zcliques,
+                  int collect_, int *outall_, int maxcol_, int *ncol_){
+  collect = collect_; outall = outall_; maxcol = maxcol_; ncol = 0;
   Wz = (nz + 63)/64; We = (ne + 63)/64; if (We == 0) We = 1; needz = needz_; neede = neede_; adjZ = adjZ_; adjE = adjE_; cmz = cm_;
   nodesb = 0; maxnodesb = maxnodes_; truncb = 0; zcl = 0;
   memcpy(workz, startz, Wz*sizeof(uint64_t)); memcpy(worke, starte, We*sizeof(uint64_t));
   int f = rec_z(0, workz, worke);
   if (f){ memcpy(outz, solz, needz*sizeof(int)); memcpy(oute, sole, neede*sizeof(int)); }
-  *found = f; *trunc = truncb; *zcliques = zcl; return nodesb;
+  *found = f; *trunc = truncb; *zcliques = zcl; *ncol_ = ncol; return nodesb;
 }
 long long kcliques(int n, int need_, uint64_t *adj_, uint64_t *start, uint64_t *work, int *out_, int maxout_,
                    long long maxnodes_, int *nout_, int *trunc){
@@ -141,7 +147,7 @@ def _bits(A, ncols):
     Ab = np.zeros((n, W * 64), dtype=np.uint8); Ab[:, :ncols] = A
     return np.packbits(Ab.reshape(n, W, 64), axis=2, bitorder='little').view(np.uint64).reshape(n, W).copy(), W
 
-def coupled(AZ, CM, AE, needz, neede, candz=None, cande=None, maxnodes=10**11):
+def coupled(AZ, CM, AE, needz, neede, candz=None, cande=None, maxnodes=10**11, collect=0):
     """A needz-clique Z of graph AZ (nz x nz bool) such that the common neighbours of Z in the bipartite matrix CM
     (nz x ne bool; inside cande) contain a neede-clique of graph AE (ne x ne bool).  First solution only.
     Returns (zlist or None, elist, nodes, truncated, number of complete Z examined)."""
@@ -153,12 +159,16 @@ def coupled(AZ, CM, AE, needz, neede, candz=None, cande=None, maxnodes=10**11):
     sz, _ = _bits(mz, nz); se, _ = _bits(me[:, :max(ne, 1)], max(ne, 1))
     workz = np.zeros((needz + 2) * Wz, dtype=np.uint64); worke = np.zeros((needz + neede + 4) * We, dtype=np.uint64)
     outz = np.zeros(max(needz, 1), dtype=np.int32); oute = np.zeros(max(neede, 1), dtype=np.int32)
-    f = ctypes.c_int(0); tr = ctypes.c_int(0); zc = ctypes.c_longlong(0)
+    f = ctypes.c_int(0); tr = ctypes.c_int(0); zc = ctypes.c_longlong(0); ncol = ctypes.c_int(0)
+    outall = np.zeros(max(1, collect) * max(needz, 1), dtype=np.int32)
     P = ctypes.POINTER; u64 = lambda a: a.ctypes.data_as(P(ctypes.c_uint64)); i32 = lambda a: a.ctypes.data_as(P(ctypes.c_int))
     lib.coupled.restype = ctypes.c_longlong
     nodes = lib.coupled(ctypes.c_int(nz), ctypes.c_int(ne), ctypes.c_int(needz), ctypes.c_int(neede), u64(adjZ), u64(cm), u64(adjE),
                         u64(sz), u64(se), u64(workz), u64(worke), ctypes.c_longlong(maxnodes), i32(outz), i32(oute),
-                        ctypes.byref(f), ctypes.byref(tr), ctypes.byref(zc))
+                        ctypes.byref(f), ctypes.byref(tr), ctypes.byref(zc),
+                        ctypes.c_int(1 if collect else 0), i32(outall), ctypes.c_int(collect), ctypes.byref(ncol))
+    if collect:      # every Z-clique whose common neighbourhood contains an E-clique (up to `collect` of them)
+        return outall[:ncol.value * needz].reshape(ncol.value, needz).tolist(), None, int(nodes), bool(tr.value), int(zc.value)
     if f.value: return outz[:needz].tolist(), oute[:neede].tolist(), int(nodes), bool(tr.value), int(zc.value)
     return None, None, int(nodes), bool(tr.value), int(zc.value)
 
@@ -188,3 +198,16 @@ if __name__ == '__main__':     # self-test against a plain Python enumeration
         if zs is not None:
             assert all(AZ[i, j] for i, j in itertools.combinations(zs, 2)) and all(AE[i, j] for i, j in itertools.combinations(es, 2)) and all(CM[i, e] for i in zs for e in es)
     print('coupled routine agrees with brute force on 30 random instances', flush=True)
+    for trial in range(10):
+        nz, ne, kz, ke = 24, 20, 3, 2
+        AZ = rng.random((nz, nz)) < 0.4; AZ = np.triu(AZ, 1); AZ = AZ | AZ.T
+        AE = rng.random((ne, ne)) < 0.4; AE = np.triu(AE, 1); AE = AE | AE.T
+        CM = rng.random((nz, ne)) < 0.5
+        ref = []
+        for z in itertools.combinations(range(nz), kz):
+            if not all(AZ[i, j] for i, j in itertools.combinations(z, 2)): continue
+            com = [e for e in range(ne) if all(CM[i, e] for i in z)]
+            if any(all(AE[i, j] for i, j in itertools.combinations(c, 2)) for c in itertools.combinations(com, ke)): ref.append(list(z))
+        got, _, nodes, tr, zc = coupled(AZ, CM, AE, kz, ke, collect=100000)
+        assert sorted(got) == sorted(ref) and not tr
+    print('collect mode agrees with brute force on 10 random instances', flush=True)
