@@ -648,9 +648,19 @@ and 13 of 53 in tier 2 [M: key scan of `logs/open_screen/table.jsonl`]. Over the
 (`scripts/fable_tier12_queue.sh`, 45 minutes and 7 GB each at most; `logs/fable_fresh/tier12_stage1.jsonl`). Several
 of them are in `h4892_answer.md` already (4892 with its 384 classes and no core, 3004, 5892, 7180, …).
 <!-- TIER12 -->
-So far: 599 (b1, ℤ₁₃ × ℤ₂, q = 23, s = 2) empty; 1487 (k4, ℤ₄ × ℤ₇ × ℤ₅₃, s = 4) empty (1,450,382 blocks; planted
-control undecided); 1103 (b1, ℤ₁₉ × ℤ₂, q = 29, s = 4) empty; 751 (k4) empty and 1223 with 384 solutions, both as in
-the earlier report; 1987 (k4), 1831 and 1473 capped (undecided).
+- **7148 = 4·1787** (b1, ℤ₄₇ × ℤ₂ × ℤ₁₉, s = 6, U of order 23; not in the earlier reports): stage 1 is **not
+  empty**, 3072 solutions, found by method B and again by the independent enumerator `theory/h4892_stage1_any.py`
+  (both planted controls recovered). **No core [M]:** the closed-form energy bound at the ℤ₁₉ compression
+  (`theory/h4892_energybound.py`) kills none of them, but the exact ℤ₁₉-compression check (`theory/h4892_zqnp.py`)
+  kills all 3072 at its window filter (a range condition on the six PAF classes of ℤ₁₉, iterated to a fixed point),
+  while its three planted controls pass that filter. Logs `logs/fable_fresh/s7148/`. So this is the fourth slice in
+  the repository with a non-empty stage 1, and like the other three it dies at the ℤ_q compression.
+- Empty at stage 1: 599 (b1, ℤ₁₃ × ℤ₂, q = 23, s = 2); 1487 (k4, ℤ₄ × ℤ₇ × ℤ₅₃, s = 4; 1,450,382 blocks; planted
+  control undecided); 1103 (b1, ℤ₁₉ × ℤ₂, q = 29, s = 4); 1979 (b1, ℤ₂₃ × ℤ₂, q = 43, s = 6); 751 (k4) and 1223
+  (384 solutions, no core) as in the earlier report; 1571 (b1, ℤ₁₅₇ × ℤ₂, q = 5; decision only).
+- Undecided at the 45-minute or 7 GB cap (a cap is not a zero): 1987 (k4), 1831, 1473, 1559, 1103 (k4), 2207 (k4),
+  1981 (b0).
+- The rest of the 44: running.
 <!-- /TIER12 -->
 
 ---
