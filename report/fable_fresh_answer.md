@@ -524,6 +524,7 @@ is assembled and H Hᵀ = nI checked.
 | ℤ₂³ × ℤ₃, annealed core | {χ₁, χ₂, χ₄} | 108 | found | Q₈: **none (exhaustive)**; ⟨i⟩, ⟨j⟩, ⟨k⟩: found, 0 s each; H(108) verified |
 | ℤ₂³ × ℤ₃, annealed core | {1, χ₁, χ₂, χ₃, χ₄} | 116 | UNKNOWN at 600 s | Q₈: found, 0 s; H(116) assembled and verified |
 <!-- QB -->
+| ℤ₂⁴, the 2396 slice of §7.1, case 0 (stands for the 32 constant Walsh profiles) | two 2-flats, 7 characters | 2396 | UNKNOWN at 7200 s | Q₈: **none, exhaustive** (101,250 orbits; two runs, without and with the symmetry reduction to 1097 first rows); ⟨i⟩, ⟨j⟩, ⟨k⟩: running |
 <!-- /QB -->
 
 So the symmetric search finds in under a second the borders that the generic model needed minutes for or did not
@@ -549,6 +550,28 @@ split values, no solution) this is the second miss on a slice whose expectation 
 classes. A miss excludes nothing [heuristic], but two independent list draws without a hit move this slice
 towards the expensive end; it is no longer the natural next run on 4 cores.
 <!-- /RUN361 -->
+
+---
+
+## 8a. Exact stage 1 of the tier-0 slices that `report/open_screen_answer.md` left "not run" [M; added 2026-11-13]
+
+The earlier screen of all 85 open orders ended with eight slices in its cheapest tier whose exact stage-1 decision
+had not been run. They were run now with its own tool (`theory/open_screen_stage1_exact.py`, method B, `--strong`,
+with a planted control; queue `scripts/fable_tier0_queue.sh`, results `logs/fable_fresh/tier0_stage1.jsonl`).
+
+<!-- TIER0 -->
+| 4v (v) | slice | estimated cost (log₂) | method B | planted control | verdict |
+|---|---|---|---|---|---|
+| 4156 (1039) | k4, ℤ₄ × ℤ₇ × ℤ₃₇, s = 4, U = −1 | 32.2 | 0 solutions, 11,527,476 blocks, 11 row patterns, 5110 s | not finished (container restart) | **empty** (one method) |
+| 3788 (947) | b1, ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 14, U of order 10 | 41.1 | 0 solutions, 354 blocks | recovered | **empty** |
+| 9260 (2315) | b1, ℤ₁₃ × ℤ₂ × ℤ₈₉, s = 8, U of order 6 | 40.2 | 0 solutions, 520 blocks | recovered | **empty** |
+| 5692 (1423) | b1, ℤ₃² × ℤ₂ × ℤ₇₉, s = 6, U = −1 | 39.4 | 0 solutions, 109,832 blocks | recovered | **empty** |
+| 4748 (1187) | k4, ℤ₄ × ℤ₈ × ℤ₃₇, s = 4, U = −1 | 41.4 | out of memory at a 7 GB cap | – | undecided; rerun queued |
+| 5708 (1427), 5036 (1259, s = 12), 7572 (1893) | b1 | 32.9, 38.1, 39.1 | running | | |
+<!-- /TIER0 -->
+
+So far every one decided is empty at stage 1, as were the five decided before. Three of them have only a few hundred
+blocks within the energy bound, which the estimate (an energy-only count) had not seen.
 
 ---
 

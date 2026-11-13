@@ -17,7 +17,7 @@ Usage: fable_border15.py q599 IDX NFIX [nodecap] | singer NFIX
 import sys, json, time, itertools
 import numpy as np
 sys.path.insert(0, 'theory')
-import fable_border as FB, fable_border2 as B2, fable_border6 as B6, fable_tcensus2 as C2
+import fable_border as FB, fable_border2 as B2, fable_border6 as B6, fable_tcensus2 as C2, fable_clique as FC
 
 def main():
     if sys.argv[1] == 'q599':
@@ -76,7 +76,7 @@ def main():
         for j in range(3): co &= (np.abs(OV[j] @ w) == fk)
         cfx = np.abs(FV @ w) == fk
         return co, cfx
-    nodes = [0]; t0 = time.time(); found = []; exhausted = True; nz = 0
+    nodes = [0]; t0 = time.time(); found = []; exhausted = True; nz = 0; trunc = [False]
     def orbit_cliques(idx, need):
         if need == 0: return [[]]
         V = [OV[j][idx] for j in range(3)]
@@ -88,28 +88,24 @@ def main():
             bad = alive & ((A & alive[None, :]).sum(axis=1) < need - 1)
             if not bad.any(): break
             alive &= ~bad
-        out = []
-        def go(ch, pool):
-            nodes[0] += 1
-            if len(ch) == need: out.append(list(ch)); return
-            if len(ch) + len(pool) < need or nodes[0] > nodecap: return
-            for ii, c in enumerate(pool):
-                go(ch + [c], [d_ for d_ in pool[ii + 1:] if A[c, d_]])
-        go([], [c for c in range(len(idx)) if alive[c]])
+        cand = [c for c in range(len(idx)) if alive[c]]
+        if len(cand) < need: return []
+        out, nn, tr = FC.kcliques(A, need, cand=cand, maxout=200000, maxnodes=max(1, nodecap - nodes[0]))
+        nodes[0] += nn
+        if tr: trunc[0] = True
         return [[int(idx[c]) for c in cl] for cl in out]
     def fixed_cliques(idx, need, must=None):
-        V = FV[idx]; A = (V @ V.T) == 0
-        out = []
-        def go(ch, pool):
-            nodes[0] += 1
-            if len(ch) == need: out.append(list(ch)); return
-            if len(ch) + len(pool) < need or nodes[0] > nodecap: return
-            for ii, c in enumerate(pool):
-                go(ch + [c], [d_ for d_ in pool[ii + 1:] if A[c, d_]])
-        if must is None: go([], list(range(len(idx))))
+        if need == 0: return [[]]
+        V = FV[idx]; A = (V @ V.T) == 0; np.fill_diagonal(A, False)
+        if must is None:
+            out, nn, tr = FC.kcliques(A, need, maxout=200000, maxnodes=max(1, nodecap - nodes[0]))
         else:
             m = int(np.nonzero(idx == must)[0][0])
-            go([m], [c for c in range(len(idx)) if c != m and A[m, c]])
+            cand = [c for c in range(len(idx)) if A[m, c]]
+            out, nn, tr = FC.kcliques(A, need - 1, cand=cand, maxout=200000, maxnodes=max(1, nodecap - nodes[0]))
+            out = [[m] + cl for cl in out]
+        nodes[0] += nn
+        if tr: trunc[0] = True
         return [[int(idx[c]) for c in cl] for cl in out]
     def complete_sides(co, cfx, need3, needf, must_fixed=None):
         """all (orbit list, fixed list) with pairwise orthogonality inside the candidate sets"""
@@ -134,7 +130,7 @@ def main():
     except Exception: pass
     for cnt, x1 in enumerate(firsts):
         if cnt < start: continue
-        if nodes[0] > nodecap: exhausted = False; break
+        if nodes[0] > nodecap or trunc[0]: exhausted = False; break
         if cnt > start and (time.time() - lastp > 120 or cnt % 20 == 0):
             json.dump(dict(done=cnt, nz=nz, nodes=nodes[0]), open(ck, 'w')); lastp = time.time()
             print(f'  first row {cnt}/{len(firsts)}: complete Z so far {nz}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
@@ -158,6 +154,7 @@ def main():
                 found.append((cand[0], (Zo, Zf))); break
         if found: break
     tag = f'sigma-invariant border ({name}, NFIX {nfix})'
+    if trunc[0]: exhausted = False
     if not found:
         print(f'{tag}: ' + ('NONE (search exhaustive)' if exhausted and nodes[0] <= nodecap else f'UNDECIDED (node cap {nodecap})')
               + f'; complete Z found {nz}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)

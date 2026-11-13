@@ -26,7 +26,7 @@ Usage: fable_border14.py [sub=..] q599 IDX [nodecap] | singer | core A S T(comma
 import sys, json, time, itertools
 import numpy as np
 sys.path.insert(0, 'theory')
-import fable_border as FB, fable_border2 as B2, fable_border6 as B6
+import fable_border as FB, fable_border2 as B2, fable_border6 as B6, fable_clique as FC
 
 def admissible(G, T):
     k = G.k; ch = G.chars(); out = []
@@ -141,16 +141,13 @@ def main():
     # among the x compatible with all of Z.  Exhaustive over x1 (x1 = the E-orbit of lowest index is not imposed,
     # so every border is seen from each of its E-orbits).
     nodes = [0]; t0 = time.time(); found = []; exhausted = True; ncl = 0; hist = {}
+    trunc = [False]
     def cliques(cand, adj, need):
-        # all need-subsets of cand (indices into adj) that are pairwise adjacent
-        out = []
-        def go(chosen, pool):
-            nodes[0] += 1
-            if len(chosen) == need: out.append(list(chosen)); return
-            if len(chosen) + len(pool) < need: return
-            for ii, c in enumerate(pool):
-                go(chosen + [c], [d for d in pool[ii + 1:] if adj[c, d]])
-        go([], list(cand)); return out
+        # all need-subsets of cand that are pairwise adjacent (compiled routine, theory/fable_clique.py)
+        res, nn, tr = FC.kcliques(adj, need, cand=list(cand), maxout=200000, maxnodes=max(1, nodecap - nodes[0]))
+        nodes[0] += nn
+        if tr: trunc[0] = True
+        return res
     def orth_small(idx):
         V = RV[0][idx]; A = np.ones((len(idx), len(idx)), dtype=bool)
         for j in range(nim): A &= ((V @ RV[j][idx].T) == 0)
@@ -213,7 +210,7 @@ def main():
     except Exception: pass
     for pos, x1 in enumerate(first):
         if pos < start: continue
-        if nodes[0] > nodecap: exhausted = False; break
+        if nodes[0] > nodecap or trunc[0]: exhausted = False; break
         if pos > start and (time.time() - lastp > 120 or pos % 20 == 0):
             json.dump(dict(done=pos, ncl=ncl, nodes=nodes[0], qual=hist.get(True, 0)), open(ck, 'w')); lastp = time.time()
             print(f'  first row {pos}/{len(first)}: complete Z so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
@@ -237,6 +234,7 @@ def main():
             if found: break
         if found: break
     print(f'first rows (up to symmetry) with at least {t} compatible orbits: {hist.get(True, 0)} of {len(first)}; complete Z found: {ncl}', flush=True)
+    if trunc[0]: exhausted = False
     if not found:
         print(f'{SUB}-invariant border for {S["name"]}: ' + ('NONE (search exhaustive)' if exhausted else f'UNDECIDED (node cap {nodecap})')
               + f'; nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
