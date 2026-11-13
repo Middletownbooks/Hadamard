@@ -657,8 +657,14 @@ the earlier report; 1987 (k4), 1831 and 1473 capped (undecided).
 1. **With about 10³ core-hours:** Kumar's Spence plug-in for 4792 = 8·599 over ℤ₇ × ℤ₁₉ × F₉ (his `search/eightp/gs`,
    calibrated on 5912 within a factor of two), then the skew slices he ranks at 10³ (661, 883, 1483). These are the
    only live targets with a measured rate.
-2. **The 2396 slice of §7.1**: decide the border (a general CP-SAT run with more memory, or σ-invariant borders,
-   the analogue of Kumar's Singer search); if one exists, cost stage 2 with `theory/open_screen_deficit.py`.
+2. **The 2396 slice of §7.1.** Its border question is now narrow: no border exists with Q₈, with a cyclic subgroup
+   of order 4 of Q₈, or with a symmetry of order 3 in four of the five classes (§7.2). What remains is the fifth
+   class of order 3, the involutions with a nontrivial Q-part (a finite list of classes; the engine of
+   `theory/fable_border15.py` / `fable_border16.py` handles each in minutes to hours), and borders with no symmetry
+   at all, for which I see no exact method within reach (a rough count of the same search tree without symmetry
+   gives about 10² core-days [E]). I would not spend more on it: even with a border the slice has 78 orbits per
+   block, and a rough application of Kumar's cost formula (work ≈ N³/(E·L), his `METHOD.md`) gives 10²² list
+   operations or more, against the 10¹³ he calls reachable [E, rough; his triage code was not run on it].
 3. **A census of character borders with general T over ℤ₂^a** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
    ℤ₂^a × S (and the non-split 2-parts) of order p − |T|, every multiplier group, the exact Q-level gate, and a
    border library per Walsh-quadruple type. This is the one set of structures found here that is both unscreened
@@ -668,7 +674,14 @@ the earlier report; 1987 (k4), 1831 and 1473 capped (undecided).
    (k = 10–60 with |S| = 11–59 at 599 and 719), which no census has touched because no border is known there.
 5. **Formal multiplications at t ≥ 7** for the dimension-5 types outside the Williamson pattern. The count does not
    exclude a sporadic identity; t = 7 needs a three-level join (7·10⁵ block classes).
-6. **Not worth repeating:** product theorems of the two kinds closed in §3 and §4; Theorem 7 with |S| ≤ 7.
+6. **Borders as a tool.** The Q₈ search of §7.2 is a border finder for any character set over ℤ₂^a. Kumar's notes
+   list borders for spike compressions at index k ≥ 10 as not found (and single characters as impossible for
+   k ≥ 12); a Singer cycle times Q₈ reduces that case to one quaternion-valued sequence of length k − 1 on each
+   side, which is a small search I did not run.
+7. **A gate to add to the screen.** Before costing a slice, test every prime axis for a full unit group (§8a), and
+   more generally the Parseval value of every compression against its alphabet, not only the one along ℤ_q.
+8. **Not worth repeating:** product theorems of the two kinds closed in §3 and §4; Theorem 7 with |S| ≤ 7; the
+   tier-0 list of the screen (all decided empty except 4748).
 
 ## 10. Reproduce
 
@@ -682,4 +695,11 @@ python3 theory/fable_tamic.py 3 5 7 9 11
 python3 theory/fable_border4.py 3 3 0,1,2,4 1 380 1   # a non-classical character set, H(112)
 python3 theory/fable_border2.py 3 3 1,2,4 2 300 1       # twisted k4 with even |K|, H(108)
 scripts/fable_run361.sh 4                        # needs /home/user/skew_work/bin (see logs/fable_fresh/NOTES.md)
+python3 theory/fable_clique.py                   # self-test of the compiled clique routines
+python3 theory/fable_border14.py sub=q8 core 3 3 0,1,2,3,4 1   # five characters: border in under a second, H(116) assembled
+python3 theory/fable_border14.py sub=z2 core 3 3 1,2,4 2       # H(108): no Q8 border, a cyclic one exists
+python3 theory/fable_border14.py sub=q8 q599 0                 # 2396 slice: no Q8-invariant border (about 6 minutes)
+python3 theory/fable_border15.py q599 0 4                      # no sigma-invariant border (4 fixed rows; 1 minute)
+python3 theory/fable_border16.py rd                            # order-3 classes in normal form: d, r, ra, rd, a
+scripts/fable_tier0_queue.sh                                   # the tier-0 reruns of section 8a
 ```

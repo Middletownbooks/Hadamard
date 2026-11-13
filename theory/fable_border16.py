@@ -202,6 +202,9 @@ def main():
                     az, ae = az2, ae2
                     if az.sum() < nfix or ae.sum() < nfix - 1: break
                 if az.sum() < nfix or ae.sum() < nfix - 1: continue
+                if 'DEBUG' in sys.argv:
+                    print(f'    first row {pos}: Z-fixed candidates {len(ifx)} -> {int(az.sum())}, E-fixed {len(ie_f)} -> {int(ae.sum())}; '
+                          f'densities orthZ {AZf[np.ix_(az, az)].mean():.3f}, orthE {AEf[np.ix_(ae, ae)].mean():.3f}, compat {CMf[np.ix_(az, ae)].mean():.3f}', flush=True)
                 got, _, nn, tr, zc = FC.coupled(AZf, CMf, AEf, nfix, nfix - 1, candz=np.nonzero(az)[0].tolist(), cande=np.nonzero(ae)[0].tolist(),
                                                 maxnodes=max(1, nodecap - nodes[0]), collect=100000)
                 nodes[0] += nn
