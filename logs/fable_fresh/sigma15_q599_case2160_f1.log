@@ -1,2 +1,35 @@
 q599_case2160: b = 28, NFIX = 1, orbits of size 3: 9; 30 block functions, 6 sigma-fixed
 orbit representatives 55296, fixed rows (mod sign) 648
+  first row 20/648: complete Z so far 0, nodes 67559, 35s
+  first row 40/648: complete Z so far 0, nodes 109099, 67s
+  first row 60/648: complete Z so far 0, nodes 127602, 86s
+  first row 80/648: complete Z so far 0, nodes 148580, 109s
+  first row 100/648: complete Z so far 0, nodes 168415, 131s
+  first row 120/648: complete Z so far 0, nodes 208190, 155s
+  first row 140/648: complete Z so far 0, nodes 242140, 180s
+  first row 160/648: complete Z so far 0, nodes 282612, 205s
+  first row 180/648: complete Z so far 0, nodes 310701, 228s
+  first row 200/648: complete Z so far 0, nodes 361605, 262s
+  first row 220/648: complete Z so far 0, nodes 419042, 297s
+  first row 240/648: complete Z so far 0, nodes 444052, 318s
+  first row 260/648: complete Z so far 0, nodes 486842, 344s
+  first row 280/648: complete Z so far 0, nodes 534290, 364s
+  first row 300/648: complete Z so far 0, nodes 570882, 383s
+  first row 320/648: complete Z so far 0, nodes 601635, 399s
+  first row 340/648: complete Z so far 0, nodes 641701, 417s
+  first row 360/648: complete Z so far 0, nodes 659702, 432s
+  first row 380/648: complete Z so far 0, nodes 697636, 453s
+  first row 400/648: complete Z so far 0, nodes 742332, 475s
+  first row 420/648: complete Z so far 0, nodes 754581, 494s
+  first row 440/648: complete Z so far 0, nodes 792868, 520s
+  first row 460/648: complete Z so far 0, nodes 820438, 541s
+  first row 480/648: complete Z so far 0, nodes 855520, 560s
+  first row 500/648: complete Z so far 0, nodes 896827, 579s
+  first row 520/648: complete Z so far 0, nodes 935315, 599s
+  first row 540/648: complete Z so far 0, nodes 987111, 622s
+  first row 560/648: complete Z so far 0, nodes 1033680, 644s
+  first row 580/648: complete Z so far 0, nodes 1068171, 664s
+  first row 600/648: complete Z so far 0, nodes 1109846, 681s
+  first row 620/648: complete Z so far 0, nodes 1127433, 697s
+  first row 640/648: complete Z so far 0, nodes 1148885, 717s
+sigma-invariant border (q599_case2160, NFIX 1): NONE (search exhaustive); complete Z found 0, nodes 1160260, 726s
