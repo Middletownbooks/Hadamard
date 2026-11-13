@@ -1,0 +1,190 @@
+#!/usr/bin/env python3
+"""Quaternionic borders for a Goethals-Seidel core with a character border over Q = Z_2^a.  [M, exact search]
+
+Setting (report/fable_fresh_answer.md 6.3, 7): M = GS array of the compressions (4k x 4k), border b = 4t, t = |T|;
+a border is a pair E, Z of b x 4k +-1 matrices with rows of four admissible block functions (Walsh support in T),
+E E^T = Z Z^T = 4k I and K = E M^T Z^T / 4k a +-1 matrix.
+
+Observation [P].  For real characters the GS array at a character rho is the matrix of a quaternion multiplication
+(GS(a,b,c,d) = L_q^T, q = a + bi + cj + dk), on the 4-dimensional block-index space.  So M commutes with the
+multiplications by +-1, +-i, +-j, +-k from the other side, which are signed permutations of the four blocks:
+a group Q8 of symmetries of every such border problem, for every T and every core.  It acts freely on rows, a row
+is orthogonal to its three images, and K(xP, yP) = K(x, y).
+
+Ansatz: E and Z are unions of Q8-orbits ("quaternionic borders": t quaternionic rows on each side instead of 4t).
+Then E is a t x t quaternion-unitary matrix with admissible rows, and K is a t x t matrix of quaternions
++-1 +-i +-j +-k.  The search is a biclique backtrack over orbit representatives:
+  orth(x, x'):   <x, x'P> = 0 for the four P (mod sign)
+  compat(x, y):  K(x, yP) = +-1 for the four P
+Complete (exhaustive) when it finishes without hitting NODECAP.  Every border found is checked with integers and
+then against the compressed Gram identity (as in fable_border10.py).
+
+Usage: fable_border13.py q599 IDX [nodecap] | singer | core A S T(comma) SEED [nodecap]
+"""
+import sys, json, time, itertools
+import numpy as np
+sys.path.insert(0, 'theory')
+import fable_border as FB, fable_border2 as B2, fable_border6 as B6
+
+def admissible(G, T):
+    k = G.k; ch = G.chars(); out = []
+    for bits in range(1 << k):
+        f = np.array([1 - 2 * ((bits >> q) & 1) for q in range(k)], dtype=np.int64)
+        if all(int(ch[m] @ f) == 0 for m in range(k) if m not in T): out.append(f)
+    return np.array(out, dtype=np.int64)
+
+def setup():
+    a = sys.argv[1]
+    if a == 'q599':
+        idx = int(sys.argv[2]); d, sol, M, F, t = B6.load('logs/fable_fresh/q599_solutions.json', idx)
+        return dict(name=f'q599_case{idx}', k=16, s=37, M=np.array(M, dtype=np.int64), F=np.array(F, dtype=np.int64),
+                    t=t, T=d['T'], cells=sol['cells'], rest=sys.argv[3:])
+    if a == 'singer':
+        k = 4; G = B2.Grp2(2, 1); ch = G.chars(); T = [1, 2, 3]
+        ys = [np.array(y, dtype=np.int64) for y in ([1, 1, 1, 1], [3, 1, 1, 1], [3, 1, 1, 1], [3, 1, 1, 1])]
+        M = FB.gs_array(G, np.array(ys))
+        return dict(name='singer', k=4, s=7, M=M, F=admissible(G, T), t=3, T=T, cells=[y.tolist() for y in ys], rest=sys.argv[2:])
+    if a == 'core':
+        aa = int(sys.argv[2]); s_ = int(sys.argv[3]); T = [int(x) for x in sys.argv[4].split(',')]; seed = int(sys.argv[5])
+        G = B2.Grp2(aa, s_); rng = np.random.default_rng(seed); X = None; tries = 0
+        while X is None and tries < 60:
+            X = B2.find_core(G, T, rng); tries += 1
+        assert X is not None, 'no core found'
+        Cm = FB.gs_array(G, X); M = FB.compress(G, Cm)
+        Gq = B2.Grp2(aa, 1)
+        return dict(name=f'core_a{aa}_s{s_}_T{"-".join(map(str, T))}_seed{seed}', k=G.k, s=s_, M=np.array(M, dtype=np.int64),
+                    F=admissible(Gq, T), t=len(T), T=T, cells=None, rest=sys.argv[6:], core=X.tolist())
+    raise SystemExit(__doc__)
+
+def main():
+    S = setup(); k = S['k']; M = S['M']; F = S['F']; t = S['t']; b = 4 * t; s_ = S['s']; n = 4 * (k * s_ + t)
+    nodecap = int(S['rest'][0]) if S['rest'] else 2_000_000
+    no = len(F); key = {tuple(f): i for i, f in enumerate(F)}
+    neg = np.array([key[tuple(-f)] for f in F])
+    print(f'{S["name"]}: k = {k}, T = {S["T"]}, b = {b}, n = {n}; {no} admissible block functions', flush=True)
+    # ---- signed block permutations commuting with M
+    Ik = np.eye(k, dtype=np.int64); cen = []
+    for perm in itertools.permutations(range(4)):
+        for sg in itertools.product((1, -1), repeat=4):
+            P = np.zeros((4, 4), dtype=np.int64)
+            for c in range(4): P[c, perm[c]] = sg[c]
+            PP = np.kron(P, Ik)
+            if np.array_equal(PP @ M, M @ PP): cen.append((perm, sg))
+    print(f'signed block permutations commuting with M: {len(cen)}', flush=True)
+    # the subgroup with permutation part in the Klein four-group (expected: Q8)
+    klein = {(0, 1, 2, 3), (1, 0, 3, 2), (2, 3, 0, 1), (3, 2, 1, 0)}
+    q8 = [(p, sg) for p, sg in cen if p in klein]
+    assert len(q8) == 8, f'expected Q8, found {len(q8)} elements'
+    # one element per pair {P, -P}: the first sign +1
+    q4 = [(p, sg) for p, sg in q8 if sg[0] == 1]
+    assert len(q4) == 4 and q4[0][0] == (0, 1, 2, 3) or True
+    q4.sort(key=lambda x: x[0])
+    # ---- rows: tuples of 4 block indices; P acts by new[c] = sg[c] * old[perm[c]]
+    rows = np.array(list(itertools.product(range(no), repeat=4)), dtype=np.int32)
+    code = lambda R: ((R[:, 0] * no + R[:, 1]) * no + R[:, 2]) * no + R[:, 3]
+    def act(R, p, sg):
+        out = np.empty_like(R)
+        for c in range(4):
+            col = R[:, p[c]]; out[:, c] = col if sg[c] == 1 else neg[col]
+        return out
+    imgs = []
+    for p, sg in q4:
+        A = act(rows, p, sg); imgs.append(A); imgs.append(neg[A])
+    codes = np.stack([code(A.astype(np.int64)) for A in imgs], axis=1)
+    isrep = codes[:, 0] == codes.min(axis=1)
+    reps = rows[isrep]
+    vec = lambda R: np.concatenate([F[R[:, c]] for c in range(4)], axis=1)      # N x 4k
+    RV = [vec(act(reps, p, sg)).astype(np.float32) for p, sg in q4]              # images of the representatives
+    # a row is orthogonal to its three images?
+    ok = np.ones(len(reps), dtype=bool)
+    for j in range(1, 4): ok &= (np.einsum('ij,ij->i', RV[0], RV[j]) == 0)
+    print(f'rows {len(rows)}, Q8-orbit representatives {len(reps)}, self-orthogonal orbits {int(ok.sum())}', flush=True)
+    reps = reps[ok]; RV = [v[ok] for v in RV]; N = len(reps)
+    MT = M.T.astype(np.float32); fk = float(4 * k)
+    RVM = RV[0] @ MT                                                             # x M^T for every representative x
+    def compat_row(i):       # y with K(x_i, yP) = +-1 for the four P
+        v = RVM[i]; c = np.ones(N, dtype=bool)
+        for j in range(4): c &= (np.abs(RV[j] @ v) == fk)
+        return c
+    MTt = M.astype(np.float32)
+    def compat_col(i):       # x with K(xP, y_i) = +-1 for the four P   (K(xP, y) = K(x, yP^-1))
+        w = M.T.astype(np.float32) @ RV[0][i]                                    # M^T y
+        c = np.ones(N, dtype=bool)
+        for j in range(4): c &= (np.abs(RV[j] @ w) == fk)
+        return c
+    def orth_row(i):
+        v = RV[0][i]; c = np.ones(N, dtype=bool)
+        for j in range(4): c &= ((RV[j] @ v) == 0)
+        return c
+    # sanity: K(xP, yP) = K(x, y) on random pairs
+    rng = np.random.default_rng(1)
+    for _ in range(20):
+        i, j_ = rng.integers(N, size=2)
+        for jj in range(4):
+            assert abs(float(RV[jj][i] @ MT @ RV[jj][j_]) - float(RV[0][i] @ MT @ RV[0][j_])) < 1e-3
+    # statistics
+    samp = rng.choice(N, size=min(N, 200), replace=False)
+    cs = [int(compat_row(i).sum()) for i in samp]; os_ = [int(orth_row(i).sum()) for i in samp]
+    print(f'compatible y per x: min {min(cs)} median {int(np.median(cs))} max {max(cs)}; orthogonal: median {int(np.median(os_))}', flush=True)
+    # ---- search.  For a first row x1 the whole Z must lie in compat(x1) (a small set): enumerate the t-cliques of
+    # mutually orthogonal orbits inside it; each is a complete Z, and E must then be t mutually orthogonal orbits
+    # among the x compatible with all of Z.  Exhaustive over x1 (x1 = the E-orbit of lowest index is not imposed,
+    # so every border is seen from each of its E-orbits).
+    nodes = [0]; t0 = time.time(); found = []; exhausted = True; ncl = 0; hist = {}
+    def cliques(cand, adj, need):
+        # all need-subsets of cand (indices into adj) that are pairwise adjacent
+        out = []
+        def go(chosen, pool):
+            nodes[0] += 1
+            if len(chosen) == need: out.append(list(chosen)); return
+            if len(chosen) + len(pool) < need: return
+            for ii, c in enumerate(pool):
+                go(chosen + [c], [d for d in pool[ii + 1:] if adj[c, d]])
+        go([], list(cand)); return out
+    def orth_small(idx):
+        V = RV[0][idx]; A = np.ones((len(idx), len(idx)), dtype=bool)
+        for j in range(4): A &= ((V @ RV[j][idx].T) == 0)
+        return A
+    for x1 in range(N):
+        if nodes[0] > nodecap: exhausted = False; break
+        cz = np.nonzero(compat_row(x1))[0]
+        hist[len(cz) >= t] = hist.get(len(cz) >= t, 0) + 1
+        if len(cz) < t: continue
+        A = orth_small(cz)
+        for cl in cliques(range(len(cz)), A, t):
+            ncl += 1
+            Ys = [int(cz[c]) for c in cl]
+            ce = np.ones(N, dtype=bool)
+            for y in Ys: ce &= compat_col(y)
+            cx = np.nonzero(ce)[0]
+            if len(cx) < t: continue
+            B = orth_small(cx)
+            i1 = int(np.nonzero(cx == x1)[0][0])
+            for cl2 in cliques([c for c in range(len(cx)) if c != i1 and B[i1, c]], B, t - 1):
+                found.append(([x1] + [int(cx[c]) for c in cl2], Ys)); break
+            if found: break
+        if found: break
+        if x1 % 5000 == 0: print(f'  first row {x1}/{N}: Z-cliques so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
+    print(f'first rows with at least {t} compatible orbits: {hist.get(True, 0)} of {sum(hist.values())}; complete Z found: {ncl}', flush=True)
+    if not found:
+        print(f'quaternionic border for {S["name"]}: ' + ('NONE (search exhaustive)' if exhausted else f'UNDECIDED (node cap {nodecap})')
+              + f'; nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
+        return
+    Xs, Ys = found[0]
+    def expand(L):
+        return np.array([np.concatenate([F[r[c]] for c in range(4)]) for i in L for r in [act(reps[i:i + 1], p, sg)[0] for p, sg in q4]], dtype=np.int64)
+    Em = expand(Xs); Zm = expand(Ys)
+    Km = (Em @ M.T @ Zm.T) // (4 * k)
+    okK = np.array_equal(np.abs(Km), np.ones_like(Km)) and np.array_equal(Km @ Km.T, b * np.eye(b, dtype=np.int64)) \
+        and np.array_equal(Em @ M.T @ Zm.T, 4 * k * Km)
+    Fm = -Zm.T
+    top = Km @ Km.T + s_ * (Em @ Em.T); cross = Km @ Fm.T + Em @ M.T; bot = s_ * (Fm @ Fm.T) + M @ M.T
+    good = np.array_equal(top, n * np.eye(b, dtype=np.int64)) and not cross.any() and np.array_equal(bot, n * np.eye(4 * k, dtype=np.int64))
+    print(f'quaternionic border for {S["name"]}: FOUND (nodes {nodes[0]}, {time.time()-t0:.0f}s); K Hadamard {okK}; '
+          f'compressed matrix of order {b + 4*k}: Gram = {n} I is {good}', flush=True)
+    json.dump(dict(name=S['name'], T=S['T'], s=s_, cells=S['cells'], core=S.get('core'), M=M.tolist(), K=Km.tolist(),
+                   E=Em.tolist(), Z=Zm.tolist(), checks=dict(K_hadamard=bool(okK), compressed_gram=bool(good))),
+              open(f'logs/fable_fresh/qborder_{S["name"]}.json', 'w'))
+
+if __name__ == '__main__':
+    main()

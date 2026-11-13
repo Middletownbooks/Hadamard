@@ -331,6 +331,13 @@ quotients, of sizes b × 4k and 4k × b). Write P = Σ PAF.
 4. If k is odd, the trivial character lies in T. *Proof.* Otherwise B·1 = 0, so every row of E sums to 0 over a
    block of odd length k. ∎
 
+5. The hypothesis that E′ and F′ are constant on cosets is automatic [P, added 2026-11-13]. For any Hadamard matrix
+   [[K, E′], [F′, C]] with C the Goethals–Seidel array of four ±1 sequences on G, F′F′ᵀ = nI − C Cᵀ = I₄ ⊗ Dev(nδ₀ − P)
+   is G-invariant, so the column space of each block of F′ is the sum of the character spaces of
+   T′ = {χ ∈ Ĝ : Σ_k |x̂_k(χ)|² ≠ n}. Every function in that space is constant on the cosets of S = ⟨T′⟩^⊥, so the
+   columns of F′ are; the same holds for E′ through CᵀC. S may be trivial (then Q = G), and items 1–4 apply with
+   that S. **So every border of a Goethals–Seidel core over an abelian group is a character border.**
+
 These are exactly Kumar's bordered arrays with a character set T (his `search/NOTES.md` §18, which states the
 construction, the orthogonal-matrix form of the border problem, and item 4). What the computation above adds is the
 converse: a coset-constant border cannot have any other shape. T = Q̂ ∖ {1} with β = 4 is EKLO's Theorem 7 (so k must

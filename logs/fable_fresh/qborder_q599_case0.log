@@ -1,0 +1,7 @@
+q599_case0: k = 16, T = [0, 1, 2, 3, 4, 8, 12], b = 28, n = 2396; 30 admissible block functions
+signed block permutations commuting with M: 8
+rows 810000, Q8-orbit representatives 101250, self-orthogonal orbits 101250
+compatible y per x: min 0 median 8 max 120; orthogonal: median 243
+  first row 5000/101250: Z-cliques so far 0, nodes 50280, 116s
+  first row 15000/101250: Z-cliques so far 0, nodes 148662, 352s
+  first row 20000/101250: Z-cliques so far 0, nodes 199362, 468s
