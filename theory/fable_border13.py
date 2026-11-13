@@ -53,7 +53,7 @@ def setup():
         Cm = FB.gs_array(G, X); M = FB.compress(G, Cm)
         Gq = B2.Grp2(aa, 1)
         return dict(name=f'core_a{aa}_s{s_}_T{"-".join(map(str, T))}_seed{seed}', k=G.k, s=s_, M=np.array(M, dtype=np.int64),
-                    F=admissible(Gq, T), t=len(T), T=T, cells=None, rest=sys.argv[6:], core=X.tolist())
+                    F=admissible(Gq, T), t=len(T), T=T, cells=None, rest=sys.argv[6:], core=X.tolist(), G=G, Cm=Cm)
     raise SystemExit(__doc__)
 
 def main():
@@ -182,8 +182,13 @@ def main():
     good = np.array_equal(top, n * np.eye(b, dtype=np.int64)) and not cross.any() and np.array_equal(bot, n * np.eye(4 * k, dtype=np.int64))
     print(f'quaternionic border for {S["name"]}: FOUND (nodes {nodes[0]}, {time.time()-t0:.0f}s); K Hadamard {okK}; '
           f'compressed matrix of order {b + 4*k}: Gram = {n} I is {good}', flush=True)
+    full = None
+    if 'Cm' in S:            # a real core: assemble the full matrix and check H H^T = n I
+        H = FB.assemble(S['G'], S['Cm'], Km, Em, Zm)
+        full = bool(H.shape == (n, n) and np.array_equal(np.abs(H), np.ones_like(H)) and np.array_equal(H @ H.T, n * np.eye(n, dtype=H.dtype)))
+        print(f'   full matrix assembled: H({n}) H^T = n I is {full}', flush=True)
     json.dump(dict(name=S['name'], T=S['T'], s=s_, cells=S['cells'], core=S.get('core'), M=M.tolist(), K=Km.tolist(),
-                   E=Em.tolist(), Z=Zm.tolist(), checks=dict(K_hadamard=bool(okK), compressed_gram=bool(good))),
+                   E=Em.tolist(), Z=Zm.tolist(), checks=dict(K_hadamard=bool(okK), compressed_gram=bool(good), full_matrix=full)),
               open(f'logs/fable_fresh/qborder_{S["name"]}.json', 'w'))
 
 if __name__ == '__main__':

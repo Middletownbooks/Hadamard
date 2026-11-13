@@ -55,7 +55,7 @@ def setup():
         Cm = FB.gs_array(G, X); M = FB.compress(G, Cm)
         Gq = B2.Grp2(aa, 1)
         return dict(name=f'core_a{aa}_s{s_}_T{"-".join(map(str, T))}_seed{seed}', k=G.k, s=s_, M=np.array(M, dtype=np.int64),
-                    F=admissible(Gq, T), t=len(T), T=T, cells=None, rest=sys.argv[6:], core=X.tolist())
+                    F=admissible(Gq, T), t=len(T), T=T, cells=None, rest=sys.argv[6:], core=X.tolist(), G=G, Cm=Cm)
     raise SystemExit(__doc__)
 
 SUB = 'q8'
@@ -155,27 +155,81 @@ def main():
         V = RV[0][idx]; A = np.ones((len(idx), len(idx)), dtype=bool)
         for j in range(nim): A &= ((V @ RV[j][idx].T) == 0)
         return A
-    for x1 in range(N):
+    # ---- symmetries of the problem coming from Q (affine maps of F_2^a that keep the set of admissible functions and
+    # the K-table) and the whole of Q8: a border may be moved so that one of its E-orbits is a class representative,
+    # so only one first row per class is needed.  Every map is verified on the full K-table before it is used.
+    aa = k.bit_length() - 1
+    assert 1 << aa == k
+    tabs = [[F @ M.T[c * k:(c + 1) * k, c2 * k:(c2 + 1) * k] @ F.T for c2 in range(4)] for c in range(4)]
+    qsym = []
+    def lin_maps():
+        vecs = list(range(1, k))
+        def rec(imgs, span):
+            if len(imgs) == aa: yield list(imgs); return
+            for v in vecs:
+                if v in span: continue
+                yield from rec(imgs + [v], span | {v ^ w for w in span})
+        yield from rec([], {0})
+    nlin = 0
+    for imgs in lin_maps():
+        lin = [0] * k
+        for q in range(k):
+            r = 0
+            for i in range(aa):
+                if (q >> i) & 1: r ^= imgs[i]
+            lin[q] = r
+        g0 = tuple(F[0][lin])                       # quick reject on a few functions before the full test
+        if g0 not in key: continue
+        if any(tuple(f[lin]) not in key for f in F): continue
+        nlin += 1
+        for c0 in range(k):
+            pm = np.array([lin[q] ^ c0 for q in range(k)])
+            fi = np.array([key[tuple(f[pm])] for f in F])
+            if all(np.array_equal(tabs[c][c2][np.ix_(fi, fi)], tabs[c][c2]) for c in range(4) for c2 in range(4)):
+                qsym.append(fi)
+    print(f'Q-symmetries: {nlin} linear maps keep the admissible functions; {len(qsym)} affine maps keep the K-table', flush=True)
+    rc = code(rows.astype(np.int64)); best = rc.copy()
+    full8 = [(p, sg) for p, sg in q8]
+    for fi in qsym:
+        R1 = fi[rows]
+        for p, sg in full8:
+            np.minimum(best, code(act(R1, p, sg).astype(np.int64)), out=best)
+    canon = set(rc[best == rc].tolist())
+    repcode = code(reps.astype(np.int64))
+    first = [i for i in range(N) if int(repcode[i]) in canon]
+    print(f'first rows up to symmetry: {len(first)} of {N}', flush=True)
+    def core_prune(A, need):
+        # vertices of a need-clique have degree >= need - 1 inside it: peel
+        alive = np.ones(A.shape[0], dtype=bool)
+        while True:
+            deg = (A & alive[None, :]).sum(axis=1)
+            bad = alive & (deg < need - 1)
+            if not bad.any(): return alive
+            alive &= ~bad
+    for x1 in first:
         if nodes[0] > nodecap: exhausted = False; break
         cz = np.nonzero(compat_row(x1))[0]
         hist[len(cz) >= t] = hist.get(len(cz) >= t, 0) + 1
         if len(cz) < t: continue
-        A = orth_small(cz)
-        for cl in cliques(range(len(cz)), A, t):
+        A = orth_small(cz); np.fill_diagonal(A, False)
+        al = core_prune(A, t)
+        if int(al.sum()) < t: continue
+        for cl in cliques([c for c in range(len(cz)) if al[c]], A, t):
             ncl += 1
             Ys = [int(cz[c]) for c in cl]
             ce = np.ones(N, dtype=bool)
             for y in Ys: ce &= compat_col(y)
             cx = np.nonzero(ce)[0]
             if len(cx) < t: continue
-            B = orth_small(cx)
+            B = orth_small(cx); np.fill_diagonal(B, False)
             i1 = int(np.nonzero(cx == x1)[0][0])
             for cl2 in cliques([c for c in range(len(cx)) if c != i1 and B[i1, c]], B, t - 1):
                 found.append(([x1] + [int(cx[c]) for c in cl2], Ys)); break
             if found: break
         if found: break
-        if x1 % 5000 == 0: print(f'  first row {x1}/{N}: Z-cliques so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
-    print(f'first rows with at least {t} compatible orbits: {hist.get(True, 0)} of {sum(hist.values())}; complete Z found: {ncl}', flush=True)
+        hist['done'] = hist.get('done', 0) + 1
+        if hist['done'] % 50 == 0: print(f'  first row {hist["done"]}/{len(first)}: Z-cliques so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
+    print(f'first rows (up to symmetry) with at least {t} compatible orbits: {hist.get(True, 0)} of {len(first)}; complete Z found: {ncl}', flush=True)
     if not found:
         print(f'{SUB}-invariant border for {S["name"]}: ' + ('NONE (search exhaustive)' if exhausted else f'UNDECIDED (node cap {nodecap})')
               + f'; nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
@@ -192,8 +246,13 @@ def main():
     good = np.array_equal(top, n * np.eye(b, dtype=np.int64)) and not cross.any() and np.array_equal(bot, n * np.eye(4 * k, dtype=np.int64))
     print(f'{SUB}-invariant border for {S["name"]}: FOUND (nodes {nodes[0]}, {time.time()-t0:.0f}s); K Hadamard {okK}; '
           f'compressed matrix of order {b + 4*k}: Gram = {n} I is {good}', flush=True)
+    full = None
+    if 'Cm' in S:            # a real core: assemble the full matrix and check H H^T = n I
+        H = FB.assemble(S['G'], S['Cm'], Km, Em, Zm)
+        full = bool(H.shape == (n, n) and np.array_equal(np.abs(H), np.ones_like(H)) and np.array_equal(H @ H.T, n * np.eye(n, dtype=H.dtype)))
+        print(f'   full matrix assembled: H({n}) H^T = n I is {full}', flush=True)
     json.dump(dict(name=S['name'], T=S['T'], s=s_, cells=S['cells'], core=S.get('core'), M=M.tolist(), K=Km.tolist(),
-                   E=Em.tolist(), Z=Zm.tolist(), checks=dict(K_hadamard=bool(okK), compressed_gram=bool(good))),
+                   E=Em.tolist(), Z=Zm.tolist(), checks=dict(K_hadamard=bool(okK), compressed_gram=bool(good), full_matrix=full)),
               open(f'logs/fable_fresh/qborder_{SUB}_{S["name"]}.json', 'w'))
 
 if __name__ == '__main__':

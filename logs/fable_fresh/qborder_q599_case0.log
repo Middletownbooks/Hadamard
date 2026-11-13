@@ -5,3 +5,12 @@ compatible y per x: min 0 median 8 max 120; orthogonal: median 243
   first row 5000/101250: Z-cliques so far 0, nodes 50280, 116s
   first row 15000/101250: Z-cliques so far 0, nodes 148662, 352s
   first row 20000/101250: Z-cliques so far 0, nodes 199362, 468s
+  first row 35000/101250: Z-cliques so far 0, nodes 341214, 848s
+  first row 40000/101250: Z-cliques so far 0, nodes 376876, 1010s
+  first row 45000/101250: Z-cliques so far 0, nodes 428698, 1173s
+  first row 65000/101250: Z-cliques so far 0, nodes 608248, 1802s
+  first row 75000/101250: Z-cliques so far 0, nodes 705651, 2035s
+  first row 85000/101250: Z-cliques so far 0, nodes 791502, 2266s
+  first row 90000/101250: Z-cliques so far 0, nodes 842576, 2385s
+first rows with at least 7 compatible orbits: 50748 of 101250; complete Z found: 0
+quaternionic border for q599_case0: NONE (search exhaustive); nodes 995966, 2646s

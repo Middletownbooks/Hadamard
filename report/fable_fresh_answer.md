@@ -370,8 +370,11 @@ for a set T of characters of Q = G/S. Equivalently Σ PAF(g) = −4 Σ_{ρ∈T} 
 construction (`search/NOTES.md` §18 of his repository), stated there for any Galois-stable T. The cases that have
 been used are T = {1} (Theorem 5), T = Q̂ ∖ {1} (EKLO's Theorem 7), T = Q̂ (the all-character family), products of
 these, and, in his censuses, T defined by character orders; on ℤ₂² he notes that {1, χ₁, χ₂} is the nontrivial set
-after a twist. I found no use of other subsets of the characters of ℤ₂^a, a ≥ 3, in his notes or in this repository;
-the wider literature was not checked.
+after a twist. **Correction (2026-11-13):** his §102 ("Alternatives that fail", partial character sets) does record
+one more case, t = 5 over ℤ₂³ or F₁₆, with the remark that borders exist and an estimate E ≤ 10⁻¹¹ for the target
+he had in mind, and partial Teichmüller sets over ℤ₄ʳ (599 over ℤ₄² × ℤ₃₇, t = 7: no border in any symmetric class he
+tested). So partial sets over ℤ₂³ are his as well. What I did not find there is a classification of the shapes or
+any use of them over ℤ₂^a with a ≥ 4; the wider literature was not checked.
 
 **Observation.** When Q = ℤ₂^a every character of Q is itself a ±1 vector, so **every subset T ⊂ Q̂ is a candidate
 shape**, and:
@@ -395,7 +398,7 @@ H Hᵀ = nI checked; `theory/fable_border2.py`, `theory/fable_border4.py`, logs 
 | ℤ₂² | three nontrivial | flat minus point (EKLO k = 4) | 60 | border found, H(60) verified (control; several cores) |
 | ℤ₂³ | three independent | flat minus point after a twist (k = 4 with even \|K\|) | 108 | border found for 2 of 2 random cores, H(108) verified |
 | ℤ₂³ | {1, χ₁, χ₂, χ₄}: four affinely independent | **not classical** | 112 | single-character border found (323 s), **H(112) verified** |
-| ℤ₂³ | five characters | not classical | 116 | general border: CP-SAT UNKNOWN at 600 s (not a zero) |
+| ℤ₂³ | five characters {1, χ₁, χ₂, χ₃, χ₄} | not classical (Kumar notes that borders exist for t = 5 over ℤ₂³) | 116 | CP-SAT UNKNOWN at 600 s; **border found in under 1 s by the quaternionic search of §7.2, compressed Gram identity verified** |
 | ℤ₂⁴ | seven characters not in a 3-flat | not classical, the shape of 599 | 220 | <!-- T7 -->running at the time of writing<!-- /T7 --> |
 
 The orders 112 and 116 are of course known; the point is that a border exists for a character set outside the three
@@ -485,6 +488,48 @@ join on energy vectors) and restart-safe per prime. Done for 599, 907, 971 and 1
   against 36 class equations of the degree-6 fixed field it is in the "rich" regime of `report/open_screen_answer.md`
   [E, rough], so even a border would leave a large search.
 - 907 and 971 (|T| = 11) also have alive Q-levels with σ of order 5 (`tcensus2.jsonl`); their U have even order.
+
+### 7.2 A universal symmetry of the border problem over ℤ₂^a, and a fast border search [P, M; added 2026-11-13]
+
+**Observation [P].** Over Q = ℤ₂^a every character is real and inversion is trivial, so on the character space of
+ρ the Goethals–Seidel array of the compressions is the 4 × 4 matrix GS(a, b, c, d) with (a, b, c, d) = (ŷ₁(ρ), …, ŷ₄(ρ)).
+That matrix is the transpose of the left multiplication by the quaternion a + bi + cj + dk on ℝ⁴ = ℍ, the four
+coordinates being the four blocks. It therefore commutes with the eight right multiplications by ±1, ±i, ±j, ±k,
+which are signed permutations of the blocks. **So the group Q₈, acting on the block index, is a symmetry of the
+border problem for every character set T ⊂ Q̂ and every core** (checked numerically in every run below: exactly 8
+signed block permutations commute with a generic M, 24 with the spike compressions (1; 3, 3, 3)). It acts freely
+on rows, a row is orthogonal to its three images, and K(xP, yP) = K(x, y). Over a quotient with complex characters
+(ℤ₅, ℤ₆) no signed block permutation other than ±1 commutes with a random array [M], so this is special to
+elementary abelian 2-groups (and ℤ₄).
+
+**Reformulation [P].** Write a row as a function Ξ : Q → {±1 ± i ± j ± k} (one coordinate per block) with Fourier
+support in T. A border whose row sets are unions of Q₈-orbits ("quaternionic border") is a pair of families
+Ξ₁, …, Ξ_t and Ξ′₁, …, Ξ′_t, orthogonal for the quaternionic Hermitian product (1/k) Σ_q Ξ̄_m(q) Ξ_m′(q), such that
+every κ_mm′ = ¼ Σ_ρ ξ̄_mρ γ_ρ ξ′_m′ρ lies in {±1 ± i ± j ± k} (γ_ρ the quaternion of the Walsh values at ρ, ξ_mρ the
+Fourier coefficients of Ξ_m). K is then a t × t matrix over the sixteen Hurwitz units ½(±1 ± i ± j ± k), times 2:
+t quaternionic rows on each side in place of 4t real ones. The weaker ansatz of invariance under one cyclic
+subgroup ⟨i⟩, ⟨j⟩ or ⟨k⟩ of order 4 gives 2t complex rows and K/(1 + i) a quaternary complex Hadamard matrix.
+
+**Search [M].** `theory/fable_border13.py` (Q₈) and `theory/fable_border14.py` (`sub=q8|z1|z2|z3`) enumerate orbit
+representatives of all admissible rows. For a first row x₁ the whole of Z must lie in the set of orbits compatible
+with x₁, which is small; the program lists the cliques of t (or 2t) mutually orthogonal orbits in it, each a complete
+Z, and then looks for E among the orbits compatible with all of Z. It is exhaustive when it ends below the node cap.
+Every border is checked in integers (K Hadamard, the compressed Gram identity), and for a real core the full matrix
+is assembled and H Hᵀ = nI checked.
+
+| case | T | n | CP-SAT before | symmetric search |
+|---|---|---|---|---|
+| ℤ₂², spike compressions (1; 3, 3, 3), s = 7 | three nontrivial | 124 | found in 9 s (σ-invariant model) | Q₈: found, 0 s |
+| ℤ₂³ × ℤ₃, annealed core | {1, χ₁, χ₂, χ₄} | 112 | found in 323 s | Q₈: found, 0 s; H(112) assembled and verified |
+| ℤ₂³ × ℤ₃, annealed core | {χ₁, χ₂, χ₄} | 108 | found | Q₈: **none (exhaustive)**; ⟨i⟩, ⟨j⟩, ⟨k⟩: found, 0 s each; H(108) verified |
+| ℤ₂³ × ℤ₃, annealed core | {1, χ₁, χ₂, χ₃, χ₄} | 116 | UNKNOWN at 600 s | Q₈: found, 0 s; H(116) assembled and verified |
+<!-- QB -->
+<!-- /QB -->
+
+So the symmetric search finds in under a second the borders that the generic model needed minutes for or did not
+find, and the Q₈ ansatz is not always sufficient (the 108 case).
+
+---
 
 ## 8. The production run: skew 361 over ℤ₁₉ × ℤ₁₉ [E; a finished run without a hit excludes nothing]
 
