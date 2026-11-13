@@ -68,10 +68,11 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
      order 4, is an exact clique problem that takes seconds where a generic CP-SAT model took minutes or gave up.
      Verified instances: H(112), H(108), and H(116) from a five-character set that CP-SAT had left undecided [M].
    - **The 2396 slice of item 5 has no border in any natural symmetric class** (§7.1, §7.2) [M, exhaustive]:
-     <!-- BL8 -->none invariant under Q₈ or under any of its three cyclic subgroups of order 4, none invariant under the
-     slice's own symmetry σ of order 3 (CP-SAT had been undecided), and none invariant under three of the other
-     four classes of subgroups of order 3 of the problem's symmetry group; the fifth class and the Q-level solutions
-     with a non-constant profile are running.<!-- /BL8 --> A border without symmetry is not excluded.
+     <!-- BL8 -->none invariant under Q₈ or under any of its three cyclic subgroups of order 4; none invariant under the
+     slice's own symmetry σ of order 3 (CP-SAT had been undecided); and none invariant under any other subgroup of
+     order 3 of the problem's symmetry group (five classes in all). So a border, if there is one, has no symmetry
+     of order 3. The Q-level solutions with a non-constant profile have no Q₈-invariant border either; their other
+     classes are running.<!-- /BL8 --> A border without symmetry is not excluded.
    - **The tier-0 slices of the earlier screen** (§8a) [M, P]: I reran them before noticing that
      `report/h4892_answer.md` had already decided most; the reruns reproduce its counts, including the 1360 stage-1
      solutions of the 7572 slice and its emptiness. New here: the slice of 4156 = 4·1039 (undecided there) is empty
@@ -574,9 +575,10 @@ The number of fixed rows is forced: it is the trace of the element on the border
 | rd | ρ | as d | 1 | 9 | **none** (61 s) |
 | ra | ρ | 3-cycle on one flat | 4 | 8 | **none** (16 s) |
 | r | ρ | 1 | 7 | 7 | **none** (160 s) |
-| a | 1 | 3-cycle on one flat | 16 | 4 | running (52,488 fixed rows: the largest case) |
+| a | 1 | 3-cycle on one flat | 16 | 4 | **none** (6 s, orbit rows first: of the 290,304 sets of four mutually orthogonal orbits none has even one orbit compatible with all four) |
 <!-- /O3 -->
-The involutions modulo sign are the elements i, j, k of Q₈ (one class, by ρ; the three runs in the table above
+**So a border of this shape, if one exists, has no symmetry of order 3** [M], and its stabiliser in the group
+above is a 2-group that meets Q₈ in ±1 only. The involutions modulo sign are the elements i, j, k of Q₈ (one class, by ρ; the three runs in the table above
 are therefore one result obtained three times) and many classes with a nontrivial Q-part, which were not run.
 
 ---
@@ -658,8 +660,7 @@ the earlier report; 1987 (k4), 1831 and 1473 capped (undecided).
    calibrated on 5912 within a factor of two), then the skew slices he ranks at 10³ (661, 883, 1483). These are the
    only live targets with a measured rate.
 2. **The 2396 slice of §7.1.** Its border question is now narrow: no border exists with Q₈, with a cyclic subgroup
-   of order 4 of Q₈, or with a symmetry of order 3 in four of the five classes (§7.2). What remains is the fifth
-   class of order 3, the involutions with a nontrivial Q-part (a finite list of classes; the engine of
+   of order 4 of Q₈, or with any symmetry of order 3 (§7.2). What remains is the involutions with a nontrivial Q-part (a finite list of classes; the engine of
    `theory/fable_border15.py` / `fable_border16.py` handles each in minutes to hours), and borders with no symmetry
    at all, for which I see no exact method within reach (a rough count of the same search tree without symmetry
    gives about 10² core-days [E]). I would not spend more on it: even with a border the slice has 78 orbits per

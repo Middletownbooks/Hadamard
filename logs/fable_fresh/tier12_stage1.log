@@ -52,3 +52,19 @@ Traceback (most recent call last):
 MemoryError
 2026-11-13 16:06:52 end ["b1", 1559, [], [41, 2], 19, 2, [[0, 5]]] rc=1
 2026-11-13 16:06:52 start ["b1", 1571, [], [157, 2], 5, 2, [[0, 39]]]
+{"key": ["b1", 1571, [], [157, 2], 5, 2, [[0, 39]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 321040, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 0, "right_pairs": 0}], "secs": 1356.1}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 1571, [], [157, 2], 5, 2, [[0, 39]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 321040, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 0, "right_pairs": 0}], "secs": 1356.1}, "solutions": [], "planted": [{"T0": 5104, "R": 5000, "B": null}], "phase": "final"}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 479, in main
+    if outp: open(outp, 'a').write(json.dumps(rec) + "\n")
+             ~~~~^^^^^^^^^^^
+MemoryError
+2026-11-13 16:31:34 end ["b1", 1571, [], [157, 2], 5, 2, [[0, 39]]] rc=1
+2026-11-13 16:31:34 start ["b1", 1979, [], [23, 2], 43, 6, [[0, 11]]]
+{"key": ["b1", 1979, [], [23, 2], 43, 6, [[0, 11]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 800, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 28, "right_pairs": 44}], "secs": 0.1}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 1979, [], [23, 2], 43, 6, [[0, 11]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 800, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 28, "right_pairs": 44}], "secs": 0.1}, "solutions": [], "planted": [{"T0": 6232, "R": 340, "B": true}], "phase": "final"}
+2026-11-13 16:31:53 end ["b1", 1979, [], [23, 2], 43, 6, [[0, 11]]] rc=0
+2026-11-13 16:31:53 start ["k4", 1103, [4], [25], 11, 2, [[1, 10]]]

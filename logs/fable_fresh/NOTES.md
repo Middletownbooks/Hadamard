@@ -301,3 +301,6 @@ State of thinking (so a restart does not lose it):
 - Non-constant profile (solution 2160): scripts/fable_border_master.sh (q8, z1-3, then sigma) running.
 - Tier 1/2 stage-1 reruns: scripts/fable_tier12_queue.sh (several keys only hit the 7 GB / 45 min caps).
 - To finish: report O3 row a, BL8, TIER12 marker, section 9 and 10; final commit.
+- 16:45 UTC: order-3 class a (NFIX 16, 4 orbits): NONE in 6 s by the orbit-first path (290,304 orbit 4-cliques, none
+  with a compatible E-orbit).  All five order-3 classes are now excluded for the constant profile.
+  Non-constant profile 2160: Q8 NONE; z1-3 and sigma running (scripts/fable_border_master.sh).

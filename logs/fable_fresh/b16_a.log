@@ -1,3 +1,12 @@
 symmetry a: block part (0, 1, 2, 3) (1, 1, 1, 1), Q part with 4 fixed points; orbit representatives 3456, fixed rows (mod sign) 52488, dimension of their span 20
 trace of the symmetry on the border space: NFIX = 16
 symmetries commuting with g: 72 affine maps x 24 block permutations; first rows up to symmetry: 345 of 52488
+orbit-first search: 3456 orbits, first Z-orbit up to symmetry: 304
+  first orbit 50/304: orbit parts of Z examined 0, nodes 176, 2s
+  first orbit 100/304: orbit parts of Z examined 0, nodes 272, 3s
+  first orbit 150/304: orbit parts of Z examined 0, nodes 424, 4s
+  first orbit 200/304: orbit parts of Z examined 0, nodes 536, 4s
+  first orbit 250/304: orbit parts of Z examined 0, nodes 652, 5s
+  first orbit 300/304: orbit parts of Z examined 0, nodes 790, 6s
+order-3 symmetry a, NFIX 16 (4 orbits): NONE (search exhaustive); complete Z examined 0, nodes 797, 6s
+summary a: NFIX 16: NONE

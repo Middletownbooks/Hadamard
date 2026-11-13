@@ -174,7 +174,82 @@ def main():
             cj = json.load(open(ck)); start = cj['done']; nzc = cj['nzc']; nodes[0] = cj['nodes']
             print(f'resuming after {start} first rows (checkpoint)', flush=True)
         except Exception: pass
-        for pos, x1 in enumerate(firsts):
+        orbit_first = (nfix > 3 * n3) or ('ORBITFIRST' in sys.argv)
+        if orbit_first:
+            # Few orbit rows, many fixed rows (class a): choose the orbit rows of Z first.  Every condition of a border
+            # is imposed exactly along the way: Zo, Eo cliques of orbit rows with all images compatible; fixed rows
+            # of E compatible with Zo and orthogonal to Eo; fixed rows of Z compatible with Eo and orthogonal to Zo;
+            # then a coupled search for the two sets of NFIX fixed rows.
+            allo = np.arange(NO)
+            AO = np.ones((NO, NO), dtype=bool); CMO = np.ones((NO, NO), dtype=bool); XMo = OV[0] @ MT
+            for j in range(3):
+                AO &= ((OV[0] @ OV[j].T) == 0); CMO &= (np.abs(OV[j] @ XMo.T) == fk)       # CMO[z, e]
+            np.fill_diagonal(AO, False)
+            co6 = np.stack([code(R0), code(g(R0)), code(g(g(R0))), code(neg[R0]), code(neg[g(R0)]), code(neg[g(g(R0))])], axis=1).min(axis=1)
+            besto = co6.copy()
+            for fi2 in comm:
+                R1 = fi2[R0]
+                for p_, sg_ in bcomm:
+                    R2 = bact(R1, p_, sg_)
+                    c6 = np.stack([code(R2), code(g(R2)), code(g(g(R2))), code(neg[R2]), code(neg[g(R2)]), code(neg[g(g(R2))])], axis=1).min(axis=1)
+                    np.minimum(besto, c6, out=besto)
+            firsts_o = [i for i in range(NO) if co6[i] == besto[i]]
+            print(f'orbit-first search: {NO} orbits, first Z-orbit up to symmetry: {len(firsts_o)}', flush=True)
+            if 'DEBUG' in sys.argv:      # sanity figures for the orbit-first path
+                c4, nn4, tr4 = FC.kcliques(AO, n3, maxout=2000000)
+                rr = np.random.default_rng(5); chk = 0
+                for _ in range(2000):
+                    z_, e_ = rr.integers(NO, size=2)
+                    direct = all(abs(abs(float(OV[0][e_] @ MT @ OV[j][z_])) - fk) < 1e-3 for j in range(3))
+                    assert direct == bool(CMO[z_, e_]); chk += direct
+                print(f'    orth density {AO.mean():.4f}, compat density {CMO.mean():.4f} (2000 random pairs agree with the direct K, {chk} compatible); '
+                      f'{n3}-cliques of mutually orthogonal orbits: {len(c4)}{" (capped)" if tr4 else ""}', flush=True)
+                if c4:
+                    es = [int(CMO[cl].all(axis=0).sum()) for cl in c4[:200000]]
+                    print(f'    common compatible E-orbits of a Z-clique: max {max(es)}, cliques with at least {n3}: {sum(e >= n3 for e in es)}', flush=True)
+            FM = FV @ MT                                                # x M^T for fixed rows x
+            for pos, y1 in enumerate(firsts_o):
+                if pos < start: continue
+                if pos > start and (time.time() - lastp > 300 or pos % 50 == 0):
+                    json.dump(dict(done=pos, nzc=nzc, nodes=nodes[0], nfix=nfix), open(ck, 'w')); lastp = time.time()
+                    print(f'  first orbit {pos}/{len(firsts_o)}: orbit parts of Z examined {nzc}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
+                nb = np.nonzero(AO[y1])[0]; ec = np.nonzero(CMO[y1])[0]
+                if len(nb) < n3 - 1 or len(ec) < n3: continue
+                got, _, nn, tr, zc = FC.coupled(AO, CMO, AO, n3 - 1, n3, candz=nb.tolist(), cande=ec.tolist(),
+                                                maxnodes=max(1, nodecap - nodes[0]), collect=200000)
+                nodes[0] += nn
+                if tr: trunc[0] = True
+                for cl in got:
+                    Zo = [int(y1)] + [int(c) for c in cl]; nzc += 1
+                    ef = np.ones(NF, dtype=bool)
+                    for o in Zo: ef &= (np.abs(FM @ OV[0][o]) == fk)       # fixed x: K(x, y g^j) = K(x, y)
+                    if int(ef.sum()) < nfix: continue
+                    ecand = np.nonzero(CMO[Zo].all(axis=0))[0]
+                    if len(ecand) < n3: continue
+                    eol, nn, tr = FC.kcliques(AO[np.ix_(ecand, ecand)], n3, maxout=200000, maxnodes=max(1, nodecap - nodes[0]))
+                    nodes[0] += nn
+                    if tr: trunc[0] = True
+                    for ecl in eol:
+                        Eo = [int(ecand[c]) for c in ecl]
+                        ef2 = ef.copy(); zf = np.ones(NF, dtype=bool)
+                        for o in Eo:
+                            ef2 &= ((FV @ OV[0][o]) == 0)
+                            zf &= (np.abs(FV @ (OV[0][o] @ MT)) == fk)      # fixed z: K(e, z) with e = orbit row
+                        for o in Zo: zf &= ((FV @ OV[0][o]) == 0)
+                        if int(ef2.sum()) < nfix or int(zf.sum()) < nfix: continue
+                        iz = np.nonzero(zf)[0]; ie = np.nonzero(ef2)[0]
+                        VZ = FV[iz]; VE = FV[ie]
+                        AZf = (VZ @ VZ.T) == 0; np.fill_diagonal(AZf, False)
+                        AEf = (VE @ VE.T) == 0; np.fill_diagonal(AEf, False)
+                        CMf = np.abs(VZ @ (VE @ MT).T) == fk
+                        zs, es, nn, tr, zc = FC.coupled(AZf, CMf, AEf, nfix, nfix, maxnodes=max(1, nodecap - nodes[0]))
+                        nodes[0] += nn
+                        if tr: trunc[0] = True
+                        if zs is not None:
+                            found = (([int(iz[c]) for c in zs], Zo), ([int(ie[c]) for c in es], Eo)); break
+                    if found or trunc[0]: break
+                if found or trunc[0] or nodes[0] > nodecap: break
+        for pos, x1 in enumerate(firsts if not orbit_first else []):
             if pos < start: continue
             if pos > start and (time.time() - lastp > 300 or pos % 50 == 0):
                 json.dump(dict(done=pos, nzc=nzc, nodes=nodes[0], nfix=nfix), open(ck, 'w')); lastp = time.time()
