@@ -286,3 +286,18 @@ State of thinking (so a restart does not lose it):
   So far: 599 b1 (Z_13 x Z_2, q=23, s=2) empty; 1487 k4 empty (planted undecided).
 - Report: 6.4 item 5, 7 correction (Kumar's t = 5 remark), 7.1 SIGMA block, 7.2 (new), 8a (new), ideas 14-18.
   Still to write at the end: bottom line items, 9 (next), 10 (reproduce), TIER12 and QB markers.
+
+## 2026-11-13 16:20 UTC (second container restart at ~16:00; logs survived, queues restarted)
+
+- **Mistake found and corrected:** report/h4892_answer.md (2026-11-06) had already decided the tier-0 slices (and
+  7572's 1360 classes, dead at the Z_43 compression).  open_screen_answer.md's "not run" was stale.  My reruns agree
+  count for count.  New only: 4156 (1039 k4) empty by method B (was undecided), and the a-priori gate (full unit
+  group on a prime axis l >= 5).  Report 8a and bottom line rewritten.
+- 2396 border, constant profiles (normal form Gamma = GS(4,2,2,2)); symmetry group (Q8 x| Z3) x Aut_Q, order 24*1152.
+  NONE (exhaustive): Q8; <i>, <j>, <k> (z1, z2, z3); order-3 classes d (= sigma; three confirmations), rd, ra, r.
+  [P] the number of fixed rows of an order-3 symmetry is its trace on the border space (d: 4, rd: 1, ra: 4, r: 7,
+  a: 16).  Class a (52,488 fixed rows, 345 first rows up to symmetry) running: scripts/fable_b16_queue.sh
+  (checkpoint logs/fable_fresh/ckpt_b16_a_f16.json).
+- Non-constant profile (solution 2160): scripts/fable_border_master.sh (q8, z1-3, then sigma) running.
+- Tier 1/2 stage-1 reruns: scripts/fable_tier12_queue.sh (several keys only hit the 7 GB / 45 min caps).
+- To finish: report O3 row a, BL8, TIER12 marker, section 9 and 10; final commit.

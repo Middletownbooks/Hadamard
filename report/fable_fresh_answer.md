@@ -68,10 +68,10 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
      order 4, is an exact clique problem that takes seconds where a generic CP-SAT model took minutes or gave up.
      Verified instances: H(112), H(108), and H(116) from a five-character set that CP-SAT had left undecided [M].
    - **The 2396 slice of item 5 has no border in any natural symmetric class** (§7.1, §7.2) [M, exhaustive]:
-     <!-- BL8 -->none invariant under Q₈ (two runs), none invariant under the slice's own symmetry σ of order 3 (for
-     every possible number of fixed rows, 1, 4, 7 and 10; CP-SAT had decided only 7), none invariant under the
-     first cyclic subgroup of order 4; the other two cyclic subgroups and the Q-level solutions with a non-constant
-     profile are running.<!-- /BL8 --> A border without symmetry is not excluded.
+     <!-- BL8 -->none invariant under Q₈ or under any of its three cyclic subgroups of order 4, none invariant under the
+     slice's own symmetry σ of order 3 (CP-SAT had been undecided), and none invariant under three of the other
+     four classes of subgroups of order 3 of the problem's symmetry group; the fifth class and the Q-level solutions
+     with a non-constant profile are running.<!-- /BL8 --> A border without symmetry is not excluded.
    - **The tier-0 slices of the earlier screen** (§8a) [M, P]: I reran them before noticing that
      `report/h4892_answer.md` had already decided most; the reruns reproduce its counts, including the 1360 stage-1
      solutions of the 7572 slice and its emptiness. New here: the slice of 4156 = 4·1039 (undecided there) is empty
@@ -507,7 +507,7 @@ join on energy vectors) and restart-safe per prime. Done for 599, 907, 971 and 1
     some σ-fixed row (`theory/fable_border12.py`). CP-SAT with the exact domain reduction (9.5 GB on 1 worker) runs
     with 1, 4 and 7 fixed rows, 2 h each; results in `logs/fable_fresh/sigma_queue.log`.
     <!-- SIGMA -->CP-SAT (2026-11-12): NFIX = 1, 4, 10 **UNKNOWN at 7200 s** each; NFIX = 7 **INFEASIBLE** (proof, 2803 s). Fixed rows lie in the 12-dimensional σ-invariant part of the border space, so NFIX ∈ {1, 4, 7, 10}.
-    **Decided on 2026-11-13 by an exact clique search** (`theory/fable_border15.py`; method of §7.2: a σ-fixed first row x₁ of E, all of Z inside the rows compatible with x₁, Z's fixed rows chosen first, then a coupled search for the orbit rows of Z that leave room for the orbit rows of E; exhaustive, no cap hit): **NFIX = 1: none** (1009 s; <!-- X1 -->cross-check with the coupled code path running<!-- /X1 -->); **NFIX = 4: none** (57 s); **NFIX = 7: none** (2 s, agreeing with the CP-SAT proof); **NFIX = 10: none** (2 s). **So no σ-invariant border exists for case 0**, and hence for none of the 32 Q-level profiles that are constant on T (they are equivalent to case 0 under signed permutations of the blocks). The control (ℤ₂², Singer σ) is found by the same program in 0 s.<!-- /SIGMA -->
+    **Decided on 2026-11-13 by an exact clique search** (`theory/fable_border15.py`; method of §7.2: a σ-fixed first row x₁ of E, all of Z inside the rows compatible with x₁, Z's fixed rows chosen first, then a coupled search for the orbit rows of Z that leave room for the orbit rows of E; exhaustive, no cap hit): **NFIX = 1: none** (1009 s; a second run through the coupled code path, 800 s, agrees); **NFIX = 4: none** (57 s); **NFIX = 7: none** (2 s, agreeing with the CP-SAT proof); **NFIX = 10: none** (2 s). (A posteriori remark [P]: σ permutes the rows of E, so the number of fixed rows is the trace of σ on the border space, 4 · 1 = 4; only NFIX = 4 was ever possible, and the other three searches are consistency checks.) **So no σ-invariant border exists for case 0**, and hence for none of the 32 Q-level profiles that are constant on T (they are equivalent to case 0 under signed permutations of the blocks). The control (ℤ₂², Singer σ) is found by the same program in 0 s.<!-- /SIGMA -->
 - **If a border exists**, the slice is a staged slice of the repository's usual shape: G′ = ℤ₂⁴ with 6 orbits,
   staging prime 37 with classes of index 12. Its stage 2 was not costed; with 78 orbits per block (312 sign bits)
   against 36 class equations of the degree-6 fixed field it is in the "rich" regime of `report/open_screen_answer.md`
@@ -549,7 +549,7 @@ is assembled and H Hᵀ = nI checked.
 | ℤ₂³ × ℤ₃, annealed core | {χ₁, χ₂, χ₄} | 108 | found | Q₈: **none (exhaustive)**; ⟨i⟩, ⟨j⟩, ⟨k⟩: found, 0 s each; H(108) verified |
 | ℤ₂³ × ℤ₃, annealed core | {1, χ₁, χ₂, χ₃, χ₄} | 116 | UNKNOWN at 600 s | Q₈: found, 0 s; H(116) assembled and verified |
 <!-- QB -->
-| ℤ₂⁴, the 2396 slice of §7.1, case 0 (stands for the 32 constant Walsh profiles) | two 2-flats, 7 characters | 2396 | UNKNOWN at 7200 s | Q₈: **none, exhaustive** (101,250 orbits; two runs, without and with the symmetry reduction to 1097 first rows); ⟨i⟩, ⟨j⟩, ⟨k⟩: running |
+| ℤ₂⁴, the 2396 slice of §7.1, case 0 (stands for the 32 constant Walsh profiles) | two 2-flats, 7 characters | 2396 | UNKNOWN at 7200 s | Q₈: **none, exhaustive** (101,250 orbits; two runs, without and with the reduction to 1097 first rows); ⟨i⟩, ⟨j⟩, ⟨k⟩: **none, exhaustive** (202,500 orbits each; 800 to 2200 s) |
 <!-- /QB -->
 
 So the symmetric search finds in under a second the borders that the generic model needed minutes for or did not
@@ -566,11 +566,18 @@ order 3 or under an involution modulo sign. The subgroups of order 3 fall into f
 one of the two flats (a) or on both (d, the σ of the slice), with block part 1 or ρ (a, d, r, ra, rd).
 `theory/fable_border16.py` decides each class in the normal form, for every admissible number of fixed rows:
 <!-- O3 -->
-- d (= σ): none for 1, 4, 7, 10 fixed rows (third confirmation, in other coordinates);
-- a, r, ra, rd: running.
+The number of fixed rows is forced: it is the trace of the element on the border space [P].
+
+| class | block part | Q-part | fixed rows (forced) | orbits of size 3 | result |
+|---|---|---|---|---|---|
+| d (= σ) | 1 | 3-cycles on both flats | 4 | 8 | **none** (48 s; also none for the impossible counts 1, 7, 10; third confirmation of §7.1, in other coordinates) |
+| rd | ρ | as d | 1 | 9 | **none** (61 s) |
+| ra | ρ | 3-cycle on one flat | 4 | 8 | **none** (16 s) |
+| r | ρ | 1 | 7 | 7 | **none** (160 s) |
+| a | 1 | 3-cycle on one flat | 16 | 4 | running (52,488 fixed rows: the largest case) |
 <!-- /O3 -->
-The involutions modulo sign are the elements i, j, k of Q₈ (one class, by ρ; decided in the table above) and many
-classes with a nontrivial Q-part, which were not run.
+The involutions modulo sign are the elements i, j, k of Q₈ (one class, by ρ; the three runs in the table above
+are therefore one result obtained three times) and many classes with a nontrivial Q-part, which were not run.
 
 ---
 

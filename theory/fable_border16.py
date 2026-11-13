@@ -130,9 +130,55 @@ def main():
     nf_forced = (3 * dfix - b) // 2
     todo = list(range(1, min(dfix, 28) + 1, 3)) if (len(sys.argv) > 3 and sys.argv[3] == 'ALL') else [nf_forced]
     print(f'trace of the symmetry on the border space: NFIX = {nf_forced}', flush=True)
+    # ---- first rows up to the symmetries of the problem that commute with g (they permute the g-fixed rows)
+    cen8 = [(p_, sg_) for p_, sg_, P_ in cen]
+    def bact(R, p_, sg_):
+        out = np.empty_like(R)
+        for c in range(4):
+            col = R[:, p_[c]]; out[:, c] = col if sg_[c] == 1 else neg[col]
+        return out
+    comm = []
+    lins = []
+    for imgs in lin_maps():
+        lin = [0] * k
+        for q in range(k):
+            r = 0
+            for i in range(4):
+                if (q >> i) & 1: r ^= imgs[i]
+            lin[q] = r
+        if any(tuple(f[lin]) not in key for f in F): continue
+        lins.append(lin)
+    assert len(lins) == 72
+    tab = [[F @ M.T[c * k:(c + 1) * k, c2 * k:(c2 + 1) * k] @ F.T for c2 in range(4)] for c in range(4)]
+    for lin in lins:
+        for c0 in range(k):
+            pm = [lin[q] ^ c0 for q in range(k)]
+            if [pm[qm[q]] for q in range(k)] != [qm[pm[q]] for q in range(k)]: continue      # commutes with the Q part of g
+            fi2 = np.array([key[tuple(f[pm])] for f in F])
+            assert all(np.array_equal(tab[c][c2][np.ix_(fi2, fi2)], tab[c][c2]) for c in range(4) for c2 in range(4))
+            comm.append(fi2)
+    Pg = np.zeros((4, 4), dtype=np.int64)
+    for c in range(4): Pg[c, bp[c]] = bs[c]
+    bcomm = [(p_, sg_) for p_, sg_, P_ in cen if np.array_equal(P_ @ Pg, Pg @ P_)]
+    cR = code(Rf); best = np.minimum(cR, code(neg[Rf]))
+    for fi2 in comm:
+        R1 = fi2[Rf]
+        for p_, sg_ in bcomm:
+            R2 = bact(R1, p_, sg_); np.minimum(best, np.minimum(code(R2), code(neg[R2])), out=best)
+    firsts = [i for i in range(NF) if cR[i] == best[i]]
+    print(f'symmetries commuting with g: {len(comm)} affine maps x {len(bcomm)} block permutations; first rows up to symmetry: {len(firsts)} of {NF}', flush=True)
     for nfix in todo:
         n3 = (b - nfix) // 3; t0 = time.time(); nodes[0] = 0; trunc[0] = False; found = None; nzc = 0
-        for x1 in range(NF):
+        ck = f'logs/fable_fresh/ckpt_b16_{which}_f{nfix}.json'; start = 0; lastp = time.time()
+        try:
+            cj = json.load(open(ck)); start = cj['done']; nzc = cj['nzc']; nodes[0] = cj['nodes']
+            print(f'resuming after {start} first rows (checkpoint)', flush=True)
+        except Exception: pass
+        for pos, x1 in enumerate(firsts):
+            if pos < start: continue
+            if pos > start and (time.time() - lastp > 300 or pos % 50 == 0):
+                json.dump(dict(done=pos, nzc=nzc, nodes=nodes[0], nfix=nfix), open(ck, 'w')); lastp = time.time()
+                print(f'  first row {pos}/{len(firsts)}: complete Z examined {nzc}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
             xv = FV[x1]; wE = xv @ MT
             co = comp_orb(wE); cfx = np.abs(FV @ wE) == fk                 # Z-candidates compatible with x1
             eo_base = (OV[0] @ xv) == 0; ef_base = (FV @ xv) == 0           # E-candidates orthogonal to x1
