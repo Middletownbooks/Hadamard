@@ -109,3 +109,13 @@ MemoryError
 {"key": ["k4", 1367, [4], [31], 11, 2, [[1, 6]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
 2026-11-13 20:55:59 end ["k4", 1367, [4], [31], 11, 2, [[1, 6]]] rc=124
 2026-11-13 20:55:59 start ["k4", 2027, [4], [11, 2], 23, 2, [[1, 5]]]
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 432, in main
+    import gc; gc.collect()                  # the decision is printed before any file is opened: near the address-space
+    ^^^^^^^^^
+MemoryError
+2026-11-13 20:59:59 end ["k4", 2027, [4], [11, 2], 23, 2, [[1, 5]]] rc=1
+2026-11-13 20:59:59 start ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]]
