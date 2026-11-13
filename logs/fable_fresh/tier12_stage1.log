@@ -119,3 +119,7 @@ Traceback (most recent call last):
 MemoryError
 2026-11-13 20:59:59 end ["k4", 2027, [4], [11, 2], 23, 2, [[1, 5]]] rc=1
 2026-11-13 20:59:59 start ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]]
+{"key": ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "planted": [{"T0": 2752, "R": 36, "B": null}], "phase": "final"}
+2026-11-13 21:11:25 end ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]] rc=0
+2026-11-13 21:11:25 start ["b0", 2315, [], [463], 5, 2, [[0, 33]]]

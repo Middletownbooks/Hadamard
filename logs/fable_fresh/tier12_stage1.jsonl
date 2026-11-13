@@ -24,3 +24,5 @@
 {"key": ["b1", 1031, [], [103, 2], 5, 2, [[0, 17]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
 {"key": ["k4", 1367, [4], [31], 11, 2, [[1, 6]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
 {"key": ["k4", 2027, [4], [11, 2], 23, 2, [[1, 5]]], "B": {"undecided": "rc=1 (timeout 2700 s or memory 7 GB)"}, "phase": "capped"}
+{"key": ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "planted": [{"T0": 2752, "R": 36, "B": null}], "phase": "final"}
