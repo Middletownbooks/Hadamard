@@ -143,3 +143,7 @@ MemoryError
 2026-11-13 22:07:43 start ["b1", 1327, [], [13, 3, 2], 17, 2, [[0, 3]]]
 2026-11-13 22:52:43 end ["b1", 1327, [], [13, 3, 2], 17, 2, [[0, 3]]] rc=124
 2026-11-13 22:52:43 start ["k4", 1783, [4], [5], 89, 8, [["neg", [0, 1]]]]
+{"key": ["k4", 1783, [4], [5], 89, 8, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 345004, "join": [{"rows": [2, 2, 20, 82], "left_pairs": 0, "right_pairs": 0}, {"rows": [2, 6, 6, 84], "left_pairs": 261600, "right_pairs": 255300}, {"rows": [4, 14, 14, 82], "left_pairs": 0, "right_pairs": 0}, {"rows": [18, 18, 20, 78], "left_pairs": 0, "right_pairs": 0}], "secs": 256.2}, "solutions": [], "phase": "decision"}
+{"key": ["k4", 1783, [4], [5], 89, 8, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 345004, "join": [{"rows": [2, 2, 20, 82], "left_pairs": 0, "right_pairs": 0}, {"rows": [2, 6, 6, 84], "left_pairs": 261600, "right_pairs": 255300}, {"rows": [4, 14, 14, 82], "left_pairs": 0, "right_pairs": 0}, {"rows": [18, 18, 20, 78], "left_pairs": 0, "right_pairs": 0}], "secs": 256.2}, "solutions": [], "planted": [{"T0": 20496, "R": 6940, "B": true}], "phase": "final"}
+2026-11-13 23:02:02 end ["k4", 1783, [4], [5], 89, 8, [["neg", [0, 1]]]] rc=0
+2026-11-13 23:02:02 start ["k4", 1879, [4], [7], 67, 6, [["neg", [0, 1]]]]
