@@ -73,3 +73,7 @@ MemoryError
 2026-11-13 17:16:53 start ["k4", 2207, [4], [29], 19, 2, [[1, 7]]]
 2026-11-13 18:01:53 end ["k4", 2207, [4], [29], 19, 2, [[1, 7]]] rc=124
 2026-11-13 18:01:53 start ["b0", 1981, [], [283], 7, 3, [[0, 47]]]
+{"key": ["b0", 1981, [], [283], 7, 3, [[0, 47]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
+{"key": ["b0", 1981, [], [283], 7, 3, [[0, 47]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "planted": [{"T0": 7604, "R": 7980, "B": null}], "phase": "final"}
+2026-11-13 18:34:42 end ["b0", 1981, [], [283], 7, 3, [[0, 47]]] rc=0
+2026-11-13 18:34:42 start ["b1", 1787, [], [47, 2], 19, 6, [[0, 23]]]
