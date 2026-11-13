@@ -2,7 +2,7 @@
 # Borders of the 2396 slice (normal form) invariant under each of the five classes of subgroups of order 3.
 cd /home/user/Hadamard
 L=logs/fable_fresh
-for w in d a r ra rd; do
+for w in rd ra r a; do
   out=$L/b16_$w.log
   if grep -q "^summary" $out 2>/dev/null; then continue; fi
   while ps -eo args | grep -E "fable_border16.py" | grep -v grep > /dev/null; do sleep 20; done

@@ -72,10 +72,12 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
      every possible number of fixed rows, 1, 4, 7 and 10; CP-SAT had decided only 7), none invariant under the
      first cyclic subgroup of order 4; the other two cyclic subgroups and the Q-level solutions with a non-constant
      profile are running.<!-- /BL8 --> A border without symmetry is not excluded.
-   - **The eight cheapest slices that the earlier screen of all 85 orders had left undecided** (§8a) [M, P]: six are
-     empty at stage 1 and one is undecided. The eighth, at 7572 = 4·1893, is the first slice at an open order with a
-     non-empty exact stage 1 (1360 solutions), and it has no core: its multiplier group contains all of ℤ₁₁\*, and a
-     Parseval count then leaves no room [P]. The same gate kills 18 of the 81 slices that screen had ranked.
+   - **The tier-0 slices of the earlier screen** (§8a) [M, P]: I reran them before noticing that
+     `report/h4892_answer.md` had already decided most; the reruns reproduce its counts, including the 1360 stage-1
+     solutions of the 7572 slice and its emptiness. New here: the slice of 4156 = 4·1039 (undecided there) is empty
+     at stage 1, so only 4748 remains undecided in that tier; and a one-line a-priori gate (a multiplier group that
+     contains all of ℤ_ℓ\* on a prime factor ℓ ≥ 5 leaves no core) that kills 18 of the 81 ranked slices, 7572 among
+     them, before any enumeration.
 <!-- /BOTTOM -->
 
 ---
@@ -107,7 +109,7 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
 | 12 | Skew T-structures for Paley blocks beyond t = 3 | Kumar's exhaustive t = 9, 19; count at t = 33 | about 10⁻³ expected [E]; dropped |
 | 13 | Unstructured small skew values (89, 101, 107, 149) | size | 2³¹¹ sign vectors at 89 with no multiplier; dropped |
 | 14 | (second phase, 2026-11-13) Borders with the block symmetry Q₈ that every Goethals–Seidel core over ℤ₂^a has ("quaternionic borders"), and the weaker cyclic ones | exact clique search, calibrated on four solved cases | a fast border finder (H(112), H(116), H(108) in under a second); for the 2396 slice: **no Q₈-invariant and no σ-invariant border** [M], §7.1, §7.2 |
-| 15 | Exact stage 1 of the eight tier-0 slices the earlier screen left undecided, then of tiers 1 and 2 | the screen's own method B with planted controls | six empty, one undecided; **7572 has 1360 stage-1 solutions but no core**, by a new energy gate that also kills 18 of the 81 tiered slices [P, M], §8a |
+| 15 | Exact stage 1 of the tier-0 slices the screen lists as "not run" (most were already decided in `report/h4892_answer.md`, which I had overlooked), then tiers 1 and 2 | the screen's own method B with planted controls | reruns agree with the earlier report; **new: 4156 empty**; an a-priori energy gate that kills 18 of the 81 tiered slices [P, M], §8a |
 | 16 | Cores over non-abelian groups with class-function blocks; commutative association schemes in place of multiplier orbits | cell energy on the cosets of the commutator subgroup | Frobenius and extraspecial groups have constant cells off the centre or off G′, which the energy identity forbids [P]; no scheme on 599 − t points was found to try; dropped |
 | 17 | Time–frequency (Heisenberg) symmetries x(g + l) = ±η(g)x(g) | transform computed | they are Kronecker products (order ≡ 0 mod 16) when all blocks share the symmetry, and cost a factor 2 in equations otherwise [P]; dropped |
 | 18 | The Alpöge half-shift template read as a ℤ₂ split with arc supports (two aperiodic complementary quadruples of length about v/4) | count | negative beyond v ≈ 450, in line with `report/alpoge_methods_forensics.md` [E]; dropped |
@@ -553,6 +555,23 @@ is assembled and H Hᵀ = nI checked.
 So the symmetric search finds in under a second the borders that the generic model needed minutes for or did not
 find, and the Q₈ ansatz is not always sufficient (the 108 case).
 
+**All symmetries of order 3 of the 2396 border problem [P for the group, M for the searches].** For a Walsh
+quadruple constant on T the problem depends only on Γ = GS(4, 2, 2, 2) (every signed permutation of (4, 2, 2, 2)
+gives an equivalent problem: automorphisms of ℍ, multiplications by units, transposition). Its symmetries, apart
+from dualities exchanging E and Z, form the group (Q₈ ⋊ ℤ₃) × Aut_Q of order 24 · 1152: the 24 signed block
+permutations commuting with Γ (Q₈ and the rotation ρ : i → j → k about the axis of the imaginary part of
+4 + 2i + 2j + 2k) and the 1152 affine maps of F₂⁴ that keep T (all of them keep the table of K-values [M]). Its
+order is 2¹⁰ · 27, so a border with a nontrivial symmetry (modulo the sign −1) is invariant under an element of
+order 3 or under an involution modulo sign. The subgroups of order 3 fall into five classes: Q-part a 3-cycle on
+one of the two flats (a) or on both (d, the σ of the slice), with block part 1 or ρ (a, d, r, ra, rd).
+`theory/fable_border16.py` decides each class in the normal form, for every admissible number of fixed rows:
+<!-- O3 -->
+- d (= σ): none for 1, 4, 7, 10 fixed rows (third confirmation, in other coordinates);
+- a, r, ra, rd: running.
+<!-- /O3 -->
+The involutions modulo sign are the elements i, j, k of Q₈ (one class, by ρ; decided in the table above) and many
+classes with a nontrivial Q-part, which were not run.
+
 ---
 
 ## 8. The production run: skew 361 over ℤ₁₉ × ℤ₁₉ [E; a finished run without a hit excludes nothing]
@@ -576,49 +595,53 @@ towards the expensive end; it is no longer the natural next run on 4 cores.
 
 ---
 
-## 8a. Exact stage 1 of the tier-0 slices that `report/open_screen_answer.md` left "not run" [M; added 2026-11-13]
+## 8a. The tier-0 slices again: one new decision, and an a-priori gate [M, P; added 2026-11-13]
 
-The earlier screen of all 85 open orders ended with eight slices in its cheapest tier whose exact stage-1 decision
-had not been run. They were run now with its own tool (`theory/open_screen_stage1_exact.py`, method B, `--strong`,
-with a planted control; queue `scripts/fable_tier0_queue.sh`, results `logs/fable_fresh/tier0_stage1.jsonl`).
+**Correction first.** I ran the eight tier-0 slices that `report/open_screen_answer.md` lists as "not run" before
+noticing that the repository's later report `report/h4892_answer.md` (2026-11-06, §4) had already decided most of
+them, by two methods each, including the non-empty stage 1 of 7572 and its death at the ℤ₄₃ compression. So the
+table below is a rerun, not a discovery. It reproduces that report's counts exactly (same tool, method B, `--strong`,
+planted controls; `scripts/fable_tier0_queue.sh`, `logs/fable_fresh/tier0_stage1.jsonl`). **What is new is one
+decision (4156) and the gate after the table.**
 
 <!-- TIER0 -->
-| 4v (v) | slice | estimated cost (log₂) | method B | planted control | verdict |
-|---|---|---|---|---|---|
-| 4156 (1039) | k4, ℤ₄ × ℤ₇ × ℤ₃₇, s = 4, U = −1 | 32.2 | 0 solutions, 11,527,476 blocks, 11 row patterns, 5110 s | not finished (container restart) | **empty** (one method) |
-| 5708 (1427) | b1, ℤ₂₃ × ℤ₂ × ℤ₃₁, s = 10, U of order 22 | 32.9 | 0 solutions, 94 blocks | 3/3 | **empty**; also dead by the gate below |
-| 5036 (1259) | b1, ℤ₁₇ × ℤ₂ × ℤ₃₇, s = 12, U of order 16 | 38.1 | 0 solutions, 142 blocks | 3/3 | **empty**; also dead by the gate below |
-| 7572 (1893) | b1, ℤ₁₁ × ℤ₂² × ℤ₄₃, s = 6, U of order 10 | 39.1 | **1360 solutions**, 12,532 blocks | 3/3 | stage 1 **not empty**, but **no core: dead by the gate below [P]** |
-| 5692 (1423) | b1, ℤ₃² × ℤ₂ × ℤ₇₉, s = 6, U = −1 | 39.4 | 0 solutions, 109,832 blocks | 1/1 | **empty** |
-| 9260 (2315) | b1, ℤ₁₃ × ℤ₂ × ℤ₈₉, s = 8, U of order 6 | 40.2 | 0 solutions, 520 blocks | 1/1 | **empty** |
-| 3788 (947) | b1, ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 14, U of order 10 | 41.1 | 0 solutions, 354 blocks | 1/1 | **empty**; also dead by the gate below |
-| 4748 (1187) | k4, ℤ₄ × ℤ₈ × ℤ₃₇, s = 4, U = −1 | 41.4 | out of memory at a 7 GB cap; rerun at 11 GB running | – | undecided so far |
+| 4v (v) | slice | method B here | `h4892_answer.md` §4 | status |
+|---|---|---|---|---|
+| 4156 (1039) | k4, ℤ₄ × ℤ₇ × ℤ₃₇, s = 4, U = −1 | **0 solutions, 11,527,476 blocks, 11 row patterns, 5110 s** (the planted control was cut by a container restart) | undecided (B timed out at 3600 s) | **new: empty at stage 1** (one method) |
+| 5708 (1427) | b1, ℤ₂₃ × ℤ₂ × ℤ₃₁, s = 10, U of order 22 | 0, 94 blocks, planted 3/3 | empty, two methods | agrees |
+| 5036 (1259) | b1, ℤ₁₇ × ℤ₂ × ℤ₃₇, s = 12, U of order 16 | 0, 142 blocks, planted 3/3 | empty, two methods | agrees |
+| 7572 (1893) | b1, ℤ₁₁ × ℤ₂² × ℤ₄₃, s = 6, U of order 10 | 1360 solutions, 12,532 blocks, planted 3/3 | 1360 classes by two methods; empty at the ℤ₄₃ compression (energy 7564 > 7396) [P + M] | agrees; a second, a-priori proof below |
+| 5692 (1423) | b1, ℤ₃² × ℤ₂ × ℤ₇₉, s = 6, U = −1 | 0, 109,832 blocks, planted 1/1 | empty, two methods | agrees |
+| 9260 (2315) | b1, ℤ₁₃ × ℤ₂ × ℤ₈₉, s = 8, U of order 6 | 0, 520 blocks, planted 1/1 | empty, two methods | agrees |
+| 3788 (947) | b1, ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 14, U of order 10 | 0, 354 blocks, planted 1/1 | empty, two methods | agrees |
+| 4748 (1187) | k4, ℤ₄ × ℤ₈ × ℤ₃₇, s = 4, U = −1 | OverflowError (block cap) at 11 GB | undecided (same cap) | still undecided |
 <!-- /TIER0 -->
 
-**The 7572 slice and a gate the earlier screen did not have [P].** The slice of 7572 = 4·1893 is the first one at
-an open order whose exact stage 1 is not empty (1360 solutions, all three planted controls recovered). It has no
-core all the same. Its multiplier group contains the whole of ℤ₁₁\*, so every block has the form x(a, g) = X⁰(g) for
-a = 0 and X¹(g) for a ≠ 0, with g in G₂ = ℤ₂² × ℤ₄₃ (172 elements). At a character (α, χ) with α ≠ 0 the transform
-is X̂⁰(χ) − X̂¹(χ). All 172 of these characters need Σ_k |·|² = n, so by Parseval
+4156 is a k4 slice with odd |K|, so by Theorem B a core there would have completed to a matrix at once; with it,
+every tier-0 slice of the screen except 4748 is now decided empty.
+
+**An a-priori gate [P].** The earlier report kills 7572 class by class after stage 1. The same conclusion follows
+before any enumeration. The multiplier group of that slice contains the whole of ℤ₁₁\*, so every block has the form
+x(a, g) = X⁰(g) for a = 0 and X¹(g) for a ≠ 0, with g in G₂ = ℤ₂² × ℤ₄₃ (172 elements). At a character (α, χ) with
+α ≠ 0 the transform is X̂⁰(χ) − X̂¹(χ). All 172 of these characters need Σ_k |·|² = n, so by Parseval
 Σ_k Σ_g (X⁰_k(g) − X¹_k(g))² = n = 7572, while the left side is at most 4 · 172 · 4 = 2752. In general:
 
   *if the blocks are invariant under all of ℤ_ℓ\* on a factor ℤ_ℓ of G = ℤ_ℓ × G₂ (ℓ prime), and the border
   characters are trivial on ℤ_ℓ, then 4ℓ|G₂| ≤ n ≤ 16|G₂|, so ℓ ≤ 3.*
 
-This is the stage-1 Parseval identity for the other compression (to G/ℤ_ℓ), whose alphabet is {±ℓ, ±(ℓ − 2)}; the
-earlier screen applied its exact gates to the compression along ℤ_q only. Of the 81 slices it placed in tiers 0–3,
-**18 have a full unit group on a prime axis ℓ ≥ 5 and are dead by this gate**: 4 of the 10 in tier 0 (947, 1259,
-1427, 1893), 1 of 5 in tier 1 and 13 of 53 in tier 2 [M: key scan of `logs/open_screen/table.jsonl`]. The stage-1
-solutions of 1893 show the mechanism: almost every cell has sum 1, and the equations are met by a few constant
-fibres (cell sums ±43), which the full level cannot afford.
+It is the Parseval identity for the compression to G/ℤ_ℓ, whose alphabet is {±ℓ, ±(ℓ − 2)}. Of the 81 slices the
+screen placed in tiers 0–3, **18 have a full unit group on a prime axis ℓ ≥ 5 and are dead by this gate without any
+enumeration**: 4 of the 10 in tier 0 (947, 1259, 1427, 1893, all four also decided by enumeration), 1 of 5 in tier 1
+and 13 of 53 in tier 2 [M: key scan of `logs/open_screen/table.jsonl`].
 
-**Tier 1 and tier 2.** The 44 slices of tiers 1 and 2 that survive the gate and had no exact decision are being
-decided the same way (`scripts/fable_tier12_queue.sh`, 45 minutes and 7 GB each at most; results
-`logs/fable_fresh/tier12_stage1.jsonl`).
+**Tier 1 and tier 2.** The 44 slices of tiers 1 and 2 that survive the gate are being rerun the same way
+(`scripts/fable_tier12_queue.sh`, 45 minutes and 7 GB each at most; `logs/fable_fresh/tier12_stage1.jsonl`). Several
+of them are in `h4892_answer.md` already (4892 with its 384 classes and no core, 3004, 5892, 7180, …).
 <!-- TIER12 -->
+So far: 599 (b1, ℤ₁₃ × ℤ₂, q = 23, s = 2) empty; 1487 (k4, ℤ₄ × ℤ₇ × ℤ₅₃, s = 4) empty (1,450,382 blocks; planted
+control undecided); 1103 (b1, ℤ₁₉ × ℤ₂, q = 29, s = 4) empty; 751 (k4) empty and 1223 with 384 solutions, both as in
+the earlier report; 1987 (k4), 1831 and 1473 capped (undecided).
 <!-- /TIER12 -->
-
-
 
 ---
 

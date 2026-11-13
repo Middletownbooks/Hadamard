@@ -125,7 +125,12 @@ def main():
         for j in range(3): A &= ((OV[0][ix] @ OV[j][ix].T) == 0)
         np.fill_diagonal(A, False); return A
     results = {}
-    for nfix in range(1, min(dfix, 28) + 1, 3):
+    # [P] the rows of E are permuted by g (up to nothing: order 3), so NFIX = trace of g on the border space
+    #     = dfix - (28 - dfix)/2: one value only.  ALL = 1 on the command line runs every NFIX = 1 mod 3 anyway.
+    nf_forced = (3 * dfix - b) // 2
+    todo = list(range(1, min(dfix, 28) + 1, 3)) if (len(sys.argv) > 3 and sys.argv[3] == 'ALL') else [nf_forced]
+    print(f'trace of the symmetry on the border space: NFIX = {nf_forced}', flush=True)
+    for nfix in todo:
         n3 = (b - nfix) // 3; t0 = time.time(); nodes[0] = 0; trunc[0] = False; found = None; nzc = 0
         for x1 in range(NF):
             xv = FV[x1]; wE = xv @ MT
@@ -133,7 +138,32 @@ def main():
             eo_base = (OV[0] @ xv) == 0; ef_base = (FV @ xv) == 0           # E-candidates orthogonal to x1
             ifx = np.nonzero(cfx)[0]
             if len(ifx) < nfix: continue
-            for fc in fixed_cliques(ifx, nfix):
+            if nfix > 3 * n3:
+                # most of the border is fixed rows: coupled search on the fixed rows first (Z: nfix of them inside
+                # compat(x1); E: nfix - 1 more, orthogonal to x1, compatible with all of Z's), collected, then the
+                # orbit rows.  Necessary conditions only until the final exact completion below.
+                ie_f = np.nonzero(ef_base)[0]
+                if len(ie_f) < nfix - 1: continue
+                VZ = FV[ifx]; VE = FV[ie_f]
+                AZf = (VZ @ VZ.T) == 0; np.fill_diagonal(AZf, False)
+                AEf = (VE @ VE.T) == 0; np.fill_diagonal(AEf, False)
+                CMf = np.abs(VZ @ (VE @ MT).T) == fk
+                az = np.ones(len(ifx), dtype=bool); ae = np.ones(len(ie_f), dtype=bool)
+                while True:
+                    az2 = az & ((AZf & az[None, :]).sum(axis=1) >= nfix - 1) & ((CMf & ae[None, :]).sum(axis=1) >= nfix - 1)
+                    ae2 = ae & ((AEf & ae[None, :]).sum(axis=1) >= nfix - 2) & ((CMf & az2[:, None]).sum(axis=0) >= nfix)
+                    if az2.sum() == az.sum() and ae2.sum() == ae.sum(): break
+                    az, ae = az2, ae2
+                    if az.sum() < nfix or ae.sum() < nfix - 1: break
+                if az.sum() < nfix or ae.sum() < nfix - 1: continue
+                got, _, nn, tr, zc = FC.coupled(AZf, CMf, AEf, nfix, nfix - 1, candz=np.nonzero(az)[0].tolist(), cande=np.nonzero(ae)[0].tolist(),
+                                                maxnodes=max(1, nodecap - nodes[0]), collect=100000)
+                nodes[0] += nn
+                if tr: trunc[0] = True
+                fcl = [[int(ifx[c]) for c in cl] for cl in got]
+            else:
+                fcl = fixed_cliques(ifx, nfix)
+            for fc in fcl:
                 eo = eo_base.copy(); ef = ef_base.copy()
                 for f in fc:
                     wZ = MT @ FV[f]; eo &= comp_orb(wZ); ef &= (np.abs(FV @ wZ) == fk)
