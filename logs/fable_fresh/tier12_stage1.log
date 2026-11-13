@@ -4,3 +4,6 @@
 2026-11-13 12:08:02 end ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]] rc=0
 2026-11-13 12:08:02 start ["k4", 1487, [4], [7], 53, 4, [["neg", [0, 1]]]]
 {"key": ["k4", 1487, [4], [7], 53, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 1450382, "join": [{"rows": [6, 6, 10, 76], "left_pairs": 2232720, "right_pairs": 44226}], "secs": 673.7}, "solutions": [], "phase": "decision"}
+{"key": ["k4", 1487, [4], [7], 53, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 1450382, "join": [{"rows": [6, 6, 10, 76], "left_pairs": 2232720, "right_pairs": 44226}], "secs": 673.7}, "solutions": [], "planted": [{"T0": 19560, "R": 60, "B": null}], "phase": "final"}
+2026-11-13 12:31:05 end ["k4", 1487, [4], [7], 53, 4, [["neg", [0, 1]]]] rc=0
+2026-11-13 12:31:05 start ["k4", 1987, [4], [16], 31, 2, [["neg", [0, 1]]]]

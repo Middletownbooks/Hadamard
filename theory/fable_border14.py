@@ -217,16 +217,32 @@ def main():
         cz = np.nonzero(compat_row(x1))[0]
         hist[len(cz) >= t] = hist.get(len(cz) >= t, 0) + 1
         if len(cz) < t: continue
-        A = orth_small(cz); np.fill_diagonal(A, False)
+        V_ = RV[0][cz]; A = np.ones((len(cz), len(cz)), dtype=bool)
+        for i_ in range(0, len(cz), 2000):
+            for j in range(nim): A[i_:i_ + 2000] &= ((V_[i_:i_ + 2000] @ RV[j][cz].T) == 0)
+        np.fill_diagonal(A, False)
         # E-candidates: orbits orthogonal to x1.  Bipartite pruning before any clique search: a Z-orbit needs t - 1
         # orthogonal partners and t - 1 compatible E-candidates; an E-candidate needs t - 2 orthogonal partners and
         # must be compatible with t Z-orbits.  Iterate to the fixed point (exact: only necessary conditions).
         ce_ = orth_row(x1); ce_[x1] = False; ce = np.nonzero(ce_)[0]
         if len(ce) < t - 1: continue
-        Be = orth_small(ce); np.fill_diagonal(Be, False)
-        Cm = np.ones((len(ce), len(cz)), dtype=bool)
-        XM = RVM[ce]
-        for j in range(nim): Cm &= (np.abs(XM @ RV[j][cz].T) == fk)
+        # compatibility matrix in row chunks (memory), then drop at once the E-candidates with fewer than t compatible
+        # Z-orbits before the orthogonality graph of the E-candidates is built
+        def comp_block(ix):
+            XM = RVM[ix]; C = np.ones((len(ix), len(cz)), dtype=bool)
+            for j in range(nim): C &= (np.abs(XM @ RV[j][cz].T) == fk)
+            return C
+        CH = 2000
+        Cm = np.concatenate([comp_block(ce[i:i + CH]) for i in range(0, len(ce), CH)], axis=0)
+        keep = Cm.sum(axis=1) >= t
+        ce = ce[keep]; Cm = Cm[keep]
+        if len(ce) < t - 1: continue
+        def orth_chunked(idx):
+            V = RV[0][idx]; out = np.ones((len(idx), len(idx)), dtype=bool)
+            for i in range(0, len(idx), CH):
+                for j in range(nim): out[i:i + CH] &= ((V[i:i + CH] @ RV[j][idx].T) == 0)
+            return out
+        Be = orth_chunked(ce); np.fill_diagonal(Be, False)
         az = np.ones(len(cz), dtype=bool); ae = np.ones(len(ce), dtype=bool)
         while True:
             az2 = az & ((A & az[None, :]).sum(axis=1) >= t - 1) & ((Cm & ae[:, None]).sum(axis=0) >= t - 1)

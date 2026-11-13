@@ -1,6 +1,6 @@
 # A fresh look at the open Hadamard and skew-Hadamard orders: what was tried, what is now closed
 
-Date: 2026-11-09 to 2026-11-11. Branch `claude/focused-planck-j1645f`. Answers `report/prompt_fable_fresh.md`.
+Date: 2026-11-09 to 2026-11-13 (second phase on 2026-11-13: §6.4 item 5, §7.2, §8a and the σ-invariant result in §7.1). Branch `claude/focused-planck-j1645f`. Answers `report/prompt_fable_fresh.md`.
 Scripts: `theory/fable_*.py`. Logs and working notes: `logs/fable_fresh/` (`NOTES.md` is the session's state file).
 
 **Tags.** [P] proved here (proof in the text); [M] exact computation (script named); [E] estimate. A cap or a timeout
@@ -89,8 +89,13 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
 | 11 | 4792 = 8·599 by Kumar's Spence plug-in ℤ₇ × ℤ₁₉ × F₉ | his calibrated cost | 1.5·10³ core-hours against 288 available; dropped |
 | 12 | Skew T-structures for Paley blocks beyond t = 3 | Kumar's exhaustive t = 9, 19; count at t = 33 | about 10⁻³ expected [E]; dropped |
 | 13 | Unstructured small skew values (89, 101, 107, 149) | size | 2³¹¹ sign vectors at 89 with no multiplier; dropped |
+| 14 | (second phase, 2026-11-13) Borders with the block symmetry Q₈ that every Goethals–Seidel core over ℤ₂^a has ("quaternionic borders"), and the weaker cyclic ones | exact clique search, calibrated on four solved cases | a fast border finder (H(112), H(116), H(108) in under a second); for the 2396 slice: **no Q₈-invariant and no σ-invariant border** [M], §7.1, §7.2 |
+| 15 | Exact stage 1 of the eight tier-0 slices the earlier screen left undecided, then of tiers 1 and 2 | the screen's own method B with planted controls | six empty, one undecided; **7572 has 1360 stage-1 solutions but no core**, by a new energy gate that also kills 18 of the 81 tiered slices [P, M], §8a |
+| 16 | Cores over non-abelian groups with class-function blocks; commutative association schemes in place of multiplier orbits | cell energy on the cosets of the commutator subgroup | Frobenius and extraspecial groups have constant cells off the centre or off G′, which the energy identity forbids [P]; no scheme on 599 − t points was found to try; dropped |
+| 17 | Time–frequency (Heisenberg) symmetries x(g + l) = ±η(g)x(g) | transform computed | they are Kronecker products (order ≡ 0 mod 16) when all blocks share the symmetry, and cost a factor 2 in equations otherwise [P]; dropped |
+| 18 | The Alpöge half-shift template read as a ℤ₂ split with arc supports (two aperiodic complementary quadruples of length about v/4) | count | negative beyond v ≈ 450, in line with `report/alpoge_methods_forensics.md` [E]; dropped |
 
-Ideas 8–13 were dropped on the stated one-line reason and are not discussed further.
+Ideas 8–13 and 16–18 were dropped on the stated one-line reason and are not discussed further.
 
 ---
 

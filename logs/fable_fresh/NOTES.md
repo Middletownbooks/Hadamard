@@ -266,3 +266,23 @@ State of thinking (so a restart does not lose it):
     scripts/fable_tier0_queue.sh (planted 3) and fable_tier0_queue2.sh (last four keys, planted 1)
   Verdict lines are appended to logs/fable_fresh/qborder_queue.log.
 - tier 0: 1039 k4 (Z_4 x Z_7 x Z_37, s = 4): stage 1 EMPTY by method B (11,527,476 blocks, 5110 s) [M, one method].
+
+## 2026-11-13 12:50 UTC: results of the second phase so far (container restarted once at ~11:00; logs survived)
+
+- **sigma-invariant borders, 2396 slice case 0: NONE for NFIX = 1, 4, 7, 10 [M, exhaustive]** (theory/fable_border15.py;
+  NFIX 1 by two code paths, 1009 s and 800 s; 4: 57 s; 7: 2 s (CP-SAT agreed); 10: 2 s).  With "no Q8-invariant
+  border" (two runs) this closes the two natural symmetric classes for the constant profiles.
+- Order-4 classes (z1, z2, z3 = <i>, <j>, <k>): running, scripts/fable_qborder_queue.sh 0 (checkpoints in
+  logs/fable_fresh/ckpt_b14_*.json; z1 was OOM-killed once at first row 1040/1097, code now chunked, resumed).
+  Then scripts/fable_border_master.sh runs q8/z1-3 and sigma for the non-constant profile, solution index 2160.
+- Search engine: theory/fable_clique.py (C, bitsets): kcliques, coupled (Z-clique whose common neighbourhood holds an
+  E-clique; collect mode).  Self-tests against brute force in the file.
+- **Tier 0 exact stage 1 (method B):** empty: 1039 k4, 1427, 1259 (s=12), 1423, 2315, 947 (s=14).
+  **1893 (order 7572): 1360 stage-1 solutions, planted 3/3, but NO core [P]:** U = all of Z_11^*, so blocks are
+  (X0; X1 x 10) along Z_11 and Parseval at the characters nontrivial on Z_11 needs sum (X0-X1)^2 = n = 7572 <= 2752.
+  General gate: full unit group on a prime axis l >= 5 is dead.  18 of the 81 tiered slices die by it (4 of tier 0).
+  1187 k4: method B OverflowError (undecided); CP-SAT not yet tried.
+- Tier 1/2 (44 slices surviving the gate): scripts/fable_tier12_queue.sh running (logs/fable_fresh/tier12_stage1.*).
+  So far: 599 b1 (Z_13 x Z_2, q=23, s=2) empty; 1487 k4 empty (planted undecided).
+- Report: 6.4 item 5, 7 correction (Kumar's t = 5 remark), 7.1 SIGMA block, 7.2 (new), 8a (new), ideas 14-18.
+  Still to write at the end: bottom line items, 9 (next), 10 (reproduce), TIER12 and QB markers.

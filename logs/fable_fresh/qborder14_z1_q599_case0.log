@@ -5,25 +5,6 @@ rows 810000, orbit representatives 202500, self-orthogonal orbits 202500
 compatible y per x: min 447 median 963 max 6529; orthogonal: median 5549
 Q-symmetries: 72 linear maps keep the admissible functions; 1152 affine maps keep the K-table
 first rows up to symmetry: 1097 of 202500
-  first row 20/1097: complete Z so far 0, nodes 525346, 346s
-  first row 40/1097: complete Z so far 0, nodes 1041690, 386s
-  first row 60/1097: complete Z so far 0, nodes 1086559, 397s
-  first row 80/1097: complete Z so far 0, nodes 1151665, 406s
-  first row 100/1097: complete Z so far 0, nodes 1199927, 420s
-  first row 120/1097: complete Z so far 0, nodes 1261894, 429s
-  first row 140/1097: complete Z so far 0, nodes 1287318, 438s
-  first row 160/1097: complete Z so far 0, nodes 1339623, 449s
-  first row 180/1097: complete Z so far 0, nodes 1404189, 461s
-  first row 200/1097: complete Z so far 0, nodes 1586417, 484s
-  first row 220/1097: complete Z so far 0, nodes 1858198, 519s
-  first row 240/1097: complete Z so far 0, nodes 2100507, 559s
-  first row 260/1097: complete Z so far 0, nodes 2314766, 584s
-  first row 280/1097: complete Z so far 0, nodes 2531056, 615s
-  first row 300/1097: complete Z so far 0, nodes 2726322, 645s
-  first row 320/1097: complete Z so far 0, nodes 2889832, 679s
-  first row 340/1097: complete Z so far 0, nodes 2975239, 690s
-  first row 360/1097: complete Z so far 0, nodes 3021609, 702s
-  first row 380/1097: complete Z so far 0, nodes 3046714, 710s
-  first row 400/1097: complete Z so far 0, nodes 3092264, 723s
-  first row 420/1097: complete Z so far 0, nodes 3159684, 734s
-  first row 440/1097: complete Z so far 0, nodes 3217028, 745s
+resuming after 1040 first rows (checkpoint)
+  first row 1060/1097: complete Z so far 0, nodes 6495768, 362s
+  first row 1071/1097: complete Z so far 0, nodes 7194988, 482s
