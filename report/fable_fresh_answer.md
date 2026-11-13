@@ -59,6 +59,23 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    closed by a theorem of the kind above; Kumar's own ranking puts the nearest live targets at about 10³ core-hours
    (4792 = 8·599 by a Spence plug-in; skew 661, 883, 1483). The character sets of item 5 are the one place where
    unscreened cheap structures remain. §9 says what I would run next.
+8. **Second phase (2026-11-13), after the first seven items were written.**
+   - **Every border of a Goethals–Seidel core over an abelian group is a character border** (§6.4 item 5) [P]:
+     the coset-constancy assumed in item 4 is automatic.
+   - **A symmetry that every such border problem over ℤ₂^a has** (§7.2) [P]: at a real character the Goethals–Seidel
+     array is a quaternion multiplication on the four blocks, so the quaternion group Q₈ acts on the other side by
+     signed block permutations. Searching for borders invariant under Q₈, or under one of its cyclic subgroups of
+     order 4, is an exact clique problem that takes seconds where a generic CP-SAT model took minutes or gave up.
+     Verified instances: H(112), H(108), and H(116) from a five-character set that CP-SAT had left undecided [M].
+   - **The 2396 slice of item 5 has no border in any natural symmetric class** (§7.1, §7.2) [M, exhaustive]:
+     <!-- BL8 -->none invariant under Q₈ (two runs), none invariant under the slice's own symmetry σ of order 3 (for
+     every possible number of fixed rows, 1, 4, 7 and 10; CP-SAT had decided only 7), none invariant under the
+     first cyclic subgroup of order 4; the other two cyclic subgroups and the Q-level solutions with a non-constant
+     profile are running.<!-- /BL8 --> A border without symmetry is not excluded.
+   - **The eight cheapest slices that the earlier screen of all 85 orders had left undecided** (§8a) [M, P]: six are
+     empty at stage 1 and one is undecided. The eighth, at 7572 = 4·1893, is the first slice at an open order with a
+     non-empty exact stage 1 (1360 solutions), and it has no core: its multiplier group contains all of ℤ₁₁\*, and a
+     Parseval count then leaves no room [P]. The same gate kills 18 of the 81 slices that screen had ranked.
 <!-- /BOTTOM -->
 
 ---
