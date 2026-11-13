@@ -14,3 +14,6 @@
 16:36:09 order-3 class a: summary a: NFIX 16: NONE
 16:44:17 z1 case 2160: z1-invariant border for q599_case2160: NONE (search exhaustive); nodes 13313793, 1236s
 17:02:42 z2 case 2160: z2-invariant border for q599_case2160: NONE (search exhaustive); nodes 13205441, 1101s
+17:20:37 z3 case 2160: z3-invariant border for q599_case2160: NONE (search exhaustive); nodes 13348362, 1072s
+17:20:37 qborder queue done (case 2160)
+17:20:40 sigma NFIX 7 case 2160: sigma-invariant border (q599_case2160, NFIX 7): NONE (search exhaustive); complete Z found 0, nodes 3360, 2s

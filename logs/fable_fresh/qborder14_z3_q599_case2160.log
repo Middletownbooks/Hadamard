@@ -60,3 +60,5 @@ first rows up to symmetry: 1097 of 202500
   first row 1060/1097: complete Z so far 0, nodes 11306229, 727s
   first row 1080/1097: complete Z so far 0, nodes 11951668, 845s
   first row 1094/1097: complete Z so far 0, nodes 12742627, 976s
+first rows (up to symmetry) with at least 14 compatible orbits: 1097 of 1097; surviving the bipartite pruning: 1078; complete Z found: 0
+z3-invariant border for q599_case2160: NONE (search exhaustive); nodes 13348362, 1072s
