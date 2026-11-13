@@ -123,3 +123,15 @@ MemoryError
 {"key": ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "planted": [{"T0": 2752, "R": 36, "B": null}], "phase": "final"}
 2026-11-13 21:11:25 end ["b1", 739, [], [9, 2], 41, 8, [[0, 2]]] rc=0
 2026-11-13 21:11:25 start ["b0", 2315, [], [463], 5, 2, [[0, 33]]]
+{"key": ["b0", 2315, [], [463], 5, 2, [[0, 33]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
+{"key": ["b0", 2315, [], [463], 5, 2, [[0, 33]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "planted": [{"T0": 7948, "R": 8740, "B": null}], "phase": "final"}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 479, in main
+    if outp: open(outp, 'a').write(json.dumps(rec) + "\n")
+             ~~~~^^^^^^^^^^^
+MemoryError
+2026-11-13 21:13:21 end ["b0", 2315, [], [463], 5, 2, [[0, 33]]] rc=1
+2026-11-13 21:13:21 start ["b1", 2215, [], [27, 2], 41, 8, [[0, 18]]]
