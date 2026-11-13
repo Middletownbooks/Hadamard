@@ -1,0 +1,65 @@
+q599_case2160: k = 16, T = [0, 1, 2, 3, 4, 8, 12], b = 28, n = 2396; 30 admissible block functions
+signed block permutations commuting with M: 8
+symmetry z2: 2 images per row (mod sign), 14 orbits per side
+rows 810000, orbit representatives 202500, self-orthogonal orbits 202500
+compatible y per x: min 498 median 1152 max 3605; orthogonal: median 5681
+Q-symmetries: 72 linear maps keep the admissible functions; 1152 affine maps keep the K-table
+first rows up to symmetry: 1097 of 202500
+  first row 20/1097: complete Z so far 0, nodes 221181, 312s
+  first row 40/1097: complete Z so far 0, nodes 332491, 321s
+  first row 60/1097: complete Z so far 0, nodes 670422, 333s
+  first row 80/1097: complete Z so far 0, nodes 857685, 339s
+  first row 100/1097: complete Z so far 0, nodes 1228377, 353s
+  first row 120/1097: complete Z so far 0, nodes 1380614, 361s
+  first row 140/1097: complete Z so far 0, nodes 1446576, 364s
+  first row 160/1097: complete Z so far 0, nodes 1500452, 368s
+  first row 180/1097: complete Z so far 0, nodes 1716854, 384s
+  first row 200/1097: complete Z so far 0, nodes 2044218, 411s
+  first row 220/1097: complete Z so far 0, nodes 2190169, 424s
+  first row 240/1097: complete Z so far 0, nodes 2421914, 443s
+  first row 260/1097: complete Z so far 0, nodes 2627465, 450s
+  first row 280/1097: complete Z so far 0, nodes 2865648, 464s
+  first row 300/1097: complete Z so far 0, nodes 3024801, 474s
+  first row 320/1097: complete Z so far 0, nodes 3454516, 498s
+  first row 340/1097: complete Z so far 0, nodes 3619343, 504s
+  first row 360/1097: complete Z so far 0, nodes 3884271, 516s
+  first row 380/1097: complete Z so far 0, nodes 3924038, 519s
+  first row 400/1097: complete Z so far 0, nodes 4065962, 524s
+  first row 420/1097: complete Z so far 0, nodes 4185424, 531s
+  first row 440/1097: complete Z so far 0, nodes 4424874, 541s
+  first row 460/1097: complete Z so far 0, nodes 4962310, 556s
+  first row 480/1097: complete Z so far 0, nodes 5108184, 562s
+  first row 500/1097: complete Z so far 0, nodes 5335865, 570s
+  first row 520/1097: complete Z so far 0, nodes 5444608, 575s
+  first row 540/1097: complete Z so far 0, nodes 5632860, 580s
+  first row 560/1097: complete Z so far 0, nodes 6329490, 598s
+  first row 580/1097: complete Z so far 0, nodes 6559696, 606s
+  first row 600/1097: complete Z so far 0, nodes 6913724, 617s
+  first row 620/1097: complete Z so far 0, nodes 6978236, 621s
+  first row 640/1097: complete Z so far 0, nodes 7080912, 625s
+  first row 660/1097: complete Z so far 0, nodes 7265597, 630s
+  first row 680/1097: complete Z so far 0, nodes 7367574, 633s
+  first row 700/1097: complete Z so far 0, nodes 7461070, 638s
+  first row 720/1097: complete Z so far 0, nodes 7751518, 651s
+  first row 740/1097: complete Z so far 0, nodes 8049158, 664s
+  first row 760/1097: complete Z so far 0, nodes 8180429, 669s
+  first row 780/1097: complete Z so far 0, nodes 8311044, 676s
+  first row 800/1097: complete Z so far 0, nodes 8393242, 679s
+  first row 820/1097: complete Z so far 0, nodes 8445448, 682s
+  first row 840/1097: complete Z so far 0, nodes 8855027, 697s
+  first row 860/1097: complete Z so far 0, nodes 9061568, 707s
+  first row 880/1097: complete Z so far 0, nodes 9172477, 711s
+  first row 900/1097: complete Z so far 0, nodes 9287291, 716s
+  first row 920/1097: complete Z so far 0, nodes 9366928, 720s
+  first row 940/1097: complete Z so far 0, nodes 9474960, 726s
+  first row 960/1097: complete Z so far 0, nodes 9536606, 730s
+  first row 980/1097: complete Z so far 0, nodes 9561890, 732s
+  first row 1000/1097: complete Z so far 0, nodes 9581499, 734s
+  first row 1020/1097: complete Z so far 0, nodes 10565643, 764s
+  first row 1040/1097: complete Z so far 0, nodes 10879783, 771s
+  first row 1060/1097: complete Z so far 0, nodes 11305220, 782s
+  first row 1079/1097: complete Z so far 0, nodes 12081301, 914s
+  first row 1080/1097: complete Z so far 0, nodes 12127898, 917s
+  first row 1092/1097: complete Z so far 0, nodes 13036340, 1073s
+first rows (up to symmetry) with at least 14 compatible orbits: 1097 of 1097; surviving the bipartite pruning: 1078; complete Z found: 0
+z2-invariant border for q599_case2160: NONE (search exhaustive); nodes 13205441, 1101s

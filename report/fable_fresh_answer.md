@@ -71,8 +71,8 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
      <!-- BL8 -->none invariant under Q₈ or under any of its three cyclic subgroups of order 4; none invariant under the
      slice's own symmetry σ of order 3 (CP-SAT had been undecided); and none invariant under any other subgroup of
      order 3 of the problem's symmetry group (five classes in all). So a border, if there is one, has no symmetry
-     of order 3. The Q-level solutions with a non-constant profile have no Q₈-invariant border either; their other
-     classes are running.<!-- /BL8 --> Not excluded: a border whose only symmetries are involutions that move the
+     of order 3. The Q-level solutions with a non-constant profile (representative: solution 2160) have no border
+     invariant under Q₈, ⟨i⟩ or ⟨j⟩ either; ⟨k⟩ and σ are running.<!-- /BL8 --> Not excluded: a border whose only symmetries are involutions that move the
      quotient Q, or one with no symmetry at all.
    - **The tier-0 slices of the earlier screen** (§8a) [M, P]: I reran them before noticing that
      `report/h4892_answer.md` had already decided most; the reruns reproduce its counts, including the 1360 stage-1

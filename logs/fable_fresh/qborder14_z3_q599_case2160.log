@@ -1,0 +1,62 @@
+q599_case2160: k = 16, T = [0, 1, 2, 3, 4, 8, 12], b = 28, n = 2396; 30 admissible block functions
+signed block permutations commuting with M: 8
+symmetry z3: 2 images per row (mod sign), 14 orbits per side
+rows 810000, orbit representatives 202500, self-orthogonal orbits 202500
+compatible y per x: min 500 median 1058 max 6168; orthogonal: median 5485
+Q-symmetries: 72 linear maps keep the admissible functions; 1152 affine maps keep the K-table
+first rows up to symmetry: 1097 of 202500
+  first row 20/1097: complete Z so far 0, nodes 368590, 266s
+  first row 40/1097: complete Z so far 0, nodes 476971, 275s
+  first row 60/1097: complete Z so far 0, nodes 651029, 283s
+  first row 80/1097: complete Z so far 0, nodes 961803, 295s
+  first row 100/1097: complete Z so far 0, nodes 1072669, 300s
+  first row 120/1097: complete Z so far 0, nodes 1260456, 309s
+  first row 140/1097: complete Z so far 0, nodes 1324624, 312s
+  first row 160/1097: complete Z so far 0, nodes 1348261, 314s
+  first row 180/1097: complete Z so far 0, nodes 1590419, 324s
+  first row 200/1097: complete Z so far 0, nodes 1708391, 333s
+  first row 220/1097: complete Z so far 0, nodes 2162654, 372s
+  first row 240/1097: complete Z so far 0, nodes 2458121, 399s
+  first row 260/1097: complete Z so far 0, nodes 2551571, 405s
+  first row 280/1097: complete Z so far 0, nodes 2702246, 414s
+  first row 300/1097: complete Z so far 0, nodes 2797486, 420s
+  first row 320/1097: complete Z so far 0, nodes 3163258, 440s
+  first row 340/1097: complete Z so far 0, nodes 3314602, 447s
+  first row 360/1097: complete Z so far 0, nodes 3530202, 455s
+  first row 380/1097: complete Z so far 0, nodes 3665919, 460s
+  first row 400/1097: complete Z so far 0, nodes 3754303, 464s
+  first row 420/1097: complete Z so far 0, nodes 3924891, 472s
+  first row 440/1097: complete Z so far 0, nodes 4244169, 483s
+  first row 460/1097: complete Z so far 0, nodes 4753862, 498s
+  first row 480/1097: complete Z so far 0, nodes 4911855, 504s
+  first row 500/1097: complete Z so far 0, nodes 5131924, 512s
+  first row 520/1097: complete Z so far 0, nodes 5233705, 515s
+  first row 540/1097: complete Z so far 0, nodes 5450323, 520s
+  first row 560/1097: complete Z so far 0, nodes 5982641, 535s
+  first row 580/1097: complete Z so far 0, nodes 6371127, 546s
+  first row 600/1097: complete Z so far 0, nodes 6806512, 558s
+  first row 620/1097: complete Z so far 0, nodes 6870217, 561s
+  first row 640/1097: complete Z so far 0, nodes 6969379, 566s
+  first row 660/1097: complete Z so far 0, nodes 7159820, 570s
+  first row 680/1097: complete Z so far 0, nodes 7271929, 574s
+  first row 700/1097: complete Z so far 0, nodes 7349321, 578s
+  first row 720/1097: complete Z so far 0, nodes 7510574, 583s
+  first row 740/1097: complete Z so far 0, nodes 7646314, 591s
+  first row 760/1097: complete Z so far 0, nodes 8100823, 609s
+  first row 780/1097: complete Z so far 0, nodes 8303475, 616s
+  first row 800/1097: complete Z so far 0, nodes 8435231, 622s
+  first row 820/1097: complete Z so far 0, nodes 8544702, 628s
+  first row 840/1097: complete Z so far 0, nodes 8695646, 634s
+  first row 860/1097: complete Z so far 0, nodes 8840469, 642s
+  first row 880/1097: complete Z so far 0, nodes 9027076, 649s
+  first row 900/1097: complete Z so far 0, nodes 9220560, 657s
+  first row 920/1097: complete Z so far 0, nodes 9278456, 660s
+  first row 940/1097: complete Z so far 0, nodes 9362690, 664s
+  first row 960/1097: complete Z so far 0, nodes 9376897, 666s
+  first row 980/1097: complete Z so far 0, nodes 9472212, 672s
+  first row 1000/1097: complete Z so far 0, nodes 9504619, 674s
+  first row 1020/1097: complete Z so far 0, nodes 9755919, 680s
+  first row 1040/1097: complete Z so far 0, nodes 10413068, 701s
+  first row 1060/1097: complete Z so far 0, nodes 11306229, 727s
+  first row 1080/1097: complete Z so far 0, nodes 11951668, 845s
+  first row 1094/1097: complete Z so far 0, nodes 12742627, 976s
