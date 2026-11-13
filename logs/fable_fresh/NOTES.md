@@ -215,3 +215,33 @@ Q-level kills at 599 and 751, and the Parseval table.  Report rewritten accordin
 - 2026-11-12 22:55 UTC: sigma-invariant general borders, case 0, 1 worker, 7200 s each: NFIX 1 UNKNOWN, 4 UNKNOWN,
   7 INFEASIBLE (CP-SAT proof, 2803 s), 10 UNKNOWN. Single-character sigma-invariant borders impossible [P].
   Nothing is running now.
+
+## 2026-11-13 06:15 UTC: second idea phase (Fable back after the usage reset)
+
+State of thinking (so a restart does not lose it):
+- [P] Every border of a GS core over an abelian G is coset-constant automatically: C C^T = I_4 (x) Dev(P) is
+  G-invariant, so the column space of F' is a sum of character spaces T'; +-1 vectors in it are constant on the cosets
+  of S = <T'>^perp (possibly S = 0).  So 6.4 needs no coset-constancy hypothesis.  (To write into 6.4.)
+- [M] 2396 slice: none of the 2688 Q-level solutions is invariant under the larger group Z_3 x Z_3 (sigma_A, sigma_B
+  acting separately on the two Z_2^2 factors), so that 52-orbit refinement is dead.
+- [E] Reach: 78 orbits/block is the size class of the Alpoge b = 0 cores (75-95 orbits), but in Kumar's cost model
+  (METHOD.md: W ~ N^3 / (E L)) the slice is about 10^30, against 10^36.4 for his best 2396 structure and 10^13 for
+  what he calls reachable.  So a border would complete a shape, not a matrix.
+- [P] Product-type single-character borders (rows indexed by T x {1..4}, block a of row (rho, m) = h_{m,a} * character
+  pi_a(rho), same for Z with tau_b, H') are impossible for Gamma = GS(4,2,2,2): the four +-4 positions must go to four
+  different rho', the twelve +-2 positions must split into three signed permutation classes, and both Latin-square
+  colourings (Klein, cyclic) force the four singles to the same permutation g.  (Explains the empty cyclic search.)
+- Structure of any E for T = two 2-flats [P]: in each block the 16 columns form a 4x4 grid code with distances
+  8/8/16; rows are constants (4 - nu1 - nu2), 1-vs-3 functions (4 nu_i, nu_i per point) and characters (4 - nu_i per
+  character) on side i; nu1 + nu2 <= 4.
+- [P] 7-adic form: Y = K^T X G / 28, so the F_7-code of K^T (self-dual [28,14]) times 2X equals D (x) F_7^7, D the
+  kernel of Gamma mod 7.  A filter for K given E: +-1 words of a [28,14]_7 code, 2^14 candidates.
+- Counting laws re-derived (why the families look the way they do): two-block cores die near v = 300; Z_2^a alone
+  dies (real characters double the equations); Ito/dicyclic and complex two-block die; class-function cores over
+  non-abelian G have cells constant on cosets of G' (Frobenius, extraspecial) and die by cell energy; Heisenberg
+  (time-frequency) symmetries are Kronecker products (order = 0 mod 16).
+- The Alpoge half-shift template is the Z_2 S/D split with arc supports, i.e. two aperiodic complementary
+  quadruples of length ~h/2; by count it is negative beyond v ~ 450 (matches the forensics table).
+- Running: scripts/fable_tier0_queue.sh = exact stage 1 (method B, --strong) of the 8 tier-0 slices that
+  report/open_screen_answer.md lists as "not run" (1039 k4, 1427, 1259 s=12, 1893, 1423, 2315, 947 s=14, 1187 k4).
+  Out: logs/fable_fresh/tier0_stage1.jsonl, log tier0_stage1.log.  Restart: rerun the script (skips finished keys).
