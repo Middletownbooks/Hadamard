@@ -245,3 +245,24 @@ State of thinking (so a restart does not lose it):
 - Running: scripts/fable_tier0_queue.sh = exact stage 1 (method B, --strong) of the 8 tier-0 slices that
   report/open_screen_answer.md lists as "not run" (1039 k4, 1427, 1259 s=12, 1893, 1423, 2315, 947 s=14, 1187 k4).
   Out: logs/fable_fresh/tier0_stage1.jsonl, log tier0_stage1.log.  Restart: rerun the script (skips finished keys).
+
+## 2026-11-13 07:50 UTC: quaternionic borders; tier-0 stage 1
+
+- [P] Over Q = Z_2^a the GS array at a character is GS(a,b,c,d) = L_q^T (quaternion multiplication on the block
+  index), so right multiplication by Q8 (signed block permutations) is a symmetry of every border problem.
+  theory/fable_border13.py (Q8, no reduction), fable_border14.py (sub=q8|z1|z2|z3, first row reduced by the 1152
+  affine maps of Q that keep the K-table, times Q8), fable_border15.py (sigma-invariant, clique search).
+- Calibration: singer control (124) found; H(112) found in 0 s (CP-SAT 323 s); H(116), five characters, found in 0 s
+  (CP-SAT UNKNOWN at 600 s), full matrix assembled and verified; H(108): Q8 none (exhaustive), each Z_4 finds one.
+- **2396 slice, case 0: no Q8-invariant border [M, exhaustive, two runs: unreduced 2646 s, reduced 336 s].**
+  The 32 constant Walsh profiles are equivalent to case 0 (signed block permutations = automorphisms of H, unit
+  multiplications, transposition).  Non-constant profiles (12 of the 44): representative solution index 2160, queued.
+- Kumar's NOTES 102 already has "t = 5 over Z_2^3 or F_16 (borders exist)" and "k = 6 and k >= 10: no border found",
+  "single characters cannot work for k >= 12 (proved)".  Report 7 corrected.
+- Running (all restart-safe, rerun the script):
+    scripts/fable_qborder_queue.sh 0      z1, z2, z3 for case 0   -> logs/fable_fresh/qborder14_*_q599_case0.log
+    scripts/fable_sigma15_queue.sh 0      NFIX 7 (cross-check), 1, 4, 10 -> sigma15_q599_case0_f*.log
+    scripts/fable_border_master.sh        then both queues for case 2160
+    scripts/fable_tier0_queue.sh (planted 3) and fable_tier0_queue2.sh (last four keys, planted 1)
+  Verdict lines are appended to logs/fable_fresh/qborder_queue.log.
+- tier 0: 1039 k4 (Z_4 x Z_7 x Z_37, s = 4): stage 1 EMPTY by method B (11,527,476 blocks, 5110 s) [M, one method].
