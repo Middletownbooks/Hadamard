@@ -205,35 +205,44 @@ def main():
             alive &= ~bad
     ck = f'logs/fable_fresh/ckpt_b14_{SUB}_{S["name"]}.json'; start = 0; lastp = time.time()
     try:
-        cj = json.load(open(ck)); start = cj['done']; ncl = cj['ncl']; nodes[0] = cj['nodes']; hist = {True: cj['qual'], 'done': start}
+        cj = json.load(open(ck)); start = cj['done']; ncl = cj['ncl']; nodes[0] = cj['nodes']; hist = {True: cj['qual'], 'done': start, 'core': cj.get('core', 0)}
         print(f'resuming after {start} first rows (checkpoint)', flush=True)
     except Exception: pass
     for pos, x1 in enumerate(first):
         if pos < start: continue
         if nodes[0] > nodecap or trunc[0]: exhausted = False; break
         if pos > start and (time.time() - lastp > 120 or pos % 20 == 0):
-            json.dump(dict(done=pos, ncl=ncl, nodes=nodes[0], qual=hist.get(True, 0)), open(ck, 'w')); lastp = time.time()
+            json.dump(dict(done=pos, ncl=ncl, nodes=nodes[0], qual=hist.get(True, 0), core=hist.get('core', 0)), open(ck, 'w')); lastp = time.time()
             print(f'  first row {pos}/{len(first)}: complete Z so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
         cz = np.nonzero(compat_row(x1))[0]
         hist[len(cz) >= t] = hist.get(len(cz) >= t, 0) + 1
         if len(cz) < t: continue
         A = orth_small(cz); np.fill_diagonal(A, False)
-        al = core_prune(A, t)
-        if int(al.sum()) < t: continue
-        for cl in cliques([c for c in range(len(cz)) if al[c]], A, t):
-            ncl += 1
-            Ys = [int(cz[c]) for c in cl]
-            ce = np.ones(N, dtype=bool)
-            for y in Ys: ce &= compat_col(y)
-            cx = np.nonzero(ce)[0]
-            if len(cx) < t: continue
-            B = orth_small(cx); np.fill_diagonal(B, False)
-            i1 = int(np.nonzero(cx == x1)[0][0])
-            for cl2 in cliques([c for c in range(len(cx)) if c != i1 and B[i1, c]], B, t - 1):
-                found.append(([x1] + [int(cx[c]) for c in cl2], Ys)); break
-            if found: break
-        if found: break
-    print(f'first rows (up to symmetry) with at least {t} compatible orbits: {hist.get(True, 0)} of {len(first)}; complete Z found: {ncl}', flush=True)
+        # E-candidates: orbits orthogonal to x1.  Bipartite pruning before any clique search: a Z-orbit needs t - 1
+        # orthogonal partners and t - 1 compatible E-candidates; an E-candidate needs t - 2 orthogonal partners and
+        # must be compatible with t Z-orbits.  Iterate to the fixed point (exact: only necessary conditions).
+        ce_ = orth_row(x1); ce_[x1] = False; ce = np.nonzero(ce_)[0]
+        if len(ce) < t - 1: continue
+        Be = orth_small(ce); np.fill_diagonal(Be, False)
+        Cm = np.ones((len(ce), len(cz)), dtype=bool)
+        XM = RVM[ce]
+        for j in range(nim): Cm &= (np.abs(XM @ RV[j][cz].T) == fk)
+        az = np.ones(len(cz), dtype=bool); ae = np.ones(len(ce), dtype=bool)
+        while True:
+            az2 = az & ((A & az[None, :]).sum(axis=1) >= t - 1) & ((Cm & ae[:, None]).sum(axis=0) >= t - 1)
+            ae2 = ae & ((Be & ae[None, :]).sum(axis=1) >= t - 2) & ((Cm & az2[None, :]).sum(axis=1) >= t)
+            if az2.sum() == az.sum() and ae2.sum() == ae.sum(): break
+            az, ae = az2, ae2
+            if az.sum() < t or ae.sum() < t - 1: break
+        if az.sum() < t or ae.sum() < t - 1: continue
+        hist['core'] = hist.get('core', 0) + 1
+        zs, es, nn, tr, zc = FC.coupled(A, Cm.T, Be, t, t - 1, candz=np.nonzero(az)[0].tolist(), cande=np.nonzero(ae)[0].tolist(),
+                                        maxnodes=max(1, nodecap - nodes[0]))
+        nodes[0] += nn; ncl += zc
+        if tr: trunc[0] = True
+        if zs is not None:
+            found.append(([x1] + [int(ce[c]) for c in es], [int(cz[c]) for c in zs])); break
+    print(f'first rows (up to symmetry) with at least {t} compatible orbits: {hist.get(True, 0)} of {len(first)}; surviving the bipartite pruning: {hist.get("core", 0)}; complete Z found: {ncl}', flush=True)
     if trunc[0]: exhausted = False
     if not found:
         print(f'{SUB}-invariant border for {S["name"]}: ' + ('NONE (search exhaustive)' if exhausted else f'UNDECIDED (node cap {nodecap})')

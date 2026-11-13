@@ -17,3 +17,7 @@
 2026-11-13 11:06:03 skip ["b1", 2315, [], [13, 2], 89, 8, [[0, 6]]]
 2026-11-13 11:06:03 skip ["b1", 947, [], [11, 2], 43, 14, [[0, 10]]]
 2026-11-13 11:06:03 start ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]]
+{"key": ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "phase": "decision"}
+{"key": ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "OverflowError()"}, "solutions": [], "planted": [{"T0": 3944, "R": 4748, "B": null}, {"T0": 4304, "R": 4748, "B": null}, {"T0": 4016, "R": 4744, "B": null}], "phase": "final"}
+2026-11-13 12:06:57 end ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]] rc=0
+2026-11-13 12:06:57 queue done

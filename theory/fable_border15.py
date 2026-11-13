@@ -108,19 +108,21 @@ def main():
         if tr: trunc[0] = True
         return [[int(idx[c]) for c in cl] for cl in out]
     def complete_sides(co, cfx, need3, needf, must_fixed=None):
-        """all (orbit list, fixed list) with pairwise orthogonality inside the candidate sets"""
+        """all (orbit list, fixed list) with pairwise orthogonality inside the candidate sets.
+        The fixed rows are chosen first (they cut the orbit candidates down), then the orbit cliques."""
         res = []
-        io = np.nonzero(co)[0]
-        if len(io) < need3: return res
-        for oc in orbit_cliques(io, need3):
-            cf2 = cfx.copy()
-            for o in oc: cf2 &= ((FV @ OV[0][o]) == 0)
-            if must_fixed is not None and not cf2[must_fixed]: continue
-            ifx = np.nonzero(cf2)[0]
-            if len(ifx) < needf: continue
-            for fc in fixed_cliques(ifx, needf, must_fixed):
+        if int(co.sum()) < need3: return res
+        ifx = np.nonzero(cfx)[0]
+        if len(ifx) < needf: return res
+        if needf and must_fixed is not None and not cfx[must_fixed]: return res
+        for fc in (fixed_cliques(ifx, needf, must_fixed) if needf else [[]]):
+            co2 = co.copy()
+            for f in fc: co2 &= ((OV[0] @ FV[f]) == 0)
+            io = np.nonzero(co2)[0]
+            if len(io) < need3: continue
+            for oc in orbit_cliques(io, need3):
                 res.append((oc, fc))
-            if nodes[0] > nodecap: break
+            if nodes[0] > nodecap or trunc[0]: break
         return res
     firsts = range(NF) if nfix > 0 else range(NO)
     ck = f'logs/fable_fresh/ckpt_b15_{name}_f{nfix}.json'; start = 0; lastp = time.time()
@@ -156,7 +158,7 @@ def main():
     tag = f'sigma-invariant border ({name}, NFIX {nfix})'
     if trunc[0]: exhausted = False
     if not found:
-        print(f'{tag}: ' + ('NONE (search exhaustive)' if exhausted and nodes[0] <= nodecap else f'UNDECIDED (node cap {nodecap})')
+        print(f'{tag}: ' + ('NONE (search exhaustive)' if exhausted and nodes[0] <= nodecap else f'UNDECIDED (a cap was hit: nodes {nodecap} or 200000 cliques in one list)')
               + f'; complete Z found {nz}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
         return
     (Eo, Ef), (Zo, Zf) = found[0]

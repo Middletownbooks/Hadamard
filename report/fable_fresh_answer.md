@@ -563,15 +563,39 @@ with a planted control; queue `scripts/fable_tier0_queue.sh`, results `logs/fabl
 | 4v (v) | slice | estimated cost (log₂) | method B | planted control | verdict |
 |---|---|---|---|---|---|
 | 4156 (1039) | k4, ℤ₄ × ℤ₇ × ℤ₃₇, s = 4, U = −1 | 32.2 | 0 solutions, 11,527,476 blocks, 11 row patterns, 5110 s | not finished (container restart) | **empty** (one method) |
-| 3788 (947) | b1, ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 14, U of order 10 | 41.1 | 0 solutions, 354 blocks | recovered | **empty** |
-| 9260 (2315) | b1, ℤ₁₃ × ℤ₂ × ℤ₈₉, s = 8, U of order 6 | 40.2 | 0 solutions, 520 blocks | recovered | **empty** |
-| 5692 (1423) | b1, ℤ₃² × ℤ₂ × ℤ₇₉, s = 6, U = −1 | 39.4 | 0 solutions, 109,832 blocks | recovered | **empty** |
-| 4748 (1187) | k4, ℤ₄ × ℤ₈ × ℤ₃₇, s = 4, U = −1 | 41.4 | out of memory at a 7 GB cap | – | undecided; rerun queued |
-| 5708 (1427), 5036 (1259, s = 12), 7572 (1893) | b1 | 32.9, 38.1, 39.1 | running | | |
+| 5708 (1427) | b1, ℤ₂₃ × ℤ₂ × ℤ₃₁, s = 10, U of order 22 | 32.9 | 0 solutions, 94 blocks | 3/3 | **empty**; also dead by the gate below |
+| 5036 (1259) | b1, ℤ₁₇ × ℤ₂ × ℤ₃₇, s = 12, U of order 16 | 38.1 | 0 solutions, 142 blocks | 3/3 | **empty**; also dead by the gate below |
+| 7572 (1893) | b1, ℤ₁₁ × ℤ₂² × ℤ₄₃, s = 6, U of order 10 | 39.1 | **1360 solutions**, 12,532 blocks | 3/3 | stage 1 **not empty**, but **no core: dead by the gate below [P]** |
+| 5692 (1423) | b1, ℤ₃² × ℤ₂ × ℤ₇₉, s = 6, U = −1 | 39.4 | 0 solutions, 109,832 blocks | 1/1 | **empty** |
+| 9260 (2315) | b1, ℤ₁₃ × ℤ₂ × ℤ₈₉, s = 8, U of order 6 | 40.2 | 0 solutions, 520 blocks | 1/1 | **empty** |
+| 3788 (947) | b1, ℤ₁₁ × ℤ₂ × ℤ₄₃, s = 14, U of order 10 | 41.1 | 0 solutions, 354 blocks | 1/1 | **empty**; also dead by the gate below |
+| 4748 (1187) | k4, ℤ₄ × ℤ₈ × ℤ₃₇, s = 4, U = −1 | 41.4 | out of memory at a 7 GB cap; rerun at 11 GB running | – | undecided so far |
 <!-- /TIER0 -->
 
-So far every one decided is empty at stage 1, as were the five decided before. Three of them have only a few hundred
-blocks within the energy bound, which the estimate (an energy-only count) had not seen.
+**The 7572 slice and a gate the earlier screen did not have [P].** The slice of 7572 = 4·1893 is the first one at
+an open order whose exact stage 1 is not empty (1360 solutions, all three planted controls recovered). It has no
+core all the same. Its multiplier group contains the whole of ℤ₁₁\*, so every block has the form x(a, g) = X⁰(g) for
+a = 0 and X¹(g) for a ≠ 0, with g in G₂ = ℤ₂² × ℤ₄₃ (172 elements). At a character (α, χ) with α ≠ 0 the transform
+is X̂⁰(χ) − X̂¹(χ). All 172 of these characters need Σ_k |·|² = n, so by Parseval
+Σ_k Σ_g (X⁰_k(g) − X¹_k(g))² = n = 7572, while the left side is at most 4 · 172 · 4 = 2752. In general:
+
+  *if the blocks are invariant under all of ℤ_ℓ\* on a factor ℤ_ℓ of G = ℤ_ℓ × G₂ (ℓ prime), and the border
+  characters are trivial on ℤ_ℓ, then 4ℓ|G₂| ≤ n ≤ 16|G₂|, so ℓ ≤ 3.*
+
+This is the stage-1 Parseval identity for the other compression (to G/ℤ_ℓ), whose alphabet is {±ℓ, ±(ℓ − 2)}; the
+earlier screen applied its exact gates to the compression along ℤ_q only. Of the 81 slices it placed in tiers 0–3,
+**18 have a full unit group on a prime axis ℓ ≥ 5 and are dead by this gate**: 4 of the 10 in tier 0 (947, 1259,
+1427, 1893), 1 of 5 in tier 1 and 13 of 53 in tier 2 [M: key scan of `logs/open_screen/table.jsonl`]. The stage-1
+solutions of 1893 show the mechanism: almost every cell has sum 1, and the equations are met by a few constant
+fibres (cell sums ±43), which the full level cannot afford.
+
+**Tier 1 and tier 2.** The 44 slices of tiers 1 and 2 that survive the gate and had no exact decision are being
+decided the same way (`scripts/fable_tier12_queue.sh`, 45 minutes and 7 GB each at most; results
+`logs/fable_fresh/tier12_stage1.jsonl`).
+<!-- TIER12 -->
+<!-- /TIER12 -->
+
+
 
 ---
 

@@ -1,0 +1,2 @@
+2026-11-13 12:07:21 start ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]]
+{"key": ["b1", 599, [], [13, 2], 23, 2, [[0, 2]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 428692, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 98082, "right_pairs": 484776}], "secs": 17.3}, "solutions": [], "phase": "decision"}
