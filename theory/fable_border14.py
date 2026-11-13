@@ -206,8 +206,17 @@ def main():
             bad = alive & (deg < need - 1)
             if not bad.any(): return alive
             alive &= ~bad
-    for x1 in first:
+    ck = f'logs/fable_fresh/ckpt_b14_{SUB}_{S["name"]}.json'; start = 0; lastp = time.time()
+    try:
+        cj = json.load(open(ck)); start = cj['done']; ncl = cj['ncl']; nodes[0] = cj['nodes']; hist = {True: cj['qual'], 'done': start}
+        print(f'resuming after {start} first rows (checkpoint)', flush=True)
+    except Exception: pass
+    for pos, x1 in enumerate(first):
+        if pos < start: continue
         if nodes[0] > nodecap: exhausted = False; break
+        if pos > start and (time.time() - lastp > 120 or pos % 20 == 0):
+            json.dump(dict(done=pos, ncl=ncl, nodes=nodes[0], qual=hist.get(True, 0)), open(ck, 'w')); lastp = time.time()
+            print(f'  first row {pos}/{len(first)}: complete Z so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
         cz = np.nonzero(compat_row(x1))[0]
         hist[len(cz) >= t] = hist.get(len(cz) >= t, 0) + 1
         if len(cz) < t: continue
@@ -227,8 +236,6 @@ def main():
                 found.append(([x1] + [int(cx[c]) for c in cl2], Ys)); break
             if found: break
         if found: break
-        hist['done'] = hist.get('done', 0) + 1
-        if hist['done'] % 50 == 0: print(f'  first row {hist["done"]}/{len(first)}: Z-cliques so far {ncl}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
     print(f'first rows (up to symmetry) with at least {t} compatible orbits: {hist.get(True, 0)} of {len(first)}; complete Z found: {ncl}', flush=True)
     if not found:
         print(f'{SUB}-invariant border for {S["name"]}: ' + ('NONE (search exhaustive)' if exhausted else f'UNDECIDED (node cap {nodecap})')

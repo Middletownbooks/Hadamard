@@ -127,8 +127,17 @@ def main():
             if nodes[0] > nodecap: break
         return res
     firsts = range(NF) if nfix > 0 else range(NO)
+    ck = f'logs/fable_fresh/ckpt_b15_{name}_f{nfix}.json'; start = 0; lastp = time.time()
+    try:
+        cj = json.load(open(ck)); start = cj['done']; nz = cj['nz']; nodes[0] = cj['nodes']
+        print(f'resuming after {start} first rows (checkpoint)', flush=True)
+    except Exception: pass
     for cnt, x1 in enumerate(firsts):
+        if cnt < start: continue
         if nodes[0] > nodecap: exhausted = False; break
+        if cnt > start and (time.time() - lastp > 120 or cnt % 20 == 0):
+            json.dump(dict(done=cnt, nz=nz, nodes=nodes[0]), open(ck, 'w')); lastp = time.time()
+            print(f'  first row {cnt}/{len(firsts)}: complete Z so far {nz}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
         xv = FV[x1] if nfix > 0 else OV[0][x1]
         co, cfx = comp_from_E(xv)
         for Zo, Zf in complete_sides(co, cfx, n3, nfix):
@@ -148,7 +157,6 @@ def main():
             if cand:
                 found.append((cand[0], (Zo, Zf))); break
         if found: break
-        if cnt % 100 == 0: print(f'  first row {cnt}/{len(firsts)}: complete Z so far {nz}, nodes {nodes[0]}, {time.time()-t0:.0f}s', flush=True)
     tag = f'sigma-invariant border ({name}, NFIX {nfix})'
     if not found:
         print(f'{tag}: ' + ('NONE (search exhaustive)' if exhausted and nodes[0] <= nodecap else f'UNDECIDED (node cap {nodecap})')

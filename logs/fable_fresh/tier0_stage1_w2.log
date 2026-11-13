@@ -1,1 +1,24 @@
 2026-11-13 07:49:06 start ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]]
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 432, in main
+    import gc; gc.collect()                  # the decision is printed before any file is opened: near the address-space
+    ^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1366, in _find_and_load
+MemoryError
+2026-11-13 08:19:54 end ["k4", 1187, [4], [8], 37, 4, [["neg", [0, 1]]]] rc=0
+2026-11-13 08:19:54 start ["b1", 947, [], [11, 2], 43, 14, [[0, 10]]]
+{"key": ["b1", 947, [], [11, 2], 43, 14, [[0, 10]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 354, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 113, "right_pairs": 118}], "secs": 0.0}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 947, [], [11, 2], 43, 14, [[0, 10]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 354, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 113, "right_pairs": 118}], "secs": 0.0}, "solutions": [], "planted": [{"T0": 3040, "R": 144, "B": true}], "phase": "final"}
+2026-11-13 08:20:00 end ["b1", 947, [], [11, 2], 43, 14, [[0, 10]]] rc=0
+2026-11-13 08:20:00 start ["b1", 2315, [], [13, 2], 89, 8, [[0, 6]]]
+{"key": ["b1", 2315, [], [13, 2], 89, 8, [[0, 6]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 520, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 23, "right_pairs": 47}], "secs": 0.0}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 2315, [], [13, 2], 89, 8, [[0, 6]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 520, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 23, "right_pairs": 47}], "secs": 0.0}, "solutions": [], "planted": [{"T0": 7848, "R": 308, "B": true}], "phase": "final"}
+2026-11-13 08:20:06 end ["b1", 2315, [], [13, 2], 89, 8, [[0, 6]]] rc=0
+2026-11-13 08:20:06 start ["b1", 1423, [], [3, 3, 2], 79, 6, [["neg", [0, 1]]]]
+{"key": ["b1", 1423, [], [3, 3, 2], 79, 6, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 109832, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 15843, "right_pairs": 72104}], "secs": 4.0}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 1423, [], [3, 3, 2], 79, 6, [["neg", [0, 1]]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 109832, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 15843, "right_pairs": 72104}], "secs": 4.0}, "solutions": [], "planted": [{"T0": 5272, "R": 60, "B": true}], "phase": "final"}
+2026-11-13 08:20:23 end ["b1", 1423, [], [3, 3, 2], 79, 6, [["neg", [0, 1]]]] rc=0
+2026-11-13 08:20:23 worker 2 done
