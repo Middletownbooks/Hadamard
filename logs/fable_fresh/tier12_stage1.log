@@ -217,3 +217,29 @@ MemoryError
 2026-11-14 07:15:04 start ["k4", 1667, [4], [32], 13, 2, [[1, 8, 5]]]
 2026-11-14 08:00:04 end ["k4", 1667, [4], [32], 13, 2, [[1, 8, 5]]] rc=124
 2026-11-14 08:00:04 start ["k4", 1423, [4], [71], 5, 2, [[1, 7]]]
+{"key": ["k4", 1423, [4], [71], 5, 2, [[1, 7]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 447, in main
+    BL = b_blocks(st, st['T1'][0] - 3 * st['n'], cap, st['T1'], True)
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 169, in b_blocks
+    dfs(0, 0, 0, [0] * len(chis))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 165, in dfs
+    if ok: vals[j] = a; dfs(t + 1, e2, r2, A2)
+                        ~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 165, in dfs
+    if ok: vals[j] = a; dfs(t + 1, e2, r2, A2)
+                        ~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 165, in dfs
+    if ok: vals[j] = a; dfs(t + 1, e2, r2, A2)
+                        ~~~^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 41 more times]
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 151, in dfs
+    if nf and tuple(zc) not in set(NF): return
+                               ~~~^^^^
+MemoryError
+2026-11-14 08:09:33 end ["k4", 1423, [4], [71], 5, 2, [[1, 7]]] rc=1
+2026-11-14 08:09:33 tier12 queue done

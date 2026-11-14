@@ -669,7 +669,10 @@ of them are in `h4892_answer.md` already (4892 with its 384 classes and no core,
   exact ℤ₁₀₁₃ check ran 30 minutes without a verdict (with G′ = ℤ₂ that check is almost the whole of stage 2).
 - More undecided at a cap: 6668, 5308, 7516, 8860 k4, 2956, 8108 k4, 4124, 5468, 7388, 6268, 8380 (b0); the
   out-of-memory ones are retried at 12 GB after the first pass (`scripts/fable_tier12_pass2.sh`).
-- The rest of the 44: running.
+- The first pass over all 44 ended on 2026-11-14 08:09 UTC: 13 empty or without a core, 3 with a non-empty stage 1
+  left undecided (5028 b0, 8108 b1, 6852 b0 = ℤ₃ × ℤ₅₇₁ with 324 solutions, estimated at about 2⁹¹ per core), and
+  28 stopped at a cap. The 14 that ran out of memory are being retried one at a time at 12 GB and 90 minutes
+  (`scripts/fable_tier12_pass2.sh`, `logs/fable_fresh/tier12_stage1_pass2.jsonl`).
 <!-- /TIER12 -->
 
 ---
