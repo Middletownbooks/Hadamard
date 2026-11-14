@@ -304,3 +304,18 @@ State of thinking (so a restart does not lose it):
 - 16:45 UTC: order-3 class a (NFIX 16, 4 orbits): NONE in 6 s by the orbit-first path (290,304 orbit 4-cliques, none
   with a compatible E-orbit).  All five order-3 classes are now excluded for the constant profile.
   Non-constant profile 2160: Q8 NONE; z1-3 and sigma running (scripts/fable_border_master.sh).
+
+## 2026-11-14 phase 3 (plan: logs/fable_fresh/PLAN_phase3.md), implementer notes
+
+- Item 2, single-character borders of the 2396 slice without symmetry (fable_border14.py sub=id mode=single):
+  control H(112) found and assembled (3.2e6 nodes, 1 s).  For 2396 case 0 the run made no visible progress in 50
+  min; measured shrink rates (scratch script): Z-candidates 4600 (mod sign) per first row, Z-orthogonality density
+  0.58, E-Z compatibility density 0.22; the E side drops below 27 only after 5 Z rows, so the Z-first coupled tree
+  is about 1e11-1e13 nodes per first row [E].  Alternating E/Z choice would cut it to about 1e9-1e11 [E, rough]:
+  needs a C routine.  Stopped; not decided.  Reformulation recorded: in the character basis E/4 is a weighing
+  matrix W(28,4) with one nonzero per block group, and |K| = 1 needs an even number of label coincidences on the
+  twelve 2-entries of Gamma for every (row, column) pair [P].
+- Item 1 census (theory/fable_tcensus3.py): control vs fable_tcensus2 on 599: alive/dead identical where both
+  decided (counts differ by convention: quadruples of energy vectors vs pair sums).  G2 box join added (decides 20
+  of the old offset caps).  Full run: scripts/fable_tcensus3_run.sh (a = 6, 5, 4; r <= 64), restart-safe,
+  log logs/fable_fresh/tcensus3.log, records logs/fable_fresh/tcensus3.jsonl.
