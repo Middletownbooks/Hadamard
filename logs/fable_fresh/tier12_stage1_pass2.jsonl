@@ -6,3 +6,4 @@
 {"key": ["b0", 1981, [], [283], 7, 3, [[0, 47]]], "B": {"undecided": "rc=124 (timeout 5400 s or memory 12 GB)"}, "phase": "capped"}
 {"key": ["b1", 1847, [], [71, 2], 13, 2, [[0, 7]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
 {"key": ["b1", 1031, [], [103, 2], 5, 2, [[0, 17]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
+{"key": ["k4", 1367, [4], [31], 11, 2, [[1, 6]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
