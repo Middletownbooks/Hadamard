@@ -23,3 +23,4 @@ Traceback (most recent call last):
 MemoryError
 2026-11-14 08:41:00 end ["b1", 1559, [], [41, 2], 19, 2, [[0, 5]]] rc=1
 2026-11-14 08:41:00 start ["k4", 1103, [4], [25], 11, 2, [[1, 10]]]
+{"key": ["k4", 1103, [4], [25], 11, 2, [[1, 10]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
