@@ -128,3 +128,15 @@ Traceback (most recent call last):
 MemoryError
 2026-11-14 13:27:48 end ["b0", 2095, [], [419], 5, 2, [[0, 19]]] rc=1
 2026-11-14 13:27:48 start ["b0", 2215, [], [443], 5, 2, [[0, 17]]]
+{"key": ["b0", 2215, [], [443], 5, 2, [[0, 17]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
+{"key": ["b0", 2215, [], [443], 5, 2, [[0, 17]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "planted": [{"T0": 8596, "R": 8732, "B": null}], "phase": "final"}
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 479, in main
+    if outp: open(outp, 'a').write(json.dumps(rec) + "\n")
+             ~~~~^^^^^^^^^^^
+MemoryError
+2026-11-14 13:31:54 end ["b0", 2215, [], [443], 5, 2, [[0, 17]]] rc=1
+2026-11-14 13:31:54 start ["k4", 1719, [4], [13, 3], 11, 2, [[1, 6]]]
