@@ -673,6 +673,9 @@ of them are in `h4892_answer.md` already (4892 with its 384 classes and no core,
   left undecided (5028 b0, 8108 b1, 6852 b0 = ℤ₃ × ℤ₅₇₁ with 324 solutions, estimated at about 2⁹¹ per core), and
   28 stopped at a cap. The 14 that ran out of memory are being retried one at a time at 12 GB and 90 minutes
   (`scripts/fable_tier12_pass2.sh`, `logs/fable_fresh/tier12_stage1_pass2.jsonl`).
+  **Second pass finished (2026-11-14 15:19 UTC): no verdict for any of the 14.** Twelve ran out of memory again at
+  12 GB, one (7324) hit the block cap of method B and one (7924 b0) the 90-minute limit. These slices need a
+  different enumeration (or more memory than this machine has), not a longer run.
 <!-- /TIER12 -->
 
 ---
