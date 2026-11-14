@@ -660,6 +660,15 @@ of them are in `h4892_answer.md` already (4892 with its 384 classes and no core,
   (384 solutions, no core) as in the earlier report; 1571 (b1, ℤ₁₅₇ × ℤ₂, q = 5; decision only).
 - Undecided at the 45-minute or 7 GB cap (a cap is not a zero): 1987 (k4), 1831, 1473, 1559, 1103 (k4), 2207 (k4),
   1981 (b0).
+- Empty at stage 1, planted control recovered: 7132 (k4, ℤ₄ × ℤ₅ × ℤ₈₉, s = 8; a core would have completed by
+  Theorem B); 5028 b1 (ℤ₂³ × ℤ₁₅₇, s = 12); 3884 (b1, ℤ₅ × ℤ₂ × ℤ₉₇, s = 8). Empty with the planted control
+  undecided: 8860 b1 (ℤ₂₇ × ℤ₂, q = 41).
+- **Non-empty stage 1, not decided:** 5028 b0 (ℤ₃ × ℤ₄₁₉, s = 38): 6 solutions, planted control recovered; the
+  screen's estimate for its stage 2 is about 2⁷² operations, so it was not pursued. 8108 b1 (ℤ₂ × ℤ₁₀₁₃, s = 44): 1
+  solution, confirmed by the independent enumerator (both plants recovered); the energy bound does not kill it; the
+  exact ℤ₁₀₁₃ check ran 30 minutes without a verdict (with G′ = ℤ₂ that check is almost the whole of stage 2).
+- More undecided at a cap: 6668, 5308, 7516, 8860 k4, 2956, 8108 k4, 4124, 5468, 7388, 6268, 8380 (b0); the
+  out-of-memory ones are retried at 12 GB after the first pass (`scripts/fable_tier12_pass2.sh`).
 - The rest of the 44: running.
 <!-- /TIER12 -->
 
