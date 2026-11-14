@@ -94,3 +94,13 @@ Traceback (most recent call last):
 MemoryError
 2026-11-14 13:16:27 end ["k4", 1367, [4], [31], 11, 2, [[1, 6]]] rc=1
 2026-11-14 13:16:27 start ["k4", 2027, [4], [11, 2], 23, 2, [[1, 5]]]
+Traceback (most recent call last):
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 483, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/Hadamard/theory/open_screen_stage1_exact.py", line 432, in main
+    import gc; gc.collect()                  # the decision is printed before any file is opened: near the address-space
+    ^^^^^^^^^
+MemoryError
+2026-11-14 13:22:17 end ["k4", 2027, [4], [11, 2], 23, 2, [[1, 5]]] rc=1
+2026-11-14 13:22:17 start ["b0", 2315, [], [463], 5, 2, [[0, 33]]]
