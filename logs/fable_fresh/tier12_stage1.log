@@ -207,3 +207,5 @@ MemoryError
 {"key": ["k4", 1719, [4], [13, 3], 11, 2, [[1, 6]]], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"undecided": "MemoryError()"}, "solutions": [], "phase": "decision"}
 2026-11-14 04:21:45 end ["k4", 1719, [4], [13, 3], 11, 2, [[1, 6]]] rc=124
 2026-11-14 04:21:45 start ["b1", 1783, [], [81, 2], 11, 2, [[0, 9]]]
+2026-11-14 05:00:04 restart after container restart (1783 b1 run was cut at about 38 min)
+2026-11-14 05:00:04 start ["b1", 1783, [], [81, 2], 11, 2, [[0, 9]]]
