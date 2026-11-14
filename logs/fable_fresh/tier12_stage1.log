@@ -151,3 +151,9 @@ MemoryError
 2026-11-13 23:47:03 start ["k4", 2215, [4], [7], 79, 6, [["neg", [0, 1]]]]
 2026-11-14 00:24:33 restart after container restart (2215 k4 run was cut at about 37 min)
 2026-11-14 00:24:33 start ["k4", 2215, [4], [7], 79, 6, [["neg", [0, 1]]]]
+2026-11-14 01:09:33 end ["k4", 2215, [4], [7], 79, 6, [["neg", [0, 1]]]] rc=124
+2026-11-14 01:09:33 start ["b1", 1257, [], [2, 2, 2], 157, 12, []]
+{"key": ["b1", 1257, [], [2, 2, 2], 157, 12, []], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 10374, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 0, "right_pairs": 0}], "secs": 2.8}, "solutions": [], "phase": "decision"}
+{"key": ["b1", 1257, [], [2, 2, 2], 157, 12, []], "A": {"undecided": "RuntimeError('method A not run')"}, "B": {"solutions": 0, "blocks": 10374, "join": [{"rows": [0, 0, 0, 2], "left_pairs": 0, "right_pairs": 0}], "secs": 2.8}, "solutions": [], "planted": [{"T0": 4192, "R": 4, "B": true}], "phase": "final"}
+2026-11-14 01:09:42 end ["b1", 1257, [], [2, 2, 2], 157, 12, []] rc=0
+2026-11-14 01:09:42 start ["b1", 971, [], [5, 2], 97, 8, []]
