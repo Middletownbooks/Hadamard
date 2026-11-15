@@ -728,8 +728,9 @@ Status (2026-11-15 05:00 UTC; the census is restart-safe and still running):
 | 1871 | ℤ₂^4 | flat minus point | 4 | 0 |
 
   "flat minus point" with |T| = 15 over ℤ₂⁴ is EKLO's Theorem 7 at index 16 (classical); the ℤ₂⁶ slices at 599 and 739
-  have non-classical T. The undecided slices are the 599 family over ℤ₂⁶ × ℤ₉, where 4 to 52 of 318–345 y-quadruples
-  need more than 10⁶ lifts per block; all their other y-quadruples are killed by the window filter.
+  have non-classical T. The undecided ones are mostly the 599 family over ℤ₂⁶ × ℤ₉, where 4 to 52 of 318–345
+  y-quadruples need more than 10⁶ lifts per block (all their other y-quadruples are killed by the window filter); the
+  undecided ℤ₂⁴ / ℤ₂⁵ entries are records from before the fix whose re-run is still queued.
 <!-- /CENSUS3 -->
 
 ---
