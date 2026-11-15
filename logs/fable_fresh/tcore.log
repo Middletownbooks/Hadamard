@@ -332,3 +332,9 @@ p=1487 a=4 Q-level: 67 y-quadruples (0s)
 p=1487 a=4 23 lag classes, 36 cells per block
 p=1487 a=4 planted control: window keeps the plant: True
 p=1487 a=4 planted control: join undecided
+{"qlevel": 67, "examined": 67, "killed_by_window": 67, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 166.9, "key": "[1487, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]"}
+11:03:00 start [1487, 4, "prod [3, 1] [7]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]
+p=1487 a=4 Q-level: 28 y-quadruples (0s)
+p=1487 a=4 23 lag classes, 36 cells per block
+p=1487 a=4 planted control: window keeps the plant: True
+p=1487 a=4 planted control: join undecided
