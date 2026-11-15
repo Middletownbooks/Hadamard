@@ -284,3 +284,9 @@ p=719 a=4 Q-level: 32 y-quadruples (0s)
 p=719 a=4 23 lag classes, 36 cells per block
 p=719 a=4 planted control: window keeps the plant: True
 p=719 a=4 planted control: join undecided
+{"qlevel": 32, "examined": 32, "killed_by_window": 32, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 127.1, "key": "[719, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 3, 10]"}
+10:45:04 start [719, 4, "prod [3, 1] [7]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 3, 10]
+p=719 a=4 Q-level: 96 y-quadruples (0s)
+p=719 a=4 23 lag classes, 36 cells per block
+p=719 a=4 planted control: window keeps the plant: True
+p=719 a=4 planted control: join undecided
