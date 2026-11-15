@@ -1216,3 +1216,9 @@ p=599 a=6 Q-level: 345 y-quadruples (8s)
 p=599 a=6 23 lag classes, 40 cells per block
 p=599 a=6 planted control: window keeps the plant: True
 p=599 a=6 planted control: join undecided
+{"qlevel": 345, "examined": 341, "killed_by_window": 341, "capped": 4, "verdict": "UNDECIDED (4 y-quadruples capped, 345 of 345 examined)", "secs": 856.8, "key": "[599, 6, \"prod [4, 2] [5, 3]\", [1, 2, 6, 10, 15, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 4, 3]"}
+20:31:36 start [599, 6, "prod [4, 2] [5, 3]", [1, 2, 6, 10, 15, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 8, 2]
+p=599 a=6 Q-level: 345 y-quadruples (9s)
+p=599 a=6 39 lag classes, 40 cells per block
+p=599 a=6 planted control: window keeps the plant: True
+p=599 a=6 planted control: join undecided
