@@ -427,3 +427,4 @@ p=1103 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 14,
 p=1103 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 14, 15, 17, 18, 19] (NEW) s=34 U=3^16 r=48: G2 cap: box join G2=cap: box join G3=None
 p=1103 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=34 U=3^16 r=48: G2 cap: box join G2=cap: box join G3=None
   a=5 p=1103 done (25866s)
+p=1187 a=5 prod [3, 2] [7, 3] T=[8, 16, 24] (flat minus point) s=37 U=10^3 r=52: G3 cap: blocks G2=6 G3=cap: blocks
