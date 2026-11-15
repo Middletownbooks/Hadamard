@@ -245,3 +245,19 @@ p=1487 a=4 23 lag classes, 32 cells per block
 08:01:17 start [1871, 4, "prod [4] [5]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
 p=1871 a=4 Q-level: 33 y-quadruples (0s)
 p=1871 a=4 23 lag classes, 32 cells per block
+{"qlevel": 33, "examined": 15, "killed_by_window": 15, "capped": 18, "verdict": "UNDECIDED (18 y-quadruples capped, 33 of 33 examined)", "secs": 23.9, "key": "[1871, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
+08:01:41 start [1871, 4, "prod [3, 1] [7]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+p=1871 a=4 Q-level: 16 y-quadruples (0s)
+p=1871 a=4 23 lag classes, 32 cells per block
+p=1871 a=4 planted control: window keeps the plant: True
+p=1871 a=4 planted control: join undecided
+{"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 4.4, "key": "[1871, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
+08:01:46 start [1871, 4, "prod [3, 1] [7]", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+p=1871 a=4 Q-level: 16 y-quadruples (0s)
+p=1871 a=4 23 lag classes, 32 cells per block
+p=1871 a=4 planted control: window keeps the plant: True
+p=1871 a=4 planted control: join undecided
+{"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3.7, "key": "[1871, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
+08:01:50 start [1871, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+p=1871 a=4 Q-level: 9 y-quadruples (0s)
+p=1871 a=4 23 lag classes, 32 cells per block
