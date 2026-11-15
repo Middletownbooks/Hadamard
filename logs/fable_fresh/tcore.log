@@ -454,3 +454,25 @@ p=1019 a=6 Q-level: 1920 y-quadruples (45s)
 p=1019 a=6 31 lag classes, 40 cells per block
 p=1019 a=6 planted control: window keeps the plant: True
 p=1019 a=6 planted control: join found
+{"qlevel": 1920, "examined": 1920, "killed_by_window": 1920, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 153.6, "key": "[1019, 6, \"prod [3, 2, 1] [7, 3]\", [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63], 15, 2, 4]"}
+12:16:01 start [1019, 6, "prod [3, 2, 1] [7, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 49, 50, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 62, 63], 15, 2, 4]
+p=1019 a=6 Q-level: 1920 y-quadruples (42s)
+p=1019 a=6 31 lag classes, 40 cells per block
+p=1019 a=6 planted control: window keeps the plant: True
+p=1019 a=6 planted control: join found
+{"qlevel": 1920, "examined": 1920, "killed_by_window": 1920, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 144.3, "key": "[1019, 6, \"prod [3, 2, 1] [7, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 49, 50, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 62, 63], 15, 2, 4]"}
+12:18:26 start [1031, 5, "prod [3, 2] [7, 3]", [1, 2, 3, 4, 5, 6, 7], 32, 5, 8]
+p=1031 a=5 Q-level: 343 y-quadruples (0s)
+p=1031 a=5 23 lag classes, 40 cells per block
+{"qlevel": 343, "examined": 0, "killed_by_window": 0, "capped": 343, "verdict": "UNDECIDED (343 y-quadruples capped, 343 of 343 examined)", "secs": 0.5, "key": "[1031, 5, \"prod [3, 2] [7, 3]\", [1, 2, 3, 4, 5, 6, 7], 32, 5, 8]"}
+12:18:27 start [1039, 5, "prod [4, 1] [15]", [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31], 32, 5, 8]
+p=1039 a=5 Q-level: 768 y-quadruples (0s)
+p=1039 a=5 23 lag classes, 40 cells per block
+{"qlevel": 768, "examined": 0, "killed_by_window": 0, "capped": 768, "verdict": "UNDECIDED (768 y-quadruples capped, 768 of 768 examined)", "secs": 0.3, "key": "[1039, 5, \"prod [4, 1] [15]\", [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31], 32, 5, 8]"}
+12:18:28 start [1039, 5, "prod [4, 1] [15]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 32, 5, 8]
+p=1039 a=5 Q-level: 768 y-quadruples (0s)
+p=1039 a=5 23 lag classes, 40 cells per block
+{"qlevel": 768, "examined": 0, "killed_by_window": 0, "capped": 768, "verdict": "UNDECIDED (768 y-quadruples capped, 768 of 768 examined)", "secs": 0.3, "key": "[1039, 5, \"prod [4, 1] [15]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 32, 5, 8]"}
+12:18:28 start [1571, 4, "prod [2, 2] [3, 3]", [1, 2, 3], 98, 9, 21]
+p=1571 a=4 Q-level: 5853 y-quadruples (2s)
+p=1571 a=4 23 lag classes, 40 cells per block
