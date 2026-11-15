@@ -83,3 +83,4 @@
 {"qlevel": 3, "examined": 3, "killed_by_window": 3, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 13.4, "key": "[1423, 6, \"diag [4, 2] [15, 3] j=[1, 1]\", [17, 18, 22, 26, 31, 39, 40, 41, 43, 45, 51, 52, 53, 60, 62], 22, 3, 5]"}
 {"qlevel": 3, "examined": 3, "killed_by_window": 3, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 13.8, "key": "[1423, 6, \"diag [4, 2] [15, 3] j=[1, 2]\", [17, 18, 22, 26, 31, 35, 36, 37, 44, 46, 55, 56, 57, 59, 61], 22, 3, 5]"}
 {"qlevel": 67, "examined": 67, "killed_by_window": 67, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 166.9, "key": "[1487, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]"}
+{"qlevel": 28, "examined": 28, "killed_by_window": 28, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 22.8, "key": "[1487, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]"}
