@@ -23,3 +23,4 @@
 {"qlevel": 33, "examined": 33, "killed_by_window": 32, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 30.0, "key": "[1871, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
 {"qlevel": 16, "examined": 16, "killed_by_window": 15, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 12.5, "key": "[1871, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
 {"qlevel": 16, "examined": 16, "killed_by_window": 15, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 12.4, "key": "[1871, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
+{"qlevel": 9, "examined": 9, "killed_by_window": 8, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 19.0, "key": "[1871, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
