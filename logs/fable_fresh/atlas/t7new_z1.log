@@ -2,3 +2,5 @@ synthetic_a4_T0-1-2-3-4-5-8_d4-2-2-2: k = 16, T = [0, 1, 2, 3, 4, 5, 8], b = 28,
 signed block permutations commuting with M: 24
 symmetry z1: 2 images per row (mod sign), 14 orbits per side
 rows 2085136, orbit representatives 521284, self-orthogonal orbits 521284
+compatible y per x: min 6738 median 7814 max 15190; orthogonal: median 33557
+Q-symmetries: 8 linear maps keep the admissible functions; 128 affine maps keep the K-table
