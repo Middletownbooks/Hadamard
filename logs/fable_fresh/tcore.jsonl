@@ -70,3 +70,4 @@
 {"qlevel": 33, "examined": 15, "killed_by_window": 15, "capped": 18, "verdict": "UNDECIDED (18 y-quadruples capped, 33 of 33 examined)", "secs": 23.9, "key": "[1871, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
 {"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 4.4, "key": "[1871, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
 {"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3.7, "key": "[1871, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
+{"qlevel": 9, "examined": 4, "killed_by_window": 4, "capped": 5, "verdict": "UNDECIDED (5 y-quadruples capped, 9 of 9 examined)", "secs": 9.0, "key": "[1871, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
