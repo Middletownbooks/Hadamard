@@ -710,27 +710,28 @@ Q-level y-quadruples, all lifts of each block, the exact window filter on the PA
 definition, in 3 s).
 
 <!-- CENSUS3 -->
-Status (2026-11-15 05:00 UTC; the census is restart-safe and still running):
+Status (2026-11-15 21:40 UTC):
+- Census: a = 4 and a = 6 done for all 64 open primes; a = 5 done up to 1187 (very slow: many character sets; still
+  running). 8466 slices recorded. Gate reached: a = 4: G1 1392, G2 707, G3 298, axis 271; a = 5: G1 90, G2 1043, G3 51, G4 1, axis 408; a = 6: G1 863, G2 2355, G3 144, G4 3, axis 839, passed 1.
 - Control: on 599, a = 4, the census agrees with `fable_tcensus2` slice by slice where both decide.
-- Census so far: a = 4 for 37 primes, a = 6 for 11, a = 5 for 7. About 120 slices with r ≤ 48 survive G2 (most of
-  them variants of one family at 599, ℤ₂⁶ × ℤ₉ with Σ of order 15 and |T| = 23, whose G3 is too large to enumerate).
-- Cores: **no core found** (2026-11-15 07:30 UTC, 35 slices decided or attempted; a bug that skipped the window filter on
-  the first y-quadruple of each slice was found and fixed, and every undecided slice was re-run):
+- Cores: all 262 survivors with r ≤ 48 were run through `fable_tcore.py` (after a bug fix: the first
+  y-quadruple of each slice had skipped the window filter). **No core was found.**
 
-| p | Q | kind of T | slices with no core [M] | undecided (capped y-quadruples) |
+| Q | T | slices with no core [M] | undecided | primes with a no-core slice |
 |---|---|---|---|---|
-| 599 | ℤ₂^6 | NEW | 2 | 9 |
-| 719 | ℤ₂^4 | flat minus point | 4 | 4 |
-| 739 | ℤ₂^6 | NEW | 1 | 0 |
-| 863 | ℤ₂^5 | flat minus point | 0 | 1 |
-| 1103 | ℤ₂^4 | flat minus point | 2 | 2 |
-| 1487 | ℤ₂^4 | flat minus point | 5 | 1 |
-| 1871 | ℤ₂^4 | flat minus point | 4 | 0 |
+| ℤ₂^4 | classical | 36 | 101 | 719, 1103, 1223, 1487, 1847, 1871, 1907, 2383 |
+| ℤ₂^4 | non-classical | 1 | 1 | 1579 |
+| ℤ₂^5 | classical | 3 | 22 | 1031, 1039 |
+| ℤ₂^5 | non-classical | 0 | 6 |  |
+| ℤ₂^6 | classical | 2 | 15 | 1663 |
+| ℤ₂^6 | non-classical | 22 | 53 | 599, 719, 739, 863, 971, 1019, 1423, 1619, 1747 |
 
-  "flat minus point" with |T| = 15 over ℤ₂⁴ is EKLO's Theorem 7 at index 16 (classical); the ℤ₂⁶ slices at 599 and 739
-  have non-classical T. The undecided ones are mostly the 599 family over ℤ₂⁶ × ℤ₉, where 4 to 52 of 318–345
-  y-quadruples need more than 10⁶ lifts per block (all their other y-quadruples are killed by the window filter); the
-  undecided ℤ₂⁴ / ℤ₂⁵ entries are records from before the fix whose re-run is still queued.
+  Undecided means that some y-quadruples need more than 10⁶ lifts per block (and, in two cases, the 1-hour limit);
+  in the slices run in the first hours all other y-quadruples were killed by the window filter, in the later (richer)
+  slices nearly all y-quadruples are above the cap. A last pass with 5·10⁶ lifts per block is running
+  (`scripts/fable_tcore_bigcap.sh`). Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
+- Reading: the same dichotomy as everywhere else in this repository. Every slice small enough to be decided exactly
+  has no core; the rest are too rich for an exact search on this machine.
 <!-- /CENSUS3 -->
 
 ---
