@@ -455,3 +455,12 @@ p=1907 a=4 prod [2, 2] [3, 3] T=[1, 2, 3] (flat minus point) s=119 U=19^24 r=32:
 p=1907 a=4 prod [2, 2] [3, 3] T=[1, 2, 3] (flat minus point) s=119 U=38^12 r=56: G3 cap: blocks G2=229671 G3=cap: blocks
 p=1907 a=4 diag [2, 2] [3, 3] j=[1, 1] T=[5, 10, 15] (flat minus point) s=119 U=2^24 r=54: G2 cap: more than 60000 block energy vectors G2=cap: more than 60000 block energy vectors G3=None
 p=1907 a=4 diag [2, 2] [3, 3] j=[1, 1] T=[5, 10, 15] (flat minus point) s=119 U=19^24 r=48: G2 cap: pairs G2=cap: pairs G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 1] T=[1, 2, 3] (flat minus point) s=119 U=2^24 r=54: G2 cap: more than 60000 block energy vectors G2=cap: more than 60000 block energy vectors G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 1] T=[1, 2, 3] (flat minus point) s=119 U=19^24 r=48: G2 cap: pairs G2=cap: pairs G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[5, 11, 14] (flat minus point) s=119 U=2^24 r=54: G2 cap: more than 60000 block energy vectors G2=cap: more than 60000 block energy vectors G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[5, 11, 14] (flat minus point) s=119 U=19^24 r=48: G2 cap: pairs G2=cap: pairs G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[1, 2, 3] (flat minus point) s=119 U=2^24 r=54: G2 cap: more than 60000 block energy vectors G2=cap: more than 60000 block energy vectors G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[1, 2, 3] (flat minus point) s=119 U=19^24 r=48: G2 cap: pairs G2=cap: pairs G3=None
+  a=4 p=1907 done (26456s)
+  a=4 p=1979 done (26460s)
+p=1987 a=4 prod [4] [3] T=[1, 12, 13] (flat minus point) s=124 U=7^30 r=54: G3 cap: blocks G2=135 G3=cap: blocks
