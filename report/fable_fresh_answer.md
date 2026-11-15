@@ -714,10 +714,22 @@ Status (2026-11-15 05:00 UTC; the census is restart-safe and still running):
 - Control: on 599, a = 4, the census agrees with `fable_tcensus2` slice by slice where both decide.
 - Census so far: a = 4 for 37 primes, a = 6 for 11, a = 5 for 7. About 120 slices with r ≤ 48 survive G2 (most of
   them variants of one family at 599, ℤ₂⁶ × ℤ₉ with Σ of order 15 and |T| = 23, whose G3 is too large to enumerate).
-- Cores: **no core found.** Exactly no core [M] for **739** (ℤ₂⁶ × ℤ₁₁, |T| = 35, non-classical, U of order 5,
-  24 orbits) and **1871** (ℤ₂⁴ × ℤ₁₁₆, T = all nontrivial characters, i.e. EKLO's Theorem 7 at index 16, U of order
-  28). Every other slice finished so far is undecided only through one to 53 y-quadruples above the caps (10⁶ lifts
-  per block, 6·10⁷ pairs per side); the exact window filter kills all the rest (e.g. 340 of 345, 317 of 318).
+- Cores: **no core found** (2026-11-15 07:30 UTC, 35 slices decided or attempted; a bug that skipped the window filter on
+  the first y-quadruple of each slice was found and fixed, and every undecided slice was re-run):
+
+| p | Q | kind of T | slices with no core [M] | undecided (capped y-quadruples) |
+|---|---|---|---|---|
+| 599 | ℤ₂^6 | NEW | 2 | 9 |
+| 719 | ℤ₂^4 | flat minus point | 4 | 4 |
+| 739 | ℤ₂^6 | NEW | 1 | 0 |
+| 863 | ℤ₂^5 | flat minus point | 0 | 1 |
+| 1103 | ℤ₂^4 | flat minus point | 2 | 2 |
+| 1487 | ℤ₂^4 | flat minus point | 5 | 1 |
+| 1871 | ℤ₂^4 | flat minus point | 4 | 0 |
+
+  "flat minus point" with |T| = 15 over ℤ₂⁴ is EKLO's Theorem 7 at index 16 (classical); the ℤ₂⁶ slices at 599 and 739
+  have non-classical T. The undecided slices are the 599 family over ℤ₂⁶ × ℤ₉, where 4 to 52 of 318–345 y-quadruples
+  need more than 10⁶ lifts per block; all their other y-quadruples are killed by the window filter.
 <!-- /CENSUS3 -->
 
 ---
