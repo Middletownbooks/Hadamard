@@ -273,3 +273,9 @@ p=719 a=6 Q-level: 1031 y-quadruples (5s)
 p=719 a=6 35 lag classes, 36 cells per block
 p=719 a=6 planted control: window keeps the plant: True
 p=719 a=6 planted control: join undecided
+{"qlevel": 1031, "examined": 1031, "killed_by_window": 1031, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3016.6, "key": "[719, 6, \"diag [4, 2] [15, 3] j=[1, 2]\", [17, 18, 22, 26, 31, 35, 36, 37, 44, 46, 55, 56, 57, 59, 61], 11, 10, 2]"}
+09:42:56 start [719, 6, "diag [4, 2] [15, 3] j=[1, 2]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2]
+p=719 a=6 Q-level: 1890 y-quadruples (6s)
+p=719 a=6 35 lag classes, 36 cells per block
+p=719 a=6 planted control: window keeps the plant: True
+p=719 a=6 planted control: join undecided
