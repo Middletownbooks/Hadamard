@@ -129,3 +129,47 @@ p=1223 a=4 prod [2, 2] [3, 1] T=[0, 1, 2, 3, 5, 6, 7] (flat minus point) s=76 U=
 p=1223 a=4 prod [2, 2] [3, 1] T=[0, 1, 2, 3, 4, 8, 12] (NEW) s=76 U=3^18 r=56: G2 cap: box join G2=cap: box join G3=None
 p=1223 a=4 prod [2, 2] [3, 1] T=[0, 1, 2, 3, 4, 8, 12] (NEW) s=76 U=13^18 r=64: G2 cap: box join G2=cap: box join G3=None
   a=4 p=1223 done (2893s)
+p=1259 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=78 U=17^6 r=64: G3 cap: blocks G2=54 G3=cap: blocks
+  a=4 p=1259 done (2901s)
+  a=4 p=1283 done (2901s)
+  a=4 p=1291 done (2901s)
+  a=4 p=1319 done (3523s)
+  a=4 p=1327 done (3561s)
+p=1367 a=4 prod [3, 1] [7] T=[9, 10, 11, 12, 13, 14, 15] (flat minus point) s=85 U=9^8 r=52: G3 cap: blocks G2=485 G3=cap: blocks
+p=1367 a=4 prod [3, 1] [7] T=[9, 10, 11, 12, 13, 14, 15] (flat minus point) s=85 U=26^8 r=60: G3 cap: blocks G2=485 G3=cap: blocks
+p=1367 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7] (flat minus point) s=85 U=9^8 r=52: G3 cap: blocks G2=485 G3=cap: blocks
+p=1367 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7] (flat minus point) s=85 U=26^8 r=60: G3 cap: blocks G2=485 G3=cap: blocks
+  a=4 p=1367 done (3577s)
+p=1423 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=3^10 r=60: G3 cap: blocks G2=110 G3=cap: blocks
+p=1423 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=7^10 r=52: G3 cap: blocks G2=108 G3=cap: blocks
+p=1423 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=13^10 r=56: G3 cap: blocks G2=108 G3=cap: blocks
+p=1423 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=15^10 r=60: G3 cap: blocks G2=110 G3=cap: blocks
+p=1423 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=17^10 r=64: G3 cap: blocks G2=108 G3=cap: blocks
+p=1423 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=19^10 r=52: G3 cap: blocks G2=108 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=3^10 r=60: G3 cap: blocks G2=37 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=7^10 r=52: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=13^10 r=56: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=15^10 r=60: G3 cap: blocks G2=37 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=17^10 r=64: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=19^10 r=52: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=3^10 r=60: G3 cap: blocks G2=37 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=7^10 r=52: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=13^10 r=56: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=15^10 r=60: G3 cap: blocks G2=37 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=17^10 r=64: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=19^10 r=52: G3 cap: blocks G2=35 G3=cap: blocks
+p=1423 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=3^10 r=60: G3 cap: blocks G2=176 G3=cap: blocks
+p=1423 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=7^10 r=52: G3 cap: blocks G2=174 G3=cap: blocks
+p=1423 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=13^10 r=56: G3 cap: blocks G2=174 G3=cap: blocks
+p=1423 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=15^10 r=60: G3 cap: blocks G2=176 G3=cap: blocks
+p=1423 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=17^10 r=64: G3 cap: blocks G2=174 G3=cap: blocks
+p=1423 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=88 U=19^10 r=52: G3 cap: blocks G2=174 G3=cap: blocks
+  a=4 p=1423 done (3758s)
+  a=4 p=1427 done (3759s)
+  a=4 p=1439 done (3759s)
+p=1451 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=90 U=23^12 r=64: G3 cap: blocks G2=72 G3=cap: blocks
+  a=4 p=1451 done (3766s)
+p=1471 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=91 U=5^12 r=44: G3 cap: blocks G2=141 G3=cap: blocks
+p=1471 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=91 U=18^12 r=48: G3 cap: blocks G2=141 G3=cap: blocks
+p=1471 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=91 U=5^12 r=44: G3 cap: blocks G2=23 G3=cap: blocks
+p=1471 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=91 U=18^12 r=48: G3 cap: blocks G2=23 G3=cap: blocks
