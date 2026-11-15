@@ -696,6 +696,32 @@ of them are in `h4892_answer.md` already (4892 with its 384 classes and no core,
 
 ---
 
+## 8b. Census of small general-T slices over ℤ₂^a, a = 4, 5, 6 [M; phase 3, 2026-11-14/15, running]
+
+Plan: `logs/fable_fresh/PLAN_phase3.md`, item 1. `theory/fable_tcensus3.py` enumerates, for every open prime p and
+a = 4, 5, 6, the slices G = ℤ₂^a × ℤ_s (s = (p − t)/2^a, t = |T| ≡ p mod 2^a) with multiplier group Σ × U: Σ built
+from field multiplications on a decomposition ℤ₂^a = ⊕ F_{2^d} (products of subgroups and cyclic diagonals, at most
+12 orbits), T a Σ-invariant set of t characters up to the normaliser of the orbit partition, U cyclic on ℤ_s, at
+most 64 orbits per block. Exact gates in order: the axis gate of §8a, cell energy (G1), the Q-level (G2, the box
+join generalising `theory/fable_tcensus2.qlevel`), the dual S-level (G3) and row-sum consistency (G4).
+`theory/fable_tcore.py` then decides the core exactly for every survivor with at most 48 orbits per block: all
+Q-level y-quadruples, all lifts of each block, the exact window filter on the PAF vector over the lag classes, then a
+2 + 2 join (planted check on every slice; control: ℤ₂³ × ℤ₃ with T = {0, 1, 2, 4} gives a core, checked by
+definition, in 3 s).
+
+<!-- CENSUS3 -->
+Status (2026-11-15 05:00 UTC; the census is restart-safe and still running):
+- Control: on 599, a = 4, the census agrees with `fable_tcensus2` slice by slice where both decide.
+- Census so far: a = 4 for 37 primes, a = 6 for 11, a = 5 for 7. About 120 slices with r ≤ 48 survive G2 (most of
+  them variants of one family at 599, ℤ₂⁶ × ℤ₉ with Σ of order 15 and |T| = 23, whose G3 is too large to enumerate).
+- Cores: **no core found.** Exactly no core [M] for **739** (ℤ₂⁶ × ℤ₁₁, |T| = 35, non-classical, U of order 5,
+  24 orbits) and **1871** (ℤ₂⁴ × ℤ₁₁₆, T = all nontrivial characters, i.e. EKLO's Theorem 7 at index 16, U of order
+  28). Every other slice finished so far is undecided only through one to 53 y-quadruples above the caps (10⁶ lifts
+  per block, 6·10⁷ pairs per side); the exact window filter kills all the rest (e.g. 340 of 345, 317 of 318).
+<!-- /CENSUS3 -->
+
+---
+
 ## 9. What I would do next
 
 1. **With about 10³ core-hours:** Kumar's Spence plug-in for 4792 = 8·599 over ℤ₇ × ℤ₁₉ × F₉ (his `search/eightp/gs`,
