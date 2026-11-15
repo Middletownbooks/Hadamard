@@ -42,3 +42,12 @@ p=719 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
 p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=3^6 r=52: G3 cap: blocks G2=30 G3=cap: blocks
 p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=5^6 r=56: G3 cap: blocks G2=30 G3=cap: blocks
 p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=11^6 r=60: G3 cap: blocks G2=30 G3=cap: blocks
+p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=17^6 r=64: G3 cap: blocks G2=30 G3=cap: blocks
+p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=23^6 r=60: G3 cap: blocks G2=30 G3=cap: blocks
+p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=31^6 r=52: G3 cap: blocks G2=30 G3=cap: blocks
+  a=4 p=907 done (1214s)
+  a=4 p=947 done (1214s)
+  a=4 p=971 done (1214s)
+p=1019 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=63 U=2^6 r=52: G3 cap: blocks G2=18 G3=cap: blocks
+p=1019 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=63 U=11^6 r=52: G3 cap: blocks G2=18 G3=cap: blocks
+p=1019 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=63 U=17^6 r=56: G3 cap: blocks G2=18 G3=cap: blocks
