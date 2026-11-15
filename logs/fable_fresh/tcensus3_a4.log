@@ -453,3 +453,5 @@ p=1907 a=4 prod [2, 2] [3, 3] T=[1, 2, 3] (flat minus point) s=119 U=2^24 r=36: 
 p=1907 a=4 prod [2, 2] [3, 3] T=[1, 2, 3] (flat minus point) s=119 U=4^12 r=60: G3 cap: blocks G2=229671 G3=cap: blocks
 p=1907 a=4 prod [2, 2] [3, 3] T=[1, 2, 3] (flat minus point) s=119 U=19^24 r=32: G3 cap: blocks G2=3 G3=cap: blocks
 p=1907 a=4 prod [2, 2] [3, 3] T=[1, 2, 3] (flat minus point) s=119 U=38^12 r=56: G3 cap: blocks G2=229671 G3=cap: blocks
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 1] T=[5, 10, 15] (flat minus point) s=119 U=2^24 r=54: G2 cap: more than 60000 block energy vectors G2=cap: more than 60000 block energy vectors G3=None
+p=1907 a=4 diag [2, 2] [3, 3] j=[1, 1] T=[5, 10, 15] (flat minus point) s=119 U=19^24 r=48: G2 cap: pairs G2=cap: pairs G3=None
