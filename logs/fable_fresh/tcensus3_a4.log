@@ -1,3 +1,5 @@
 a = 4: 9 groups Sigma with at most 12 orbits (0s)
 p=599 a=4 prod [3, 1] [7] T=[9, 10, 11, 12, 13, 14, 15] (flat minus point) s=37 U=10^3 r=52: G3 cap: blocks G2=18 G3=cap: blocks
 p=599 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7] (flat minus point) s=37 U=10^3 r=52: G3 cap: blocks G2=18 G3=cap: blocks
+  a=4 p=599 done (419s)
+p=719 a=4 prod [4] [3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=44 U=3^10 r=54: G2 cap: box join G2=cap: box join G3=None
