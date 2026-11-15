@@ -26,7 +26,7 @@ PY
   fi
   while IFS= read -r KEY; do
     echo "$(date -u +%T) start $KEY" >> $L/tcore.log
-    OMP_NUM_THREADS=2 timeout 3600 nice -n 3 python3 theory/fable_tcore.py "$KEY" --planted --maxlift 3e6 >> $L/tcore.log 2>&1
+    (ulimit -v 6000000; OMP_NUM_THREADS=2 timeout 3600 nice -n 3 python3 theory/fable_tcore.py "$KEY" --planted --maxlift 1e6 >> $L/tcore.log 2>&1)
     rc=$?
     if ! grep -qF "$KEY" $L/tcore.jsonl; then echo "{\"key\": $(python3 -c 'import json,sys;print(json.dumps(sys.argv[1]))' "$KEY"), \"verdict\": \"UNDECIDED (rc=$rc)\"}" >> $L/tcore.jsonl; fi
   done < $L/tcore_todo.txt

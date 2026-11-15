@@ -1,0 +1,19 @@
+synthetic_a4_T0-1-2-3-4-5-8_d4-2-2-2: k = 16, T = [0, 1, 2, 3, 4, 5, 8], b = 28, n = 92; 38 admissible block functions
+signed block permutations commuting with M: 24
+symmetry q8: 4 images per row (mod sign), 7 orbits per side
+rows 2085136, orbit representatives 260642, self-orthogonal orbits 260642
+compatible y per x: min 0 median 56 max 462; orthogonal: median 1115
+Q-symmetries: 8 linear maps keep the admissible functions; 128 affine maps keep the K-table
+first rows up to symmetry: 8024 of 260642
+  first row 20/8024: complete Z so far 0, nodes 0, 97s
+  first row 40/8024: complete Z so far 0, nodes 0, 98s
+  first row 60/8024: complete Z so far 0, nodes 0, 99s
+  first row 80/8024: complete Z so far 0, nodes 0, 100s
+  first row 100/8024: complete Z so far 0, nodes 0, 100s
+  first row 120/8024: complete Z so far 0, nodes 0, 101s
+  first row 140/8024: complete Z so far 0, nodes 0, 102s
+  first row 160/8024: complete Z so far 0, nodes 0, 103s
+  first row 180/8024: complete Z so far 0, nodes 0, 104s
+  first row 200/8024: complete Z so far 0, nodes 0, 104s
+  first row 220/8024: complete Z so far 0, nodes 0, 105s
+  first row 240/8024: complete Z so far 0, nodes 0, 106s

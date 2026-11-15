@@ -249,6 +249,7 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
         Fs = []; Ls = []; bad = False
         for bi in quad:
             if bi not in cache:
+                if len(cache) > 12: cache.clear()            # memory: keep only a few lift lists
                 X = lifts(B, ys[bi], maxlift)
                 cache[bi] = None if X is None else (X, paf_features(X, CS) if len(X) else np.zeros((0, len(CS['reps'])), dtype=np.int64))
             if cache[bi] is None: bad = True; break

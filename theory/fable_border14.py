@@ -56,6 +56,17 @@ def setup():
         Gq = B2.Grp2(aa, 1)
         return dict(name=f'core_a{aa}_s{s_}_T{"-".join(map(str, T))}_seed{seed}', k=G.k, s=s_, M=np.array(M, dtype=np.int64),
                     F=admissible(Gq, T), t=len(T), T=T, cells=None, rest=sys.argv[6:], core=X.tolist(), G=G, Cm=Cm)
+    if a == 'synthetic':
+        # synthetic compressed core M = Gamma (x) I_k, Gamma = GS matrix of the quaternion d0 + d1 i + d2 j + d3 k
+        # (constant Walsh profile on T); used for the border atlas of plan item 2.  T as character indices of Z_2^aa.
+        aa = int(sys.argv[2]); T = [int(x) for x in sys.argv[3].split(',')]; d = [int(x) for x in sys.argv[4].split(',')]
+        k = 1 << aa; G = B2.Grp2(aa, 1)
+        q0, q1, q2, q3 = d
+        Gam = np.array([[q0, q1, q2, q3], [-q1, q0, q3, -q2], [-q2, -q3, q0, q1], [-q3, q2, -q1, q0]], dtype=np.int64)
+        assert np.array_equal(Gam @ Gam.T, 4 * len(T) * np.eye(4, dtype=np.int64)), 'sum of d^2 must be 4|T|'
+        M = np.kron(Gam, np.eye(k, dtype=np.int64))
+        return dict(name=f'synthetic_a{aa}_T{"-".join(map(str, T))}_d{"-".join(map(str, d))}', k=k, s=1, M=M,
+                    F=admissible(G, T), t=len(T), T=T, cells=None, rest=sys.argv[5:], synthetic=True)
     raise SystemExit(__doc__)
 
 SUB = 'q8'
