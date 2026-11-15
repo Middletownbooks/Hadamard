@@ -173,6 +173,38 @@ def paf_features(X, CS):
         out[c0:c0 + 20000] = np.rint(np.einsum('nlr,nr->nl', Yb, E)).astype(np.int64)
     return out
 
+def window(Fs, tgt):
+    """exact range/window filter [P]: in a solution, block k has coordinate l within
+    [tgt_l - sum_{others} max, tgt_l - sum_{others} min]; iterate to a fixed point.  Returns the filtered lists
+    (None if some list becomes empty or a range test fails)."""
+    Fs = list(Fs)
+    while True:
+        if any(len(f) == 0 for f in Fs): return None
+        lo = [f.min(0) for f in Fs]; hi = [f.max(0) for f in Fs]
+        L = sum(lo); H = sum(hi)
+        if np.any(tgt < L) or np.any(tgt > H): return None
+        ch = False
+        for k in range(4):
+            a_ = tgt - (H - hi[k]); b_ = tgt - (L - lo[k])
+            keep = np.all((Fs[k] >= a_) & (Fs[k] <= b_), axis=1)
+            if not keep.all(): Fs[k] = Fs[k][keep]; ch = True
+        if not ch: return Fs
+
+def window_cols(Fs, tgt):
+    """as window(), but returns (kept indices per list, filtered lists)"""
+    idx = [np.arange(len(f)) for f in Fs]; Fs = list(Fs)
+    while True:
+        if any(len(f) == 0 for f in Fs): return None
+        lo = [f.min(0) for f in Fs]; hi = [f.max(0) for f in Fs]
+        L = sum(lo); H = sum(hi)
+        if np.any(tgt < L) or np.any(tgt > H): return None
+        ch = False
+        for k in range(4):
+            a_ = tgt - (H - hi[k]); b_ = tgt - (L - lo[k])
+            keep = np.all((Fs[k] >= a_) & (Fs[k] <= b_), axis=1)
+            if not keep.all(): Fs[k] = Fs[k][keep]; idx[k] = idx[k][keep]; ch = True
+        if not ch: return idx, Fs
+
 def join4(Fs, tgt, maxpairs, rng):
     n = [len(f) for f in Fs]
     best = min([((0, 1), (2, 3)), ((0, 2), (1, 3)), ((0, 3), (1, 2))], key=lambda pr: max(n[pr[0][0]] * n[pr[0][1]], n[pr[1][0]] * n[pr[1][1]]))
@@ -212,7 +244,7 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
     CS = cell_setup(B)
     print(f'{tag} {len(CS["reps"])} lag classes, {len(CS["cells"])} cells per block', flush=True)
     rng = np.random.default_rng(1)
-    nund = 0; ndone = 0; found = None; cache = {}
+    nund = 0; ndone = 0; found = None; cache = {}; NWIN[0] = 0
     for qi, quad in enumerate(quads[:maxquad]):
         Fs = []; Ls = []; bad = False
         for bi in quad:
@@ -223,12 +255,37 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
             Ls.append(cache[bi][0]); Fs.append(cache[bi][1])
         if bad: nund += 1; continue
         if any(len(f) == 0 for f in Fs): ndone += 1; continue
+        if not (planted and qi == 0) and not ESTIMATE:
+            Fw = window_cols(Fs, CS['tgt'])
+            if Fw is None:
+                ndone += 1; NWIN[0] += 1; continue
+            keep_idx, Fs = Fw
+            Ls = [L_[ki] for L_, ki in zip(Ls, keep_idx)]
+        if ESTIMATE and qi < 8:
+            # Gaussian estimate of the number of joins hitting the target [E]: independent lag classes, lattice step
+            # from the observed values of each coordinate
+            lg = 0.0; ns = [len(f) for f in Fs]
+            for l in range(len(CS['tgt'])):
+                mu = sum(f[:, l].mean() for f in Fs); var = sum(f[:, l].var() for f in Fs)
+                vals = np.concatenate([f[:, l] - f[0, l] for f in Fs]); step = int(np.gcd.reduce(np.abs(vals[vals != 0]))) if np.any(vals) else 1
+                if var <= 0:
+                    lg += 0.0 if abs(mu - CS['tgt'][l]) < 1e-9 else -999; continue
+                lg += math.log2(step / math.sqrt(2 * math.pi * var)) - (CS['tgt'][l] - mu) ** 2 / (2 * var) / math.log(2)
+            tot = sum(math.log2(n) for n in ns)
+            print(f'{tag} y-quadruple {qi}: lift list sizes {ns}; log2(product) {tot:.1f}; log2 E[hits] {tot + lg:.1f} [E]', flush=True)
+            if qi == 7: return dict(verdict='ESTIMATE ONLY')
+            continue
         if planted and qi == 0:
             pick = [rng.integers(len(f)) for f in Fs]
             tp = sum(f[i] for f, i in zip(Fs, pick))
-            st, sel = join4(Fs, tp, maxpairs, rng)
-            print(f'{tag} planted control: {st}', flush=True)
-            if st != 'found': return dict(verdict='CONTROL FAILED')
+            wv = window_cols(Fs, tp)
+            okw = wv is not None and all(i in set(ki.tolist()) for i, ki in zip(pick, wv[0]))
+            print(f'{tag} planted control: window keeps the plant: {okw}', flush=True)
+            if not okw: return dict(verdict='CONTROL FAILED (window)')
+            Fp = [f[ki] for f, ki in zip(Fs, wv[0])]
+            st, sel = join4(Fp, tp, maxpairs, rng)
+            print(f'{tag} planted control: join {st}', flush=True)
+            if st == 'none': return dict(verdict='CONTROL FAILED (join)')
         st, sel = join4(Fs, CS['tgt'], maxpairs, rng)
         if st == 'undecided': nund += 1; continue
         ndone += 1
@@ -242,10 +299,15 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
     if found: verdict = 'FOUND'
     elif nund == 0 and len(quads) <= maxquad: verdict = 'NONE (exhaustive)'
     else: verdict = f'UNDECIDED ({nund} y-quadruples capped, {nq} of {len(quads)} examined)'
-    return dict(qlevel=cnt, examined=ndone, capped=nund, verdict=verdict, found=found, secs=round(time.time() - t0, 1))
+    return dict(qlevel=cnt, examined=ndone, killed_by_window=NWIN[0], capped=nund, verdict=verdict, found=found, secs=round(time.time() - t0, 1))
+
+ESTIMATE = False
+NWIN = [0]
 
 def main():
+    global ESTIMATE
     a_ = sys.argv[1:]
+    ESTIMATE = '--estimate' in a_
     get = lambda name, d: a_[a_.index(name) + 1] if name in a_ else d
     maxlift = int(float(get('--maxlift', '3e5'))); maxpairs = int(float(get('--maxpairs', '6e7')))
     maxquad = int(float(get('--maxquad', '1e5')))
