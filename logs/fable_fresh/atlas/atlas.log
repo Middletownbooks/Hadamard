@@ -3,3 +3,6 @@
 00:14:25 t7new_z1/z2/z3: not run (out of memory at 11 GB on the 2.1e6-row problem)
 00:14:43 t7flat_q8:  MemoryError
 00:15:09 t11a_q8s: q8-invariant border for synthetic_a4_T0-1-2-3-4-5-6-7-8-9-10_d6-2-2-0_single: NONE (search exhaustive); nodes 0, 25s 
+00:16:44 t11b_q8s: q8-invariant border for synthetic_a4_T0-1-2-3-4-5-6-8-9-10-12_d6-2-2-0_single: NONE (search exhaustive); nodes 0, 93s 
+00:16:46 t7new_q8s: q8-invariant border for synthetic_a4_T0-1-2-3-4-5-8_d4-2-2-2_single: NONE (search exhaustive); nodes 0, 1s 
+00:16:46 atlas done

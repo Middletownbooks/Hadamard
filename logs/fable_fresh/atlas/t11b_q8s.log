@@ -4,3 +4,11 @@ symmetry q8: 4 images per row (mod sign), 11 orbits per side
 rows 234256, orbit representatives 29282, self-orthogonal orbits 29282
 compatible y per x: min 0 median 4 max 324; orthogonal: median 5999
 Q-symmetries: 120 linear maps keep the admissible functions; 1920 affine maps keep the K-table
+first rows up to symmetry: 109 of 29282
+  first row 20/109: complete Z so far 0, nodes 0, 93s
+  first row 40/109: complete Z so far 0, nodes 0, 93s
+  first row 60/109: complete Z so far 0, nodes 0, 93s
+  first row 80/109: complete Z so far 0, nodes 0, 93s
+  first row 100/109: complete Z so far 0, nodes 0, 93s
+first rows (up to symmetry) with at least 11 compatible orbits: 6 of 109; surviving the bipartite pruning: 0; complete Z found: 0
+q8-invariant border for synthetic_a4_T0-1-2-3-4-5-6-8-9-10-12_d6-2-2-0_single: NONE (search exhaustive); nodes 0, 93s

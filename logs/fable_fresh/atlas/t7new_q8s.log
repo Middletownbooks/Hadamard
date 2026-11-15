@@ -1,0 +1,23 @@
+synthetic_a4_T0-1-2-3-4-5-8_d4-2-2-2_single: k = 16, T = [0, 1, 2, 3, 4, 5, 8], b = 28, n = 92; 14 admissible block functions
+signed block permutations commuting with M: 24
+symmetry q8: 4 images per row (mod sign), 7 orbits per side
+rows 38416, orbit representatives 4802, self-orthogonal orbits 4802
+compatible y per x: min 0 median 3 max 100; orthogonal: median 595
+Q-symmetries: 8 linear maps keep the admissible functions; 128 affine maps keep the K-table
+first rows up to symmetry: 289 of 4802
+  first row 20/289: complete Z so far 0, nodes 0, 1s
+  first row 40/289: complete Z so far 0, nodes 0, 1s
+  first row 60/289: complete Z so far 0, nodes 0, 1s
+  first row 80/289: complete Z so far 0, nodes 0, 1s
+  first row 100/289: complete Z so far 0, nodes 0, 1s
+  first row 120/289: complete Z so far 0, nodes 0, 1s
+  first row 140/289: complete Z so far 0, nodes 0, 1s
+  first row 160/289: complete Z so far 0, nodes 0, 1s
+  first row 180/289: complete Z so far 0, nodes 0, 1s
+  first row 200/289: complete Z so far 0, nodes 0, 1s
+  first row 220/289: complete Z so far 0, nodes 0, 1s
+  first row 240/289: complete Z so far 0, nodes 0, 1s
+  first row 260/289: complete Z so far 0, nodes 0, 1s
+  first row 280/289: complete Z so far 0, nodes 0, 1s
+first rows (up to symmetry) with at least 7 compatible orbits: 90 of 289; surviving the bipartite pruning: 0; complete Z found: 0
+q8-invariant border for synthetic_a4_T0-1-2-3-4-5-8_d4-2-2-2_single: NONE (search exhaustive); nodes 0, 1s
