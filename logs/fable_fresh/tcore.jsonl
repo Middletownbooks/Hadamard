@@ -75,3 +75,4 @@
 {"qlevel": 1031, "examined": 1031, "killed_by_window": 1031, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3016.6, "key": "[719, 6, \"diag [4, 2] [15, 3] j=[1, 2]\", [17, 18, 22, 26, 31, 35, 36, 37, 44, 46, 55, 56, 57, 59, 61], 11, 10, 2]"}
 {"key": "[719, 6, \"diag [4, 2] [15, 3] j=[1, 2]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2]", "verdict": "UNDECIDED (rc=124, no record)"}
 {"qlevel": 32, "examined": 32, "killed_by_window": 32, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 127.1, "key": "[719, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 3, 10]"}
+{"qlevel": 96, "examined": 96, "killed_by_window": 96, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 220.4, "key": "[719, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 3, 10]"}
