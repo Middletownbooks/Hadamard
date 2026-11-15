@@ -14,10 +14,19 @@ R = {}
 for l in open('logs/fable_fresh/tcensus3.jsonl'):
     try: r = json.loads(l); R[r['key']] = r
     except Exception: pass
+# order: slices of a (p, a, Sigma, U) family with fewer finished records first, then by r, so that distinct
+# families and primes are reached before the many T-variants of one family
+fam = lambda r: (r['p'], r['a'], r['sigma'], tuple(r['U']))
+seen = {}
+for k in done:
+    if k in R: seen[fam(R[k])] = seen.get(fam(R[k]), 0) + 1
+todo = []
 for k, r in R.items():
     if k in done: continue
     if r.get('alive') is True or (r.get('alive') is None and str(r.get('gate', '')).startswith('G3')):
-        if r['r'] <= 48: print(k)
+        if r['r'] <= 48: todo.append(r)
+todo.sort(key=lambda r: (seen.get(fam(r), 0), r['r'], r['p']))
+for r in todo[:5]: print(r['key'])
 PY
   n=$(wc -l < $L/tcore_todo.txt)
   if [ "$n" -eq 0 ]; then
