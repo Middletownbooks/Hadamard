@@ -86,3 +86,5 @@
 {"qlevel": 28, "examined": 28, "killed_by_window": 28, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 22.8, "key": "[1487, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]"}
 {"qlevel": 28, "examined": 28, "killed_by_window": 28, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 22.4, "key": "[1487, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]"}
 {"qlevel": 29, "examined": 29, "killed_by_window": 29, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 92.6, "key": "[1487, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 3, 22]"}
+{"qlevel": 176, "examined": 176, "killed_by_window": 176, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 41.2, "key": "[1847, 4, \"prod [3, 1] [7]\", [9, 10, 11, 12, 13, 14, 15], 115, 4, 22]"}
+{"qlevel": 1, "examined": 1, "killed_by_window": 1, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3.8, "key": "[1907, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3], 119, 19, 24]"}
