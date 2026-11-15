@@ -464,3 +464,6 @@ p=1907 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[1, 2, 3] (flat minus point) s=119 U=19
   a=4 p=1907 done (26456s)
   a=4 p=1979 done (26460s)
 p=1987 a=4 prod [4] [3] T=[1, 12, 13] (flat minus point) s=124 U=7^30 r=54: G3 cap: blocks G2=135 G3=cap: blocks
+p=1987 a=4 prod [2, 2] [1, 3] T=[5, 9, 13] (flat minus point) s=124 U=3^30 r=56: G2 cap: pairs G2=cap: pairs G3=None
+p=1987 a=4 prod [2, 2] [1, 3] T=[5, 9, 13] (flat minus point) s=124 U=13^30 r=64: G2 cap: pairs G2=cap: pairs G3=None
+p=1987 a=4 prod [2, 2] [1, 3] T=[4, 8, 12] (flat minus point) s=124 U=3^30 r=56: G2 cap: pairs G2=cap: pairs G3=None
