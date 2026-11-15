@@ -63,3 +63,11 @@ p=1031 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7] (flat minus point) s=64 U=5^1
 p=1039 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=3^16 r=44: G3 cap: blocks G2=108 G3=cap: blocks
 p=1039 a=4 prod [4] [5] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=5^16 r=48: G3 cap: blocks G2=108 G3=cap: blocks
 p=1039 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=3^16 r=44: G3 cap: blocks G2=5 G3=cap: blocks
+p=1039 a=4 prod [3, 1] [7] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=5^16 r=48: G3 cap: blocks G2=5 G3=cap: blocks
+p=1039 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=3^16 r=44: G3 cap: blocks G2=5 G3=cap: blocks
+p=1039 a=4 prod [3, 1] [7] T=[0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=5^16 r=48: G3 cap: blocks G2=5 G3=cap: blocks
+p=1039 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=3^16 r=44: G3 cap: blocks G2=75 G3=cap: blocks
+p=1039 a=4 prod [2, 2] [3, 3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=5^16 r=48: G3 cap: blocks G2=75 G3=cap: blocks
+  a=4 p=1039 done (1299s)
+  a=4 p=1087 done (1299s)
+p=1103 a=4 prod [4] [3] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=68 U=3^16 r=42: G3 cap: blocks G2=710 G3=cap: blocks
