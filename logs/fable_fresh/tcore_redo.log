@@ -81,3 +81,15 @@ p=1487 a=4 27 lag classes, 28 cells per block
 07:56:05 redo [719, 4, "prod [4] [5]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]
 p=719 a=4 Q-level: 21 y-quadruples (0s)
 p=719 a=4 23 lag classes, 32 cells per block
+{"qlevel": 21, "examined": 18, "killed_by_window": 18, "capped": 3, "verdict": "UNDECIDED (3 y-quadruples capped, 21 of 21 examined)", "secs": 56.4, "key": "[719, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]"}
+07:57:01 redo [719, 4, "prod [3, 1] [7]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]
+p=719 a=4 Q-level: 16 y-quadruples (0s)
+p=719 a=4 23 lag classes, 32 cells per block
+{"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 6.2, "key": "[719, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]"}
+07:57:08 redo [719, 4, "prod [3, 1] [7]", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]
+p=719 a=4 Q-level: 16 y-quadruples (0s)
+p=719 a=4 23 lag classes, 32 cells per block
+{"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 6.3, "key": "[719, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]"}
+07:57:14 redo [719, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]
+p=719 a=4 Q-level: 35 y-quadruples (0s)
+p=719 a=4 23 lag classes, 32 cells per block

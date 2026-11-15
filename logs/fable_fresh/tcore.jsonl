@@ -54,3 +54,6 @@
 {"qlevel": 28, "examined": 28, "killed_by_window": 28, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 0.5, "key": "[1487, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 7, 22]"}
 {"qlevel": 28, "examined": 28, "killed_by_window": 28, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 0.5, "key": "[1487, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 92, 7, 22]"}
 {"qlevel": 29, "examined": 29, "killed_by_window": 29, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 2.2, "key": "[1487, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 7, 22]"}
+{"qlevel": 21, "examined": 18, "killed_by_window": 18, "capped": 3, "verdict": "UNDECIDED (3 y-quadruples capped, 21 of 21 examined)", "secs": 56.4, "key": "[719, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]"}
+{"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 6.2, "key": "[719, 4, \"prod [3, 1] [7]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]"}
+{"qlevel": 16, "examined": 16, "killed_by_window": 16, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 6.3, "key": "[719, 4, \"prod [3, 1] [7]\", [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15], 44, 13, 10]"}
