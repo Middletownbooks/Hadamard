@@ -28,6 +28,15 @@ PY
     echo "$(date -u +%T) start $KEY" >> $L/tcore.log
     (ulimit -v 6000000; OMP_NUM_THREADS=2 timeout 3600 nice -n 3 python3 theory/fable_tcore.py "$KEY" --planted --maxlift 1e6 >> $L/tcore.log 2>&1)
     rc=$?
-    if ! grep -qF "$KEY" $L/tcore.jsonl; then echo "{\"key\": $(python3 -c 'import json,sys;print(json.dumps(sys.argv[1]))' "$KEY"), \"verdict\": \"UNDECIDED (rc=$rc)\"}" >> $L/tcore.jsonl; fi
+    python3 - "$KEY" "$rc" <<'PY2'
+import json, sys
+key, rc = sys.argv[1], sys.argv[2]
+have = set()
+for l in open('logs/fable_fresh/tcore.jsonl'):
+    try: have.add(json.loads(l)['key'])
+    except Exception: pass
+if key not in have:
+    open('logs/fable_fresh/tcore.jsonl', 'a').write(json.dumps(dict(key=key, verdict=f'UNDECIDED (rc={rc}, no record)')) + '\n')
+PY2
   done < $L/tcore_todo.txt
 done
