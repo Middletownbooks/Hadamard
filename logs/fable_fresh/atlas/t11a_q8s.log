@@ -4,3 +4,32 @@ symmetry q8: 4 images per row (mod sign), 11 orbits per side
 rows 234256, orbit representatives 29282, self-orthogonal orbits 29282
 compatible y per x: min 0 median 4 max 324; orthogonal: median 5999
 Q-symmetries: 24 linear maps keep the admissible functions; 384 affine maps keep the K-table
+first rows up to symmetry: 531 of 29282
+  first row 20/531: complete Z so far 0, nodes 0, 23s
+  first row 40/531: complete Z so far 0, nodes 0, 23s
+  first row 60/531: complete Z so far 0, nodes 0, 23s
+  first row 80/531: complete Z so far 0, nodes 0, 23s
+  first row 100/531: complete Z so far 0, nodes 0, 23s
+  first row 120/531: complete Z so far 0, nodes 0, 24s
+  first row 140/531: complete Z so far 0, nodes 0, 24s
+  first row 160/531: complete Z so far 0, nodes 0, 24s
+  first row 180/531: complete Z so far 0, nodes 0, 24s
+  first row 200/531: complete Z so far 0, nodes 0, 24s
+  first row 220/531: complete Z so far 0, nodes 0, 24s
+  first row 240/531: complete Z so far 0, nodes 0, 24s
+  first row 260/531: complete Z so far 0, nodes 0, 24s
+  first row 280/531: complete Z so far 0, nodes 0, 24s
+  first row 300/531: complete Z so far 0, nodes 0, 24s
+  first row 320/531: complete Z so far 0, nodes 0, 24s
+  first row 340/531: complete Z so far 0, nodes 0, 24s
+  first row 360/531: complete Z so far 0, nodes 0, 24s
+  first row 380/531: complete Z so far 0, nodes 0, 24s
+  first row 400/531: complete Z so far 0, nodes 0, 25s
+  first row 420/531: complete Z so far 0, nodes 0, 25s
+  first row 440/531: complete Z so far 0, nodes 0, 25s
+  first row 460/531: complete Z so far 0, nodes 0, 25s
+  first row 480/531: complete Z so far 0, nodes 0, 25s
+  first row 500/531: complete Z so far 0, nodes 0, 25s
+  first row 520/531: complete Z so far 0, nodes 0, 25s
+first rows (up to symmetry) with at least 11 compatible orbits: 20 of 531; surviving the bipartite pruning: 0; complete Z found: 0
+q8-invariant border for synthetic_a4_T0-1-2-3-4-5-6-7-8-9-10_d6-2-2-0_single: NONE (search exhaustive); nodes 0, 25s
