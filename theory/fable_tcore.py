@@ -290,7 +290,7 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
         Fs = []; Ls = []; bad = False
         for bi in quad:
             if bi not in cache:
-                if len(cache) > 12: cache.clear()            # memory: keep only a few lift lists
+                if len(cache) > CACHE: cache.clear()         # memory: keep only a few lift lists
                 X = lifts(B, ys[bi], maxlift)
                 cache[bi] = None if X is None else (X, paf_features(X, CS) if len(X) else np.zeros((0, len(CS['reps'])), dtype=np.int64))
             if cache[bi] is None: bad = True; break
@@ -346,13 +346,15 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
 
 ESTIMATE = False
 STREAM = False
+CACHE = 12
 NWIN = [0]
 
 def main():
-    global ESTIMATE, STREAM
+    global ESTIMATE, STREAM, CACHE
     a_ = sys.argv[1:]
     ESTIMATE = '--estimate' in a_
     STREAM = '--stream' in a_
+    CACHE = int(a_[a_.index('--cache') + 1]) if '--cache' in a_ else 12
     get = lambda name, d: a_[a_.index(name) + 1] if name in a_ else d
     maxlift = int(float(get('--maxlift', '3e5'))); maxpairs = int(float(get('--maxpairs', '6e7')))
     maxquad = int(float(get('--maxquad', '1e5')))
