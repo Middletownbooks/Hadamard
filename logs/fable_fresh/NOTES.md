@@ -319,3 +319,13 @@ State of thinking (so a restart does not lose it):
   decided (counts differ by convention: quadruples of energy vectors vs pair sums).  G2 box join added (decides 20
   of the old offset caps).  Full run: scripts/fable_tcensus3_run.sh (a = 6, 5, 4; r <= 64), restart-safe,
   log logs/fable_fresh/tcensus3.log, records logs/fable_fresh/tcensus3.jsonl.
+- 2026-11-15 ~01:40 UTC: census a = 6 at about 20 min per prime; a = 5 and a = 4 passes started in parallel
+  (logs tcensus3_a5.log, tcensus3_a4.log; same jsonl; restart-safe).  To restart everything after a container
+  restart: scripts/fable_tcensus3_again.sh, scripts/fable_tcore_queue.sh, and the two parallel passes:
+  (ulimit -v 5000000; nohup python3 theory/fable_tcensus3.py --a 5 --rmax 64 --qorbmax 12 >> logs/fable_fresh/tcensus3_a5.log &)
+  and the same with --a 4.
+- Atlas done (report 7.2 table): no Q8-invariant border for any non-classical |T| = 7, 11 shape over Z_2^4 with a
+  constant profile where it fits in memory; synthetic set-up positive on three small shapes.
+- Core queue so far: no core; 599 a = 6 slices undecided only through capped y-quadruples (1 to 53 of 318-345;
+  all others killed by the window filter).  Second core pass with larger caps (maxlift 3e6, maxpairs 2e8) to do
+  at the end for the capped ones.
