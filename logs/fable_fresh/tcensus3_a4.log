@@ -37,3 +37,8 @@ p=719 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
 p=719 a=4 diag [2, 2] [3, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=44 U=13^10 r=48: G3 cap: blocks G2=653 G3=cap: blocks
   a=4 p=719 done (529s)
   a=4 p=739 done (621s)
+  a=4 p=751 done (1191s)
+  a=4 p=863 done (1191s)
+p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=3^6 r=52: G3 cap: blocks G2=30 G3=cap: blocks
+p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=5^6 r=56: G3 cap: blocks G2=30 G3=cap: blocks
+p=907 a=4 prod [4] [5] T=[0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15] (NEW) s=56 U=11^6 r=60: G3 cap: blocks G2=30 G3=cap: blocks
