@@ -582,6 +582,21 @@ The number of fixed rows is forced: it is the trace of the element on the border
 above is a 2-group that meets Q₈ in ±1 only. The involutions modulo sign are the elements i, j, k of Q₈ (one class, by ρ; the three runs in the table above
 are therefore one result obtained three times) and many classes with a nontrivial Q-part, which were not run.
 
+**Border atlas for |T| = 7 and 11 over ℤ₂⁴, constant Walsh profiles [M; added 2026-11-15].** Synthetic core
+M = Γ ⊗ I (`theory/fable_border14.py synthetic …`), Γ = GS(4, 2, 2, 2) for |T| = 7 and GS(6, 2, 2, 0) for |T| = 11
+(the only constant profiles: Σ d² = 4|T| with even d). Admissible block functions per affine class of T:
+
+| |T| | class (representative) | kind | admissible functions | Q₈, all rows | Q₈, single characters |
+|---|---|---|---|---|---|
+| 7 | {0, …, 6} | flat minus point (EKLO k = 8) | 70 | not run (2.4·10⁷ rows, out of memory) | – |
+| 7 | {0, 1, 2, 3, 4, 5, 8} | new | 38 | **none** (exhaustive, 440 s) | **none** (1 s) |
+| 7 | {0, 1, 2, 3, 4, 8, 12} | new (the 2396 shape) | 30 | **none** (§7.1, two runs) | – |
+| 11 | {0, …, 10} | new | 454 | not run (4·10¹⁰ rows) | **none** (25 s) |
+| 11 | {0, …, 6, 8, 9, 10, 12} | new | 222 | not run (2.4·10⁹ rows) | **none** (93 s) |
+
+The order-4 cyclic classes for the 38-function shape need more than 11 GB and were not run. So no non-classical
+shape at a = 4 carries a quaternion-symmetric border with a constant profile, wherever it could be tested.
+
 ---
 
 ## 8. The production run: skew 361 over ℤ₁₉ × ℤ₁₉ [E; a finished run without a hit excludes nothing]
