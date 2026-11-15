@@ -225,6 +225,47 @@ def join4(Fs, tgt, maxpairs, rng):
             return 'found', [sel[0], sel[1], sel[2], sel[3]]
     return 'none', None
 
+def join4_stream(Fs, tgt, maxbucket, rng, maxtotal=2 * 10 ** 10):
+    """2 + 2 join in buckets of the value of one coordinate c: pairs (i, j) with F_i[c] + F_j[c] = v are matched only
+    against pairs (k, l) with F_k[c] + F_l[c] = tgt[c] - v.  Exact (every match in a bucket is found); memory per
+    bucket at most maxbucket pairs per side, else 'undecided'."""
+    n = [len(f) for f in Fs]
+    (i, j), (k, l) = min([((0, 1), (2, 3)), ((0, 2), (1, 3)), ((0, 3), (1, 2))],
+                         key=lambda pr: n[pr[0][0]] * n[pr[0][1]] + n[pr[1][0]] * n[pr[1][1]])
+    if n[i] * n[j] + n[k] * n[l] > maxtotal: return 'undecided', None
+    # coordinate with the most distinct pair-sum values (finest buckets)
+    c = int(np.argmax([len(np.unique(Fs[i][:, x])) * len(np.unique(Fs[k][:, x])) for x in range(Fs[0].shape[1])]))
+    np.seterr(over='ignore')
+    w = rng.integers(-2 ** 62, 2 ** 62, size=len(tgt), dtype=np.int64)
+    H = [(f * w).sum(1) for f in Fs]
+    def groups(F):
+        vals, inv = np.unique(F[:, c], return_inverse=True)
+        return {int(v): np.nonzero(inv == q)[0] for q, v in enumerate(vals)}
+    gi, gj, gk, gl = groups(Fs[i]), groups(Fs[j]), groups(Fs[k]), groups(Fs[l])
+    left_vals = sorted({a + b for a in gi for b in gj})
+    rset = {a + b for a in gk for b in gl}
+    th = (tgt * w).sum()
+    for v in left_vals:
+        u = int(tgt[c]) - v
+        if u not in rset: continue
+        Lp = [(gi[a], gj[v - a]) for a in gi if (v - a) in gj]
+        Rp = [(gk[a], gl[u - a]) for a in gk if (u - a) in gl]
+        nl = sum(len(x) * len(y) for x, y in Lp); nr = sum(len(x) * len(y) for x, y in Rp)
+        if nl > maxbucket or nr > maxbucket: return 'undecided', None
+        Rh = np.concatenate([(H[k][x][:, None] + H[l][y][None, :]).ravel() for x, y in Rp])
+        Ri = np.concatenate([np.stack(np.meshgrid(x, y, indexing='ij'), -1).reshape(-1, 2) for x, y in Rp])
+        order = np.argsort(Rh); rs = Rh[order]
+        for x, y in Lp:
+            need = th - (H[i][x][:, None] + H[j][y][None, :]).ravel()
+            pos = np.minimum(np.searchsorted(rs, need), len(rs) - 1)
+            for hh in np.nonzero(rs[pos] == need)[0]:
+                a_, b_ = x[hh // len(y)], y[hh % len(y)]
+                c_, d_ = Ri[order[pos[hh]]]
+                if np.array_equal(Fs[i][a_] + Fs[j][b_] + Fs[k][c_] + Fs[l][d_], tgt):
+                    sel = {i: int(a_), j: int(b_), k: int(c_), l: int(d_)}
+                    return 'found', [sel[0], sel[1], sel[2], sel[3]]
+    return 'none', None
+
 def check_core(B, CS, Xs):
     nG = CS['nG']; s = B['s']; T = B['T']
     full = [np.array([x[CS['cell_of'][h]] for h in range(nG)], dtype=np.int64) for x in Xs]
@@ -256,7 +297,18 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
             Ls.append(cache[bi][0]); Fs.append(cache[bi][1])
         if bad: nund += 1; continue
         if any(len(f) == 0 for f in Fs): ndone += 1; continue
-        if not (planted and qi == 0) and not ESTIMATE:
+        if planted and qi == 0 and not ESTIMATE:
+            pick = [rng.integers(len(f)) for f in Fs]
+            tp = sum(f[i] for f, i in zip(Fs, pick))
+            wv = window_cols(Fs, tp)
+            okw = wv is not None and all(i in set(ki.tolist()) for i, ki in zip(pick, wv[0]))
+            print(f'{tag} planted control: window keeps the plant: {okw}', flush=True)
+            if not okw: return dict(verdict='CONTROL FAILED (window)')
+            Fp = [f[ki] for f, ki in zip(Fs, wv[0])]
+            st, sel = join4(Fp, tp, maxpairs, rng)
+            print(f'{tag} planted control: join {st}', flush=True)
+            if st == 'none': return dict(verdict='CONTROL FAILED (join)')
+        if not ESTIMATE:
             Fw = window_cols(Fs, CS['tgt'])
             if Fw is None:
                 ndone += 1; NWIN[0] += 1; continue
@@ -276,18 +328,8 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
             print(f'{tag} y-quadruple {qi}: lift list sizes {ns}; log2(product) {tot:.1f}; log2 E[hits] {tot + lg:.1f} [E]', flush=True)
             if qi == 7: return dict(verdict='ESTIMATE ONLY')
             continue
-        if planted and qi == 0:
-            pick = [rng.integers(len(f)) for f in Fs]
-            tp = sum(f[i] for f, i in zip(Fs, pick))
-            wv = window_cols(Fs, tp)
-            okw = wv is not None and all(i in set(ki.tolist()) for i, ki in zip(pick, wv[0]))
-            print(f'{tag} planted control: window keeps the plant: {okw}', flush=True)
-            if not okw: return dict(verdict='CONTROL FAILED (window)')
-            Fp = [f[ki] for f, ki in zip(Fs, wv[0])]
-            st, sel = join4(Fp, tp, maxpairs, rng)
-            print(f'{tag} planted control: join {st}', flush=True)
-            if st == 'none': return dict(verdict='CONTROL FAILED (join)')
         st, sel = join4(Fs, CS['tgt'], maxpairs, rng)
+        if st == 'undecided' and STREAM: st, sel = join4_stream(Fs, CS['tgt'], maxpairs, rng)
         if st == 'undecided': nund += 1; continue
         ndone += 1
         if st == 'found':
@@ -303,12 +345,14 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
     return dict(qlevel=cnt, examined=ndone, killed_by_window=NWIN[0], capped=nund, verdict=verdict, found=found, secs=round(time.time() - t0, 1))
 
 ESTIMATE = False
+STREAM = False
 NWIN = [0]
 
 def main():
-    global ESTIMATE
+    global ESTIMATE, STREAM
     a_ = sys.argv[1:]
     ESTIMATE = '--estimate' in a_
+    STREAM = '--stream' in a_
     get = lambda name, d: a_[a_.index(name) + 1] if name in a_ else d
     maxlift = int(float(get('--maxlift', '3e5'))); maxpairs = int(float(get('--maxpairs', '6e7')))
     maxquad = int(float(get('--maxquad', '1e5')))

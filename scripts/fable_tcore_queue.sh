@@ -35,7 +35,7 @@ PY
   fi
   while IFS= read -r KEY; do
     echo "$(date -u +%T) start $KEY" >> $L/tcore.log
-    (ulimit -v 6000000; OMP_NUM_THREADS=2 timeout 3600 nice -n 3 python3 theory/fable_tcore.py "$KEY" --planted --maxlift 1e6 >> $L/tcore.log 2>&1)
+    (ulimit -v 6000000; OMP_NUM_THREADS=2 timeout 3600 nice -n 3 python3 theory/fable_tcore.py "$KEY" --planted --stream --maxlift 1e6 --maxpairs 5e7 >> $L/tcore.log 2>&1)
     rc=$?
     python3 - "$KEY" "$rc" <<'PY2'
 import json, sys

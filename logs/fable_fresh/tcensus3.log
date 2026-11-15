@@ -609,3 +609,15 @@ p=1039 a=6 diag [4, 2] [15, 3] j=[1, 2] T=[17, 18, 22, 26, 31, 35, 36, 37, 44, 4
 p=1039 a=6 diag [4, 2] [15, 3] j=[1, 2] T=[17, 18, 22, 26, 31, 35, 36, 37, 44, 46, 55, 56, 57, 59, 61] (NEW) s=16 U=15^2 r=54: G2 cap: pairs G2=cap: pairs G3=None
 p=1039 a=6 diag [4, 2] [15, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=16 U=3^4 r=42: G2 cap: pairs G2=cap: pairs G3=None
 p=1039 a=6 diag [4, 2] [15, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=16 U=5^4 r=48: G2 cap: pairs G2=cap: pairs G3=None
+p=1039 a=6 diag [4, 2] [15, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=16 U=7^2 r=54: G2 cap: pairs G2=cap: pairs G3=None
+p=1039 a=6 diag [4, 2] [15, 3] j=[1, 2] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=16 U=15^2 r=54: G2 cap: pairs G2=cap: pairs G3=None
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[1, 2, 3, 4, 5, 6, 7, 32, 33, 34, 35, 36, 37, 38, 39] (flat minus point) s=16 U=3^4 r=56: G3 cap: blocks G2=3 G3=cap: blocks
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[1, 2, 3, 4, 5, 6, 7, 32, 33, 34, 35, 36, 37, 38, 39] (flat minus point) s=16 U=5^4 r=64: G3 cap: blocks G2=3 G3=cap: blocks
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[0, 8, 16, 24, 32, 33, 34, 35, 36, 37, 38, 39, 40, 48, 56] (NEW) s=16 U=3^4 r=56: G2 cap: box join G2=cap: box join G3=None
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[0, 8, 16, 24, 32, 33, 34, 35, 36, 37, 38, 39, 40, 48, 56] (NEW) s=16 U=5^4 r=64: G2 cap: box join G2=cap: box join G3=None
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[0, 1, 2, 3, 4, 5, 6, 7, 33, 34, 35, 36, 37, 38, 39] (flat minus point) s=16 U=3^4 r=56: G3 cap: blocks G2=3 G3=cap: blocks
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[0, 1, 2, 3, 4, 5, 6, 7, 33, 34, 35, 36, 37, 38, 39] (flat minus point) s=16 U=5^4 r=64: G3 cap: blocks G2=3 G3=cap: blocks
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[0, 1, 2, 3, 4, 5, 6, 7, 8, 16, 24, 32, 40, 48, 56] (NEW) s=16 U=3^4 r=56: G2 cap: box join G2=cap: box join G3=None
+p=1039 a=6 prod [3, 2, 1] [7, 3] T=[0, 1, 2, 3, 4, 5, 6, 7, 8, 16, 24, 32, 40, 48, 56] (NEW) s=16 U=5^4 r=64: G2 cap: box join G2=cap: box join G3=None
+p=1039 a=6 prod [2, 2, 2] [3, 3, 3] T=[1, 2, 3, 4, 8, 12, 17, 18, 19, 33, 34, 35, 49, 50, 51] (NEW) s=16 U=3^4 r=56: G2 cap: pairs G2=cap: pairs G3=None
+p=1039 a=6 prod [2, 2, 2] [3, 3, 3] T=[1, 2, 3, 4, 8, 12, 17, 18, 19, 33, 34, 35, 49, 50, 51] (NEW) s=16 U=5^4 r=64: G2 cap: pairs G2=cap: pairs G3=None
