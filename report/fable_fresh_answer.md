@@ -594,7 +594,8 @@ M = Γ ⊗ I (`theory/fable_border14.py synthetic …`), Γ = GS(4, 2, 2, 2) for
 | 11 | {0, …, 10} | new | 454 | not run (4·10¹⁰ rows) | **none** (25 s) |
 | 11 | {0, …, 6, 8, 9, 10, 12} | new | 222 | not run (2.4·10⁹ rows) | **none** (93 s) |
 
-The order-4 cyclic classes for the 38-function shape need more than 11 GB and were not run. So no non-classical
+Controls of the synthetic set-up: Q₈-invariant borders (K Hadamard) are found at once for T = three nontrivial
+characters of ℤ₂² with Γ = GS(2, 2, 2, 0), and for {0, 1, 2, 4} and {1, 2, 4} of ℤ₂³. The order-4 cyclic classes for the 38-function shape need more than 11 GB and were not run. So no non-classical
 shape at a = 4 carries a quaternion-symmetric border with a constant profile, wherever it could be tested.
 
 ---
