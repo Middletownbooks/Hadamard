@@ -619,3 +619,19 @@ p=1871 a=4 35 lag classes, 42 cells per block
 14:16:08 start [1871, 4, "diag [2, 2] [3, 3] j=[1, 1]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]
 p=1871 a=4 Q-level: 375 y-quadruples (9s)
 p=1871 a=4 35 lag classes, 42 cells per block
+{"qlevel": 375, "examined": 0, "killed_by_window": 0, "capped": 375, "verdict": "UNDECIDED (375 y-quadruples capped, 375 of 375 examined)", "secs": 63.6, "key": "[1871, 4, \"diag [2, 2] [3, 3] j=[1, 1]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
+14:17:12 start [1871, 4, "diag [2, 2] [3, 3] j=[1, 2]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]
+p=1871 a=4 Q-level: 375 y-quadruples (9s)
+p=1871 a=4 35 lag classes, 42 cells per block
+{"qlevel": 375, "examined": 0, "killed_by_window": 0, "capped": 375, "verdict": "UNDECIDED (375 y-quadruples capped, 375 of 375 examined)", "secs": 61.9, "key": "[1871, 4, \"diag [2, 2] [3, 3] j=[1, 2]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
+14:18:14 start [2383, 4, "prod [4] [3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]
+p=2383 a=4 Q-level: 360 y-quadruples (10s)
+p=2383 a=4 35 lag classes, 42 cells per block
+{"qlevel": 360, "examined": 150, "killed_by_window": 150, "capped": 210, "verdict": "UNDECIDED (210 y-quadruples capped, 360 of 360 examined)", "secs": 659.2, "key": "[2383, 4, \"prod [4] [3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]"}
+14:29:14 start [2383, 4, "diag [2, 2] [3, 3] j=[1, 1]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]
+p=2383 a=4 Q-level: 360 y-quadruples (9s)
+p=2383 a=4 35 lag classes, 42 cells per block
+{"qlevel": 360, "examined": 150, "killed_by_window": 150, "capped": 210, "verdict": "UNDECIDED (210 y-quadruples capped, 360 of 360 examined)", "secs": 626.1, "key": "[2383, 4, \"diag [2, 2] [3, 3] j=[1, 1]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]"}
+14:39:40 start [2383, 4, "diag [2, 2] [3, 3] j=[1, 2]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]
+p=2383 a=4 Q-level: 360 y-quadruples (9s)
+p=2383 a=4 35 lag classes, 42 cells per block
