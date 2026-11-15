@@ -33,3 +33,7 @@ p=599 a=6 39 lag classes, 40 cells per block
 07:02:26 redo [599, 6, "prod [4, 2] [5, 3]", [3, 4, 5, 12, 14, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 4, 3]
 p=599 a=6 Q-level: 318 y-quadruples (5s)
 p=599 a=6 23 lag classes, 40 cells per block
+{"qlevel": 318, "examined": 318, "killed_by_window": 318, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 770.3, "key": "[599, 6, \"prod [4, 2] [5, 3]\", [3, 4, 5, 12, 14, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 4, 3]"}
+07:15:16 redo [599, 6, "prod [4, 2] [5, 3]", [3, 4, 5, 12, 14, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 8, 2]
+p=599 a=6 Q-level: 318 y-quadruples (5s)
+p=599 a=6 39 lag classes, 40 cells per block
