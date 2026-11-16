@@ -181,3 +181,8 @@ p=2383 a=4 35 lag classes, 42 cells per block
 11:57:21 bigcap [1871, 4, "diag [2, 2] [3, 3] j=[1, 1]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]
 p=1871 a=4 Q-level: 375 y-quadruples (9s)
 p=1871 a=4 35 lag classes, 42 cells per block
+{"qlevel": 375, "examined": 375, "killed_by_window": 375, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 7932.3, "key": "[1871, 4, \"diag [2, 2] [3, 3] j=[1, 1]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
+14:09:33 done [1871, 4, "diag [2, 2] [3, 3] j=[1, 1]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]
+14:09:33 bigcap [1871, 4, "diag [2, 2] [3, 3] j=[1, 2]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]
+p=1871 a=4 Q-level: 375 y-quadruples (8s)
+p=1871 a=4 35 lag classes, 42 cells per block
