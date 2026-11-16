@@ -323,3 +323,4 @@
 {"qlevel": 345, "examined": 345, "killed_by_window": 345, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 1866.4, "key": "[599, 6, \"prod [4, 2] [5, 3]\", [7, 8, 9, 11, 13, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 8, 2]"}
 {"qlevel": 360, "examined": 360, "killed_by_window": 360, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3144.0, "key": "[2383, 4, \"diag [2, 2] [3, 3] j=[1, 1]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]"}
 {"qlevel": 360, "examined": 360, "killed_by_window": 360, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3206.0, "key": "[2383, 4, \"diag [2, 2] [3, 3] j=[1, 2]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]"}
+{"qlevel": 360, "examined": 360, "killed_by_window": 360, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3144.2, "key": "[2383, 4, \"prod [4] [3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]"}
