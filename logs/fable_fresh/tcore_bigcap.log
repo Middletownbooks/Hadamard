@@ -71,3 +71,43 @@ p=599 a=6 23 lag classes, 40 cells per block
 02:08:13 bigcap [599, 6, "prod [4, 2] [5, 3]", [7, 8, 9, 11, 13, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 4, 3]
 p=599 a=6 Q-level: 345 y-quadruples (8s)
 p=599 a=6 23 lag classes, 40 cells per block
+{"qlevel": 345, "examined": 345, "killed_by_window": 345, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 972.6, "key": "[599, 6, \"prod [4, 2] [5, 3]\", [7, 8, 9, 11, 13, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 4, 3]"}
+02:24:26 done [599, 6, "prod [4, 2] [5, 3]", [7, 8, 9, 11, 13, 16, 19, 20, 21, 28, 30, 32, 35, 36, 37, 44, 46, 48, 51, 52, 53, 60, 62], 9, 4, 3]
+02:24:26 bigcap [1871, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+p=1871 a=4 Q-level: 9 y-quadruples (0s)
+p=1871 a=4 23 lag classes, 32 cells per block
+{"qlevel": 9, "examined": 9, "killed_by_window": 9, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 23.4, "key": "[1871, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
+02:24:49 done [1871, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+02:24:49 bigcap [1103, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 68, 5, 16]
+p=1103 a=4 Q-level: 18 y-quadruples (0s)
+p=1103 a=4 23 lag classes, 32 cells per block
+{"qlevel": 18, "examined": 18, "killed_by_window": 18, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 77.8, "key": "[1103, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 68, 5, 16]"}
+02:26:07 done [1103, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 68, 5, 16]
+02:26:07 bigcap [1487, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 5, 22]
+p=1487 a=4 Q-level: 29 y-quadruples (0s)
+p=1487 a=4 23 lag classes, 32 cells per block
+{"qlevel": 29, "examined": 29, "killed_by_window": 29, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 78.3, "key": "[1487, 4, \"prod [2, 2] [3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 5, 22]"}
+02:27:26 done [1487, 4, "prod [2, 2] [3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 5, 22]
+02:27:26 bigcap [1487, 4, "prod [4] [5]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 5, 22]
+p=1487 a=4 Q-level: 67 y-quadruples (0s)
+p=1487 a=4 23 lag classes, 32 cells per block
+{"qlevel": 67, "examined": 67, "killed_by_window": 67, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 161.7, "key": "[1487, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 5, 22]"}
+02:30:07 done [1487, 4, "prod [4] [5]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 92, 5, 22]
+02:30:07 bigcap [1871, 4, "prod [4] [5]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+p=1871 a=4 Q-level: 33 y-quadruples (0s)
+p=1871 a=4 23 lag classes, 32 cells per block
+{"qlevel": 33, "examined": 33, "killed_by_window": 33, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 88.5, "key": "[1871, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
+02:31:36 done [1871, 4, "prod [4] [5]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]
+02:31:36 bigcap [971, 6, "prod [3, 2, 1] [7, 3]", [0, 1, 2, 3, 4, 5, 6, 7, 40, 48, 56], 15, 7, 4]
+p=971 a=6 Q-level: 64 y-quadruples (109s)
+p=971 a=6 31 lag classes, 48 cells per block
+{"qlevel": 64, "examined": 64, "killed_by_window": 64, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 366.6, "key": "[971, 6, \"prod [3, 2, 1] [7, 3]\", [0, 1, 2, 3, 4, 5, 6, 7, 40, 48, 56], 15, 7, 4]"}
+02:37:43 done [971, 6, "prod [3, 2, 1] [7, 3]", [0, 1, 2, 3, 4, 5, 6, 7, 40, 48, 56], 15, 7, 4]
+02:37:43 bigcap [971, 6, "prod [3, 2, 1] [7, 3]", [8, 16, 24, 32, 33, 34, 35, 36, 37, 38, 39], 15, 7, 4]
+p=971 a=6 Q-level: 64 y-quadruples (103s)
+p=971 a=6 31 lag classes, 48 cells per block
+{"qlevel": 64, "examined": 64, "killed_by_window": 64, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 372.3, "key": "[971, 6, \"prod [3, 2, 1] [7, 3]\", [8, 16, 24, 32, 33, 34, 35, 36, 37, 38, 39], 15, 7, 4]"}
+02:43:56 done [971, 6, "prod [3, 2, 1] [7, 3]", [8, 16, 24, 32, 33, 34, 35, 36, 37, 38, 39], 15, 7, 4]
+02:43:56 bigcap [599, 6, "prod [4, 2] [5, 3]", [1, 2, 6, 10, 15, 16, 17, 18, 22, 26, 31, 32, 33, 34, 38, 42, 47, 48, 49, 50, 54, 58, 63], 9, 8, 2]
+p=599 a=6 Q-level: 318 y-quadruples (5s)
+p=599 a=6 39 lag classes, 40 cells per block

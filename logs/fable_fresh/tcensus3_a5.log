@@ -1026,3 +1026,20 @@ p=1987 a=5 diag [2, 2, 1] [3, 3] j=[1, 1] T=[1, 2, 3] (flat minus point) s=62 U=
 p=1987 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[21, 27, 30] (flat minus point) s=62 U=3^30 r=48: G2 cap: pairs G2=cap: pairs G3=None
 p=1987 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[17, 18, 19] (flat minus point) s=62 U=3^30 r=48: G2 cap: pairs G2=cap: pairs G3=None
 p=1987 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[5, 11, 14] (flat minus point) s=62 U=3^30 r=48: G2 cap: pairs G2=cap: pairs G3=None
+p=1987 a=5 diag [2, 2, 1] [3, 3] j=[1, 2] T=[1, 2, 3] (flat minus point) s=62 U=3^30 r=48: G2 cap: pairs G2=cap: pairs G3=None
+  a=5 p=1987 done (80294s)
+  a=5 p=2027 done (80305s)
+  a=5 p=2039 done (80305s)
+p=2063 a=5 prod [4, 1] [15] T=[17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] (flat minus point) s=64 U=3^16 r=44: G3 cap: blocks G2=3108 G3=cap: blocks
+p=2063 a=5 prod [4, 1] [15] T=[17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] (flat minus point) s=64 U=5^16 r=48: G3 cap: blocks G2=3108 G3=cap: blocks
+p=2063 a=5 prod [4, 1] [15] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=3^16 r=44: G3 cap: blocks G2=3108 G3=cap: blocks
+p=2063 a=5 prod [4, 1] [15] T=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] (flat minus point) s=64 U=5^16 r=48: G3 cap: blocks G2=3108 G3=cap: blocks
+  a=5 p=2063 done (80319s)
+p=2083 a=5 prod [3, 2] [7, 1] T=[8, 16, 24] (flat minus point) s=65 U=17^12 r=64: G2 cap: box join G2=cap: box join G3=None
+p=2083 a=5 prod [3, 2] [7, 1] T=[8, 16, 24] (flat minus point) s=65 U=19^12 r=64: G2 cap: box join G2=cap: box join G3=None
+p=2083 a=5 prod [3, 2] [7, 1] T=[0, 8, 16] (flat minus point) s=65 U=17^12 r=64: G2 cap: box join G2=cap: box join G3=None
+p=2083 a=5 prod [3, 2] [7, 1] T=[0, 8, 16] (flat minus point) s=65 U=19^12 r=64: G2 cap: box join G2=cap: box join G3=None
+p=2083 a=5 prod [3, 2] [7, 3] T=[8, 16, 24] (flat minus point) s=65 U=3^12 r=40: G3 cap: blocks G2=2921 G3=cap: blocks
+p=2083 a=5 prod [3, 2] [7, 3] T=[8, 16, 24] (flat minus point) s=65 U=4^6 r=52: G3 cap: blocks G2=3062 G3=cap: blocks
+p=2083 a=5 prod [3, 2] [7, 3] T=[8, 16, 24] (flat minus point) s=65 U=9^6 r=60: G3 cap: blocks G2=3062 G3=cap: blocks
+p=2083 a=5 prod [3, 2] [7, 3] T=[8, 16, 24] (flat minus point) s=65 U=36^6 r=60: G3 cap: blocks G2=3062 G3=cap: blocks
