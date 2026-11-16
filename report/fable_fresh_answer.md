@@ -729,7 +729,9 @@ Status (2026-11-15 21:40 UTC):
   Undecided means that some y-quadruples need more than 10⁶ lifts per block (and, in two cases, the 1-hour limit);
   in the slices run in the first hours all other y-quadruples were killed by the window filter, in the later (richer)
   slices nearly all y-quadruples are above the cap. A last pass with 5·10⁶ lifts per block is running
-  (`scripts/fable_tcore_bigcap.sh`). Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
+  (`scripts/fable_tcore_bigcap2.sh`, ordered by `theory/fable_tcore_triage.py`). The triage of the 195 undecided
+  slices: **123 have every remaining y-quadruple above 5·10⁶ lifts per block** (too rich for this method; not run),
+  44 can be decided completely at 5·10⁶, 26 partly. Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
 - Reading: the same dichotomy as everywhere else in this repository. Every slice small enough to be decided exactly
   has no core; the rest are too rich for an exact search on this machine.
 <!-- /CENSUS3 -->

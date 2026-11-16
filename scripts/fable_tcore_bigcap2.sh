@@ -8,5 +8,5 @@ while IFS= read -r KEY; do
   echo "$(date -u +%T) bigcap $KEY" >> $L/tcore_bigcap.log
   (ulimit -v 11000000; OMP_NUM_THREADS=2 timeout 10800 nice -n 4 python3 theory/fable_tcore.py "$KEY" --stream --maxlift 5e6 --maxpairs 5e7 --cache 4 >> $L/tcore_bigcap.log 2>&1)
   echo "$(date -u +%T) done $KEY" >> $L/tcore_bigcap.log
-done < $L/tcore_bigcap_todo.txt
+done < ${TODO:-$L/tcore_bigcap_todo.txt}
 echo "$(date -u +%T) bigcap done" >> $L/tcore_bigcap.log
