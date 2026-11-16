@@ -326,3 +326,4 @@
 {"qlevel": 360, "examined": 360, "killed_by_window": 360, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 3144.2, "key": "[2383, 4, \"prod [4] [3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 148, 15, 36]"}
 {"qlevel": 375, "examined": 375, "killed_by_window": 375, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 7932.3, "key": "[1871, 4, \"diag [2, 2] [3, 3] j=[1, 1]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
 {"qlevel": 375, "examined": 375, "killed_by_window": 375, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 7701.2, "key": "[1871, 4, \"diag [2, 2] [3, 3] j=[1, 2]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
+{"qlevel": 375, "examined": 375, "killed_by_window": 375, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 7624.7, "key": "[1871, 4, \"prod [4] [3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 3, 28]"}
