@@ -310,3 +310,4 @@
 {"qlevel": 33, "examined": 33, "killed_by_window": 33, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 88.5, "key": "[1871, 4, \"prod [4] [5]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 116, 21, 28]"}
 {"qlevel": 64, "examined": 64, "killed_by_window": 64, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 366.6, "key": "[971, 6, \"prod [3, 2, 1] [7, 3]\", [0, 1, 2, 3, 4, 5, 6, 7, 40, 48, 56], 15, 7, 4]"}
 {"qlevel": 64, "examined": 64, "killed_by_window": 64, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 372.3, "key": "[971, 6, \"prod [3, 2, 1] [7, 3]\", [8, 16, 24, 32, 33, 34, 35, 36, 37, 38, 39], 15, 7, 4]"}
+{"qlevel": 318, "examined": 318, "killed_by_window": 318, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 1757.5, "key": "[599, 6, \"prod [4, 2] [5, 3]\", [1, 2, 6, 10, 15, 16, 17, 18, 22, 26, 31, 32, 33, 34, 38, 42, 47, 48, 49, 50, 54, 58, 63], 9, 8, 2]"}
