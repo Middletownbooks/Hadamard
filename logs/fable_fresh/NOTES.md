@@ -329,3 +329,5 @@ State of thinking (so a restart does not lose it):
 - Core queue so far: no core; 599 a = 6 slices undecided only through capped y-quadruples (1 to 53 of 318-345;
   all others killed by the window filter).  Second core pass with larger caps (maxlift 3e6, maxpairs 2e8) to do
   at the end for the capped ones.
+- 2026-11-16 23:24 UTC: container restart; relaunched the a = 5 census pass (resumes after 2251), the finish
+  marker script and the large-cap pass (TODO=tcore_bigcap_todo2.txt; 38 of 70 done; the interrupted 1487 slice restarts).
