@@ -1282,3 +1282,8 @@ p=1423 a=5 Q-level: 7440 y-quadruples (0s)
 p=1423 a=5 23 lag classes, 36 cells per block
 p=1423 a=5 planted control: window keeps the plant: True
 p=1423 a=5 planted control: join undecided
+02:04:34 start [2083, 5, "prod [3, 2] [7, 3]", [8, 16, 24], 65, 3, 12]
+p=2083 a=5 Q-level: 1650 y-quadruples (1s)
+p=2083 a=5 23 lag classes, 40 cells per block
+p=2083 a=5 planted control: window keeps the plant: True
+p=2083 a=5 planted control: join undecided
