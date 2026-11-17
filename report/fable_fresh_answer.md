@@ -80,6 +80,16 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
      at stage 1, so only 4748 remains undecided in that tier; and a one-line a-priori gate (a multiplier group that
      contains all of ℤ_ℓ\* on a prime factor ℓ ≥ 5 leaves no core) that kills 18 of the 81 ranked slices, 7572 among
      them, before any enumeration.
+9. **Third phase (2026-11-14/17): an exact census of small general-T slices over ℤ₂^a, a = 4, 5, 6** (§8b) [M].
+   Every open prime, every multiplier group Σ × U built from field multiplications on ℤ₂^a and units of ℤ_s (at most
+   64 orbits per block), every Σ-invariant character set T: 12,636 slices, all but 287 killed by exact gates (the
+   axis gate, cell energy, the Q-level and the dual S-level). The 287 with at most 48 orbits per block went to an
+   exact core search (all lifts of every Q-level y-quadruple, an exact PAF window filter, a 2 + 2 join).
+   **No core was found.** 108 slices have provably no core, among them EKLO Theorem 7 shapes over ℤ₂⁴ at eight open
+   primes and non-classical shapes over ℤ₂⁶ at nine (599, 719, 739, 863, 971, 1019, 1423, 1619, 1747); 163 are
+   undecided at a lift cap of 10⁶ or 5·10⁶ per block, 123 of them because every remaining y-quadruple is above it;
+   16 were still queued when this was written. The family that was the one cheap unscreened corner after phase 2
+   follows the repository's dichotomy: what is small enough to decide exactly is empty.
 <!-- /BOTTOM -->
 
 ---
@@ -696,7 +706,7 @@ of them are in `h4892_answer.md` already (4892 with its 384 classes and no core,
 
 ---
 
-## 8b. Census of small general-T slices over ℤ₂^a, a = 4, 5, 6 [M; phase 3, 2026-11-14/15, running]
+## 8b. Census of small general-T slices over ℤ₂^a, a = 4, 5, 6 [M; phase 3, 2026-11-14/17; census complete, core searches finishing]
 
 Plan: `logs/fable_fresh/PLAN_phase3.md`, item 1. `theory/fable_tcensus3.py` enumerates, for every open prime p and
 a = 4, 5, 6, the slices G = ℤ₂^a × ℤ_s (s = (p − t)/2^a, t = |T| ≡ p mod 2^a) with multiplier group Σ × U: Σ built
@@ -710,28 +720,32 @@ Q-level y-quadruples, all lifts of each block, the exact window filter on the PA
 definition, in 3 s).
 
 <!-- CENSUS3 -->
-Status (2026-11-15 21:40 UTC):
-- Census: a = 4 and a = 6 done for all 64 open primes; a = 5 done up to 1187 (very slow: many character sets; still
-  running). 8466 slices recorded. Gate reached: a = 4: G1 1392, G2 707, G3 298, axis 271; a = 5: G1 90, G2 1043, G3 51, G4 1, axis 408; a = 6: G1 863, G2 2355, G3 144, G4 3, axis 839, passed 1.
+Status (2026-11-17 03:30 UTC):
+- **Census complete**: a = 4, 5, 6 for all 64 open primes, 12,636 slices recorded (9,047 with a non-classical T,
+  3,589 flat minus point). Gate reached: a = 4: axis 271, G1 1392, G2 707, G3 298; a = 5: axis 1097, G1 2189,
+  G2 2371, G3 105, G4 1; a = 6: axis 839, G1 863, G2 2355, G3 144, G4 3, passed all four 1. (G3 here includes the
+  slices where G3 hit its cap; those go on to the core search like the passed ones.)
 - Control: on 599, a = 4, the census agrees with `fable_tcensus2` slice by slice where both decide.
-- Cores: all 262 survivors with r ≤ 48 were run through `fable_tcore.py` (after a bug fix: the first
-  y-quadruple of each slice had skipped the window filter). **No core was found.**
+- Cores: 287 slices with r ≤ 48 reach the core search; 271 have been run through `fable_tcore.py` (after a bug fix:
+  the first y-quadruple of each slice had skipped the window filter), 16 of the last a = 5 survivors are still
+  queued. **No core was found.**
 
-| Q | T | slices with no core [M] | undecided | primes with a no-core slice |
-|---|---|---|---|---|
-| ℤ₂^4 | classical | 36 | 101 | 719, 1103, 1223, 1487, 1847, 1871, 1907, 2383 |
-| ℤ₂^4 | non-classical | 1 | 1 | 1579 |
-| ℤ₂^5 | classical | 3 | 22 | 1031, 1039 |
-| ℤ₂^5 | non-classical | 0 | 6 |  |
-| ℤ₂^6 | classical | 2 | 15 | 1663 |
-| ℤ₂^6 | non-classical | 22 | 53 | 599, 719, 739, 863, 971, 1019, 1423, 1619, 1747 |
+| Q | T | slices with no core [M] | undecided | not yet run | primes with a no-core slice |
+|---|---|---|---|---|---|
+| ℤ₂^4 | classical | 52 | 85 | 0 | 719, 1103, 1223, 1487, 1847, 1871, 1907, 2383 |
+| ℤ₂^4 | non-classical | 1 | 1 | 0 | 1579 |
+| ℤ₂^5 | classical | 10 | 24 | 14 | 863, 1031, 1039, 1423, 2207 |
+| ℤ₂^5 | non-classical | 0 | 6 | 2 |  |
+| ℤ₂^6 | classical | 2 | 15 | 0 | 1663 |
+| ℤ₂^6 | non-classical | 43 | 32 | 0 | 599, 719, 739, 863, 971, 1019, 1423, 1619, 1747 |
+| total | | **108** | 163 | 16 | |
 
-  Undecided means that some y-quadruples need more than 10⁶ lifts per block (and, in two cases, the 1-hour limit);
-  in the slices run in the first hours all other y-quadruples were killed by the window filter, in the later (richer)
-  slices nearly all y-quadruples are above the cap. A last pass with 5·10⁶ lifts per block is running
-  (`scripts/fable_tcore_bigcap2.sh`, ordered by `theory/fable_tcore_triage.py`). The triage of the 195 undecided
-  slices: **123 have every remaining y-quadruple above 5·10⁶ lifts per block** (too rich for this method; not run),
-  44 can be decided completely at 5·10⁶, 26 partly. Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
+  Undecided means that some y-quadruples need more than the lift cap per block (10⁶ in the first pass, 5·10⁶ in the
+  second, `scripts/fable_tcore_bigcap2.sh`, ordered by `theory/fable_tcore_triage.py`), or the time limit (1 h,
+  resp. 3 h) ran out. The triage of the 195 undecided slices after the first pass: **123 have every remaining
+  y-quadruple above 5·10⁶ lifts per block** (too rich for this method; not run), 44 can be decided completely at
+  5·10⁶, 26 partly (plus 2 others: 72 slices in the second pass). Of the 37 run so far, 35 became exact no-core
+  verdicts (included in the counts above); the pass is still running. Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
 - Reading: the same dichotomy as everywhere else in this repository. Every slice small enough to be decided exactly
   has no core; the rest are too rich for an exact search on this machine.
 <!-- /CENSUS3 -->
@@ -750,10 +764,11 @@ Status (2026-11-15 21:40 UTC):
    gives about 10² core-days [E]). I would not spend more on it: even with a border the slice has 78 orbits per
    block, and a rough application of Kumar's cost formula (work ≈ N³/(E·L), his `METHOD.md`) gives 10²² list
    operations or more, against the 10¹³ he calls reachable [E, rough; his triage code was not run on it].
-3. **A census of character borders with general T over ℤ₂^a** (§7): affine classes of T in F₂^a for a = 4, 5, 6, every group
-   ℤ₂^a × S (and the non-split 2-parts) of order p − |T|, every multiplier group, the exact Q-level gate, and a
-   border library per Walsh-quadruple type. This is the one set of structures found here that is both unscreened
-   and cheap to screen with the repository's existing gates.
+3. **Done in phase 3 (§8b):** the census of character borders with general T over ℤ₂^a, a = 4, 5, 6, with cyclic S.
+   What is left of it: the 163 undecided core slices need an enumeration that does not list all lifts of a block
+   (e.g. a join on the S-level compression first, then lifts only for the surviving S-level quadruples), and the
+   census has not been run with non-cyclic S, non-split 2-parts or more than 64 orbits per block. I expect these to
+   behave like the rest: the decidable ones empty, the others too rich [E].
 4. **Borders.** §6.3 turns "does a border exist for this compression" into a concrete question about pairs of ±1
    bases. A theorem for a class of non-spike compressions at k = 6, 8 or 10 would open the mid-range indices
    (k = 10–60 with |S| = 11–59 at 599 and 719), which no census has touched because no border is known there.
@@ -787,4 +802,8 @@ python3 theory/fable_border14.py sub=q8 q599 0                 # 2396 slice: no 
 python3 theory/fable_border15.py q599 0 4                      # no sigma-invariant border (4 fixed rows; 1 minute)
 python3 theory/fable_border16.py rd                            # order-3 classes in normal form: d, r, ra, rd, a
 scripts/fable_tier0_queue.sh                                   # the tier-0 reruns of section 8a
+python3 theory/fable_tcensus3.py --a 4 --rmax 64 --qorbmax 12  # census of section 8b (also --a 5, --a 6; restart-safe)
+python3 theory/fable_tcore.py --control112                     # core-search control: Z_2^3 x Z_3, core found and checked
+scripts/fable_tcore_queue.sh                                   # exact core search for every census survivor with r <= 48
+TODO=logs/fable_fresh/tcore_bigcap_todo2.txt scripts/fable_tcore_bigcap2.sh   # second pass at 5e6 lifts per block
 ```
