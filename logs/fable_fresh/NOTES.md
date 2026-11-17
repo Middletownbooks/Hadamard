@@ -334,3 +334,8 @@ State of thinking (so a restart does not lose it):
 - 2026-11-17 00:05 UTC: census a = 5 finished (tcensus3 done; 12636 records). 25 new core candidates (a = 5, r <= 48) not yet run: relaunched scripts/fable_tcore_queue.sh alongside the large-cap pass.
 - 2026-11-17 02:53 UTC: container restart; relaunched scripts/fable_tcore_queue.sh and the large-cap pass (39 of 70 done).
 - 2026-11-17 03:54 UTC: core queue done (all 287 census survivors with r <= 48 have a verdict: 108 NONE, 179 UNDECIDED; the 16 new a = 5 ones all undecided). Report 8b, bottom line 9, 9, 10 updated. Large-cap pass still running.
+- 2026-11-17 10:30 UTC: large-cap pass reordered (39 of 72 done; 1487 x2 and 719 j=[1,1] ran into the 3 h limit).
+  New runner scripts/fable_tcore_bigcap3.sh with logs/fable_fresh/tcore_bigcap_todo3.txt: the two 719 a = 6 slices
+  whose y-quadruples are all <= 1e6 lifts (decidable) first, 8 h each; then the partial slices (some y-quadruples
+  > 5e6: can find a core, cannot give NONE); last the four classical a = 4 slices at 719/1103 like those that timed out.
+  Restart after a container restart: nohup bash scripts/fable_tcore_bigcap3.sh &  (skips keys marked done).
