@@ -333,3 +333,4 @@ State of thinking (so a restart does not lose it):
   marker script and the large-cap pass (TODO=tcore_bigcap_todo2.txt; 38 of 70 done; the interrupted 1487 slice restarts).
 - 2026-11-17 00:05 UTC: census a = 5 finished (tcensus3 done; 12636 records). 25 new core candidates (a = 5, r <= 48) not yet run: relaunched scripts/fable_tcore_queue.sh alongside the large-cap pass.
 - 2026-11-17 02:53 UTC: container restart; relaunched scripts/fable_tcore_queue.sh and the large-cap pass (39 of 70 done).
+- 2026-11-17 03:54 UTC: core queue done (all 287 census survivors with r <= 48 have a verdict: 108 NONE, 179 UNDECIDED; the 16 new a = 5 ones all undecided). Report 8b, bottom line 9, 9, 10 updated. Large-cap pass still running.

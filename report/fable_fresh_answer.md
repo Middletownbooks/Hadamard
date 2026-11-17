@@ -86,9 +86,9 @@ form; this repository's earlier sessions for the skew k-tree pipeline that §5 r
    axis gate, cell energy, the Q-level and the dual S-level). The 287 with at most 48 orbits per block went to an
    exact core search (all lifts of every Q-level y-quadruple, an exact PAF window filter, a 2 + 2 join).
    **No core was found.** 108 slices have provably no core, among them EKLO Theorem 7 shapes over ℤ₂⁴ at eight open
-   primes and non-classical shapes over ℤ₂⁶ at nine (599, 719, 739, 863, 971, 1019, 1423, 1619, 1747); 163 are
-   undecided at a lift cap of 10⁶ or 5·10⁶ per block, 123 of them because every remaining y-quadruple is above it;
-   16 were still queued when this was written. The family that was the one cheap unscreened corner after phase 2
+   primes and non-classical shapes over ℤ₂⁶ at nine (599, 719, 739, 863, 971, 1019, 1423, 1619, 1747); 179 are
+   undecided at a lift cap of 10⁶ or 5·10⁶ per block (123 of them because every remaining y-quadruple is above the
+   larger cap; a second pass at 5·10⁶ was still running when this was written). The family that was the one cheap unscreened corner after phase 2
    follows the repository's dichotomy: what is small enough to decide exactly is empty.
 <!-- /BOTTOM -->
 
@@ -720,32 +720,32 @@ Q-level y-quadruples, all lifts of each block, the exact window filter on the PA
 definition, in 3 s).
 
 <!-- CENSUS3 -->
-Status (2026-11-17 03:30 UTC):
+Status (2026-11-17 04:00 UTC):
 - **Census complete**: a = 4, 5, 6 for all 64 open primes, 12,636 slices recorded (9,047 with a non-classical T,
   3,589 flat minus point). Gate reached: a = 4: axis 271, G1 1392, G2 707, G3 298; a = 5: axis 1097, G1 2189,
   G2 2371, G3 105, G4 1; a = 6: axis 839, G1 863, G2 2355, G3 144, G4 3, passed all four 1. (G3 here includes the
   slices where G3 hit its cap; those go on to the core search like the passed ones.)
 - Control: on 599, a = 4, the census agrees with `fable_tcensus2` slice by slice where both decide.
-- Cores: 287 slices with r ≤ 48 reach the core search; 271 have been run through `fable_tcore.py` (after a bug fix:
-  the first y-quadruple of each slice had skipped the window filter), 16 of the last a = 5 survivors are still
-  queued. **No core was found.**
+- Cores: all 287 slices with r ≤ 48 that reach the core search have been run through `fable_tcore.py` (after a bug
+  fix: the first y-quadruple of each slice had skipped the window filter). **No core was found.**
 
-| Q | T | slices with no core [M] | undecided | not yet run | primes with a no-core slice |
-|---|---|---|---|---|---|
-| ℤ₂^4 | classical | 52 | 85 | 0 | 719, 1103, 1223, 1487, 1847, 1871, 1907, 2383 |
-| ℤ₂^4 | non-classical | 1 | 1 | 0 | 1579 |
-| ℤ₂^5 | classical | 10 | 24 | 14 | 863, 1031, 1039, 1423, 2207 |
-| ℤ₂^5 | non-classical | 0 | 6 | 2 |  |
-| ℤ₂^6 | classical | 2 | 15 | 0 | 1663 |
-| ℤ₂^6 | non-classical | 43 | 32 | 0 | 599, 719, 739, 863, 971, 1019, 1423, 1619, 1747 |
-| total | | **108** | 163 | 16 | |
+| Q | T | slices with no core [M] | undecided | primes with a no-core slice |
+|---|---|---|---|---|
+| ℤ₂^4 | classical | 52 | 85 | 719, 1103, 1223, 1487, 1847, 1871, 1907, 2383 |
+| ℤ₂^4 | non-classical | 1 | 1 | 1579 |
+| ℤ₂^5 | classical | 10 | 38 | 863, 1031, 1039, 1423, 2207 |
+| ℤ₂^5 | non-classical | 0 | 8 |  |
+| ℤ₂^6 | classical | 2 | 15 | 1663 |
+| ℤ₂^6 | non-classical | 43 | 32 | 599, 719, 739, 863, 971, 1019, 1423, 1619, 1747 |
+| total | | **108** | 179 | |
 
   Undecided means that some y-quadruples need more than the lift cap per block (10⁶ in the first pass, 5·10⁶ in the
   second, `scripts/fable_tcore_bigcap2.sh`, ordered by `theory/fable_tcore_triage.py`), or the time limit (1 h,
   resp. 3 h) ran out. The triage of the 195 undecided slices after the first pass: **123 have every remaining
   y-quadruple above 5·10⁶ lifts per block** (too rich for this method; not run), 44 can be decided completely at
   5·10⁶, 26 partly (plus 2 others: 72 slices in the second pass). Of the 37 run so far, 35 became exact no-core
-  verdicts (included in the counts above); the pass is still running. Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
+  verdicts (included in the counts above); the pass is still running. The 16 a = 5 survivors of the last census primes
+  (1423–2251) were all undecided in the first pass, most at once (every y-quadruple above 10⁶ lifts per block). Classical T here means flat minus point, i.e. EKLO's Theorem 7 over ℤ₂^a.
 - Reading: the same dichotomy as everywhere else in this repository. Every slice small enough to be decided exactly
   has no core; the rest are too rich for an exact search on this machine.
 <!-- /CENSUS3 -->
@@ -765,7 +765,7 @@ Status (2026-11-17 03:30 UTC):
    block, and a rough application of Kumar's cost formula (work ≈ N³/(E·L), his `METHOD.md`) gives 10²² list
    operations or more, against the 10¹³ he calls reachable [E, rough; his triage code was not run on it].
 3. **Done in phase 3 (§8b):** the census of character borders with general T over ℤ₂^a, a = 4, 5, 6, with cyclic S.
-   What is left of it: the 163 undecided core slices need an enumeration that does not list all lifts of a block
+   What is left of it: the 179 undecided core slices need an enumeration that does not list all lifts of a block
    (e.g. a join on the S-level compression first, then lifts only for the surviving S-level quadruples), and the
    census has not been run with non-cyclic S, non-split 2-parts or more than 64 orbits per block. I expect these to
    behave like the rest: the decidable ones empty, the others too rich [E].
