@@ -1287,3 +1287,7 @@ p=2083 a=5 Q-level: 1650 y-quadruples (1s)
 p=2083 a=5 23 lag classes, 40 cells per block
 p=2083 a=5 planted control: window keeps the plant: True
 p=2083 a=5 planted control: join undecided
+{"qlevel": 1650, "examined": 744, "killed_by_window": 744, "capped": 906, "verdict": "UNDECIDED (906 y-quadruples capped, 1650 of 1650 examined)", "secs": 2510.1, "key": "[2083, 5, \"prod [3, 2] [7, 3]\", [8, 16, 24], 65, 3, 12]"}
+02:46:25 start [2087, 5, "prod [3, 2] [7, 3]", [1, 2, 3, 4, 5, 6, 7], 65, 3, 12]
+p=2087 a=5 Q-level: 6419 y-quadruples (1s)
+p=2087 a=5 23 lag classes, 40 cells per block
