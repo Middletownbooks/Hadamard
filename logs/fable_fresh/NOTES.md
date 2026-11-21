@@ -340,3 +340,4 @@ State of thinking (so a restart does not lose it):
   > 5e6: can find a core, cannot give NONE); last the four classical a = 4 slices at 719/1103 like those that timed out.
   Restart after a container restart: nohup bash scripts/fable_tcore_bigcap3.sh &  (skips keys marked done).
 - 2026-11-21 13:47 UTC: container restart (the first 719 a = 6 slice was cut off with no record); relaunched scripts/fable_tcore_bigcap3.sh.
+- 2026-11-21 17:50 UTC: 719 a = 6 diag [4,2][15,3] j=[1,2] (T = 15 chars, s = 11): NONE (exhaustive), 1890 y-quadruples all killed by the window, 14628 s. Now 109 NONE / 178 UNDECIDED. Its twin j=[1,1] running.
