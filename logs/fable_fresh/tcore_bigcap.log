@@ -225,3 +225,8 @@ p=719 a=6 35 lag classes, 36 cells per block
 13:46:26 bigcap [719, 6, "diag [4, 2] [15, 3] j=[1, 2]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2] (limit 28800s)
 p=719 a=6 Q-level: 1890 y-quadruples (6s)
 p=719 a=6 35 lag classes, 36 cells per block
+{"qlevel": 1890, "examined": 1890, "killed_by_window": 1890, "capped": 0, "verdict": "NONE (exhaustive)", "secs": 14628.0, "key": "[719, 6, \"diag [4, 2] [15, 3] j=[1, 2]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2]"}
+17:50:15 done [719, 6, "diag [4, 2] [15, 3] j=[1, 2]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2]
+17:50:15 bigcap [719, 6, "diag [4, 2] [15, 3] j=[1, 1]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2] (limit 28800s)
+p=719 a=6 Q-level: 1890 y-quadruples (6s)
+p=719 a=6 35 lag classes, 36 cells per block
