@@ -342,3 +342,4 @@ State of thinking (so a restart does not lose it):
 - 2026-11-21 13:47 UTC: container restart (the first 719 a = 6 slice was cut off with no record); relaunched scripts/fable_tcore_bigcap3.sh.
 - 2026-11-21 17:50 UTC: 719 a = 6 diag [4,2][15,3] j=[1,2] (T = 15 chars, s = 11): NONE (exhaustive), 1890 y-quadruples all killed by the window, 14628 s. Now 109 NONE / 178 UNDECIDED. Its twin j=[1,1] running.
 - 2026-11-21 21:37 UTC: 719 a = 6 j=[1,1] twin: NONE (exhaustive), 13759 s. Now 110 NONE / 177 UNDECIDED. Report updated. Large-cap pass continues with the partial slices (todo3).
+- 2026-11-21 22:55 UTC: container restart had stopped the runner during the 947 a = 6 slice; relaunched bigcap3 with the heartbeat kept on (user's direction: until it completes).
