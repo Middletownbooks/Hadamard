@@ -339,3 +339,4 @@ State of thinking (so a restart does not lose it):
   whose y-quadruples are all <= 1e6 lifts (decidable) first, 8 h each; then the partial slices (some y-quadruples
   > 5e6: can find a core, cannot give NONE); last the four classical a = 4 slices at 719/1103 like those that timed out.
   Restart after a container restart: nohup bash scripts/fable_tcore_bigcap3.sh &  (skips keys marked done).
+- 2026-11-21 13:47 UTC: container restart (the first 719 a = 6 slice was cut off with no record); relaunched scripts/fable_tcore_bigcap3.sh.
