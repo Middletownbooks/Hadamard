@@ -321,3 +321,5 @@ p=719 a=6 47 lag classes, 48 cells per block
 {"qlevel": 262, "examined": 54, "killed_by_window": 54, "capped": 208, "verdict": "UNDECIDED (208 y-quadruples capped, 262 of 262 examined)", "secs": 4801.4, "key": "[719, 6, \"prod [2, 2, 2] [3, 3, 3]\", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2]"}
 04:37:02 done [719, 6, "prod [2, 2, 2] [3, 3, 3]", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 11, 10, 2]
 04:37:02 bigcap [1439, 6, "prod [3, 2, 1] [7, 3]", [1, 2, 3, 4, 5, 6, 7, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63], 22, 3, 5] (limit 10800s)
+p=1439 a=6 Q-level: 192 y-quadruples (42s)
+p=1439 a=6 31 lag classes, 48 cells per block
