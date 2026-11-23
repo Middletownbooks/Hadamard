@@ -1,1 +1,5 @@
 19:15:12 followup 971 quads 482,490 maxlift 2e7
+p=971 a=6 Q-level: 724 y-quadruples (64s)
+p=971 a=6 31 lag classes, 48 cells per block
+{"qlevel": 724, "examined": 2, "killed_by_window": 2, "capped": 0, "verdict": "NONE for y-quadruples [482, 490]", "secs": 205.5, "key": "[971, 6, \"prod [4, 2] [5, 3]\", [0, 1, 2, 3, 4, 5, 6, 10, 12, 14, 15], 15, 7, 4]", "quads": [482, 490], "maxlift": 20000000}
+19:18:38 followup done rc=0

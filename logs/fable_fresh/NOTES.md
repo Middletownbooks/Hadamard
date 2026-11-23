@@ -347,3 +347,6 @@ State of thinking (so a restart does not lose it):
   census survivors with r <= 48: 110 NONE (exhaustive), 177 UNDECIDED, 0 FOUND. Report 8b marked complete.
   Possible follow-up: 971 a = 6 slice [971, 6, "prod [4, 2] [5, 3]", ..., 15, 7, 4] has only 2 y-quadruples above
   5e6 lifts (722/724 killed): a run of those two at a higher cap could make it NONE.
+- 2026-11-23 19:18 UTC: 971 follow-up: y-quadruples 482, 490 at maxlift 2e7 killed by the window (205 s). With the 722
+  killed in the 5e6 pass the 971 a = 6 slice is NONE (exhaustive); combined record appended to tcore.jsonl.
+  Final phase-3 tally: 111 NONE, 176 UNDECIDED, 0 FOUND. Report updated.
