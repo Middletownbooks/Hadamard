@@ -17,6 +17,7 @@ Method.
 Caps: lifts per block (--maxlift), pairs per side (--maxpairs), y-quadruples (--maxquad); hitting one makes the
 verdict UNDECIDED for that y-quadruple.
 Usage: fable_tcore.py KEY [--maxlift N] [--maxpairs N] [--maxquad N] [--planted]     (KEY: a key of tcensus3.jsonl)
+       fable_tcore.py KEY --quads i,j,...  only these y-quadruple indices; result to logs/fable_fresh/tcore_followup.jsonl
        fable_tcore.py --control112          (Z_2^3 x Z_3, T = {0,1,2,4}, no multipliers: must find cores)
 """
 import sys, os, json, itertools, math, time, collections
@@ -276,7 +277,7 @@ def check_core(B, CS, Xs):
         if v != -4 * sum(chi(m, g // s) for m in T): ok = False; break
     return ok, [f.tolist() for f in full]
 
-def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
+def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag='', only=None):
     t0 = time.time()
     cnt, sols, tgtq = qlevel_solutions(B, p, t)
     print(f'{tag} Q-level: {cnt} y-quadruples ({time.time()-t0:.0f}s)', flush=True)
@@ -287,6 +288,7 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
     rng = np.random.default_rng(1)
     nund = 0; ndone = 0; found = None; cache = {}; NWIN[0] = 0
     for qi, quad in enumerate(quads[:maxquad]):
+        if only is not None and qi not in only: continue
         Fs = []; Ls = []; bad = False
         for bi in quad:
             if bi not in cache:
@@ -340,6 +342,7 @@ def solve(B, p, t, maxlift, maxpairs, maxquad, planted=False, tag=''):
             break
     nq = min(len(quads), maxquad)
     if found: verdict = 'FOUND'
+    elif only is not None: verdict = f'NONE for y-quadruples {sorted(only)}' if nund == 0 else f'UNDECIDED ({nund} of {len(only)} listed y-quadruples capped)'
     elif nund == 0 and len(quads) <= maxquad: verdict = 'NONE (exhaustive)'
     else: verdict = f'UNDECIDED ({nund} y-quadruples capped, {nq} of {len(quads)} examined)'
     return dict(qlevel=cnt, examined=ndone, killed_by_window=NWIN[0], capped=nund, verdict=verdict, found=found, secs=round(time.time() - t0, 1))
@@ -367,10 +370,12 @@ def main():
         return
     key = a_[0]; p, a, label, T, s, u, uo = json.loads(key)
     B = build(a, label, T, s, u); t = len(T)
-    res = solve(B, p, t, maxlift, maxpairs, maxquad, planted='--planted' in a_, tag=f'p={p} a={a}')
+    only = set(int(x) for x in get('--quads', '').split(',')) if '--quads' in a_ else None
+    res = solve(B, p, t, maxlift, maxpairs, maxquad, planted='--planted' in a_, tag=f'p={p} a={a}', only=only)
     res['key'] = key
+    if only is not None: res['quads'] = sorted(only); res['maxlift'] = maxlift
     print(json.dumps({k: v for k, v in res.items() if k != 'found'}), flush=True)
-    with open('logs/fable_fresh/tcore.jsonl', 'a') as fo: fo.write(json.dumps({k: v for k, v in res.items() if k != 'found'}) + '\n')
+    with open('logs/fable_fresh/tcore_followup.jsonl' if only is not None else 'logs/fable_fresh/tcore.jsonl', 'a') as fo: fo.write(json.dumps({k: v for k, v in res.items() if k != 'found'}) + '\n')
     if res.get('found'):
         json.dump(res, open(f'logs/fable_fresh/tcore_found_{p}_{a}.json', 'w'))
 
