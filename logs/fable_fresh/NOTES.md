@@ -343,3 +343,7 @@ State of thinking (so a restart does not lose it):
 - 2026-11-21 17:50 UTC: 719 a = 6 diag [4,2][15,3] j=[1,2] (T = 15 chars, s = 11): NONE (exhaustive), 1890 y-quadruples all killed by the window, 14628 s. Now 109 NONE / 178 UNDECIDED. Its twin j=[1,1] running.
 - 2026-11-21 21:37 UTC: 719 a = 6 j=[1,1] twin: NONE (exhaustive), 13759 s. Now 110 NONE / 177 UNDECIDED. Report updated. Large-cap pass continues with the partial slices (todo3).
 - 2026-11-21 22:55 UTC: container restart had stopped the runner during the 947 a = 6 slice; relaunched bigcap3 with the heartbeat kept on (user's direction: until it completes).
+- 2026-11-23 07:33 UTC: large-cap pass finished (all 72 run; 37 NONE). Final phase-3 core tally over the 287
+  census survivors with r <= 48: 110 NONE (exhaustive), 177 UNDECIDED, 0 FOUND. Report 8b marked complete.
+  Possible follow-up: 971 a = 6 slice [971, 6, "prod [4, 2] [5, 3]", ..., 15, 7, 4] has only 2 y-quadruples above
+  5e6 lifts (722/724 killed): a run of those two at a higher cap could make it NONE.
